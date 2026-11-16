@@ -1,0 +1,91 @@
+{
+  "work": "Park City Mountain Coaster créé comme attraction autonome à billet individuel dans l’Adventure Park de Park City Mountain. Huit descriptions, trois photographies exactes et créditées, huit pages publiques, horaires hivernaux structurés et annonce Facebook vérifiés.",
+  "qualification": "Rail coaster distinct de la piste de luge Alpine Slide. Billet Adventure Park Single Ride confirmé par l’exploitant ; ancien nom Park City Alpine Coaster dans la référence Wiegand. Recherches officielles Park et StandaloneAttraction sans homonyme.",
+  "sources": {
+    "Park City Mountain — Mountain Coaster": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-coaster.aspx",
+    "Park City Mountain — calendrier hiver 2026/27": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/hours-of-operation.aspx",
+    "Park City Mountain — billet Adventure Park Single Ride": "https://www.parkcitymountain.com/travel-guide/perfect-summer-itinerary",
+    "Park City Mountain — carte été, coaster distinct de la luge": "https://www.parkcitymountain.com/-/aemasset/sitecore/park-city/maps/20250513_PC_summer-trail_map_001.pdf",
+    "Wiegand — référence Park City Alpine Coaster": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2100",
+    "Flickr — Jeremy Thompson, station 2024, CC BY 2.0": "https://www.flickr.com/photos/rollercoasterphilosophy/53837817995/",
+    "Flickr — Jeremy Thompson, voyageur 2024, CC BY 2.0": "https://www.flickr.com/photos/rollercoasterphilosophy/53837723474/",
+    "Flickr — Jeremy Thompson, rail 2024, CC BY 2.0": "https://www.flickr.com/photos/rollercoasterphilosophy/53837370406/",
+    "Fiche publique Park City Mountain Coaster": "https://amusement-parks.fun/fr/attraction/0fdd60a4-08c0-42b7-84bc-974e2600b90d/park-city-mountain-coaster"
+  },
+  "entity": {
+    "id": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+    "name": "Park City Mountain Coaster",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "86515e8236674f5e91c34267eca00f38",
+      "author": "Jeremy Thompson (Roller Coaster Philosophy)",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837817995/",
+      "createdAtUtc": "2026-11-15T19:04:03.224Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "c27c7ccb7fd74c3e9dc59046e3b72a67",
+      "author": "Jeremy Thompson (Roller Coaster Philosophy)",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837723474/",
+      "createdAtUtc": "2026-11-15T19:04:15.435Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "3803ee307e914cb7a00bfcbc8437317b",
+      "author": "Jeremy Thompson (Roller Coaster Philosophy)",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837370406/",
+      "createdAtUtc": "2026-11-15T19:04:27.579Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "season": "Horaire officiel du 20 novembre 2026 au 19 avril 2027, 11 h–16 h, météo sous réserve. Au 15 novembre, fermé jusqu’au début de cette période.",
+    "ticket": "Adventure Park Single Ride ; tarif actuel non publié dans la fiche.",
+    "address": "1345 Lowell Avenue, Park City, UT 84060",
+    "route": "Mountain Village Adventure Park ; descente sur rail distincte de l’Alpine Slide."
+  },
+  "audit": {
+    "completenessScore": 74,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 3,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/0fdd60a4-08c0-42b7-84bc-974e2600b90d/park-city-mountain-coaster",
+    "sitePublishedAtUtc": "2026-11-15T19:10:26.6868384Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:956ac283-14c4-4e84-90af-73fb50edb3cc",
+    "facebookStatus": "Published",
+    "facebookId": "1d50ced5643c4597b64ecaec3d271ddd",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127498765424431",
+    "facebookPublishedAtUtc": "2026-11-15T19:11:20.4198627Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T19:11:54.904Z",
+  "remainingGaps": [
+    "Vérifier les prochaines saisons et tarifs dès leur publication par l’exploitant.",
+    "Ajouter les restrictions officielles de taille et d’âge si une source courante les confirme."
+  ]
+}

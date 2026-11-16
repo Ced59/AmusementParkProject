@@ -1,0 +1,138 @@
+{
+  "entryId": "NZ-candidate-discovery-fafa5c7f080917",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+  "name": "ZORB Rotorua",
+  "countryCode": "NZ",
+  "auditAtUtc": "2026-11-15T12:55:59.273Z",
+  "qualification": "Site dédié à la descente en boule gonflable avec quatre pistes vendues à la descente. Recherche officielle PDE Park/Standalone sous ZORB, puis OGO, sans fiche du site.",
+  "operatorSources": [
+    "https://zorb.com/",
+    "https://zorb.com/rides-3/",
+    "https://zorb.com/faqs/",
+    "https://zorb.com/contact-us/",
+    "https://bookings.zorb.com/"
+  ],
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/31dc1a2d-bfed-4ff8-b5fb-483e8efb9803/zorb-rotorua",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "890b318052ec4139ac86aa8fd1c7c993",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Zorb_05.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Zorb_05.jpg/960px-Zorb_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Master Man from Spain",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2008-02-06",
+      "uploadedAtUtc": "2026-11-15T12:51:35.671Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:51:39.147Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "2c392c0161134275af518329a167d886",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Zorb_01.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Zorb_01.jpg/960px-Zorb_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Harry Malsch",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2009-04-21",
+      "uploadedAtUtc": "2026-11-15T12:52:30.985Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:52:34.446Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "9a3d85b801ce48a3bef345f353eadcbd",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:ZORB_EXPERIENCE_-_panoramio.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/ZORB_EXPERIENCE_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "creator": "Gonzalo Baeza",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "photographedAt": "2011-12-13",
+      "uploadedAtUtc": "2026-11-15T12:52:48.009Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:52:51.639Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Site officiel consulté le 15 novembre 2026 : Straight NZD 49, Sidewinder NZD 69, Pipeline NZD 69, MEGA NZD 79 par descente. Forfaits et tarif local distincts.",
+  "openingHoursAssessment": "Contact officiel : 09:00–17:00 sept jours sur sept, fermé le 25 décembre ; calendrier structuré du 15 novembre 2026 au 15 novembre 2027 avec exception Noël 2026. Sous réserve de météo, notamment vent fort.",
+  "accessAssessment": "FAQ et réservation : 5 ans minimum, 135 kg maximum par personne, toutes les descentes sont mouillées ; maillot et serviette recommandés. Grossesse et état sous alcool/drogues excluent la participation ; autres conditions médicales à discuter avec l’exploitant.",
+  "geoAssessment": "Coordonnées -38.103275,176.221129, adresse 525 Ngongotaha Road, Fairy Springs, Rotorua, fournies par la page officielle de contact.",
+  "mediaAssessment": "Trois photos montrent ZORB Rotorua mais datent de 2008, 2009 et 2011. L’agencement actuel des pistes ne peut pas être inféré de ces photographies ; légendes datées dans huit langues.",
+  "completeness": {
+    "score": 89,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127455529424431",
+    "publishedAtUtc": "2026-11-15T12:54:57.9027839Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T12:53:47.941Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "786f7c1b-4458-42c5-92cd-a2db05c41f2d",
+      "appliedAtUtc": "2026-11-15T12:50:37.6726587Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "4a9f4879-a5ad-4049-834d-06f96278f323",
+      "appliedAtUtc": "2026-11-15T12:53:47.9415056Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "890b318052ec4139ac86aa8fd1c7c993",
+      "uploadedAtUtc": "2026-11-15T12:51:35.671Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:51:39.147Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "2c392c0161134275af518329a167d886",
+      "uploadedAtUtc": "2026-11-15T12:52:30.985Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:52:34.446Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "9a3d85b801ce48a3bef345f353eadcbd",
+      "uploadedAtUtc": "2026-11-15T12:52:48.009Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:52:51.639Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "e749c92b-3e7c-493f-a1a3-6ec229761dbd",
+    "appliedAtUtc": "2026-11-15T12:54:19.3158895Z"
+  },
+  "nextAction": "Conserver cette ligne. Recontrôler prix, horaires, restrictions et éventuelle évolution des quatre pistes sous 90 jours. Obtenir des photos exactes plus récentes avec droit de réutilisation : les trois images actuelles sont historiques (2008, 2009, 2011) et ne prouvent pas le tracé actuel. Ne pas republier Facebook pour une simple actualisation."
+}

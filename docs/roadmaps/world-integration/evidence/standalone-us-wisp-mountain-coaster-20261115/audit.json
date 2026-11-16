@@ -1,0 +1,92 @@
+{
+  "work": "Mountain Coaster de Wisp intégré comme attraction autonome à McHenry, Maryland : fiche en huit langues, photo exacte CC BY 2.0, tarifs, horaires datés, conditions d’accès, huit pages publiques et annonce Facebook.",
+  "qualification": "Wisp vend des billets propres à la piste (1 et 3 descentes) au sein de son domaine de montagne. Recherche officielle préalable de Wisp dans Park et StandaloneAttraction : aucun résultat. Les deux pistes du backlog renvoient au même coaster et sont rapprochées sans supprimer la ligne historique.",
+  "sources": {
+    "Exploitant — piste, tarifs et conditions": "https://www.wispresort.com/activity/mountain-adventures/",
+    "Exploitant — horaires actuels": "https://www.wispresort.com/hours/",
+    "Exploitant — calendrier coaster 26 octobre–22 novembre 2026": "https://www.wispresort.com/wp-content/uploads/2026/11/Schedule-10.26-11.22.pdf",
+    "Exploitant — adresse et année": "https://www.wispresort.com/about-wisp/",
+    "RCDB — attraction et carte": "https://rcdb.com/13328.htm",
+    "OpenStreetMap — station cartographiée": "https://www.openstreetmap.org/way/160679032",
+    "Coasterpedia — constructeur, ouverture, photo": "https://coasterpedia.net/wiki/Mountain_Coaster_%28Wisp_Resort%29",
+    "Coasterpedia — photographie exacte et licence": "https://coasterpedia.net/wiki/File:Mountain_Coaster_(Wisp_Resort)_2024-09_01.jpg",
+    "Flickr — photographie originale": "https://www.flickr.com/photos/turducken/54013253122/",
+    "Licence CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+    "Fiche publique Wisp Mountain Coaster": "https://amusement-parks.fun/fr/attraction/c1a3a369-c558-43c4-9b8a-b83cc36ddd69/wisp-mountain-coaster"
+  },
+  "entity": {
+    "id": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+    "name": "Wisp Mountain Coaster",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "894facbeba5b46f8828ed93028614973",
+      "author": "TheTurducken",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Mountain_Coaster_(Wisp_Resort)_2024-09_01.jpg",
+      "flickrOriginal": "https://www.flickr.com/photos/turducken/54013253122/",
+      "takenAt": "2024-09-07",
+      "createdAtUtc": "2026-11-15T22:15:48.788Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "manufacturer": "Wiegand",
+    "openingDate": "2007-08-30",
+    "lengthMeters": 1067,
+    "maximumSpeedKmH": 40,
+    "priceOffers": 4,
+    "currency": "USD",
+    "pricesVerifiedAtUtc": "2026-11-15T22:13:19Z",
+    "openingHourRules": 2,
+    "calendarThrough": "2026-11-22",
+    "weatherDependent": true,
+    "scheduledWeekendTimes": [
+      "10:00–12:00",
+      "12:30–16:00"
+    ],
+    "structuredAccessConditions": 4,
+    "address": "296 Marsh Hill Road, McHenry, Maryland 21541",
+    "stationCoordinates": [
+      39.55466995,
+      -79.361770475
+    ],
+    "stationOsmWay": "160679032"
+  },
+  "audit": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedExactAttractionImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/c1a3a369-c558-43c4-9b8a-b83cc36ddd69/wisp-mountain-coaster",
+    "sitePublishedAtUtc": "2026-11-15T22:21:28.9587808Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:c16c4465-9c8d-4a3f-9b0a-cb74b0446a8d",
+    "facebookStatus": "Published",
+    "facebookId": "a87039006dc64e779f041c9835534207",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127516339424431",
+    "facebookPublishedAtUtc": "2026-11-15T22:22:34.5497374Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T22:20:59.796Z",
+  "remainingGaps": [
+    "Le calendrier de cette attraction est publié seulement jusqu’au 22 novembre 2026 ; vérifier les nouveaux horaires directement chez Wisp avant visite.",
+    "Recontrôler les tarifs lors de la prochaine actualisation de l’exploitant."
+  ]
+}

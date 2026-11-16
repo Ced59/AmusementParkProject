@@ -1,0 +1,46 @@
+{
+  "entryId": "DE-standalone-a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+  "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+  "integrationHistory": [
+    {
+      "eventId": "apply-0b1e4224-2e30-4390-93af-e8e1bee77995",
+      "appliedAt": "2026-11-15T15:15:55.960Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "evidence": "PARK_DATA_EDITOR:apply:0b1e4224-2e30-4390-93af-e8e1bee77995",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+      "summary": "Huit descriptions, huit tarifs 2026, accès depuis la station intermédiaire et fermeture météo du 15 novembre intégrés."
+    },
+    {
+      "eventId": "image-47feaeafca424dc5916afb0bccda7093",
+      "appliedAt": "2026-11-15T15:16:25.433Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "evidence": "PARK_DATA_EDITOR:image:47feaeafca424dc5916afb0bccda7093@2026-11-15T15:16:25.433Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+      "summary": "Photo exacte de la piste en auge et du télésiège, Strubbl, CC BY-SA 4.0, avec huit textes alternatifs, légendes et crédits."
+    },
+    {
+      "eventId": "apply-0bec5e94-fc58-4278-8808-754e49c33e21",
+      "appliedAt": "2026-11-15T15:17:07.439Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "evidence": "PARK_DATA_EDITOR:apply:0bec5e94-fc58-4278-8808-754e49c33e21",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+      "summary": "Libellés des offres précisés dans les huit langues ; contrôle final à 92/100 sans blocage."
+    }
+  ],
+  "facebook": {
+    "id": "bbae9eea94ba4d2f9dd70b33a9f12dc7",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127468759424431",
+    "publishedAtUtc": "2026-11-15T15:17:58.5033678Z"
+  },
+  "photoImport": {
+    "imageId": "47feaeafca424dc5916afb0bccda7093",
+    "updatedAtUtc": "2026-11-15T15:16:25.433Z"
+  }
+}

@@ -138,18 +138,18 @@
       "entryId": "FR-candidate-discovery-da45a0f8b01663",
       "name": "Aérophare — Terre d’Estuaire",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Aérophare",
       "locality": "Cordemais",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Ballon inclus dans le billet du centre selon la page officielle des tarifs 2027, sous réserve météo.",
+      "identityConfidence": "Le billet officiel 2027 du centre inclut explicitement l’ascension en ballon ; attraction interne et non billetterie autonome.",
       "possibleMatches": [],
       "aliases": [
         "Terre d’Estuaire Cordemais, France"
@@ -157,7 +157,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver cette ligne comme attraction interne du parc candidat FR-candidate-terre-estuaire-20261115. Ne pas créer de standalone ni publier Facebook ; intégrer le centre avec son ballon dans une fiche Park après qualification.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -168,6 +168,21 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — centre et ballon",
+          "url": "https://www.terredestuaire.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — billet incluant le ballon",
+          "url": "https://www.terredestuaire.com/les-infos-pratiques/tarifs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — ballon 2019 CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Aerophare_Terre_d%27Estuaire.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -176,40 +191,41 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Aérophare — Terre d’Estuaire",
-            "source": "Aerophile — références constructeur",
-            "url": "https://www.aerophile.com/en/clients/terre-destuaire/",
+            "source": "Terre d’Estuaire — tarifs 2027",
+            "url": "https://www.terredestuaire.com/les-infos-pratiques/tarifs/",
             "family": "Aérophare",
-            "sourceVenueName": "Aérophare — Terre d’Estuaire",
-            "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Cordemais",
-            "referenceId": "aerophile-terre-destuaire"
+            "sourceVenueName": "Terre d’Estuaire",
+            "sourceLifecycleSignal": "Inclus dans la visite du centre, selon météo",
+            "sourceLocality": "Cordemais"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
-      }
+        "rationale": "L’ascension est incluse dans le billet global du centre de découverte ; pas de ticket standalone."
+      },
+      "possibleBacklogEntries": [
+        "FR-candidate-terre-estuaire-20261115"
+      ]
     },
     {
       "entryId": "FR-candidate-discovery-5ccd37119c7eba",
       "name": "Aérophare Évry 2",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Aérophare",
       "locality": "Évry",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Installation démontée sur le parking du centre commercial Évry 2 en juin 2015 ; photographies datées du 20 juin 2015.",
+      "identityConfidence": "Identité du site confirmée par la série photographique du démontage à Évry 2 ; installation historique disparue.",
       "possibleMatches": [],
       "aliases": [
         "Aerophare Evry Evry, France"
@@ -217,7 +233,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver le dossier historique hors du flux de créations : l’installation a été démontée en 2015. Ne pas créer de fiche d’exploitation actuelle ni d’annonce Facebook. Réévaluer uniquement en présence d’une preuve d’une nouvelle installation distincte.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -228,6 +244,16 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikimedia Commons — démontage de l’Aérophare d’Évry 2 en juin 2015",
+          "url": "https://commons.wikimedia.org/wiki/Category:Dismantling_of_%C3%89vry_2%27s_A%C3%A9rophare",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Wikimedia Commons — photographie du démontage, 20 juin 2015",
+          "url": "https://commons.wikimedia.org/wiki/File:Destruction_de_l%27A%C3%A9rophare_sur_le_parking_du_Centre_commercial_Evry_2_le_20_juin_2015_-_1.jpg",
+          "accessedAt": "2026-11-16"
         }
       ],
       "discovery": {
@@ -237,7 +263,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Aérophare Évry 2",
@@ -245,13 +271,13 @@
             "url": "https://www.aerophile.com/en/clients/aerophare-evry/",
             "family": "Aérophare",
             "sourceVenueName": "Aérophare Évry 2",
-            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; installation démontée en juin 2015 selon la série photographique du centre commercial Évry 2.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Évry",
             "referenceId": "aerophile-aerophare-evry"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Ancienne installation démontée en juin 2015. Exclue du flux des standalone à intégrer tant qu’aucune réouverture ou nouvelle installation n’est démontrée."
       }
     },
     {
@@ -3640,11 +3666,11 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2018 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Site dédié accessible et statut météo affiché ; exploitation et tarifs actuels à confirmer indépendamment à cause d’incohérences du site.",
+      "identityConfidence": "Installation et photo exacte confirmées ; tarifs contradictoires entre pages du site dédié et rubrique Infos pratiques servant un contenu sans rapport. Fiabilité commerciale à rétablir avant publication.",
       "possibleMatches": [],
       "aliases": [
         "SPL du ballon captif – Epernay Epernay, France"
@@ -3652,7 +3678,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Vérifier auprès de l’exploitant les horaires, prix et billetterie après correction du site ; la photo exacte CC BY-SA 4.0 est prête. Conserver cette ligne sans fausse date d’intégration.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -3663,6 +3689,26 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site dédié — accueil",
+          "url": "https://ballon-epernay.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Site dédié — présentation",
+          "url": "https://ballon-epernay.com/presentation/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Site dédié — rubrique incohérente",
+          "url": "https://ballon-epernay.com/infos-pratiques-tarifs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Epernay_Ballon_Captif.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -3672,7 +3718,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Ballon captif d’Épernay",
@@ -3686,7 +3732,7 @@
             "referenceId": "aerophile-epernay"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Billetterie propre probable, mais source web de l’exploitant incohérente ; création et post Facebook suspendus."
       }
     },
     {
@@ -3871,30 +3917,143 @@
     },
     {
       "entryId": "FR-candidate-discovery-91f1e3fca6cbc6",
-      "name": "Ballon de Paris — Aeroparis",
-      "entityKind": "ToQualify",
+      "name": "Ballon Generali de Paris",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
-      "locality": "Paris",
-      "siteId": null,
+      "locality": "Parc André Citroën, 75015 Paris",
+      "siteId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T22:39:44.060Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2013 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Exploitant actif en 2026 ; vols quotidiens prévus selon la météo.",
+      "identityConfidence": "Billetterie autonome et site officiel actuels ; trois alias recherchés dans Park et StandaloneAttraction sans correspondance avant création.",
       "possibleMatches": [],
       "aliases": [
-        "Generali Paris, France",
-        "Eutelsat Paris, France",
-        "City of Paris Paris, France"
+        "Ballon de Paris",
+        "Ballon Generali Paris",
+        "Aeroparis",
+        "Ballon Eutelsat",
+        "City of Paris balloon"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-15T22:38:25.037Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1e7e313c-f5be-481a-8a10-aa34dae24f52",
+          "appliedAt": "2026-11-15T22:33:33.558Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:apply:1e7e313c-f5be-481a-8a10-aa34dae24f52",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "photo-6bf5730ba76a434898b56bbe126eed48",
+          "appliedAt": "2026-11-15T22:34:05.997Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:photo:6bf5730ba76a434898b56bbe126eed48",
+          "auditEvidence": null,
+          "summary": "Photographie exacte 1 du ballon importée avec crédit Chabe01 et licence CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-02a020e2bdcd46968450edac3737f079",
+          "appliedAt": "2026-11-15T22:34:22.264Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:photo:02a020e2bdcd46968450edac3737f079",
+          "auditEvidence": null,
+          "summary": "Photographie exacte 2 du ballon importée avec crédit Chabe01 et licence CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-ce4df6a9c5ab46e79b7890f93c7748ab",
+          "appliedAt": "2026-11-15T22:34:38.584Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:photo:ce4df6a9c5ab46e79b7890f93c7748ab",
+          "auditEvidence": null,
+          "summary": "Photographie exacte 4 du ballon importée avec crédit Chabe01 et licence CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-b72c2519-f08e-42fd-be53-fd786004c142",
+          "appliedAt": "2026-11-15T22:36:11.944Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:apply:b72c2519-f08e-42fd-be53-fd786004c142",
+          "auditEvidence": null,
+          "summary": "Année d’ouverture, altitude et modèle du ballon intégrés."
+        },
+        {
+          "eventId": "apply-cf59501c-d164-4694-80ce-a574f541b29e",
+          "appliedAt": "2026-11-15T22:36:33.769Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:apply:cf59501c-d164-4694-80ce-a574f541b29e",
+          "auditEvidence": null,
+          "summary": "Huit tarifs officiels intégrés."
+        },
+        {
+          "eventId": "apply-a88f35d9-218c-4b67-8ca3-2a0336729443",
+          "appliedAt": "2026-11-15T22:36:55.572Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:apply:a88f35d9-218c-4b67-8ca3-2a0336729443",
+          "auditEvidence": null,
+          "summary": "Horaires habituels quotidiens et dépendance météo intégrés."
+        },
+        {
+          "eventId": "apply-0234c4f6-f594-4683-9d98-a23f1cd1d260",
+          "appliedAt": "2026-11-15T22:37:23.243Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:apply:0234c4f6-f594-4683-9d98-a23f1cd1d260",
+          "auditEvidence": null,
+          "summary": "Restrictions grossesse et fauteuil roulant intégrées."
+        },
+        {
+          "eventId": "photo-update-6bf5730ba76a434898b56bbe126eed48",
+          "appliedAt": "2026-11-15T22:38:03.297Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:photo-update:6bf5730ba76a434898b56bbe126eed48",
+          "auditEvidence": null,
+          "summary": "Description de la photo 1 rendue distincte."
+        },
+        {
+          "eventId": "photo-update-02a020e2bdcd46968450edac3737f079",
+          "appliedAt": "2026-11-15T22:38:14.234Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:photo-update:02a020e2bdcd46968450edac3737f079",
+          "auditEvidence": null,
+          "summary": "Description de la photo 2 rendue distincte."
+        },
+        {
+          "eventId": "photo-update-ce4df6a9c5ab46e79b7890f93c7748ab",
+          "appliedAt": "2026-11-15T22:38:25.037Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+          "evidence": "PARK_DATA_EDITOR:photo-update:ce4df6a9c5ab46e79b7890f93c7748ab",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-fr-ballon-generali-paris-20261115/audit.json",
+          "summary": "Description de la photo 4 rendue distincte ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les preuves ; recontrôler tarifs, horaires et exploitation du jour sur le site officiel. Prévenir la conversation France que la fiche Ballon Generali est désormais intégrée, afin d’éviter un doublon.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -3915,6 +4074,46 @@
           "label": "Aerophile — références constructeur",
           "url": "https://www.aerophile.com/en/clients/city-of-paris/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — vols et actualité",
+          "url": "https://ballondeparis.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs et horaires",
+          "url": "https://ballondeparis.com/infos-pratiques/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — histoire et altitude",
+          "url": "https://ballondeparis.com/vol-en-ballon/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — emplacement",
+          "url": "https://www.openstreetmap.org/way/1335077539",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche standalone publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/c8823aa8-65ab-4cd0-aada-2e814d0790e9/ballon-generali-de-paris",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Chabe01 CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_1.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Chabe01 CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_2.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, Chabe01 CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_4.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -3923,45 +4122,23 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Ballon de Paris — Aeroparis",
-            "source": "Aerophile — références constructeur",
-            "url": "https://www.aerophile.com/en/clients/generali/",
+            "name": "Ballon Generali de Paris",
+            "source": "Ballon Generali de Paris — exploitant",
+            "url": "https://ballondeparis.com/",
             "family": "Ballon captif",
-            "sourceVenueName": "Ballon de Paris — Aeroparis",
-            "sourceLifecycleSignal": "Référence constructeur datée 2013 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceVenueName": "Parc André Citroën",
+            "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Paris",
-            "referenceId": "aerophile-generali"
-          },
-          {
-            "name": "Ballon de Paris — Aeroparis",
-            "source": "Aerophile — références constructeur",
-            "url": "https://www.aerophile.com/en/clients/eutelsat/",
-            "family": "Ballon captif",
-            "sourceVenueName": "Ballon de Paris — Aeroparis",
-            "sourceLifecycleSignal": "Référence constructeur datée 2002 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Paris",
-            "referenceId": "aerophile-eutelsat"
-          },
-          {
-            "name": "Ballon de Paris — Aeroparis",
-            "source": "Aerophile — références constructeur",
-            "url": "https://www.aerophile.com/en/clients/city-of-paris/",
-            "family": "Ballon captif",
-            "sourceVenueName": "Ballon de Paris — Aeroparis",
-            "sourceLifecycleSignal": "Référence constructeur datée 1999 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Paris",
-            "referenceId": "aerophile-city-of-paris"
+            "sourceOpenedYear": "1999"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
-      }
+        "rationale": "Billet propre au ballon captif et exploitation actuelle ; même installation que les anciennes références constructeur Eutelsat et City of Paris."
+      },
+      "possibleBacklogEntries": []
     },
     {
       "entryId": "FR-park-bb1605f3-58ca-45cd-bbca-6fdc811bee4c",
@@ -22010,27 +22187,110 @@
     {
       "entryId": "FR-candidate-discovery-8c603a6339cbd7",
       "name": "PanoraMagique",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
-      "locality": "Disney Village, Marne-la-Vallée",
-      "siteId": null,
+      "locality": "Lake Disney, Disney Village, Chessy 77700",
+      "siteId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T22:48:55.955Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Exploitant actif en 2026, vols prévus quotidiennement selon la météo.",
+      "identityConfidence": "Billet propre et accès libre à Disney Village confirmés par FAQ officielle ; recherche Park et StandaloneAttraction sans correspondance avant création.",
       "possibleMatches": [],
       "aliases": [
-        "Disneyland® Paris Marne-La-Vallée, France"
+        "Panoramagique",
+        "PanoraMagique balloon",
+        "Disney Village tethered balloon"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-15T22:53:46.418Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-29f67b89-3559-4017-82d6-7333a2e5a917",
+          "appliedAt": "2026-11-15T22:45:02.713Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:29f67b89-3559-4017-82d6-7333a2e5a917",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "photo-712d416cb8f4484d81e7cf575f381ae4",
+          "appliedAt": "2026-11-15T22:45:22.374Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:photo:712d416cb8f4484d81e7cf575f381ae4",
+          "auditEvidence": null,
+          "summary": "Photo exacte historique de PanoraMagique importée, créditée sous CC BY 2.0 et datée de 2010."
+        },
+        {
+          "eventId": "apply-6dd4fe46-e102-4f67-8e9e-878482ce1196",
+          "appliedAt": "2026-11-15T22:46:36.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:6dd4fe46-e102-4f67-8e9e-878482ce1196",
+          "auditEvidence": null,
+          "summary": "Ouverture 2005, altitude, durée et capacité intégrées."
+        },
+        {
+          "eventId": "apply-ef92ac8c-5273-4ffe-b8a1-3f7e9f788e58",
+          "appliedAt": "2026-11-15T22:46:57.963Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:ef92ac8c-5273-4ffe-b8a1-3f7e9f788e58",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels sur place et en ligne intégrés."
+        },
+        {
+          "eventId": "apply-6da516a2-eefa-4b3e-af13-4d14783b1847",
+          "appliedAt": "2026-11-15T22:47:19.902Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:6da516a2-eefa-4b3e-af13-4d14783b1847",
+          "auditEvidence": null,
+          "summary": "Horaires habituels quotidiens et dépendance météo intégrés."
+        },
+        {
+          "eventId": "apply-af4790c6-0150-4aeb-9ea6-eb2a8ad955ee",
+          "appliedAt": "2026-11-15T22:47:41.605Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:af4790c6-0150-4aeb-9ea6-eb2a8ad955ee",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-fr-panoramagique-20261115/audit.json",
+          "summary": "Trois règles d’embarquement officielles intégrées."
+        },
+        {
+          "eventId": "photo-88b2e3e91ede40a4a171ac3c67e929fd",
+          "appliedAt": "2026-11-15T22:53:33.463Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:photo:88b2e3e91ede40a4a171ac3c67e929fd",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du ballon en 2016 ajoutée à la galerie, créditée Andy Whittle CC BY 2.0."
+        },
+        {
+          "eventId": "photo-8a949e19e68c497cae7314d2057095a2",
+          "appliedAt": "2026-11-15T22:53:46.418Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:photo:8a949e19e68c497cae7314d2057095a2",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-fr-panoramagique-20261115/audit.json",
+          "summary": "Photographie exacte du ballon en 2019 ajoutée à la galerie, créditée 35mmMan CC BY 2.0."
+        }
+      ],
+      "nextAction": "Conserver la fiche et la galerie de trois vues historiques exactes ; rechercher une photo de la livrée actuelle sous licence compatible et recontrôler horaires et tarifs.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -22041,6 +22301,56 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — identité et statut",
+          "url": "https://panoramagique.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — prix et horaires",
+          "url": "https://panoramagique.com/informations-pratiques",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ et autonomie",
+          "url": "https://panoramagique.com/faq",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — ballon",
+          "url": "https://panoramagique.com/panoramagique/le-ballon",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — histoire",
+          "url": "https://panoramagique.com/panoramagique/histoire",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — emplacement",
+          "url": "https://www.openstreetmap.org/way/253840775",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2010 CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:PanoraMagique,_Disney_Village,_Disneyland_Paris.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/21e2b789-4781-4c1d-b303-417a496ab2bc/panoramagique",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — PanoraMagique 2016, Andy Whittle, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/andy50/31407915302/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — PanoraMagique 2019, 35mmMan, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/35mmman/49226949571/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -22049,23 +22359,23 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "PanoraMagique",
-            "source": "Aerophile — références constructeur",
-            "url": "https://www.aerophile.com/en/clients/disneyland-paris/",
+            "source": "Exploitant PanoraMagique — informations pratiques",
+            "url": "https://panoramagique.com/informations-pratiques",
             "family": "Ballon captif",
-            "sourceVenueName": "PanoraMagique",
-            "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Disney Village, Marne-la-Vallée",
-            "referenceId": "aerophile-disneyland-paris"
+            "sourceVenueName": "Disney Village",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Chessy",
+            "sourceOpenedYear": "2005"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
-      }
+        "rationale": "Billetterie distincte ; Disney Village est accessible sans billet de parc Disney. Fiche autonome publiée."
+      },
+      "possibleBacklogEntries": []
     },
     {
       "entryId": "FR-candidate-54d1a76a9d8f2e",
@@ -38170,6 +38480,46 @@
       ],
       "discoveredAt": "2026-11-02T19:00:57.319304+00:00",
       "discoveryReason": "Séparation documentée du dossier historique national Tivoli1730–1842 ; jardin distinct à laFolieLaBouexiere, sans réécrire l’historique du dossier GrandTivoli."
+    },
+    {
+      "entryId": "FR-candidate-terre-estuaire-20261115",
+      "name": "Terre d’Estuaire",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Centre de découverte",
+      "locality": "Cordemais, Loire-Atlantique, France",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site officiel actif ; tarifs 2027 publiés, montée en ballon comprise dans la visite.",
+      "identityConfidence": "Site et billet global confirmés par l’exploitant ; recherche Park et StandaloneAttraction sous Terre d’Estuaire, Cordemais et Aérophare sans correspondance.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [
+        "FR-candidate-discovery-da45a0f8b01663"
+      ],
+      "aliases": [
+        "Centre de découverte Terre d’Estuaire"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Qualifier le centre comme fiche Park complète, avec l’Aérophare en attraction interne, horaires et tarifs 2027, photos autorisées et recherche d’anciennes identités ; aucune date d’intégration avant Apply.",
+      "sources": [
+        {
+          "label": "Exploitant — centre",
+          "url": "https://www.terredestuaire.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — billet et ballon inclus",
+          "url": "https://www.terredestuaire.com/les-infos-pratiques/tarifs/",
+          "accessedAt": "2026-11-15"
+        }
+      ]
     }
   ]
 }

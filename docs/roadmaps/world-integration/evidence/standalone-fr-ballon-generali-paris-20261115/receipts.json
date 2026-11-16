@@ -1,0 +1,110 @@
+{
+  "entityId": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "1e7e313c-f5be-481a-8a10-aa34dae24f52",
+      "appliedAtUtc": "2026-11-15T22:33:33.5587946Z",
+      "evidence": "PARK_DATA_EDITOR:apply:1e7e313c-f5be-481a-8a10-aa34dae24f52"
+    },
+    {
+      "step": "spec",
+      "operationId": "b72c2519-f08e-42fd-be53-fd786004c142",
+      "appliedAtUtc": "2026-11-15T22:36:11.9443182Z",
+      "evidence": "PARK_DATA_EDITOR:apply:b72c2519-f08e-42fd-be53-fd786004c142"
+    },
+    {
+      "step": "pricing",
+      "operationId": "cf59501c-d164-4694-80ce-a574f541b29e",
+      "appliedAtUtc": "2026-11-15T22:36:33.7696246Z",
+      "evidence": "PARK_DATA_EDITOR:apply:cf59501c-d164-4694-80ce-a574f541b29e"
+    },
+    {
+      "step": "hours",
+      "operationId": "a88f35d9-218c-4b67-8ca3-2a0336729443",
+      "appliedAtUtc": "2026-11-15T22:36:55.5725358Z",
+      "evidence": "PARK_DATA_EDITOR:apply:a88f35d9-218c-4b67-8ca3-2a0336729443"
+    },
+    {
+      "step": "access",
+      "operationId": "0234c4f6-f594-4683-9d98-a23f1cd1d260",
+      "appliedAtUtc": "2026-11-15T22:37:23.2437166Z",
+      "evidence": "PARK_DATA_EDITOR:apply:0234c4f6-f594-4683-9d98-a23f1cd1d260"
+    },
+    {
+      "step": "publish",
+      "operationId": "cdeb98e6-bdc1-49cb-a9fd-24750ca1f681",
+      "appliedAtUtc": "2026-11-15T22:38:58.1226492Z",
+      "evidence": "PARK_DATA_EDITOR:apply:cdeb98e6-bdc1-49cb-a9fd-24750ca1f681"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "6bf5730ba76a434898b56bbe126eed48",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_1.jpg",
+      "author": "Chabe01",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2025-10-14",
+      "createdAtUtc": "2026-11-15T22:34:05.997Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "02a020e2bdcd46968450edac3737f079",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_2.jpg",
+      "author": "Chabe01",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2025-10-14",
+      "createdAtUtc": "2026-11-15T22:34:22.264Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "ce4df6a9c5ab46e79b7890f93c7748ab",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_4.jpg",
+      "author": "Chabe01",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2025-10-14",
+      "createdAtUtc": "2026-11-15T22:34:38.584Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "photoMetadataUpdates": [
+    {
+      "imageId": "6bf5730ba76a434898b56bbe126eed48",
+      "updatedAtUtc": "2026-11-15T22:38:03.297Z",
+      "published": true,
+      "description": "Wide view across the park lawn: the Generali balloon rises over its red ground gondola, with a train behind."
+    },
+    {
+      "imageId": "02a020e2bdcd46968450edac3737f079",
+      "updatedAtUtc": "2026-11-15T22:38:14.234Z",
+      "published": true,
+      "description": "Close frontal view of the white envelope showing Generali lettering, a climate thermometer and the suspended basket."
+    },
+    {
+      "imageId": "ce4df6a9c5ab46e79b7890f93c7748ab",
+      "updatedAtUtc": "2026-11-15T22:38:25.037Z",
+      "published": true,
+      "description": "Upward view of the tethered balloon and gondola beside the modern buildings and trees of Parc André Citroën."
+    }
+  ],
+  "facebook": {
+    "id": "52a22431d5a14b8ba4fc3113d134eb8b",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127517725424431",
+    "publishedAtUtc": "2026-11-15T22:39:44.0601733Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 72,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "entityId": "e880d684-d210-4650-9748-30d293b22828",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "4ebdfd73-4d82-4ae1-865d-ea1e85e77a3f",
+      "appliedAtUtc": "2026-11-15T23:36:41.5621918Z",
+      "evidence": "PARK_DATA_EDITOR:apply:4ebdfd73-4d82-4ae1-865d-ea1e85e77a3f"
+    },
+    {
+      "step": "access",
+      "operationId": "894e0f95-1fe2-4eff-a55c-19786f2c0006",
+      "appliedAtUtc": "2026-11-15T23:37:17.7179663Z",
+      "evidence": "PARK_DATA_EDITOR:apply:894e0f95-1fe2-4eff-a55c-19786f2c0006"
+    },
+    {
+      "step": "season",
+      "operationId": "1512fd8e-76aa-47e6-8146-07ef93b74258",
+      "appliedAtUtc": "2026-11-15T23:38:46.6110689Z",
+      "evidence": "PARK_DATA_EDITOR:apply:1512fd8e-76aa-47e6-8146-07ef93b74258"
+    },
+    {
+      "step": "publish",
+      "operationId": "64d78fd1-ffc3-4e1d-a706-546cad26fb19",
+      "appliedAtUtc": "2026-11-15T23:39:19.980198Z",
+      "evidence": "PARK_DATA_EDITOR:apply:64d78fd1-ffc3-4e1d-a706-546cad26fb19"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "2199a7fdef804573aab68b9c22bfa400",
+      "createdAtUtc": "2026-11-15T23:37:34.172Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zip_rider_coming_across_jump.jpg",
+      "flickrOriginal": "https://www.flickr.com/photos/akasped/3964448722/",
+      "author": "edward stojakovic",
+      "license": "CC BY 2.0",
+      "takenAt": "2009-09-26",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "facebook": {
+    "id": "f77725f2a3e042b59d6969e479c1e65d",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127521991424431",
+    "publishedAtUtc": "2026-11-15T23:40:04.0833202Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 81,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 54,
+    "earnedPoints": 44,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

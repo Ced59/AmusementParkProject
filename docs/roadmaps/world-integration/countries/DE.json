@@ -670,20 +670,31 @@
         "f170e4be-d857-40a5-bb8b-8898c5a2ddbd"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:52:38.783Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Novembre 2026 : week-ends ; pause du 1er décembre 2026 au 28 février 2027 inclus.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Allwetterrodelbahn Weißenfels"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:51:15.321Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4fe26492-a659-4963-b864-2837cbdec71d",
+          "appliedAt": "2026-11-15T15:51:15.321Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80836e64-0911-4e37-aef1-39cd7499d4aa",
+          "evidence": "PARK_DATA_EDITOR:apply:4fe26492-a659-4963-b864-2837cbdec71d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-weissenfels-20261115/audit.json",
+          "summary": "Calendrier officiel novembre 2026–février 2027, six tarifs, âge et huit descriptions corrigés ; cinq photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Vérifier les tarifs et le calendrier de mars 2027 auprès de l’exploitant ; auditer les droits des cinq photos existantes et chercher une image supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -719,6 +730,21 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.allwetterrodelbahn.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Allwetterrodelbahn Weißenfels — attraction",
+          "url": "https://www.allwetterrodelbahn.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Allwetterrodelbahn Weißenfels — tarifs affichés",
+          "url": "https://www.allwetterrodelbahn.de/Preise.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Allwetterrodelbahn Weißenfels — calendrier 2026–2027",
+          "url": "https://www.allwetterrodelbahn.de/Oeffnungszeiten.htm",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -1069,20 +1095,41 @@
         "f376f852-81a4-4875-b547-dfcc15d9bf96"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T13:37:52.784Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Actuellement fermé depuis le 9 novembre 2026 ; reprise hivernale envisagée autour du 27 décembre, non confirmée.",
+      "identityConfidence": "Fiche StandaloneAttraction existante conservée ; six médias accessibles ; texte public corrigé en huit langues, qualité sans blocage.",
       "possibleMatches": [],
       "aliases": [
         "Kolbensattel"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T13:37:52.784Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-71f89264-a471-42ef-9498-b2623b8f8629",
+          "appliedAt": "2026-11-15T13:36:42.276Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+          "evidence": "PARK_DATA_EDITOR:apply:71f89264-a471-42ef-9498-b2623b8f8629",
+          "auditEvidence": null,
+          "summary": "Huit descriptions réécrites pour supprimer le langage éditorial et les métriques brutes dans le texte narratif."
+        },
+        {
+          "eventId": "apply-96fcd161-e8b1-4927-8f2c-daa9ef8766ba",
+          "appliedAt": "2026-11-15T13:37:52.784Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+          "evidence": "PARK_DATA_EDITOR:apply:96fcd161-e8b1-4927-8f2c-daa9ef8766ba",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-kolbensattel-refresh-20261115/audit.json",
+          "summary": "Fermeture officielle après le 8 novembre structurée jusqu’au 26 décembre, avant une reprise hivernale encore tentative."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revérifier autour du 27 décembre 2026 la date effective de reprise hivernale, les horaires et les tarifs de la nouvelle saison ; ne pas afficher les prix d’été 2026 comme tarifs d’hiver. Auditer séparément les droits des six photos existantes issues des pages de l’exploitant. Ne pas republier Facebook pour une simple actualisation.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1118,6 +1165,11 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.kolbensattel.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — horaires, fermeture et tarifs été 2026",
+          "url": "https://kolbensattel-im-sommer.de/betriebszeiten-preise/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -2377,11 +2429,11 @@
         "e62142f3-4d42-4c3c-98c8-b58d8ce9da3b"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T14:42:55.711Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Coaster en exploitation annuelle selon l’exploitant, mais fermé du 8 novembre au 25 décembre 2026 ; calendrier détaillé publié jusqu’au 31 janvier 2028.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
@@ -2389,9 +2441,50 @@
         "Alpsee-Bergwelt"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T14:40:35.020Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-738cc365-c7d6-4eca-ba20-5972408c30f0",
+          "appliedAt": "2026-11-15T14:39:18.378Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+          "evidence": "PARK_DATA_EDITOR:apply:738cc365-c7d6-4eca-ba20-5972408c30f0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+          "summary": "Tarifs officiels, conditions de conduite sourcées et calendrier complet du 15 novembre 2026 au 31 janvier 2028 intégrés."
+        },
+        {
+          "eventId": "image-df2dd4fe29dc4e6d8bf3e3e9b6ca8cd0",
+          "appliedAt": "2026-11-15T14:40:10.772Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+          "evidence": "PARK_DATA_EDITOR:image:df2dd4fe29dc4e6d8bf3e3e9b6ca8cd0@2026-11-15T14:40:10.772Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+          "summary": "Photo exacte de la piste Alpsee Coaster du 2013-07-27, qwesy qwesy, CC BY 3.0, avec textes, légendes et crédits en huit langues."
+        },
+        {
+          "eventId": "image-8365736eb0514b7c84531f83962fcadf",
+          "appliedAt": "2026-11-15T14:40:23.750Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+          "evidence": "PARK_DATA_EDITOR:image:8365736eb0514b7c84531f83962fcadf@2026-11-15T14:40:23.75Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+          "summary": "Photo exacte de la piste Alpsee Coaster du 2013-07-27, qwesy qwesy, CC BY 3.0, avec textes, légendes et crédits en huit langues."
+        },
+        {
+          "eventId": "image-3781da25e1634370a3497d480e18ca23",
+          "appliedAt": "2026-11-15T14:40:35.020Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+          "evidence": "PARK_DATA_EDITOR:image:3781da25e1634370a3497d480e18ca23@2026-11-15T14:40:35.02Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+          "summary": "Photo exacte de la piste Alpsee Coaster du 2014-08-09, qwesy qwesy, CC BY 3.0, avec textes, légendes et crédits en huit langues."
+        }
+      ],
+      "nextAction": "Revérifier les adaptations météo et les tarifs au prochain changement officiel ; demander ou vérifier la licence des cinq anciennes photos issues de l’exploitant. Ne pas déduire d’horaires après le 31 janvier 2028.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2427,6 +2520,36 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.alpsee-bergwelt.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Alpsee Bergwelt — coaster et conditions",
+          "url": "https://www.alpsee-bergwelt.de/erleben/alpsee-coaster",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Alpsee Bergwelt — tarifs",
+          "url": "https://www.alpsee-bergwelt.de/infos/preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Alpsee Bergwelt — calendrier PDF 2026–2028",
+          "url": "https://www.alpsee-bergwelt.de/images/zmedialib/2026/11/10/alpsee-bergwelt-offnungszeiten-2026_2027.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — qwesy qwesy, CC BY 3.0, 2013-07-27",
+          "url": "https://commons.wikimedia.org/wiki/File%3AAlpsee_Coaster_-_Rodelbahn_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — qwesy qwesy, CC BY 3.0, 2013-07-27",
+          "url": "https://commons.wikimedia.org/wiki/File%3AAlpsee_Coaster_-_Rodelbahn_-_panoramio_%282%29.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — qwesy qwesy, CC BY 3.0, 2014-08-09",
+          "url": "https://commons.wikimedia.org/wiki/File%3AAlpsee-Coaster_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -2455,6 +2578,26 @@
           }
         ],
         "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+        "score": 93,
+        "publicationBlockers": [],
+        "gapCount": 1
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b593d380-49b9-4c5d-b08c-00cc378182b3/alpsee-coaster",
+          "verifiedAtUtc": "2026-11-15T14:42:55.711Z",
+          "evidence": "PARK_DATA_EDITOR:apply:738cc365-c7d6-4eca-ba20-5972408c30f0"
+        },
+        "facebook": {
+          "id": "ef6e510a888144cb893f3d41f8265451",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T14:41:49.625Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127465057424431"
+        }
       }
     },
     {
@@ -2502,20 +2645,41 @@
         "a3141674-ea63-478e-a58c-8878ce527c41"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:01:12.214Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fermé pour révision depuis le 9 novembre 2026 ; reprise vers la mi-décembre non confirmée.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Alpspitzbahn Nesselwang"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:58:59.268Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b26c67bc-1e2c-4a7c-a65b-ea92560ead9f",
+          "appliedAt": "2026-11-15T15:57:41.156Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+          "evidence": "PARK_DATA_EDITOR:apply:b26c67bc-1e2c-4a7c-a65b-ea92560ead9f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpspitz-20261115/audit.json",
+          "summary": "Tarifs hiver, conditions d’accès, fermeture pour révision et huit descriptions mis à jour."
+        },
+        {
+          "eventId": "apply-6f3ba81a-1c02-4bc4-ab97-85ed65392f0d",
+          "appliedAt": "2026-11-15T15:58:59.268Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+          "evidence": "PARK_DATA_EDITOR:apply:6f3ba81a-1c02-4bc4-ab97-85ed65392f0d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpspitz-20261115/audit.json",
+          "summary": "Huit descriptions corrigées pour retirer les métriques brutes ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Vérifier la date réelle de réouverture et les horaires hiver dans le bulletin officiel ; auditer les droits des cinq photos existantes et chercher une image supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2541,6 +2705,21 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-2117",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Alpspitzbahn — tarifs hiver 2026/27",
+          "url": "https://www.alpspitzbahn.de/preise-winter.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Alpspitzbahn — horaires et révision",
+          "url": "https://www.nesselwang.de/preise-und-oeffnungszeiten-alpspitzbahn/articles/oeffnungszeiten.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Alpspitzbahn — bulletin en direct",
+          "url": "https://telegramm.alpspitzbahn.de/extern/urlaubsinfo.php",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -4555,11 +4734,11 @@
         "6eef24e5-2669-4dd0-aaaf-8e9b60875365"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:48:32.189Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Activité toute l’année, sous réserve des horaires quotidiens et de la météo.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
@@ -4567,9 +4746,50 @@
         "Blomberg"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:47:09.554Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a60c7cd1-f960-468a-9463-573b69f39832",
+          "appliedAt": "2026-11-15T15:45:57.051Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+          "evidence": "PARK_DATA_EDITOR:apply:a60c7cd1-f960-468a-9463-573b69f39832",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-blitz-20261115/audit.json",
+          "summary": "Huit descriptions, neuf tarifs, conditions d’âge et horaire du jour corrigés ; contrôle de la galerie en attente."
+        },
+        {
+          "eventId": "image-8c61b6b054424a46b72d536104061790-20261115",
+          "appliedAt": "2026-11-15T15:46:58.251Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+          "evidence": "PARK_DATA_EDITOR:image:8c61b6b054424a46b72d536104061790@2026-11-15T15:46:58.251Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-blitz-20261115/audit.json",
+          "summary": "Photo exacte valide de la piste mise en avant."
+        },
+        {
+          "eventId": "image-2237b72d8d2549d4b4451c03490f7ecd-20261115",
+          "appliedAt": "2026-11-15T15:47:04.455Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+          "evidence": "PARK_DATA_EDITOR:image:2237b72d8d2549d4b4451c03490f7ecd@2026-11-15T15:47:04.455Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-blitz-20261115/audit.json",
+          "summary": "Ancienne photo principale corrompue à bandes vertes masquée et conservée hors publication."
+        },
+        {
+          "eventId": "image-d1d3c161d2e8469ba9d85b9c35e30c2d-20261115",
+          "appliedAt": "2026-11-15T15:47:09.554Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+          "evidence": "PARK_DATA_EDITOR:image:d1d3c161d2e8469ba9d85b9c35e30c2d@2026-11-15T15:47:09.554Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-blitz-20261115/audit.json",
+          "summary": "Deuxième photo corrompue masquée ; trois photos exactes restent publiques. Contrôle final 95/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Consulter les horaires quotidiens au fil de la saison ; trouver une photo exacte supplémentaire sous licence vérifiable et auditer les droits des trois images conservées. Garder les deux fichiers corrompus hors publication.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -4605,6 +4825,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.blombergbahn.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Blomberg — tarifs 2026",
+          "url": "https://www.der-blomberg.de/blomberg-preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Blomberg — horaires quotidiens",
+          "url": "https://www.der-blomberg.de/oeffnungszeiten",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -4744,18 +4974,29 @@
         "ba4dc216-6df1-4689-ab1e-9b4e7b4b8491"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:05:25.053Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Exploitation publiée jusqu’en février 2027, sous réserve météo et activité du ski.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T16:03:47.279Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2ebfeea4-2937-4413-bbee-e987251cd621",
+          "appliedAt": "2026-11-15T16:03:47.279Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+          "evidence": "PARK_DATA_EDITOR:apply:2ebfeea4-2937-4413-bbee-e987251cd621",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-donnstetten-20261115/audit.json",
+          "summary": "Huit descriptions, quatorze tarifs, calendrier officiel jusqu’en février 2027 et accès corrigés ; quatre photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Revérifier les horaires du jour selon météo et ski ; auditer les droits des quatre photos existantes et trouver une image supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -4791,6 +5032,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.bobbahn-donnstetten.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Bobbahn Donnstetten — tarifs affichés",
+          "url": "https://www.bobbahn-donnstetten.de/#preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Bobbahn Donnstetten — horaires 2026–2027",
+          "url": "https://www.bobbahn-donnstetten.de/#oeffnungszeiten",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -5004,20 +5255,51 @@
         "415224e4-df64-404d-9be8-7807ca4fdc0d"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T14:52:37.150Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Exploitation de novembre 2026 limitée aux week-ends, sous réserve météo ; fermeture pour travaux annoncée à partir du 1er janvier 2027 sans date de reprise.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Brocken Coaster"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T14:50:46.304Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2af4dbb1-809d-4646-9d85-f0f4dab65d02",
+          "appliedAt": "2026-11-15T14:48:38.649Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+          "evidence": "PARK_DATA_EDITOR:apply:2af4dbb1-809d-4646-9d85-f0f4dab65d02",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-brocken-coaster-20261115/audit.json",
+          "summary": "Tarifs, calendrier de novembre et décembre 2026, fermeture pour travaux dès janvier 2027 et huit textes publics mis à jour."
+        },
+        {
+          "eventId": "image-12a2019ddb8e4919a9cbffd242176993",
+          "appliedAt": "2026-11-15T14:49:08.926Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+          "evidence": "PARK_DATA_EDITOR:image:12a2019ddb8e4919a9cbffd242176993@2026-11-15T14:49:08.926Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-brocken-coaster-20261115/audit.json",
+          "summary": "Photo exacte de l’enseigne et de la piste (2024), Lukas Beck, CC BY 4.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "apply-f4dcb991-c165-4050-ab9f-51aefc9f91db",
+          "appliedAt": "2026-11-15T14:50:46.304Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+          "evidence": "PARK_DATA_EDITOR:apply:f4dcb991-c165-4050-ab9f-51aefc9f91db",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-brocken-coaster-20261115/audit.json",
+          "summary": "Relecture éditoriale des huit descriptions, suppression du blocage de publication et contrôle final à 90/100."
+        }
+      ],
+      "nextAction": "Suivre l’annonce de travaux et la reprise à partir du 1er janvier 2027 ; prolonger ou corriger le calendrier seulement sur preuve. Clarifier les seuils d’âge et de taille avec l’exploitant ; vérifier les droits des cinq anciennes photos.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5053,6 +5335,26 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.brocken-coaster.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Brocken-Coaster — annonce de fermeture",
+          "url": "https://de.brocken-coaster.de/mbl.dvc/pg/index.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Brocken-Coaster — horaires",
+          "url": "https://de.brocken-coaster.de/mbl.dvc/pg/kontakt_lage_oeffnungszeiten.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Brocken-Coaster — tarifs et parcours",
+          "url": "https://de.brocken-coaster.de/mbl.dvc/pg/brocken_coaster_schierke_harz_sommer_winter_bob_rodelbahn.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Lukas Beck, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Schierke_Brocken_Coaster_lub_2024-05-11.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -5082,6 +5384,26 @@
           }
         ],
         "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-brocken-coaster-20261115/audit.json",
+        "score": 90,
+        "publicationBlockers": [],
+        "gapCount": 2
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/8a0ad048-04c6-485a-827d-ec5c42617db4/brocken-coaster",
+          "verifiedAtUtc": "2026-11-15T14:52:37.150Z",
+          "evidence": "PARK_DATA_EDITOR:apply:f4dcb991-c165-4050-ab9f-51aefc9f91db"
+        },
+        "facebook": {
+          "id": "5868f8e6fd7742b2af765dbd0e1e3f4a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T14:51:30.3180742Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127465723424431"
+        }
       }
     },
     {
@@ -5419,18 +5741,29 @@
         "8b80e3bd-5d19-4cfa-826a-de0ff64b4f39"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:43:29.643Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fermé du 9 novembre au 18 décembre 2026 inclus ; début de saison hivernale annoncé le 19 décembre.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:41:44.444Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-bbd38a2c-e97c-48c0-b620-5e9eafc0b9b8",
+          "appliedAt": "2026-11-15T15:41:44.444Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "79535465-11be-4817-9e09-ca8fe376eb1f",
+          "evidence": "PARK_DATA_EDITOR:apply:bbd38a2c-e97c-48c0-b620-5e9eafc0b9b8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-chiemgau-20261115/audit.json",
+          "summary": "Fermeture saisonnière et reprise annoncée, tarifs datés, conditions de conduite, huit textes corrigés et cinq photos existantes contrôlées ; qualité 95/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Relever les nouveaux tarifs hiver 2026–2027 et l’ouverture quotidienne à partir du 19 décembre ; auditer les droits des cinq photos existantes et chercher une photo supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5461,6 +5794,21 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-2035",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Chiemgau Coaster — tarifs et conditions",
+          "url": "https://www.chiemgau-coaster.de/preise-zeiten",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Chiemgau Coaster — règles de conduite",
+          "url": "https://www.chiemgau-coaster.de/impressum/benutzungshinweise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Chiemgau Coaster — tarifs affichés jusqu’en novembre 2026",
+          "url": "https://www.chiemgau-coaster.de/application/files/3017/6510/6819/Plakat_PreiseInfos2026-A0_englisch_30112025.pdf",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -6891,20 +7239,71 @@
         "0a9940bb-88ea-4d19-bc90-899e0c290784"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:04:50.183Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Saison 2026 terminée le 2 novembre ; date d’ouverture 2027 non annoncée.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Erlebnis-Arena-Ruhla"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:03:46.883Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-77b56913-1110-453f-88a7-0d6526c38b63",
+          "appliedAt": "2026-11-15T14:59:35.298Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:apply:77b56913-1110-453f-88a7-0d6526c38b63",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Huit descriptions, tarifs officiels et fermeture de fin de saison 2026 intégrés."
+        },
+        {
+          "eventId": "image-2091ddf5773944a082748e4310dc7346",
+          "appliedAt": "2026-11-15T15:00:50.931Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:image:2091ddf5773944a082748e4310dc7346@2026-11-15T15:00:50.931Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Photo exacte de la piste ou du véhicule, Kosmo, CC BY-SA 3.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "image-8dd9fcd15ad645fb92f065840ec8fb99",
+          "appliedAt": "2026-11-15T15:01:06.335Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:image:8dd9fcd15ad645fb92f065840ec8fb99@2026-11-15T15:01:06.335Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Photo exacte de la piste ou du véhicule, Metilsteiner, CC BY 3.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "image-f1ec9e696711459dba25fc72c12ef546",
+          "appliedAt": "2026-11-15T15:01:23.227Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:image:f1ec9e696711459dba25fc72c12ef546@2026-11-15T15:01:23.227Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Photo exacte de la piste ou du véhicule, Metilsteiner, CC BY 3.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "apply-d6678a2f-d630-4387-8954-9c501e3f46ca",
+          "appliedAt": "2026-11-15T15:03:46.883Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:apply:d6678a2f-d630-4387-8954-9c501e3f46ca",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Correction de la mention historique non sourcée et contrôle final à 95/100."
+        }
+      ],
+      "nextAction": "Suivre l’annonce de la saison 2027 et revérifier les prix ; vérifier les droits des cinq anciennes photos publiées.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6930,6 +7329,31 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/12990.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://www.sommerrodelbahn-ruhla.de/preise-zeiten/preise/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — horaires",
+          "url": "https://www.sommerrodelbahn-ruhla.de/preise-zeiten/oeffnungszeiten/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photographie exacte CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File%3AAlexanderturmbahn_Ruhla.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photographie exacte CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File%3AWAK_RUHLA_Alexanderturmbahn.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photographie exacte CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File%3AWAK_RUHLA_Lappengrund_Alexanderturmbahn.JPG",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -9941,20 +10365,41 @@
         "d2320928-f8cb-4072-9d34-a2eb8e34a3ae"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:12:10.803Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Novembre et février : week-ends sous réserve de météo ; décembre et janvier fermés.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Fröschbrunna"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T16:11:37.396Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7fb8344d-2cac-4805-9a47-a09a15175cf6",
+          "appliedAt": "2026-11-15T16:09:08.651Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+          "evidence": "PARK_DATA_EDITOR:apply:7fb8344d-2cac-4805-9a47-a09a15175cf6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-froeschbrunna-20261115/audit.json",
+          "summary": "Huit descriptions, sept tarifs et calendrier saisonnier corrigés ; contrôle des photos en attente."
+        },
+        {
+          "eventId": "image-9da3ca151ad94f148578cbe590a71610-20261115",
+          "appliedAt": "2026-11-15T16:11:37.396Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+          "evidence": "PARK_DATA_EDITOR:image:9da3ca151ad94f148578cbe590a71610@2026-11-15T16:11:37.396Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-froeschbrunna-20261115/audit.json",
+          "summary": "Vue aérienne sans coaster masquée, deux photos exactes restent visibles ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Faire confirmer les règles d’accompagnement des jeunes enfants ; revérifier tarifs et horaires ; auditer les droits des deux photos visibles et chercher une autre image exacte sous licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -9990,6 +10435,11 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.froeschbrunna.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Fröschbrunna — actualités d’exploitation",
+          "url": "https://froeschbrunna.de/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -12337,20 +12787,31 @@
         "89cde038-d947-4c23-8fb8-f22abb554b6c"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:16:13.942Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fermé pour la saison depuis le 20 octobre 2026 ; reprise 2027 non annoncée.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Jauden"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T16:14:37.694Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6e030a2c-7442-468a-83f3-fc805ceebbbb",
+          "appliedAt": "2026-11-15T16:14:37.694Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+          "evidence": "PARK_DATA_EDITOR:apply:6e030a2c-7442-468a-83f3-fc805ceebbbb",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-jauden-20261115/audit.json",
+          "summary": "Huit descriptions, six tarifs, conditions d’âge et fermeture de saison corrigés ; cinq photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Vérifier l’annonce de réouverture 2027 et les tarifs auprès de l’exploitant ; auditer les droits des cinq photos existantes et chercher une image exacte supplémentaire sous licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -12376,6 +12837,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/12986.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Jauden — annonce de fermeture saisonnière",
+          "url": "https://www.jauden.de/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -14152,20 +14618,31 @@
         "c6e1941b-c7c7-4112-8f9c-7d2a99fb992a"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:20:56.458Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fermeture hivernale ; reprise annoncée le 20 mars 2027.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Kienbergpark"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T16:19:16.561Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1fcbc85e-3836-44f6-9940-507496005959",
+          "appliedAt": "2026-11-15T16:19:16.561Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+          "evidence": "PARK_DATA_EDITOR:apply:1fcbc85e-3836-44f6-9940-507496005959",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-leitner-berlin-20261115/audit.json",
+          "summary": "Huit descriptions, cinq tarifs, accès et calendrier jusqu’au 30 avril 2027 corrigés ; quatre photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Confirmer les tarifs et horaires 2027 avant réouverture ; auditer les droits des quatre photos existantes créditées à Ole Bader et trouver une image supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -21147,14 +21624,14 @@
         "site": {
           "status": "Published",
           "url": "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
-          "publishedAtUtc": "2026-10-23T03:32:11.6091144Z",
+          "publishedAtUtc": "2026-10-23T03:32:11.609Z",
           "verifiedAtUtc": "2026-10-23T03:41:24.502Z",
           "evidence": "PARK_DATA_EDITOR:apply:60f7a13f-63a0-40c7-b00c-92bc19342729"
         },
         "facebook": {
           "id": "3902d090ce1a446a9680099a216659ce",
           "status": "Published",
-          "publishedAtUtc": "2026-10-23T03:40:32.8619449Z",
+          "publishedAtUtc": "2026-10-23T03:40:32.861Z",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124235773424431",
           "externalPostId": "1285475681307050_122124235773424431",
           "url": "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal?facebook-image=241ee56f69154638a1c97293e094ca54"
@@ -21223,7 +21700,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Compléter la fiche après confirmation des horaires actuels directement auprès de l’exploitant (la page officielle renvoie au relevé du jour) et des conditions d’âge/taille ; les prix officiels sont publiés, cinq photos exactes sont visibles, mais leurs droits sont à auditer. Ne pas marquer Integrated ni inventer une date d’intégration sur la base de cet examen documentaire.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -21249,6 +21726,26 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13177.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Rodelbahn Petersberg — tarifs officiels",
+          "url": "https://rodelbahn.chayns.site/preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Rodelbahn Petersberg — page d’horaires officielle",
+          "url": "https://rodelbahn.chayns.site/%C3%B6ffnungszeiten",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Commune de Petersberg — horaires sans période de validité",
+          "url": "https://www.gemeinde-petersberg.de/de/sehenswertes/rodelbahn-petersberg.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Rodelbahn Petersberg — présentation officielle",
+          "url": "https://rodelbahn.chayns.site/dieRodelbahn",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -21281,7 +21778,7 @@
       "siteId": "c3915e57-01bf-486e-a932-db220a0eea66",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-15T09:05:32.8775443Z",
+      "presenceObservedAt": "2026-11-15T09:05:32.877Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -23807,18 +24304,49 @@
       "siteId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:18:42.288Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "Exploitation au jour le jour selon météo et piste sèche ; 15 novembre 2026 fermé pour humidité et gel sur la page horaire officielle.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:17:07.439Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-0b1e4224-2e30-4390-93af-e8e1bee77995",
+          "appliedAt": "2026-11-15T15:15:55.960Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+          "evidence": "PARK_DATA_EDITOR:apply:0b1e4224-2e30-4390-93af-e8e1bee77995",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+          "summary": "Huit descriptions, huit tarifs 2026, accès depuis la station intermédiaire et fermeture météo du 15 novembre intégrés."
+        },
+        {
+          "eventId": "image-47feaeafca424dc5916afb0bccda7093",
+          "appliedAt": "2026-11-15T15:16:25.433Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+          "evidence": "PARK_DATA_EDITOR:image:47feaeafca424dc5916afb0bccda7093@2026-11-15T15:16:25.433Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+          "summary": "Photo exacte de la piste en auge et du télésiège, Strubbl, CC BY-SA 4.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "apply-0bec5e94-fc58-4278-8808-754e49c33e21",
+          "appliedAt": "2026-11-15T15:17:07.439Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+          "evidence": "PARK_DATA_EDITOR:apply:0bec5e94-fc58-4278-8808-754e49c33e21",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+          "summary": "Libellés des offres précisés dans les huit langues ; contrôle final à 92/100 sans blocage."
+        }
+      ],
+      "nextAction": "Contrôler chaque nouveau jour et la saison 2027 sur le calendrier officiel ; vérifier les droits des trois anciennes images.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -23829,6 +24357,21 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.der-blomberg.de/sommerrodelbahn",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — tarifs 2026",
+          "url": "https://www.der-blomberg.de/blomberg-preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — horaires quotidiens",
+          "url": "https://www.der-blomberg.de/oeffnungszeiten",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Ende_der_Sommerrodelbahn_am_Blomberg_2024-09-21.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -23926,18 +24469,49 @@
         "5569cb0e-fc32-4c5f-8a8c-0c289657de6b"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:12:49.458Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Saison 2026 terminée ; reprise fin avril ou début mai 2027 seulement envisagée par l’exploitant.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:11:15.012Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-37a5b27d-aee8-440b-aac4-1078b9f622da",
+          "appliedAt": "2026-11-15T15:09:29.398Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+          "evidence": "PARK_DATA_EDITOR:apply:37a5b27d-aee8-440b-aac4-1078b9f622da",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+          "summary": "Huit descriptions, huit tarifs affichés, conditions d’âge et fermeture de la saison 2026 intégrés."
+        },
+        {
+          "eventId": "image-81a7403c4ca64b1aaf9294133af2b4a6",
+          "appliedAt": "2026-11-15T15:10:00.158Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+          "evidence": "PARK_DATA_EDITOR:image:81a7403c4ca64b1aaf9294133af2b4a6@2026-11-15T15:10:00.158Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+          "summary": "Photo exacte de la remontée sur rail, Pardin, CC0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "apply-743e49b7-9ad3-41b7-87a5-40881e065298",
+          "appliedAt": "2026-11-15T15:11:15.012Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+          "evidence": "PARK_DATA_EDITOR:apply:743e49b7-9ad3-41b7-87a5-40881e065298",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+          "summary": "Correction de la description polonaise, blocage éditorial levé, contrôle final à 95/100."
+        }
+      ],
+      "nextAction": "Surveiller la confirmation de la date d’ouverture 2027 et les tarifs ; vérifier les droits des cinq anciennes images.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -23963,6 +24537,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/12988.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikimedia Commons — photo de la remontée, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn-Lift.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -24375,7 +24954,7 @@
       "siteId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-15T09:17:36.416465Z",
+      "presenceObservedAt": "2026-11-15T09:17:36.416Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,

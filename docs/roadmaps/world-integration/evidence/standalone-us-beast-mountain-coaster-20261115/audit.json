@@ -1,0 +1,98 @@
+{
+  "work": "Beast Mountain Coaster intégré comme attraction autonome à Killington, Vermont : billet individuel, huit descriptions, deux photogrammes exacts CC BY 2.0, conditions officielles, position de la piste, huit pages publiques et annonce Facebook.",
+  "qualification": "Killington vend un billet pour une descente ou un carnet de quatre séparément du pass Adventure Center. Recherche Park et StandaloneAttraction sur Killington, Beast Mountain Coaster et Snowshed sans résultat avant création.",
+  "sources": {
+    "Exploitant — billet, conditions et saison 2026": "https://killington.com/summer-adventure-center",
+    "RCDB — ouverture et constructeur": "https://rcdb.com/13330.htm",
+    "OpenStreetMap — point de la piste": "https://www.openstreetmap.org/node/4602218104",
+    "Flickr — vidéo exacte et licence": "https://www.flickr.com/photos/rollercoasterphilosophy/48353516526/",
+    "Licence CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+    "Fiche publiée": "https://amusement-parks.fun/fr/attraction/9507ef65-57b8-405a-9d9f-b03dc3250504/beast-mountain-coaster"
+  },
+  "entity": {
+    "id": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+    "name": "Beast Mountain Coaster",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "6f2b1b202b8e4522878ee64c04dd23e6",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/48353516526/",
+      "createdAtUtc": "2026-11-15T23:23:23.707Z",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2019-07-11",
+      "videoFrameAt": "00:05",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "3d3147cd029a47d0a0ce303da111efe0",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/48353516526/",
+      "createdAtUtc": "2026-11-15T23:23:38.308Z",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2019-07-11",
+      "videoFrameAt": "00:30",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "type": "RollerCoaster",
+    "subtype": "Mountain coaster",
+    "manufacturer": "Aquatic Development Group",
+    "openedAt": "2015-07-25",
+    "operatorCourseLengthMeters": 1463,
+    "singleRideTicketConfirmed": true,
+    "fourPackConfirmed": true,
+    "lastPublishedSummerDate": "2026-10-12",
+    "nextSeasonDatesConfirmed": false,
+    "nextSeasonPricesConfirmed": false,
+    "structuredAccessConditions": 4,
+    "address": "3861 Killington Road, Killington, Vermont 05751",
+    "coordinates": [
+      43.6255558,
+      -72.7974163
+    ]
+  },
+  "audit": {
+    "completenessScore": 75,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedExactAttractionImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinariesHttpStatus": [
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/9507ef65-57b8-405a-9d9f-b03dc3250504/beast-mountain-coaster",
+    "sitePublishedAtUtc": "2026-11-15T23:25:13.5843821Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:659fb585-2b36-4c26-9b00-cf64a1907b36",
+    "facebookStatus": "Published",
+    "facebookId": "76aec477f63b404e883dc918b28f048a",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127520941424431",
+    "facebookPublishedAtUtc": "2026-11-15T23:25:55.4106959Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T23:24:37.484Z",
+  "remainingGaps": [
+    "La saison 2026 est terminée ; vérifier dates et tarifs de la prochaine saison avant de publier une grille active.",
+    "Chercher une photographie récente de l’attraction en complément des photogrammes exacts de 2019."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "c4e2193d-40a2-4aad-9aab-d2cfca37f7c7",
+      "appliedAtUtc": "2026-11-15T23:48:46.0520345Z",
+      "evidence": "PARK_DATA_EDITOR:apply:c4e2193d-40a2-4aad-9aab-d2cfca37f7c7"
+    },
+    {
+      "step": "location",
+      "operationId": "77039176-144e-4133-82b2-a92861920947",
+      "appliedAtUtc": "2026-11-15T23:49:39.1330354Z",
+      "evidence": "PARK_DATA_EDITOR:apply:77039176-144e-4133-82b2-a92861920947"
+    },
+    {
+      "step": "access",
+      "operationId": "c8c39869-3d3d-4f6e-9d6a-279a4e851084",
+      "appliedAtUtc": "2026-11-15T23:50:03.0132815Z",
+      "evidence": "PARK_DATA_EDITOR:apply:c8c39869-3d3d-4f6e-9d6a-279a4e851084"
+    },
+    {
+      "step": "history",
+      "operationId": "f1ab83f6-63e7-44b1-b4c2-5bda4a82c4da",
+      "appliedAtUtc": "2026-11-15T23:54:40.0006754Z",
+      "evidence": "PARK_DATA_EDITOR:apply:f1ab83f6-63e7-44b1-b4c2-5bda4a82c4da"
+    },
+    {
+      "step": "spec",
+      "operationId": "8661bbff-9b16-4c1a-ba94-a861b66e7f4c",
+      "appliedAtUtc": "2026-11-15T23:55:33.3004846Z",
+      "evidence": "PARK_DATA_EDITOR:apply:8661bbff-9b16-4c1a-ba94-a861b66e7f4c"
+    },
+    {
+      "step": "publish",
+      "operationId": "4ab35364-09f4-4583-a3d8-bdebd33db6ad",
+      "appliedAtUtc": "2026-11-15T23:56:43.0766127Z",
+      "evidence": "PARK_DATA_EDITOR:apply:4ab35364-09f4-4583-a3d8-bdebd33db6ad"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "fb1aa9219cf24d2e9eac12d1686a32dc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bromley_Mountain_071506_020.jpg",
+      "createdAtUtc": "2026-11-15T23:50:37.375Z",
+      "author": "Dougtone",
+      "license": "CC BY-SA 2.0",
+      "takenAt": "2006-07-15",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "c50622696fc64af3bd22cb2add170964",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bromley_Mountain_071506_021.jpg",
+      "createdAtUtc": "2026-11-15T23:50:50.81Z",
+      "author": "Dougtone",
+      "license": "CC BY-SA 2.0",
+      "takenAt": "2006-07-15",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "facebook": {
+    "id": "88f2727db2ac42068dea5a569da3dae9",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127523239424431",
+    "publishedAtUtc": "2026-11-15T23:57:21.2319681Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 93,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 60,
+    "earnedPoints": 56,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

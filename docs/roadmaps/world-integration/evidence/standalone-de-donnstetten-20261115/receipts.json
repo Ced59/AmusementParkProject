@@ -1,0 +1,28 @@
+{
+  "entryId": "DE-standalone-ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+  "entityId": "ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+  "integrationHistory": [
+    {
+      "eventId": "apply-2ebfeea4-2937-4413-bbee-e987251cd621",
+      "appliedAt": "2026-11-15T16:03:47.279Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+      "evidence": "PARK_DATA_EDITOR:apply:2ebfeea4-2937-4413-bbee-e987251cd621",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-donnstetten-20261115/audit.json",
+      "summary": "Huit descriptions, quatorze tarifs, calendrier officiel jusqu’en février 2027 et accès corrigés ; quatre photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "9bc2c66f81f34d6ca27e896180c4e1d0",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127472629424431",
+    "publishedAtUtc": "2026-11-15T16:04:36.62281Z"
+  },
+  "productionPhotoIds": [
+    "c3e753e12a55406598ae1d95a3498a3f",
+    "f200ee016b28481081317d8a5f5de410",
+    "c476c3a5e6394422a3f645714ad884b8",
+    "fde7c7c15f9141719a9f6bcb3f753461"
+  ]
+}

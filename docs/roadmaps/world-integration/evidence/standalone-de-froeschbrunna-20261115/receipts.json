@@ -1,0 +1,37 @@
+{
+  "entryId": "DE-standalone-c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+  "entityId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+  "integrationHistory": [
+    {
+      "eventId": "apply-7fb8344d-2cac-4805-9a47-a09a15175cf6",
+      "appliedAt": "2026-11-15T16:09:08.651Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+      "evidence": "PARK_DATA_EDITOR:apply:7fb8344d-2cac-4805-9a47-a09a15175cf6",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-froeschbrunna-20261115/audit.json",
+      "summary": "Huit descriptions, sept tarifs et calendrier saisonnier corrigés ; contrôle des photos en attente."
+    },
+    {
+      "eventId": "image-9da3ca151ad94f148578cbe590a71610-20261115",
+      "appliedAt": "2026-11-15T16:11:37.396Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+      "evidence": "PARK_DATA_EDITOR:image:9da3ca151ad94f148578cbe590a71610@2026-11-15T16:11:37.396Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-froeschbrunna-20261115/audit.json",
+      "summary": "Vue aérienne sans coaster masquée, deux photos exactes restent visibles ; 93/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "89064d5f13684018a124d0b7833baa69",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127473223424431",
+    "publishedAtUtc": "2026-11-15T16:10:29.6375726Z"
+  },
+  "productionPhotoIds": [
+    "7376f74bfff64c8bac503b0071cf2cfd",
+    "820b581baeab4218ae8965558c6607c0"
+  ],
+  "hiddenImageId": "9da3ca151ad94f148578cbe590a71610"
+}

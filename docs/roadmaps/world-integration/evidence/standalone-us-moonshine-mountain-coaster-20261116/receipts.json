@@ -1,0 +1,98 @@
+{
+  "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+  "legacyParkId": "41ed8736-34e5-49ca-bcc6-be1a791e1939",
+  "legacyParkItemId": "afe7d811-aa17-48b3-ad96-5fa210012ffe",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "677500cb-3680-4c4d-8b4a-414b533547af",
+      "appliedAtUtc": "2026-11-16T00:30:19.5982143Z",
+      "evidence": "PARK_DATA_EDITOR:apply:677500cb-3680-4c4d-8b4a-414b533547af"
+    },
+    {
+      "step": "pricing",
+      "operationId": "4c3653a9-f391-4f4c-80f7-fe63d250c32d",
+      "appliedAtUtc": "2026-11-16T00:32:11.4168696Z",
+      "evidence": "PARK_DATA_EDITOR:apply:4c3653a9-f391-4f4c-80f7-fe63d250c32d"
+    },
+    {
+      "step": "hours",
+      "operationId": "b0764e73-3042-4ba9-bca3-1b29aee9d889",
+      "appliedAtUtc": "2026-11-16T00:32:33.6981836Z",
+      "evidence": "PARK_DATA_EDITOR:apply:b0764e73-3042-4ba9-bca3-1b29aee9d889"
+    },
+    {
+      "step": "access",
+      "operationId": "5854092c-7901-4dc8-81ca-17a21693a466",
+      "appliedAtUtc": "2026-11-16T00:32:55.7040964Z",
+      "evidence": "PARK_DATA_EDITOR:apply:5854092c-7901-4dc8-81ca-17a21693a466"
+    },
+    {
+      "step": "history",
+      "operationId": "78faf2ad-625d-4c48-93b2-e9f5a1ddd29a",
+      "appliedAtUtc": "2026-11-16T00:33:17.9367869Z",
+      "evidence": "PARK_DATA_EDITOR:apply:78faf2ad-625d-4c48-93b2-e9f5a1ddd29a"
+    },
+    {
+      "step": "textfix",
+      "operationId": "735c41d4-c4ea-4eac-99e0-d66056ba4cd2",
+      "appliedAtUtc": "2026-11-16T00:35:37.1053923Z",
+      "evidence": "PARK_DATA_EDITOR:apply:735c41d4-c4ea-4eac-99e0-d66056ba4cd2"
+    },
+    {
+      "step": "publish",
+      "operationId": "c181276c-6116-4cb6-8a75-2aa7124f0695",
+      "appliedAtUtc": "2026-11-16T00:36:09.2992883Z",
+      "evidence": "PARK_DATA_EDITOR:apply:c181276c-6116-4cb6-8a75-2aa7124f0695"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "948b6ec3d59144c98f11ca50291edf48",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006620499/",
+      "createdAtUtc": "2026-11-16T00:33:45.544Z",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "takenAt": "2023-06-12",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "c3ab5eb7ac2749aab6f12a1c98696865",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006812960/",
+      "createdAtUtc": "2026-11-16T00:33:58.327Z",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "takenAt": "2023-06-12",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "fdb92bb3e2d0493e87e89f6c7cf4aa00",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53005865562/",
+      "createdAtUtc": "2026-11-16T00:34:11.166Z",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "takenAt": "2023-06-12",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "facebook": {
+    "id": "2b23cbe9fa5b4fa9b06a8ce5c9f73728",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127526779424431",
+    "publishedAtUtc": "2026-11-16T00:37:09.532329Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 82,
+    "earnedPoints": 82,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

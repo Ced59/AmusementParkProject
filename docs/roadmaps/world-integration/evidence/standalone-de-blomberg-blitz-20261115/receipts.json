@@ -1,0 +1,72 @@
+{
+  "entryId": "DE-standalone-c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+  "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+  "integrationHistory": [
+    {
+      "eventId": "apply-a60c7cd1-f960-468a-9463-573b69f39832",
+      "appliedAt": "2026-11-15T15:45:57.051Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "evidence": "PARK_DATA_EDITOR:apply:a60c7cd1-f960-468a-9463-573b69f39832",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-blitz-20261115/audit.json",
+      "summary": "Huit descriptions, neuf tarifs, conditions d’âge et horaire du jour corrigés ; contrôle de la galerie en attente."
+    },
+    {
+      "eventId": "image-8c61b6b054424a46b72d536104061790-20261115",
+      "appliedAt": "2026-11-15T15:46:58.251Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "evidence": "PARK_DATA_EDITOR:image:8c61b6b054424a46b72d536104061790@2026-11-15T15:46:58.251Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-blitz-20261115/audit.json",
+      "summary": "Photo exacte valide de la piste mise en avant."
+    },
+    {
+      "eventId": "image-2237b72d8d2549d4b4451c03490f7ecd-20261115",
+      "appliedAt": "2026-11-15T15:47:04.455Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "evidence": "PARK_DATA_EDITOR:image:2237b72d8d2549d4b4451c03490f7ecd@2026-11-15T15:47:04.455Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-blitz-20261115/audit.json",
+      "summary": "Ancienne photo principale corrompue à bandes vertes masquée et conservée hors publication."
+    },
+    {
+      "eventId": "image-d1d3c161d2e8469ba9d85b9c35e30c2d-20261115",
+      "appliedAt": "2026-11-15T15:47:09.554Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "evidence": "PARK_DATA_EDITOR:image:d1d3c161d2e8469ba9d85b9c35e30c2d@2026-11-15T15:47:09.554Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-blitz-20261115/audit.json",
+      "summary": "Deuxième photo corrompue masquée ; trois photos exactes restent publiques. Contrôle final 95/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "d8a2c422403a4a26a8b40d1853061f57",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127471111424431",
+    "publishedAtUtc": "2026-11-15T15:48:00.0827609Z"
+  },
+  "imageUpdates": [
+    {
+      "imageId": "8c61b6b054424a46b72d536104061790",
+      "updatedAtUtc": "2026-11-15T15:46:58.251Z",
+      "isPublished": true,
+      "isCurrent": true
+    },
+    {
+      "imageId": "2237b72d8d2549d4b4451c03490f7ecd",
+      "updatedAtUtc": "2026-11-15T15:47:04.455Z",
+      "isPublished": false,
+      "isCurrent": false
+    },
+    {
+      "imageId": "d1d3c161d2e8469ba9d85b9c35e30c2d",
+      "updatedAtUtc": "2026-11-15T15:47:09.554Z",
+      "isPublished": false,
+      "isCurrent": false
+    }
+  ]
+}

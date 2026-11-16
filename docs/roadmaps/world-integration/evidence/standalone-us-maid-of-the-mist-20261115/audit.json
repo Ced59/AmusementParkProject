@@ -1,0 +1,138 @@
+{
+  "entryId": "US-candidate-discovery-941071f3fdb01b",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+  "name": "Maid of the Mist",
+  "countryCode": "US",
+  "auditAtUtc": "2026-11-15T13:33:01.811Z",
+  "qualification": "Parcours américain autonome avec billet spécifique, distinct de Niagara City Cruises au Canada. Recherche PDE Park et Standalone sous Maid of the Mist sans doublon. L’attraction est saisonnière ; le statut Operating décrit son cycle de vie et non une ouverture actuelle.",
+  "operatorSources": [
+    "https://www.maidofthemist.com/",
+    "https://www.maidofthemist.com/schedule-pricing/",
+    "https://www.maidofthemist.com/faqs/",
+    "https://www.niagarafallsstatepark.com/attractions/maid-of-the-mist/"
+  ],
+  "geoSource": "https://mapcarta.com/N2491185802",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa/maid-of-the-mist",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "37ba583ccf9742ca861461d43dd0083b",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Maid_of_the_Mist_James_V._Glynn_20260626.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Maid_of_the_Mist_James_V._Glynn_20260626.jpg/960px-Maid_of_the_Mist_James_V._Glynn_20260626.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "VynedJ",
+      "license": "CC BY 4.0",
+      "photographedAt": "2026-06-26 11:39:23",
+      "uploadedAtUtc": "2026-11-15T13:30:00.968Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:30:04.968Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "527c40f814f142a0bd46d57cec639162",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Niagara_Falls_in_Ontario_with_Maid_of_the_Mist_boat_01.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Niagara_Falls_in_Ontario_with_Maid_of_the_Mist_boat_01.jpg/960px-Niagara_Falls_in_Ontario_with_Maid_of_the_Mist_boat_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "K2HWY",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-05-07 11:30:40",
+      "uploadedAtUtc": "2026-11-15T13:30:15.601Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:30:19.038Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "1fee8525322f4e4c9832f49efe54b853",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Maid_of_the_Mist_Electric_10_13_20.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Maid_of_the_Mist_Electric_10_13_20.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "creator": "Bona1858",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2020-10-05",
+      "uploadedAtUtc": "2026-11-15T13:30:29.496Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:30:32.875Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Tarifs officiels 2026 : adulte 30,25 USD ; enfant 6–12 ans 19,75 USD ; jusqu’à 5 ans gratuit avec adulte payant. Offres structurées avec validTo 2026-11-08, donc non présentées comme tarifs 2027.",
+  "openingHoursAssessment": "Exploitant et Niagara Falls State Park : fermeture après le 8 novembre 2026 jusqu’à une date d’ouverture 2027 non publiée. Règle fermée structurée du 9 novembre au 31 décembre 2026, sans prolongation inventée en 2027. Texte public et message Facebook signalent la fermeture actuelle.",
+  "accessAssessment": "Guichet au niveau de rue près de Prospect Point Observation Tower, puis ascenseur au quai. Pas de réservation à heure fixe ; premier arrivé, premier embarqué. Installations et bateaux accessibles aux fauteuils. Poncho fourni, pas de cabine fermée, poussettes à stationner. Pas de passeport nécessaire pour le trajet aller-retour côté américain.",
+  "geoAssessment": "Position 43.08751,-79.06903 du terminal OpenStreetMap/Mapcarta au pied de Prospect Point ; point du départ, pas centre du trajet.",
+  "mediaAssessment": "Trois photos exactes des bateaux Maid of the Mist, prises en 2026, 2026 et 2020. CC BY 4.0 ou CC BY-SA 4.0, crédits et légendes en huit langues, trois binaires HTTP 200.",
+  "completeness": {
+    "score": 81,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127458115424431",
+    "publishedAtUtc": "2026-11-15T13:32:12.8726166Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T13:31:08.399Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "7808615a-d267-49eb-8ca9-ce771ef0e648",
+      "appliedAtUtc": "2026-11-15T13:29:13.5317963Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "b077c016-415c-436f-8d69-8776bce567c9",
+      "appliedAtUtc": "2026-11-15T13:29:49.4089002Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "closure",
+      "operationId": "f0410064-fa49-4467-a6c5-b58ac46540d3",
+      "appliedAtUtc": "2026-11-15T13:31:08.399293Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "37ba583ccf9742ca861461d43dd0083b",
+      "uploadedAtUtc": "2026-11-15T13:30:00.968Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "527c40f814f142a0bd46d57cec639162",
+      "uploadedAtUtc": "2026-11-15T13:30:15.601Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "1fee8525322f4e4c9832f49efe54b853",
+      "uploadedAtUtc": "2026-11-15T13:30:29.496Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "d9ef02d9-f62e-4f3f-bbbd-469a5981228e",
+    "appliedAtUtc": "2026-11-15T13:31:35.7253508Z"
+  },
+  "nextAction": "Conserver cette ligne, les reçus et le post Facebook. Contrôler la date d’ouverture 2027 dès son annonce, puis les nouveaux horaires et tarifs avant de réactiver toute offre. Ne pas extrapoler le calendrier 2026. Les photos sont exactes, mais rechercher encore d’autres vues récentes sous licence. Ne pas republier Facebook pour une simple actualisation."
+}

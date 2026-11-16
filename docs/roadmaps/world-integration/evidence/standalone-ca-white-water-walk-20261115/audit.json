@@ -1,0 +1,131 @@
+{
+  "entryId": "CA-candidate-discovery-92b7f3030c29bc",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+  "name": "White Water Walk",
+  "countryCode": "CA",
+  "auditAtUtc": "2026-11-15T13:55:35.172Z",
+  "qualification": "Promenade payante à entrée propre avec ascenseur et billetterie individuelle. Recherche PDE de White Water sans doublon. Distincte du parcours gratuit Niagara Glen et de Journey Behind the Falls.",
+  "operatorSources": [
+    "https://www.niagaraparks.com/attractions/white-water-walk/",
+    "https://www.niagaraparks.com/visitor-information/accessibility/",
+    "https://www.niagaraparks.com/visitor-information/hours-of-operation/"
+  ],
+  "geoSource": "https://www.openstreetmap.org/search?query=White%20Water%20Walk%20Niagara%20Falls",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/b60d069f-639b-4b81-b98d-e13c964be77f/white-water-walk",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "beac918d015e416db078d275f7eacf6c",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_1.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_1.jpg",
+      "creator": "Gogerr",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-08-17 14:15:48",
+      "uploadedAtUtc": "2026-11-15T13:53:31.264Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:53:34.896Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "29d1d20ffc2542c9b52f71a8a51ea936",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_5.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_5.jpg",
+      "creator": "Gogerr",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-08-17 14:29:59",
+      "uploadedAtUtc": "2026-11-15T13:53:40.466Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:53:43.818Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "3a7cfdcebdcd402aa44ad01c7619f315",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_2.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_2.jpg",
+      "creator": "Gogerr",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-08-17 14:18:29",
+      "uploadedAtUtc": "2026-11-15T13:53:48.752Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:53:52.269Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "La page Niagara Parks montre 21 CAD adulte, 13,50 CAD enfant 3–12 ans, gratuit jusqu’à 2 ans et 13 % de taxe en sus, alors que la saison est terminée. Prix documentés dans les notes, sans offre actuelle structurée pour éviter de présenter un billet non disponible.",
+  "openingHoursAssessment": "Page officielle au 15 novembre 2026 : « Closed for the season ». Fermeture structurée du jour de vérification jusqu’au 31 décembre 2026 seulement. Aucune date de réouverture 2027 annoncée ni horaire récurrent extrapolé.",
+  "accessAssessment": "Ascenseur vers un tunnel et la promenade en bois principale plate, accessible en fauteuil. Deux petites plateformes basses nécessitent des marches. Billet en saison avec créneau d’arrivée d’une heure ou Anytime ; poussettes autorisées.",
+  "geoAssessment": "Point d’entrée approximatif 43.1110199,-79.0604469 depuis OpenStreetMap/Nominatim. Adresse officielle 4330 River Road ; OSM affiche 4430, donc adresse officielle retenue.",
+  "mediaAssessment": "Trois photos prises depuis White Water Walk en août 2026 montrant les rapides ; auteur Gogerr, CC BY-SA 4.0. Visuellement vérifiées ; huit alt, légendes et crédits ; trois binaires HTTP 200. Une photo montrant le passadiço reste souhaitable.",
+  "completeness": {
+    "score": 82,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127460383424431",
+    "publishedAtUtc": "2026-11-15T13:54:48.8128551Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T13:54:08.955Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "3b4ff844-9519-4742-8731-6bc90a938cef",
+      "appliedAtUtc": "2026-11-15T13:52:17.5772278Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "2ec49caf-ccde-4d5e-99e6-55ac45aff4c6",
+      "appliedAtUtc": "2026-11-15T13:52:28.6776588Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "publish",
+      "operationId": "ba98df98-6d01-41dc-b5bb-65a138af28ea",
+      "appliedAtUtc": "2026-11-15T13:54:08.9551701Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "beac918d015e416db078d275f7eacf6c",
+      "uploadedAtUtc": "2026-11-15T13:53:31.264Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "29d1d20ffc2542c9b52f71a8a51ea936",
+      "uploadedAtUtc": "2026-11-15T13:53:40.466Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "3a7cfdcebdcd402aa44ad01c7619f315",
+      "uploadedAtUtc": "2026-11-15T13:53:48.752Z"
+    }
+  ],
+  "nextAction": "Conserver les preuves et le post Facebook. Recontrôler la réouverture 2027 et les tarifs avant d’ajouter une offre en vigueur ; la page affiche encore les prix de 2026 pendant la fermeture. Si possible, trouver une photo de la promenade en bois elle-même sous licence vérifiée pour compléter les vues prises sur place."
+}

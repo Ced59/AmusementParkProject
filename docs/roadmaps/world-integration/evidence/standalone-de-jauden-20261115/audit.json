@@ -1,0 +1,101 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+  "entryId": "DE-standalone-cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+  "name": "Jaudenhangflitzer",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T16:16:13.942Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/cc34b1b2-58b4-4368-8d6c-24ab6919fc48/jaudenhangflitzer",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.jauden.de/jaudenhangflitzer/",
+    "https://www.jauden.de/"
+  ],
+  "editorial": "Eight descriptions revised, six operator fare offers, age and accompaniment rules sourced. Operator announces seasonal closure since 20 October 2026; no reopening date inferred.",
+  "calendar": {
+    "from": "2026-11-15",
+    "through": "2026-12-31",
+    "dateOverrides": 47,
+    "seasonalClosure": "since 20 October 2026",
+    "nuance": "2027 reopening date not announced."
+  },
+  "pricing": "Youth age 8–17 €3/€8.50/€16 for one/three/six; adult age 18+ €5/€14.50/€27.50, including accompanying child age 4–7. Displayed prices have no effective date and require reconfirmation next season.",
+  "photoCountPublished": 5,
+  "photos": [
+    {
+      "imageId": "04ac4378d77640739851ccc13bbb230a",
+      "sourceUrl": "https://www.jauden.de/wp-content/uploads/2023/08/Jauden-Jaudenhangflitzer-Sommerrodelbahn-1.jpg",
+      "isCurrent": true,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "6a1ce1455d2b44eabe7d235a8cbc996a",
+      "sourceUrl": "https://www.jauden.de/wp-content/uploads/2023/08/Jauden-Jaudenhangflitzer-Kinderausflug.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "d81c6cd1a35243699ec53b1654b359df",
+      "sourceUrl": "https://www.jauden.de/wp-content/uploads/2023/02/Jaudenhangflitzer-Sommerrodelbahn.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "d9562664240b46018dec88b36e03581b",
+      "sourceUrl": "https://www.jauden.de/wp-content/uploads/2023/08/Jauden-Jaudenhangflitzer-Rodelbahn-sommer.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "0125899ddd4347aa921b665d70cce314",
+      "sourceUrl": "https://www.jauden.de/wp-content/uploads/2023/08/Jauden-Jaudenhangflitzer-Rodelbahn.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    }
+  ],
+  "photoFollowup": "Audit independent reuse rights of five existing exact operator images and find another exact image with verifiable licence.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 93,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "5d7d11f90c644e1f989df227c41c3720",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127473673424431",
+    "publishedAtUtc": "2026-11-15T16:15:30.3083429Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T16:14:37.694Z",
+  "nextAction": "Vérifier l’annonce de réouverture 2027 et les tarifs auprès de l’exploitant ; auditer les droits des cinq photos existantes et chercher une image exacte supplémentaire sous licence vérifiable."
+}

@@ -251,6 +251,240 @@
       ]
     },
     {
+      "entryId": "NP-candidate-discovery-046a38de076000",
+      "name": "The Cliff — Kusma Bungy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "Kusma, Parbat / Balewa, Baglung, Gandaki",
+      "siteId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T12:43:24.373Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant et reportage local du 28 octobre 2026 confirment l’activité en cours.",
+      "identityConfidence": "Billet bungy distinct sur le site officiel ; recherche PDE sans doublon ; deux photos exactes réutilisables.",
+      "possibleMatches": [],
+      "aliases": [
+        "Kushma Bungy",
+        "The Cliff Bungy",
+        "Kusma Bungee Jump"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T12:42:54.143Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a09c82b8-e61c-4406-b356-1acca3c92d11",
+          "appliedAt": "2026-11-15T12:39:55.022Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+          "evidence": "PARK_DATA_EDITOR:apply:a09c82b8-e61c-4406-b356-1acca3c92d11",
+          "auditEvidence": null,
+          "summary": "Création de la fiche, localisation approximative sur le pont et textes visiteurs dans huit langues."
+        },
+        {
+          "eventId": "image-b08db3ca56f141ac8bf1f4ac5ac0dd5b",
+          "appliedAt": "2026-11-15T12:40:34.418Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+          "evidence": "PARK_DATA_EDITOR:image:b08db3ca56f141ac8bf1f4ac5ac0dd5b",
+          "auditEvidence": null,
+          "summary": "Photo exacte du pont et de la plateforme, huit alt/légendes/crédits ; Bhuwan Bdr. Rokaha, CC0 1.0, 2024."
+        },
+        {
+          "eventId": "image-6c9d2e7016794d3481063e93b6282234",
+          "appliedAt": "2026-11-15T12:41:14.076Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+          "evidence": "PARK_DATA_EDITOR:image:6c9d2e7016794d3481063e93b6282234",
+          "auditEvidence": null,
+          "summary": "Photo exacte du pont et de la plateforme, huit alt/légendes/crédits ; Asmit Gautam, CC BY-SA 4.0, 2019-12-29."
+        },
+        {
+          "eventId": "apply-b89816d5-7f7c-4904-93a9-29cbb200b07d",
+          "appliedAt": "2026-11-15T12:41:58.538Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+          "evidence": "PARK_DATA_EDITOR:apply:b89816d5-7f7c-4904-93a9-29cbb200b07d",
+          "auditEvidence": null,
+          "summary": "Ajout du prix officiel, des conditions d’âge, de poids, de santé et de la note d’horaires dans huit langues."
+        },
+        {
+          "eventId": "apply-748d6639-deed-4848-82ff-66e1034c4ba1",
+          "appliedAt": "2026-11-15T12:42:54.143Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+          "evidence": "PARK_DATA_EDITOR:apply:748d6639-deed-4848-82ff-66e1034c4ba1",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-np-cliff-kusma-bungy-20261115/audit.json",
+          "summary": "Réécriture des descriptions pour lever le blocage éditorial ; fiche 81/100 sans publicationBlockers."
+        }
+      ],
+      "nextAction": "Conserver la ligne et recontrôler prix, statut, jours et critères sous 90 jours. L’exploitant publie des limites d’âge/poids contradictoires : confirmer la règle en vigueur avant d’afficher une borne sans réserve. Vérifier les horaires quotidiens et le point GPS exact du milieu du pont. Qualifier séparément le swing et le sky cycling, avec photo exacte licenciée pour chacun. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — activité Bungy",
+          "url": "https://thecliffnepal.com/adventures",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ",
+          "url": "https://thecliffnepal.com/faqs",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://thecliffnepal.com/rates",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — avant réservation",
+          "url": "https://thecliffnepal.com/before-you-book",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Kathmandu Post — enquête du 28 octobre 2026",
+          "url": "https://kathmandupost.com/visual-stories/2026/10/28/a-228-metre-leap-above-nepal-s-kaligandaki-gorge",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — The Cliff",
+          "url": "https://mapcarta.com/N13226983001",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Photo exacte — Bhuwan Bdr. Rokaha — CC0 1.0",
+          "url": "https://wordpress.org/photos/photo/78965a0a23/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Photo exacte — Asmit Gautam — CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Cliff_Kali_Gandaki_river_Kusma_Baglung_Bungee.png",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "The Cliff — Kusma Bungy",
+            "source": "Exploitant — activité Bungy",
+            "url": "https://thecliffnepal.com/adventures",
+            "family": "Bungy jump",
+            "sourceVenueName": "The Cliff",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Kusma, Parbat / Balewa, Baglung"
+          }
+        ],
+        "rationale": "Billet bungy vendu séparément du swing et du sky cycling ; fiche autonome créée après recherche de doublons."
+      }
+    },
+    {
+      "entryId": "NP-candidate-discovery-c01107431e0638",
+      "name": "The Cliff — Sky Cycle",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Vélo suspendu",
+      "locality": "The Cliff, Kusma / Balewa",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Activité vendue séparément du Bungy sur le site officiel consulté le 15 novembre 2026.",
+      "identityConfidence": "Offre distincte confirmée ; statut et photo exacte réutilisable à vérifier avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sky Cycle Kusma"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher les fiches Park et standalone existantes, vérifier billet, restrictions et statut, puis obtenir au moins une photo exacte avec licence de réutilisation avant publication.",
+      "sources": [
+        {
+          "label": "Exploitant — activités et tarifs",
+          "url": "https://thecliffnepal.com/activities",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://thecliffnepal.com/rates",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité commercialisée séparément au même site ; qualification et photo précise encore nécessaires."
+      },
+      "possibleBacklogEntries": [
+        "NP-candidate-discovery-046a38de076000"
+      ]
+    },
+    {
+      "entryId": "NP-candidate-discovery-b3886e11a44fcc",
+      "name": "The Cliff — Canyon Swing",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire de canyon",
+      "locality": "The Cliff, Kusma / Balewa",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Activité vendue séparément du Bungy sur le site officiel consulté le 15 novembre 2026.",
+      "identityConfidence": "Offre distincte confirmée ; statut et photo exacte réutilisable à vérifier avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Canyon Swing Kusma"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher les fiches Park et standalone existantes, vérifier billet, restrictions et statut, puis obtenir au moins une photo exacte avec licence de réutilisation avant publication.",
+      "sources": [
+        {
+          "label": "Exploitant — activités et tarifs",
+          "url": "https://thecliffnepal.com/adventures",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://thecliffnepal.com/rates",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité commercialisée séparément au même site ; qualification et photo précise encore nécessaires."
+      },
+      "possibleBacklogEntries": [
+        "NP-candidate-discovery-046a38de076000"
+      ]
+    },
+    {
       "entryId": "NP-candidate-3efef93f5e9d9d",
       "name": "Central Zoo",
       "entityKind": "Park",

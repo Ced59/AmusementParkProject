@@ -1,0 +1,105 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "79535465-11be-4817-9e09-ca8fe376eb1f",
+  "entryId": "DE-standalone-79535465-11be-4817-9e09-ca8fe376eb1f",
+  "name": "Chiemgau Coaster",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T15:43:29.643Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/79535465-11be-4817-9e09-ca8fe376eb1f/chiemgau-coaster",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.chiemgau-coaster.de/",
+    "https://www.chiemgau-coaster.de/preise-zeiten",
+    "https://www.chiemgau-coaster.de/impressum/benutzungshinweise",
+    "https://www.chiemgau-coaster.de/application/files/3017/6510/6819/Plakat_PreiseInfos2026-A0_englisch_30112025.pdf"
+  ],
+  "editorial": "Eight descriptions rewritten to remove raw technical metrics and source jargon; official age and ticket rules structured; nine fare offers; thirty-four closed days 15 Nov–18 Dec 2026. Homepage supersedes stale price-page footer that says daily open.",
+  "calendar": {
+    "closedFrom": "2026-11-09",
+    "closedThrough": "2026-12-18",
+    "winterStartAnnounced": "2026-12-19",
+    "dateOverridesWrittenFrom": "2026-11-15",
+    "dateOverridesWrittenThrough": "2026-12-18",
+    "closedDaysWritten": 34,
+    "nuance": "Winter opening announced for 19 December but day-by-day opening still weather-dependent. No later dates marked open."
+  },
+  "pricing": "Price page has adult, child-driver and child-passenger 1/3/6 fares. Operator PDF labels current prices valid through November 2026, so nine offers are dated to 30 Nov 2026, with explicit winter recheck. Flat-rate prices and transfer rules are explained in notes.",
+  "photoCountPublished": 5,
+  "photos": [
+    {
+      "imageId": "94a4223337d744459754bec8db4bab1f",
+      "sourceUrl": "https://www.chiemgau-coaster.de/application/files/1515/8452/2159/VK-Chiemgau-Coaster-unten-3100.jpg",
+      "isCurrent": true,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator or local tourism image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "f77dbba1543547489f184ad8382b062b",
+      "sourceUrl": "https://www.ruhpolding.de/fileadmin/ruhpolding/Freizeitaktivitaeten/Chiemgau_Coaster/Chiemgau_Coaster__8_.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator or local tourism image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "3d816f3f7155480892bfe3933031bf11",
+      "sourceUrl": "https://www.ruhpolding.de/fileadmin/ruhpolding/Freizeitaktivitaeten/Chiemgau_Coaster/Chiemgau_Coaster__4_.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator or local tourism image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "b4f69c365c61435cac845ad3227f5a53",
+      "sourceUrl": "https://www.ruhpolding.de/fileadmin/ruhpolding/Freizeitaktivitaeten/Chiemgau_Coaster/Chiemgau_Coaster__3_.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator or local tourism image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "7a7cf4d78f5c4185b4726ed6e0725eb7",
+      "sourceUrl": "https://www.chiemgau-coaster.de/application/files/2515/6494/2672/VK-Chiemgaucoaster-040819.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator or local tourism image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    }
+  ],
+  "photoFollowup": "Find a new exact photo with a verifiable reuse licence and audit rights for five existing images.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 95,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "e0606a9ec8f542728767296428d2c9b7",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127470427424431",
+    "publishedAtUtc": "2026-11-15T15:43:00.732532Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:41:44.444Z",
+  "nextAction": "Relever les nouveaux tarifs hiver 2026–2027 et l’ouverture quotidienne à partir du 19 décembre ; auditer les droits des cinq photos existantes et chercher une photo supplémentaire exacte avec licence vérifiable."
+}

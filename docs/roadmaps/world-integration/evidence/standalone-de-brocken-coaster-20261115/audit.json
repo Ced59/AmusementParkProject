@@ -1,0 +1,73 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+  "entryId": "DE-standalone-8a0ad048-04c6-485a-827d-ec5c42617db4",
+  "name": "Brocken-Coaster",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T14:52:37.150Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/8a0ad048-04c6-485a-827d-ec5c42617db4/brocken-coaster",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://de.brocken-coaster.de/mbl.dvc/pg/index.htm",
+    "https://de.brocken-coaster.de/mbl.dvc/pg/kontakt_lage_oeffnungszeiten.htm",
+    "https://de.brocken-coaster.de/mbl.dvc/pg/brocken_coaster_schierke_harz_sommer_winter_bob_rodelbahn.htm"
+  ],
+  "calendar": {
+    "startDate": "2026-11-15",
+    "endDate": "2027-01-31",
+    "totalDays": 78,
+    "openDays": 36,
+    "closedDays": 42,
+    "uncoveredDates": [],
+    "overlaps": [],
+    "nuance": "January 2027 is marked closed as a review horizon because the operator states closure from 1 January 2027 until further notice. 31 January is not a reopening date; no date has been announced. The schedule after that date is unknown and the operator must be checked."
+  },
+  "pricing": "Prix affichés au 15 novembre 2026 : enfant 3–14 ans 3 €, adulte dès 15 ans 3,50 €. Les textes de sécurité de l’exploitant sont contradictoires sur certains seuils d’âge et de taille ; aucun seuil contesté n’a été réaffirmé comme certain.",
+  "photo": {
+    "imageId": "12a2019ddb8e4919a9cbffd242176993",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Schierke_Brocken_Coaster_lub_2024-05-11.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Schierke_Brocken_Coaster_lub_2024-05-11.jpg?width=1200",
+    "creator": "Lukas Beck",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "photographedAt": "2024-05-11",
+    "sourceSha256": "1ea7080338d1c7c48408d2f4d945d2754f7f3949ee1f8dcf35561a453e664d2c",
+    "description": "Enseigne et piste du Brocken-Coaster à Schierke.",
+    "isCurrent": true,
+    "isPublished": true,
+    "binaryHttpStatus": 200,
+    "altCaptionCreditLocaleCount": 8,
+    "importedAtUtc": "2026-11-15T14:49:05.491Z"
+  },
+  "photoCountPublished": 6,
+  "oldImageRightsGap": "Cinq anciennes images officielles de l’exploitant sont toujours publiques, mais aucune licence autonome de réutilisation n’a été vérifiée.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 90,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "5868f8e6fd7742b2af765dbd0e1e3f4a",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127465723424431",
+    "publishedAtUtc": "2026-11-15T14:51:30.3180742Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T14:50:46.304Z",
+  "nextAction": "Suivre l’annonce de travaux et la reprise à partir du 1er janvier 2027 ; prolonger ou corriger le calendrier seulement sur preuve. Clarifier les seuils d’âge et de taille avec l’exploitant ; vérifier les droits des cinq anciennes photos."
+}

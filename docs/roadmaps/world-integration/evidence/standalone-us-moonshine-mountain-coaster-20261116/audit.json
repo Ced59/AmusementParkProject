@@ -1,0 +1,116 @@
+{
+  "work": "Moonshine Mountain Coaster migré d’une fiche Park masquée vers une attraction autonome à Gatlinburg : huit descriptions, trois photos exactes CC BY 2.0, six tarifs, horaires hebdomadaires, quatre règles d’accès, histoire, huit pages publiques et annonce Facebook.",
+  "qualification": "L’exploitant vend des billets par trajet. Recherche PARK_DATA_EDITOR : une fiche Park masquée mono-attraction et aucune standalone ; ancienne identité Gatlinburg Mountain Coaster confirmée par l’exploitant. Migration contrôlée vers une unique fiche autonome.",
+  "sources": {
+    "Exploitant — site officiel": "https://www.moonshinemountaincoaster.com/",
+    "Exploitant — tarifs et sécurité": "https://www.moonshinemountaincoaster.com/buy-tickets/",
+    "Exploitant — horaires": "https://www.moonshinemountaincoaster.com/hours/",
+    "Exploitant — FAQ et ancienne identité": "https://www.moonshinemountaincoaster.com/faq/",
+    "Exploitant — histoire": "https://www.moonshinemountaincoaster.com/about-us/",
+    "RCDB — piste et année d’ouverture": "https://rcdb.com/13305.htm",
+    "Flickr — virage de nuit": "https://www.flickr.com/photos/rollercoasterphilosophy/53006620499/",
+    "Flickr — entrée": "https://www.flickr.com/photos/rollercoasterphilosophy/53006812960/",
+    "Flickr — station": "https://www.flickr.com/photos/rollercoasterphilosophy/53005865562/",
+    "Licence CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+    "Fiche publiée": "https://amusement-parks.fun/fr/attraction/593f9132-08de-45ed-8e1e-73251b7d33bc/moonshine-mountain-coaster"
+  },
+  "entity": {
+    "id": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+    "name": "Moonshine Mountain Coaster",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true,
+    "legacyParkId": "41ed8736-34e5-49ca-bcc6-be1a791e1939",
+    "legacyParkItemId": "afe7d811-aa17-48b3-ad96-5fa210012ffe"
+  },
+  "photographs": [
+    {
+      "imageId": "948b6ec3d59144c98f11ca50291edf48",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006620499/",
+      "createdAtUtc": "2026-11-16T00:33:45.544Z",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "takenAt": "2023-06-12",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "c3ab5eb7ac2749aab6f12a1c98696865",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006812960/",
+      "createdAtUtc": "2026-11-16T00:33:58.327Z",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "takenAt": "2023-06-12",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "fdb92bb3e2d0493e87e89f6c7cf4aa00",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53005865562/",
+      "createdAtUtc": "2026-11-16T00:34:11.166Z",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "takenAt": "2023-06-12",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "type": "RollerCoaster",
+    "subtype": "Alpine coaster",
+    "manufacturer": "Wiegand",
+    "model": "Alpine Coaster",
+    "openedYear": 2014,
+    "renamedAndReopenedMonth": "2022-03",
+    "operatorTrackLengthFeetLowerBound": 3000,
+    "operatorApproxRideDurationMinutes": 5,
+    "singleRideTicketConfirmed": true,
+    "currency": "USD",
+    "admissionOffers": 6,
+    "regularWeeklyRules": 2,
+    "calendarEndDatePublished": false,
+    "structuredAccessConditions": 4,
+    "address": "306 Parkway, Gatlinburg, Tennessee 37738"
+  },
+  "audit": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "historyEvents": 1,
+    "publishedExactAttractionImages": 3,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinariesHttpStatus": [
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/593f9132-08de-45ed-8e1e-73251b7d33bc/moonshine-mountain-coaster",
+    "sitePublishedAtUtc": "2026-11-16T00:36:09.2992883Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:c181276c-6116-4cb6-8a75-2aa7124f0695",
+    "facebookStatus": "Published",
+    "facebookId": "2b23cbe9fa5b4fa9b06a8ce5c9f73728",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127526779424431",
+    "facebookPublishedAtUtc": "2026-11-16T00:37:09.532329Z",
+    "facebookPublicHttpStatus": 200
+  },
+  "lastDataIntegrationAt": "2026-11-16T00:35:37.105Z",
+  "remainingGaps": [
+    "L’exploitant publie des horaires hebdomadaires, sous réserve de météo ; aucun calendrier futur daté n’a été inventé.",
+    "La date précise du premier jour d’ouverture en 2014 n’est pas sourcée ; l’événement historique ne porte que l’année."
+  ]
+}

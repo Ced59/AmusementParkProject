@@ -1,0 +1,39 @@
+{
+  "entryId": "DE-standalone-6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+  "entityId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+  "integrationHistory": [
+    {
+      "eventId": "apply-b26c67bc-1e2c-4a7c-a65b-ea92560ead9f",
+      "appliedAt": "2026-11-15T15:57:41.156Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+      "evidence": "PARK_DATA_EDITOR:apply:b26c67bc-1e2c-4a7c-a65b-ea92560ead9f",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpspitz-20261115/audit.json",
+      "summary": "Tarifs hiver, conditions d’accès, fermeture pour révision et huit descriptions mis à jour."
+    },
+    {
+      "eventId": "apply-6f3ba81a-1c02-4bc4-ab97-85ed65392f0d",
+      "appliedAt": "2026-11-15T15:58:59.268Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+      "evidence": "PARK_DATA_EDITOR:apply:6f3ba81a-1c02-4bc4-ab97-85ed65392f0d",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpspitz-20261115/audit.json",
+      "summary": "Huit descriptions corrigées pour retirer les métriques brutes ; 93/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "e5868d9edc564a3b81bdc3eb0efe55e1",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127471909424431",
+    "publishedAtUtc": "2026-11-15T16:00:03.8379776Z"
+  },
+  "productionPhotoIds": [
+    "62c88f1636394efbac3948ad5f345121",
+    "7d2fc1a72ef646b3af065dbf851e876b",
+    "e51d974c0e39456a91a02cea5f53f4a2",
+    "20dd79d21b2948dcbdfda3f77c6c6ce8",
+    "f24b3a9e72e84507a09e2cead798ce7b"
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "work": "Rocky Top Mountain Coaster migré d’une fiche Park masquée vers une attraction autonome à Pigeon Forge : huit descriptions, trois photos exactes CC BY 2.0, trois tarifs, horaires hebdomadaires, quatre règles d’accès, événement d’ouverture, huit pages publiques et annonce Facebook.",
+  "qualification": "Billet par trajet propre à Rocky Top. Recherche PARK_DATA_EDITOR : un seul Park masqué mono-attraction et aucune standalone avant migration. Le Park et son ParkItem sont désormais masqués NotRelevant et liés à la standalone ; les deux références Wiegand restent comme doublon de découverte.",
+  "sources": {
+    "Exploitant — fonctionnement et horaires": "https://www.rockytopcoaster.com/",
+    "Exploitant — billets": "https://www.rockytopcoaster.com/tickets",
+    "Exploitant — FAQ": "https://www.rockytopcoaster.com/faqs",
+    "RCDB — ouverture, constructeur, modèle et longueur": "https://rcdb.com/16439.htm",
+    "OpenStreetMap — attraction": "https://www.openstreetmap.org/way/686664991",
+    "Flickr — jour 2021": "https://www.flickr.com/photos/milst1/51415233551/",
+    "Flickr — nuit 2023": "https://www.flickr.com/photos/rollercoasterphilosophy/53006457469/",
+    "Flickr — station 2023": "https://www.flickr.com/photos/rollercoasterphilosophy/53006676530/",
+    "Licence CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+    "Fiche publiée": "https://amusement-parks.fun/fr/attraction/f807c731-c7ca-4eaf-a29d-1cd0533b4822/rocky-top-mountain-coaster"
+  },
+  "entity": {
+    "id": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+    "name": "Rocky Top Mountain Coaster",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true,
+    "legacyParkId": "df47a44c-6fad-44ee-ab40-af7c32e042ec",
+    "legacyParkItemId": "11d7370d-217f-4deb-8620-8ea4d78f0c23"
+  },
+  "photographs": [
+    {
+      "imageId": "e0a3a6aa2c7340d4ae11c546ac5e8df1",
+      "sourceUrl": "https://www.flickr.com/photos/milst1/51415233551/",
+      "createdAtUtc": "2026-11-16T00:13:50.215Z",
+      "author": "milst1",
+      "license": "CC BY 2.0",
+      "takenAt": "2021-08-28",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "09376a8b86bf4ab99937a1d4620e3e8b",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006457469/",
+      "createdAtUtc": "2026-11-16T00:14:04.43Z",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "takenAt": "2023-06-11",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "736987e57b8b4cc19b5093bceb3be27b",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006676530/",
+      "createdAtUtc": "2026-11-16T00:14:19.628Z",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "takenAt": "2023-06-11",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "type": "RollerCoaster",
+    "subtype": "Alpine coaster",
+    "manufacturer": "Wiegand",
+    "model": "Alpine Coaster",
+    "openedAt": "2018-11-22",
+    "rcdbLengthMetersRounded": 1185,
+    "operatorFourUplifts": true,
+    "operatorRideDurationMinutesMoreThan": 9,
+    "singleRideTicketConfirmed": true,
+    "currency": "USD",
+    "admissionOffers": 3,
+    "regularWeeklyRules": 2,
+    "calendarEndDatePublished": false,
+    "structuredAccessConditions": 4,
+    "address": "2940 Veterans Boulevard, Pigeon Forge, Tennessee 37863",
+    "osmAttractionCentroid": [
+      35.7969588,
+      -83.5452916
+    ]
+  },
+  "audit": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "historyEvents": 1,
+    "publishedExactAttractionImages": 3,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinariesHttpStatus": [
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/f807c731-c7ca-4eaf-a29d-1cd0533b4822/rocky-top-mountain-coaster",
+    "sitePublishedAtUtc": "2026-11-16T00:17:38.8332061Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:80809e19-faf2-4395-8c6f-da0b764c6dff",
+    "facebookStatus": "Published",
+    "facebookId": "37913a4bc5314f98a9bd8f6abb5f9b47",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127525183424431",
+    "facebookPublishedAtUtc": "2026-11-16T00:18:11.015942Z"
+  },
+  "lastDataIntegrationAt": "2026-11-16T00:16:45.952Z",
+  "remainingGaps": [
+    "Aucun calendrier daté futur n’est publié : les deux règles hebdomadaires sont les horaires usuels, sujets aux fermetures pour orage ou fortes pluies.",
+    "L’événement d’ouverture de 2018 n’a pas de photographie libre de cette date ; les photos de 2021 et 2023 ne sont pas présentées comme des vues d’ouverture."
+  ]
+}

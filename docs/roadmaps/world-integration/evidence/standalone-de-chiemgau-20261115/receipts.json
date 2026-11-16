@@ -1,0 +1,29 @@
+{
+  "entryId": "DE-standalone-79535465-11be-4817-9e09-ca8fe376eb1f",
+  "entityId": "79535465-11be-4817-9e09-ca8fe376eb1f",
+  "integrationHistory": [
+    {
+      "eventId": "apply-bbd38a2c-e97c-48c0-b620-5e9eafc0b9b8",
+      "appliedAt": "2026-11-15T15:41:44.444Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "79535465-11be-4817-9e09-ca8fe376eb1f",
+      "evidence": "PARK_DATA_EDITOR:apply:bbd38a2c-e97c-48c0-b620-5e9eafc0b9b8",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-chiemgau-20261115/audit.json",
+      "summary": "Fermeture saisonnière et reprise annoncée, tarifs datés, conditions de conduite, huit textes corrigés et cinq photos existantes contrôlées ; qualité 95/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "e0606a9ec8f542728767296428d2c9b7",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127470427424431",
+    "publishedAtUtc": "2026-11-15T15:43:00.732532Z"
+  },
+  "productionPhotoIds": [
+    "94a4223337d744459754bec8db4bab1f",
+    "f77dbba1543547489f184ad8382b062b",
+    "3d816f3f7155480892bfe3933031bf11",
+    "b4f69c365c61435cac845ad3227f5a53",
+    "7a7cf4d78f5c4185b4726ed6e0725eb7"
+  ]
+}

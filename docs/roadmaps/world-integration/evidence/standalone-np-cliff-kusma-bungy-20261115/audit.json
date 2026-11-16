@@ -1,0 +1,123 @@
+{
+  "entryId": "NP-candidate-discovery-046a38de076000",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+  "name": "The Cliff — Kusma Bungy",
+  "countryCode": "NP",
+  "auditAtUtc": "2026-11-15T12:45:43.751Z",
+  "qualification": "Saut à l’élastique avec tarif dédié au milieu du pont The Cliff à Kusma. Recherche officielle StandaloneAttractions \"Cliff\" NP sans résultat. Le swing et sky cycling sont des billets distincts.",
+  "operatorSources": [
+    "https://thecliffnepal.com/adventures",
+    "https://thecliffnepal.com/faqs",
+    "https://thecliffnepal.com/rates",
+    "https://thecliffnepal.com/before-you-book"
+  ],
+  "independentCurrentSource": "https://kathmandupost.com/visual-stories/2026/10/28/a-228-metre-leap-above-nepal-s-kaligandaki-gorge",
+  "geoSource": "https://mapcarta.com/N13226983001",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/75cd7b7c-698e-4811-b791-f2c5cfd09a8e/the-cliff-kusma-bungy",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 2,
+  "photos": [
+    {
+      "imageId": "b08db3ca56f141ac8bf1f4ac5ac0dd5b",
+      "sourcePage": "https://wordpress.org/photos/photo/78965a0a23/",
+      "sourceUrl": "https://pd.w.org/2024/01/78965a0a23e504296.85271458-2048x1536.jpeg",
+      "creator": "Bhuwan Bdr. Rokaha",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "photographedAt": "2024",
+      "uploadedAtUtc": "2026-11-15T12:40:30.664Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:40:34.418Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "6c9d2e7016794d3481063e93b6282234",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Cliff_Kali_Gandaki_river_Kusma_Baglung_Bungee.png",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/The_Cliff_Kali_Gandaki_river_Kusma_Baglung_Bungee.png",
+      "creator": "Asmit Gautam",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photographedAt": "2019-12-29",
+      "uploadedAtUtc": "2026-11-15T12:41:10.474Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:41:14.076Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Tarif officiel affiché le 15 novembre 2026 dans l’index actuel du site exploitant : 8 000 NPR pour bungy seul. Tarif final à confirmer à la réservation.",
+  "openingHoursAssessment": "FAQ officielle : présence demandée à 09:00 pour les activités ; ce n’est pas une plage d’ouverture. Aucun horaire quotidien exact publié dans les sources vérifiées, calendrier non inventé.",
+  "accessAssessment": "FAQ 14 ans minimum, autorisation écrite sous 18 ans, 45–95 kg. Page activités 45–100 kg ; formulaire de réservation indique 18 ans. Contradictions conservées et signalées dans la fiche, confirmation auprès de l’exploitant nécessaire. Chaussures fermées, contrôle médical, arrêt par fortes intempéries.",
+  "geoAssessment": "28.223,83.673 est un point approximatif du pont, déduit du point OSM The Cliff à 28.22333,83.67467 et de sa relation \"Kushma Bungee Jump 210 m west\" ; ne pas le décrire comme GPS exact de la plateforme.",
+  "historyAssessment": "Kathmandu Post du 28 octobre 2026 indique une ouverture en novembre 2020 ; année non structurée faute de champ contrôlé et d’attestation officielle directe.",
+  "qualityLimitation": "81/100 Publishable sans blocage. Divergence sur critères d’accès ; horaires quotidiens non établis.",
+  "completeness": {
+    "score": 81,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127454395424431",
+    "publishedAtUtc": "2026-11-15T12:44:41.6808488Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T12:42:54.143Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "a09c82b8-e61c-4406-b356-1acca3c92d11",
+      "appliedAtUtc": "2026-11-15T12:39:55.0220879Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "b89816d5-7f7c-4904-93a9-29cbb200b07d",
+      "appliedAtUtc": "2026-11-15T12:41:58.5383462Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "corefix",
+      "operationId": "748d6639-deed-4848-82ff-66e1034c4ba1",
+      "appliedAtUtc": "2026-11-15T12:42:54.1436711Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "b08db3ca56f141ac8bf1f4ac5ac0dd5b",
+      "uploadedAtUtc": "2026-11-15T12:40:30.664Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:40:34.418Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "6c9d2e7016794d3481063e93b6282234",
+      "uploadedAtUtc": "2026-11-15T12:41:10.474Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:41:14.076Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "32c638d3-c769-4561-b5af-82675265aed5",
+    "appliedAtUtc": "2026-11-15T12:43:24.3730543Z"
+  },
+  "nextAction": "Conserver la ligne et recontrôler prix, statut, jours et critères sous 90 jours. L’exploitant publie des limites d’âge/poids contradictoires : confirmer la règle en vigueur avant d’afficher une borne sans réserve. Vérifier les horaires quotidiens et le point GPS exact du milieu du pont. Qualifier séparément le swing et le sky cycling, avec photo exacte licenciée pour chacun. Ne pas republier Facebook pour une simple actualisation."
+}

@@ -1,0 +1,46 @@
+{
+  "entryId": "DE-standalone-d727843f-43ec-40b1-8c0e-8f303232c715",
+  "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+  "integrationHistory": [
+    {
+      "eventId": "apply-37a5b27d-aee8-440b-aac4-1078b9f622da",
+      "appliedAt": "2026-11-15T15:09:29.398Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+      "evidence": "PARK_DATA_EDITOR:apply:37a5b27d-aee8-440b-aac4-1078b9f622da",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+      "summary": "Huit descriptions, huit tarifs affichés, conditions d’âge et fermeture de la saison 2026 intégrés."
+    },
+    {
+      "eventId": "image-81a7403c4ca64b1aaf9294133af2b4a6",
+      "appliedAt": "2026-11-15T15:10:00.158Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+      "evidence": "PARK_DATA_EDITOR:image:81a7403c4ca64b1aaf9294133af2b4a6@2026-11-15T15:10:00.158Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+      "summary": "Photo exacte de la remontée sur rail, Pardin, CC0, avec huit textes alternatifs, légendes et crédits."
+    },
+    {
+      "eventId": "apply-743e49b7-9ad3-41b7-87a5-40881e065298",
+      "appliedAt": "2026-11-15T15:11:15.012Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+      "evidence": "PARK_DATA_EDITOR:apply:743e49b7-9ad3-41b7-87a5-40881e065298",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+      "summary": "Correction de la description polonaise, blocage éditorial levé, contrôle final à 95/100."
+    }
+  ],
+  "facebook": {
+    "id": "eb958e36533246f88448b806991cb31d",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127467781424431",
+    "publishedAtUtc": "2026-11-15T15:12:04.9269123Z"
+  },
+  "photoImport": {
+    "imageId": "81a7403c4ca64b1aaf9294133af2b4a6",
+    "updatedAtUtc": "2026-11-15T15:10:00.158Z"
+  }
+}

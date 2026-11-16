@@ -1,0 +1,93 @@
+{
+  "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "29f67b89-3559-4017-82d6-7333a2e5a917",
+      "appliedAtUtc": "2026-11-15T22:45:02.713833Z",
+      "evidence": "PARK_DATA_EDITOR:apply:29f67b89-3559-4017-82d6-7333a2e5a917"
+    },
+    {
+      "step": "spec",
+      "operationId": "6dd4fe46-e102-4f67-8e9e-878482ce1196",
+      "appliedAtUtc": "2026-11-15T22:46:36.3824653Z",
+      "evidence": "PARK_DATA_EDITOR:apply:6dd4fe46-e102-4f67-8e9e-878482ce1196"
+    },
+    {
+      "step": "pricing",
+      "operationId": "ef92ac8c-5273-4ffe-b8a1-3f7e9f788e58",
+      "appliedAtUtc": "2026-11-15T22:46:57.9635722Z",
+      "evidence": "PARK_DATA_EDITOR:apply:ef92ac8c-5273-4ffe-b8a1-3f7e9f788e58"
+    },
+    {
+      "step": "hours",
+      "operationId": "6da516a2-eefa-4b3e-af13-4d14783b1847",
+      "appliedAtUtc": "2026-11-15T22:47:19.9020937Z",
+      "evidence": "PARK_DATA_EDITOR:apply:6da516a2-eefa-4b3e-af13-4d14783b1847"
+    },
+    {
+      "step": "access",
+      "operationId": "af4790c6-0150-4aeb-9ea6-eb2a8ad955ee",
+      "appliedAtUtc": "2026-11-15T22:47:41.605521Z",
+      "evidence": "PARK_DATA_EDITOR:apply:af4790c6-0150-4aeb-9ea6-eb2a8ad955ee"
+    },
+    {
+      "step": "publish",
+      "operationId": "3605c05a-6108-4c71-bbde-ebbb56791658",
+      "appliedAtUtc": "2026-11-15T22:48:14.348279Z",
+      "evidence": "PARK_DATA_EDITOR:apply:3605c05a-6108-4c71-bbde-ebbb56791658"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "712d416cb8f4484d81e7cf575f381ae4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:PanoraMagique,_Disney_Village,_Disneyland_Paris.jpg",
+      "createdAtUtc": "2026-11-15T22:45:22.374Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200,
+      "author": "Hans Brian Brandsberg Berg",
+      "license": "CC BY 2.0",
+      "takenAt": "2010-07-27",
+      "note": "Vue historique de l’ancienne livrée du ballon, explicitement signalée en légende."
+    },
+    {
+      "imageId": "88b2e3e91ede40a4a171ac3c67e929fd",
+      "sourceUrl": "https://www.flickr.com/photos/andy50/31407915302/",
+      "createdAtUtc": "2026-11-15T22:53:33.463Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200,
+      "author": "Andy Whittle",
+      "license": "CC BY 2.0",
+      "takenAt": "2016-11-25",
+      "note": "Photographie exacte du ballon dans son ancienne livrée, datée dans la légende."
+    },
+    {
+      "imageId": "8a949e19e68c497cae7314d2057095a2",
+      "sourceUrl": "https://www.flickr.com/photos/35mmman/49226949571/",
+      "createdAtUtc": "2026-11-15T22:53:46.418Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200,
+      "author": "35mmMan",
+      "license": "CC BY 2.0",
+      "takenAt": "2019-12-02",
+      "note": "Photographie exacte du ballon dans son ancienne livrée, datée dans la légende."
+    }
+  ],
+  "facebook": {
+    "id": "8613343be4e240ff928e348adc0d9550",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127518337424431",
+    "publishedAtUtc": "2026-11-15T22:48:55.9556945Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 72,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

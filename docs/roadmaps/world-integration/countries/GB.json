@@ -1782,37 +1782,61 @@
       "entryId": "GB-candidate-a47d966940e293",
       "name": "Blackpool Central Pier Big Wheel",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Central Pier, Blackpool",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "The Blackpool Pier Company affiche la Big Wheel à 6 tickets parmi dix manèges de Central Pier le 15 novembre 2026.",
+      "identityConfidence": "Attraction interne à un ensemble de manèges et d’arcades exploité sous la marque Central Pier ; aucun résultat Park/Standalone de ce nom dans les recherches officielles du 15 novembre 2026.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Traiter la Big Wheel comme parkItem du dossier Central Pier Blackpool GB-candidate-discovery-central-pier-blackpool-20261115 après vérification de l’identité et de la génération actuelle de la roue ; ne pas créer une standalone. Les photographies anciennes peuvent représenter la roue antérieure au projet de remplacement.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Blackpool Piers — manèges de Central Pier, Big Wheel 6 tickets",
+          "url": "https://www.blackpoolpiers.co.uk/rides-attractions/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "National Piers Society — historique et projet de remplacement de la roue",
+          "url": "https://piers.org.uk/piers/blackpool-central-pier/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "The Big Wheel",
+            "source": "The Blackpool Pier Company",
+            "url": "https://www.blackpoolpiers.co.uk/rides-attractions/",
+            "family": "Grande roue",
+            "sourceVenueName": "Central Pier Blackpool",
+            "sourceLifecycleSignal": "Offre affichée à 6 tickets en novembre 2026.",
+            "matchingMethod": "Rapprochement de l’installation avec le catalogue multi-attractions officiel de Central Pier.",
+            "sourceLocality": "Blackpool"
+          }
+        ],
+        "rationale": "La roue est l’un des manèges d’un pier de loisirs commun, avec dodgems, Waltzers, Flying Bob, Mini Wheel et autres attractions ; elle relève du dossier parent et de son inventaire."
+      },
+      "possibleBacklogEntries": [
+        "GB-candidate-discovery-central-pier-blackpool-20261115"
+      ]
     },
     {
       "entryId": "GB-candidate-4fce1922bf4c75",
@@ -16275,6 +16299,49 @@
         "publicationBlockers": [],
         "gapCount": 3
       }
+    },
+    {
+      "entryId": "GB-candidate-discovery-central-pier-blackpool-20261115",
+      "name": "Central Pier Blackpool",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Pier de loisirs et manèges",
+      "locality": "Promenade, Blackpool, Lancashire, FY1 5BB",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant officiel actif en 2026 ; catalogue de dix manèges et arcades sur le pier.",
+      "identityConfidence": "Lieu de loisirs à inventaire multi-attractions confirmé par l’exploitant ; recherches officielles Park Central Pier/Blackpool Big Wheel sans fiche. Vérifier le modèle Park avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Blackpool Central Pier",
+        "Central Pier"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Vérifier l’adresse, l’inventaire actuel complet, les horaires, la billetterie et l’historique de chaque manège, notamment l’identité de la Big Wheel actuelle ; créer ou compléter le Park si le modèle est confirmé, avec photos exactes sous licence. Conserver la candidate Big Wheel comme parkItem lié.",
+      "sources": [
+        {
+          "label": "The Blackpool Pier Company — Central Pier et catalogue des manèges",
+          "url": "https://www.blackpoolpiers.co.uk/rides-attractions/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "The Blackpool Pier Company — site officiel",
+          "url": "https://www.blackpoolpiers.co.uk/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "National Piers Society — Central Pier",
+          "url": "https://piers.org.uk/piers/blackpool-central-pier/",
+          "accessedAt": "2026-11-15"
+        }
+      ]
     }
   ]
 }

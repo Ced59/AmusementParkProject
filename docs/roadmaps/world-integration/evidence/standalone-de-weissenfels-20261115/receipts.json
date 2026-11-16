@@ -1,0 +1,29 @@
+{
+  "entryId": "DE-standalone-80836e64-0911-4e37-aef1-39cd7499d4aa",
+  "entityId": "80836e64-0911-4e37-aef1-39cd7499d4aa",
+  "integrationHistory": [
+    {
+      "eventId": "apply-4fe26492-a659-4963-b864-2837cbdec71d",
+      "appliedAt": "2026-11-15T15:51:15.321Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "80836e64-0911-4e37-aef1-39cd7499d4aa",
+      "evidence": "PARK_DATA_EDITOR:apply:4fe26492-a659-4963-b864-2837cbdec71d",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-weissenfels-20261115/audit.json",
+      "summary": "Calendrier officiel novembre 2026–février 2027, six tarifs, âge et huit descriptions corrigés ; cinq photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "8c979aded574428f8c1a9bada7f3d7bf",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127471459424431",
+    "publishedAtUtc": "2026-11-15T15:52:10.6583047Z"
+  },
+  "productionPhotoIds": [
+    "5d0f9f2e125f4b519395e59457e117b2",
+    "13fdba512aa64317a31bea7c326314ac",
+    "50b59d2273744e55aaf96880f92b1f44",
+    "b3f8090ecb57478889920e7e1e4d5d4a",
+    "3b37af252d1542759f9180ddae41868a"
+  ]
+}

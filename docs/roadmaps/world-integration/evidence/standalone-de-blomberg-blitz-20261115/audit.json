@@ -1,0 +1,63 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+  "entryId": "DE-standalone-c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+  "name": "Blomberg Blitz",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T15:48:32.189Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/c7f13ddc-5576-4310-ac71-2e98a5d696a9/blomberg-blitz",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.der-blomberg.de/blomberg-blitz",
+    "https://www.der-blomberg.de/blomberg-preise",
+    "https://www.der-blomberg.de/oeffnungszeiten"
+  ],
+  "editorial": "Eight descriptions rewritten without raw technical metrics, nine 2026 offers, under-eight accompaniment and solo from eight corrected, single published daily hour window for 15 Nov 2026. Distinction from Classic retained.",
+  "hours": "Dedicated operator daily hours page lists 15 Nov 2026 10:00–16:00. No later calendar inferred. The separate Classic track was closed on that day.",
+  "photos": {
+    "beforePublished": 5,
+    "afterPublished": 3,
+    "afterImageIds": [
+      "baf3e4ac7d294afeb4c95e5ff14f3954",
+      "ba7a8426e935418389c88d2c5cec9fef",
+      "8c61b6b054424a46b72d536104061790"
+    ],
+    "currentImageId": "8c61b6b054424a46b72d536104061790",
+    "hiddenCorruptImageIds": [
+      "2237b72d8d2549d4b4451c03490f7ecd",
+      "d1d3c161d2e8469ba9d85b9c35e30c2d"
+    ],
+    "inspection": "Downloaded all five production photo binaries. The former main image and one thumbnail show severe horizontal green stripe corruption. The remaining three show the exact Blitz track; all three public binaries respond HTTP 200.",
+    "reuseRights": "Independent reuse licences of the three existing operator images remain to be verified; no new photo imported."
+  },
+  "photoFollowup": "Seek an additional exact photo with verifiable reuse licence; review rights for three existing visible photos. Keep corrupt image records hidden.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 95,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "d8a2c422403a4a26a8b40d1853061f57",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127471111424431",
+    "publishedAtUtc": "2026-11-15T15:48:00.0827609Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:47:09.554Z",
+  "nextAction": "Consulter les horaires quotidiens au fil de la saison ; trouver une photo exacte supplémentaire sous licence vérifiable et auditer les droits des trois images conservées. Garder les deux fichiers corrompus hors publication."
+}

@@ -1,0 +1,71 @@
+{
+  "work": "Macau Tower Tower Climb créé en attraction fixe autonome distincte du Bungy Jump, du Skywalk et du Skyjump. Huit descriptions, trois conditions d’accès, tarif officiel, frise 2002, un photogramme photographique exact sous licence, huit pages publiques et annonce Facebook vérifiés.",
+  "qualification": "Skypark Macau propose une réservation et un prix propres au Tower Climb. Recherches officielles sur Tower Climb, Towerclimb, Macau Tower et Skypark sans doublon local. Le photogramme Commons montre l’ascension commerciale du mât de Macau Tower ; la licence de la vidéo couvre les captures et a été revue par Wikimedia.",
+  "sources": {
+    "operatorActivity": "https://www.skyparkmacau.com/activities/Towerclimb",
+    "operatorTimeline": "https://www.skyparkmacau.com/timeline",
+    "operatorParkInfo": "https://www.skyparkmacau.com/park-info",
+    "commonsSourceVideo": "https://commons.wikimedia.org/wiki/File:Urban_Climbing_at_Macau_Tower,_338_meter.webm",
+    "commonsStaticFrame": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Urban_Climbing_at_Macau_Tower%2C_338_meter.webm/1280px--Urban_Climbing_at_Macau_Tower%2C_338_meter.webm.jpg"
+  },
+  "entity": {
+    "id": "e4672f67-f21b-4461-b044-5ba27420898d",
+    "name": "Macau Tower Tower Climb",
+    "countryCode": "MO",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "77094c2aeaad4fb99341241c6a73f0cd",
+      "subject": "Participant on the actual outside Tower Climb mast",
+      "author": "Nicklas Ulvnäs (h9kh9k)",
+      "license": "CC BY 3.0",
+      "sourceVideoDate": "2015-11-17",
+      "kind": "Photographic still from licensed video",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricing": "2 688 MOP par personne, entrée à la tour comprise, source officielle vérifiée le 15 novembre 2026.",
+    "hours": "Le site publie les horaires généraux de Skypark, mais pas les créneaux propres au Tower Climb ; aucune règle hebdomadaire attribuée sans preuve.",
+    "accessConditions": 3,
+    "openingYear": 2002,
+    "openingYearSource": "https://www.skyparkmacau.com/timeline",
+    "coordinates": "Point Macau Tower commun aux fiches Skywalk et Bungy du même bâtiment."
+  },
+  "audit": {
+    "completenessScore": 85,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/e4672f67-f21b-4461-b044-5ba27420898d/macau-tower-tower-climb",
+    "sitePublishedAtUtc": "2026-11-15T18:39:24.3569052Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:17e3840f-2bd3-483b-a34f-7e90007f967e",
+    "facebookStatus": "Published",
+    "facebookId": "f6b354bb9f63410fbcb071dc100ebbcc",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127490473424431",
+    "facebookPublishedAtUtc": "2026-11-15T18:40:21.0248216Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T18:38:27.7813043Z",
+  "remainingGaps": [
+    "Vérifier des créneaux propres au Tower Climb avant d’afficher des horaires.",
+    "Chercher une seconde photographie exacte sous licence, idéalement récente et prise par un photographe indépendant.",
+    "Réévaluer le tarif et les conditions après 90 jours."
+  ]
+}

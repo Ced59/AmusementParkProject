@@ -1,0 +1,88 @@
+{
+  "entryId": "CA-candidate-discovery-92b7f3030c29bc",
+  "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+  "integrationHistory": [
+    {
+      "eventId": "apply-3b4ff844-9519-4742-8731-6bc90a938cef",
+      "appliedAt": "2026-11-15T13:52:17.577Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+      "evidence": "PARK_DATA_EDITOR:apply:3b4ff844-9519-4742-8731-6bc90a938cef",
+      "auditEvidence": null,
+      "summary": "Identité et huit descriptions du parcours autonome créées à partir des sources Niagara Parks."
+    },
+    {
+      "eventId": "apply-2ec49caf-ccde-4d5e-99e6-55ac45aff4c6",
+      "appliedAt": "2026-11-15T13:52:28.677Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+      "evidence": "PARK_DATA_EDITOR:apply:2ec49caf-ccde-4d5e-99e6-55ac45aff4c6",
+      "auditEvidence": null,
+      "summary": "Fermeture saisonnière, accès partiel et tarifs historiques affichés intégrés avec provenance."
+    },
+    {
+      "eventId": "image-beac918d015e416db078d275f7eacf6c",
+      "appliedAt": "2026-11-15T13:53:34.896Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+      "evidence": "PARK_DATA_EDITOR:image:beac918d015e416db078d275f7eacf6c@2026-11-15T13:53:34.896Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Gogerr, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-29d1d20ffc2542c9b52f71a8a51ea936",
+      "appliedAt": "2026-11-15T13:53:43.818Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+      "evidence": "PARK_DATA_EDITOR:image:29d1d20ffc2542c9b52f71a8a51ea936@2026-11-15T13:53:43.818Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Gogerr, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-3a7cfdcebdcd402aa44ad01c7619f315",
+      "appliedAt": "2026-11-15T13:53:52.269Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+      "evidence": "PARK_DATA_EDITOR:image:3a7cfdcebdcd402aa44ad01c7619f315@2026-11-15T13:53:52.269Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Gogerr, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "apply-ba98df98-6d01-41dc-b5bb-65a138af28ea",
+      "appliedAt": "2026-11-15T13:54:08.955Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+      "evidence": "PARK_DATA_EDITOR:apply:ba98df98-6d01-41dc-b5bb-65a138af28ea",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-white-water-walk-20261115/audit.json",
+      "summary": "Fiche rendue publique après import de trois photos exactes de 2026 et audit éditorial."
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127460383424431",
+    "publishedAtUtc": "2026-11-15T13:54:48.8128551Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "beac918d015e416db078d275f7eacf6c",
+      "uploadedAtUtc": "2026-11-15T13:53:31.264Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "29d1d20ffc2542c9b52f71a8a51ea936",
+      "uploadedAtUtc": "2026-11-15T13:53:40.466Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "3a7cfdcebdcd402aa44ad01c7619f315",
+      "uploadedAtUtc": "2026-11-15T13:53:48.752Z"
+    }
+  ]
+}

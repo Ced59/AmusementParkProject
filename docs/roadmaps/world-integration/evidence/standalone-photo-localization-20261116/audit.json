@@ -1,0 +1,135 @@
+{
+  "work": "Localisation effective des trois photos Moonshine Mountain Coaster et des trois photos Ripley’s Mountain Coaster : textes alternatifs et légendes distincts en fr, en, de, nl, it, es, pl et pt. Les six médias restent publics et exacts ; aucune annonce Facebook supplémentaire.",
+  "records": [
+    {
+      "entryId": "US-park-41ed8736-34e5-49ca-bcc6-be1a791e1939",
+      "name": "Moonshine Mountain Coaster",
+      "siteId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+      "previousLastDataIntegrationAt": "2026-11-16T00:35:37.105Z",
+      "lastDataIntegrationAt": "2026-11-16T01:04:42.716Z",
+      "photos": [
+        {
+          "imageId": "948b6ec3d59144c98f11ca50291edf48",
+          "updatedAtUtc": "2026-11-16T01:04:20.73Z",
+          "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006620499/",
+          "languages": [
+            "de",
+            "en",
+            "es",
+            "fr",
+            "it",
+            "nl",
+            "pl",
+            "pt"
+          ],
+          "isPublished": true
+        },
+        {
+          "imageId": "c3ab5eb7ac2749aab6f12a1c98696865",
+          "updatedAtUtc": "2026-11-16T01:04:31.741Z",
+          "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006812960/",
+          "languages": [
+            "de",
+            "en",
+            "es",
+            "fr",
+            "it",
+            "nl",
+            "pl",
+            "pt"
+          ],
+          "isPublished": true
+        },
+        {
+          "imageId": "fdb92bb3e2d0493e87e89f6c7cf4aa00",
+          "updatedAtUtc": "2026-11-16T01:04:42.716Z",
+          "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53005865562/",
+          "languages": [
+            "de",
+            "en",
+            "es",
+            "fr",
+            "it",
+            "nl",
+            "pl",
+            "pt"
+          ],
+          "isPublished": true
+        }
+      ],
+      "finalCompletenessScore": 100,
+      "publicationBlockers": [],
+      "facebookReposted": false
+    },
+    {
+      "entryId": "US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850",
+      "name": "Ripley's Mountain Coaster",
+      "siteId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+      "previousLastDataIntegrationAt": "2026-11-16T00:54:38.732Z",
+      "lastDataIntegrationAt": "2026-11-16T01:05:17.515Z",
+      "photos": [
+        {
+          "imageId": "89a32b65ce4a45069215b2a5d1ef174f",
+          "updatedAtUtc": "2026-11-16T01:04:52.085Z",
+          "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53005869527/",
+          "languages": [
+            "de",
+            "en",
+            "es",
+            "fr",
+            "it",
+            "nl",
+            "pl",
+            "pt"
+          ],
+          "isPublished": true
+        },
+        {
+          "imageId": "d3528b932deb4f47822c2bc1bd64ba18",
+          "updatedAtUtc": "2026-11-16T01:05:05.887Z",
+          "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006840210/",
+          "languages": [
+            "de",
+            "en",
+            "es",
+            "fr",
+            "it",
+            "nl",
+            "pl",
+            "pt"
+          ],
+          "isPublished": true
+        },
+        {
+          "imageId": "4c06e2fe101545828ba8d220cf1e4804",
+          "updatedAtUtc": "2026-11-16T01:05:17.515Z",
+          "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006453761/",
+          "languages": [
+            "de",
+            "en",
+            "es",
+            "fr",
+            "it",
+            "nl",
+            "pl",
+            "pt"
+          ],
+          "isPublished": true
+        }
+      ],
+      "finalCompletenessScore": 90,
+      "publicationBlockers": [],
+      "facebookReposted": false
+    }
+  ],
+  "publicGermanPageChecks": {
+    "Moonshine Mountain Coaster": {
+      "status": 200,
+      "translatedAltObserved": true
+    },
+    "Ripley's Mountain Coaster": {
+      "status": 200,
+      "translatedAltObserved": true
+    }
+  }
+}

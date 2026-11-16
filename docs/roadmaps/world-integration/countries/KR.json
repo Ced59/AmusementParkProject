@@ -3391,7 +3391,7 @@
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T15:42:13.973Z",
+      "lastDataIntegrationAt": "2026-11-15T14:11:17.803Z",
       "integrationHistory": [
         {
           "eventId": "apply-f4966515-58e6-4fa9-8137-4dfcada654d7",
@@ -3442,9 +3442,39 @@
           "evidence": "PARK_DATA_EDITOR:apply:dcdb95a5-ded0-4bda-a8c1-9dbac98ba377",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-20261023/tongyeong-audit.json",
           "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
+        },
+        {
+          "eventId": "image-5379dd51ddf744f5aec77cb91dc15bf6",
+          "appliedAt": "2026-11-15T14:11:03.817Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:image:5379dd51ddf744f5aec77cb91dc15bf6@2026-11-15T14:11:03.817Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-photos-20261115/audit.json",
+          "summary": "Photo exacte de Skyline Luge Tongyeong (base-building), KTO Content Lab / Kim Ji-ho, KOGL Type 1 selon attribution image par image ; textes, légendes et crédits en huit langues."
+        },
+        {
+          "eventId": "image-c87148581bc0474f89c985519a2af2a8",
+          "appliedAt": "2026-11-15T14:11:10.854Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:image:c87148581bc0474f89c985519a2af2a8@2026-11-15T14:11:10.854Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-photos-20261115/audit.json",
+          "summary": "Photo exacte de Skyline Luge Tongyeong (chairlift), KTO Content Lab / Kim Ji-ho, KOGL Type 1 selon attribution image par image ; textes, légendes et crédits en huit langues."
+        },
+        {
+          "eventId": "image-e985b55e4ced4d86b0e62aa89db390c9",
+          "appliedAt": "2026-11-15T14:11:17.803Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+          "evidence": "PARK_DATA_EDITOR:image:e985b55e4ced4d86b0e62aa89db390c9@2026-11-15T14:11:17.803Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-photos-20261115/audit.json",
+          "summary": "Photo exacte de Skyline Luge Tongyeong (track-sea-view), KTO Content Lab / Kim Ji-ho, KOGL Type 1 selon attribution image par image ; textes, légendes et crédits en huit langues."
         }
       ],
-      "nextAction": "Audit public du 15 novembre 2026 : aucune photo propre publiée. Rechercher une vue exacte des pistes ou luges Skyline Luge Tongyeong, avec licence ou autorisation vérifiable ; importer et contrôler la publication dans les huit langues avant de dater le reçu.",
+      "nextAction": "Photos publiées. Vérifier les tarifs et horaires à la prochaine saison ; rechercher les fiches KTO originales des trois photos pour renforcer la preuve de licence.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3505,6 +3535,16 @@
           "label": "Source vérifiée — intégration standalone",
           "url": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
           "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Hantabi — exact KTO photo IDs and KOGL Type 1 attribution",
+          "url": "https://hantabi.org/korea/articles/busan-to-tongyeong",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "KOGL — Type 1 license terms",
+          "url": "https://www.kogl.or.kr/info/licenseType1.do",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
@@ -3538,12 +3578,13 @@
         }
       },
       "lastEditorialAudit": {
-        "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-20261023/tongyeong-audit.json",
-        "score": 81,
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-photos-20261115/audit.json",
+        "score": 87,
         "publicationBlockers": [],
-        "gapCount": 3
+        "gapCount": 2
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json",
+      "photoRepairEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-tongyeong-photos-20261115/audit.json"
     },
     {
       "entryId": "KR-candidate-5adf0d4d7f94d6",

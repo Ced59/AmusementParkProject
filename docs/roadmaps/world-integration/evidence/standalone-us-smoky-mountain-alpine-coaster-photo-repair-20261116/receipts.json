@@ -1,0 +1,63 @@
+{
+  "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+  "imagesPublished": [
+    {
+      "imageId": "512b0b0e90f44eb7a3a7866f291aa82a",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53005707212/",
+      "createdAtUtc": "2026-11-16T00:42:32.066Z",
+      "takenAt": "2023-06-11",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "bbb16e1ed61f40498860cd02bbbc669b",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006678745/",
+      "createdAtUtc": "2026-11-16T00:42:44.948Z",
+      "takenAt": "2023-06-11",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "221a320cccd24015bd8108c56cc1a254",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006677500/",
+      "createdAtUtc": "2026-11-16T00:42:57.614Z",
+      "takenAt": "2023-06-11",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "imagesHidden": [
+    {
+      "imageId": "08b63464c9404e2aa4ae7b9c52601595",
+      "sourceUrl": "https://www.smokymountainalpinecoaster.com/uploads/6/4/1/9/6419391/___6775695_orig.jpg",
+      "updatedAtUtc": "2026-11-16T00:43:23.594Z",
+      "isPublished": false,
+      "reason": "Aucune licence de réutilisation établie sur la galerie officielle ; image conservée en privé."
+    },
+    {
+      "imageId": "fbba7d31225e49189cf3df9421569f6d",
+      "sourceUrl": "https://www.smokymountainalpinecoaster.com/uploads/6/4/1/9/6419391/___4212326_orig.jpg",
+      "updatedAtUtc": "2026-11-16T00:43:34.399Z",
+      "isPublished": false,
+      "reason": "Aucune licence de réutilisation établie sur la galerie officielle ; image conservée en privé."
+    }
+  ],
+  "historyRepair": {
+    "operationId": "a4840bbb-c5a2-41cc-b589-7c4fcd0dc09f",
+    "appliedAtUtc": "2026-11-16T00:44:49.631721Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 86,
+    "earnedPoints": 78,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

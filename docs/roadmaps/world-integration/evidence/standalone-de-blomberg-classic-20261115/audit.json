@@ -1,0 +1,68 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+  "entryId": "DE-standalone-a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+  "name": "Sommerrodelbahn Classic",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T15:18:42.288Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/a55847c8-a9ff-4026-9b6f-99e049ceb0ca/sommerrodelbahn-classic",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.der-blomberg.de/sommerrodelbahn",
+    "https://www.der-blomberg.de/blomberg-preise",
+    "https://www.der-blomberg.de/oeffnungszeiten"
+  ],
+  "identityNote": "Classic is the trough ride beginning at the middle cable-car station. Blomberg Blitz is a separate rail coaster from the valley; their ticket bundles can overlap but the attractions should not be merged.",
+  "calendar": {
+    "date": "2026-11-15",
+    "closedDays": 1,
+    "nuance": "The dedicated official hours page marked Sunday 15 November closed due to moisture and ice. The attraction overview showed a conflicting older 12:30–15:30 window, so the dedicated hours page and daily closure notice take precedence. No later dates are inferred; the dry-track rule applies."
+  },
+  "pricing": "Operator 2026 table: with uphill lift adult €10/€25.50/€43 for 1/3/6 rides; child age 8–13 €6.50/€17/€29. Downhill only adult €8.50, child 8–13 €6. Tickets for ages 3–7 are also listed in the operator table; under-eight riders sit with an adult. Bundled card use across Classic and Blitz is noted. Prices must be rechecked for 2027.",
+  "photo": {
+    "imageId": "47feaeafca424dc5916afb0bccda7093",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Ende_der_Sommerrodelbahn_am_Blomberg_2024-09-21.jpg",
+    "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Ende_der_Sommerrodelbahn_am_Blomberg_2024-09-21.jpg/1280px-Ende_der_Sommerrodelbahn_am_Blomberg_2024-09-21.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "creator": "Strubbl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "photographedAt": "Taken on 21 September 2024, 14:33:00 (according to Exif data)",
+    "sourceSha256": "78ebf9e3e5a5310b220a84e6642fbae026461a618fe471b3889788c14be0ba63",
+    "isCurrent": true,
+    "isPublished": true,
+    "altCaptionCreditLocaleCount": 8,
+    "importedAtUtc": "2026-11-15T15:16:25.433Z",
+    "binaryHttpStatus": 200
+  },
+  "photoCountPublished": 4,
+  "oldImageRightsGap": "Three earlier operator images are public; independent reuse rights have not been verified.",
+  "completenessBefore": {
+    "score": 68,
+    "level": "Partial",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 92,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "bbae9eea94ba4d2f9dd70b33a9f12dc7",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127468759424431",
+    "publishedAtUtc": "2026-11-15T15:17:58.5033678Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:17:07.439Z",
+  "nextAction": "Contrôler chaque nouveau jour et la saison 2027 sur le calendrier officiel ; vérifier les droits des trois anciennes images."
+}

@@ -1,0 +1,61 @@
+{
+  "entityId": "0c07145f-ea9d-462e-ab07-e23806ee133f",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "70c49a6a-de5b-400d-8f7d-2f8d4bf99859",
+      "appliedAtUtc": "2026-11-15T18:21:47.7552948Z",
+      "summary": "Création de la fiche masquée, localisation et huit descriptions."
+    },
+    {
+      "step": "visitor",
+      "operationId": "5fbab4d1-5d20-43ea-acec-726f464bf4cc",
+      "appliedAtUtc": "2026-11-15T18:23:12.7280195Z",
+      "summary": "Tarif officiel de 788 MOP et trois conditions d’accès localisées."
+    },
+    {
+      "step": "history",
+      "operationId": "b43a317e-a631-4ca9-bae9-f02694d4544a",
+      "appliedAtUtc": "2026-11-15T18:26:27.2261069Z",
+      "summary": "Année d’ouverture 2002 et événement historique officiel en huit langues."
+    }
+  ],
+  "images": [
+    {
+      "imageId": "3ec24bac42424b23ac1afbd7eda00f36",
+      "createdAtUtc": "2026-11-15T18:24:01.871Z",
+      "updatedAtUtc": "2026-11-15T18:25:04.296Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_1.JPG",
+      "published": true,
+      "current": true
+    },
+    {
+      "imageId": "d741724607cd4b2cb326c1c9fe64884f",
+      "createdAtUtc": "2026-11-15T18:24:09.621Z",
+      "updatedAtUtc": "2026-11-15T18:25:09.371Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_2.JPG",
+      "published": true,
+      "current": false
+    },
+    {
+      "imageId": "175cb89667194b71b62df7f5108d56a9",
+      "createdAtUtc": "2026-11-15T18:24:17.063Z",
+      "updatedAtUtc": "2026-11-15T18:25:14.848Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_3.JPG",
+      "published": true,
+      "current": false
+    }
+  ],
+  "sitePublication": {
+    "operationId": "52aea38d-f498-452b-885c-996e1ac75706",
+    "appliedAtUtc": "2026-11-15T18:27:06.0986045Z",
+    "url": "https://amusement-parks.fun/fr/attraction/0c07145f-ea9d-462e-ab07-e23806ee133f/macau-tower-skywalk"
+  },
+  "facebookPublication": {
+    "id": "5d00cec00dae4d2b89c73df7fc332f5c",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-15T18:27:55.4556084Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127487533424431",
+    "externalPostId": "1285475681307050_122127487533424431"
+  }
+}

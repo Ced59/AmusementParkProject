@@ -1,0 +1,116 @@
+{
+  "work": "Cool Runnings Cape Town créé comme luge d’été autonome à Bellville. Huit descriptions, trois photographies exactes publiées, onze offres tarifaires, calendrier de l’attraction, deux conditions d’accès, huit pages publiques et annonce Facebook vérifiés.",
+  "qualification": "Piste permanente avec billetterie propre, entrée libre et exploitation actuelle. Recherche officielle Park et StandaloneAttraction des alias sans résultat avant création. Distincte de la référence américaine Cool Runnings LLC / Lost Mine Mountain Coaster, encore à rapprocher.",
+  "sources": {
+    "Exploitant — identité et piste": "https://coolrunnings.capetown/",
+    "Exploitant — horaires et vacances jusqu’en janvier 2028": "https://coolrunnings.capetown/times",
+    "Exploitant — tarifs 2026–2027": "https://coolrunnings.capetown/pricing",
+    "Exploitant — conditions de participation": "https://coolrunnings.capetown/terms-and-conditions/",
+    "Coasterpedia — constructeur et ouverture": "https://coasterpedia.net/wiki/Cool_Runnings",
+    "Coasterpedia — CoasterBloom, remontée 2024, CC BY-SA 4.0": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_2024_01.jpg",
+    "Coasterpedia — CoasterBloom, virage, CC BY-SA 4.0": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_01.jpg",
+    "Coasterpedia — CoasterBloom, station et bobs, CC BY-SA 4.0": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_02.jpg",
+    "Licence CC BY-SA 4.0": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "Fiche publique Cool Runnings Cape Town": "https://amusement-parks.fun/fr/attraction/95094ae6-007f-42b8-b5d2-d2b3548dc71a/cool-runnings-cape-town"
+  },
+  "entity": {
+    "id": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+    "name": "Cool Runnings Cape Town",
+    "countryCode": "ZA",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "c8b0e2e122274da7b8f5ba17dac58d19",
+      "author": "CoasterBloom",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_2024_01.jpg",
+      "createdAtUtc": "2026-11-15T21:51:13.485Z",
+      "published": false,
+      "current": false,
+      "publicBinaryHttpStatus": null
+    },
+    {
+      "imageId": "1f10e7598d0646b09e2096312aea341a",
+      "author": "CoasterBloom",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_01.jpg",
+      "createdAtUtc": "2026-11-15T21:51:41.305Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "e7ef304d109b4bb691e33f66ba0f6352",
+      "author": "CoasterBloom",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_02.jpg",
+      "createdAtUtc": "2026-11-15T21:52:01.096Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "0e743e28fad14f7b9b6da2f595678154",
+      "author": "CoasterBloom",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://images.coasterpedia.net/thumb/3/3c/Cool_Runnings_%28Cool_Runnings_Toboggan_Family_Park%29_2024_01.jpg/1536px-Cool_Runnings_%28Cool_Runnings_Toboggan_Family_Park%29_2024_01.jpg.webp",
+      "createdAtUtc": "2026-11-15T21:58:55.749Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "lengthMeters": 1250,
+    "maximumSpeedKmH": 40,
+    "manufacturer": "Wiegand",
+    "openingDate": "2007-06-30",
+    "priceOffers": 11,
+    "currency": "ZAR",
+    "fareValidityThrough": "2027-09-30",
+    "openingHourRules": 2,
+    "holidayDateOverrides": 125,
+    "calendarThrough": "2028-01-11",
+    "minimumAge": 3,
+    "underEightAdultCompanion": true,
+    "address": "Off Carl Cronje Drive, Tygervalley, Cape Town 7530",
+    "coordinates": [
+      -33.8802328,
+      18.629964
+    ]
+  },
+  "audit": {
+    "completenessScore": 97,
+    "dataQualityLevel": "Excellent",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 3,
+    "privateImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/95094ae6-007f-42b8-b5d2-d2b3548dc71a/cool-runnings-cape-town",
+    "sitePublishedAtUtc": "2026-11-15T22:02:43.4275096Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:886b492f-bb1d-4ce8-b170-1bdc51a7bfa0",
+    "facebookStatus": "Published",
+    "facebookId": "82001d084d27462a891b4502bfc0e0ba",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127514617424431",
+    "facebookPublishedAtUtc": "2026-11-15T22:04:35.3387239Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T22:01:51.000Z",
+  "remainingGaps": [
+    "Une variante locale réduite de la photo de remontée reste privée après import initial ; la variante officielle optimisée est publiée. La surface PARK_DATA_EDITOR actuelle ne permet pas de supprimer directement une image de standalone.",
+    "Vérifier les nouveaux tarifs après le 30 septembre 2027 et les horaires après le 11 janvier 2028."
+  ]
+}

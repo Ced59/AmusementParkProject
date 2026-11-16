@@ -1,0 +1,12 @@
+{
+  "decision": "InsidePark",
+  "reviewedAt": "2026-11-15",
+  "entriesRetained": [
+    "US-candidate-b51e27ae9f4c11",
+    "US-candidate-b781a1f4fe039d",
+    "US-candidate-standalone-c0ef02f9420560"
+  ],
+  "reason": "Tarifs 2026 de Cranmore Mountain Adventure Park : accès commun aux activités, dont Mountain Coaster, Soaring Eagle Zip Line, Giant Swing et Scenic Chairlift. La page officielle ne présente pas de billet propre au coaster. Piste constructeur rattachée au même coaster. Aucune donnée n’a été intégrée sur le site pour ces lignes ; lastDataIntegrationAt reste null.",
+  "source": "https://cranmore.com/mountain-adventure-park",
+  "nextReview": "Rechercher une billetterie distincte et le prochain calendrier à la réouverture du Mountain Adventure Park."
+}

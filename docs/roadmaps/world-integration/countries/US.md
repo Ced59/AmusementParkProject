@@ -14,24 +14,24 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 
 | État éditorial | Nombre |
 | --- | ---: |
-| À intégrer | 232 |
-| À qualifier | 1738 |
+| À intégrer | 229 |
+| À qualifier | 1725 |
 | En cours | 0 |
-| Bloqué | 0 |
-| Intégration achevée | 31 |
+| Bloqué | 2 |
+| Intégration achevée | 43 |
 | Publié, date inconnue | 38 |
-| Hors périmètre enregistré | 15 |
-| Doublon conservé | 1 |
+| Hors périmètre enregistré | 17 |
+| Doublon conservé | 7 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **2621**. Sources : ADG — Project Book, AZA, Aerophile — références constructeur, Brogent — projet constructeur, Découverte complémentaire — site officiel, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte), ZipRider — référence constructeur.
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **38 publiés**, **232 masqués à intégrer**, **21 masqués NotRelevant à réexaminer**, **1526 candidats sans fiche**.
+Parcs : **38 publiés**, **229 masqués à intégrer**, **21 masqués NotRelevant à réexaminer**, **1526 candidats sans fiche**.
 
-Standalone : **31 publiées**, **0 masquées**, **30 candidates sans fiche**. Autres dossiers : **2 types à décider**, **174 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **43 publiées**, **0 masquées**, **25 candidates sans fiche**. Autres dossiers : **2 types à décider**, **168 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **28 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **65 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **5 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **23 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **59 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **8 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -47,4 +47,4 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 - [Page 6 — lignes 1251 à 1500](US/006.md)
 - [Page 7 — lignes 1501 à 1750](US/007.md)
 - [Page 8 — lignes 1751 à 2000](US/008.md)
-- [Page 9 — lignes 2001 à 2055](US/009.md)
+- [Page 9 — lignes 2001 à 2061](US/009.md)

@@ -1,0 +1,94 @@
+{
+  "entryId": "CA-candidate-discovery-15adef96b5ca76",
+  "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+  "integrationHistory": [
+    {
+      "eventId": "apply-a45a1903-713d-4793-95cf-0e3c4ad48507",
+      "appliedAt": "2026-11-15T13:19:10.852Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+      "evidence": "PARK_DATA_EDITOR:apply:a45a1903-713d-4793-95cf-0e3c4ad48507",
+      "auditEvidence": null,
+      "summary": "Création privée du parcours en bateau canadien, identité, position du guichet et huit descriptions."
+    },
+    {
+      "eventId": "apply-77695fd0-e7cc-4533-bd6c-76b8524adba6",
+      "appliedAt": "2026-11-15T13:19:28.435Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+      "evidence": "PARK_DATA_EDITOR:apply:77695fd0-e7cc-4533-bd6c-76b8524adba6",
+      "auditEvidence": null,
+      "summary": "Tarifs officiels adulte et enfant, accès au quai, saison et conditions de réservation intégrés."
+    },
+    {
+      "eventId": "image-9a4f97d6b1dc4dceb41eaa340313ca30",
+      "appliedAt": "2026-11-15T13:20:00.114Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+      "evidence": "PARK_DATA_EDITOR:image:9a4f97d6b1dc4dceb41eaa340313ca30@2026-11-15T13:20:00.114Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la croisière datée de 2026 : huit alt, légendes et crédits ; Gogerr, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-56c9063bbddd441c8ed14420c05652ae",
+      "appliedAt": "2026-11-15T13:20:21.545Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+      "evidence": "PARK_DATA_EDITOR:image:56c9063bbddd441c8ed14420c05652ae@2026-11-15T13:20:21.545Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la croisière datée de 2026 : huit alt, légendes et crédits ; K2HWY, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-d6aee4c3366947ecb7a87a49cbe7241f",
+      "appliedAt": "2026-11-15T13:20:38.305Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+      "evidence": "PARK_DATA_EDITOR:image:d6aee4c3366947ecb7a87a49cbe7241f@2026-11-15T13:20:38.305Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la croisière datée de 2021 : huit alt, légendes et crédits ; Maksim Sokolov (maxergon.com), CC BY-SA 4.0."
+    },
+    {
+      "eventId": "apply-663aaa68-b490-4fe7-9dbc-b944cd9a4fa8",
+      "appliedAt": "2026-11-15T13:21:22.035Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+      "evidence": "PARK_DATA_EDITOR:apply:663aaa68-b490-4fe7-9dbc-b944cd9a4fa8",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-voyage-to-the-falls-20261115/audit.json",
+      "summary": "Distinction officielle de la navigation avant et après le coucher du soleil ajoutée dans huit langues."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "0fc7d6e6-a6b1-458c-8e6a-3cde2819ac27",
+    "appliedAtUtc": "2026-11-15T13:21:48.6335608Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127457395424431",
+    "publishedAtUtc": "2026-11-15T13:22:26.9403131Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "9a4f97d6b1dc4dceb41eaa340313ca30",
+      "uploadedAtUtc": "2026-11-15T13:19:56.713Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "56c9063bbddd441c8ed14420c05652ae",
+      "uploadedAtUtc": "2026-11-15T13:20:18.205Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "d6aee4c3366947ecb7a87a49cbe7241f",
+      "uploadedAtUtc": "2026-11-15T13:20:34.967Z"
+    }
+  ]
+}

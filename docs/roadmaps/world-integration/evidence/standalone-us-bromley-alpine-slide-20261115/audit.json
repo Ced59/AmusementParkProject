@@ -1,0 +1,99 @@
+{
+  "work": "Bromley Alpine Slide intégrée comme attraction autonome à Peru, Vermont : descente individuelle, huit descriptions, deux photos exactes CC BY-SA 2.0, règles officielles, ouverture sourcée, huit pages publiques et annonce Facebook.",
+  "qualification": "Bromley vend une descente seule, séparément du pass du Mountain Adventure Park. Recherche PARK_DATA_EDITOR de Bromley dans Park et StandaloneAttraction sans résultat. Le ZipRider de Bromley est une installation distincte, toujours en qualification.",
+  "sources": {
+    "Exploitant — piste et billet individuel": "https://www.bromley.com/mountain-adventure-park/alpine-slide/",
+    "Exploitant — guide des tailles": "https://www.bromley.com/ride-guide/",
+    "Ski Vermont — histoire et longueur": "https://skivermont.com/50-years-of-smiles-bromley-mountain-celebrates-the-alpine-slides-golden-anniversary",
+    "Wikimedia Commons — photo exacte et GPS": "https://commons.wikimedia.org/wiki/File:Bromley_Mountain_071506_020.jpg",
+    "Licence CC BY-SA 2.0": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "Fiche publiée": "https://amusement-parks.fun/fr/attraction/39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4/bromley-alpine-slide"
+  },
+  "entity": {
+    "id": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+    "name": "Bromley Alpine Slide",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "fb1aa9219cf24d2e9eac12d1686a32dc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bromley_Mountain_071506_020.jpg",
+      "createdAtUtc": "2026-11-15T23:50:37.375Z",
+      "author": "Dougtone",
+      "license": "CC BY-SA 2.0",
+      "takenAt": "2006-07-15",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "c50622696fc64af3bd22cb2add170964",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bromley_Mountain_071506_021.jpg",
+      "createdAtUtc": "2026-11-15T23:50:50.81Z",
+      "author": "Dougtone",
+      "license": "CC BY-SA 2.0",
+      "takenAt": "2006-07-15",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "type": "ThrillRide",
+    "subtype": "Alpine slide",
+    "openedAt": "1976-07-03",
+    "northAmericaFirstTripleTrack": true,
+    "measuredLengthMetersRounded": 1237,
+    "singleRideTicketConfirmed": true,
+    "lastPublishedSummerDate": "2026-10-12",
+    "nextSeasonDatesConfirmed": false,
+    "nextSeasonPricesConfirmed": false,
+    "currentStatus": "TemporarilyClosed for season",
+    "structuredAccessConditions": 2,
+    "address": "3984 VT Route 11, Peru, Vermont 05152",
+    "photoCameraCoordinates": [
+      43.221955,
+      -72.937674
+    ]
+  },
+  "audit": {
+    "completenessScore": 93,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "historyEvents": 1,
+    "publishedExactAttractionImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinariesHttpStatus": [
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4/bromley-alpine-slide",
+    "sitePublishedAtUtc": "2026-11-15T23:56:43.0766127Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:4ab35364-09f4-4583-a3d8-bdebd33db6ad",
+    "facebookStatus": "Published",
+    "facebookId": "88f2727db2ac42068dea5a569da3dae9",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127523239424431",
+    "facebookPublishedAtUtc": "2026-11-15T23:57:21.2319681Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T23:55:33.300Z",
+  "remainingGaps": [
+    "La saison publiée en 2026 est terminée ; vérifier les dates et tarifs de 2027 lorsque Bromley les publie.",
+    "Photos exactes de 2006 : chercher des vues récentes sous licence réutilisable.",
+    "Aucune photographie réutilisable de l’ouverture de 1976 trouvée ; la frise ne détourne pas les vues de 2006 pour représenter cet événement.",
+    "Constructeur historique évoqué par des sources secondaires, mais référence exacte et modèle non reliés sans preuve suffisante."
+  ]
+}

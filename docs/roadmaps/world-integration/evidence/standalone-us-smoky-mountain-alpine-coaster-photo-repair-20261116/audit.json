@@ -1,0 +1,101 @@
+{
+  "work": "Réparation de la galerie de Smoky Mountain Alpine Coaster : trois nouvelles photos exactes sous CC BY 2.0, deux photos officielles sans licence réutilisable masquées, références historiques réparées. Fiche et publication Facebook existantes conservées.",
+  "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+  "sources": {
+    "Flickr — virage de jour": "https://www.flickr.com/photos/rollercoasterphilosophy/53005707212/",
+    "Flickr — station": "https://www.flickr.com/photos/rollercoasterphilosophy/53006678745/",
+    "Flickr — montée éclairée": "https://www.flickr.com/photos/rollercoasterphilosophy/53006677500/",
+    "Licence CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+    "Fiche publique": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster"
+  },
+  "photosPublished": [
+    {
+      "imageId": "512b0b0e90f44eb7a3a7866f291aa82a",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53005707212/",
+      "createdAtUtc": "2026-11-16T00:42:32.066Z",
+      "takenAt": "2023-06-11",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "bbb16e1ed61f40498860cd02bbbc669b",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006678745/",
+      "createdAtUtc": "2026-11-16T00:42:44.948Z",
+      "takenAt": "2023-06-11",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "221a320cccd24015bd8108c56cc1a254",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006677500/",
+      "createdAtUtc": "2026-11-16T00:42:57.614Z",
+      "takenAt": "2023-06-11",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "photosHidden": [
+    {
+      "imageId": "08b63464c9404e2aa4ae7b9c52601595",
+      "sourceUrl": "https://www.smokymountainalpinecoaster.com/uploads/6/4/1/9/6419391/___6775695_orig.jpg",
+      "updatedAtUtc": "2026-11-16T00:43:23.594Z",
+      "isPublished": false,
+      "reason": "Aucune licence de réutilisation établie sur la galerie officielle ; image conservée en privé."
+    },
+    {
+      "imageId": "fbba7d31225e49189cf3df9421569f6d",
+      "sourceUrl": "https://www.smokymountainalpinecoaster.com/uploads/6/4/1/9/6419391/___4212326_orig.jpg",
+      "updatedAtUtc": "2026-11-16T00:43:34.399Z",
+      "isPublished": false,
+      "reason": "Aucune licence de réutilisation établie sur la galerie officielle ; image conservée en privé."
+    }
+  ],
+  "historyRepair": {
+    "operationId": "a4840bbb-c5a2-41cc-b589-7c4fcd0dc09f",
+    "appliedAtUtc": "2026-11-16T00:44:49.631721Z",
+    "eventMainImageIds": [
+      null,
+      null,
+      null
+    ],
+    "accidentArticleMainImageId": null
+  },
+  "audit": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinariesHttpStatus": [
+      200,
+      200,
+      200
+    ],
+    "publicPageContainsNewPhotoIds": true,
+    "publicPageContainsOldPhotoIds": false
+  },
+  "facebook": {
+    "originalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124208023424431",
+    "newPostPublished": false
+  },
+  "lastDataIntegrationAt": "2026-11-16T00:44:49.631Z",
+  "remainingGaps": [
+    "Tarifs officiels actuels non établis ; aucun prix inventé.",
+    "Horaires hebdomadaires sujets à changement et sans calendrier futur daté.",
+    "Les vues de 2023 ne sont pas présentées comme des photos des événements de 2013, 2014 ou 2016."
+  ]
+}

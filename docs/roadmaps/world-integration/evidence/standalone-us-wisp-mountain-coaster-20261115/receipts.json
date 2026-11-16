@@ -1,0 +1,77 @@
+{
+  "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "b9745318-aac1-4b1c-b142-1da2cb2fd31b",
+      "appliedAtUtc": "2026-11-15T22:15:11.666952Z",
+      "evidence": "PARK_DATA_EDITOR:apply:b9745318-aac1-4b1c-b142-1da2cb2fd31b"
+    },
+    {
+      "step": "spec",
+      "operationId": "5dc73a23-4232-43ae-9b6b-7961e50be5a0",
+      "appliedAtUtc": "2026-11-15T22:17:23.762877Z",
+      "evidence": "PARK_DATA_EDITOR:apply:5dc73a23-4232-43ae-9b6b-7961e50be5a0"
+    },
+    {
+      "step": "pricing",
+      "operationId": "4fa41dec-cb0a-4ed7-bd5b-b01fab0e6aca",
+      "appliedAtUtc": "2026-11-15T22:17:45.8497287Z",
+      "evidence": "PARK_DATA_EDITOR:apply:4fa41dec-cb0a-4ed7-bd5b-b01fab0e6aca"
+    },
+    {
+      "step": "hours",
+      "operationId": "7fa9b183-8ed6-4684-99de-ca284d1aed25",
+      "appliedAtUtc": "2026-11-15T22:18:07.7520073Z",
+      "evidence": "PARK_DATA_EDITOR:apply:7fa9b183-8ed6-4684-99de-ca284d1aed25"
+    },
+    {
+      "step": "access",
+      "operationId": "c702b1a7-4471-46e5-93d4-8fbe165bef51",
+      "appliedAtUtc": "2026-11-15T22:18:29.3667031Z",
+      "evidence": "PARK_DATA_EDITOR:apply:c702b1a7-4471-46e5-93d4-8fbe165bef51"
+    },
+    {
+      "step": "description",
+      "operationId": "93b127ae-1531-4ebb-8a95-2266e07f7649",
+      "appliedAtUtc": "2026-11-15T22:20:04.3815782Z",
+      "evidence": "PARK_DATA_EDITOR:apply:93b127ae-1531-4ebb-8a95-2266e07f7649"
+    },
+    {
+      "step": "location",
+      "operationId": "b4eb00a2-35fb-46e3-b1ef-6a56654b0686",
+      "appliedAtUtc": "2026-11-15T22:20:59.7963389Z",
+      "evidence": "PARK_DATA_EDITOR:apply:b4eb00a2-35fb-46e3-b1ef-6a56654b0686"
+    },
+    {
+      "step": "publish",
+      "operationId": "c16c4465-9c8d-4a3f-9b0a-cb74b0446a8d",
+      "appliedAtUtc": "2026-11-15T22:21:28.9587808Z",
+      "evidence": "PARK_DATA_EDITOR:apply:c16c4465-9c8d-4a3f-9b0a-cb74b0446a8d"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "894facbeba5b46f8828ed93028614973",
+      "createdAtUtc": "2026-11-15T22:15:48.788Z",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Mountain_Coaster_(Wisp_Resort)_2024-09_01.jpg",
+      "published": true,
+      "current": true,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "facebook": {
+    "id": "a87039006dc64e779f041c9835534207",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127516339424431",
+    "publishedAtUtc": "2026-11-15T22:22:34.5497374Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 76,
+    "earnedPoints": 72,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

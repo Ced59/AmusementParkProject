@@ -1,0 +1,71 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+  "entryId": "IT-standalone-e1af2dac-4f6c-404d-9844-47b4e6048783",
+  "name": "Bardonecchia Alpine Coaster",
+  "countryCode": "IT",
+  "auditAtUtc": "2026-11-15T15:34:15.921Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/e1af2dac-4f6c-404d-9844-47b4e6048783/bardonecchia-alpine-coaster",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.bardonecchiaski.com/it/attivita-estive/alpine-coaster",
+    "https://www.bardonecchiaski.com/it/attivita-invernali/alpine-coaster",
+    "https://www.bardonecchiaski.com/it/attivita/tariffe-estive",
+    "https://www.bardonecchiaski.com/it/live-info/orari-di-apertura-estate",
+    "https://www.bardonecchiaski.com/it/l-alpine-coaster-e-aperto-anche-in-inverno"
+  ],
+  "editorial": "Eight rewritten descriptions, age 4 minimum, accompaniment under eight with age and height criteria, displayed winter fares in six structured offers, summer 2026 fares in notes. No winter 2026/27 opening dates inferred from ski resort schedule.",
+  "pricing": "Official winter attraction page currently displays adult €7/€14/€20/€39/€60 for 1/2/3/6/10 runs; under-eight single €6. The official explicitly labeled summer 2026 schedule lists €6/€12/€17/€33/€50 and €5. Winter page does not show an explicit tariff effective date; verify at booking.",
+  "hours": "Official summer hours page still shows September weekends 10:00–18:00, weather permitting. No attraction-specific winter 2026/27 hours are published. No winter schedule or closures invented.",
+  "photoCountPublished": 2,
+  "photos": [
+    {
+      "imageId": "b68c7ae0f6c14949993e7db0a8f3d13d",
+      "sourceUrl": "https://www.bardonecchiaski.com/files/anteprima/1920/alpine-coaster-grandi-e-piccini%2C2356.jpg",
+      "exactMatchVisuallyChecked": true,
+      "current": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retained as an existing production image"
+    },
+    {
+      "imageId": "d1b66bf0539348ac95b254d307e987aa",
+      "sourceUrl": "https://pedelec-elektro-fahrrad.de/wp-content/uploads/2022/03/Alpine-Coaster5.jpg",
+      "exactMatchVisuallyChecked": true,
+      "current": false,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing third-party image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retained as an existing production image"
+    }
+  ],
+  "photoFollowup": "Seek an additional exact recent photo with a verifiable reuse licence; review rights for the two legacy photos.",
+  "completenessBefore": {
+    "score": 75,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 90,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "197193de15fd4fcf9a204fbb88776c13",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127469605424431",
+    "publishedAtUtc": "2026-11-15T15:33:15.0645569Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:32:19.833Z",
+  "nextAction": "Revalider les tarifs et les jours d’ouverture de l’hiver 2026–2027 auprès de l’exploitant ; trouver une photo supplémentaire exacte avec licence vérifiable et contrôler les droits des deux images existantes."
+}

@@ -1,0 +1,29 @@
+{
+  "entryId": "DE-standalone-cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+  "entityId": "cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+  "integrationHistory": [
+    {
+      "eventId": "apply-6e030a2c-7442-468a-83f3-fc805ceebbbb",
+      "appliedAt": "2026-11-15T16:14:37.694Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+      "evidence": "PARK_DATA_EDITOR:apply:6e030a2c-7442-468a-83f3-fc805ceebbbb",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-jauden-20261115/audit.json",
+      "summary": "Huit descriptions, six tarifs, conditions d’âge et fermeture de saison corrigés ; cinq photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "5d7d11f90c644e1f989df227c41c3720",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127473673424431",
+    "publishedAtUtc": "2026-11-15T16:15:30.3083429Z"
+  },
+  "productionPhotoIds": [
+    "04ac4378d77640739851ccc13bbb230a",
+    "6a1ce1455d2b44eabe7d235a8cbc996a",
+    "d81c6cd1a35243699ec53b1654b359df",
+    "d9562664240b46018dec88b36e03581b",
+    "0125899ddd4347aa921b665d70cce314"
+  ]
+}

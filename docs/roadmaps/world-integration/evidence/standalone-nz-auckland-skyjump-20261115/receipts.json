@@ -1,0 +1,71 @@
+{
+  "entryId": "NZ-candidate-discovery-92659a55243cae",
+  "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+  "integrationHistory": [
+    {
+      "eventId": "apply-f8408dcb-0109-4e3a-bff8-3f5bddd15ad0",
+      "appliedAt": "2026-11-15T12:59:00.234Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+      "evidence": "PARK_DATA_EDITOR:apply:f8408dcb-0109-4e3a-bff8-3f5bddd15ad0",
+      "auditEvidence": null,
+      "summary": "Création de SkyJump comme descente guidée autonome depuis la Sky Tower, position de la tour et huit descriptions."
+    },
+    {
+      "eventId": "image-d3ea5a647a194d1a903505b97b3f138e",
+      "appliedAt": "2026-11-15T12:59:30.180Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+      "evidence": "PARK_DATA_EDITOR:image:d3ea5a647a194d1a903505b97b3f138e",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la descente SkyJump datée de 2012, huit alt/légendes/crédits ; Simon_sees, CC BY 2.0."
+    },
+    {
+      "eventId": "image-ca3dec0833f945f3974410d6c2cc9fdc",
+      "appliedAt": "2026-11-15T13:00:20.558Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+      "evidence": "PARK_DATA_EDITOR:image:ca3dec0833f945f3974410d6c2cc9fdc",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la descente SkyJump datée de 2012, huit alt/légendes/crédits ; Simon_sees, CC BY 2.0."
+    },
+    {
+      "eventId": "apply-502597a8-6403-4809-9f00-0cc5465787e0",
+      "appliedAt": "2026-11-15T13:00:42.067Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+      "evidence": "PARK_DATA_EDITOR:apply:502597a8-6403-4809-9f00-0cc5465787e0",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-auckland-skyjump-20261115/audit.json",
+      "summary": "Tarif officiel, horaires quotidiens, âge, poids, accès et météo dans huit langues."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "08ad52b6-c0e4-4ec7-93a3-76b336425371",
+    "appliedAtUtc": "2026-11-15T13:01:13.8540331Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127456075424431",
+    "publishedAtUtc": "2026-11-15T13:01:53.5226845Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "d3ea5a647a194d1a903505b97b3f138e",
+      "uploadedAtUtc": "2026-11-15T12:59:26.796Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:59:30.18Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "ca3dec0833f945f3974410d6c2cc9fdc",
+      "uploadedAtUtc": "2026-11-15T13:00:17.054Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:00:20.558Z"
+    }
+  ]
+}

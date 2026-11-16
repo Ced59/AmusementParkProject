@@ -947,19 +947,21 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Ancien Parakeet Pete’s Steampunk Balloon à Branson Landing ; fermeture permanente signalée par Tripadvisor et Wanderlog en 2026.",
+      "identityConfidence": "Référence constructeur reliée à Parakeet Pete’s Steampunk Balloon ; deux annuaires visiteurs signalent la fermeture permanente.",
       "possibleMatches": [],
       "aliases": [
-        "Aerophare Branson Branson, Missouri, USA"
+        "Aerophare Branson Branson, Missouri, USA",
+        "Parakeet Pete’s Steampunk Balloon",
+        "Steampunk Balloon — Branson Landing"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver comme installation historique fermée, hors file des créations actuelles. Réexaminer uniquement avec preuve officielle de réouverture du même ballon.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -970,6 +972,16 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tripadvisor — Parakeet Pete’s Steampunk Balloon signalé définitivement fermé",
+          "url": "https://www.tripadvisor.ca/Attraction_Review-g44160-d8326255-Reviews-Parakeet_Pete_s_Steampunk_Balloon-Branson_Missouri.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wanderlog — Steampunk Balloon signalé fermé",
+          "url": "https://wanderlog.com/place/details/992230/parakeet-petes-steampunk-balloon",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -979,7 +991,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Aérophare Branson",
@@ -987,13 +999,13 @@
             "url": "https://www.aerophile.com/en/clients/aerophare-branson/",
             "family": "Aérophare",
             "sourceVenueName": "Aérophare Branson",
-            "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
+            "sourceLifecycleSignal": "Fermeture permanente signalée en 2026.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Branson, Missouri",
             "referenceId": "aerophile-aerophare-branson"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Ancien Aérophare de Branson Landing, connu comme Parakeet Pete’s Steampunk Balloon, signalé définitivement fermé par deux annuaires visiteurs."
       }
     },
     {
@@ -2149,27 +2161,30 @@
       "entryId": "US-candidate-standalone-c0ef02f9420560",
       "name": "Alpine Coaster Wiegand — Cranmore",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Référence constructeur du Mountain Coaster déjà couvert par US-candidate-b781a1f4fe039d et rattaché au Mountain Adventure Park US-candidate-b51e27ae9f4c11.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-candidate-b51e27ae9f4c11",
+        "US-candidate-b781a1f4fe039d"
+      ],
       "aliases": [
         "Cranmore"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la référence Wiegand comme doublon sourcé de US-candidate-b781a1f4fe039d. Suivre la fiche du parc US-candidate-b51e27ae9f4c11, sans créer de standalone.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2180,23 +2195,28 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.cranmore.com",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Cranmore Mountain Adventure Park — forfait commun coaster, zip line, swing et chairlift",
+          "url": "https://cranmore.com/mountain-adventure-park",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Cranmore",
+            "name": "Mountain Coaster",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2062",
             "family": "Alpine coaster",
-            "sourceVenueName": "Cranmore",
-            "referenceId": "location-id-2062"
+            "sourceVenueName": "Cranmore Mountain Adventure Park"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "La piste Wiegand correspond au coaster du Mountain Adventure Park, dont l’accès est vendu en forfait avec les autres activités."
+      },
+      "duplicateOf": "US-candidate-b781a1f4fe039d"
     },
     {
       "entryId": "US-candidate-standalone-640a286d47f45c",
@@ -2298,27 +2318,29 @@
       "entryId": "US-candidate-standalone-122a877042e075",
       "name": "Alpine Coaster Wiegand — Goats on the roof",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "La référence Wiegand renvoie au Goat Coaster du complexe Goats on the Roof of the Smokies ; ancien domaine thecoastertn.com redirigé vers la page officielle de cette piste.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-park-e1a1c84b-be47-40a2-97fd-f766b85c07f0"
+      ],
       "aliases": [
         "Goats on the roof"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Dossier constructeur conservé comme renvoi vers la fiche Park masquée US-park-e1a1c84b-be47-40a2-97fd-f766b85c07f0 ; suivre la piste comme attraction du complexe. Aucune date d’intégration à inventer.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2329,11 +2351,21 @@
           "label": "Opérateur référencé par la source",
           "url": "http://thecoastertn.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — activités du complexe",
+          "url": "https://goatsontheroofofthesmokies.com/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — Goat Coaster",
+          "url": "https://goatsontheroofofthesmokies.com/goat-coaster.php",
+          "accessedAt": "2026-11-16"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Goats on the roof",
@@ -2344,8 +2376,9 @@
             "referenceId": "location-id-1913"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Le domaine thecoastertn.com redirige vers la page Goat Coaster de Goats on the Roof ; piste interne au complexe multi-activités enregistré comme Park."
+      },
+      "duplicateOf": "US-park-e1a1c84b-be47-40a2-97fd-f766b85c07f0"
     },
     {
       "entryId": "US-candidate-standalone-48eebe96100ddd",
@@ -2616,27 +2649,29 @@
       "entryId": "US-candidate-standalone-931332018a07fe",
       "name": "Alpine Coaster Wiegand — Leavenworth",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "La référence Wiegand de Leavenworth correspond à Tumwater Twister, déjà ParkItem du Leavenworth Adventure Park masqué.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-park-1f7f3dd9-7d8f-412c-aaac-48cdef2f2973"
+      ],
       "aliases": [
         "Leavenworth"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence constructeur comme renvoi vers US-park-1f7f3dd9-7d8f-412c-aaac-48cdef2f2973 et son ParkItem Tumwater Twister ; aucune standalone ou date d’intégration à créer.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2647,11 +2682,16 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.leavenworthadventurepark.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Tumwater Twister",
+          "url": "https://rcdb.com/20032.htm",
+          "accessedAt": "2026-11-16"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Leavenworth",
@@ -2662,8 +2702,9 @@
             "referenceId": "location-id-2172"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Tumwater Twister est un ParkItem du parc multi-activités Leavenworth Adventure Park ; la piste constructeur est liée au parc et non à une nouvelle fiche autonome."
+      },
+      "duplicateOf": "US-park-1f7f3dd9-7d8f-412c-aaac-48cdef2f2973"
     },
     {
       "entryId": "US-candidate-standalone-cecd90fa08e6de",
@@ -2828,55 +2869,180 @@
     },
     {
       "entryId": "US-candidate-standalone-ad74e1b287c010",
-      "name": "Alpine Coaster Wiegand — Park City Alpine Coaster",
-      "entityKind": "ToQualify",
+      "name": "Park City Mountain Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
-      "locality": null,
-      "siteId": null,
+      "locality": "Park City Mountain Village, Park City, Utah",
+      "siteId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T19:11:50Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitant actif ; prochaine saison hivernale annoncée du 20 novembre 2026 au 19 avril 2027, sous réserve de météo.",
+      "identityConfidence": "Billet individuel et page propre de l’exploitant ; ancienne référence constructeur reliée, sans homonyme sur le site.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-candidate-4a1028e22d6130",
+        "US-candidate-discovery-53834c6432eb545a"
+      ],
       "aliases": [
-        "Park City Alpine Coaster"
+        "Park City Alpine Coaster",
+        "Alpine Coaster — Park City Mountain"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
-      "sources": [
+      "lastDataIntegrationAt": "2026-11-15T19:11:54.904Z",
+      "integrationHistory": [
         {
-          "label": "Wiegand — références constructeur",
-          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2100",
-          "accessedAt": "2026-10-22"
+          "eventId": "apply-fcfb389b-8725-4657-be48-04c18317527f",
+          "appliedAt": "2026-11-15T19:03:26.464Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:apply:fcfb389b-8725-4657-be48-04c18317527f",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées pour le Mountain Coaster."
         },
         {
-          "label": "Opérateur référencé par la source",
-          "url": "https://www.parkcitymountain.com/",
-          "accessedAt": "2026-10-22"
+          "eventId": "photo-86515e8236674f5e91c34267eca00f38",
+          "appliedAt": "2026-11-15T19:04:03.224Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:photo:86515e8236674f5e91c34267eca00f38",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du Mountain Coaster, CC BY 2.0, avec crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "photo-c27c7ccb7fd74c3e9dc59046e3b72a67",
+          "appliedAt": "2026-11-15T19:04:15.435Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:photo:c27c7ccb7fd74c3e9dc59046e3b72a67",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du Mountain Coaster, CC BY 2.0, avec crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "photo-3803ee307e914cb7a00bfcbc8437317b",
+          "appliedAt": "2026-11-15T19:04:27.579Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:photo:3803ee307e914cb7a00bfcbc8437317b",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du Mountain Coaster, CC BY 2.0, avec crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "apply-db387a67-d7d2-441f-8297-155872112825",
+          "appliedAt": "2026-11-15T19:05:54.096Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:apply:db387a67-d7d2-441f-8297-155872112825",
+          "auditEvidence": null,
+          "summary": "Horaires officiels de la saison hivernale 2026/27 structurés ; fermeture jusqu’au 20 novembre."
+        },
+        {
+          "eventId": "photo-update-86515e8236674f5e91c34267eca00f38",
+          "appliedAt": "2026-11-15T19:11:54.904Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:photo:86515e8236674f5e91c34267eca00f38",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-park-city-mountain-coaster-20261115/audit.json",
+          "summary": "Description de la photo principale corrigée ; huit pages et trois images publiées, audit sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier tarifs, restrictions officielles et prochain calendrier avant une nouvelle intégration de données.",
+      "sources": [
+        {
+          "label": "Park City Mountain — Mountain Coaster",
+          "url": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-coaster.aspx",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — calendrier hiver 2026/27",
+          "url": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/hours-of-operation.aspx",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — billet Adventure Park Single Ride",
+          "url": "https://www.parkcitymountain.com/travel-guide/perfect-summer-itinerary",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — carte été, coaster distinct de la luge",
+          "url": "https://www.parkcitymountain.com/-/aemasset/sitecore/park-city/maps/20250513_PC_summer-trail_map_001.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wiegand — référence Park City Alpine Coaster",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2100",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Jeremy Thompson, station 2024, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53837817995/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Jeremy Thompson, voyageur 2024, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53837723474/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Jeremy Thompson, rail 2024, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53837370406/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Park City Mountain Coaster",
+          "url": "https://amusement-parks.fun/fr/attraction/0fdd60a4-08c0-42b7-84bc-974e2600b90d/park-city-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Park City Alpine Coaster",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2100",
+            "name": "Park City Mountain Coaster",
+            "source": "Park City Mountain",
+            "url": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-coaster.aspx",
             "family": "Alpine coaster",
-            "sourceVenueName": "Park City Alpine Coaster",
-            "referenceId": "location-id-2100"
+            "sourceVenueName": "Park City Mountain Adventure Park",
+            "sourceLifecycleSignal": "Hiver 2026/27 annoncé du 20 novembre au 19 avril, météo sous réserve.",
+            "matchingMethod": "Recherche officielle Park et StandaloneAttraction, référence Wiegand, Preview et Apply contrôlés.",
+            "sourceLocality": "Park City, Utah"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Attraction sur rail fixe, billet individuel et identité distincte de l’Alpine Slide du même Adventure Park."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0fdd60a4-08c0-42b7-84bc-974e2600b90d/park-city-mountain-coaster",
+          "publishedAtUtc": "2026-11-15T19:10:26.6868384Z",
+          "verifiedAtUtc": "2026-11-15T19:11:50Z",
+          "evidence": "PARK_DATA_EDITOR:apply:956ac283-14c4-4e84-90af-73fb50edb3cc"
+        },
+        "facebook": {
+          "id": "1d50ced5643c4597b64ecaec3d271ddd",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T19:11:20.4198627Z",
+          "externalPostId": "1285475681307050_122127498765424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127498765424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1d50ced5643c4597b64ecaec3d271ddd"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-park-city-mountain-coaster-20261115/audit.json",
+        "score": 74,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
@@ -2889,21 +3055,23 @@
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-16",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Deux références Wiegand désignent le Rocky Top Mountain Coaster déjà représenté par la fiche autonome issue de la migration Park.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec"
+      ],
       "aliases": [
         "Rocky Top"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Doublon de découverte constructeur conservé ; suivre les données et leur date sur US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2937,8 +3105,9 @@
             "referenceId": "location-id-2052"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Les deux références constructeur concernent l’unique coaster du lieu ; fiche autonome publiée sous US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec."
+      },
+      "duplicateOf": "US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec"
     },
     {
       "entryId": "US-candidate-standalone-b1b127a00745e9",
@@ -3435,28 +3604,31 @@
     {
       "entryId": "US-candidate-standalone-0209156805a665",
       "name": "Alpine Coaster Wiegand — Wisp",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
       "locality": null,
-      "siteId": null,
+      "siteId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T22:22:34.549Z",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating, identité Wisp Mountain Coaster confirmée.",
+      "identityConfidence": "Même installation que US-candidate-e1d7086e749d36, par constructeur Wiegand, exploitant Wisp, RCDB et géolocalisation.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-candidate-e1d7086e749d36"
+      ],
       "aliases": [
-        "Wisp"
+        "Wisp",
+        "Wisp Mountain Coaster"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette piste constructeur comme doublon sourcé de US-candidate-e1d7086e749d36. Suivre les mises à jour sur la fiche intégrée ; ne pas recréer ni republier Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -3467,23 +3639,29 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.wispresort.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Fiche autonome publiée après rapprochement",
+          "url": "https://amusement-parks.fun/fr/attraction/c1a3a369-c558-43c4-9b8a-b83cc36ddd69/wisp-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Wisp",
+            "name": "Wisp Mountain Coaster",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-1103",
             "family": "Alpine coaster",
-            "sourceVenueName": "Wisp",
+            "sourceVenueName": "Wisp Resort",
             "referenceId": "location-id-1103"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Doublon de découverte constructeur ; même coaster autonome publié sous US-candidate-e1d7086e749d36."
+      },
+      "duplicateOf": "US-candidate-e1d7086e749d36"
     },
     {
       "entryId": "US-park-11691071-bb84-46b1-857e-fa27c8d531f0",
@@ -4638,14 +4816,14 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Nor’Easter Mountain Coaster retiré en 2024 ; ZipRider à requalifier séparément, activité actuelle non confirmée.",
+      "identityConfidence": "Ancien coaster identifié et retiré ; la référence constructeur ZipRider n’établit pas son exploitation actuelle.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer la fiche Nor’Easter Mountain Coaster : installation retirée en 2024. Requalifier uniquement ZipRider Attitash avec une source d’exploitation actuelle et une photo exacte libre avant toute intégration.",
       "sources": [
         {
           "label": "RCDB",
@@ -4666,11 +4844,21 @@
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/attitash/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Nor’Easter Mountain Coaster retiré",
+          "url": "https://rcdb.com/13359.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Unofficial Networks — démontage du coaster en 2024",
+          "url": "https://unofficialnetworks.com/2024/08/20/attitash-offseason-projects-2024/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Nor'Easter Mountain Coaster",
@@ -4678,7 +4866,7 @@
             "url": "https://rcdb.com/13359.htm",
             "family": "Mountain coaster",
             "sourceVenueName": "Attitash Mountain Resort",
-            "sourceLifecycleSignal": "-",
+            "sourceLifecycleSignal": "Retiré en 2024 ; hors file des créations actives.",
             "sourceLocality": "Bartlett , New Hampshire",
             "sourceOpenedYear": "2010"
           },
@@ -4687,10 +4875,11 @@
             "source": "ZipRider — référence constructeur",
             "url": "https://ziprider.com/locations/attitash/",
             "family": "Tyrolienne fixe",
-            "sourceVenueName": "Attitash Mountain Resort"
+            "sourceVenueName": "Attitash Mountain Resort",
+            "sourceLifecycleSignal": "Référence constructeur ancienne ; exploitation actuelle non confirmée."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le coaster Nor’Easter a été retiré en 2024 selon RCDB et le reportage de démontage. Le dossier reste ouvert seulement pour la tyrolienne ZipRider, sans présumer de son activité actuelle."
       }
     },
     {
@@ -13208,11 +13397,11 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Cloud Nine Balloon de Las Vegas définitivement fermé en décembre 2010 ; référence constructeur historique.",
+      "identityConfidence": "Identité de l’ancien ballon de Las Vegas confirmée ; fermeture définitive documentée en décembre 2010.",
       "possibleMatches": [],
       "aliases": [
         "Cloud Nine Las Vegas, Nevada, USA"
@@ -13220,7 +13409,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver cette entrée historique exclue de la file des attractions à créer. Ne réexaminer qu’avec preuve de réouverture du même équipement ; ne pas confondre avec les entreprises homonymes de ballons événementiels.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -13231,6 +13420,11 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Las Vegas Sun — fermeture définitive du Cloud Nine Balloon (17 décembre 2010)",
+          "url": "https://lasvegassun.com/news/2010/dec/17/cloud-nine-balloon-ride-strip-closes/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -13240,7 +13434,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Cloud Nine Balloon",
@@ -13248,13 +13442,13 @@
             "url": "https://www.aerophile.com/en/clients/cloud-nine/",
             "family": "Ballon captif",
             "sourceVenueName": "Cloud Nine Balloon",
-            "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
+            "sourceLifecycleSignal": "Fermeture définitive annoncée en décembre 2010.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Las Vegas, Nevada",
             "referenceId": "aerophile-cloud-nine"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Installation réelle mais définitivement fermée depuis décembre 2010, hors création d’attraction actuelle ; entrée conservée pour éviter sa redécouverte."
       }
     },
     {
@@ -15142,21 +15336,30 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Qualifier la fiche Park/Adventure Park et son éventuel siteId avant création ou intégration ; le Mountain Coaster figure parmi les attractions du forfait commun, tarifs et saison à recontrôler à la reprise.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#United_States",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Cranmore Mountain Adventure Park — forfait commun coaster, zip line, swing et chairlift",
+          "url": "https://cranmore.com/mountain-adventure-park",
+          "accessedAt": "2026-11-15"
         }
+      ],
+      "possibleBacklogEntries": [
+        "US-candidate-b781a1f4fe039d",
+        "US-candidate-standalone-c0ef02f9420560"
       ]
     },
     {
       "entryId": "US-candidate-b781a1f4fe039d",
       "name": "Cranmore Mountain Resort",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB)",
+      "proposedEntityKind": "Park",
+      "category": "Dossier parc de montagne et Mountain Adventure Park",
       "locality": "North Conway , New Hampshire",
       "siteId": null,
       "legacySiteIds": [],
@@ -15166,13 +15369,13 @@
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Attraction du Mountain Adventure Park : l’exploitant affiche des billets communs à plusieurs activités et aucune vente distincte du coaster sur la page officielle vérifiée.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la piste RCDB et poursuivre l’intégration du lieu sous US-candidate-b51e27ae9f4c11. Réexaminer si l’exploitant propose plus tard un billet autonome pour le coaster.",
       "sources": [
         {
           "label": "RCDB",
@@ -15183,25 +15386,32 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13316.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Cranmore Mountain Adventure Park — forfait commun coaster, zip line, swing et chairlift",
+          "url": "https://cranmore.com/mountain-adventure-park",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13316.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Cranmore Mountain Resort",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "North Conway , New Hampshire",
-            "sourceOpenedYear": "2010"
+            "source": "Cranmore Mountain Adventure Park — billetterie et attractions",
+            "url": "https://cranmore.com/mountain-adventure-park",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Cranmore Mountain Adventure Park",
+            "sourceLifecycleSignal": "Seasonal"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Billets 2026 affichés pour plusieurs attractions du Mountain Adventure Park : accès commun coaster, Soaring Eagle Zip Line, Giant Swing et Scenic Chairlift. Aucune billetterie individuelle du coaster trouvée sur cette page."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-b51e27ae9f4c11",
+        "US-candidate-standalone-c0ef02f9420560"
+      ]
     },
     {
       "entryId": "US-candidate-63444347816104",
@@ -25449,8 +25659,8 @@
       "name": "Goats on the Roof of the Smokies",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
+      "category": "Complexe de loisirs",
+      "locality": "1341 Wears Valley Road, Pigeon Forge, Tennessee 37863",
       "siteId": "e1a1c84b-be47-40a2-97fd-f766b85c07f0",
       "legacySiteIds": [],
       "presence": "Hidden",
@@ -25458,14 +25668,14 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — The Goat Coaster, mini-golf, nourrissage des chèvres et activité de recherche de gemmes sont affichés par l’exploitant.",
+      "identityConfidence": "Complexe multi-activités confirmé sur le site de l’exploitant ; The Goat Coaster est une attraction interne, malgré son billet propre.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer éditorialement la fiche Park masquée avec The Goat Coaster et les autres activités du lieu. Ne pas créer de standalone distincte ; conserver le dossier constructeur lié. Vérifier les horaires saisonniers auprès de l’exploitant.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -25486,13 +25696,23 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13308.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — activités du complexe",
+          "url": "https://goatsontheroofofthesmokies.com/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — Goat Coaster, tarifs et accès",
+          "url": "https://goatsontheroofofthesmokies.com/goat-coaster.php",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Goat Coaster",
@@ -25505,8 +25725,11 @@
             "sourceOpenedYear": "2015"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "L’exploitant présente sur le même site The Goat Coaster, mini-golf, recherche de gemmes et nourrissage des chèvres ; il s’agit d’une attraction du complexe Goats on the Roof. Le billet par descente ne suffit pas à détacher la piste du Park multi-activités."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-122a877042e075"
+      ]
     },
     {
       "entryId": "US-candidate-1b646040e36fd4",
@@ -27775,26 +27998,28 @@
     },
     {
       "entryId": "US-candidate-a5e1bad7252f6e",
-      "name": "Gunstock Mountain Resort",
+      "name": "Gunstock Mountain Coaster",
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Gilford , New Hampshire",
+      "category": "Mountain coaster",
+      "locality": "719 Cherry Valley Road, Gilford, New Hampshire 03249",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Exploitant actif en saison estivale 2026 ; dates de prochaine saison à confirmer.",
+      "identityConfidence": "Billet propre à une session de Mountain Coaster confirmé par Gunstock ; aucune fiche correspondante trouvée dans les recherches officielles Park et StandaloneAttraction. Photo exacte réutilisable encore manquante.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Mountain Coaster — Gunstock"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Trouver et vérifier au moins une photo montrant exactement le coaster, sous licence ou autorisation compatible ; puis vérifier les prochaines dates/prix, créer la fiche, publier et annoncer sur Facebook. Conserver lastDataIntegrationAt à null avant import.",
       "sources": [
         {
           "label": "RCDB",
@@ -27810,24 +28035,29 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13829.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Gunstock — séance propre, conditions et adresse",
+          "url": "https://www.gunstock.com/summer/mountain-coaster/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13829.htm",
+            "name": "Gunstock Mountain Coaster",
+            "source": "Gunstock — Mountain Coaster",
+            "url": "https://www.gunstock.com/summer/mountain-coaster/",
             "family": "Mountain coaster",
             "sourceVenueName": "Gunstock Mountain Resort",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Gilford , New Hampshire",
+            "sourceLifecycleSignal": "Seasonal operation",
+            "sourceLocality": "Gilford, New Hampshire",
             "sourceOpenedYear": "2016"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Séance payante propre confirmée ; photo exacte réutilisable manquante avant publication."
       }
     },
     {
@@ -34442,26 +34672,90 @@
     },
     {
       "entryId": "US-candidate-610c82b56f5dbe",
-      "name": "Killington Resort",
-      "entityKind": "ToQualify",
+      "name": "Beast Mountain Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Killington , Vermont",
-      "siteId": null,
+      "category": "Mountain coaster",
+      "locality": "3861 Killington Road, Killington, Vermont 05751",
+      "siteId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:25:55.410Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Saison 2026 du Snowshed Adventure Center achevée le 12 octobre ; dates de prochaine saison non confirmées.",
+      "identityConfidence": "Billet individuel et forfait de quatre confirmés par Killington ; RCDB et position OSM concordants ; aucun doublon PDE avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Beast Mountain Coaster — Killington",
+        "Killington Beast Mountain Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T23:24:37.484Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c90941b7-2e90-438a-aeec-9c59f7bfb2c2",
+          "appliedAt": "2026-11-15T23:21:55.684Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:apply:c90941b7-2e90-438a-aeec-9c59f7bfb2c2",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "apply-d9a62328-9162-4b9e-9e2f-dd3c60b0a1dc",
+          "appliedAt": "2026-11-15T23:22:38.745Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:apply:d9a62328-9162-4b9e-9e2f-dd3c60b0a1dc",
+          "auditEvidence": null,
+          "summary": "Modèle et date d’ouverture sourcée intégrés."
+        },
+        {
+          "eventId": "apply-cce0cd4f-1aa6-4357-b3b4-57362131b554",
+          "appliedAt": "2026-11-15T23:23:00.749Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:apply:cce0cd4f-1aa6-4357-b3b4-57362131b554",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès officielles intégrées."
+        },
+        {
+          "eventId": "photo-6f2b1b202b8e4522878ee64c04dd23e6",
+          "appliedAt": "2026-11-15T23:23:23.707Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:photo:6f2b1b202b8e4522878ee64c04dd23e6",
+          "auditEvidence": null,
+          "summary": "Photogramme exact de 2019 importé, publié et crédité sous CC BY 2.0."
+        },
+        {
+          "eventId": "photo-3d3147cd029a47d0a0ce303da111efe0",
+          "appliedAt": "2026-11-15T23:23:38.308Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:photo:3d3147cd029a47d0a0ce303da111efe0",
+          "auditEvidence": null,
+          "summary": "Photogramme exact de 2019 importé, publié et crédité sous CC BY 2.0."
+        },
+        {
+          "eventId": "apply-f2389cea-6056-4611-94d9-597401b0c081",
+          "appliedAt": "2026-11-15T23:24:37.484Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:apply:f2389cea-6056-4611-94d9-597401b0c081",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-beast-mountain-coaster-20261115/audit.json",
+          "summary": "Point exact de la piste OSM intégré ; contrôle final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne, les reçus et les photogrammes crédités. Confirmer calendrier et tarifs de la prochaine saison, puis chercher des photos récentes sous licence compatible.",
       "sources": [
         {
           "label": "RCDB",
@@ -34482,33 +34776,44 @@
           "label": "ADG — Project Book",
           "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Killington — billet, calendrier et accès",
+          "url": "https://killington.com/summer-adventure-center",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — piste",
+          "url": "https://www.openstreetmap.org/node/4602218104",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — vidéo CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/48353516526/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/9507ef65-57b8-405a-9d9f-b03dc3250504/beast-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Beast Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13330.htm",
+            "source": "Killington — Summer Adventure Center",
+            "url": "https://killington.com/summer-adventure-center",
             "family": "Mountain coaster",
             "sourceVenueName": "Killington Resort",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Killington , Vermont",
+            "sourceLifecycleSignal": "2026 summer season ended",
+            "sourceLocality": "Killington, Vermont",
             "sourceOpenedYear": "2015"
-          },
-          {
-            "name": "Beast Mountain Coaster",
-            "source": "ADG — Project Book",
-            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Killington Resort",
-            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
-            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billet propre à une descente vendu par l’exploitant ; fiche autonome publiée avec images exactes."
       }
     },
     {
@@ -36721,8 +37026,8 @@
       "name": "Leavenworth Adventure Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
+      "category": "Parc de loisirs de montagne",
+      "locality": "9342 Icicle Road, Leavenworth, Washington 98826",
       "siteId": "1f7f3dd9-7d8f-412c-aaac-48cdef2f2973",
       "legacySiteIds": [],
       "presence": "Hidden",
@@ -36730,14 +37035,14 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — parc multi-activités avec Tumwater Twister Alpine Coaster, Alpine Ascent Climbing Wall et Gems of the Enchantments Mining Sluice.",
+      "identityConfidence": "Parc multi-activités confirmé par l’exploitant ; Tumwater Twister figure déjà comme ParkItem de la fiche masquée.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Compléter la fiche Park masquée : conserver le ParkItem Tumwater Twister, rechercher et intégrer le mur d’escalade et l’activité de recherche de gemmes. Vérifier les horaires saisonniers actualisés ; ne pas créer de standalone distincte pour le coaster.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -36758,13 +37063,18 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/20032.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — activités, adresse et horaires",
+          "url": "https://www.leavenworthadventurepark.com/",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Tumwater Twister",
@@ -36777,8 +37087,11 @@
             "sourceOpenedYear": "2023"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Le coaster Tumwater Twister figure déjà comme ParkItem du parc masqué. L’exploitant présente aussi un mur d’escalade et une activité de recherche de gemmes sur ce même site ; le billet coaster individuel ne justifie pas de dupliquer l’attraction comme standalone."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-931332018a07fe"
+      ]
     },
     {
       "entryId": "US-candidate-885726384b0691",
@@ -41873,25 +42186,150 @@
     {
       "entryId": "US-park-41ed8736-34e5-49ca-bcc6-be1a791e1939",
       "name": "Moonshine Mountain Coaster",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "41ed8736-34e5-49ca-bcc6-be1a791e1939",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "306 Parkway, Gatlinburg, Tennessee 37738",
+      "siteId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+      "legacySiteIds": [
+        "41ed8736-34e5-49ca-bcc6-be1a791e1939"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-16T00:37:09.532Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — billets et horaires officiels vérifiés le 2026-11-16",
+      "identityConfidence": "Une piste à billet par trajet ; ancienne fiche Park mono-attraction et son item migrés vers la standalone.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Gatlinburg Mountain Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-16T01:04:42.716Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-677500cb-3680-4c4d-8b4a-414b533547af",
+          "appliedAt": "2026-11-16T00:30:19.598Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:apply:677500cb-3680-4c4d-8b4a-414b533547af",
+          "auditEvidence": null,
+          "summary": "Migration de la fiche Park masquée et de sa seule attraction vers la standalone ; huit descriptions et données techniques."
+        },
+        {
+          "eventId": "apply-4c3653a9-f391-4f4c-80f7-fe63d250c32d",
+          "appliedAt": "2026-11-16T00:32:11.416Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:apply:4c3653a9-f391-4f4c-80f7-fe63d250c32d",
+          "auditEvidence": null,
+          "summary": "Six tarifs officiels en dollars : trajets adultes et enfants, secondes descentes et forfaits de trois."
+        },
+        {
+          "eventId": "apply-b0764e73-3042-4ba9-bca3-1b29aee9d889",
+          "appliedAt": "2026-11-16T00:32:33.698Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:apply:b0764e73-3042-4ba9-bca3-1b29aee9d889",
+          "auditEvidence": null,
+          "summary": "Deux plages hebdomadaires officielles intégrées, sans calendrier futur inventé."
+        },
+        {
+          "eventId": "apply-5854092c-7901-4dc8-81ca-17a21693a466",
+          "appliedAt": "2026-11-16T00:32:55.704Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:apply:5854092c-7901-4dc8-81ca-17a21693a466",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès et de sécurité de l’exploitant intégrées."
+        },
+        {
+          "eventId": "apply-78faf2ad-625d-4c48-93b2-e9f5a1ddd29a",
+          "appliedAt": "2026-11-16T00:33:17.936Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:apply:78faf2ad-625d-4c48-93b2-e9f5a1ddd29a",
+          "auditEvidence": null,
+          "summary": "Ouverture de 2014 enregistrée à la précision de l’année ; le changement de nom en 2022 est décrit."
+        },
+        {
+          "eventId": "photo-948b6ec3d59144c98f11ca50291edf48",
+          "appliedAt": "2026-11-16T00:33:45.544Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo:948b6ec3d59144c98f11ca50291edf48",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste ou de sa station importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-c3ab5eb7ac2749aab6f12a1c98696865",
+          "appliedAt": "2026-11-16T00:33:58.327Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo:c3ab5eb7ac2749aab6f12a1c98696865",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste ou de sa station importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-fdb92bb3e2d0493e87e89f6c7cf4aa00",
+          "appliedAt": "2026-11-16T00:34:11.166Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo:fdb92bb3e2d0493e87e89f6c7cf4aa00",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste ou de sa station importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "apply-735c41d4-c4ea-4eac-99e0-d66056ba4cd2",
+          "appliedAt": "2026-11-16T00:35:37.105Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:apply:735c41d4-c4ea-4eac-99e0-d66056ba4cd2",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-moonshine-mountain-coaster-20261116/audit.json",
+          "summary": "Descriptions révisées avant publication ; audit final 100/100 sans bloqueur."
+        },
+        {
+          "eventId": "photo-localization-948b6ec3d59144c98f11ca50291edf48-20261116",
+          "appliedAt": "2026-11-16T01:04:20.730Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:948b6ec3d59144c98f11ca50291edf48",
+          "auditEvidence": null,
+          "summary": "Texte alternatif et légende de photo traduits et différenciés dans les huit langues."
+        },
+        {
+          "eventId": "photo-localization-c3ab5eb7ac2749aab6f12a1c98696865-20261116",
+          "appliedAt": "2026-11-16T01:04:31.741Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:c3ab5eb7ac2749aab6f12a1c98696865",
+          "auditEvidence": null,
+          "summary": "Texte alternatif et légende de photo traduits et différenciés dans les huit langues."
+        },
+        {
+          "eventId": "photo-localization-fdb92bb3e2d0493e87e89f6c7cf4aa00-20261116",
+          "appliedAt": "2026-11-16T01:04:42.716Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:fdb92bb3e2d0493e87e89f6c7cf4aa00",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-localization-20261116/audit.json",
+          "summary": "Textes alternatifs et légendes de trois photos exactes révisés dans les huit langues ; audit final sans blocage et page allemande contrôlée."
+        }
+      ],
+      "nextAction": "Conserver la ligne et l’ancienne identité Park liée. Rafraîchir billets et horaires officiels avant la prochaine saison ; les photos de 2023 ne sont pas des vues de 2014. Textes alternatifs et légendes des trois photos traduits dans les huit langues le 16 novembre 2026.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -41922,35 +42360,71 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.gatlinburgmountaincoaster.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — site officiel",
+          "url": "https://www.moonshinemountaincoaster.com/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — tarifs et sécurité",
+          "url": "https://www.moonshinemountaincoaster.com/buy-tickets/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — horaires et adresse",
+          "url": "https://www.moonshinemountaincoaster.com/hours/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — FAQ et ancienne identité",
+          "url": "https://www.moonshinemountaincoaster.com/faq/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — histoire",
+          "url": "https://www.moonshinemountaincoaster.com/about-us/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — virage de nuit CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006620499/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — entrée CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006812960/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — station CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53005865562/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/593f9132-08de-45ed-8e1e-73251b7d33bc/moonshine-mountain-coaster",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Moonshine Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13305.htm",
-            "family": "Mountain coaster",
+            "source": "Exploitant — site officiel",
+            "url": "https://www.moonshinemountaincoaster.com/",
+            "family": "Alpine coaster",
             "sourceVenueName": "Moonshine Mountain Coaster",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Gatlinburg , Tennessee",
+            "sourceLocality": "Gatlinburg, Tennessee",
             "sourceOpenedYear": "2014"
-          },
-          {
-            "name": "Gatlinburg",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-1893",
-            "family": "Alpine coaster",
-            "sourceVenueName": "Gatlinburg",
-            "referenceId": "location-id-1893",
-            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billetterie propre à une unique luge sur rail ; ancienne fiche Park masquée et son seul ParkItem migrés, sans doublon public."
       }
     },
     {
@@ -47419,7 +47893,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Dossier source Park City Mountain Resort : Mountain Coaster et Alpine Slide ont chacun une fiche standalone publiée. Vérifier seulement les autres attractions fixes éventuelles ; ne pas recréer un doublon du domaine ou de ces deux attractions.",
       "sources": [
         {
           "label": "RCDB",
@@ -47438,8 +47912,8 @@
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Mountain Coaster",
@@ -47452,8 +47926,12 @@
             "sourceOpenedYear": "2006"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Domaine source contenant deux attractions déjà publiées séparément ; examiner les autres activités avant tout nouveau rattachement."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-discovery-53834c6432eb545a",
+        "US-candidate-standalone-ad74e1b287c010"
+      ]
     },
     {
       "entryId": "US-candidate-8c738dc696fa38",
@@ -51738,25 +52216,151 @@
     {
       "entryId": "US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850",
       "name": "Ripley's Mountain Coaster",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "5651f7c9-782c-4fe6-9f7c-1c44cfe68850",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "386 Parkway, Gatlinburg, Tennessee 37738",
+      "siteId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+      "legacySiteIds": [
+        "5651f7c9-782c-4fe6-9f7c-1c44cfe68850"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-16T00:55:57.282Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — lieu propre et billet pour une descente listés par Ripley’s le 2026-11-16",
+      "identityConfidence": "Lieu distinct au 386 Parkway, à distance de Moonshine au 306 Parkway ; fiche Park mono-attraction migrée.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rowdy Bear Coaster",
+        "Rowdy Bear Mountain"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-16T01:05:17.515Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-00330f77-7fcf-44f4-acdc-3a2b67af4bb4",
+          "appliedAt": "2026-11-16T00:50:51.940Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:apply:00330f77-7fcf-44f4-acdc-3a2b67af4bb4",
+          "auditEvidence": null,
+          "summary": "Migration du Park masqué mono-attraction vers la standalone ; huit descriptions, adresse et fiche technique."
+        },
+        {
+          "eventId": "apply-36af060a-7b97-4dbc-9df7-a698f5e9e13f",
+          "appliedAt": "2026-11-16T00:51:54.831Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:apply:36af060a-7b97-4dbc-9df7-a698f5e9e13f",
+          "auditEvidence": null,
+          "summary": "Billet officiel pour une descente : prix adulte de départ en USD, enregistré comme tarif variable."
+        },
+        {
+          "eventId": "apply-ef5a68d4-fda0-477a-939d-07069d041ede",
+          "appliedAt": "2026-11-16T00:52:22.116Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:apply:ef5a68d4-fda0-477a-939d-07069d041ede",
+          "auditEvidence": null,
+          "summary": "Ouverture du 9 juin 2017 sous l’ancien nom Rowdy Bear Coaster."
+        },
+        {
+          "eventId": "photo-89a32b65ce4a45069215b2a5d1ef174f",
+          "appliedAt": "2026-11-16T00:52:55.341Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo:89a32b65ce4a45069215b2a5d1ef174f",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’entrée ou de la piste importée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-d3528b932deb4f47822c2bc1bd64ba18",
+          "appliedAt": "2026-11-16T00:53:08.263Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo:d3528b932deb4f47822c2bc1bd64ba18",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’entrée ou de la piste importée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-4c06e2fe101545828ba8d220cf1e4804",
+          "appliedAt": "2026-11-16T00:53:20.961Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo:4c06e2fe101545828ba8d220cf1e4804",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’entrée ou de la piste importée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-metadata-89a32b65ce4a45069215b2a5d1ef174f",
+          "appliedAt": "2026-11-16T00:54:16.442Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:89a32b65ce4a45069215b2a5d1ef174f",
+          "auditEvidence": null,
+          "summary": "Légendes de la photographie différenciées dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-d3528b932deb4f47822c2bc1bd64ba18",
+          "appliedAt": "2026-11-16T00:54:27.766Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:d3528b932deb4f47822c2bc1bd64ba18",
+          "auditEvidence": null,
+          "summary": "Légendes de la photographie différenciées dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-4c06e2fe101545828ba8d220cf1e4804",
+          "appliedAt": "2026-11-16T00:54:38.732Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:4c06e2fe101545828ba8d220cf1e4804",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-ripleys-mountain-coaster-20261116/audit.json",
+          "summary": "Légendes distinctes dans les huit langues, trois images et pages publiques vérifiées ; audit final 90/100 sans bloqueur."
+        },
+        {
+          "eventId": "photo-localization-89a32b65ce4a45069215b2a5d1ef174f-20261116",
+          "appliedAt": "2026-11-16T01:04:52.085Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:89a32b65ce4a45069215b2a5d1ef174f",
+          "auditEvidence": null,
+          "summary": "Texte alternatif et légende de photo traduits et différenciés dans les huit langues."
+        },
+        {
+          "eventId": "photo-localization-d3528b932deb4f47822c2bc1bd64ba18-20261116",
+          "appliedAt": "2026-11-16T01:05:05.887Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:d3528b932deb4f47822c2bc1bd64ba18",
+          "auditEvidence": null,
+          "summary": "Texte alternatif et légende de photo traduits et différenciés dans les huit langues."
+        },
+        {
+          "eventId": "photo-localization-4c06e2fe101545828ba8d220cf1e4804-20261116",
+          "appliedAt": "2026-11-16T01:05:17.515Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:4c06e2fe101545828ba8d220cf1e4804",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-localization-20261116/audit.json",
+          "summary": "Textes alternatifs et légendes de trois photos exactes révisés dans les huit langues ; audit final sans blocage et page allemande contrôlée."
+        }
+      ],
+      "nextAction": "Conserver la ligne, les alias et la migration. Vérifier le calendrier hebdomadaire et les conditions d’accès auprès de Ripley’s ; prix adulte à partir de 12,99 USD, montant final variable. Textes alternatifs et légendes des trois photos traduits dans les huit langues le 16 novembre 2026.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -51772,27 +52376,60 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/15080.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ripley’s — fiche du lieu et adresse",
+          "url": "https://www.ripleys.com/attractions/ripleys-mountain-coaster-gatlinburg",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Ripley’s — billet pour une descente",
+          "url": "https://www.ripleys.com/tickets/gatlinburg",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — entrée CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53005869527/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — montée CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006840210/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — virages CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006453761/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/63469fbf-6044-42c4-bafd-54c1506336a1/ripleys-mountain-coaster",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Ripley's Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/15080.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Ripley's Mountain Coaster",
+            "source": "Ripley’s — lieu officiel",
+            "url": "https://www.ripleys.com/attractions/ripleys-mountain-coaster-gatlinburg",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Ripley's Mountain Coaster Gatlinburg",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Gatlinburg , Tennessee",
+            "sourceLocality": "Gatlinburg, Tennessee",
             "sourceOpenedYear": "2017"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Lieu Ripley’s indépendant au 386 Parkway et billet officiel pour une descente ; une seule piste dans la fiche Park masquée, migrée sans doublon."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-d87dcc4f6536b7"
+      ]
     },
     {
       "entryId": "US-candidate-15f8e18ee7dd32",
@@ -52519,25 +53156,121 @@
     {
       "entryId": "US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec",
       "name": "Rocky Top Mountain Coaster",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "df47a44c-6fad-44ee-ab40-af7c32e042ec",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "2940 Veterans Boulevard, Pigeon Forge, Tennessee 37863",
+      "siteId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+      "legacySiteIds": [
+        "df47a44c-6fad-44ee-ab40-af7c32e042ec"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-16T00:18:11.015Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — billetterie et horaires officiels vérifiés le 2026-11-16",
+      "identityConfidence": "Unique piste du site, billet propre vendu par l’exploitant ; ancienne fiche Park mono-attraction migrée et masquée NotRelevant.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rocky Top Mountain Coaster",
+        "Rocky Top Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-16T00:16:45.952Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-23269b09-5c6f-4a69-b22f-e2e4806ae105",
+          "appliedAt": "2026-11-16T00:09:41.935Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:23269b09-5c6f-4a69-b22f-e2e4806ae105",
+          "auditEvidence": null,
+          "summary": "Migration de la fiche Park masquée et de son item vers la standalone, huit descriptions et données techniques."
+        },
+        {
+          "eventId": "apply-5f34c57c-8217-4fe1-95ab-62828ef3c65c",
+          "appliedAt": "2026-11-16T00:12:07.288Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:5f34c57c-8217-4fe1-95ab-62828ef3c65c",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels en dollars pour billets individuels intégrés."
+        },
+        {
+          "eventId": "apply-456c4772-cf5a-487f-8f9a-e989c988701c",
+          "appliedAt": "2026-11-16T00:12:29.623Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:456c4772-cf5a-487f-8f9a-e989c988701c",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès de la FAQ officielle intégrées."
+        },
+        {
+          "eventId": "apply-4e9bde74-f551-4c26-8586-b2d455db10f5",
+          "appliedAt": "2026-11-16T00:12:45.853Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:4e9bde74-f551-4c26-8586-b2d455db10f5",
+          "auditEvidence": null,
+          "summary": "Deux règles hebdomadaires publiées par l’exploitant, sans horizon futur inventé."
+        },
+        {
+          "eventId": "photo-e0a3a6aa2c7340d4ae11c546ac5e8df1",
+          "appliedAt": "2026-11-16T00:13:50.215Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:photo:e0a3a6aa2c7340d4ae11c546ac5e8df1",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-09376a8b86bf4ab99937a1d4620e3e8b",
+          "appliedAt": "2026-11-16T00:14:04.430Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:photo:09376a8b86bf4ab99937a1d4620e3e8b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-736987e57b8b4cc19b5093bceb3be27b",
+          "appliedAt": "2026-11-16T00:14:19.628Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:photo:736987e57b8b4cc19b5093bceb3be27b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "apply-1fe48505-5d7b-4075-a877-e64639d088a9",
+          "appliedAt": "2026-11-16T00:16:23.765Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:1fe48505-5d7b-4075-a877-e64639d088a9",
+          "auditEvidence": null,
+          "summary": "Ouverture et longueur issues de RCDB intégrées."
+        },
+        {
+          "eventId": "apply-5f3ffce7-4587-4cee-8a1e-e58ccf647967",
+          "appliedAt": "2026-11-16T00:16:45.952Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:5f3ffce7-4587-4cee-8a1e-e58ccf647967",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-rocky-top-mountain-coaster-20261116/audit.json",
+          "summary": "Événement d’ouverture du 22 novembre 2018 intégré ; audit final 100/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver la ligne et l’ancienne identité Park liée. Rafraîchir les tarifs et horaires affichés par l’exploitant et chercher une photo de l’ouverture de 2018 sous licence compatible.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -52558,27 +53291,70 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/16439.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — fonctionnement et horaires",
+          "url": "https://www.rockytopcoaster.com/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://www.rockytopcoaster.com/tickets",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — FAQ et conditions",
+          "url": "https://www.rockytopcoaster.com/faqs",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "OpenStreetMap — emprise de l’attraction",
+          "url": "https://www.openstreetmap.org/way/686664991",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — piste de jour CC BY 2.0",
+          "url": "https://www.flickr.com/photos/milst1/51415233551/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — piste de nuit CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006457469/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — station CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006676530/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/f807c731-c7ca-4eaf-a29d-1cd0533b4822/rocky-top-mountain-coaster",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Rocky Top Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/16439.htm",
-            "family": "Mountain coaster",
+            "source": "Rocky Top — site officiel",
+            "url": "https://www.rockytopcoaster.com/",
+            "family": "Alpine coaster",
             "sourceVenueName": "Rocky Top Mountain Coaster",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Pigeon Forge , Tennessee",
+            "sourceLocality": "Pigeon Forge, Tennessee",
             "sourceOpenedYear": "2018"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Une attraction fixe avec billetterie individuelle et aucune zone ou autre attraction structurée ; migration contrôlée de la fiche Park masquée et de son seul ParkItem."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-139cfdf83a2e31"
+      ]
     },
     {
       "entryId": "US-candidate-68c127f5444e1d",
@@ -53144,26 +53920,40 @@
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-16",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "identityConfidence": "Ancien nom du lieu au 386 Parkway, aujourd’hui Ripley’s Mountain Coaster, confirmé par RCDB et la fiche Ripley’s.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Conserver le renvoi historique vers US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850 ; suivre cette attraction dans la fiche autonome publiée, sans créer de doublon ni inventer une date d’intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#United_States",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — anciens noms du lieu",
+          "url": "https://rcdb.com/15079.htm",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Ripley’s — nouvelle identité",
+          "url": "https://www.ripleys.com/attractions/ripleys-mountain-coaster-gatlinburg",
+          "accessedAt": "2026-11-16"
         }
-      ]
+      ],
+      "possibleBacklogEntries": [
+        "US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850"
+      ],
+      "duplicateOf": "US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850"
     },
     {
       "entryId": "US-candidate-e9f76d90ed6173",
@@ -59506,7 +60296,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-22T20:56:38.577Z",
+      "lastDataIntegrationAt": "2026-11-16T00:44:49.631Z",
       "integrationHistory": [
         {
           "eventId": "apply-d6a155bf-c0c2-4f39-ba52-35233484b6cf",
@@ -59587,9 +60377,69 @@
           "evidence": "PARK_DATA_EDITOR:apply:ee40a995-91fd-43a7-bcd2-604e64ec4998",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261022/smoky-audit.json",
           "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 91/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        },
+        {
+          "eventId": "photo-512b0b0e90f44eb7a3a7866f291aa82a",
+          "appliedAt": "2026-11-16T00:42:32.066Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo:512b0b0e90f44eb7a3a7866f291aa82a",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Smoky Mountain Alpine Coaster, prise en 2023 sous CC BY 2.0, importée et publiée."
+        },
+        {
+          "eventId": "photo-bbb16e1ed61f40498860cd02bbbc669b",
+          "appliedAt": "2026-11-16T00:42:44.948Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo:bbb16e1ed61f40498860cd02bbbc669b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Smoky Mountain Alpine Coaster, prise en 2023 sous CC BY 2.0, importée et publiée."
+        },
+        {
+          "eventId": "photo-221a320cccd24015bd8108c56cc1a254",
+          "appliedAt": "2026-11-16T00:42:57.614Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo:221a320cccd24015bd8108c56cc1a254",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Smoky Mountain Alpine Coaster, prise en 2023 sous CC BY 2.0, importée et publiée."
+        },
+        {
+          "eventId": "photo-metadata-08b63464c9404e2aa4ae7b9c52601595-20261116",
+          "appliedAt": "2026-11-16T00:43:23.594Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:08b63464c9404e2aa4ae7b9c52601595",
+          "auditEvidence": null,
+          "summary": "Ancienne photo officielle sans licence de réutilisation établie masquée et conservée dans l’historique."
+        },
+        {
+          "eventId": "photo-metadata-fbba7d31225e49189cf3df9421569f6d-20261116",
+          "appliedAt": "2026-11-16T00:43:34.399Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:fbba7d31225e49189cf3df9421569f6d",
+          "auditEvidence": null,
+          "summary": "Ancienne photo officielle sans licence de réutilisation établie masquée et conservée dans l’historique."
+        },
+        {
+          "eventId": "apply-a4840bbb-c5a2-41cc-b589-7c4fcd0dc09f",
+          "appliedAt": "2026-11-16T00:44:49.631Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:apply:a4840bbb-c5a2-41cc-b589-7c4fcd0dc09f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-smoky-mountain-alpine-coaster-photo-repair-20261116/audit.json",
+          "summary": "Références historiques aux deux images masquées retirées ; trois photos exactes CC BY 2.0 publiques, huit pages et trois binaires vérifiés. Audit réel 91/100 sans bloqueur."
         }
       ],
-      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
+      "nextAction": "Conserver la fiche et son historique. Trois photos exactes CC BY 2.0 sont publiques ; les deux anciennes vues officielles restent masquées faute de licence vérifiée. Les tarifs actuels et le calendrier futur restent à rechercher auprès de l’exploitant ; ne pas republier l’annonce Facebook existante.",
       "sources": [
         {
           "label": "RCDB",
@@ -59655,6 +60505,21 @@
           "label": "Source vérifiée — intégration standalone",
           "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Flickr — Smoky Mountain Alpine Coaster, photo exacte CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53005707212/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — Smoky Mountain Alpine Coaster, photo exacte CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006678745/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — Smoky Mountain Alpine Coaster, photo exacte CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006677500/",
+          "accessedAt": "2026-11-16"
         }
       ],
       "standaloneAssessment": {
@@ -59795,26 +60660,120 @@
     },
     {
       "entryId": "US-candidate-089bfcd986d055",
-      "name": "Snowbird",
-      "entityKind": "ToQualify",
+      "name": "Snowbird Mountain Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Sandy , Utah",
-      "siteId": null,
+      "category": "Alpine coaster",
+      "locality": "9385 Snowbird Center Drive, Snowbird, Utah 84092",
+      "siteId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:06:01.366Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Exploitation estivale confirmée ; activités d’été actuellement fermées pour la saison.",
+      "identityConfidence": "Billet individuel confirmé par Snowbird ; RCDB confirme Wiegand et ouverture 2012 ; aucune fiche homonyme trouvée via PDE avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Mountain Coaster — Snowbird",
+        "Snowbird Alpine Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T23:04:18.500Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d423bf0b-0541-4672-816c-ffc8a8577889",
+          "appliedAt": "2026-11-15T23:00:14.249Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:apply:d423bf0b-0541-4672-816c-ffc8a8577889",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "apply-9bbd5e7e-f9a4-4ea6-9a20-ca1d85f4f824",
+          "appliedAt": "2026-11-15T23:00:57.816Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:apply:9bbd5e7e-f9a4-4ea6-9a20-ca1d85f4f824",
+          "auditEvidence": null,
+          "summary": "Constructeur Wiegand et année 2012 intégrés."
+        },
+        {
+          "eventId": "apply-8f3c69ba-96e6-4a2a-ba9a-baf506c0e4bd",
+          "appliedAt": "2026-11-15T23:01:19.823Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:apply:8f3c69ba-96e6-4a2a-ba9a-baf506c0e4bd",
+          "auditEvidence": null,
+          "summary": "Trois règles d’accès officielles intégrées."
+        },
+        {
+          "eventId": "photo-3f1373862d994e05a879a438ecba108b",
+          "appliedAt": "2026-11-15T23:01:37.608Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo:3f1373862d994e05a879a438ecba108b",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2024 du coaster importée et publiée sous CC BY 2.0."
+        },
+        {
+          "eventId": "photo-6767bff7eabe4e7c8071f1cb2718a691",
+          "appliedAt": "2026-11-15T23:01:50.999Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo:6767bff7eabe4e7c8071f1cb2718a691",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2024 du coaster importée et publiée sous CC BY 2.0."
+        },
+        {
+          "eventId": "photo-738de3ed68f7403dbcae3a2e92d0bbbd",
+          "appliedAt": "2026-11-15T23:02:06.357Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo:738de3ed68f7403dbcae3a2e92d0bbbd",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2024 du coaster importée et publiée sous CC BY 2.0."
+        },
+        {
+          "eventId": "photo-metadata-3f1373862d994e05a879a438ecba108b",
+          "appliedAt": "2026-11-15T23:03:56.670Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:3f1373862d994e05a879a438ecba108b",
+          "auditEvidence": null,
+          "summary": "Crédit, légende et texte alternatif de la photo vérifiés dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-6767bff7eabe4e7c8071f1cb2718a691",
+          "appliedAt": "2026-11-15T23:04:07.746Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:6767bff7eabe4e7c8071f1cb2718a691",
+          "auditEvidence": null,
+          "summary": "Crédit, légende et texte alternatif de la photo vérifiés dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-738de3ed68f7403dbcae3a2e92d0bbbd",
+          "appliedAt": "2026-11-15T23:04:18.500Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:738de3ed68f7403dbcae3a2e92d0bbbd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-snowbird-mountain-coaster-20261115/audit.json",
+          "summary": "Crédit, légende et texte alternatif de la photo vérifiés dans les huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les preuves. Contrôler les nouveaux horaires et tarifs avant la prochaine saison ; suivre séparément le ZipWhipper sous US-candidate-snowbird-zipwhipper-20261115.",
       "sources": [
         {
           "label": "RCDB",
@@ -59845,40 +60804,43 @@
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/snowbird/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Snowbird — billet et conditions",
+          "url": "https://www.snowbird.com/activities-events/summer-activities/mountain-coaster/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — photo 2024 CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53837372203/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/7956920c-44fd-481f-9a10-6a3c9c6c7e07/snowbird-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13324.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Snowbird",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Sandy , Utah",
-            "sourceOpenedYear": "2012"
-          },
-          {
-            "name": "Snowbird",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-1105",
+            "name": "Snowbird Mountain Coaster",
+            "source": "Exploitant Snowbird — Mountain Coaster",
+            "url": "https://www.snowbird.com/activities-events/summer-activities/mountain-coaster/",
             "family": "Alpine coaster",
             "sourceVenueName": "Snowbird",
-            "referenceId": "location-id-1105"
-          },
-          {
-            "name": "ZipRider — Snowbird",
-            "source": "ZipRider — référence constructeur",
-            "url": "https://ziprider.com/locations/snowbird/",
-            "family": "Tyrolienne fixe",
-            "sourceVenueName": "Snowbird"
+            "sourceLifecycleSignal": "Summer season closed",
+            "sourceLocality": "Snowbird, Utah",
+            "sourceOpenedYear": "2012"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Billet individuel officiel ; la référence Wiegand est la même piste. ZipWhipper maintenu séparément à qualifier."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-snowbird-zipwhipper-20261115"
+      ]
     },
     {
       "entryId": "US-candidate-2239e682c78a42",
@@ -72296,26 +73258,111 @@
     },
     {
       "entryId": "US-candidate-e1d7086e749d36",
-      "name": "Wisp Resort",
-      "entityKind": "ToQualify",
+      "name": "Wisp Mountain Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "McHenry , Maryland",
-      "siteId": null,
+      "category": "Alpine coaster",
+      "locality": "296 Marsh Hill Road, McHenry, Maryland 21541",
+      "siteId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T22:22:34.549Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Exploitant actif au 15 novembre 2026 ; calendrier de la piste publié jusqu’au 22 novembre 2026.",
+      "identityConfidence": "Billet propre confirmé par Wisp, construction Wiegand et piste localisée par RCDB et OSM ; recherche officielle Park et StandaloneAttraction sans résultat avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Mountain Coaster (Wisp Resort)",
+        "Wisp Resort Mountain Coaster",
+        "Alpine Coaster Wiegand — Wisp"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T22:20:59.796Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b9745318-aac1-4b1c-b142-1da2cb2fd31b",
+          "appliedAt": "2026-11-15T22:15:11.666Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:b9745318-aac1-4b1c-b142-1da2cb2fd31b",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "photo-894facbeba5b46f8828ed93028614973",
+          "appliedAt": "2026-11-15T22:15:48.788Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:photo:894facbeba5b46f8828ed93028614973",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du coaster importée, publiée et créditée sous CC BY 2.0."
+        },
+        {
+          "eventId": "apply-5dc73a23-4232-43ae-9b6b-7961e50be5a0",
+          "appliedAt": "2026-11-15T22:17:23.762Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:5dc73a23-4232-43ae-9b6b-7961e50be5a0",
+          "auditEvidence": null,
+          "summary": "Constructeur Wiegand, vitesse et date d’ouverture intégrés."
+        },
+        {
+          "eventId": "apply-4fa41dec-cb0a-4ed7-bd5b-b01fab0e6aca",
+          "appliedAt": "2026-11-15T22:17:45.849Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:4fa41dec-cb0a-4ed7-bd5b-b01fab0e6aca",
+          "auditEvidence": null,
+          "summary": "Quatre offres tarifaires officielles intégrées."
+        },
+        {
+          "eventId": "apply-7fa9b183-8ed6-4684-99de-ca284d1aed25",
+          "appliedAt": "2026-11-15T22:18:07.752Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:7fa9b183-8ed6-4684-99de-ca284d1aed25",
+          "auditEvidence": null,
+          "summary": "Calendrier du coaster daté au 22 novembre 2026 intégré."
+        },
+        {
+          "eventId": "apply-c702b1a7-4471-46e5-93d4-8fbe165bef51",
+          "appliedAt": "2026-11-15T22:18:29.366Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:c702b1a7-4471-46e5-93d4-8fbe165bef51",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès officielles intégrées."
+        },
+        {
+          "eventId": "apply-93b127ae-1531-4ebb-8a95-2266e07f7649",
+          "appliedAt": "2026-11-15T22:20:04.381Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:93b127ae-1531-4ebb-8a95-2266e07f7649",
+          "auditEvidence": null,
+          "summary": "Descriptions reformulées après contrôle éditorial."
+        },
+        {
+          "eventId": "apply-b4eb00a2-35fb-46e3-b1ef-6a56654b0686",
+          "appliedAt": "2026-11-15T22:20:59.796Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:b4eb00a2-35fb-46e3-b1ef-6a56654b0686",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-wisp-mountain-coaster-20261115/audit.json",
+          "summary": "Point exact de la station OSM intégré ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les preuves ; vérifier horaires au-delà du 22 novembre 2026 et tarifs lors de leur prochain changement.",
       "sources": [
         {
           "label": "RCDB",
@@ -72331,25 +73378,68 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13328.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wisp Resort — identité, piste, tarifs et conditions",
+          "url": "https://www.wispresort.com/activity/mountain-adventures/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wisp Resort — horaires",
+          "url": "https://www.wispresort.com/hours/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wisp Resort — calendrier publié jusqu’au 22 novembre 2026",
+          "url": "https://www.wispresort.com/wp-content/uploads/2026/11/Schedule-10.26-11.22.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wisp Resort — adresse",
+          "url": "https://www.wispresort.com/about-wisp/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Coasterpedia — Wiegand et ouverture 2007",
+          "url": "https://coasterpedia.net/wiki/Mountain_Coaster_%28Wisp_Resort%29",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Coasterpedia — photo TheTurducken CC BY 2.0",
+          "url": "https://coasterpedia.net/wiki/File:Mountain_Coaster_(Wisp_Resort)_2024-09_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — station de la piste",
+          "url": "https://www.openstreetmap.org/way/160679032",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Wisp Mountain Coaster",
+          "url": "https://amusement-parks.fun/fr/attraction/c1a3a369-c558-43c4-9b8a-b83cc36ddd69/wisp-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13328.htm",
-            "family": "Mountain coaster",
+            "name": "Wisp Mountain Coaster",
+            "source": "Wisp Resort — Mountain Adventures",
+            "url": "https://www.wispresort.com/activity/mountain-adventures/",
+            "family": "Alpine coaster",
             "sourceVenueName": "Wisp Resort",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "McHenry , Maryland",
+            "sourceLocality": "McHenry, Maryland",
             "sourceOpenedYear": "2007"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Piste à billet propre dans la station de montagne ; identité confirmée et fiche autonome publiée. La piste constructeur Wiegand est le même coaster."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-0209156805a665"
+      ]
     },
     {
       "entryId": "US-candidate-d66e4f02b04553",
@@ -73450,12 +74540,14 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-candidate-bromley-alpine-slide-20261115"
+      ],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Qualifier le ZipRider de Bromley auprès de l’exploitant et chercher une photographie exacte autorisée avant création. Le Bromley Alpine Slide est une installation distincte déjà publiée sous US-candidate-bromley-alpine-slide-20261115.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
@@ -74130,47 +75222,111 @@
     },
     {
       "entryId": "US-candidate-standalone-8ae77f397d2a67",
-      "name": "ZipRider — Utah Olympic Park",
-      "entityKind": "ToQualify",
+      "name": "Extreme Zipline — Utah Olympic Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "3419 Olympic Parkway, Park City, Utah 84098",
+      "siteId": "e880d684-d210-4650-9748-30d293b22828",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:40:04.083Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation estivale confirmée ; saison 2026 terminée, prochaine saison à vérifier.",
+      "identityConfidence": "Billet individuel officiel, identité Xtreme ZipRider constructeur et photo exacte confirmés ; recherche officielle sans doublon avant création.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
-      "aliases": [],
+      "possibleBacklogEntries": [
+        "US-candidate-uop-freestyle-20261115"
+      ],
+      "aliases": [
+        "Xtreme ZipRider — Utah Olympic Park",
+        "Xtreme Zipline",
+        "Utah Olympic Park Extreme Zipline"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T23:38:46.611Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4ebdfd73-4d82-4ae1-865d-ea1e85e77a3f",
+          "appliedAt": "2026-11-15T23:36:41.562Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e880d684-d210-4650-9748-30d293b22828",
+          "evidence": "PARK_DATA_EDITOR:apply:4ebdfd73-4d82-4ae1-865d-ea1e85e77a3f",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "apply-894e0f95-1fe2-4eff-a55c-19786f2c0006",
+          "appliedAt": "2026-11-15T23:37:17.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e880d684-d210-4650-9748-30d293b22828",
+          "evidence": "PARK_DATA_EDITOR:apply:894e0f95-1fe2-4eff-a55c-19786f2c0006",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès officielles intégrées."
+        },
+        {
+          "eventId": "photo-2199a7fdef804573aab68b9c22bfa400",
+          "appliedAt": "2026-11-15T23:37:34.172Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e880d684-d210-4650-9748-30d293b22828",
+          "evidence": "PARK_DATA_EDITOR:photo:2199a7fdef804573aab68b9c22bfa400",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de la tyrolienne importée et créditée sous CC BY 2.0."
+        },
+        {
+          "eventId": "apply-1512fd8e-76aa-47e6-8146-07ef93b74258",
+          "appliedAt": "2026-11-15T23:38:46.611Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e880d684-d210-4650-9748-30d293b22828",
+          "evidence": "PARK_DATA_EDITOR:apply:1512fd8e-76aa-47e6-8146-07ef93b74258",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-utah-olympic-park-extreme-zipline-20261115/audit.json",
+          "summary": "Fermeture saisonnière et modèle intégrés ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver preuve et photo historique ; vérifier prochaines dates et tarifs. Qualifier séparément la Freestyle Zipline sous US-candidate-uop-freestyle-20261115.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/uop/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — billet et conditions",
+          "url": "https://utaholympiclegacy.org/activity/summer-extreme-zipline/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Commons — photo exacte CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Zip_rider_coming_across_jump.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/e880d684-d210-4650-9748-30d293b22828/extreme-zipline-utah-olympic-park",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "ZipRider — Utah Olympic Park",
-            "source": "ZipRider — référence constructeur",
-            "url": "https://ziprider.com/locations/uop/",
+            "name": "Extreme Zipline — Utah Olympic Park",
+            "source": "Utah Olympic Legacy — Extreme Zipline",
+            "url": "https://utaholympiclegacy.org/activity/summer-extreme-zipline/",
             "family": "Tyrolienne fixe",
-            "sourceVenueName": "Utah Olympic Park"
+            "sourceVenueName": "Utah Olympic Park",
+            "sourceLifecycleSignal": "Seasonal",
+            "sourceLocality": "Park City, Utah"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billet de descente propre confirmé. L’autre piste Freestyle est distincte et conservée au backlog."
       }
     },
     {
@@ -75588,6 +76744,785 @@
           "externalPostId": "1285475681307050_122125773357424431",
           "url": "https://amusement-parks.fun/fr/attraction/86100cec-397a-44a4-8c02-9803753665dd/skyjump-las-vegas"
         }
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-941071f3fdb01b",
+      "name": "Maid of the Mist",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Croisière panoramique",
+      "locality": "Prospect Point Observation Tower, Niagara Falls State Park, New York",
+      "siteId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T13:31:35.725Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Fermé après le 8 novembre 2026 ; ouverture de la saison 2027 non annoncée.",
+      "identityConfidence": "Exploitant et State Park concordants ; départ américain et billet dédiés, distincts de Niagara City Cruises au Canada ; recherche PDE sans doublon, trois photos exactes.",
+      "possibleMatches": [],
+      "aliases": [
+        "Maid of the Mist Boat Tour",
+        "Niagara Maid of the Mist"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T13:31:08.399Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7808615a-d267-49eb-8ca9-ce771ef0e648",
+          "appliedAt": "2026-11-15T13:29:13.531Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+          "evidence": "PARK_DATA_EDITOR:apply:7808615a-d267-49eb-8ca9-ce771ef0e648",
+          "auditEvidence": null,
+          "summary": "Création privée du parcours américain, géolocalisation du quai et huit descriptions signalant la saison terminée."
+        },
+        {
+          "eventId": "apply-b077c016-415c-436f-8d69-8776bce567c9",
+          "appliedAt": "2026-11-15T13:29:49.408Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+          "evidence": "PARK_DATA_EDITOR:apply:b077c016-415c-436f-8d69-8776bce567c9",
+          "auditEvidence": null,
+          "summary": "Conditions officielles, accès, prix 2026 datés et avis de fermeture dans huit langues intégrés."
+        },
+        {
+          "eventId": "image-37ba583ccf9742ca861461d43dd0083b",
+          "appliedAt": "2026-11-15T13:30:04.968Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+          "evidence": "PARK_DATA_EDITOR:image:37ba583ccf9742ca861461d43dd0083b@2026-11-15T13:30:04.968Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte du bateau datée de 2026 : huit alt, légendes et crédits ; VynedJ, CC BY 4.0."
+        },
+        {
+          "eventId": "image-527c40f814f142a0bd46d57cec639162",
+          "appliedAt": "2026-11-15T13:30:19.038Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+          "evidence": "PARK_DATA_EDITOR:image:527c40f814f142a0bd46d57cec639162@2026-11-15T13:30:19.038Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte du bateau datée de 2026 : huit alt, légendes et crédits ; K2HWY, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-1fee8525322f4e4c9832f49efe54b853",
+          "appliedAt": "2026-11-15T13:30:32.875Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+          "evidence": "PARK_DATA_EDITOR:image:1fee8525322f4e4c9832f49efe54b853@2026-11-15T13:30:32.875Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte du bateau datée de 2020 : huit alt, légendes et crédits ; Bona1858, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-f0410064-fa49-4467-a6c5-b58ac46540d3",
+          "appliedAt": "2026-11-15T13:31:08.399Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+          "evidence": "PARK_DATA_EDITOR:apply:f0410064-fa49-4467-a6c5-b58ac46540d3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-maid-of-the-mist-20261115/audit.json",
+          "summary": "Fermeture confirmée par l’exploitant structurée du 9 novembre à fin décembre 2026, sans inventer l’ouverture 2027."
+        }
+      ],
+      "nextAction": "Conserver cette ligne, les reçus et le post Facebook. Contrôler la date d’ouverture 2027 dès son annonce, puis les nouveaux horaires et tarifs avant de réactiver toute offre. Ne pas extrapoler le calendrier 2026. Les photos sont exactes, mais rechercher encore d’autres vues récentes sous licence. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Maid of the Mist — site officiel",
+          "url": "https://www.maidofthemist.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Maid of the Mist — horaires, tarifs et fermeture 2026",
+          "url": "https://www.maidofthemist.com/schedule-pricing/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Maid of the Mist — FAQ et accessibilité",
+          "url": "https://www.maidofthemist.com/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Falls State Park — départ et fermeture",
+          "url": "https://www.niagarafallsstatepark.com/attractions/maid-of-the-mist/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap/Mapcarta — terminal",
+          "url": "https://mapcarta.com/N2491185802",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — VynedJ, CC BY 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Maid_of_the_Mist_James_V._Glynn_20260626.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — K2HWY, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Niagara_Falls_in_Ontario_with_Maid_of_the_Mist_boat_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Bona1858, CC BY-SA 4.0, 2020",
+          "url": "https://commons.wikimedia.org/wiki/File:Maid_of_the_Mist_Electric_10_13_20.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Maid of the Mist",
+            "source": "Maid of the Mist",
+            "url": "https://www.maidofthemist.com/",
+            "family": "Sightseeing boat tour",
+            "sourceVenueName": "Prospect Point Observation Tower",
+            "sourceLifecycleSignal": "Seasonally closed until unannounced 2027 opening",
+            "sourceLocality": "Niagara Falls, New York"
+          }
+        ],
+        "rationale": "Billet indépendant et terminal dédié dans Niagara Falls State Park ; parcours distinct de la croisière canadienne."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3e968ae6-1ab4-436d-a16c-9ed19cef3b47/skyview-atlanta",
+          "publishedAtUtc": "2026-11-01T13:07:19.238Z",
+          "verifiedAtUtc": "2026-11-01T13:09:25.995Z",
+          "evidence": "PARK_DATA_EDITOR:apply:079cbd6f-a946-4425-b3fe-908de9c8a08d"
+        },
+        "facebook": {
+          "id": "001657245ec0455bab16889677f7d077",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:08:04.081Z",
+          "externalPostId": "1285475681307050_122125608873424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125608873424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:001657245ec0455bab16889677f7d077"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "7ed4a60ce7564f08a075e6a5ea4485a9",
+          "945e85d496ec4a468325e918a6c3b735"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:06:46.235Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c742e24a-6cc8-432b-a142-a703428eb654",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      },
+      "countryCodeAtInventory": "US",
+      "countryResolution": null
+    },
+    {
+      "entryId": "US-candidate-discovery-7fac0d5ef73c96",
+      "name": "Cave of the Winds — Niagara Falls",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Passerelles et plateformes au pied des chutes",
+      "locality": "10 Goat Island Loop Road, Niagara Falls, New York",
+      "siteId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T14:02:06.068Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation à l’année ; horaire officiel daté jusqu’au 31 mars 2027, accès extérieur variable selon la saison.",
+      "identityConfidence": "Billet individuel propre, adresse et opérateur vérifiés, aucune fiche PDE homonyme, quatre photos exactes.",
+      "possibleMatches": [],
+      "aliases": [
+        "Cave of the Winds Niagara",
+        "Hurricane Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T14:02:06.068Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-71856095-38b6-4343-8665-c6806974e638",
+          "appliedAt": "2026-11-15T14:00:27.269Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:apply:71856095-38b6-4343-8665-c6806974e638",
+          "auditEvidence": null,
+          "summary": "Création de la fiche américaine autonome et rédaction de huit descriptions sourcées."
+        },
+        {
+          "eventId": "apply-207f4aa5-c83f-4313-b386-a891371b716a",
+          "appliedAt": "2026-11-15T14:00:39.233Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:apply:207f4aa5-c83f-4313-b386-a891371b716a",
+          "auditEvidence": null,
+          "summary": "Billets sur place, tarifs datés, fermetures fériées et accessibilité partielle intégrés."
+        },
+        {
+          "eventId": "image-f2c2529c8f5d4dbd8fc738c5e121bdb8",
+          "appliedAt": "2026-11-15T14:01:25.210Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:image:f2c2529c8f5d4dbd8fc738c5e121bdb8@2026-11-15T14:01:25.210Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2024 avec huit textes alternatifs, légendes et crédits : Dough4872, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-c278af43a84645e4a09988cbd52ce950",
+          "appliedAt": "2026-11-15T14:01:33.162Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:image:c278af43a84645e4a09988cbd52ce950@2026-11-15T14:01:33.162Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2024 avec huit textes alternatifs, légendes et crédits : Dough4872, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-2c4fc948cce645b18f7e5e52b75a033b",
+          "appliedAt": "2026-11-15T14:01:41.195Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:image:2c4fc948cce645b18f7e5e52b75a033b@2026-11-15T14:01:41.195Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2015 avec huit textes alternatifs, légendes et crédits : Larry Koester, CC BY 2.0."
+        },
+        {
+          "eventId": "image-30e89069d15c4a0193ba8b257cb3a91d",
+          "appliedAt": "2026-11-15T14:01:49.062Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:image:30e89069d15c4a0193ba8b257cb3a91d@2026-11-15T14:01:49.062Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Nheyob, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-3667d004-1790-403a-a47a-dba09ec56695",
+          "appliedAt": "2026-11-15T14:02:06.068Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:apply:3667d004-1790-403a-a47a-dba09ec56695",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-cave-of-the-winds-20261115/audit.json",
+          "summary": "Fiche rendue publique après quatre photos exactes et contrôle éditorial final."
+        }
+      ],
+      "nextAction": "Conserver l’historique et le post Facebook. Recontrôler les tarifs au-delà du 31 mars 2027, les créneaux de dernière vente, la fermeture des jours fériés et l’accès saisonnier au Hurricane Deck. Ne pas extrapoler le programme d’hiver à une année entière.",
+      "sources": [
+        {
+          "label": "Niagara Falls State Park — Cave of the Winds, horaires et tarifs",
+          "url": "https://www.niagarafallsstatepark.com/attractions/cave-of-the-winds/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Falls State Park — accessibilité",
+          "url": "https://www.niagarafallsstatepark.com/park-information/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Falls State Park — accès saisonnier",
+          "url": "https://www.niagarafallsstatepark.com/attractions/double-the-wonder-bundle/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — entrée approximative",
+          "url": "https://www.openstreetmap.org/search?query=Cave%20of%20the%20Winds%20Goat%20Island",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Dough4872, CC BY-SA 4.0, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:American_Falls_and_Bridal_Veil_Falls_from_Cave_of_the_Winds_July_2024.jpeg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Dough4872, CC BY-SA 4.0, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Bridal_Veil_Falls_from_Cave_of_the_Winds_July_2024.jpeg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Larry Koester, CC BY 2.0, 2015",
+          "url": "https://commons.wikimedia.org/wiki/File:Cave_of_the_Winds_walk_ways_and_decks_(21482471173).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Nheyob, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Bridal_Veil_Falls_(Niagara_Falls_State_Park,_NY)_-_view_of_icy_falls_from_the_Cave_of_the_Winds_observation_deck.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Cave of the Winds — Niagara Falls",
+            "source": "Niagara Falls State Park",
+            "url": "https://www.niagarafallsstatepark.com/attractions/cave-of-the-winds/",
+            "family": "Waterfall walkways",
+            "sourceVenueName": "Goat Island",
+            "sourceLifecycleSignal": "Operating year-round",
+            "sourceLocality": "Niagara Falls, New York"
+          }
+        ],
+        "rationale": "Billet à créneau propre au sein du parc public, distinct de Maid of the Mist et de Cave of the Winds au Colorado."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3e968ae6-1ab4-436d-a16c-9ed19cef3b47/skyview-atlanta",
+          "publishedAtUtc": "2026-11-01T13:07:19.238Z",
+          "verifiedAtUtc": "2026-11-01T13:09:25.995Z",
+          "evidence": "PARK_DATA_EDITOR:apply:079cbd6f-a946-4425-b3fe-908de9c8a08d"
+        },
+        "facebook": {
+          "id": "001657245ec0455bab16889677f7d077",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:08:04.081Z",
+          "externalPostId": "1285475681307050_122125608873424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125608873424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:001657245ec0455bab16889677f7d077"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "7ed4a60ce7564f08a075e6a5ea4485a9",
+          "945e85d496ec4a468325e918a6c3b735"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:06:46.235Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c742e24a-6cc8-432b-a142-a703428eb654",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      },
+      "countryCodeAtInventory": "US",
+      "countryResolution": null
+    },
+    {
+      "entryId": "US-candidate-discovery-53834c6432eb545a",
+      "name": "Park City Alpine Slide",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été sur piste",
+      "locality": "Park City Mountain Village, Park City, Utah",
+      "siteId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T18:57:06Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif ; Alpine Slide fermée après la saison 2026, réouverture à confirmer.",
+      "identityConfidence": "Billet individuel Adventure Park Single Ride et page propre ; recherches officielles Park/StandaloneAttraction sans homonyme Park City.",
+      "possibleMatches": [],
+      "aliases": [
+        "Alpine Slide — Park City Mountain",
+        "Park City Mountain Alpine Slide"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T18:55:26.454Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-abc0e7c1-570a-4772-b89e-faeb52eace5d",
+          "appliedAt": "2026-11-15T18:50:03.240Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:apply:abc0e7c1-570a-4772-b89e-faeb52eace5d",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées avec statut de fermeture saisonnière."
+        },
+        {
+          "eventId": "photo-ffc854eb74be476fb4b11309bf7ebae9",
+          "appliedAt": "2026-11-15T18:51:06.792Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:photo:ffc854eb74be476fb4b11309bf7ebae9",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de l’Alpine Slide importée, licence CC BY 2.0, crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "photo-fee9fef0e6ea4dd9931bbfea167fb47e",
+          "appliedAt": "2026-11-15T18:51:20.639Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:photo:fee9fef0e6ea4dd9931bbfea167fb47e",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de l’Alpine Slide importée, licence CC BY-SA 2.0, crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "photo-ce791d1122024cb383fac73c4729243b",
+          "appliedAt": "2026-11-15T18:51:39.487Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:photo:ce791d1122024cb383fac73c4729243b",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de l’Alpine Slide importée, licence CC0 1.0, crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "apply-18ca86ea-ca0a-4b94-b42a-795f8616f81d",
+          "appliedAt": "2026-11-15T18:55:26.454Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:apply:18ca86ea-ca0a-4b94-b42a-795f8616f81d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-park-city-alpine-slide-20261115/audit.json",
+          "summary": "Texte éditorial relu, longueur conservée en donnée structurée, audit sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier la saison suivante, les prix et les restrictions officielles avant de mettre à jour la fiche ; supprimer en administration la copie photo non publiée dca590035e2e45569419b6086ab01b49.",
+      "sources": [
+        {
+          "label": "Park City Mountain — Alpine Slide",
+          "url": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-slide.aspx",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — calendrier été 2026",
+          "url": "https://www.parkcitymountain.com/Explore%20the%20Resort/About%20the%20Resort/Hours%20of%20Operation.aspx",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — billet Adventure Park Single Ride",
+          "url": "https://www.parkcitymountain.com/travel-guide/perfect-summer-itinerary",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — adresse Mountain Village",
+          "url": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/getting-here",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo Alpine Slide 2009, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpine_Slide_at_Mountain_side_Resort_in_Park_City,_Utah.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Jeremy Thompson, Alpine Slide 2024, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53836479452/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Ken Lund, Alpine Slide 2013, CC BY-SA 2.0",
+          "url": "https://www.flickr.com/photos/kenlund/9387923671",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Park City Alpine Slide",
+          "url": "https://amusement-parks.fun/fr/attraction/147f06a4-958b-420e-a863-0807b3c06ea9/park-city-alpine-slide",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Park City Alpine Slide",
+            "source": "Park City Mountain Resort",
+            "url": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-slide.aspx",
+            "family": "Luge d’été sur piste",
+            "sourceVenueName": "Park City Mountain Adventure Park",
+            "sourceLifecycleSignal": "Activité de l’été 2026 terminée le 27 septembre ; saison suivante à confirmer.",
+            "matchingMethod": "Recherches officielles Park et StandaloneAttraction, Preview et Apply contrôlés.",
+            "sourceLocality": "Park City, Utah"
+          }
+        ],
+        "rationale": "Piste fixe de descente avec produit de billet individuel, différenciée du Mountain Coaster et des autres activités de l’Adventure Park."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-4a1028e22d6130",
+        "US-candidate-standalone-ad74e1b287c010"
+      ],
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/147f06a4-958b-420e-a863-0807b3c06ea9/park-city-alpine-slide",
+          "publishedAtUtc": "2026-11-15T18:55:52.719Z",
+          "verifiedAtUtc": "2026-11-15T18:57:06Z",
+          "evidence": "PARK_DATA_EDITOR:apply:99a1356f-3a1e-47a2-9db8-28baa9ee582e"
+        },
+        "facebook": {
+          "id": "2b88f87220e8416d8a72e8add677570a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T18:57:06.583Z",
+          "externalPostId": "1285475681307050_122127496989424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127496989424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:2b88f87220e8416d8a72e8add677570a"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-park-city-alpine-slide-20261115/audit.json",
+        "score": 84,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "US-candidate-snowbird-zipwhipper-20261115",
+      "name": "Snowbird ZipWhipper",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour de chute / mur d’escalade",
+      "locality": "Snowbird, Utah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence du fabricant à revalider auprès de Snowbird ; produit ZipWhipper, et non tyrolienne ZipRider.",
+      "identityConfidence": "Le fabricant décrit un mur de 60 pieds avec chute contrôlée, ajouté au pass activités ; vente autonome non confirmée.",
+      "possibleMatches": [],
+      "aliases": [
+        "ZipWhipper — Snowbird"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Vérifier auprès de Snowbird si ZipWhipper est encore exploité et si un billet séparé existe ; ne pas créer de fiche ni annoncer sur Facebook avant qualification.",
+      "sources": [
+        {
+          "label": "Fabricant ZipRider — ZipWhipper de Snowbird",
+          "url": "https://ziprider.com/locations/snowbird/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "ZipWhipper — Snowbird",
+            "source": "ZipRider — installation Snowbird",
+            "url": "https://ziprider.com/locations/snowbird/",
+            "family": "Mur d’escalade avec chute contrôlée",
+            "sourceVenueName": "Snowbird"
+          }
+        ],
+        "rationale": "Source constructeur évoquant une option ajoutée au pass ; autonomie de billetterie et exploitation actuelle à confirmer."
+      }
+    },
+    {
+      "entryId": "US-candidate-uop-freestyle-20261115",
+      "name": "Freestyle Zipline — Utah Olympic Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne fixe",
+      "locality": "3419 Olympic Parkway, Park City, Utah 84098",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "Blocked",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif en saison estivale ; calendrier publié jusqu’en septembre 2026, prochaines dates inconnues.",
+      "identityConfidence": "Billet individuel Freestyle confirmé séparément de l’Extreme par l’exploitant ; photo exacte réutilisable encore à trouver.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-8ae77f397d2a67"
+      ],
+      "aliases": [
+        "Freestyle ZipRider — Utah Olympic Park"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Trouver une photo exacte de la Freestyle Zipline sous licence ou autorisation compatible ; rechercher les doublons, vérifier prochain calendrier et conditions, puis créer, publier et annoncer séparément sur Facebook. Ne pas utiliser la photo de l’Extreme Zipline.",
+      "sources": [
+        {
+          "label": "Exploitant — Freestyle Zipline et billet individuel",
+          "url": "https://utaholympiclegacy.org/activity/freestyle-zipline/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "ZipRider — deux installations distinctes",
+          "url": "https://ziprider.com/locations/uop/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Freestyle Zipline",
+            "source": "Utah Olympic Legacy — Freestyle Zipline",
+            "url": "https://utaholympiclegacy.org/activity/freestyle-zipline/",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Utah Olympic Park",
+            "sourceLifecycleSignal": "Seasonal",
+            "sourceLocality": "Park City, Utah"
+          }
+        ],
+        "rationale": "Installation et billet individuel distincts de l’Extreme Zipline ; image propre manquante."
+      }
+    },
+    {
+      "entryId": "US-candidate-bromley-alpine-slide-20261115",
+      "name": "Bromley Alpine Slide",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine slide",
+      "locality": "3984 VT Route 11, Peru, Vermont 05152",
+      "siteId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:57:21.231Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Saison estivale 2026 terminée le 12 octobre ; prochaines dates non confirmées.",
+      "identityConfidence": "Glissade fixe exacte, ticket individuel vendu par Bromley, histoire 1976 et photos exactes géolocalisées ; aucun doublon PDE trouvé avant création.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-08b188b03e3925"
+      ],
+      "aliases": [
+        "Alpine Slide — Bromley Mountain",
+        "Bromley Mountain Alpine Slide"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T23:55:33.300Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c4e2193d-40a2-4aad-9aab-d2cfca37f7c7",
+          "appliedAt": "2026-11-15T23:48:46.052Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:c4e2193d-40a2-4aad-9aab-d2cfca37f7c7",
+          "auditEvidence": null,
+          "summary": "Fiche masquée créée avec huit descriptions propres à Bromley."
+        },
+        {
+          "eventId": "apply-77039176-144e-4133-82b2-a92861920947",
+          "appliedAt": "2026-11-15T23:49:39.133Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:77039176-144e-4133-82b2-a92861920947",
+          "auditEvidence": null,
+          "summary": "Point de la piste relevé sur les photos géolocalisées de l’installation."
+        },
+        {
+          "eventId": "apply-c8c39869-3d3d-4f6e-9d6a-279a4e851084",
+          "appliedAt": "2026-11-15T23:50:03.013Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:c8c39869-3d3d-4f6e-9d6a-279a4e851084",
+          "auditEvidence": null,
+          "summary": "Deux conditions de taille et d’accompagnement officielles intégrées."
+        },
+        {
+          "eventId": "photo-fb1aa9219cf24d2e9eac12d1686a32dc",
+          "appliedAt": "2026-11-15T23:50:37.375Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:photo:fb1aa9219cf24d2e9eac12d1686a32dc",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de la piste, prise en 2006, importée et publiée sous CC BY-SA 2.0."
+        },
+        {
+          "eventId": "photo-c50622696fc64af3bd22cb2add170964",
+          "appliedAt": "2026-11-15T23:50:50.810Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:photo:c50622696fc64af3bd22cb2add170964",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de la piste, prise en 2006, importée et publiée sous CC BY-SA 2.0."
+        },
+        {
+          "eventId": "apply-f1ab83f6-63e7-44b1-b4c2-5bda4a82c4da",
+          "appliedAt": "2026-11-15T23:54:40.000Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:f1ab83f6-63e7-44b1-b4c2-5bda4a82c4da",
+          "auditEvidence": null,
+          "summary": "Ouverture du 3 juillet 1976 ajoutée avec contexte historique sourcé."
+        },
+        {
+          "eventId": "apply-8661bbff-9b16-4c1a-ba94-a861b66e7f4c",
+          "appliedAt": "2026-11-15T23:55:33.300Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:8661bbff-9b16-4c1a-ba94-a861b66e7f4c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-bromley-alpine-slide-20261115/audit.json",
+          "summary": "Descriptions historiques, date d’ouverture et longueur mesurée intégrées ; contrôle final sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus. Vérifier calendrier et tarifs de la prochaine saison ; rechercher une photo récente sous licence compatible. Le ZipRider de Bromley est une installation distincte encore à qualifier.",
+      "sources": [
+        {
+          "label": "Bromley — billet individuel, calendrier et météo",
+          "url": "https://www.bromley.com/mountain-adventure-park/alpine-slide/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Bromley — guide des conditions de taille",
+          "url": "https://www.bromley.com/ride-guide/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Ski Vermont — ouverture, première installation et longueur",
+          "url": "https://skivermont.com/50-years-of-smiles-bromley-mountain-celebrates-the-alpine-slides-golden-anniversary",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2006, piste et géolocalisation",
+          "url": "https://commons.wikimedia.org/wiki/File:Bromley_Mountain_071506_020.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4/bromley-alpine-slide",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Bromley Alpine Slide",
+            "source": "Bromley — Mountain Adventure Park",
+            "url": "https://www.bromley.com/mountain-adventure-park/alpine-slide/",
+            "family": "Alpine slide",
+            "sourceVenueName": "Bromley Mountain",
+            "sourceLifecycleSignal": "2026 summer season ended",
+            "sourceLocality": "Peru, Vermont",
+            "sourceOpenedYear": "1976"
+          }
+        ],
+        "rationale": "Glissade fixe exploitée avec billet à la descente indépendant du pass journée ; fiche autonome publiée, distincte du ZipRider et des autres activités du Mountain Adventure Park."
       }
     }
   ]

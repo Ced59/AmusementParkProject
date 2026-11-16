@@ -1,0 +1,92 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+  "entryId": "DE-standalone-3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+  "name": "LEITNER Natur-Bobbahn Berlin",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T16:20:56.458Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73/leitner-natur-bobbahn-berlin",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.gaertenderwelt.de/erlebnisse/natur-bobbahn/"
+  ],
+  "standaloneRelevance": "The Kienbergpark is free to enter but the bob run has its own ticket counter and admission price; separate visitor decision confirmed by operator.",
+  "editorial": "Eight descriptions rewritten; five displayed offers; official age, accompaniment and height rules; 167 dated overrides from current winter closure through 30 April 2027.",
+  "calendar": {
+    "from": "2026-11-15",
+    "through": "2027-04-30",
+    "dateOverrides": 167,
+    "seasonStart": "2027-03-20",
+    "nuance": "Operator states daily 10:30–16:00 after seasonal start; ticket office closes 15:00. Later dates require recheck."
+  },
+  "pricing": "Adult €6.50 single or €16 three rides; reduced €5/€12 for age 6–17 and disability rating 50+; age 3–5 up to three free rides daily. Sold at the attraction counter.",
+  "photoCountPublished": 4,
+  "photos": [
+    {
+      "imageId": "250bd46b182f4f3a947af8b331798088",
+      "sourceUrl": "https://www.kienbergpark.de/fileadmin/_processed_/4/2/csm_GB_GdW_Naturbobbahn_08Juli2024_FotoOleBader-4512_b95cfd097e.jpg",
+      "isCurrent": true,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator photo credited to Ole Bader, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "e9894ef185ec40e59de4916d935ed038",
+      "sourceUrl": "https://www.kienbergpark.de/fileadmin/_processed_/9/0/csm_GB_GdW_Naturbobbahn_08Juli2024_FotoOleBader-4538_8fe6b8e116.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator photo credited to Ole Bader, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "83af06552a6c4303a42a8282e2529f21",
+      "sourceUrl": "https://www.kienbergpark.de/fileadmin/_processed_/3/5/csm_GB_GdW_Naturbobbahn_08Juli2024_FotoOleBader-4617_3b60abb833.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator photo credited to Ole Bader, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "b63a30e2deb14ff5b87497b53a2703e5",
+      "sourceUrl": "https://www.kienbergpark.de/fileadmin/_processed_/1/f/csm_GB_GdW_Naturbobbahn_08Juli2024_FotoOleBader-4409_21d7cb90c5.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator photo credited to Ole Bader, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    }
+  ],
+  "photoFollowup": "Audit independent reuse rights of four existing Ole Bader images and find an additional exact photo with a verifiable licence.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 93,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "ebfbd074723c4638abf7e0ed401c4403",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127474345424431",
+    "publishedAtUtc": "2026-11-15T16:20:08.0330346Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T16:19:16.561Z",
+  "nextAction": "Confirmer les tarifs et horaires 2027 avant réouverture ; auditer les droits des quatre photos existantes créditées à Ole Bader et trouver une image supplémentaire exacte avec licence vérifiable."
+}

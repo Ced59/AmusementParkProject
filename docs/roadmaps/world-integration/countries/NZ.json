@@ -1790,6 +1790,361 @@
       "possibleBacklogEntries": [
         "NZ-candidate-discovery-b7c31d2090640c"
       ]
+    },
+    {
+      "entryId": "NZ-candidate-discovery-fafa5c7f080917",
+      "name": "ZORB Rotorua",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Descente en boule gonflable",
+      "locality": "525 Ngongotaha Road, Fairy Springs, Rotorua",
+      "siteId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T12:54:19.315Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Activité exploitée en 2026 avec quatre pistes, billetterie active et horaires officiels.",
+      "identityConfidence": "Site propre, billetterie et adresse propres ; recherche Park et Standalone sous ZORB/OGO sans doublon ; trois photos historiques exactes sous licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "OGO Rotorua",
+        "Zorb New Zealand"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T12:53:47.941Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-786f7c1b-4458-42c5-92cd-a2db05c41f2d",
+          "appliedAt": "2026-11-15T12:50:37.672Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+          "evidence": "PARK_DATA_EDITOR:apply:786f7c1b-4458-42c5-92cd-a2db05c41f2d",
+          "auditEvidence": null,
+          "summary": "Création de ZORB Rotorua, position GPS de l’exploitant et textes sur les quatre pistes en huit langues."
+        },
+        {
+          "eventId": "image-890b318052ec4139ac86aa8fd1c7c993",
+          "appliedAt": "2026-11-15T12:51:39.147Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+          "evidence": "PARK_DATA_EDITOR:image:890b318052ec4139ac86aa8fd1c7c993",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de ZORB Rotorua, datée et créditée en huit langues ; Master Man from Spain, CC BY 2.0, 2008-02-06."
+        },
+        {
+          "eventId": "image-2c392c0161134275af518329a167d886",
+          "appliedAt": "2026-11-15T12:52:34.446Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+          "evidence": "PARK_DATA_EDITOR:image:2c392c0161134275af518329a167d886",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de ZORB Rotorua, datée et créditée en huit langues ; Harry Malsch, CC BY 2.0, 2009-04-21."
+        },
+        {
+          "eventId": "image-9a3d85b801ce48a3bef345f353eadcbd",
+          "appliedAt": "2026-11-15T12:52:51.639Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+          "evidence": "PARK_DATA_EDITOR:image:9a3d85b801ce48a3bef345f353eadcbd",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de ZORB Rotorua, datée et créditée en huit langues ; Gonzalo Baeza, CC BY 3.0, 2011-12-13."
+        },
+        {
+          "eventId": "apply-4a9f4879-a5ad-4049-834d-06f96278f323",
+          "appliedAt": "2026-11-15T12:53:47.941Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+          "evidence": "PARK_DATA_EDITOR:apply:4a9f4879-a5ad-4049-834d-06f96278f323",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-zorb-rotorua-20261115/audit.json",
+          "summary": "Horaires officiels sept jours sur sept avec Noël fermé, quatre prix, âge, poids, santé et météo en huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Recontrôler prix, horaires, restrictions et éventuelle évolution des quatre pistes sous 90 jours. Obtenir des photos exactes plus récentes avec droit de réutilisation : les trois images actuelles sont historiques (2008, 2009, 2011) et ne prouvent pas le tracé actuel. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — site officiel",
+          "url": "https://zorb.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — quatre pistes et tarifs",
+          "url": "https://zorb.com/rides-3/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ et restrictions",
+          "url": "https://zorb.com/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — adresse et horaires",
+          "url": "https://zorb.com/contact-us/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — billetterie",
+          "url": "https://bookings.zorb.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Master Man from Spain, CC BY 2.0, 2008-02-06",
+          "url": "https://commons.wikimedia.org/wiki/File:Zorb_05.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Harry Malsch, CC BY 2.0, 2009-04-21",
+          "url": "https://commons.wikimedia.org/wiki/File:Zorb_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Gonzalo Baeza, CC BY 3.0, 2011-12-13",
+          "url": "https://commons.wikimedia.org/wiki/File:ZORB_EXPERIENCE_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "ZORB Rotorua",
+            "source": "Exploitant — quatre pistes et tarifs",
+            "url": "https://zorb.com/rides-3/",
+            "family": "Zorbing",
+            "sourceVenueName": "ZORB Rotorua",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Fairy Springs, Rotorua"
+          }
+        ],
+        "rationale": "Site autonome dédié à une même activité de descente en boule, avec quatre variantes de piste vendues à la descente."
+      }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-92659a55243cae",
+      "name": "Auckland SkyJump",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Descente guidée depuis une tour",
+      "locality": "Sky Tower, Federal Street, Auckland CBD",
+      "siteId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T13:01:13.854Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "SkyJump actif en 2026 selon l’exploitant, avec réservation et horaires dédiés.",
+      "identityConfidence": "Produit, tarif et restrictions propres ; SkyWalk et SkyRide distincts ; recherche PDE sans doublon ; deux photos exactes sous licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "SkyJump Auckland",
+        "Sky Tower SkyJump"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T13:00:42.067Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f8408dcb-0109-4e3a-bff8-3f5bddd15ad0",
+          "appliedAt": "2026-11-15T12:59:00.234Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+          "evidence": "PARK_DATA_EDITOR:apply:f8408dcb-0109-4e3a-bff8-3f5bddd15ad0",
+          "auditEvidence": null,
+          "summary": "Création de SkyJump comme descente guidée autonome depuis la Sky Tower, position de la tour et huit descriptions."
+        },
+        {
+          "eventId": "image-d3ea5a647a194d1a903505b97b3f138e",
+          "appliedAt": "2026-11-15T12:59:30.180Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+          "evidence": "PARK_DATA_EDITOR:image:d3ea5a647a194d1a903505b97b3f138e",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la descente SkyJump datée de 2012, huit alt/légendes/crédits ; Simon_sees, CC BY 2.0."
+        },
+        {
+          "eventId": "image-ca3dec0833f945f3974410d6c2cc9fdc",
+          "appliedAt": "2026-11-15T13:00:20.558Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+          "evidence": "PARK_DATA_EDITOR:image:ca3dec0833f945f3974410d6c2cc9fdc",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la descente SkyJump datée de 2012, huit alt/légendes/crédits ; Simon_sees, CC BY 2.0."
+        },
+        {
+          "eventId": "apply-502597a8-6403-4809-9f00-0cc5465787e0",
+          "appliedAt": "2026-11-15T13:00:42.067Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+          "evidence": "PARK_DATA_EDITOR:apply:502597a8-6403-4809-9f00-0cc5465787e0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-auckland-skyjump-20261115/audit.json",
+          "summary": "Tarif officiel, horaires quotidiens, âge, poids, accès et météo dans huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Recontrôler tarif à partir de 280 NZD, horaires et conditions sous 90 jours ; vérifier les variations de jours fériés et la météo avant chaque nouvelle publication. Chercher une photo exacte récente sous licence réutilisable, les deux images actuelles datent de 2012. Qualifier SkyWalk et SkyRide séparément, sans réutiliser les photos du SkyJump. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — SkyJump",
+          "url": "https://www.bungy.co.nz/auckland/sky-tower/skyjump/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Sky Tower, horaires et arrivée",
+          "url": "https://www.bungy.co.nz/auckland/sky-tower/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ et tarifs",
+          "url": "https://www.bungy.co.nz/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "SkyCity — historique SkyJump",
+          "url": "https://www.skycityentertainmentgroup.com/news-media/news-media/new-thrill-ride-to-launch-from-aucklands-sky-tower/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikidata — Sky Tower",
+          "url": "https://www.wikidata.org/wiki/Q722125",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Simon_sees, CC BY 2.0, 2012-05-06",
+          "url": "https://commons.wikimedia.org/wiki/File:Sky_Jump_(7187521210).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Simon_sees, CC BY 2.0, 2012-05-06",
+          "url": "https://commons.wikimedia.org/wiki/File:Sky_Jump_(7187518688).jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Auckland SkyJump",
+            "source": "Exploitant — SkyJump",
+            "url": "https://www.bungy.co.nz/auckland/sky-tower/skyjump/",
+            "family": "Guided tower descent",
+            "sourceVenueName": "Sky Tower",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Auckland CBD"
+          }
+        ],
+        "rationale": "Activité vendue séparément depuis la Sky Tower ; le mécanisme contrôlé et le billet sont propres à SkyJump."
+      }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-09292beb69cf01",
+      "name": "Auckland SkyWalk",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Marche extérieure sur tour",
+      "locality": "Sky Tower, Auckland CBD",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Produit et billet distincts sur le site officiel AJ Hackett consulté le 15 novembre 2026.",
+      "identityConfidence": "Activité distincte de SkyJump ; identité à rapprocher des recherches officielles et photo exacte à obtenir avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sky Tower SkyWalk"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher Park et StandaloneAttraction, confirmer statut, tarif, horaires et accès ; trouver au moins une photographie réutilisable montrant exactement cette activité. Ne pas utiliser les photos SkyJump.",
+      "sources": [
+        {
+          "label": "Exploitant — activité dédiée",
+          "url": "https://www.bungy.co.nz/auckland/sky-tower/skywalk/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — trois activités Sky Tower",
+          "url": "https://www.bungy.co.nz/auckland/sky-tower/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Offre vendue séparément depuis la Sky Tower ; photo et qualification de fiche à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NZ-candidate-discovery-92659a55243cae"
+      ]
+    },
+    {
+      "entryId": "NZ-candidate-discovery-2309f264a355db",
+      "name": "Auckland SkyRide",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Montée et descente guidées",
+      "locality": "Sky Tower, Auckland CBD",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Produit et billet distincts sur le site officiel AJ Hackett consulté le 15 novembre 2026.",
+      "identityConfidence": "Activité distincte de SkyJump ; identité à rapprocher des recherches officielles et photo exacte à obtenir avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sky Tower SkyRide"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher Park et StandaloneAttraction, confirmer statut, tarif, horaires et accès ; trouver au moins une photographie réutilisable montrant exactement cette activité. Ne pas utiliser les photos SkyJump.",
+      "sources": [
+        {
+          "label": "Exploitant — activité dédiée",
+          "url": "https://www.bungy.co.nz/auckland/sky-tower/skyride/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — trois activités Sky Tower",
+          "url": "https://www.bungy.co.nz/auckland/sky-tower/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Offre vendue séparément depuis la Sky Tower ; photo et qualification de fiche à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NZ-candidate-discovery-92659a55243cae"
+      ]
     }
   ]
 }

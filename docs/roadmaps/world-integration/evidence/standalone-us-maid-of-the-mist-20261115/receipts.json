@@ -1,0 +1,94 @@
+{
+  "entryId": "US-candidate-discovery-941071f3fdb01b",
+  "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+  "integrationHistory": [
+    {
+      "eventId": "apply-7808615a-d267-49eb-8ca9-ce771ef0e648",
+      "appliedAt": "2026-11-15T13:29:13.531Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+      "evidence": "PARK_DATA_EDITOR:apply:7808615a-d267-49eb-8ca9-ce771ef0e648",
+      "auditEvidence": null,
+      "summary": "Création privée du parcours américain, géolocalisation du quai et huit descriptions signalant la saison terminée."
+    },
+    {
+      "eventId": "apply-b077c016-415c-436f-8d69-8776bce567c9",
+      "appliedAt": "2026-11-15T13:29:49.408Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+      "evidence": "PARK_DATA_EDITOR:apply:b077c016-415c-436f-8d69-8776bce567c9",
+      "auditEvidence": null,
+      "summary": "Conditions officielles, accès, prix 2026 datés et avis de fermeture dans huit langues intégrés."
+    },
+    {
+      "eventId": "image-37ba583ccf9742ca861461d43dd0083b",
+      "appliedAt": "2026-11-15T13:30:04.968Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+      "evidence": "PARK_DATA_EDITOR:image:37ba583ccf9742ca861461d43dd0083b@2026-11-15T13:30:04.968Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte du bateau datée de 2026 : huit alt, légendes et crédits ; VynedJ, CC BY 4.0."
+    },
+    {
+      "eventId": "image-527c40f814f142a0bd46d57cec639162",
+      "appliedAt": "2026-11-15T13:30:19.038Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+      "evidence": "PARK_DATA_EDITOR:image:527c40f814f142a0bd46d57cec639162@2026-11-15T13:30:19.038Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte du bateau datée de 2026 : huit alt, légendes et crédits ; K2HWY, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-1fee8525322f4e4c9832f49efe54b853",
+      "appliedAt": "2026-11-15T13:30:32.875Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+      "evidence": "PARK_DATA_EDITOR:image:1fee8525322f4e4c9832f49efe54b853@2026-11-15T13:30:32.875Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte du bateau datée de 2020 : huit alt, légendes et crédits ; Bona1858, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "apply-f0410064-fa49-4467-a6c5-b58ac46540d3",
+      "appliedAt": "2026-11-15T13:31:08.399Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3cbcbf94-0c5f-401a-b1d5-e2f9cc0b55aa",
+      "evidence": "PARK_DATA_EDITOR:apply:f0410064-fa49-4467-a6c5-b58ac46540d3",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-maid-of-the-mist-20261115/audit.json",
+      "summary": "Fermeture confirmée par l’exploitant structurée du 9 novembre à fin décembre 2026, sans inventer l’ouverture 2027."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "d9ef02d9-f62e-4f3f-bbbd-469a5981228e",
+    "appliedAtUtc": "2026-11-15T13:31:35.7253508Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127458115424431",
+    "publishedAtUtc": "2026-11-15T13:32:12.8726166Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "37ba583ccf9742ca861461d43dd0083b",
+      "uploadedAtUtc": "2026-11-15T13:30:00.968Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "527c40f814f142a0bd46d57cec639162",
+      "uploadedAtUtc": "2026-11-15T13:30:15.601Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "1fee8525322f4e4c9832f49efe54b853",
+      "uploadedAtUtc": "2026-11-15T13:30:29.496Z"
+    }
+  ]
+}

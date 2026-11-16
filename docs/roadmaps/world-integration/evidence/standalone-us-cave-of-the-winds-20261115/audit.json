@@ -1,0 +1,152 @@
+{
+  "entryId": "US-candidate-discovery-7fac0d5ef73c96",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+  "name": "Cave of the Winds — Niagara Falls",
+  "countryCode": "US",
+  "auditAtUtc": "2026-11-15T14:03:51.072Z",
+  "qualification": "Billet individuel à créneau propre vendu à Cave of the Winds ou au Welcome Center de Niagara Falls State Park. Distinct de l’entrée libre au parc et de la croisière Maid of the Mist. Recherche PDE Cave of the Winds sans fiche américaine homonyme.",
+  "operatorSources": [
+    "https://www.niagarafallsstatepark.com/attractions/cave-of-the-winds/",
+    "https://www.niagarafallsstatepark.com/park-information/faqs/",
+    "https://www.niagarafallsstatepark.com/attractions/double-the-wonder-bundle/"
+  ],
+  "geoSource": "https://www.openstreetmap.org/search?query=Cave%20of%20the%20Winds%20Goat%20Island",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/3a4c8166-5edd-405b-93d5-25b036b88964/cave-of-the-winds-niagara-falls",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 4,
+  "photos": [
+    {
+      "imageId": "f2c2529c8f5d4dbd8fc738c5e121bdb8",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:American_Falls_and_Bridal_Veil_Falls_from_Cave_of_the_Winds_July_2024.jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:American_Falls_and_Bridal_Veil_Falls_from_Cave_of_the_Winds_July_2024.jpeg",
+      "creator": "Dough4872",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2024-07-22",
+      "uploadedAtUtc": "2026-11-15T14:01:21.81Z",
+      "metadataCompletedAtUtc": "2026-11-15T14:01:25.21Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "c278af43a84645e4a09988cbd52ce950",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bridal_Veil_Falls_from_Cave_of_the_Winds_July_2024.jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bridal_Veil_Falls_from_Cave_of_the_Winds_July_2024.jpeg",
+      "creator": "Dough4872",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2024-07-22",
+      "uploadedAtUtc": "2026-11-15T14:01:29.748Z",
+      "metadataCompletedAtUtc": "2026-11-15T14:01:33.162Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "2c4fc948cce645b18f7e5e52b75a033b",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cave_of_the_Winds_walk_ways_and_decks_(21482471173).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cave_of_the_Winds_walk_ways_and_decks_(21482471173).jpg",
+      "creator": "Larry Koester",
+      "license": "CC BY 2.0",
+      "photographedAt": "2015-08-22 09:22",
+      "uploadedAtUtc": "2026-11-15T14:01:37.792Z",
+      "metadataCompletedAtUtc": "2026-11-15T14:01:41.195Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "30e89069d15c4a0193ba8b257cb3a91d",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bridal_Veil_Falls_(Niagara_Falls_State_Park,_NY)_-_view_of_icy_falls_from_the_Cave_of_the_Winds_observation_deck.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bridal_Veil_Falls_(Niagara_Falls_State_Park,_NY)_-_view_of_icy_falls_from_the_Cave_of_the_Winds_observation_deck.jpg",
+      "creator": "Nheyob",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-02-07",
+      "uploadedAtUtc": "2026-11-15T14:01:45.667Z",
+      "metadataCompletedAtUtc": "2026-11-15T14:01:49.062Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Tarifs officiels du 19 octobre 2026 au 31 mars 2027 : adulte 14 USD et jeune 10 USD, sans limite d’âge précisée pour « youth ». Billets individuels vendus seulement sur place ; prix en gatePrice et non onlinePrice.",
+  "openingHoursAssessment": "Calendrier officiel daté jusqu’au 31 mars 2027 : dernière vente généralement à 16 h, à 14 h 15 le 24 décembre 2026 ; fermeture le 26 novembre, le 25 décembre et le 1er janvier 2027. Les trois dates fermées sont structurées. Aucune heure de fermeture de l’attraction déduite de l’heure de dernière vente.",
+  "accessAssessment": "FAQ officielle : plateforme principale accessible en fauteuil. Exploitant : accès aux zones extérieures variable selon la saison et la météo ; sandales fournies autrefois désormais supprimées, chaussures pouvant être mouillées recommandées.",
+  "geoAssessment": "Coordonnées approximatives 43.0823618,-79.0708868 depuis OpenStreetMap pour l’entrée de Cave of the Winds sur Goat Island. Adresse officielle 10 Goat Island Loop Road.",
+  "mediaAssessment": "Quatre photos exactes : deux des passerelles en juillet 2024, vue générale d’août 2015 et vue hivernale de février 2026. Licences CC BY-SA 4.0 et CC BY 2.0, inspectées visuellement, huit alt/légendes/crédits, quatre binaires HTTP 200.",
+  "completeness": {
+    "score": 94,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127460833424431",
+    "publishedAtUtc": "2026-11-15T14:02:56.4268503Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T14:02:06.068Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "71856095-38b6-4343-8665-c6806974e638",
+      "appliedAtUtc": "2026-11-15T14:00:27.2699573Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "207f4aa5-c83f-4313-b386-a891371b716a",
+      "appliedAtUtc": "2026-11-15T14:00:39.2333024Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "publish",
+      "operationId": "3667d004-1790-403a-a47a-dba09ec56695",
+      "appliedAtUtc": "2026-11-15T14:02:06.0680055Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "f2c2529c8f5d4dbd8fc738c5e121bdb8",
+      "uploadedAtUtc": "2026-11-15T14:01:21.81Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "c278af43a84645e4a09988cbd52ce950",
+      "uploadedAtUtc": "2026-11-15T14:01:29.748Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "2c4fc948cce645b18f7e5e52b75a033b",
+      "uploadedAtUtc": "2026-11-15T14:01:37.792Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "30e89069d15c4a0193ba8b257cb3a91d",
+      "uploadedAtUtc": "2026-11-15T14:01:45.667Z"
+    }
+  ],
+  "nextAction": "Conserver l’historique et le post Facebook. Recontrôler les tarifs au-delà du 31 mars 2027, les créneaux de dernière vente, la fermeture des jours fériés et l’accès saisonnier au Hurricane Deck. Ne pas extrapoler le programme d’hiver à une année entière."
+}

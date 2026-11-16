@@ -1,0 +1,103 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "80836e64-0911-4e37-aef1-39cd7499d4aa",
+  "entryId": "DE-standalone-80836e64-0911-4e37-aef1-39cd7499d4aa",
+  "name": "Allwetterrodelbahn Schöne Aussicht Weißenfels",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T15:52:38.783Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/80836e64-0911-4e37-aef1-39cd7499d4aa/allwetterrodelbahn-schone-aussicht-weissenfels",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.allwetterrodelbahn.de/",
+    "https://www.allwetterrodelbahn.de/Preise.htm",
+    "https://www.allwetterrodelbahn.de/Oeffnungszeiten.htm"
+  ],
+  "editorial": "Eight descriptions rewritten without raw technical metrics, six displayed operator fares, age conditions, 106 dated overrides. November 2026 weekend opening retained and winter break recorded through 28 February 2027.",
+  "calendar": {
+    "from": "2026-11-15",
+    "through": "2027-02-28",
+    "dateOverrides": 106,
+    "novemberOpenDays": 5,
+    "seasonalClosure": "2026-12-01 through 2027-02-28 inclusive",
+    "nuance": "Weather and events may alter published hours; no March 2027 schedule inferred."
+  },
+  "pricing": "Operator live price page has €2.80/€14 for children 3–13 single/six, €3.20/€16 from age 14, group from fifteen €2.30/€2.70, family card €40. No effective date stated, so prices should be rechecked before visiting.",
+  "photoCountPublished": 5,
+  "photos": [
+    {
+      "imageId": "5d0f9f2e125f4b519395e59457e117b2",
+      "sourceUrl": "https://allwetterrodelbahn.de/index_htm_files/337.jpg",
+      "isCurrent": true,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "13fdba512aa64317a31bea7c326314ac",
+      "sourceUrl": "https://allwetterrodelbahn.de/index_htm_files/348.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "50b59d2273744e55aaf96880f92b1f44",
+      "sourceUrl": "https://allwetterrodelbahn.de/index_htm_files/347.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "b3f8090ecb57478889920e7e1e4d5d4a",
+      "sourceUrl": "https://allwetterrodelbahn.de/index_htm_files/343.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "3b37af252d1542759f9180ddae41868a",
+      "sourceUrl": "https://allwetterrodelbahn.de/index_htm_files/338.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    }
+  ],
+  "photoFollowup": "Find an additional exact photo with a verifiable reuse licence and audit rights of five existing operator images.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 93,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "8c979aded574428f8c1a9bada7f3d7bf",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127471459424431",
+    "publishedAtUtc": "2026-11-15T15:52:10.6583047Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:51:15.321Z",
+  "nextAction": "Vérifier les tarifs et le calendrier de mars 2027 auprès de l’exploitant ; auditer les droits des cinq photos existantes et chercher une image supplémentaire exacte avec licence vérifiable."
+}

@@ -1,0 +1,46 @@
+{
+  "entryId": "DE-standalone-8a0ad048-04c6-485a-827d-ec5c42617db4",
+  "entityId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+  "integrationHistory": [
+    {
+      "eventId": "apply-2af4dbb1-809d-4646-9d85-f0f4dab65d02",
+      "appliedAt": "2026-11-15T14:48:38.649Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "evidence": "PARK_DATA_EDITOR:apply:2af4dbb1-809d-4646-9d85-f0f4dab65d02",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-brocken-coaster-20261115/audit.json",
+      "summary": "Tarifs, calendrier de novembre et décembre 2026, fermeture pour travaux dès janvier 2027 et huit textes publics mis à jour."
+    },
+    {
+      "eventId": "image-12a2019ddb8e4919a9cbffd242176993",
+      "appliedAt": "2026-11-15T14:49:08.926Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "evidence": "PARK_DATA_EDITOR:image:12a2019ddb8e4919a9cbffd242176993@2026-11-15T14:49:08.926Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-brocken-coaster-20261115/audit.json",
+      "summary": "Photo exacte de l’enseigne et de la piste (2024), Lukas Beck, CC BY 4.0, avec huit textes alternatifs, légendes et crédits."
+    },
+    {
+      "eventId": "apply-f4dcb991-c165-4050-ab9f-51aefc9f91db",
+      "appliedAt": "2026-11-15T14:50:46.304Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "evidence": "PARK_DATA_EDITOR:apply:f4dcb991-c165-4050-ab9f-51aefc9f91db",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-brocken-coaster-20261115/audit.json",
+      "summary": "Relecture éditoriale des huit descriptions, suppression du blocage de publication et contrôle final à 90/100."
+    }
+  ],
+  "facebook": {
+    "id": "5868f8e6fd7742b2af765dbd0e1e3f4a",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127465723424431",
+    "publishedAtUtc": "2026-11-15T14:51:30.3180742Z"
+  },
+  "photoImport": {
+    "imageId": "12a2019ddb8e4919a9cbffd242176993",
+    "updatedAtUtc": "2026-11-15T14:49:08.926Z"
+  }
+}

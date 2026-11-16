@@ -1,0 +1,26 @@
+{
+  "entryId": "IT-standalone-85aea3b3-6974-4213-870e-d91a484103a3",
+  "entityId": "85aea3b3-6974-4213-870e-d91a484103a3",
+  "integrationHistory": [
+    {
+      "eventId": "apply-b479ab89-290f-468d-944a-c94aa6849561",
+      "appliedAt": "2026-11-15T15:37:18.618Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "85aea3b3-6974-4213-870e-d91a484103a3",
+      "evidence": "PARK_DATA_EDITOR:apply:b479ab89-290f-468d-944a-c94aa6849561",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-bob-su-rotaia-20261115/audit.json",
+      "summary": "Tarifs et horaires hiver 2026–2027 vérifiés, règlement d’âge officiel, longueur corrigée, huit descriptions et deux photos exactes existantes contrôlées ; 90/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "84c885d0ca4c4a84852fe7b73e203da3",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127469995424431",
+    "publishedAtUtc": "2026-11-15T15:38:16.9015839Z"
+  },
+  "productionPhotoIds": [
+    "4dee98c75f4a45c89c36e27fc84df9a8",
+    "73d3f6a93c434f1ebefa2b679e021b4c"
+  ]
+}
