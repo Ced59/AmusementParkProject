@@ -64,7 +64,91 @@
     "adminReviewStatus": "ToReview",
     "street": null,
     "city": "Paris",
-    "postalCode": null
+    "postalCode": null,
+    "officialMaps": [
+      {
+        "key": "exposition-coloniale-map-1931-fr",
+        "id": "exposition-coloniale-map-1931-fr",
+        "year": 1931,
+        "format": "Image",
+        "storageKey": "official-maps/1c83e45c-3335-4948-b15f-ce2805bc42e3/exposition-coloniale-map-1931-fr.0bf7fd3cbb804e24b6232fdbc043c76a.jpg",
+        "originalFileName": "plan-university-native.jpg",
+        "contentType": "image/jpeg",
+        "sizeInBytes": 595953,
+        "sourcePageUrl": "https://www.angewandtekunstgeschichte.net/news/2026/seminar-exkursion-paris-blickt-auf-die-welt-kunst-imperium-und-wissenschaft-1766-2026",
+        "languageCode": "fr",
+        "isVisible": false,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Plan officiel à vol d’oiseau — Exposition coloniale, 1931"
+          },
+          {
+            "languageCode": "en",
+            "value": "Official bird’s-eye map — Colonial Exposition, 1931"
+          },
+          {
+            "languageCode": "de",
+            "value": "Offizieller Vogelschauplan — Kolonialausstellung, 1931"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Officiële plattegrond in vogelvlucht — Koloniale Tentoonstelling, 1931"
+          },
+          {
+            "languageCode": "it",
+            "value": "Pianta ufficiale a volo d’uccello — Esposizione coloniale, 1931"
+          },
+          {
+            "languageCode": "es",
+            "value": "Plano oficial a vista de pájaro — Exposición Colonial, 1931"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Oficjalny plan z lotu ptaka — Wystawa Kolonialna, 1931"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Planta oficial em perspetiva aérea — Exposição Colonial, 1931"
+          }
+        ],
+        "alternativeTexts": [
+          {
+            "languageCode": "fr",
+            "value": "Vue illustrée du site de l’Exposition coloniale de 1931 autour du lac Daumesnil : pavillons, reconstitution d’Angkor, parc zoologique et parc d’attractions, avec leur légende."
+          },
+          {
+            "languageCode": "en",
+            "value": "Illustrated view of the 1931 Colonial Exposition around Lac Daumesnil, showing the pavilions, Angkor reconstruction, zoo and amusement park, with a key."
+          },
+          {
+            "languageCode": "de",
+            "value": "Illustrierte Ansicht der Kolonialausstellung von 1931 rund um den Lac Daumesnil mit Pavillons, dem Nachbau von Angkor, dem Zoo und dem Vergnügungspark sowie einer Legende."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Geïllustreerd overzicht van de Koloniale Tentoonstelling van 1931 rond het Lac Daumesnil, met paviljoens, de reconstructie van Angkor, de dierentuin en het attractiepark, met legenda."
+          },
+          {
+            "languageCode": "it",
+            "value": "Veduta illustrata dell’Esposizione coloniale del 1931 attorno al lago Daumesnil, con i padiglioni, la ricostruzione di Angkor, lo zoo e il parco divertimenti, accompagnata da una legenda."
+          },
+          {
+            "languageCode": "es",
+            "value": "Vista ilustrada de la Exposición Colonial de 1931 alrededor del lago Daumesnil, con los pabellones, la reconstrucción de Angkor, el zoológico y el parque de atracciones, acompañada de una leyenda."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Ilustrowany widok Wystawy Kolonialnej z 1931 roku wokół jeziora Daumesnil, przedstawiający pawilony, rekonstrukcję Angkoru, zoo i park rozrywki, z legendą."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Vista ilustrada da Exposição Colonial de 1931 em redor do lago Daumesnil, com os pavilhões, a reconstrução de Angkor, o jardim zoológico e o parque de diversões, acompanhada de uma legenda."
+          }
+        ],
+        "lastVerifiedAtUtc": "2026-11-16T00:28:51.542329+00:00"
+      }
+    ]
   },
   "references": {
     "founders": [],
@@ -612,35 +696,35 @@
       "descriptions": [
         {
           "languageCode": "fr",
-          "value": "<h2>Le petit train de l’exposition</h2><p>Le train de ceinture parcourait l’Exposition coloniale internationale de 1931, dans le bois de Vincennes. Ce chemin de fer intérieur reliait les paysages et les pavillons d’un événement qui avait pris l’ampleur d’une ville temporaire.</p><h2>Des pavillons étrangers à l’avenue des Colonies</h2><p>Son parcours passait par la section étrangère avant de se poursuivre vers la présentation de l’empire français. La grande avenue et la reconstitution du temple d’Angkor figuraient parmi les grands décors de cet ensemble.</p><p>Cette succession d’architectures proposait un voyage composé par les organisateurs. Elle faisait aussi du déplacement en train un élément de la mise en scène coloniale de l’exposition.</p>"
+          "value": "<h2>Autour du lac Daumesnil</h2><p>Le train de ceinture reliait les pavillons de l’Exposition coloniale de 1931 en suivant les allées autour du lac Daumesnil. Depuis ses voitures ouvertes abritées par un toit, les passagers voyaient se succéder les jardins et les architectures composées pour présenter les territoires coloniaux.</p><p>Le trajet traversait notamment la section étrangère, puis rejoignait la présentation de l’empire français. La reconstitution du temple d’Angkor et l’avenue des Colonies appartenaient à ce paysage de monuments temporaires.</p><h2>La halte de la Porte de Reuilly</h2><p>Une enseigne placée au-dessus d’un petit abri nommait la station « Porte de Reuilly », derrière une clôture à piquets. Ailleurs sur le parcours, une carte postale montre le train passant devant la haute fontaine Cactus, tandis que des visiteurs traversaient l’allée.</p>"
         },
         {
           "languageCode": "en",
-          "value": "<h2>The exposition’s little train</h2><p>The perimeter train ran through the 1931 International Colonial Exposition in the Bois de Vincennes. This internal railway linked the landscapes and pavilions of an event that had grown to the scale of a temporary town.</p><h2>From foreign pavilions to the Avenue des Colonies</h2><p>Its route passed through the foreign section before continuing towards the presentation of the French empire. The main avenue and the reconstruction of the temple of Angkor were prominent settings within this ensemble.</p><p>The succession of architectural scenes offered a journey arranged by the organisers. Travelling by train also became part of the exposition’s staging of the colonial world.</p>"
+          "value": "<h2>Around Lac Daumesnil</h2><p>The perimeter train linked the pavilions of the 1931 Colonial Exposition along the avenues around Lac Daumesnil. From open carriages sheltered by a roof, passengers watched gardens and architectural settings unfold, arranged to represent colonial territories.</p><p>The route passed through the foreign section before reaching the presentation of the French empire. The reconstructed Angkor temple and the Avenue des Colonies formed part of this landscape of temporary monuments.</p><h2>The Porte de Reuilly stop</h2><p>A sign above a small shelter named the “Porte de Reuilly” station behind a picket fence. Elsewhere along the route, a photographic postcard shows the train passing the tall Cactus fountain while visitors crossed the avenue.</p>"
         },
         {
           "languageCode": "de",
-          "value": "<h2>Der kleine Zug der Ausstellung</h2><p>Die Ringbahn durchquerte die Internationale Kolonialausstellung von 1931 im Bois de Vincennes. Diese interne Eisenbahn verband die Landschaften und Pavillons einer Veranstaltung, die das Ausmaß einer vorübergehenden Stadt angenommen hatte.</p><h2>Von den ausländischen Pavillons zur Avenue des Colonies</h2><p>Die Fahrt führte durch den ausländischen Ausstellungsbereich und weiter zur Darstellung des französischen Kolonialreichs. Die große Allee und der Nachbau des Tempels von Angkor bildeten markante Schauplätze dieses Ensembles.</p><p>Die Abfolge unterschiedlicher Architekturen bot eine von den Veranstaltern gestaltete Reise. Damit wurde auch die Zugfahrt zu einem Bestandteil der kolonialen Inszenierung der Ausstellung.</p>"
+          "value": "<h2>Rund um den Lac Daumesnil</h2><p>Die Ringbahn verband die Pavillons der Kolonialausstellung von 1931 entlang der Alleen um den Lac Daumesnil. Aus den offenen, überdachten Wagen sahen die Fahrgäste Gärten und architektonische Kulissen, die zur Darstellung der Kolonialgebiete angelegt worden waren.</p><p>Die Strecke führte durch den ausländischen Ausstellungsbereich und weiter zur Präsentation des französischen Kolonialreichs. Der nachgebildete Angkor-Tempel und die Avenue des Colonies gehörten zu dieser Landschaft aus temporären Monumenten.</p><h2>Die Haltestelle Porte de Reuilly</h2><p>Über einem kleinen Unterstand hinter einem Lattenzaun stand das Stationsschild „Porte de Reuilly“. Eine fotografische Postkarte zeigt den Zug an anderer Stelle vor der hohen Cactus-Fontäne, während Besucher die Allee überquerten.</p>"
         },
         {
           "languageCode": "nl",
-          "value": "<h2>Het treintje van de tentoonstelling</h2><p>De ringlijn reed door de Internationale Koloniale Tentoonstelling van 1931 in het Bois de Vincennes. Deze interne spoorweg verbond de landschappen en paviljoens van een evenement dat de omvang van een tijdelijke stad had aangenomen.</p><h2>Van buitenlandse paviljoens naar de Avenue des Colonies</h2><p>De route liep door het buitenlandse gedeelte en vervolgens langs de presentatie van het Franse koloniale rijk. De grote laan en de nagebouwde tempel van Angkor vormden opvallende decors binnen dit geheel.</p><p>De opeenvolging van verschillende bouwstijlen bood een reis die door de organisatoren was samengesteld. Zo maakte ook de treinrit deel uit van de koloniale enscenering van de tentoonstelling.</p>"
+          "value": "<h2>Rond het Lac Daumesnil</h2><p>De ringlijn verbond de paviljoens van de Koloniale Tentoonstelling van 1931 via de lanen rond het Lac Daumesnil. Vanuit de open rijtuigen met een dak zagen passagiers tuinen en architecturale decors voorbijkomen die de koloniale gebieden moesten voorstellen.</p><p>De route liep door het buitenlandse gedeelte en vervolgens langs de presentatie van het Franse koloniale rijk. De nagebouwde tempel van Angkor en de Avenue des Colonies maakten deel uit van dit landschap van tijdelijke monumenten.</p><h2>De halte Porte de Reuilly</h2><p>Boven een klein afdak achter een houten hek stond de stationsnaam “Porte de Reuilly”. Een fotografische ansichtkaart toont de trein elders op de route voor de hoge Cactus-fontein, terwijl bezoekers de laan overstaken.</p>"
         },
         {
           "languageCode": "it",
-          "value": "<h2>Il trenino dell’esposizione</h2><p>La ferrovia circolare attraversava l’Esposizione coloniale internazionale del 1931, nel bois de Vincennes. Questa linea interna collegava i paesaggi e i padiglioni di un evento che aveva assunto le dimensioni di una città temporanea.</p><h2>Dai padiglioni stranieri all’avenue des Colonies</h2><p>Il percorso passava dalla sezione straniera per proseguire verso la presentazione dell’impero francese. Il grande viale e la ricostruzione del tempio di Angkor erano tra gli scenari più riconoscibili di questo insieme.</p><p>La successione di architetture proponeva un viaggio composto dagli organizzatori. Anche lo spostamento in treno diventava così parte della rappresentazione coloniale costruita dall’esposizione.</p>"
+          "value": "<h2>Attorno al lago Daumesnil</h2><p>La ferrovia circolare collegava i padiglioni dell’Esposizione coloniale del 1931 lungo i viali attorno al lago Daumesnil. Dalle carrozze aperte, riparate da un tetto, i passeggeri vedevano susseguirsi giardini e scenari architettonici allestiti per rappresentare i territori coloniali.</p><p>Il percorso attraversava la sezione straniera e proseguiva verso la presentazione dell’impero francese. La ricostruzione del tempio di Angkor e l’avenue des Colonies facevano parte di questo paesaggio di monumenti temporanei.</p><h2>La fermata Porte de Reuilly</h2><p>Un’insegna sopra un piccolo riparo indicava la stazione « Porte de Reuilly », dietro uno steccato. Altrove lungo il percorso, una cartolina fotografica mostra il treno davanti all’alta fontana Cactus, mentre i visitatori attraversavano il viale.</p>"
         },
         {
           "languageCode": "es",
-          "value": "<h2>El pequeño tren de la exposición</h2><p>El ferrocarril circular recorría la Exposición Colonial Internacional de 1931, en el bois de Vincennes. Esta línea interior enlazaba los paisajes y pabellones de un evento que había adquirido las dimensiones de una ciudad temporal.</p><h2>De los pabellones extranjeros a la avenue des Colonies</h2><p>El recorrido pasaba por la sección extranjera antes de continuar hacia la presentación del imperio francés. La gran avenida y la reconstrucción del templo de Angkor eran algunos de los escenarios destacados del conjunto.</p><p>La sucesión de arquitecturas ofrecía un viaje compuesto por los organizadores. El desplazamiento en tren formaba también parte de la puesta en escena colonial de la exposición.</p>"
+          "value": "<h2>Alrededor del lago Daumesnil</h2><p>El ferrocarril circular enlazaba los pabellones de la Exposición Colonial de 1931 por las avenidas que rodeaban el lago Daumesnil. Desde los coches abiertos, protegidos por un techo, los pasajeros veían sucederse jardines y escenarios arquitectónicos preparados para representar los territorios coloniales.</p><p>El recorrido atravesaba la sección extranjera antes de llegar a la presentación del imperio francés. La reproducción del templo de Angkor y la avenue des Colonies formaban parte de este paisaje de monumentos temporales.</p><h2>La parada Porte de Reuilly</h2><p>Un letrero sobre un pequeño refugio indicaba la estación « Porte de Reuilly », detrás de una valla de estacas. En otro punto del recorrido, una postal fotográfica muestra el tren ante la alta fuente Cactus mientras los visitantes cruzaban la avenida.</p>"
         },
         {
           "languageCode": "pl",
-          "value": "<h2>Mały pociąg na wystawie</h2><p>Kolejka okrężna kursowała po Międzynarodowej Wystawie Kolonialnej z 1931 roku w bois de Vincennes. Wewnętrzna linia łączyła krajobrazy i pawilony wydarzenia, które przybrało rozmiary tymczasowego miasta.</p><h2>Od zagranicznych pawilonów do avenue des Colonies</h2><p>Trasa prowadziła przez część zagraniczną, a następnie ku prezentacji francuskiego imperium kolonialnego. Wielka aleja i rekonstrukcja świątyni Angkor należały do charakterystycznych scenerii tego zespołu.</p><p>Następujące po sobie formy architektoniczne składały się na podróż ułożoną przez organizatorów. Także przejazd pociągiem stawał się elementem kolonialnej inscenizacji wystawy.</p>"
+          "value": "<h2>Wokół jeziora Daumesnil</h2><p>Kolejka okrężna łączyła pawilony Wystawy Kolonialnej z 1931 roku, kursując alejami wokół jeziora Daumesnil. Z otwartych, zadaszonych wagonów pasażerowie oglądali ogrody i architektoniczne dekoracje przygotowane do prezentacji terytoriów kolonialnych.</p><p>Trasa prowadziła przez część zagraniczną, a następnie w stronę prezentacji francuskiego imperium kolonialnego. Rekonstrukcja świątyni Angkor i avenue des Colonies należały do tego krajobrazu tymczasowych budowli.</p><h2>Przystanek Porte de Reuilly</h2><p>Nad małą wiatą za drewnianym płotem widniała tablica z nazwą stacji „Porte de Reuilly”. Pocztówka fotograficzna pokazuje pociąg w innym miejscu trasy, przed wysoką fontanną Cactus, gdy zwiedzający przechodzili przez aleję.</p>"
         },
         {
           "languageCode": "pt",
-          "value": "<h2>O pequeno comboio da exposição</h2><p>O caminho de ferro circular percorria a Exposição Colonial Internacional de 1931, no bois de Vincennes. Esta linha interna ligava as paisagens e os pavilhões de um evento que tinha adquirido a dimensão de uma cidade temporária.</p><h2>Dos pavilhões estrangeiros à avenue des Colonies</h2><p>O percurso passava pela secção estrangeira antes de prosseguir para a apresentação do império francês. A grande avenida e a reconstrução do templo de Angkor eram alguns dos cenários mais marcantes do conjunto.</p><p>A sucessão de arquiteturas propunha uma viagem composta pelos organizadores. A deslocação de comboio fazia também parte da encenação colonial da exposição.</p>"
+          "value": "<h2>Em redor do lago Daumesnil</h2><p>O caminho de ferro circular ligava os pavilhões da Exposição Colonial de 1931 pelas alamedas em redor do lago Daumesnil. Das carruagens abertas, abrigadas por um teto, os passageiros viam suceder-se jardins e cenários arquitetónicos preparados para representar os territórios coloniais.</p><p>O percurso atravessava a secção estrangeira antes de chegar à apresentação do império francês. A reconstrução do templo de Angkor e a avenue des Colonies faziam parte desta paisagem de monumentos temporários.</p><h2>A paragem Porte de Reuilly</h2><p>Uma placa sobre um pequeno abrigo indicava a estação « Porte de Reuilly », atrás de uma vedação de madeira. Noutro ponto do percurso, um postal fotográfico mostra o comboio diante da alta fonte Cactus, enquanto os visitantes atravessavam a alameda.</p>"
         }
       ],
       "attractionDetails": {
@@ -686,6 +770,55 @@
       "adminReviewStatus": "ToReview",
       "latitude": null,
       "longitude": null
+    },
+    {
+      "key": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+      "name": "Fontaine du Cactus",
+      "category": "Other",
+      "type": "Other",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les grandes tiges de la porte de Reuilly</h2><p>La fontaine du Cactus se dressait près de la porte de Reuilly, à l’entrée de la grande avenue des Colonies françaises. Ses hautes tiges se recourbaient au sommet autour de cascades étagées. Cette silhouette végétale démesurée dominait les passants et les voitures du petit train qui circulait devant son bassin.</p><p>La carte photographique Braun porte les noms des architectes André Granet et Roger-Henri Expert. À la nuit tombée, l’éclairage soulignait les arêtes, les retombées d’eau et le bouquet de courbes au-dessus de la fontaine ; la masse claire du jour devenait un décor lumineux.</p><h2>Le Cactus dans un pastel de 1931</h2><p>Alexandre-Mathurin Pêche a représenté la fontaine depuis la section de l’Afrique équatoriale française. Il la place au bout d’une allée bordée de visiteurs, derrière un pylône strié de rouge et de bleu. Son pastel rapproche le Cactus des constructions et des plantations qui composaient le paysage nocturne de l’exposition.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The towering stems by Porte de Reuilly</h2><p>The Cactus fountain stood near Porte de Reuilly, at the entrance to the main avenue of the French Colonies. Its tall stems curved over at the top around stepped cascades. This oversized plant-like silhouette rose above pedestrians and the little train’s carriages as they passed the basin.</p><p>The Braun photographic postcard names the architects André Granet and Roger-Henri Expert. After dark, lighting picked out the edges, falling water and cluster of curves above the fountain, turning its pale daytime form into an illuminated setting.</p><h2>The Cactus in a 1931 pastel</h2><p>Alexandre-Mathurin Pêche depicted the fountain from the French Equatorial Africa section. He placed it at the end of a path lined with visitors, beyond a pylon striped in red and blue. His pastel brings the Cactus together with the buildings and planting that formed the exposition’s night-time landscape.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Hohe Stängel an der Porte de Reuilly</h2><p>Der Cactus-Brunnen stand nahe der Porte de Reuilly am Eingang zur großen Allee der französischen Kolonien. Seine hohen Stängel bogen sich oben über stufenförmigen Kaskaden. Die übergroße Pflanzensilhouette ragte über die Spaziergänger und die Wagen der kleinen Bahn hinaus, die am Becken vorbeifuhr.</p><p>Auf der fotografischen Postkarte von Braun sind die Architekten André Granet und Roger-Henri Expert genannt. Nach Einbruch der Dunkelheit betonte die Beleuchtung die Kanten, das herabfallende Wasser und die geschwungenen Formen über dem Brunnen. Aus der tagsüber hellen Anlage wurde eine leuchtende Kulisse.</p><h2>Der Cactus in einem Pastell von 1931</h2><p>Alexandre-Mathurin Pêche zeichnete den Brunnen vom Bereich Französisch-Äquatorialafrika aus. Er erscheint am Ende einer von Besuchern gesäumten Allee hinter einem rot und blau gestreiften Lichtpfeiler. Das Pastell zeigt den Cactus im Zusammenhang mit den Bauten und Pflanzen der nächtlichen Ausstellungslandschaft.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Hoge stengels bij de Porte de Reuilly</h2><p>De Cactusfontein stond bij de Porte de Reuilly, aan het begin van de grote laan van de Franse koloniën. De hoge stengels bogen bovenaan om rond trapsgewijze watervallen. Dit reusachtige plantensilhouet torende uit boven de wandelaars en de rijtuigen van het treintje dat langs het bassin reed.</p><p>De fotografische ansichtkaart van Braun vermeldt de architecten André Granet en Roger-Henri Expert. Na zonsondergang benadrukte de verlichting de randen, het vallende water en de bundel bogen boven de fontein. De overdag lichte vorm veranderde zo in een verlicht decor.</p><h2>De Cactus op een pastel uit 1931</h2><p>Alexandre-Mathurin Pêche tekende de fontein vanuit de afdeling Frans-Equatoriaal-Afrika. Hij plaatste haar aan het einde van een laan met bezoekers, achter een rood en blauw gestreepte lichtzuil. Zijn pastel verbindt de Cactus met de gebouwen en beplanting van het nachtelijke tentoonstellingslandschap.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Alti steli presso la Porte de Reuilly</h2><p>La fontana del Cactus sorgeva vicino alla Porte de Reuilly, all’imbocco del grande viale delle colonie francesi. Gli alti steli si incurvavano in cima attorno a cascate a gradoni. Questa smisurata sagoma vegetale dominava i passanti e le carrozze del trenino che transitava davanti alla vasca.</p><p>La cartolina fotografica Braun riporta i nomi degli architetti André Granet e Roger-Henri Expert. Di notte, le luci sottolineavano gli spigoli, le cadute d’acqua e il fascio di curve sopra la fontana, trasformando la massa chiara visibile di giorno in uno scenario luminoso.</p><h2>Il Cactus in un pastello del 1931</h2><p>Alexandre-Mathurin Pêche raffigurò la fontana dalla sezione dell’Africa Equatoriale Francese. La collocò in fondo a un viale fiancheggiato da visitatori, dietro un pilone a strisce rosse e blu. Il pastello accosta il Cactus agli edifici e alla vegetazione che componevano il paesaggio notturno dell’esposizione.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Grandes tallos junto a la Porte de Reuilly</h2><p>La fuente del Cactus se alzaba cerca de la Porte de Reuilly, al comienzo de la gran avenida de las colonias francesas. Sus altos tallos se curvaban en lo alto alrededor de cascadas escalonadas. Esta enorme silueta vegetal dominaba a los paseantes y los vagones del pequeño tren que pasaba ante el estanque.</p><p>La postal fotográfica de Braun lleva los nombres de los arquitectos André Granet y Roger-Henri Expert. Al anochecer, la iluminación resaltaba las aristas, las caídas de agua y el haz de curvas sobre la fuente, convirtiendo su masa clara diurna en un escenario luminoso.</p><h2>El Cactus en un pastel de 1931</h2><p>Alexandre-Mathurin Pêche representó la fuente desde la sección del África Ecuatorial Francesa. La situó al fondo de una avenida bordeada de visitantes, detrás de un pilar con franjas rojas y azules. Su pastel reúne el Cactus, los edificios y la vegetación que componían el paisaje nocturno de la exposición.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Wysokie łodygi przy Porte de Reuilly</h2><p>Fontanna Cactus stała niedaleko Porte de Reuilly, u wylotu głównej alei kolonii francuskich. Jej wysokie łodygi zaginały się u góry wokół stopniowanych kaskad. Ta ogromna roślinna sylwetka górowała nad przechodniami i wagonami kolejki przejeżdżającej przed basenem fontanny.</p><p>Na fotograficznej pocztówce wydawnictwa Braun widnieją nazwiska architektów André Graneta i Rogera-Henriego Experta. Po zmroku oświetlenie podkreślało krawędzie, spływającą wodę i wiązkę łuków nad fontanną. Jasna za dnia bryła stawała się świetlną dekoracją.</p><h2>Cactus na pastelu z 1931 roku</h2><p>Alexandre-Mathurin Pêche przedstawił fontannę od strony sekcji Francuskiej Afryki Równikowej. Umieścił ją na końcu alei pełnej zwiedzających, za słupem w czerwone i niebieskie pasy. Pastel ukazuje Cactus w otoczeniu budynków i roślin tworzących nocny krajobraz wystawy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Grandes hastes junto à Porte de Reuilly</h2><p>A fonte do Cactus erguia-se perto da Porte de Reuilly, no início da grande avenida das colónias francesas. As suas hastes altas curvavam-se no topo em redor de cascatas em degraus. Esta enorme silhueta vegetal dominava os passeantes e as carruagens do pequeno comboio que passava diante do tanque.</p><p>O postal fotográfico da Braun apresenta os nomes dos arquitetos André Granet e Roger-Henri Expert. Ao anoitecer, a iluminação realçava as arestas, as quedas de água e o conjunto de curvas sobre a fonte. A massa clara visível durante o dia transformava-se num cenário luminoso.</p><h2>O Cactus num pastel de 1931</h2><p>Alexandre-Mathurin Pêche representou a fonte a partir da secção da África Equatorial Francesa. Colocou-a no fim de uma alameda ladeada por visitantes, atrás de um pilar às riscas vermelhas e azuis. O pastel aproxima o Cactus dos edifícios e da vegetação que compunham a paisagem noturna da exposição.</p>"
+        }
+      ],
+      "attractionDetails": {
+        "status": "ClosedDefinitively",
+        "openingDate": null,
+        "sourceUrl": "https://programme.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-le-cactus-vue-depuis-la",
+        "openingDateText": "1931"
+      },
+      "id": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6"
     }
   ],
   "images": [
@@ -1359,6 +1492,387 @@
       "key": "90cef56a7c5b4a638e83abe07ce3cbd0",
       "imageId": "90cef56a7c5b4a638e83abe07ce3cbd0",
       "ownerKey": "park"
+    },
+    {
+      "id": "c925bcb94f6b464b8f4580cb9a504796",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+      "path": "park_item/c925bcb94f6b464b8f4580cb9a504796",
+      "description": "Le train de ceinture longe la fontaine Cactus à l’Exposition coloniale de 1931. Des visiteurs traversent l’allée au premier plan de cette carte postale photographique.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 600,
+      "height": 382,
+      "sizeInBytes": 84425,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_12.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un petit train à voitures ouvertes passe au pied de la grande fontaine Cactus, devant des arbres et des pavillons."
+        },
+        {
+          "languageCode": "en",
+          "value": "A small train with open carriages passes the tall Cactus fountain, with trees and pavilions behind it."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein kleiner Zug mit offenen Wagen fährt an der hohen Cactus-Fontäne vorbei; dahinter stehen Bäume und Pavillons."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een treintje met open rijtuigen rijdt langs de hoge Cactus-fontein, met bomen en paviljoens op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un trenino con carrozze aperte passa ai piedi dell’alta fontana Cactus, davanti ad alberi e padiglioni."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un pequeño tren de coches abiertos pasa al pie de la alta fuente Cactus, ante árboles y pabellones."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mały pociąg z otwartymi wagonami przejeżdża obok wysokiej fontanny Cactus; w tle stoją drzewa i pawilony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um pequeno comboio de carruagens abertas passa junto da alta fonte Cactus, diante de árvores e pavilhões."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le train de ceinture longe la fontaine Cactus à l’Exposition coloniale de 1931. Des visiteurs traversent l’allée au premier plan de cette carte postale photographique."
+        },
+        {
+          "languageCode": "en",
+          "value": "The perimeter train passes the Cactus fountain at the 1931 Colonial Exposition. Visitors cross the avenue in the foreground of this photographic postcard."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Ringbahn fährt an der Cactus-Fontäne der Kolonialausstellung von 1931 entlang. Im Vordergrund dieser fotografischen Postkarte überqueren Besucher die Allee."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De ringlijn passeert de Cactus-fontein op de Koloniale Tentoonstelling van 1931. Op de voorgrond van deze fotografische ansichtkaart steken bezoekers de laan over."
+        },
+        {
+          "languageCode": "it",
+          "value": "La ferrovia circolare costeggia la fontana Cactus all’Esposizione coloniale del 1931. Alcuni visitatori attraversano il viale in primo piano in questa cartolina fotografica."
+        },
+        {
+          "languageCode": "es",
+          "value": "El ferrocarril circular pasa junto a la fuente Cactus en la Exposición Colonial de 1931. Varios visitantes cruzan la avenida en primer plano de esta postal fotográfica."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kolejka okrężna mija fontannę Cactus na Wystawie Kolonialnej w 1931 roku. Na pierwszym planie pocztówki fotograficznej zwiedzający przechodzą przez aleję."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O caminho de ferro circular passa ao lado da fonte Cactus na Exposição Colonial de 1931. Vários visitantes atravessam a alameda em primeiro plano neste postal fotográfico."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Carte postale « Fontaine lumineuse — Le Cactus », Garent, éditeur, Arches — reproduction CFC, article de Marc André Dubout."
+        },
+        {
+          "languageCode": "en",
+          "value": "Postcard “Fontaine lumineuse — Le Cactus”, Garent, publisher, Arches — reproduced by CFC in an article by Marc André Dubout."
+        },
+        {
+          "languageCode": "de",
+          "value": "Postkarte „Fontaine lumineuse — Le Cactus“, Verlag Garent, Arches — Wiedergabe beim CFC im Beitrag von Marc André Dubout."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ansichtkaart “Fontaine lumineuse — Le Cactus”, uitgever Garent, Arches — reproductie CFC bij een artikel van Marc André Dubout."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cartolina « Fontaine lumineuse — Le Cactus », Garent, editore, Arches — riproduzione CFC nell’articolo di Marc André Dubout."
+        },
+        {
+          "languageCode": "es",
+          "value": "Postal « Fontaine lumineuse — Le Cactus », Garent, editor, Arches — reproducción CFC en el artículo de Marc André Dubout."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pocztówka „Fontaine lumineuse — Le Cactus”, wydawca Garent, Arches — reprodukcja CFC w artykule Marca André Dubouta."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Postal « Fontaine lumineuse — Le Cactus », Garent, editor, Arches — reprodução CFC no artigo de Marc André Dubout."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:22:07.346Z",
+      "updatedAt": "2026-11-16T00:22:10.968Z",
+      "key": "c925bcb94f6b464b8f4580cb9a504796",
+      "imageId": "c925bcb94f6b464b8f4580cb9a504796",
+      "ownerKey": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1"
+    },
+    {
+      "id": "9d4615e2f6b64b5491fbb3e0ce08def7",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+      "path": "park_item/9d4615e2f6b64b5491fbb3e0ce08def7",
+      "description": "Les lumières dessinent les tiges et les cascades du Cactus sur cette carte photographique Braun de l’Exposition coloniale de 1931, reproduite avec ses tons bleus d’origine.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1005,
+      "height": 1596,
+      "sizeInBytes": 160910,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Expo_1931_Cactus.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine Cactus éclairée de nuit, avec ses tiges courbées, ses cascades et ses jets sur une carte photographique aux tons bleus."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Cactus fountain lit at night, with curved stems, cascades and jets on a blue-toned photographic postcard."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der nachts beleuchtete Cactus-Brunnen mit gebogenen Stängeln, Kaskaden und Wasserstrahlen auf einer blau getönten fotografischen Postkarte."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Cactusfontein bij nacht, met gebogen stengels, watervallen en waterstralen op een blauw getinte fotografische ansichtkaart."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana Cactus illuminata di notte, con steli curvi, cascate e getti su una cartolina fotografica dai toni blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente Cactus iluminada de noche, con tallos curvos, cascadas y chorros en una postal fotográfica de tonos azules."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oświetlona nocą fontanna Cactus z zakrzywionymi łodygami, kaskadami i strumieniami wody na fotograficznej pocztówce w niebieskiej tonacji."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte Cactus iluminada à noite, com hastes curvas, cascatas e jatos num postal fotográfico em tons azuis."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les lumières dessinent les tiges et les cascades du Cactus sur cette carte photographique Braun de l’Exposition coloniale de 1931, reproduite avec ses tons bleus d’origine."
+        },
+        {
+          "languageCode": "en",
+          "value": "Light outlines the Cactus fountain’s stems and cascades on this Braun photographic postcard of the 1931 Colonial Exposition, reproduced in its original blue tones."
+        },
+        {
+          "languageCode": "de",
+          "value": "Licht zeichnet die Stängel und Kaskaden des Cactus-Brunnens auf dieser fotografischen Postkarte von Braun zur Kolonialausstellung 1931 nach. Die ursprüngliche blaue Tönung ist erhalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Licht tekent de stengels en watervallen van de Cactus op deze fotografische ansichtkaart van Braun van de Koloniale Tentoonstelling van 1931. De oorspronkelijke blauwe tinten zijn behouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le luci delineano gli steli e le cascate del Cactus su questa cartolina fotografica Braun dell’Esposizione coloniale del 1931, riprodotta nei toni blu originali."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las luces dibujan los tallos y las cascadas del Cactus en esta postal fotográfica de Braun de la Exposición Colonial de 1931, reproducida con sus tonos azules originales."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Światło podkreśla łodygi i kaskady fontanny Cactus na fotograficznej pocztówce wydawnictwa Braun z Wystawy Kolonialnej w 1931 roku. Zachowano oryginalną niebieską tonację."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As luzes desenham as hastes e as cascatas do Cactus neste postal fotográfico da Braun da Exposição Colonial de 1931, reproduzido com os seus tons azuis originais."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Éditions Braun, carte photographique de 1931, via Wikimedia Commons ; signalée dans le domaine public (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Éditions Braun, 1931 photographic postcard, via Wikimedia Commons; marked as public domain (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Éditions Braun, fotografische Postkarte von 1931, über Wikimedia Commons; als gemeinfrei gekennzeichnet (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Éditions Braun, fotografische ansichtkaart uit 1931, via Wikimedia Commons; aangeduid als publiek domein (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Éditions Braun, cartolina fotografica del 1931, tramite Wikimedia Commons; indicata come di pubblico dominio (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Éditions Braun, postal fotográfica de 1931, a través de Wikimedia Commons; identificada como de dominio público (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Éditions Braun, fotograficzna pocztówka z 1931 roku, za Wikimedia Commons; oznaczona jako domena publiczna (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Éditions Braun, postal fotográfico de 1931, via Wikimedia Commons; assinalado como domínio público (Public Domain Mark 1.0)."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:37:44.16Z",
+      "updatedAt": "2026-11-16T00:37:47.845Z",
+      "key": "9d4615e2f6b64b5491fbb3e0ce08def7",
+      "imageId": "9d4615e2f6b64b5491fbb3e0ce08def7",
+      "ownerKey": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6"
+    },
+    {
+      "id": "889d3d9061cf4b98bdf2503a92e6aa28",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+      "path": "park_item/889d3d9061cf4b98bdf2503a92e6aa28",
+      "description": "Une scène de promenade au pied de la fontaine Cactus pendant l’Exposition coloniale de 1931. Les silhouettes des visiteurs donnent l’échelle de cette construction monumentale.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 500,
+      "height": 688,
+      "sizeInBytes": 77389,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg/500px-Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20160701054645",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des visiteurs, dont une femme poussant une petite poussette, passent devant les hautes tiges du Cactus."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors, including a woman pushing a small pram, walk past the Cactus fountain’s tall stems."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher, darunter eine Frau mit einem kleinen Kinderwagen, gehen an den hohen Stängeln des Cactus-Brunnens vorbei."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers, onder wie een vrouw met een kleine kinderwagen, lopen langs de hoge stengels van de Cactusfontein."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori, tra cui una donna con una piccola carrozzina, passano davanti agli alti steli della fontana Cactus."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes, entre ellos una mujer con un pequeño cochecito, pasan ante los altos tallos de la fuente Cactus."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający, wśród nich kobieta z małym wózkiem dziecięcym, przechodzą przed wysokimi łodygami fontanny Cactus."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes, entre eles uma mulher com um pequeno carrinho de bebé, passam diante das hastes altas da fonte Cactus."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une scène de promenade au pied de la fontaine Cactus pendant l’Exposition coloniale de 1931. Les silhouettes des visiteurs donnent l’échelle de cette construction monumentale."
+        },
+        {
+          "languageCode": "en",
+          "value": "A stroll beneath the Cactus fountain during the 1931 Colonial Exposition. The visitors’ figures show the scale of this monumental structure."
+        },
+        {
+          "languageCode": "de",
+          "value": "Spaziergänger am Fuß des Cactus-Brunnens während der Kolonialausstellung von 1931. Die Menschen verdeutlichen die Größe dieses monumentalen Bauwerks."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Wandelaars aan de voet van de Cactusfontein tijdens de Koloniale Tentoonstelling van 1931. De mensen laten zien hoe groot dit monumentale bouwwerk was."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una passeggiata ai piedi della fontana Cactus durante l’Esposizione coloniale del 1931. Le figure dei visitatori rendono percepibili le dimensioni di questa costruzione monumentale."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un paseo al pie de la fuente Cactus durante la Exposición Colonial de 1931. Las figuras de los visitantes permiten apreciar la escala de esta construcción monumental."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Spacer u stóp fontanny Cactus podczas Wystawy Kolonialnej w 1931 roku. Sylwetki zwiedzających pozwalają ocenić rozmiary tej monumentalnej budowli."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um passeio ao pé da fonte Cactus durante a Exposição Colonial de 1931. As figuras dos visitantes permitem perceber a escala desta construção monumental."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, image 28578, via Wikimedia Commons ; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "en",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, image 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "de",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, Bild 28578, über Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, afbeelding 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "it",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, immagine 28578, tramite Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "es",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, imagen 28578, a través de Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, zdjęcie 28578, za Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, imagem 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:38:22.9Z",
+      "updatedAt": "2026-11-16T00:38:26.352Z",
+      "key": "889d3d9061cf4b98bdf2503a92e6aa28",
+      "imageId": "889d3d9061cf4b98bdf2503a92e6aa28",
+      "ownerKey": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6"
     }
   ],
   "history": {

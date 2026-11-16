@@ -1,0 +1,434 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR",
+        "officialMaps": [
+          {
+            "key": "exposition-coloniale-map-1931-fr",
+            "id": "exposition-coloniale-map-1931-fr",
+            "year": 1931,
+            "format": "Image",
+            "storageKey": "official-maps/1c83e45c-3335-4948-b15f-ce2805bc42e3/exposition-coloniale-map-1931-fr.0bf7fd3cbb804e24b6232fdbc043c76a.jpg",
+            "originalFileName": "plan-university-native.jpg",
+            "contentType": "image/jpeg",
+            "sizeInBytes": 595953,
+            "sourcePageUrl": "https://www.angewandtekunstgeschichte.net/news/2026/seminar-exkursion-paris-blickt-auf-die-welt-kunst-imperium-und-wissenschaft-1766-2026",
+            "languageCode": "fr",
+            "isVisible": false,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Plan officiel à vol d’oiseau — Exposition coloniale, 1931"
+              },
+              {
+                "languageCode": "en",
+                "value": "Official bird’s-eye map — Colonial Exposition, 1931"
+              },
+              {
+                "languageCode": "de",
+                "value": "Offizieller Vogelschauplan — Kolonialausstellung, 1931"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Officiële plattegrond in vogelvlucht — Koloniale Tentoonstelling, 1931"
+              },
+              {
+                "languageCode": "it",
+                "value": "Pianta ufficiale a volo d’uccello — Esposizione coloniale, 1931"
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano oficial a vista de pájaro — Exposición Colonial, 1931"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Oficjalny plan z lotu ptaka — Wystawa Kolonialna, 1931"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Planta oficial em perspetiva aérea — Exposição Colonial, 1931"
+              }
+            ],
+            "alternativeTexts": [
+              {
+                "languageCode": "fr",
+                "value": "Vue illustrée du site de l’Exposition coloniale de 1931 autour du lac Daumesnil : pavillons, reconstitution d’Angkor, parc zoologique et parc d’attractions, avec leur légende."
+              },
+              {
+                "languageCode": "en",
+                "value": "Illustrated view of the 1931 Colonial Exposition around Lac Daumesnil, showing the pavilions, Angkor reconstruction, zoo and amusement park, with a key."
+              },
+              {
+                "languageCode": "de",
+                "value": "Illustrierte Ansicht der Kolonialausstellung von 1931 rund um den Lac Daumesnil mit Pavillons, dem Nachbau von Angkor, dem Zoo und dem Vergnügungspark sowie einer Legende."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Geïllustreerd overzicht van de Koloniale Tentoonstelling van 1931 rond het Lac Daumesnil, met paviljoens, de reconstructie van Angkor, de dierentuin en het attractiepark, met legenda."
+              },
+              {
+                "languageCode": "it",
+                "value": "Veduta illustrata dell’Esposizione coloniale del 1931 attorno al lago Daumesnil, con i padiglioni, la ricostruzione di Angkor, lo zoo e il parco divertimenti, accompagnata da una legenda."
+              },
+              {
+                "languageCode": "es",
+                "value": "Vista ilustrada de la Exposición Colonial de 1931 alrededor del lago Daumesnil, con los pabellones, la reconstrucción de Angkor, el zoológico y el parque de atracciones, acompañada de una leyenda."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ilustrowany widok Wystawy Kolonialnej z 1931 roku wokół jeziora Daumesnil, przedstawiający pawilony, rekonstrukcję Angkoru, zoo i park rozrywki, z legendą."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Vista ilustrada da Exposição Colonial de 1931 em redor do lago Daumesnil, com os pavilhões, a reconstrução de Angkor, o jardim zoológico e o parque de diversões, acompanhada de uma legenda."
+              }
+            ],
+            "lastVerifiedAtUtc": "2026-11-16T00:28:51.542329+00:00"
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-france-exposition-coloniale-map-1931",
+        "notes": "Whole 1281×801 university-hosted reproduction personally inspected. Printed title/1931/legend intact; institutional caption identifies edition published for Commissariat Général. Historical publisher Éditions Ed. Blondel La Rougery; university reproduction host. No own crop/edit or map-derived GPS. Exact immutable upload storageKey preserved. Sixteen localized titles/alt texts personally authored and reviewed. Map remains private; no final audit/publication."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "c7967c37-c38a-4c33-b75e-0918a3e70f2a",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:30:56.4768987Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "exposition-coloniale-map-1931-fr",
+        "entityKey": "exposition-coloniale-map-1931-fr",
+        "displayName": "Carte officielle 1931 (fr, Image)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "1931"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/1c83e45c-3335-4948-b15f-ce2805bc42e3/exposition-coloniale-map-1931-fr.0bf7fd3cbb804e24b6232fdbc043c76a.jpg"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "plan-university-native.jpg"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "image/jpeg"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "595953"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.angewandtekunstgeschichte.net/news/2026/seminar-exkursion-paris-blickt-auf-die-welt-kunst-imperium-und-wissenschaft-1766-2026"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-16"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Offizieller Vogelschauplan — Kolonialausstellung, 1931"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Official bird’s-eye map — Colonial Exposition, 1931"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano oficial a vista de pájaro — Exposición Colonial, 1931"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan officiel à vol d’oiseau — Exposition coloniale, 1931"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Pianta ufficiale a volo d’uccello — Esposizione coloniale, 1931"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Officiële plattegrond in vogelvlucht — Koloniale Tentoonstelling, 1931"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Oficjalny plan z lotu ptaka — Wystawa Kolonialna, 1931"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Planta oficial em perspetiva aérea — Exposição Colonial, 1931"
+          },
+          {
+            "field": "alternativeTexts.de",
+            "oldValue": null,
+            "newValue": "Illustrierte Ansicht der Kolonialausstellung von 1931 rund um den Lac Daumesnil mit Pavillons, dem Nachbau von Angkor, dem Zoo und dem Vergnügungspark sowie einer Legende."
+          },
+          {
+            "field": "alternativeTexts.en",
+            "oldValue": null,
+            "newValue": "Illustrated view of the 1931 Colonial Exposition around Lac Daumesnil, showing the pavilions, Angkor reconstruction, zoo and amusement park, with a key."
+          },
+          {
+            "field": "alternativeTexts.es",
+            "oldValue": null,
+            "newValue": "Vista ilustrada de la Exposición Colonial de 1931 alrededor del lago Daumesnil, con los pabellones, la reconstrucción de Angkor, el zoológico y el parque de atracciones, acompañada de una leyenda."
+          },
+          {
+            "field": "alternativeTexts.fr",
+            "oldValue": null,
+            "newValue": "Vue illustrée du site de l’Exposition coloniale de 1931 autour du lac Daumesnil : pavillons, reconstitution d’Angkor, parc zoologique et parc d’attractions, avec leur légende."
+          },
+          {
+            "field": "alternativeTexts.it",
+            "oldValue": null,
+            "newValue": "Veduta illustrata dell’Esposizione coloniale del 1931 attorno al lago Daumesnil, con i padiglioni, la ricostruzione di Angkor, lo zoo e il parco divertimenti, accompagnata da una legenda."
+          },
+          {
+            "field": "alternativeTexts.nl",
+            "oldValue": null,
+            "newValue": "Geïllustreerd overzicht van de Koloniale Tentoonstelling van 1931 rond het Lac Daumesnil, met paviljoens, de reconstructie van Angkor, de dierentuin en het attractiepark, met legenda."
+          },
+          {
+            "field": "alternativeTexts.pl",
+            "oldValue": null,
+            "newValue": "Ilustrowany widok Wystawy Kolonialnej z 1931 roku wokół jeziora Daumesnil, przedstawiający pawilony, rekonstrukcję Angkoru, zoo i park rozrywki, z legendą."
+          },
+          {
+            "field": "alternativeTexts.pt",
+            "oldValue": null,
+            "newValue": "Vista ilustrada da Exposição Colonial de 1931 em redor do lago Daumesnil, com os pavilhões, a reconstrução de Angkor, o jardim zoológico e o parque de diversões, acompanhada de uma legenda."
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "7f5e5faa-147e-460e-b9de-194a0d82901f",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:31:19.1585404Z",
+    "appliedAtUtc": "2026-11-16T00:31:19.1585411Z",
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "exposition-coloniale-map-1931-fr",
+        "entityKey": "exposition-coloniale-map-1931-fr",
+        "displayName": "Carte officielle 1931 (fr, Image)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "1931"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/1c83e45c-3335-4948-b15f-ce2805bc42e3/exposition-coloniale-map-1931-fr.0bf7fd3cbb804e24b6232fdbc043c76a.jpg"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "plan-university-native.jpg"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "image/jpeg"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "595953"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.angewandtekunstgeschichte.net/news/2026/seminar-exkursion-paris-blickt-auf-die-welt-kunst-imperium-und-wissenschaft-1766-2026"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-16"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Offizieller Vogelschauplan — Kolonialausstellung, 1931"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Official bird’s-eye map — Colonial Exposition, 1931"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano oficial a vista de pájaro — Exposición Colonial, 1931"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan officiel à vol d’oiseau — Exposition coloniale, 1931"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Pianta ufficiale a volo d’uccello — Esposizione coloniale, 1931"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Officiële plattegrond in vogelvlucht — Koloniale Tentoonstelling, 1931"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Oficjalny plan z lotu ptaka — Wystawa Kolonialna, 1931"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Planta oficial em perspetiva aérea — Exposição Colonial, 1931"
+          },
+          {
+            "field": "alternativeTexts.de",
+            "oldValue": null,
+            "newValue": "Illustrierte Ansicht der Kolonialausstellung von 1931 rund um den Lac Daumesnil mit Pavillons, dem Nachbau von Angkor, dem Zoo und dem Vergnügungspark sowie einer Legende."
+          },
+          {
+            "field": "alternativeTexts.en",
+            "oldValue": null,
+            "newValue": "Illustrated view of the 1931 Colonial Exposition around Lac Daumesnil, showing the pavilions, Angkor reconstruction, zoo and amusement park, with a key."
+          },
+          {
+            "field": "alternativeTexts.es",
+            "oldValue": null,
+            "newValue": "Vista ilustrada de la Exposición Colonial de 1931 alrededor del lago Daumesnil, con los pabellones, la reconstrucción de Angkor, el zoológico y el parque de atracciones, acompañada de una leyenda."
+          },
+          {
+            "field": "alternativeTexts.fr",
+            "oldValue": null,
+            "newValue": "Vue illustrée du site de l’Exposition coloniale de 1931 autour du lac Daumesnil : pavillons, reconstitution d’Angkor, parc zoologique et parc d’attractions, avec leur légende."
+          },
+          {
+            "field": "alternativeTexts.it",
+            "oldValue": null,
+            "newValue": "Veduta illustrata dell’Esposizione coloniale del 1931 attorno al lago Daumesnil, con i padiglioni, la ricostruzione di Angkor, lo zoo e il parco divertimenti, accompagnata da una legenda."
+          },
+          {
+            "field": "alternativeTexts.nl",
+            "oldValue": null,
+            "newValue": "Geïllustreerd overzicht van de Koloniale Tentoonstelling van 1931 rond het Lac Daumesnil, met paviljoens, de reconstructie van Angkor, de dierentuin en het attractiepark, met legenda."
+          },
+          {
+            "field": "alternativeTexts.pl",
+            "oldValue": null,
+            "newValue": "Ilustrowany widok Wystawy Kolonialnej z 1931 roku wokół jeziora Daumesnil, przedstawiający pawilony, rekonstrukcję Angkoru, zoo i park rozrywki, z legendą."
+          },
+          {
+            "field": "alternativeTexts.pt",
+            "oldValue": null,
+            "newValue": "Vista ilustrada da Exposição Colonial de 1931 em redor do lago Daumesnil, com os pavilhões, a reconstrução de Angkor, o jardim zoológico e o parque de diversões, acompanhada de uma legenda."
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "qualification": "exposition-coloniale-map-1931-qualification-20261116.json",
+  "all16LocalizedFieldsPersonallyReviewedAndExact": true,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

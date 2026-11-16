@@ -1,13 +1,13 @@
 {
   "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
   "status": "partial",
-  "lastApplyOperationId": "292c2a14-e174-4eb1-9e2d-135f365b7d86",
-  "lastIntegrationAppliedAtUtc": "2026-11-16T00:14:14.4187955Z",
+  "lastApplyOperationId": "c62453bd-4ea8-46ad-900b-6719ccd3460d",
+  "lastIntegrationAppliedAtUtc": "2026-11-16T00:36:08.2304369Z",
   "recoveredApplyCount": 12,
-  "newApplyCount": 1,
-  "items": 6,
+  "newApplyCount": 4,
+  "items": 7,
   "zones": 1,
-  "ownImages": 5,
+  "ownImages": 8,
   "historyEvents": 4,
   "fullAuditPerformed": false,
   "published": false,
@@ -19,7 +19,7 @@
     "Sources/specifications, references, map/GPS",
     "Single final audit and audited publication"
   ],
-  "lastDataIntegrationAt": "2026-11-16T00:15:52.848Z",
+  "lastDataIntegrationAt": "2026-11-16T00:38:22.9Z",
   "photoImports": [
     {
       "imageId": "b2bc130edcfe47ea886baf16bb04e0bd",
@@ -45,11 +45,41 @@
       "imageId": "90cef56a7c5b4a638e83abe07ce3cbd0",
       "createdAt": "2026-11-16T00:15:52.848Z",
       "proof": "exposition-coloniale-photo-06-museum-night-20261116.json"
+    },
+    {
+      "imageId": "c925bcb94f6b464b8f4580cb9a504796",
+      "createdAt": "2026-11-16T00:22:07.346Z",
+      "proof": "exposition-coloniale-photo-07-train-cactus-20261116.json"
+    },
+    {
+      "imageId": "9d4615e2f6b64b5491fbb3e0ce08def7",
+      "createdAt": "2026-11-16T00:37:44.16Z",
+      "proof": "exposition-coloniale-photo-13-cactus-night-20261116.json"
+    },
+    {
+      "imageId": "889d3d9061cf4b98bdf2503a92e6aa28",
+      "createdAt": "2026-11-16T00:38:22.9Z",
+      "proof": "exposition-coloniale-photo-14-cactus-day-20261116.json"
     }
   ],
-  "newImportCount": 5,
+  "newImportCount": 8,
   "newApplyProofs": [
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-04-totems-correction-20261116.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-04-totems-correction-20261116.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-08-train-notice-20261116.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-11-map-association-20261116.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-12-cactus-20261116.json"
   ],
-  "lastIntegrationImportedAtUtc": "2026-11-16T00:15:52.848Z"
+  "lastIntegrationImportedAtUtc": "2026-11-16T00:38:22.9Z",
+  "mapUploads": [
+    {
+      "year": 1931,
+      "receivedAtUtc": "2026-11-16T00:30:04.7984527Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-map-1931-upload-20261116.json"
+    }
+  ],
+  "lastMapUploadReceiptAtUtc": "2026-11-16T00:30:04.7984527Z",
+  "mapAssociationPending": false,
+  "officialMaps": 1,
+  "latestFollowupProof": "exposition-coloniale-train-map-cactus-followup-20261116.json",
+  "lastIdempotencePreviewAtUtc": "2026-11-16T00:38:58.8212898Z"
 }

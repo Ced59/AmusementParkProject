@@ -1,0 +1,284 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "14-cactus-day",
+    "source": {
+      "name": "cactus-fortepan-native.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg/500px-Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20160701054645",
+      "retrievedAtUtc": "2026-11-16T00:34:01.993766+00:00",
+      "status": 200,
+      "finalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg/500px-Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20160701054645",
+      "bytes": 77389,
+      "sha256": "e9539788d56edaa3a916d1f3544e1bf3f2405efc7a5be18c791f78c7f4e58483",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/cactus-fortepan-native.jpg",
+      "dimensions": [
+        500,
+        688
+      ],
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_(Exposition_Coloniale)._-_Fortepan_28578.jpg"
+    },
+    "ownerId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "CC BY-SA3.0; exact required attribution FOTO:FORTEPAN / MZSL/Ofner Károly. Native publisher rendition unchanged.",
+    "review": "Original personally viewed;24localized fields personally authored/reviewed;no crop,retouch or date invention. Distinct night/day exposures; day image not conflated with earlier train postcard."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+      "SourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg/500px-Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20160701054645",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/cactus-fortepan-native.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/14-cactus-day-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/14-cactus-day-import-result.json"
+  },
+  "metadata": {
+    "description": "Une scène de promenade au pied de la fontaine Cactus pendant l’Exposition coloniale de 1931. Les silhouettes des visiteurs donnent l’échelle de cette construction monumentale.",
+    "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg/500px-Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20160701054645",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des visiteurs, dont une femme poussant une petite poussette, passent devant les hautes tiges du Cactus."
+      },
+      {
+        "languageCode": "en",
+        "value": "Visitors, including a woman pushing a small pram, walk past the Cactus fountain’s tall stems."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher, darunter eine Frau mit einem kleinen Kinderwagen, gehen an den hohen Stängeln des Cactus-Brunnens vorbei."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers, onder wie een vrouw met een kleine kinderwagen, lopen langs de hoge stengels van de Cactusfontein."
+      },
+      {
+        "languageCode": "it",
+        "value": "Visitatori, tra cui una donna con una piccola carrozzina, passano davanti agli alti steli della fontana Cactus."
+      },
+      {
+        "languageCode": "es",
+        "value": "Visitantes, entre ellos una mujer con un pequeño cochecito, pasan ante los altos tallos de la fuente Cactus."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zwiedzający, wśród nich kobieta z małym wózkiem dziecięcym, przechodzą przed wysokimi łodygami fontanny Cactus."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Visitantes, entre eles uma mulher com um pequeno carrinho de bebé, passam diante das hastes altas da fonte Cactus."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une scène de promenade au pied de la fontaine Cactus pendant l’Exposition coloniale de 1931. Les silhouettes des visiteurs donnent l’échelle de cette construction monumentale."
+      },
+      {
+        "languageCode": "en",
+        "value": "A stroll beneath the Cactus fountain during the 1931 Colonial Exposition. The visitors’ figures show the scale of this monumental structure."
+      },
+      {
+        "languageCode": "de",
+        "value": "Spaziergänger am Fuß des Cactus-Brunnens während der Kolonialausstellung von 1931. Die Menschen verdeutlichen die Größe dieses monumentalen Bauwerks."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Wandelaars aan de voet van de Cactusfontein tijdens de Koloniale Tentoonstelling van 1931. De mensen laten zien hoe groot dit monumentale bouwwerk was."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una passeggiata ai piedi della fontana Cactus durante l’Esposizione coloniale del 1931. Le figure dei visitatori rendono percepibili le dimensioni di questa costruzione monumentale."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un paseo al pie de la fuente Cactus durante la Exposición Colonial de 1931. Las figuras de los visitantes permiten apreciar la escala de esta construcción monumental."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Spacer u stóp fontanny Cactus podczas Wystawy Kolonialnej w 1931 roku. Sylwetki zwiedzających pozwalają ocenić rozmiary tej monumentalnej budowli."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um passeio ao pé da fonte Cactus durante a Exposição Colonial de 1931. As figuras dos visitantes permitem perceber a escala desta construção monumental."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, image 28578, via Wikimedia Commons ; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+      },
+      {
+        "languageCode": "en",
+        "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, image 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+      },
+      {
+        "languageCode": "de",
+        "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, Bild 28578, über Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+      },
+      {
+        "languageCode": "nl",
+        "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, afbeelding 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+      },
+      {
+        "languageCode": "it",
+        "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, immagine 28578, tramite Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+      },
+      {
+        "languageCode": "es",
+        "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, imagen 28578, a través de Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+      },
+      {
+        "languageCode": "pl",
+        "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, zdjęcie 28578, za Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+      },
+      {
+        "languageCode": "pt",
+        "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, imagem 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-16T00:38:21.7474098Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "889d3d9061cf4b98bdf2503a92e6aa28",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+      "path": "park_item/889d3d9061cf4b98bdf2503a92e6aa28",
+      "description": "Une scène de promenade au pied de la fontaine Cactus pendant l’Exposition coloniale de 1931. Les silhouettes des visiteurs donnent l’échelle de cette construction monumentale.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 500,
+      "height": 688,
+      "sizeInBytes": 77389,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg/500px-Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20160701054645",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des visiteurs, dont une femme poussant une petite poussette, passent devant les hautes tiges du Cactus."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors, including a woman pushing a small pram, walk past the Cactus fountain’s tall stems."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher, darunter eine Frau mit einem kleinen Kinderwagen, gehen an den hohen Stängeln des Cactus-Brunnens vorbei."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers, onder wie een vrouw met een kleine kinderwagen, lopen langs de hoge stengels van de Cactusfontein."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori, tra cui una donna con una piccola carrozzina, passano davanti agli alti steli della fontana Cactus."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes, entre ellos una mujer con un pequeño cochecito, pasan ante los altos tallos de la fuente Cactus."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający, wśród nich kobieta z małym wózkiem dziecięcym, przechodzą przed wysokimi łodygami fontanny Cactus."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes, entre eles uma mulher com um pequeno carrinho de bebé, passam diante das hastes altas da fonte Cactus."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une scène de promenade au pied de la fontaine Cactus pendant l’Exposition coloniale de 1931. Les silhouettes des visiteurs donnent l’échelle de cette construction monumentale."
+        },
+        {
+          "languageCode": "en",
+          "value": "A stroll beneath the Cactus fountain during the 1931 Colonial Exposition. The visitors’ figures show the scale of this monumental structure."
+        },
+        {
+          "languageCode": "de",
+          "value": "Spaziergänger am Fuß des Cactus-Brunnens während der Kolonialausstellung von 1931. Die Menschen verdeutlichen die Größe dieses monumentalen Bauwerks."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Wandelaars aan de voet van de Cactusfontein tijdens de Koloniale Tentoonstelling van 1931. De mensen laten zien hoe groot dit monumentale bouwwerk was."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una passeggiata ai piedi della fontana Cactus durante l’Esposizione coloniale del 1931. Le figure dei visitatori rendono percepibili le dimensioni di questa costruzione monumentale."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un paseo al pie de la fuente Cactus durante la Exposición Colonial de 1931. Las figuras de los visitantes permiten apreciar la escala de esta construcción monumental."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Spacer u stóp fontanny Cactus podczas Wystawy Kolonialnej w 1931 roku. Sylwetki zwiedzających pozwalają ocenić rozmiary tej monumentalnej budowli."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um passeio ao pé da fonte Cactus durante a Exposição Colonial de 1931. As figuras dos visitantes permitem perceber a escala desta construção monumental."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, image 28578, via Wikimedia Commons ; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "en",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, image 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "de",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, Bild 28578, über Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, afbeelding 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "it",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, immagine 28578, tramite Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "es",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, imagen 28578, a través de Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, zdjęcie 28578, za Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "FOTO:FORTEPAN / MZSL/Ofner Károly, imagem 28578, via Wikimedia Commons; CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:38:22.9Z",
+      "updatedAt": "2026-11-16T00:38:26.352Z"
+    },
+    "receivedAtUtc": "2026-11-16T00:38:29.4541641Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,295 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "exposition-coloniale-fontaine-cactus",
+          "name": "Fontaine du Cactus",
+          "category": "Other",
+          "type": "Other",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les grandes tiges de la porte de Reuilly</h2><p>La fontaine du Cactus se dressait près de la porte de Reuilly, à l’entrée de la grande avenue des Colonies françaises. Ses hautes tiges se recourbaient au sommet autour de cascades étagées. Cette silhouette végétale démesurée dominait les passants et les voitures du petit train qui circulait devant son bassin.</p><p>La carte photographique Braun porte les noms des architectes André Granet et Roger-Henri Expert. À la nuit tombée, l’éclairage soulignait les arêtes, les retombées d’eau et le bouquet de courbes au-dessus de la fontaine ; la masse claire du jour devenait un décor lumineux.</p><h2>Le Cactus dans un pastel de 1931</h2><p>Alexandre-Mathurin Pêche a représenté la fontaine depuis la section de l’Afrique équatoriale française. Il la place au bout d’une allée bordée de visiteurs, derrière un pylône strié de rouge et de bleu. Son pastel rapproche le Cactus des constructions et des plantations qui composaient le paysage nocturne de l’exposition.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The towering stems by Porte de Reuilly</h2><p>The Cactus fountain stood near Porte de Reuilly, at the entrance to the main avenue of the French Colonies. Its tall stems curved over at the top around stepped cascades. This oversized plant-like silhouette rose above pedestrians and the little train’s carriages as they passed the basin.</p><p>The Braun photographic postcard names the architects André Granet and Roger-Henri Expert. After dark, lighting picked out the edges, falling water and cluster of curves above the fountain, turning its pale daytime form into an illuminated setting.</p><h2>The Cactus in a 1931 pastel</h2><p>Alexandre-Mathurin Pêche depicted the fountain from the French Equatorial Africa section. He placed it at the end of a path lined with visitors, beyond a pylon striped in red and blue. His pastel brings the Cactus together with the buildings and planting that formed the exposition’s night-time landscape.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Hohe Stängel an der Porte de Reuilly</h2><p>Der Cactus-Brunnen stand nahe der Porte de Reuilly am Eingang zur großen Allee der französischen Kolonien. Seine hohen Stängel bogen sich oben über stufenförmigen Kaskaden. Die übergroße Pflanzensilhouette ragte über die Spaziergänger und die Wagen der kleinen Bahn hinaus, die am Becken vorbeifuhr.</p><p>Auf der fotografischen Postkarte von Braun sind die Architekten André Granet und Roger-Henri Expert genannt. Nach Einbruch der Dunkelheit betonte die Beleuchtung die Kanten, das herabfallende Wasser und die geschwungenen Formen über dem Brunnen. Aus der tagsüber hellen Anlage wurde eine leuchtende Kulisse.</p><h2>Der Cactus in einem Pastell von 1931</h2><p>Alexandre-Mathurin Pêche zeichnete den Brunnen vom Bereich Französisch-Äquatorialafrika aus. Er erscheint am Ende einer von Besuchern gesäumten Allee hinter einem rot und blau gestreiften Lichtpfeiler. Das Pastell zeigt den Cactus im Zusammenhang mit den Bauten und Pflanzen der nächtlichen Ausstellungslandschaft.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Hoge stengels bij de Porte de Reuilly</h2><p>De Cactusfontein stond bij de Porte de Reuilly, aan het begin van de grote laan van de Franse koloniën. De hoge stengels bogen bovenaan om rond trapsgewijze watervallen. Dit reusachtige plantensilhouet torende uit boven de wandelaars en de rijtuigen van het treintje dat langs het bassin reed.</p><p>De fotografische ansichtkaart van Braun vermeldt de architecten André Granet en Roger-Henri Expert. Na zonsondergang benadrukte de verlichting de randen, het vallende water en de bundel bogen boven de fontein. De overdag lichte vorm veranderde zo in een verlicht decor.</p><h2>De Cactus op een pastel uit 1931</h2><p>Alexandre-Mathurin Pêche tekende de fontein vanuit de afdeling Frans-Equatoriaal-Afrika. Hij plaatste haar aan het einde van een laan met bezoekers, achter een rood en blauw gestreepte lichtzuil. Zijn pastel verbindt de Cactus met de gebouwen en beplanting van het nachtelijke tentoonstellingslandschap.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Alti steli presso la Porte de Reuilly</h2><p>La fontana del Cactus sorgeva vicino alla Porte de Reuilly, all’imbocco del grande viale delle colonie francesi. Gli alti steli si incurvavano in cima attorno a cascate a gradoni. Questa smisurata sagoma vegetale dominava i passanti e le carrozze del trenino che transitava davanti alla vasca.</p><p>La cartolina fotografica Braun riporta i nomi degli architetti André Granet e Roger-Henri Expert. Di notte, le luci sottolineavano gli spigoli, le cadute d’acqua e il fascio di curve sopra la fontana, trasformando la massa chiara visibile di giorno in uno scenario luminoso.</p><h2>Il Cactus in un pastello del 1931</h2><p>Alexandre-Mathurin Pêche raffigurò la fontana dalla sezione dell’Africa Equatoriale Francese. La collocò in fondo a un viale fiancheggiato da visitatori, dietro un pilone a strisce rosse e blu. Il pastello accosta il Cactus agli edifici e alla vegetazione che componevano il paesaggio notturno dell’esposizione.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Grandes tallos junto a la Porte de Reuilly</h2><p>La fuente del Cactus se alzaba cerca de la Porte de Reuilly, al comienzo de la gran avenida de las colonias francesas. Sus altos tallos se curvaban en lo alto alrededor de cascadas escalonadas. Esta enorme silueta vegetal dominaba a los paseantes y los vagones del pequeño tren que pasaba ante el estanque.</p><p>La postal fotográfica de Braun lleva los nombres de los arquitectos André Granet y Roger-Henri Expert. Al anochecer, la iluminación resaltaba las aristas, las caídas de agua y el haz de curvas sobre la fuente, convirtiendo su masa clara diurna en un escenario luminoso.</p><h2>El Cactus en un pastel de 1931</h2><p>Alexandre-Mathurin Pêche representó la fuente desde la sección del África Ecuatorial Francesa. La situó al fondo de una avenida bordeada de visitantes, detrás de un pilar con franjas rojas y azules. Su pastel reúne el Cactus, los edificios y la vegetación que componían el paisaje nocturno de la exposición.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wysokie łodygi przy Porte de Reuilly</h2><p>Fontanna Cactus stała niedaleko Porte de Reuilly, u wylotu głównej alei kolonii francuskich. Jej wysokie łodygi zaginały się u góry wokół stopniowanych kaskad. Ta ogromna roślinna sylwetka górowała nad przechodniami i wagonami kolejki przejeżdżającej przed basenem fontanny.</p><p>Na fotograficznej pocztówce wydawnictwa Braun widnieją nazwiska architektów André Graneta i Rogera-Henriego Experta. Po zmroku oświetlenie podkreślało krawędzie, spływającą wodę i wiązkę łuków nad fontanną. Jasna za dnia bryła stawała się świetlną dekoracją.</p><h2>Cactus na pastelu z 1931 roku</h2><p>Alexandre-Mathurin Pêche przedstawił fontannę od strony sekcji Francuskiej Afryki Równikowej. Umieścił ją na końcu alei pełnej zwiedzających, za słupem w czerwone i niebieskie pasy. Pastel ukazuje Cactus w otoczeniu budynków i roślin tworzących nocny krajobraz wystawy.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Grandes hastes junto à Porte de Reuilly</h2><p>A fonte do Cactus erguia-se perto da Porte de Reuilly, no início da grande avenida das colónias francesas. As suas hastes altas curvavam-se no topo em redor de cascatas em degraus. Esta enorme silhueta vegetal dominava os passeantes e as carruagens do pequeno comboio que passava diante do tanque.</p><p>O postal fotográfico da Braun apresenta os nomes dos arquitetos André Granet e Roger-Henri Expert. Ao anoitecer, a iluminação realçava as arestas, as quedas de água e o conjunto de curvas sobre a fonte. A massa clara visível durante o dia transformava-se num cenário luminoso.</p><h2>O Cactus num pastel de 1931</h2><p>Alexandre-Mathurin Pêche representou a fonte a partir da secção da África Equatorial Francesa. Colocou-a no fim de uma alameda ladeada por visitantes, atrás de um pilar às riscas vermelhas e azuis. O pastel aproxima o Cactus dos edifícios e da vegetação que compunham a paisagem noturna da exposição.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "status": "ClosedDefinitively",
+            "openingDate": "1931",
+            "sourceUrl": "https://programme.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-le-cactus-vue-depuis-la"
+          }
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-exposition-coloniale-cactus",
+        "notes": "Distinct named fountain confirmed by Palais de la Porte Dorée, Cité collection2011.21.76, Braun1931photographic postcard and Fortepan28578. All6existingitems compared; no duplicate. This1931exposition incarnation is definitively closed; no dismantling or exact opening/closingday asserted. Openingyear1931 only. No GPS from schematicmap; no access restrictions found. Granet/Expert attribution in prose based on printed original; no new/shared manufacturer mutation. Eight descriptions personally authored and fully reviewed. Photos separately qualified before private import. No publication/audit."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "4c67d93e-7a6f-407d-9695-00e55db1f17b",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:35:50.2221088Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7164a5ec-1bff-4144-b33b-81fb86079e3c",
+        "entityKey": "exposition-coloniale-fontaine-cactus",
+        "displayName": "Fontaine du Cactus",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Other"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Other"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Hohe Stängel an der Porte de Reuilly</h2><p>Der Cactus-Brunnen stand nahe der Porte de Reuilly am Eingang zur großen Allee der französischen Kolonien. Seine hohen Stängel bogen sich oben über stufenförmigen Kaskaden. Die übergroße Pflanzensilhouette ragte über die Spaziergänger und die Wagen der kleinen Bahn hinaus, die am Becken vorbeifuhr.</p><p>Auf der fotografischen Postkarte von Braun sind die Architekten André Granet und Roger-Henri Expert genannt. Nach Einbruch der Dunkelheit betonte die Beleuchtung die Kanten, das herabfallende Wasser und die geschwungenen Formen über dem Brunnen. Aus der tagsüber hellen Anlage wurde eine leuchtende Kulisse.</p><h2>Der Cactus in einem Pastell von 1931</h2><p>Alexandre-Mathurin Pêche zeichnete den Brunnen vom Bereich Französisch-Äquatorialafrika aus. Er erscheint am Ende einer von Besuchern gesäumten Allee hinter einem rot und blau gestreiften Lichtpfeiler. Das Pastell zeigt den Cactus im Zusammenhang mit den Bauten und Pflanzen der nächtlichen Ausstellungslandschaft.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The towering stems by Porte de Reuilly</h2><p>The Cactus fountain stood near Porte de Reuilly, at the entrance to the main avenue of the French Colonies. Its tall stems curved over at the top around stepped cascades. This oversized plant-like silhouette rose above pedestrians and the little train’s carriages as they passed the basin.</p><p>The Braun photographic postcard names the architects André Granet and Roger-Henri Expert. After dark, lighting picked out the edges, falling water and cluster of curves above the fountain, turning its pale daytime form into an illuminated setting.</p><h2>The Cactus in a 1931 pastel</h2><p>Alexandre-Mathurin Pêche depicted the fountain from the French Equatorial Africa section. He placed it at the end of a path lined with visitors, beyond a pylon striped in red and blue. His pastel brings the Cactus together with the buildings and planting that formed the exposition’s night-time landscape.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Grandes tallos junto a la Porte de Reuilly</h2><p>La fuente del Cactus se alzaba cerca de la Porte de Reuilly, al comienzo de la gran avenida de las colonias francesas. Sus altos tallos se curvaban en lo alto alrededor de cascadas escalonadas. Esta enorme silueta vegetal dominaba a los paseantes y los vagones del pequeño tren que pasaba ante el estanque.</p><p>La postal fotográfica de Braun lleva los nombres de los arquitectos André Granet y Roger-Henri Expert. Al anochecer, la iluminación resaltaba las aristas, las caídas de agua y el haz de curvas sobre la fuente, convirtiendo su masa clara diurna en un escenario luminoso.</p><h2>El Cactus en un pastel de 1931</h2><p>Alexandre-Mathurin Pêche representó la fuente desde la sección del África Ecuatorial Francesa. La situó al fondo de una avenida bordeada de visitantes, detrás de un pilar con franjas rojas y azules. Su pastel reúne el Cactus, los edificios y la vegetación que componían el paisaje nocturno de la exposición.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les grandes tiges de la porte de Reuilly</h2><p>La fontaine du Cactus se dressait près de la porte de Reuilly, à l’entrée de la grande avenue des Colonies françaises. Ses hautes tiges se recourbaient au sommet autour de cascades étagées. Cette silhouette végétale démesurée dominait les passants et les voitures du petit train qui circulait devant son bassin.</p><p>La carte photographique Braun porte les noms des architectes André Granet et Roger-Henri Expert. À la nuit tombée, l’éclairage soulignait les arêtes, les retombées d’eau et le bouquet de courbes au-dessus de la fontaine ; la masse claire du jour devenait un décor lumineux.</p><h2>Le Cactus dans un pastel de 1931</h2><p>Alexandre-Mathurin Pêche a représenté la fontaine depuis la section de l’Afrique équatoriale française. Il la place au bout d’une allée bordée de visiteurs, derrière un pylône strié de rouge et de bleu. Son pastel rapproche le Cactus des constructions et des plantations qui composaient le paysage nocturne de l’exposition.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Alti steli presso la Porte de Reuilly</h2><p>La fontana del Cactus sorgeva vicino alla Porte de Reuilly, all’imbocco del grande viale delle colonie francesi. Gli alti steli si incurvavano in cima attorno a cascate a gradoni. Questa smisurata sagoma vegetale dominava i passanti e le carrozze del trenino che transitava davanti alla vasca.</p><p>La cartolina fotografica Braun riporta i nomi degli architetti André Granet e Roger-Henri Expert. Di notte, le luci sottolineavano gli spigoli, le cadute d’acqua e il fascio di curve sopra la fontana, trasformando la massa chiara visibile di giorno in uno scenario luminoso.</p><h2>Il Cactus in un pastello del 1931</h2><p>Alexandre-Mathurin Pêche raffigurò la fontana dalla sezione dell’Africa Equatoriale Francese. La collocò in fondo a un viale fiancheggiato da visitatori, dietro un pilone a strisce rosse e blu. Il pastello accosta il Cactus agli edifici e alla vegetazione che componevano il paesaggio notturno dell’esposizione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Hoge stengels bij de Porte de Reuilly</h2><p>De Cactusfontein stond bij de Porte de Reuilly, aan het begin van de grote laan van de Franse koloniën. De hoge stengels bogen bovenaan om rond trapsgewijze watervallen. Dit reusachtige plantensilhouet torende uit boven de wandelaars en de rijtuigen van het treintje dat langs het bassin reed.</p><p>De fotografische ansichtkaart van Braun vermeldt de architecten André Granet en Roger-Henri Expert. Na zonsondergang benadrukte de verlichting de randen, het vallende water en de bundel bogen boven de fontein. De overdag lichte vorm veranderde zo in een verlicht decor.</p><h2>De Cactus op een pastel uit 1931</h2><p>Alexandre-Mathurin Pêche tekende de fontein vanuit de afdeling Frans-Equatoriaal-Afrika. Hij plaatste haar aan het einde van een laan met bezoekers, achter een rood en blauw gestreepte lichtzuil. Zijn pastel verbindt de Cactus met de gebouwen en beplanting van het nachtelijke tentoonstellingslandschap.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wysokie łodygi przy Porte de Reuilly</h2><p>Fontanna Cactus stała niedaleko Porte de Reuilly, u wylotu głównej alei kolonii francuskich. Jej wysokie łodygi zaginały się u góry wokół stopniowanych kaskad. Ta ogromna roślinna sylwetka górowała nad przechodniami i wagonami kolejki przejeżdżającej przed basenem fontanny.</p><p>Na fotograficznej pocztówce wydawnictwa Braun widnieją nazwiska architektów André Graneta i Rogera-Henriego Experta. Po zmroku oświetlenie podkreślało krawędzie, spływającą wodę i wiązkę łuków nad fontanną. Jasna za dnia bryła stawała się świetlną dekoracją.</p><h2>Cactus na pastelu z 1931 roku</h2><p>Alexandre-Mathurin Pêche przedstawił fontannę od strony sekcji Francuskiej Afryki Równikowej. Umieścił ją na końcu alei pełnej zwiedzających, za słupem w czerwone i niebieskie pasy. Pastel ukazuje Cactus w otoczeniu budynków i roślin tworzących nocny krajobraz wystawy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Grandes hastes junto à Porte de Reuilly</h2><p>A fonte do Cactus erguia-se perto da Porte de Reuilly, no início da grande avenida das colónias francesas. As suas hastes altas curvavam-se no topo em redor de cascatas em degraus. Esta enorme silhueta vegetal dominava os passeantes e as carruagens do pequeno comboio que passava diante do tanque.</p><p>O postal fotográfico da Braun apresenta os nomes dos arquitetos André Granet e Roger-Henri Expert. Ao anoitecer, a iluminação realçava as arestas, as quedas de água e o conjunto de curvas sobre a fonte. A massa clara visível durante o dia transformava-se num cenário luminoso.</p><h2>O Cactus num pastel de 1931</h2><p>Alexandre-Mathurin Pêche representou a fonte a partir da secção da África Equatorial Francesa. Colocou-a no fim de uma alameda ladeada por visitantes, atrás de um pilar às riscas vermelhas e azuis. O pastel aproxima o Cactus dos edifícios e da vegetação que compunham a paisagem noturna da exposição.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://programme.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-le-cactus-vue-depuis-la"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "1931"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "c62453bd-4ea8-46ad-900b-6719ccd3460d",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:36:08.2304363Z",
+    "appliedAtUtc": "2026-11-16T00:36:08.2304369Z",
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+        "entityKey": "exposition-coloniale-fontaine-cactus",
+        "displayName": "Fontaine du Cactus",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Other"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Other"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Hohe Stängel an der Porte de Reuilly</h2><p>Der Cactus-Brunnen stand nahe der Porte de Reuilly am Eingang zur großen Allee der französischen Kolonien. Seine hohen Stängel bogen sich oben über stufenförmigen Kaskaden. Die übergroße Pflanzensilhouette ragte über die Spaziergänger und die Wagen der kleinen Bahn hinaus, die am Becken vorbeifuhr.</p><p>Auf der fotografischen Postkarte von Braun sind die Architekten André Granet und Roger-Henri Expert genannt. Nach Einbruch der Dunkelheit betonte die Beleuchtung die Kanten, das herabfallende Wasser und die geschwungenen Formen über dem Brunnen. Aus der tagsüber hellen Anlage wurde eine leuchtende Kulisse.</p><h2>Der Cactus in einem Pastell von 1931</h2><p>Alexandre-Mathurin Pêche zeichnete den Brunnen vom Bereich Französisch-Äquatorialafrika aus. Er erscheint am Ende einer von Besuchern gesäumten Allee hinter einem rot und blau gestreiften Lichtpfeiler. Das Pastell zeigt den Cactus im Zusammenhang mit den Bauten und Pflanzen der nächtlichen Ausstellungslandschaft.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The towering stems by Porte de Reuilly</h2><p>The Cactus fountain stood near Porte de Reuilly, at the entrance to the main avenue of the French Colonies. Its tall stems curved over at the top around stepped cascades. This oversized plant-like silhouette rose above pedestrians and the little train’s carriages as they passed the basin.</p><p>The Braun photographic postcard names the architects André Granet and Roger-Henri Expert. After dark, lighting picked out the edges, falling water and cluster of curves above the fountain, turning its pale daytime form into an illuminated setting.</p><h2>The Cactus in a 1931 pastel</h2><p>Alexandre-Mathurin Pêche depicted the fountain from the French Equatorial Africa section. He placed it at the end of a path lined with visitors, beyond a pylon striped in red and blue. His pastel brings the Cactus together with the buildings and planting that formed the exposition’s night-time landscape.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Grandes tallos junto a la Porte de Reuilly</h2><p>La fuente del Cactus se alzaba cerca de la Porte de Reuilly, al comienzo de la gran avenida de las colonias francesas. Sus altos tallos se curvaban en lo alto alrededor de cascadas escalonadas. Esta enorme silueta vegetal dominaba a los paseantes y los vagones del pequeño tren que pasaba ante el estanque.</p><p>La postal fotográfica de Braun lleva los nombres de los arquitectos André Granet y Roger-Henri Expert. Al anochecer, la iluminación resaltaba las aristas, las caídas de agua y el haz de curvas sobre la fuente, convirtiendo su masa clara diurna en un escenario luminoso.</p><h2>El Cactus en un pastel de 1931</h2><p>Alexandre-Mathurin Pêche representó la fuente desde la sección del África Ecuatorial Francesa. La situó al fondo de una avenida bordeada de visitantes, detrás de un pilar con franjas rojas y azules. Su pastel reúne el Cactus, los edificios y la vegetación que componían el paisaje nocturno de la exposición.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les grandes tiges de la porte de Reuilly</h2><p>La fontaine du Cactus se dressait près de la porte de Reuilly, à l’entrée de la grande avenue des Colonies françaises. Ses hautes tiges se recourbaient au sommet autour de cascades étagées. Cette silhouette végétale démesurée dominait les passants et les voitures du petit train qui circulait devant son bassin.</p><p>La carte photographique Braun porte les noms des architectes André Granet et Roger-Henri Expert. À la nuit tombée, l’éclairage soulignait les arêtes, les retombées d’eau et le bouquet de courbes au-dessus de la fontaine ; la masse claire du jour devenait un décor lumineux.</p><h2>Le Cactus dans un pastel de 1931</h2><p>Alexandre-Mathurin Pêche a représenté la fontaine depuis la section de l’Afrique équatoriale française. Il la place au bout d’une allée bordée de visiteurs, derrière un pylône strié de rouge et de bleu. Son pastel rapproche le Cactus des constructions et des plantations qui composaient le paysage nocturne de l’exposition.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Alti steli presso la Porte de Reuilly</h2><p>La fontana del Cactus sorgeva vicino alla Porte de Reuilly, all’imbocco del grande viale delle colonie francesi. Gli alti steli si incurvavano in cima attorno a cascate a gradoni. Questa smisurata sagoma vegetale dominava i passanti e le carrozze del trenino che transitava davanti alla vasca.</p><p>La cartolina fotografica Braun riporta i nomi degli architetti André Granet e Roger-Henri Expert. Di notte, le luci sottolineavano gli spigoli, le cadute d’acqua e il fascio di curve sopra la fontana, trasformando la massa chiara visibile di giorno in uno scenario luminoso.</p><h2>Il Cactus in un pastello del 1931</h2><p>Alexandre-Mathurin Pêche raffigurò la fontana dalla sezione dell’Africa Equatoriale Francese. La collocò in fondo a un viale fiancheggiato da visitatori, dietro un pilone a strisce rosse e blu. Il pastello accosta il Cactus agli edifici e alla vegetazione che componevano il paesaggio notturno dell’esposizione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Hoge stengels bij de Porte de Reuilly</h2><p>De Cactusfontein stond bij de Porte de Reuilly, aan het begin van de grote laan van de Franse koloniën. De hoge stengels bogen bovenaan om rond trapsgewijze watervallen. Dit reusachtige plantensilhouet torende uit boven de wandelaars en de rijtuigen van het treintje dat langs het bassin reed.</p><p>De fotografische ansichtkaart van Braun vermeldt de architecten André Granet en Roger-Henri Expert. Na zonsondergang benadrukte de verlichting de randen, het vallende water en de bundel bogen boven de fontein. De overdag lichte vorm veranderde zo in een verlicht decor.</p><h2>De Cactus op een pastel uit 1931</h2><p>Alexandre-Mathurin Pêche tekende de fontein vanuit de afdeling Frans-Equatoriaal-Afrika. Hij plaatste haar aan het einde van een laan met bezoekers, achter een rood en blauw gestreepte lichtzuil. Zijn pastel verbindt de Cactus met de gebouwen en beplanting van het nachtelijke tentoonstellingslandschap.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wysokie łodygi przy Porte de Reuilly</h2><p>Fontanna Cactus stała niedaleko Porte de Reuilly, u wylotu głównej alei kolonii francuskich. Jej wysokie łodygi zaginały się u góry wokół stopniowanych kaskad. Ta ogromna roślinna sylwetka górowała nad przechodniami i wagonami kolejki przejeżdżającej przed basenem fontanny.</p><p>Na fotograficznej pocztówce wydawnictwa Braun widnieją nazwiska architektów André Graneta i Rogera-Henriego Experta. Po zmroku oświetlenie podkreślało krawędzie, spływającą wodę i wiązkę łuków nad fontanną. Jasna za dnia bryła stawała się świetlną dekoracją.</p><h2>Cactus na pastelu z 1931 roku</h2><p>Alexandre-Mathurin Pêche przedstawił fontannę od strony sekcji Francuskiej Afryki Równikowej. Umieścił ją na końcu alei pełnej zwiedzających, za słupem w czerwone i niebieskie pasy. Pastel ukazuje Cactus w otoczeniu budynków i roślin tworzących nocny krajobraz wystawy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Grandes hastes junto à Porte de Reuilly</h2><p>A fonte do Cactus erguia-se perto da Porte de Reuilly, no início da grande avenida das colónias francesas. As suas hastes altas curvavam-se no topo em redor de cascatas em degraus. Esta enorme silhueta vegetal dominava os passeantes e as carruagens do pequeno comboio que passava diante do tanque.</p><p>O postal fotográfico da Braun apresenta os nomes dos arquitetos André Granet e Roger-Henri Expert. Ao anoitecer, a iluminação realçava as arestas, as quedas de água e o conjunto de curvas sobre a fonte. A massa clara visível durante o dia transformava-se num cenário luminoso.</p><h2>O Cactus num pastel de 1931</h2><p>Alexandre-Mathurin Pêche representou a fonte a partir da secção da África Equatorial Francesa. Colocou-a no fim de uma alameda ladeada por visitantes, atrás de um pilar às riscas vermelhas e azuis. O pastel aproxima o Cactus dos edifícios e da vegetação que compunham a paisagem noturna da exposição.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://programme.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-le-cactus-vue-depuis-la"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "1931"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "qualification": "exposition-coloniale-cactus-qualification-20261116.json",
+  "allEightDescriptionsPersonallyReviewedAndExact": true,
+  "dateNormalization": "Raw openingDate1931 maps to openingDateText1931 and exact openingDate null; no further mutation.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

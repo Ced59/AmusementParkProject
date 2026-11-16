@@ -1,0 +1,98 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "baselineCommit": "1088de55",
+  "retentionCheck": {
+    "allPreviousItemsIdsPreserved": true,
+    "previousItemsOnlyChange": "Train de ceinture eight descriptions",
+    "allPreviousImagesExact": true,
+    "zonesHistoryReferencesAndOtherGraphSectionsExact": true,
+    "parkOnlyChange": "one official map association"
+  },
+  "counts": {
+    "items": 7,
+    "itemNotices8Languages": 7,
+    "ownImages": 8,
+    "officialMaps": 1,
+    "newApplyCount": 4,
+    "recoveredApplyCount": 12,
+    "photoImports": 8
+  },
+  "idempotence": {
+    "operationId": "f6e50604-7eeb-4100-8572-786546bbcada",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:38:58.8212898Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "exposition-coloniale-map-1931-fr",
+        "entityKey": "exposition-coloniale-map-1931-fr",
+        "displayName": "Carte officielle 1931 (fr, Image)",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+        "entityKey": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+        "displayName": "Fontaine du Cactus",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "allPrivate": true,
+  "sourceQualification": [
+    "exposition-coloniale-train-qualification-20261116.json",
+    "exposition-coloniale-map-1931-qualification-20261116.json",
+    "exposition-coloniale-cactus-qualification-20261116.json"
+  ],
+  "personalEditorialReview": {
+    "newTrainNoticeFields": 8,
+    "newMapTitlesAndAlts": 16,
+    "newCactusNoticeFields": 8,
+    "newTrainPhotoMetadata": 24,
+    "newCactusPhotoMetadata": 48,
+    "wholeInheritedCorpusReviewedThisPhase": false
+  },
+  "latestRealApply": "2026-11-16T00:36:08.2304369Z",
+  "latestRealPhotoImport": "2026-11-16T00:38:22.9Z",
+  "finalAuditPerformed": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "remaining": [
+    "Historical inventory, including other fountains and named amusement venues",
+    "Inherited park/zone/history corpus final review",
+    "Standalone official logo unqualified",
+    "Specific GPS and missing media documented; no inferred coordinates",
+    "Single final audit and audited publication still pending"
+  ]
+}

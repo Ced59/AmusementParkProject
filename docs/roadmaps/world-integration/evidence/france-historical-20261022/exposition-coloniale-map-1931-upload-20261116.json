@@ -1,0 +1,41 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "request": {
+    "arguments": {
+      "Action": "ImportOfficialMap",
+      "ParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "OfficialMapId": "exposition-coloniale-map-1931-fr",
+      "OfficialMapYear": 1931,
+      "LanguageCode": "fr",
+      "SourceUrl": "https://www.angewandtekunstgeschichte.net/uploads/Exposition-Coloniale-Internationale-Paris-1931.jpeg",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/plan-university-native.jpeg"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/10-map-1931-upload-result.json"
+  },
+  "receipt": {
+    "result": {
+      "ParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "OfficialMap": {
+        "Key": "exposition-coloniale-map-1931-fr",
+        "Id": "exposition-coloniale-map-1931-fr",
+        "Year": 1931,
+        "Format": "Image",
+        "StorageKey": "official-maps/1c83e45c-3335-4948-b15f-ce2805bc42e3/exposition-coloniale-map-1931-fr.0bf7fd3cbb804e24b6232fdbc043c76a.jpg",
+        "OriginalFileName": "plan-university-native.jpg",
+        "ContentType": "image/jpeg",
+        "SizeInBytes": 595953,
+        "SourcePageUrl": "https://www.angewandtekunstgeschichte.net/uploads/Exposition-Coloniale-Internationale-Paris-1931.jpeg",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      }
+    },
+    "receivedAtUtc": "2026-11-16T00:30:04.7984527Z",
+    "action": "ImportOfficialMap",
+    "startedAtUtc": "2026-11-16T00:30:01.7570600Z"
+  },
+  "qualification": "exposition-coloniale-map-1931-qualification-20261116.json",
+  "timestampExplanation": "Response contains no serverUTC; receivedAtUtc is actual local receipt time, not claimed serverUTC. Association requires separate Preview/Apply.",
+  "published": false,
+  "finalAuditCompleted": false
+}

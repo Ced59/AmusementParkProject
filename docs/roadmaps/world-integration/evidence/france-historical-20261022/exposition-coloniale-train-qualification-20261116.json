@@ -1,0 +1,204 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "itemId": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+  "checkedAtUtc": "2026-11-16T00:23:55.983564+00:00",
+  "sourceAccess": [
+    {
+      "name": "scenic-railway-article",
+      "url": "https://cfchanteraines.fr/lvdc/lvdc0277/expo1931.htm",
+      "retrievedAtUtc": "2026-11-16T00:16:50.768598+00:00",
+      "status": 200,
+      "finalUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo1931.htm",
+      "bytes": 26681,
+      "sha256": "19c982f4688ea9869edbe2ae60fe85e76dc1f4c45f2840d1b323262856a0ff20"
+    },
+    {
+      "name": "scenic-flickr-south",
+      "url": "https://www.flickr.com/photos/32335433%40N07/9859175706",
+      "retrievedAtUtc": "2026-11-16T00:16:50.769436+00:00",
+      "status": 200,
+      "finalUrl": "https://www.flickr.com/photos/32335433%40N07/9859175706",
+      "bytes": 501524,
+      "sha256": "7fc3e41d1816bac1e83a7909b68e6e89bda2c7742a9493f8cd896a458acf0003"
+    },
+    {
+      "name": "scenic-flickr-other",
+      "url": "https://www.flickr.com/photos/32335433%40N07/9859152004",
+      "retrievedAtUtc": "2026-11-16T00:16:50.770031+00:00",
+      "status": 200,
+      "finalUrl": "https://www.flickr.com/photos/32335433%40N07/9859152004",
+      "bytes": 524601,
+      "sha256": "ff8b0bbf2970b645889b0b443a57f086f27a9728dfca2c600f9ca78bec71a6a2"
+    },
+    {
+      "name": "plan-bnf-general",
+      "url": "https://catalogue.bnf.fr/ark:/12148/cb40749667m",
+      "retrievedAtUtc": "2026-11-16T00:16:50.770462+00:00",
+      "status": 200,
+      "finalUrl": "https://catalogue.bnf.fr/ark:/12148/cb40749667m",
+      "bytes": 74767,
+      "sha256": "84afc06ba34c18ac09489a5f0810601f778738abd101549c981d5172779fb83a"
+    }
+  ],
+  "photoAccess": [
+    {
+      "key": "scenic-cfc",
+      "url": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_01.jpg",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/scenic-cfc.jpg",
+      "status": 200,
+      "bytes": 62755,
+      "finalUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_01.jpg",
+      "receivedAtUtc": "2026-11-16T00:18:54.151647+00:00",
+      "sha256": "b73a0437d6c22661df45b98965ced8def023a7b2ba0d87a1711f9a74094353e1",
+      "dimensions": [
+        600,
+        401
+      ]
+    },
+    {
+      "key": "scenic-flickr-south",
+      "url": "https://live.staticflickr.com/5464/9859175706_3770229209_b.jpg",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/scenic-flickr-south.jpg",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "key": "scenic-flickr-other",
+      "url": "https://live.staticflickr.com/7334/9859152004_628b63ea45_b.jpg",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/scenic-flickr-other.jpg",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "key": "train-station",
+      "url": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_07.jpg",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/train-station.jpg",
+      "status": 200,
+      "bytes": 34787,
+      "finalUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_07.jpg",
+      "receivedAtUtc": "2026-11-16T00:18:54.023270+00:00",
+      "sha256": "51e07e8c0d1ae08bc72caca6d9763f2ed97d0e3bc99d7eeb2439479704b47d51",
+      "dimensions": [
+        453,
+        331
+      ]
+    },
+    {
+      "key": "train-circulating",
+      "url": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_15.jpg",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/train-circulating.jpg",
+      "status": 200,
+      "bytes": 32010,
+      "finalUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_15.jpg",
+      "receivedAtUtc": "2026-11-16T00:18:54.152887+00:00",
+      "sha256": "6b7a14f15c339dba22063a534eabec765a8332d6966a5d0c728196eb0f719964",
+      "dimensions": [
+        415,
+        275
+      ]
+    },
+    {
+      "key": "train-fountain",
+      "url": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_12.jpg",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/train-fountain.jpg",
+      "status": 200,
+      "bytes": 84425,
+      "finalUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_12.jpg",
+      "receivedAtUtc": "2026-11-16T00:18:54.266248+00:00",
+      "sha256": "55a93abab330dbd132d4b09af46f995a0957baab19d43da748b26e906248b614",
+      "dimensions": [
+        600,
+        382
+      ]
+    }
+  ],
+  "qualification": {
+    "route": "Official Palais PorteDorée exposition history: foreign section thenFrenchavenue/Angkor; CFC detailed loop aroundDaumesnil and namedstations",
+    "visualsPersonallyRead": [
+      "Porte de Reuilly station sign/picket fence/shelter",
+      "Train passing open coveredcars",
+      "Cactus fountain/train postcard"
+    ],
+    "photoAccepted": "07-train-cactus",
+    "otherImagesRejected": [
+      "station photo453x331 and circulating train415x275 soft/blurry, not imported",
+      "CFC Scenic Railway600x401 has Pinxt signature/artistic treatment, not accepted as a photograph",
+      "Flickr images403; no bypass",
+      "CommonsBraun original403; image not viewed or imported"
+    ],
+    "chronologyConflicts": "Flickr/blogHaase1914 versusHistoricEngland/RCDBHeidrich1928; preserve existing structuredmanufacturer and document discrepancy; no newmanufacturer attribution/date.",
+    "manufacturerTrain": "Decauville supply does not establish manufacturer of all equipment. No newreference or spec transferred.",
+    "sourceEncoding": "CFC rawHTML declaresISO8859-1 first; text reparsed with that charset. Rawsource unchanged."
+  },
+  "review": {
+    "newImageFieldsPersonallyReviewed": 24,
+    "newDescriptionsPersonallyReviewed": 8,
+    "exactPreviewFields": 8,
+    "genericLegacyFinalParagraphReplaced": "Specific station and Cactus scene instead of general colonial-staging statement."
+  },
+  "newDescriptionDocument": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+          "key": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+          "name": "Train de ceinture",
+          "category": "Transport",
+          "type": "TransportRide",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Autour du lac Daumesnil</h2><p>Le train de ceinture reliait les pavillons de l’Exposition coloniale de 1931 en suivant les allées autour du lac Daumesnil. Depuis ses voitures ouvertes abritées par un toit, les passagers voyaient se succéder les jardins et les architectures composées pour présenter les territoires coloniaux.</p><p>Le trajet traversait notamment la section étrangère, puis rejoignait la présentation de l’empire français. La reconstitution du temple d’Angkor et l’avenue des Colonies appartenaient à ce paysage de monuments temporaires.</p><h2>La halte de la Porte de Reuilly</h2><p>Une enseigne placée au-dessus d’un petit abri nommait la station « Porte de Reuilly », derrière une clôture à piquets. Ailleurs sur le parcours, une carte postale montre le train passant devant la haute fontaine Cactus, tandis que des visiteurs traversaient l’allée.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Around Lac Daumesnil</h2><p>The perimeter train linked the pavilions of the 1931 Colonial Exposition along the avenues around Lac Daumesnil. From open carriages sheltered by a roof, passengers watched gardens and architectural settings unfold, arranged to represent colonial territories.</p><p>The route passed through the foreign section before reaching the presentation of the French empire. The reconstructed Angkor temple and the Avenue des Colonies formed part of this landscape of temporary monuments.</p><h2>The Porte de Reuilly stop</h2><p>A sign above a small shelter named the “Porte de Reuilly” station behind a picket fence. Elsewhere along the route, a photographic postcard shows the train passing the tall Cactus fountain while visitors crossed the avenue.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Rund um den Lac Daumesnil</h2><p>Die Ringbahn verband die Pavillons der Kolonialausstellung von 1931 entlang der Alleen um den Lac Daumesnil. Aus den offenen, überdachten Wagen sahen die Fahrgäste Gärten und architektonische Kulissen, die zur Darstellung der Kolonialgebiete angelegt worden waren.</p><p>Die Strecke führte durch den ausländischen Ausstellungsbereich und weiter zur Präsentation des französischen Kolonialreichs. Der nachgebildete Angkor-Tempel und die Avenue des Colonies gehörten zu dieser Landschaft aus temporären Monumenten.</p><h2>Die Haltestelle Porte de Reuilly</h2><p>Über einem kleinen Unterstand hinter einem Lattenzaun stand das Stationsschild „Porte de Reuilly“. Eine fotografische Postkarte zeigt den Zug an anderer Stelle vor der hohen Cactus-Fontäne, während Besucher die Allee überquerten.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Rond het Lac Daumesnil</h2><p>De ringlijn verbond de paviljoens van de Koloniale Tentoonstelling van 1931 via de lanen rond het Lac Daumesnil. Vanuit de open rijtuigen met een dak zagen passagiers tuinen en architecturale decors voorbijkomen die de koloniale gebieden moesten voorstellen.</p><p>De route liep door het buitenlandse gedeelte en vervolgens langs de presentatie van het Franse koloniale rijk. De nagebouwde tempel van Angkor en de Avenue des Colonies maakten deel uit van dit landschap van tijdelijke monumenten.</p><h2>De halte Porte de Reuilly</h2><p>Boven een klein afdak achter een houten hek stond de stationsnaam “Porte de Reuilly”. Een fotografische ansichtkaart toont de trein elders op de route voor de hoge Cactus-fontein, terwijl bezoekers de laan overstaken.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Attorno al lago Daumesnil</h2><p>La ferrovia circolare collegava i padiglioni dell’Esposizione coloniale del 1931 lungo i viali attorno al lago Daumesnil. Dalle carrozze aperte, riparate da un tetto, i passeggeri vedevano susseguirsi giardini e scenari architettonici allestiti per rappresentare i territori coloniali.</p><p>Il percorso attraversava la sezione straniera e proseguiva verso la presentazione dell’impero francese. La ricostruzione del tempio di Angkor e l’avenue des Colonies facevano parte di questo paesaggio di monumenti temporanei.</p><h2>La fermata Porte de Reuilly</h2><p>Un’insegna sopra un piccolo riparo indicava la stazione « Porte de Reuilly », dietro uno steccato. Altrove lungo il percorso, una cartolina fotografica mostra il treno davanti all’alta fontana Cactus, mentre i visitatori attraversavano il viale.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Alrededor del lago Daumesnil</h2><p>El ferrocarril circular enlazaba los pabellones de la Exposición Colonial de 1931 por las avenidas que rodeaban el lago Daumesnil. Desde los coches abiertos, protegidos por un techo, los pasajeros veían sucederse jardines y escenarios arquitectónicos preparados para representar los territorios coloniales.</p><p>El recorrido atravesaba la sección extranjera antes de llegar a la presentación del imperio francés. La reproducción del templo de Angkor y la avenue des Colonies formaban parte de este paisaje de monumentos temporales.</p><h2>La parada Porte de Reuilly</h2><p>Un letrero sobre un pequeño refugio indicaba la estación « Porte de Reuilly », detrás de una valla de estacas. En otro punto del recorrido, una postal fotográfica muestra el tren ante la alta fuente Cactus mientras los visitantes cruzaban la avenida.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wokół jeziora Daumesnil</h2><p>Kolejka okrężna łączyła pawilony Wystawy Kolonialnej z 1931 roku, kursując alejami wokół jeziora Daumesnil. Z otwartych, zadaszonych wagonów pasażerowie oglądali ogrody i architektoniczne dekoracje przygotowane do prezentacji terytoriów kolonialnych.</p><p>Trasa prowadziła przez część zagraniczną, a następnie w stronę prezentacji francuskiego imperium kolonialnego. Rekonstrukcja świątyni Angkor i avenue des Colonies należały do tego krajobrazu tymczasowych budowli.</p><h2>Przystanek Porte de Reuilly</h2><p>Nad małą wiatą za drewnianym płotem widniała tablica z nazwą stacji „Porte de Reuilly”. Pocztówka fotograficzna pokazuje pociąg w innym miejscu trasy, przed wysoką fontanną Cactus, gdy zwiedzający przechodzili przez aleję.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Em redor do lago Daumesnil</h2><p>O caminho de ferro circular ligava os pavilhões da Exposição Colonial de 1931 pelas alamedas em redor do lago Daumesnil. Das carruagens abertas, abrigadas por um teto, os passageiros viam suceder-se jardins e cenários arquitetónicos preparados para representar os territórios coloniais.</p><p>O percurso atravessava a secção estrangeira antes de chegar à apresentação do império francês. A reconstrução do templo de Angkor e a avenue des Colonies faziam parte desta paisagem de monumentos temporários.</p><h2>A paragem Porte de Reuilly</h2><p>Uma placa sobre um pequeno abrigo indicava a estação « Porte de Reuilly », atrás de uma vedação de madeira. Noutro ponto do percurso, um postal fotográfico mostra o comboio diante da alta fonte Cactus, enquanto os visitantes atravessavam a alameda.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-exposition-train-photo-and-source-review",
+        "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "notes": "Eight descriptions personally authored/reviewed from Palais PorteDorée route history and CFC article, with station/circulating/Cactus images individually viewed. No manufacturer or precise opening/closure date inferred. CFC says Decauville supplied equipment, not necessarily built it. No speed/capacity/technical sequence in visitor prose."
+      }
+    }
+  },
+  "visibility": "private",
+  "completeInventory": false,
+  "fullAudit": false
+}

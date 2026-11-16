@@ -1,0 +1,126 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "sourcePages": [
+    "https://programme.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-le-cactus-vue-depuis-la",
+    "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+    "https://cfchanteraines.fr/lvdc/lvdc0277/expo1931.htm",
+    "https://commons.wikimedia.org/wiki/File:Expo_1931_Cactus.jpg",
+    "https://commons.wikimedia.org/wiki/File:Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_(Exposition_Coloniale)._-_Fortepan_28578.jpg"
+  ],
+  "personallyReadAndReviewed": true,
+  "imagesPersonallyViewed": [
+    "cactus-drawing-native.jpg",
+    "train-fountain.jpg",
+    "cactus-file-native.jpg",
+    "cactus-fortepan-native.jpg"
+  ],
+  "sourcesAccess": [
+    {
+      "name": "cactus-ngv-day",
+      "url": "https://www.ngv.vic.gov.au/explore/collection/work/108047/",
+      "retrievedAtUtc": "2026-11-16T00:32:19.340166+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ngv.vic.gov.au/explore/collection/work/108047/",
+      "bytes": 204180,
+      "sha256": "aee0df9b078d288839e66d6f522647b2a8cae4521366ea879cad4e80f7136530"
+    },
+    {
+      "name": "cactus-ngv-night1",
+      "url": "https://www.ngv.vic.gov.au/explore/collection/work/108069/",
+      "retrievedAtUtc": "2026-11-16T00:32:19.340848+00:00",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "name": "cactus-ngv-night2",
+      "url": "https://www.ngv.vic.gov.au/explore/collection/work/108068/",
+      "retrievedAtUtc": "2026-11-16T00:32:19.341291+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ngv.vic.gov.au/explore/collection/work/108068/",
+      "bytes": 204472,
+      "sha256": "64abe2e729a97663cc4ac111ae051bb5295cf0445910b3fef606c3c24095544f"
+    },
+    {
+      "name": "cactus-commons",
+      "url": "https://commons.wikimedia.org/wiki/Category:Le_Cactus_(Exposition_Coloniale,_1931)",
+      "retrievedAtUtc": "2026-11-16T00:32:19.341654+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/wiki/Category:Le_Cactus_(Exposition_Coloniale,_1931)",
+      "bytes": 51253,
+      "sha256": "4c00d4e7b09abf284dc463c0839a8a23b6a9fa2e076b6175321f5c9a48d3b58d"
+    },
+    {
+      "name": "cactus-file",
+      "url": "https://commons.wikimedia.org/wiki/File:Expo_1931_Cactus.jpg",
+      "retrievedAtUtc": "2026-11-16T00:33:22.036858+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Expo_1931_Cactus.jpg",
+      "bytes": 90892,
+      "sha256": "47c61576c24ccf5db27bb13934099bdbf1883dc1d672f6d79b261409977d4fff"
+    },
+    {
+      "name": "cactus-fortepan",
+      "url": "https://commons.wikimedia.org/wiki/File:Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_(Exposition_Coloniale)._-_Fortepan_28578.jpg",
+      "retrievedAtUtc": "2026-11-16T00:33:22.037747+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_(Exposition_Coloniale)._-_Fortepan_28578.jpg",
+      "bytes": 94376,
+      "sha256": "c1d9d5f2305d4d09bf68659e9761d74f458b2666c1d95ca50ba47c5766545021"
+    }
+  ],
+  "imagesAccess": [
+    {
+      "name": "cactus-ngv-day.jpg",
+      "url": "https://content.ngv.vic.gov.au/retrieve.php?size=1280&type=image&vernonID=108047",
+      "retrievedAtUtc": "2026-11-16T00:32:56.604284+00:00",
+      "status": 200,
+      "finalUrl": "https://content.ngv.vic.gov.au/retrieve.php?size=1280&type=image&vernonID=108047",
+      "bytes": 26556,
+      "sha256": "397ab85088b62fd2fa5cf8bb5bb1752afd84ce7fe0b7ef7b9c5a041bd60fbe81"
+    },
+    {
+      "name": "cactus-ngv-night2.jpg",
+      "url": "https://content.ngv.vic.gov.au/retrieve.php?size=1280&type=image&vernonID=108068",
+      "retrievedAtUtc": "2026-11-16T00:32:56.605127+00:00",
+      "status": 200,
+      "finalUrl": "https://content.ngv.vic.gov.au/retrieve.php?size=1280&type=image&vernonID=108068",
+      "bytes": 26556,
+      "sha256": "397ab85088b62fd2fa5cf8bb5bb1752afd84ce7fe0b7ef7b9c5a041bd60fbe81"
+    },
+    {
+      "name": "cactus-file-native.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Expo_1931_Cactus.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "retrievedAtUtc": "2026-11-16T00:34:01.993043+00:00",
+      "status": 200,
+      "finalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Expo_1931_Cactus.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "bytes": 160910,
+      "sha256": "a6e08c69014ddcdb8790c28875502a6004d3633a6dd26f2e9134b370b0623c24"
+    },
+    {
+      "name": "cactus-fortepan-native.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg/500px-Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20160701054645",
+      "retrievedAtUtc": "2026-11-16T00:34:01.993766+00:00",
+      "status": 200,
+      "finalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg/500px-Gyarmati_Ki%C3%A1ll%C3%ADt%C3%A1s_%28Exposition_Coloniale%29._-_Fortepan_28578.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20160701054645",
+      "bytes": 77389,
+      "sha256": "e9539788d56edaa3a916d1f3544e1bf3f2405efc7a5be18c791f78c7f4e58483"
+    }
+  ],
+  "qualification": {
+    "Cite": "Pastel1931Pêche,inventory2011.21.76; Granet named, depicts fountain fromAEF. Artwork not imported as photograph.",
+    "Braun": "Original photographic postcard identifies Cactus and Granet/Expert; blue-toned historic print, not new recolouring.",
+    "Fortepan": "Distinct daytime photograph with pedestrians/pram; source credit FOTO:FORTEPAN / MZSL/Ofner Károly, CC BY-SA3.0. Publisher500px version used unchanged; original9MB exceeds import limit.",
+    "NGV": "Both binary responses are identical PNG placeholders reading Image coming soon, not photographs; excluded. Third item page502.",
+    "Train": "Already imported once, not reimported or relabelled."
+  },
+  "visibility": "private",
+  "sourcePrecision": {
+    "openingYear": 1931,
+    "openingDay": null,
+    "closingDay": null,
+    "dismantlingDate": null,
+    "gps": null
+  },
+  "allEightDescriptionsPersonallyAuthoredReviewed": true,
+  "inventoryRemainsPartial": true
+}

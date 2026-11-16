@@ -1,0 +1,160 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "preview": {
+    "operationId": "4d204fcd-50cc-4a8b-9a2e-d8af1ceaa58b",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:24:47.7074178Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "760df334-d1ad-4750-b594-263dfa73c20d",
+        "entityKey": "760df334-d1ad-4750-b594-263dfa73c20d",
+        "displayName": "Fontaine des Totems",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+        "entityKey": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+        "displayName": "Train de ceinture",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "document": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "760df334-d1ad-4750-b594-263dfa73c20d",
+          "id": "760df334-d1ad-4750-b594-263dfa73c20d",
+          "name": "Fontaine des Totems",
+          "category": "Other",
+          "type": "Other",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Devant le palais de l’Afrique occidentale française</h2><p>La fontaine des Totems appartenait aux grands décors de l’Exposition coloniale de 1931. Elle se dressait devant le palais de l’Afrique occidentale française, dont elle accompagnait la présentation monumentale dans le paysage du lac Daumesnil.</p><h2>Une muraille rouge et des masques</h2><p>La presse de l’époque décrit une haute paroi rouge surmontée de masques. L’ensemble associait la sculpture, l’eau et les illuminations, au sein d’une représentation de l’Afrique composée par les organisateurs de l’exposition.</p><p>Alexandre-Mathurin Pêche en a fixé les couleurs dans un pastel de 1931. Les jets retombent dans un bassin allongé devant les visages sculptés, tandis que les hautes silhouettes du palais se dressent à l’arrière-plan.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>In front of the French West Africa palace</h2><p>Fontaine des Totems belonged to the grand decorative settings of the 1931 Colonial Exposition. It stood before the French West Africa palace, accompanying the building’s monumental presentation within the landscape of Lac Daumesnil.</p><h2>A red wall crowned with masks</h2><p>The contemporary press described a tall red wall topped with masks. Sculpture, water and illumination came together within a representation of Africa arranged by the exposition’s organisers.</p><p>Alexandre-Mathurin Pêche captured its colours in a pastel in 1931. Jets fall into an elongated basin in front of the sculpted faces, while the tall outlines of the palace rise in the background.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Vor dem Palast von Französisch-Westafrika</h2><p>Die Fontaine des Totems gehörte zu den großen dekorativen Anlagen der Kolonialausstellung von 1931. Sie stand vor dem Palast von Französisch-Westafrika und ergänzte dessen monumentale Inszenierung in der Landschaft am Lac Daumesnil.</p><h2>Eine rote Wand mit Masken</h2><p>Die zeitgenössische Presse beschrieb eine hohe rote Wand, die von Masken bekrönt wurde. Skulptur, Wasser und Beleuchtung verbanden sich hier zu einer von den Ausstellungsorganisatoren gestalteten Darstellung Afrikas.</p><p>Alexandre-Mathurin Pêche hielt die Farben 1931 in einem Pastell fest. Wasserstrahlen fallen vor den geschnitzten Gesichtern in ein langgestrecktes Becken; dahinter ragen die hohen Umrisse des Palastes auf.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Voor het paleis van Frans-West-Afrika</h2><p>De Fontaine des Totems hoorde bij de grote decoratieve ensembles van de Koloniale Tentoonstelling van 1931. Zij stond voor het paleis van Frans-West-Afrika en begeleidde de monumentale presentatie van dat gebouw in het landschap rond het Lac Daumesnil.</p><h2>Een rode wand met maskers</h2><p>De toenmalige pers beschreef een hoge rode wand met maskers erboven. Beeldhouwwerk, water en verlichting kwamen samen in een voorstelling van Afrika die door de organisatoren was samengesteld.</p><p>Alexandre-Mathurin Pêche legde de kleuren in 1931 vast in een pastel. Waterstralen vallen voor de gebeeldhouwde gezichten in een langgerekt bassin, met de hoge contouren van het paleis op de achtergrond.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Davanti al palazzo dell’Africa occidentale francese</h2><p>La Fontaine des Totems apparteneva ai grandi scenari decorativi dell’Esposizione coloniale del 1931. Sorgeva davanti al palazzo dell’Africa occidentale francese, accompagnandone la presentazione monumentale nel paesaggio del lago Daumesnil.</p><h2>Una parete rossa coronata da maschere</h2><p>La stampa dell’epoca descriveva un’alta parete rossa sormontata da maschere. Scultura, acqua e illuminazioni si univano in una rappresentazione dell’Africa composta dagli organizzatori dell’esposizione.</p><p>Alexandre-Mathurin Pêche ne fissò i colori in un pastello del 1931. I getti ricadono in una vasca allungata davanti ai volti scolpiti, mentre le alte sagome del palazzo si stagliano sullo sfondo.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Ante el palacio del África Occidental Francesa</h2><p>La Fontaine des Totems formaba parte de los grandes escenarios decorativos de la Exposición Colonial de 1931. Se alzaba ante el palacio del África Occidental Francesa y acompañaba su presentación monumental en el paisaje del lago Daumesnil.</p><h2>Una pared roja coronada de máscaras</h2><p>La prensa de la época describía una pared alta y roja rematada con máscaras. Escultura, agua e iluminación se unían en una representación de África compuesta por los organizadores de la exposición.</p><p>Alexandre-Mathurin Pêche plasmó sus colores en un pastel de 1931. Los chorros caen en un estanque alargado ante los rostros esculpidos, mientras las altas siluetas del palacio se recortan al fondo.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Przed pałacem Francuskiej Afryki Zachodniej</h2><p>Fontaine des Totems należała do wielkich zespołów dekoracyjnych Wystawy Kolonialnej z 1931 roku. Stała przed pałacem Francuskiej Afryki Zachodniej, uzupełniając jego monumentalną prezentację w krajobrazie jeziora Daumesnil.</p><h2>Czerwona ściana zwieńczona maskami</h2><p>Ówczesna prasa opisywała wysoką czerwoną ścianę, nad którą umieszczono maski. Rzeźba, woda i iluminacje łączyły się w przedstawienie Afryki ułożone przez organizatorów wystawy.</p><p>Alexandre-Mathurin Pêche utrwalił jej barwy na pastelu z 1931 roku. Strumienie wody opadają do podłużnego basenu przed rzeźbionymi twarzami, a w tle wznoszą się wysokie bryły pałacu.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Diante do palácio da África Ocidental Francesa</h2><p>A Fontaine des Totems pertencia aos grandes cenários decorativos da Exposição Colonial de 1931. Erguia-se diante do palácio da África Ocidental Francesa, acompanhando a sua apresentação monumental na paisagem do lago Daumesnil.</p><h2>Uma parede vermelha coroada de máscaras</h2><p>A imprensa da época descrevia uma parede alta e vermelha rematada por máscaras. Escultura, água e iluminações uniam-se numa representação de África composta pelos organizadores da exposição.</p><p>Alexandre-Mathurin Pêche registou as suas cores num pastel de 1931. Os jatos caem num tanque alongado diante dos rostos esculpidos, enquanto as silhuetas altas do palácio se erguem ao fundo.</p>"
+            }
+          ]
+        },
+        {
+          "key": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+          "id": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+          "name": "Train de ceinture",
+          "category": "Transport",
+          "type": "TransportRide",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Autour du lac Daumesnil</h2><p>Le train de ceinture reliait les pavillons de l’Exposition coloniale de 1931 en suivant les allées autour du lac Daumesnil. Depuis ses voitures ouvertes abritées par un toit, les passagers voyaient se succéder les jardins et les architectures composées pour présenter les territoires coloniaux.</p><p>Le trajet traversait notamment la section étrangère, puis rejoignait la présentation de l’empire français. La reconstitution du temple d’Angkor et l’avenue des Colonies appartenaient à ce paysage de monuments temporaires.</p><h2>La halte de la Porte de Reuilly</h2><p>Une enseigne placée au-dessus d’un petit abri nommait la station « Porte de Reuilly », derrière une clôture à piquets. Ailleurs sur le parcours, une carte postale montre le train passant devant la haute fontaine Cactus, tandis que des visiteurs traversaient l’allée.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Around Lac Daumesnil</h2><p>The perimeter train linked the pavilions of the 1931 Colonial Exposition along the avenues around Lac Daumesnil. From open carriages sheltered by a roof, passengers watched gardens and architectural settings unfold, arranged to represent colonial territories.</p><p>The route passed through the foreign section before reaching the presentation of the French empire. The reconstructed Angkor temple and the Avenue des Colonies formed part of this landscape of temporary monuments.</p><h2>The Porte de Reuilly stop</h2><p>A sign above a small shelter named the “Porte de Reuilly” station behind a picket fence. Elsewhere along the route, a photographic postcard shows the train passing the tall Cactus fountain while visitors crossed the avenue.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Rund um den Lac Daumesnil</h2><p>Die Ringbahn verband die Pavillons der Kolonialausstellung von 1931 entlang der Alleen um den Lac Daumesnil. Aus den offenen, überdachten Wagen sahen die Fahrgäste Gärten und architektonische Kulissen, die zur Darstellung der Kolonialgebiete angelegt worden waren.</p><p>Die Strecke führte durch den ausländischen Ausstellungsbereich und weiter zur Präsentation des französischen Kolonialreichs. Der nachgebildete Angkor-Tempel und die Avenue des Colonies gehörten zu dieser Landschaft aus temporären Monumenten.</p><h2>Die Haltestelle Porte de Reuilly</h2><p>Über einem kleinen Unterstand hinter einem Lattenzaun stand das Stationsschild „Porte de Reuilly“. Eine fotografische Postkarte zeigt den Zug an anderer Stelle vor der hohen Cactus-Fontäne, während Besucher die Allee überquerten.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Rond het Lac Daumesnil</h2><p>De ringlijn verbond de paviljoens van de Koloniale Tentoonstelling van 1931 via de lanen rond het Lac Daumesnil. Vanuit de open rijtuigen met een dak zagen passagiers tuinen en architecturale decors voorbijkomen die de koloniale gebieden moesten voorstellen.</p><p>De route liep door het buitenlandse gedeelte en vervolgens langs de presentatie van het Franse koloniale rijk. De nagebouwde tempel van Angkor en de Avenue des Colonies maakten deel uit van dit landschap van tijdelijke monumenten.</p><h2>De halte Porte de Reuilly</h2><p>Boven een klein afdak achter een houten hek stond de stationsnaam “Porte de Reuilly”. Een fotografische ansichtkaart toont de trein elders op de route voor de hoge Cactus-fontein, terwijl bezoekers de laan overstaken.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Attorno al lago Daumesnil</h2><p>La ferrovia circolare collegava i padiglioni dell’Esposizione coloniale del 1931 lungo i viali attorno al lago Daumesnil. Dalle carrozze aperte, riparate da un tetto, i passeggeri vedevano susseguirsi giardini e scenari architettonici allestiti per rappresentare i territori coloniali.</p><p>Il percorso attraversava la sezione straniera e proseguiva verso la presentazione dell’impero francese. La ricostruzione del tempio di Angkor e l’avenue des Colonies facevano parte di questo paesaggio di monumenti temporanei.</p><h2>La fermata Porte de Reuilly</h2><p>Un’insegna sopra un piccolo riparo indicava la stazione « Porte de Reuilly », dietro uno steccato. Altrove lungo il percorso, una cartolina fotografica mostra il treno davanti all’alta fontana Cactus, mentre i visitatori attraversavano il viale.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Alrededor del lago Daumesnil</h2><p>El ferrocarril circular enlazaba los pabellones de la Exposición Colonial de 1931 por las avenidas que rodeaban el lago Daumesnil. Desde los coches abiertos, protegidos por un techo, los pasajeros veían sucederse jardines y escenarios arquitectónicos preparados para representar los territorios coloniales.</p><p>El recorrido atravesaba la sección extranjera antes de llegar a la presentación del imperio francés. La reproducción del templo de Angkor y la avenue des Colonies formaban parte de este paisaje de monumentos temporales.</p><h2>La parada Porte de Reuilly</h2><p>Un letrero sobre un pequeño refugio indicaba la estación « Porte de Reuilly », detrás de una valla de estacas. En otro punto del recorrido, una postal fotográfica muestra el tren ante la alta fuente Cactus mientras los visitantes cruzaban la avenida.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wokół jeziora Daumesnil</h2><p>Kolejka okrężna łączyła pawilony Wystawy Kolonialnej z 1931 roku, kursując alejami wokół jeziora Daumesnil. Z otwartych, zadaszonych wagonów pasażerowie oglądali ogrody i architektoniczne dekoracje przygotowane do prezentacji terytoriów kolonialnych.</p><p>Trasa prowadziła przez część zagraniczną, a następnie w stronę prezentacji francuskiego imperium kolonialnego. Rekonstrukcja świątyni Angkor i avenue des Colonies należały do tego krajobrazu tymczasowych budowli.</p><h2>Przystanek Porte de Reuilly</h2><p>Nad małą wiatą za drewnianym płotem widniała tablica z nazwą stacji „Porte de Reuilly”. Pocztówka fotograficzna pokazuje pociąg w innym miejscu trasy, przed wysoką fontanną Cactus, gdy zwiedzający przechodzili przez aleję.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Em redor do lago Daumesnil</h2><p>O caminho de ferro circular ligava os pavilhões da Exposição Colonial de 1931 pelas alamedas em redor do lago Daumesnil. Das carruagens abertas, abrigadas por um teto, os passageiros viam suceder-se jardins e cenários arquitetónicos preparados para representar os territórios coloniais.</p><p>O percurso atravessava a secção estrangeira antes de chegar à apresentação do império francês. A reconstrução do templo de Angkor e a avenue des Colonies faziam parte desta paisagem de monumentos temporários.</p><h2>A paragem Porte de Reuilly</h2><p>Uma placa sobre um pequeno abrigo indicava a estação « Porte de Reuilly », atrás de uma vedação de madeira. Noutro ponto do percurso, um postal fotográfico mostra o comboio diante da alta fonte Cactus, enquanto os visitantes atravessavam a alameda.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-exposition-idempotence-check",
+        "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3"
+      }
+    }
+  },
+  "noApply": true,
+  "lastDataIntegrationAtUnchangedByCheck": true
+}

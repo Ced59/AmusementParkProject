@@ -6147,7 +6147,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-16T00:15:52.848Z",
+      "lastDataIntegrationAt": "2026-11-16T00:38:22.900Z",
       "integrationHistory": [
         {
           "eventId": "apply-9ad9d3c9-e054-432c-a3d3-c2a2dd4e0860",
@@ -6328,6 +6328,76 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-06-museum-night-20261116.json",
           "auditEvidence": null,
           "summary": "Exposition coloniale1931 : photographie historique 06-museum-night importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "import-photo-c925bcb94f6b464b8f4580cb9a504796",
+          "appliedAt": "2026-11-16T00:22:07.346Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-07-train-cactus-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 07-train-cactus importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "apply-37456867-bed4-436e-90cb-230c4fcb9cb6",
+          "appliedAt": "2026-11-16T00:23:57.488Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-08-train-notice-20261116.json",
+          "auditEvidence": null,
+          "summary": "Train de ceinture : huit notices réécrites d’après le parcours officiel et les vues historiques de la halte Porte de Reuilly et de la fontaine Cactus ; fiche privée conservée."
+        },
+        {
+          "eventId": "upload-official-map-1931-2026-11-16T00:30:04.798Z",
+          "appliedAt": "2026-11-16T00:30:04.798Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-map-1931-upload-20261116.json",
+          "auditEvidence": null,
+          "summary": "Plan officiel à vol d’oiseau 1931 : reproduction universitaire intégrale contrôlée puis téléversée. Heure de réception réelle, API sans UTC serveur ; association privée encore à appliquer."
+        },
+        {
+          "eventId": "apply-7f5e5faa-147e-460e-b9de-194a0d82901f",
+          "appliedAt": "2026-11-16T00:31:19.158Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-11-map-association-20261116.json",
+          "auditEvidence": null,
+          "summary": "Plan officiel à vol d’oiseau de 1931 associé en privé, seize titres et textes alternatifs relus dans huit langues ; binaire universitaire intégral et clé de stockage conservés."
+        },
+        {
+          "eventId": "apply-c62453bd-4ea8-46ad-900b-6719ccd3460d",
+          "appliedAt": "2026-11-16T00:36:08.230Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-12-cactus-20261116.json",
+          "auditEvidence": null,
+          "summary": "Fontaine du Cactus : nouvelle fiche historique privée et huit notices relues ; attribution Granet/Expert documentée, année1931 seule, aucun jour ni GPS inventé."
+        },
+        {
+          "eventId": "import-photo-9d4615e2f6b64b5491fbb3e0ce08def7",
+          "appliedAt": "2026-11-16T00:37:44.160Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-13-cactus-night-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 13-cactus-night importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "import-photo-889d3d9061cf4b98bdf2503a92e6aa28",
+          "appliedAt": "2026-11-16T00:38:22.900Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-14-cactus-day-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 14-cactus-day importée privée ; original et24métadonnées vérifiés en huit langues."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

@@ -1,0 +1,121 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "mapYear": 1931,
+  "acceptedSource": {
+    "name": "plan-university-native.jpeg",
+    "url": "https://www.angewandtekunstgeschichte.net/uploads/Exposition-Coloniale-Internationale-Paris-1931.jpeg",
+    "retrievedAtUtc": "2026-11-16T00:28:51.542329+00:00",
+    "status": 200,
+    "finalUrl": "https://www.angewandtekunstgeschichte.net/uploads/Exposition-Coloniale-Internationale-Paris-1931.jpeg",
+    "bytes": 595953,
+    "sha256": "07de4c23083ef134f931aca4bd67cf00f048106d8710278408dc47b54b384b9d"
+  },
+  "sourcePageUrl": "https://www.angewandtekunstgeschichte.net/news/2026/seminar-exkursion-paris-blickt-auf-die-welt-kunst-imperium-und-wissenschaft-1766-2026",
+  "primaryPrintedTitle": "Exposition Coloniale Internationale Paris 1931 — Plan officiel à vol d’oiseau",
+  "publisher": "Éditions Ed. Blondel La Rougery, 7 rue Saint Lazare, Paris 9e",
+  "universityCaption": "Gezeichnet von Georges Peltier, herausgegeben von Éditions Blondel la Rougery im Auftrag des Commissariat Général de l’Exposition.",
+  "qualification": "Whole historical official visitor map; explicit printed official title and institutional caption identify commissioning by exposition authority. The university is the reproduction host, not the historical publisher.",
+  "bibliographicCorroboration": {
+    "url": "https://catalogue.bnf.fr/ark:/12148/cb40760456n",
+    "title": "Exposition coloniale internationale. Paris, 1931 / Dressé et dessiné par G. Peltier",
+    "publisher": "Paris : E. Blondel La Rougery, 7, rue Saint-Lazare, [1931]",
+    "limit": "Related bibliographic item; dimensions 79×60 differ from this panoramic sheet; do not assert same scan/recto or identifier."
+  },
+  "rootVisualReview": {
+    "wholeSheet": true,
+    "dimensions": [
+      1281,
+      801
+    ],
+    "visibleTitleYearLegend": true,
+    "watermark": false,
+    "ownEdits": false,
+    "details": "Lac Daumesnil and its two islands, Angkor reconstruction, pavilions, zoo and amusement park. Entire lower legend and outer margins retained. Yellow/black historical print."
+  },
+  "otherCandidates": {
+    "galerie": "Same printed plan at 960px; lesser resolution, not duplicated.",
+    "shop": "Photograph of unfolded sheet, visibly softer; not selected.",
+    "bottin": "Separate general plan not proven exposition-authorised; not imported.",
+    "gallica": "Earlier thumbnails403; not bypassed."
+  },
+  "sourceAccess": [
+    {
+      "name": "cactus-drawing",
+      "url": "https://programme.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-le-cactus-vue-depuis-la",
+      "retrievedAtUtc": "2026-11-16T00:24:45.419970+00:00",
+      "status": 200,
+      "finalUrl": "https://programme.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-le-cactus-vue-depuis-la",
+      "bytes": 58119,
+      "sha256": "dd7a5dc2611fe6ad12528d4c75a81b2d7405cb4fa5fb38084f1b80bf97a91a81"
+    },
+    {
+      "name": "plan-galerie",
+      "url": "https://www.galerie123.com/fr/affiche-ancienne-originale/58240/exposition-coloniale-internationale-paris-plan-officiel-a-vol-doiseau/",
+      "retrievedAtUtc": "2026-11-16T00:24:45.420649+00:00",
+      "status": 200,
+      "finalUrl": "https://www.galerie123.com/fr/affiche-ancienne-originale/58240/exposition-coloniale-internationale-paris-plan-officiel-a-vol-doiseau/",
+      "bytes": 35237,
+      "sha256": "d4f6b06260de88deb212f9634001ce7263a27fb69ca628b8c152006bdcad59bc"
+    },
+    {
+      "name": "plan-shop",
+      "url": "https://carteancienne.com/products/affiche-exposition-coloniale-internationale-de-paris-1931",
+      "retrievedAtUtc": "2026-11-16T00:24:45.421252+00:00",
+      "status": 200,
+      "finalUrl": "https://carteancienne.com/products/affiche-exposition-coloniale-internationale-de-paris-1931",
+      "bytes": 955607,
+      "sha256": "1c9b6890458055895d5f39df1097884950b4cbd6c0267cce8cfbc12e9687f69c"
+    },
+    {
+      "name": "plan-university",
+      "url": "https://www.angewandtekunstgeschichte.net/news/2026/seminar-exkursion-paris-blickt-auf-die-welt-kunst-imperium-und-wissenschaft-1766-2026",
+      "retrievedAtUtc": "2026-11-16T00:24:45.421745+00:00",
+      "status": 200,
+      "finalUrl": "https://www.angewandtekunstgeschichte.net/news/2026/seminar-exkursion-paris-blickt-auf-die-welt-kunst-imperium-und-wissenschaft-1766-2026",
+      "bytes": 30408,
+      "sha256": "9ce331cf960d5d2488102673952c910f105abfdca5fda1f718c5d0ca020e8e75"
+    }
+  ],
+  "imageAccess": [
+    {
+      "name": "cactus-drawing-native.jpg",
+      "url": "https://programme.citedelarchitecture.fr/sites/default/files/styles/oeuvres_collections/public/flora-images/folder_0001/folder_0001/folder_0001/folder_0061/elem_0115/76_ap1.jpg?itok=hJqFAk10",
+      "retrievedAtUtc": "2026-11-16T00:28:51.541160+00:00",
+      "status": 200,
+      "finalUrl": "https://programme.citedelarchitecture.fr/sites/default/files/styles/oeuvres_collections/public/flora-images/folder_0001/folder_0001/folder_0001/folder_0061/elem_0115/76_ap1.jpg?itok=hJqFAk10",
+      "bytes": 24367,
+      "sha256": "6309a4da56265cc419a7e6ac5fc7baf91d5467f88b0ac14255377b4ebdd3edf6"
+    },
+    {
+      "name": "plan-galerie-native.jpg",
+      "url": "https://g123-media.sos-ch-gva-2.exoscale-cdn.com/filer_public_thumbnails/filer_public/06/4d/064de2c5-551c-4027-9490-11b464e514fe/z2319_expo_colonial_paris_affiche_ancienne_originale_1.jpg__960x0_q85_subsampling-2_upscale.jpg",
+      "retrievedAtUtc": "2026-11-16T00:28:51.541901+00:00",
+      "status": 200,
+      "finalUrl": "https://g123-media.sos-ch-gva-2.exoscale-cdn.com/filer_public_thumbnails/filer_public/06/4d/064de2c5-551c-4027-9490-11b464e514fe/z2319_expo_colonial_paris_affiche_ancienne_originale_1.jpg__960x0_q85_subsampling-2_upscale.jpg",
+      "bytes": 215236,
+      "sha256": "d9534ed0164359ef5410bf42f3a9610be813193d65b4628fb77934f7464b2236"
+    },
+    {
+      "name": "plan-university-native.jpeg",
+      "url": "https://www.angewandtekunstgeschichte.net/uploads/Exposition-Coloniale-Internationale-Paris-1931.jpeg",
+      "retrievedAtUtc": "2026-11-16T00:28:51.542329+00:00",
+      "status": 200,
+      "finalUrl": "https://www.angewandtekunstgeschichte.net/uploads/Exposition-Coloniale-Internationale-Paris-1931.jpeg",
+      "bytes": 595953,
+      "sha256": "07de4c23083ef134f931aca4bd67cf00f048106d8710278408dc47b54b384b9d"
+    },
+    {
+      "name": "plan-shop-native.jpg",
+      "url": "https://carteancienne.com/cdn/shop/files/plan_exposition_coloniale_internationale_paris_1931.jpg?v=1757850146&width=1946",
+      "retrievedAtUtc": "2026-11-16T00:28:51.542766+00:00",
+      "status": 200,
+      "finalUrl": "https://carteancienne.com/cdn/shop/files/plan_exposition_coloniale_internationale_paris_1931.jpg?v=1757850146&width=1946",
+      "bytes": 241966,
+      "sha256": "b795bd492e0cdd0f5a29bb5d5c2516fa2b501552ffb7fb9c01eb1d0239cc4527"
+    }
+  ],
+  "mapGpsInferred": false,
+  "auditCompleted": false,
+  "published": false
+}

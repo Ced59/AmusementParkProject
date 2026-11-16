@@ -1,0 +1,284 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "13-cactus-night",
+    "source": {
+      "name": "cactus-file-native.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Expo_1931_Cactus.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "retrievedAtUtc": "2026-11-16T00:34:01.993043+00:00",
+      "status": 200,
+      "finalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Expo_1931_Cactus.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "bytes": 160910,
+      "sha256": "a6e08c69014ddcdb8790c28875502a6004d3633a6dd26f2e9134b370b0623c24",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/cactus-file-native.jpg",
+      "dimensions": [
+        1005,
+        1596
+      ],
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Expo_1931_Cactus.jpg"
+    },
+    "ownerId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Public Domain Mark1.0 source attribution preserved; no photographer inferred from publisher.",
+    "review": "Original personally viewed;24localized fields personally authored/reviewed;no crop,retouch or date invention. Distinct night/day exposures; day image not conflated with earlier train postcard."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+      "SourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Expo_1931_Cactus.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/cactus-file-native.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/13-cactus-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/13-cactus-night-import-result.json"
+  },
+  "metadata": {
+    "description": "Les lumières dessinent les tiges et les cascades du Cactus sur cette carte photographique Braun de l’Exposition coloniale de 1931, reproduite avec ses tons bleus d’origine.",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Expo_1931_Cactus.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La fontaine Cactus éclairée de nuit, avec ses tiges courbées, ses cascades et ses jets sur une carte photographique aux tons bleus."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Cactus fountain lit at night, with curved stems, cascades and jets on a blue-toned photographic postcard."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der nachts beleuchtete Cactus-Brunnen mit gebogenen Stängeln, Kaskaden und Wasserstrahlen auf einer blau getönten fotografischen Postkarte."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De Cactusfontein bij nacht, met gebogen stengels, watervallen en waterstralen op een blauw getinte fotografische ansichtkaart."
+      },
+      {
+        "languageCode": "it",
+        "value": "La fontana Cactus illuminata di notte, con steli curvi, cascate e getti su una cartolina fotografica dai toni blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "La fuente Cactus iluminada de noche, con tallos curvos, cascadas y chorros en una postal fotográfica de tonos azules."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Oświetlona nocą fontanna Cactus z zakrzywionymi łodygami, kaskadami i strumieniami wody na fotograficznej pocztówce w niebieskiej tonacji."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A fonte Cactus iluminada à noite, com hastes curvas, cascatas e jatos num postal fotográfico em tons azuis."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les lumières dessinent les tiges et les cascades du Cactus sur cette carte photographique Braun de l’Exposition coloniale de 1931, reproduite avec ses tons bleus d’origine."
+      },
+      {
+        "languageCode": "en",
+        "value": "Light outlines the Cactus fountain’s stems and cascades on this Braun photographic postcard of the 1931 Colonial Exposition, reproduced in its original blue tones."
+      },
+      {
+        "languageCode": "de",
+        "value": "Licht zeichnet die Stängel und Kaskaden des Cactus-Brunnens auf dieser fotografischen Postkarte von Braun zur Kolonialausstellung 1931 nach. Die ursprüngliche blaue Tönung ist erhalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Licht tekent de stengels en watervallen van de Cactus op deze fotografische ansichtkaart van Braun van de Koloniale Tentoonstelling van 1931. De oorspronkelijke blauwe tinten zijn behouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le luci delineano gli steli e le cascate del Cactus su questa cartolina fotografica Braun dell’Esposizione coloniale del 1931, riprodotta nei toni blu originali."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las luces dibujan los tallos y las cascadas del Cactus en esta postal fotográfica de Braun de la Exposición Colonial de 1931, reproducida con sus tonos azules originales."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Światło podkreśla łodygi i kaskady fontanny Cactus na fotograficznej pocztówce wydawnictwa Braun z Wystawy Kolonialnej w 1931 roku. Zachowano oryginalną niebieską tonację."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As luzes desenham as hastes e as cascatas do Cactus neste postal fotográfico da Braun da Exposição Colonial de 1931, reproduzido com os seus tons azuis originais."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Éditions Braun, carte photographique de 1931, via Wikimedia Commons ; signalée dans le domaine public (Public Domain Mark 1.0)."
+      },
+      {
+        "languageCode": "en",
+        "value": "Éditions Braun, 1931 photographic postcard, via Wikimedia Commons; marked as public domain (Public Domain Mark 1.0)."
+      },
+      {
+        "languageCode": "de",
+        "value": "Éditions Braun, fotografische Postkarte von 1931, über Wikimedia Commons; als gemeinfrei gekennzeichnet (Public Domain Mark 1.0)."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Éditions Braun, fotografische ansichtkaart uit 1931, via Wikimedia Commons; aangeduid als publiek domein (Public Domain Mark 1.0)."
+      },
+      {
+        "languageCode": "it",
+        "value": "Éditions Braun, cartolina fotografica del 1931, tramite Wikimedia Commons; indicata come di pubblico dominio (Public Domain Mark 1.0)."
+      },
+      {
+        "languageCode": "es",
+        "value": "Éditions Braun, postal fotográfica de 1931, a través de Wikimedia Commons; identificada como de dominio público (Public Domain Mark 1.0)."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Éditions Braun, fotograficzna pocztówka z 1931 roku, za Wikimedia Commons; oznaczona jako domena publiczna (Public Domain Mark 1.0)."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Éditions Braun, postal fotográfico de 1931, via Wikimedia Commons; assinalado como domínio público (Public Domain Mark 1.0)."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-16T00:37:50.9686273Z",
+    "result": {
+      "id": "9d4615e2f6b64b5491fbb3e0ce08def7",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+      "path": "park_item/9d4615e2f6b64b5491fbb3e0ce08def7",
+      "description": "Les lumières dessinent les tiges et les cascades du Cactus sur cette carte photographique Braun de l’Exposition coloniale de 1931, reproduite avec ses tons bleus d’origine.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1005,
+      "height": 1596,
+      "sizeInBytes": 160910,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Expo_1931_Cactus.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine Cactus éclairée de nuit, avec ses tiges courbées, ses cascades et ses jets sur une carte photographique aux tons bleus."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Cactus fountain lit at night, with curved stems, cascades and jets on a blue-toned photographic postcard."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der nachts beleuchtete Cactus-Brunnen mit gebogenen Stängeln, Kaskaden und Wasserstrahlen auf einer blau getönten fotografischen Postkarte."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Cactusfontein bij nacht, met gebogen stengels, watervallen en waterstralen op een blauw getinte fotografische ansichtkaart."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana Cactus illuminata di notte, con steli curvi, cascate e getti su una cartolina fotografica dai toni blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente Cactus iluminada de noche, con tallos curvos, cascadas y chorros en una postal fotográfica de tonos azules."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oświetlona nocą fontanna Cactus z zakrzywionymi łodygami, kaskadami i strumieniami wody na fotograficznej pocztówce w niebieskiej tonacji."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte Cactus iluminada à noite, com hastes curvas, cascatas e jatos num postal fotográfico em tons azuis."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les lumières dessinent les tiges et les cascades du Cactus sur cette carte photographique Braun de l’Exposition coloniale de 1931, reproduite avec ses tons bleus d’origine."
+        },
+        {
+          "languageCode": "en",
+          "value": "Light outlines the Cactus fountain’s stems and cascades on this Braun photographic postcard of the 1931 Colonial Exposition, reproduced in its original blue tones."
+        },
+        {
+          "languageCode": "de",
+          "value": "Licht zeichnet die Stängel und Kaskaden des Cactus-Brunnens auf dieser fotografischen Postkarte von Braun zur Kolonialausstellung 1931 nach. Die ursprüngliche blaue Tönung ist erhalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Licht tekent de stengels en watervallen van de Cactus op deze fotografische ansichtkaart van Braun van de Koloniale Tentoonstelling van 1931. De oorspronkelijke blauwe tinten zijn behouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le luci delineano gli steli e le cascate del Cactus su questa cartolina fotografica Braun dell’Esposizione coloniale del 1931, riprodotta nei toni blu originali."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las luces dibujan los tallos y las cascadas del Cactus en esta postal fotográfica de Braun de la Exposición Colonial de 1931, reproducida con sus tonos azules originales."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Światło podkreśla łodygi i kaskady fontanny Cactus na fotograficznej pocztówce wydawnictwa Braun z Wystawy Kolonialnej w 1931 roku. Zachowano oryginalną niebieską tonację."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As luzes desenham as hastes e as cascatas do Cactus neste postal fotográfico da Braun da Exposição Colonial de 1931, reproduzido com os seus tons azuis originais."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Éditions Braun, carte photographique de 1931, via Wikimedia Commons ; signalée dans le domaine public (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Éditions Braun, 1931 photographic postcard, via Wikimedia Commons; marked as public domain (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Éditions Braun, fotografische Postkarte von 1931, über Wikimedia Commons; als gemeinfrei gekennzeichnet (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Éditions Braun, fotografische ansichtkaart uit 1931, via Wikimedia Commons; aangeduid als publiek domein (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Éditions Braun, cartolina fotografica del 1931, tramite Wikimedia Commons; indicata come di pubblico dominio (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Éditions Braun, postal fotográfica de 1931, a través de Wikimedia Commons; identificada como de dominio público (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Éditions Braun, fotograficzna pocztówka z 1931 roku, za Wikimedia Commons; oznaczona jako domena publiczna (Public Domain Mark 1.0)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Éditions Braun, postal fotográfico de 1931, via Wikimedia Commons; assinalado como domínio público (Public Domain Mark 1.0)."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:37:44.16Z",
+      "updatedAt": "2026-11-16T00:37:47.845Z"
+    },
+    "startedAtUtc": "2026-11-16T00:37:42.0056316Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
