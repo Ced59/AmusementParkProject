@@ -8335,7 +8335,7 @@
       "entryId": "US-park-a851ea9e-65a6-42dd-9dff-8ddd75d1a070",
       "name": "Breckenridge Ski Resort",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "a851ea9e-65a6-42dd-9dff-8ddd75d1a070",
@@ -8346,13 +8346,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Rattachement au resort confirmé : le GoldRunner Coaster figure dans Epic Discovery, et le ParkItem existe déjà dans la fiche masquée.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche Park Breckenridge Ski Resort et son ParkItem Gold Runner Alpine Coaster (051538b4-32fe-4319-8f8f-d6b2aa4afcd0). Photo exacte CC BY 3.0 identifiée sur Wikimedia Commons à vérifier/importer ; recontrôler calendrier et tarifs de la prochaine saison. Aucune date d’intégration avant Apply/import.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -8383,13 +8383,28 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.breckenridge.com",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — activités estivales Epic Discovery 2026",
+          "url": "https://www.breckenridge.com/explore-the-resort/activities-and-events/summer-activities.aspx",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — GoldRunner Coaster",
+          "url": "https://www.breckenridge.com/explore-the-resort/activities-and-events/summer-activities/gold-runner-coaster.aspx",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Photo exacte — DReifGalaxyM31, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:GoldRunner_Breckenridge_1.JPG",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Gold Runner Alpine Coaster",
@@ -8411,7 +8426,7 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le site officiel de Breckenridge présente GoldRunner Coaster au sein d’Epic Discovery avec l’Alpine Slide, mini-golf et autres activités. La fiche Park masquée possède déjà le ParkItem Gold Runner Alpine Coaster ; garder ce rattachement plutôt que créer une seconde standalone."
       }
     },
     {

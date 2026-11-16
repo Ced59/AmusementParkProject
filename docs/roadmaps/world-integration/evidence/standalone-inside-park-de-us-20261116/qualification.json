@@ -26,6 +26,20 @@
       ],
       "finding": "Official site lists coaster, summer and winter tubing, glow tubing and restaurant. Hidden Park already has Canyon Coaster as ParkItem.",
       "decision": "InsidePark; integrate existing Park and ParkItem."
+    },
+    {
+      "entryId": "US-park-a851ea9e-65a6-42dd-9dff-8ddd75d1a070",
+      "venue": "Breckenridge Ski Resort / Epic Discovery",
+      "parkId": "a851ea9e-65a6-42dd-9dff-8ddd75d1a070",
+      "parkItemId": "051538b4-32fe-4319-8f8f-d6b2aa4afcd0",
+      "parkItem": "Gold Runner Alpine Coaster",
+      "sources": [
+        "https://www.breckenridge.com/explore-the-resort/activities-and-events/summer-activities.aspx",
+        "https://www.breckenridge.com/explore-the-resort/activities-and-events/summer-activities/gold-runner-coaster.aspx",
+        "https://commons.wikimedia.org/wiki/File:GoldRunner_Breckenridge_1.JPG"
+      ],
+      "finding": "Official summer activities page presents GoldRunner Coaster within Epic Discovery alongside Alpine Slide and other activities. Hidden Park already has Gold Runner as ParkItem. Exact Wikimedia photo is CC BY 3.0 by DReifGalaxyM31 and shows the coaster.",
+      "decision": "InsidePark; integrate existing Park and ParkItem, photo lead retained."
     }
   ]
 }
