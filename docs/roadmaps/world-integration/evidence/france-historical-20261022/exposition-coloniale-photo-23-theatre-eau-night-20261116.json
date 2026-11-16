@@ -1,0 +1,293 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "23-theatre-eau-night",
+    "source": {
+      "name": "theatre-eau",
+      "url": "https://mdc.mucem.org/assets/356891/image",
+      "retrievedAtUtc": "2026-11-16T01:00:00.949634+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356891/image",
+      "bytes": 186120,
+      "sha256": "4cc57cde4413682c75667a9a46d00397b8c47ee81eb43f2b581b4988d34c95bd",
+      "dimensions": [
+        1280,
+        851
+      ],
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/theatre-eau-mucem-native.jpg",
+      "sourcePage": "https://mucem.org/notice/c/3188804/"
+    },
+    "ownerId": "3ade060c-3d5a-4337-ab11-303983973b6d",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Owner authorization for France historical images; institutional/publisher credits preserved, no open-license or named photographer invented.",
+    "review": "Root inspected the full native Mucem photographic postcard and personally authored/reviewed all 24 localized fields. Braun original printed monogram retained; no third-party overlay, crop or transformation. Institutional title and printed caption identify the existing item; CNUM contemporary article corroborates the setting."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "3ade060c-3d5a-4337-ab11-303983973b6d",
+      "SourceUrl": "https://mdc.mucem.org/assets/356891/image",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/theatre-eau-mucem-native.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/23-theatre-eau-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/23-theatre-eau-night-import-result.json"
+  },
+  "metadata": {
+    "description": "Des jets en éventail couronnent le Théâtre d’Eau sur cette photographie de 1931. Les cascades et les formes géométriques éclairées composent son décor nocturne face au lac.",
+    "sourceUrl": "https://mdc.mucem.org/assets/356891/image",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Le Théâtre d’Eau illuminé, avec de grandes gerbes derrière un décor en gradins et des cascades au bord du lac."
+      },
+      {
+        "languageCode": "en",
+        "value": "The illuminated Théâtre d’Eau, with large sprays behind a stepped backdrop and cascades beside the lake."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das beleuchtete Théâtre d’Eau mit großen Wasserfächern hinter einer gestuften Kulisse und Kaskaden am Seeufer."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het verlichte Théâtre d’Eau, met grote waterwaaiers achter een getrapt decor en cascades aan het meer."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Théâtre d’Eau illuminato, con grandi spruzzi dietro uno scenario a gradoni e cascate sul bordo del lago."
+      },
+      {
+        "languageCode": "es",
+        "value": "El Théâtre d’Eau iluminado, con grandes chorros tras un decorado escalonado y cascadas junto al lago."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Oświetlony Théâtre d’Eau z wielkimi wachlarzami wody za schodkową dekoracją i kaskadami nad brzegiem jeziora."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Théâtre d’Eau iluminado, com grandes jatos atrás de um cenário em patamares e cascatas junto ao lago."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des jets en éventail couronnent le Théâtre d’Eau sur cette photographie de 1931. Les cascades et les formes géométriques éclairées composent son décor nocturne face au lac."
+      },
+      {
+        "languageCode": "en",
+        "value": "Fan-shaped jets crown the Théâtre d’Eau in this 1931 photograph. Cascades and illuminated geometric forms make up its night-time scenery facing the lake."
+      },
+      {
+        "languageCode": "de",
+        "value": "Fächerförmige Wasserstrahlen krönen das Théâtre d’Eau auf dieser Aufnahme von 1931. Kaskaden und beleuchtete geometrische Formen bilden die nächtliche Kulisse zum See hin."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Waaiervormige waterstralen bekronen het Théâtre d’Eau op deze foto uit 1931. Cascades en verlichte geometrische vormen vormen het nachtelijke decor aan het meer."
+      },
+      {
+        "languageCode": "it",
+        "value": "Getti a ventaglio coronano il Théâtre d’Eau in questa fotografia del 1931. Cascate e forme geometriche illuminate compongono lo scenario notturno rivolto verso il lago."
+      },
+      {
+        "languageCode": "es",
+        "value": "Chorros en abanico coronan el Théâtre d’Eau en esta fotografía de 1931. Las cascadas y las formas geométricas iluminadas componen su escenario nocturno frente al lago."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wachlarze wody wieńczą Théâtre d’Eau na fotografii z 1931 roku. Kaskady i podświetlone geometryczne formy tworzą nocną scenografię zwróconą ku jezioru."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Jatos em leque coroam o Théâtre d’Eau nesta fotografia de 1931. As cascatas e as formas geométricas iluminadas compõem o cenário noturno voltado para o lago."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.86.3."
+      },
+      {
+        "languageCode": "en",
+        "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.86.3."
+      },
+      {
+        "languageCode": "de",
+        "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.86.3."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.86.3."
+      },
+      {
+        "languageCode": "it",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.3."
+      },
+      {
+        "languageCode": "es",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.3."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.86.3."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.86.3."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "7fd582e19ae643cc87667307d9215c24",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "3ade060c-3d5a-4337-ab11-303983973b6d",
+      "path": "park_item/7fd582e19ae643cc87667307d9215c24",
+      "description": "Des jets en éventail couronnent le Théâtre d’Eau sur cette photographie de 1931. Les cascades et les formes géométriques éclairées composent son décor nocturne face au lac.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 851,
+      "sizeInBytes": 186120,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356891/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Théâtre d’Eau illuminé, avec de grandes gerbes derrière un décor en gradins et des cascades au bord du lac."
+        },
+        {
+          "languageCode": "en",
+          "value": "The illuminated Théâtre d’Eau, with large sprays behind a stepped backdrop and cascades beside the lake."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das beleuchtete Théâtre d’Eau mit großen Wasserfächern hinter einer gestuften Kulisse und Kaskaden am Seeufer."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het verlichte Théâtre d’Eau, met grote waterwaaiers achter een getrapt decor en cascades aan het meer."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Théâtre d’Eau illuminato, con grandi spruzzi dietro uno scenario a gradoni e cascate sul bordo del lago."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Théâtre d’Eau iluminado, con grandes chorros tras un decorado escalonado y cascadas junto al lago."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oświetlony Théâtre d’Eau z wielkimi wachlarzami wody za schodkową dekoracją i kaskadami nad brzegiem jeziora."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Théâtre d’Eau iluminado, com grandes jatos atrás de um cenário em patamares e cascatas junto ao lago."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des jets en éventail couronnent le Théâtre d’Eau sur cette photographie de 1931. Les cascades et les formes géométriques éclairées composent son décor nocturne face au lac."
+        },
+        {
+          "languageCode": "en",
+          "value": "Fan-shaped jets crown the Théâtre d’Eau in this 1931 photograph. Cascades and illuminated geometric forms make up its night-time scenery facing the lake."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fächerförmige Wasserstrahlen krönen das Théâtre d’Eau auf dieser Aufnahme von 1931. Kaskaden und beleuchtete geometrische Formen bilden die nächtliche Kulisse zum See hin."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Waaiervormige waterstralen bekronen het Théâtre d’Eau op deze foto uit 1931. Cascades en verlichte geometrische vormen vormen het nachtelijke decor aan het meer."
+        },
+        {
+          "languageCode": "it",
+          "value": "Getti a ventaglio coronano il Théâtre d’Eau in questa fotografia del 1931. Cascate e forme geometriche illuminate compongono lo scenario notturno rivolto verso il lago."
+        },
+        {
+          "languageCode": "es",
+          "value": "Chorros en abanico coronan el Théâtre d’Eau en esta fotografía de 1931. Las cascadas y las formas geométricas iluminadas componen su escenario nocturno frente al lago."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wachlarze wody wieńczą Théâtre d’Eau na fotografii z 1931 roku. Kaskady i podświetlone geometryczne formy tworzą nocną scenografię zwróconą ku jezioru."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Jatos em leque coroam o Théâtre d’Eau nesta fotografia de 1931. As cascatas e as formas geométricas iluminadas compõem o cenário noturno voltado para o lago."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.86.3."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.86.3."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T01:01:56.253Z",
+      "updatedAt": "2026-11-16T01:01:59.929Z"
+    },
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-16T01:01:54.8000925Z",
+    "receivedAtUtc": "2026-11-16T01:02:03.0345561Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

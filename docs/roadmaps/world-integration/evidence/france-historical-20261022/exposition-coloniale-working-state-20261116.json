@@ -2321,6 +2321,414 @@
       "key": "f80852a49ff746bf9f619301beb6d302",
       "imageId": "f80852a49ff746bf9f619301beb6d302",
       "ownerKey": "760df334-d1ad-4750-b594-263dfa73c20d"
+    },
+    {
+      "id": "aa29c058b22e45059c07cec03b14b42f",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "a5f8b7b1-13c4-462a-af93-6a78352238ff",
+      "path": "park_item/aa29c058b22e45059c07cec03b14b42f",
+      "description": "Le Grand Signal déploie ses courbes d’eau au-dessus du lac en 1931. Cette vue nocturne montre la silhouette élancée de la fontaine et la brume éclairée qui l’entoure.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 813,
+      "height": 1280,
+      "sizeInBytes": 145945,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356893/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Grand Signal de nuit, avec des jets étagés le long d’une haute colonne et une gerbe lumineuse à son pied."
+        },
+        {
+          "languageCode": "en",
+          "value": "Grand Signal at night, with tiers of water jets along a tall column and an illuminated spray at its base."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Grand Signal bei Nacht mit gestaffelten Wasserstrahlen entlang einer hohen Säule und einer leuchtenden Fontäne am Fuß."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Grand Signal bij nacht, met waterstralen in lagen langs een hoge zuil en een verlichte waterwaaier aan de voet."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Grand Signal di notte, con getti d’acqua a diversi livelli lungo un’alta colonna e uno spruzzo luminoso alla base."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Grand Signal de noche, con chorros escalonados a lo largo de una alta columna y un abanico de agua iluminada al pie."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Grand Signal nocą, ze strumieniami wody na kolejnych poziomach wysokiej kolumny i świetlistym wachlarzem u jej podstawy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Grand Signal à noite, com jatos de água em vários níveis ao longo de uma coluna alta e um leque luminoso na base."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le Grand Signal déploie ses courbes d’eau au-dessus du lac en 1931. Cette vue nocturne montre la silhouette élancée de la fontaine et la brume éclairée qui l’entoure."
+        },
+        {
+          "languageCode": "en",
+          "value": "Grand Signal sends curving jets above the lake in 1931. This night view shows the fountain’s slender silhouette surrounded by illuminated mist."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Grand Signal spannt 1931 Wasserbögen über den See. Die Nachtaufnahme zeigt die schlanke Silhouette der Fontäne, umgeben von beleuchtetem Sprühnebel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Grand Signal laat in 1931 waterbogen boven het meer uitwaaieren. Deze nachtelijke opname toont de slanke vorm van de fontein, omgeven door verlichte waternevel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Grand Signal disegna curve d’acqua sopra il lago nel 1931. La veduta notturna mostra la sagoma slanciata della fontana, avvolta dalla nebbia d’acqua illuminata."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Grand Signal despliega sus curvas de agua sobre el lago en 1931. Esta vista nocturna muestra la silueta esbelta de la fuente entre la bruma iluminada."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Grand Signal kreśli łuki wody nad jeziorem w 1931 roku. Nocne zdjęcie ukazuje smukłą sylwetkę fontanny otoczoną podświetloną mgiełką wodną."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Grand Signal desenha curvas de água sobre o lago em 1931. Esta vista noturna mostra a silhueta esguia da fonte envolta em névoa de água iluminada."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.87.2."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.87.2."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T01:01:38.765Z",
+      "updatedAt": "2026-11-16T01:01:42.436Z",
+      "key": "aa29c058b22e45059c07cec03b14b42f",
+      "imageId": "aa29c058b22e45059c07cec03b14b42f",
+      "ownerKey": "a5f8b7b1-13c4-462a-af93-6a78352238ff"
+    },
+    {
+      "id": "7fd582e19ae643cc87667307d9215c24",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "3ade060c-3d5a-4337-ab11-303983973b6d",
+      "path": "park_item/7fd582e19ae643cc87667307d9215c24",
+      "description": "Des jets en éventail couronnent le Théâtre d’Eau sur cette photographie de 1931. Les cascades et les formes géométriques éclairées composent son décor nocturne face au lac.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 851,
+      "sizeInBytes": 186120,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356891/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Théâtre d’Eau illuminé, avec de grandes gerbes derrière un décor en gradins et des cascades au bord du lac."
+        },
+        {
+          "languageCode": "en",
+          "value": "The illuminated Théâtre d’Eau, with large sprays behind a stepped backdrop and cascades beside the lake."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das beleuchtete Théâtre d’Eau mit großen Wasserfächern hinter einer gestuften Kulisse und Kaskaden am Seeufer."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het verlichte Théâtre d’Eau, met grote waterwaaiers achter een getrapt decor en cascades aan het meer."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Théâtre d’Eau illuminato, con grandi spruzzi dietro uno scenario a gradoni e cascate sul bordo del lago."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Théâtre d’Eau iluminado, con grandes chorros tras un decorado escalonado y cascadas junto al lago."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oświetlony Théâtre d’Eau z wielkimi wachlarzami wody za schodkową dekoracją i kaskadami nad brzegiem jeziora."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Théâtre d’Eau iluminado, com grandes jatos atrás de um cenário em patamares e cascatas junto ao lago."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des jets en éventail couronnent le Théâtre d’Eau sur cette photographie de 1931. Les cascades et les formes géométriques éclairées composent son décor nocturne face au lac."
+        },
+        {
+          "languageCode": "en",
+          "value": "Fan-shaped jets crown the Théâtre d’Eau in this 1931 photograph. Cascades and illuminated geometric forms make up its night-time scenery facing the lake."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fächerförmige Wasserstrahlen krönen das Théâtre d’Eau auf dieser Aufnahme von 1931. Kaskaden und beleuchtete geometrische Formen bilden die nächtliche Kulisse zum See hin."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Waaiervormige waterstralen bekronen het Théâtre d’Eau op deze foto uit 1931. Cascades en verlichte geometrische vormen vormen het nachtelijke decor aan het meer."
+        },
+        {
+          "languageCode": "it",
+          "value": "Getti a ventaglio coronano il Théâtre d’Eau in questa fotografia del 1931. Cascate e forme geometriche illuminate compongono lo scenario notturno rivolto verso il lago."
+        },
+        {
+          "languageCode": "es",
+          "value": "Chorros en abanico coronan el Théâtre d’Eau en esta fotografía de 1931. Las cascadas y las formas geométricas iluminadas componen su escenario nocturno frente al lago."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wachlarze wody wieńczą Théâtre d’Eau na fotografii z 1931 roku. Kaskady i podświetlone geometryczne formy tworzą nocną scenografię zwróconą ku jezioru."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Jatos em leque coroam o Théâtre d’Eau nesta fotografia de 1931. As cascatas e as formas geométricas iluminadas compõem o cenário noturno voltado para o lago."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.3."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.86.3."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.86.3."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T01:01:56.253Z",
+      "updatedAt": "2026-11-16T01:01:59.929Z",
+      "key": "7fd582e19ae643cc87667307d9215c24",
+      "imageId": "7fd582e19ae643cc87667307d9215c24",
+      "ownerKey": "3ade060c-3d5a-4337-ab11-303983973b6d"
+    },
+    {
+      "id": "cc87cc938a0e428f9b859083ab36b0b0",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "d89601bf-b308-4588-bece-4d92f41d01b7",
+      "path": "park_item/cc87cc938a0e428f9b859083ab36b0b0",
+      "description": "Un Pont d’Eau dessine une arche lumineuse sur le lac Daumesnil en 1931. La rambarde sombre au premier plan se détache devant le rideau de jets.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 847,
+      "sizeInBytes": 210087,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356890/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une voûte de jets lumineux au-dessus du lac, vue derrière une rambarde et des arbustes."
+        },
+        {
+          "languageCode": "en",
+          "value": "An arch of illuminated water jets above the lake, seen behind a railing and shrubs."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Gewölbe aus leuchtenden Wasserstrahlen über dem See, hinter einem Geländer und Sträuchern gesehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een gewelf van verlichte waterstralen boven het meer, gezien achter een hek en struiken."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una volta di getti luminosi sopra il lago, vista dietro una ringhiera e alcuni arbusti."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una bóveda de chorros luminosos sobre el lago, vista tras una barandilla y unos arbustos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sklepienie ze świetlistych strumieni wody nad jeziorem, widziane zza barierki i krzewów."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma abóbada de jatos luminosos sobre o lago, vista por trás de um gradeamento e de arbustos."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un Pont d’Eau dessine une arche lumineuse sur le lac Daumesnil en 1931. La rambarde sombre au premier plan se détache devant le rideau de jets."
+        },
+        {
+          "languageCode": "en",
+          "value": "One of the Ponts d’Eau forms a luminous arch over Lac Daumesnil in 1931. A dark railing in the foreground stands out against the curtain of water jets."
+        },
+        {
+          "languageCode": "de",
+          "value": "Einer der Ponts d’Eau bildet 1931 einen leuchtenden Bogen über dem Lac Daumesnil. Im Vordergrund hebt sich ein dunkles Geländer vom Vorhang der Wasserstrahlen ab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een van de Ponts d’Eau vormt in 1931 een lichtgevende boog over het Lac Daumesnil. Een donker hek op de voorgrond steekt af tegen het gordijn van waterstralen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Uno dei Ponts d’Eau disegna un arco luminoso sul lago Daumesnil nel 1931. La ringhiera scura in primo piano si staglia davanti alla cortina di getti."
+        },
+        {
+          "languageCode": "es",
+          "value": "Uno de los Ponts d’Eau dibuja un arco luminoso sobre el lago Daumesnil en 1931. La barandilla oscura del primer plano destaca ante la cortina de chorros."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Jeden z Ponts d’Eau tworzy świetlny łuk nad jeziorem Daumesnil w 1931 roku. Ciemna barierka na pierwszym planie odcina się od kurtyny wodnych strumieni."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um dos Ponts d’Eau desenha um arco luminoso sobre o lago Daumesnil em 1931. O gradeamento escuro em primeiro plano destaca-se diante da cortina de jatos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.86.2."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.86.2."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T01:02:14.078Z",
+      "updatedAt": "2026-11-16T01:02:17.622Z",
+      "key": "cc87cc938a0e428f9b859083ab36b0b0",
+      "imageId": "cc87cc938a0e428f9b859083ab36b0b0",
+      "ownerKey": "d89601bf-b308-4588-bece-4d92f41d01b7"
     }
   ],
   "history": {

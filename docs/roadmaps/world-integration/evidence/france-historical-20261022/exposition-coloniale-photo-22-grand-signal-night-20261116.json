@@ -1,0 +1,293 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "22-grand-signal-night",
+    "source": {
+      "name": "grand-signal",
+      "url": "https://mdc.mucem.org/assets/356893/image",
+      "retrievedAtUtc": "2026-11-16T01:00:00.949029+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356893/image",
+      "bytes": 145945,
+      "sha256": "14bbef57e93e84137cdb5aad45d994a00a395f1d932eed38a3d4e4ab70349e8c",
+      "dimensions": [
+        813,
+        1280
+      ],
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/grand-signal-mucem-native.jpg",
+      "sourcePage": "https://mucem.org/notice/c/3188806/"
+    },
+    "ownerId": "a5f8b7b1-13c4-462a-af93-6a78352238ff",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Owner authorization for France historical images; institutional/publisher credits preserved, no open-license or named photographer invented.",
+    "review": "Root inspected the full native Mucem photographic postcard and personally authored/reviewed all 24 localized fields. Braun original printed monogram retained; no third-party overlay, crop or transformation. Institutional title and printed caption identify the existing item; CNUM contemporary article corroborates the setting."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "a5f8b7b1-13c4-462a-af93-6a78352238ff",
+      "SourceUrl": "https://mdc.mucem.org/assets/356893/image",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/grand-signal-mucem-native.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/22-grand-signal-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/22-grand-signal-night-import-result.json"
+  },
+  "metadata": {
+    "description": "Le Grand Signal déploie ses courbes d’eau au-dessus du lac en 1931. Cette vue nocturne montre la silhouette élancée de la fontaine et la brume éclairée qui l’entoure.",
+    "sourceUrl": "https://mdc.mucem.org/assets/356893/image",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Le Grand Signal de nuit, avec des jets étagés le long d’une haute colonne et une gerbe lumineuse à son pied."
+      },
+      {
+        "languageCode": "en",
+        "value": "Grand Signal at night, with tiers of water jets along a tall column and an illuminated spray at its base."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Grand Signal bei Nacht mit gestaffelten Wasserstrahlen entlang einer hohen Säule und einer leuchtenden Fontäne am Fuß."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De Grand Signal bij nacht, met waterstralen in lagen langs een hoge zuil en een verlichte waterwaaier aan de voet."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Grand Signal di notte, con getti d’acqua a diversi livelli lungo un’alta colonna e uno spruzzo luminoso alla base."
+      },
+      {
+        "languageCode": "es",
+        "value": "El Grand Signal de noche, con chorros escalonados a lo largo de una alta columna y un abanico de agua iluminada al pie."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Grand Signal nocą, ze strumieniami wody na kolejnych poziomach wysokiej kolumny i świetlistym wachlarzem u jej podstawy."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Grand Signal à noite, com jatos de água em vários níveis ao longo de uma coluna alta e um leque luminoso na base."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le Grand Signal déploie ses courbes d’eau au-dessus du lac en 1931. Cette vue nocturne montre la silhouette élancée de la fontaine et la brume éclairée qui l’entoure."
+      },
+      {
+        "languageCode": "en",
+        "value": "Grand Signal sends curving jets above the lake in 1931. This night view shows the fountain’s slender silhouette surrounded by illuminated mist."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Grand Signal spannt 1931 Wasserbögen über den See. Die Nachtaufnahme zeigt die schlanke Silhouette der Fontäne, umgeben von beleuchtetem Sprühnebel."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De Grand Signal laat in 1931 waterbogen boven het meer uitwaaieren. Deze nachtelijke opname toont de slanke vorm van de fontein, omgeven door verlichte waternevel."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Grand Signal disegna curve d’acqua sopra il lago nel 1931. La veduta notturna mostra la sagoma slanciata della fontana, avvolta dalla nebbia d’acqua illuminata."
+      },
+      {
+        "languageCode": "es",
+        "value": "El Grand Signal despliega sus curvas de agua sobre el lago en 1931. Esta vista nocturna muestra la silueta esbelta de la fuente entre la bruma iluminada."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Grand Signal kreśli łuki wody nad jeziorem w 1931 roku. Nocne zdjęcie ukazuje smukłą sylwetkę fontanny otoczoną podświetloną mgiełką wodną."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Grand Signal desenha curvas de água sobre o lago em 1931. Esta vista noturna mostra a silhueta esguia da fonte envolta em névoa de água iluminada."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.87.2."
+      },
+      {
+        "languageCode": "en",
+        "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.87.2."
+      },
+      {
+        "languageCode": "de",
+        "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.87.2."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.87.2."
+      },
+      {
+        "languageCode": "it",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.2."
+      },
+      {
+        "languageCode": "es",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.2."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.87.2."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.87.2."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-16T01:01:36.8938080Z",
+    "result": {
+      "id": "aa29c058b22e45059c07cec03b14b42f",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "a5f8b7b1-13c4-462a-af93-6a78352238ff",
+      "path": "park_item/aa29c058b22e45059c07cec03b14b42f",
+      "description": "Le Grand Signal déploie ses courbes d’eau au-dessus du lac en 1931. Cette vue nocturne montre la silhouette élancée de la fontaine et la brume éclairée qui l’entoure.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 813,
+      "height": 1280,
+      "sizeInBytes": 145945,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356893/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Grand Signal de nuit, avec des jets étagés le long d’une haute colonne et une gerbe lumineuse à son pied."
+        },
+        {
+          "languageCode": "en",
+          "value": "Grand Signal at night, with tiers of water jets along a tall column and an illuminated spray at its base."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Grand Signal bei Nacht mit gestaffelten Wasserstrahlen entlang einer hohen Säule und einer leuchtenden Fontäne am Fuß."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Grand Signal bij nacht, met waterstralen in lagen langs een hoge zuil en een verlichte waterwaaier aan de voet."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Grand Signal di notte, con getti d’acqua a diversi livelli lungo un’alta colonna e uno spruzzo luminoso alla base."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Grand Signal de noche, con chorros escalonados a lo largo de una alta columna y un abanico de agua iluminada al pie."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Grand Signal nocą, ze strumieniami wody na kolejnych poziomach wysokiej kolumny i świetlistym wachlarzem u jej podstawy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Grand Signal à noite, com jatos de água em vários níveis ao longo de uma coluna alta e um leque luminoso na base."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le Grand Signal déploie ses courbes d’eau au-dessus du lac en 1931. Cette vue nocturne montre la silhouette élancée de la fontaine et la brume éclairée qui l’entoure."
+        },
+        {
+          "languageCode": "en",
+          "value": "Grand Signal sends curving jets above the lake in 1931. This night view shows the fountain’s slender silhouette surrounded by illuminated mist."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Grand Signal spannt 1931 Wasserbögen über den See. Die Nachtaufnahme zeigt die schlanke Silhouette der Fontäne, umgeben von beleuchtetem Sprühnebel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Grand Signal laat in 1931 waterbogen boven het meer uitwaaieren. Deze nachtelijke opname toont de slanke vorm van de fontein, omgeven door verlichte waternevel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Grand Signal disegna curve d’acqua sopra il lago nel 1931. La veduta notturna mostra la sagoma slanciata della fontana, avvolta dalla nebbia d’acqua illuminata."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Grand Signal despliega sus curvas de agua sobre el lago en 1931. Esta vista nocturna muestra la silueta esbelta de la fuente entre la bruma iluminada."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Grand Signal kreśli łuki wody nad jeziorem w 1931 roku. Nocne zdjęcie ukazuje smukłą sylwetkę fontanny otoczoną podświetloną mgiełką wodną."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Grand Signal desenha curvas de água sobre o lago em 1931. Esta vista noturna mostra a silhueta esguia da fonte envolta em névoa de água iluminada."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.2."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.87.2."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.87.2."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T01:01:38.765Z",
+      "updatedAt": "2026-11-16T01:01:42.436Z"
+    },
+    "receivedAtUtc": "2026-11-16T01:01:45.5794658Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

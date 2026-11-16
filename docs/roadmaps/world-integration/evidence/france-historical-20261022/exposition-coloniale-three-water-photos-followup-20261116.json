@@ -1,0 +1,197 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "verifiedAtUtc": "2026-11-16T01:03:45.414625+00:00",
+  "status": "partial",
+  "mutations": [
+    {
+      "stem": "22-grand-signal-night",
+      "imageId": "aa29c058b22e45059c07cec03b14b42f",
+      "createdAtUtc": "2026-11-16T01:01:38.765Z",
+      "ownerId": "a5f8b7b1-13c4-462a-af93-6a78352238ff",
+      "localizedFieldsExactlyMatched": 24,
+      "proof": "exposition-coloniale-photo-22-grand-signal-night-20261116.json"
+    },
+    {
+      "stem": "23-theatre-eau-night",
+      "imageId": "7fd582e19ae643cc87667307d9215c24",
+      "createdAtUtc": "2026-11-16T01:01:56.253Z",
+      "ownerId": "3ade060c-3d5a-4337-ab11-303983973b6d",
+      "localizedFieldsExactlyMatched": 24,
+      "proof": "exposition-coloniale-photo-23-theatre-eau-night-20261116.json"
+    },
+    {
+      "stem": "24-pont-eau-night",
+      "imageId": "cc87cc938a0e428f9b859083ab36b0b0",
+      "createdAtUtc": "2026-11-16T01:02:14.078Z",
+      "ownerId": "d89601bf-b308-4588-bece-4d92f41d01b7",
+      "localizedFieldsExactlyMatched": 24,
+      "proof": "exposition-coloniale-photo-24-pont-eau-night-20261116.json"
+    }
+  ],
+  "retention": {
+    "baselineCommit": "1376a38b",
+    "allPriorEntitiesExactlyPreserved": true,
+    "onlyDifference": "Three new private, noncurrent photographs; no graph Apply or changed existing media."
+  },
+  "personalReview": "Three complete native postcards viewed individually and all72 localized metadata fields personally written/reviewed. Braun original printed monograms and historic captions retained, no third-party watermark or transformed files. Dates identify1931 historical context, no exact capture time inferred.",
+  "sourcePageAccess": [
+    {
+      "name": "grand-signal-mucem",
+      "url": "https://mucem.org/notice/c/3188806/",
+      "retrievedAtUtc": "2026-11-16T00:59:39.286542+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/notice/c/3188806/",
+      "bytes": 631216,
+      "sha256": "07498b121e5f6e5e4a18250104c623d457e41c11d9826165225c0e12ea657599"
+    },
+    {
+      "name": "theatre-eau-mucem",
+      "url": "https://mucem.org/notice/c/3188804/",
+      "retrievedAtUtc": "2026-11-16T00:59:39.287347+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/notice/c/3188804/",
+      "bytes": 631009,
+      "sha256": "13077b8ab4ba8ad209ff655afee4a71eb847d5da3d4ce48f36ea866d38e0439d"
+    },
+    {
+      "name": "pont-eau-mucem",
+      "url": "https://mucem.org/notice/c/3188803/",
+      "retrievedAtUtc": "2026-11-16T00:59:39.287778+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/notice/c/3188803/",
+      "bytes": 629982,
+      "sha256": "2b97d0b8182aca4eaa714ea09aab59de0c0fc37fbd728174e3877149c2c1ab9a"
+    },
+    {
+      "name": "pont-mousson-mucem",
+      "url": "https://mucem.org/notice/c/3188802/",
+      "retrievedAtUtc": "2026-11-16T00:59:41.185517+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/notice/c/3188802/",
+      "bytes": 630000,
+      "sha256": "71168d252f77b116c10d5be1c01e388a701b34ef4dfd2022df0a19df5489c951"
+    },
+    {
+      "name": "ile-nuits-mucem",
+      "url": "https://mucem.org/notice/c/3188805/",
+      "retrievedAtUtc": "2026-11-16T00:59:41.310876+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/notice/c/3188805/",
+      "bytes": 631364,
+      "sha256": "decb143bbdfb80d4fe73fd62a325b889657a5d48e7e4031c8a9cd4119f699201"
+    }
+  ],
+  "imageAccess": [
+    {
+      "name": "grand-signal",
+      "url": "https://mdc.mucem.org/assets/356893/image",
+      "retrievedAtUtc": "2026-11-16T01:00:00.949029+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356893/image",
+      "bytes": 145945,
+      "sha256": "14bbef57e93e84137cdb5aad45d994a00a395f1d932eed38a3d4e4ab70349e8c",
+      "path": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/grand-signal-mucem-native.jpg",
+      "dimensions": [
+        813,
+        1280
+      ]
+    },
+    {
+      "name": "theatre-eau",
+      "url": "https://mdc.mucem.org/assets/356891/image",
+      "retrievedAtUtc": "2026-11-16T01:00:00.949634+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356891/image",
+      "bytes": 186120,
+      "sha256": "4cc57cde4413682c75667a9a46d00397b8c47ee81eb43f2b581b4988d34c95bd",
+      "path": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/theatre-eau-mucem-native.jpg",
+      "dimensions": [
+        1280,
+        851
+      ]
+    },
+    {
+      "name": "pont-eau",
+      "url": "https://mdc.mucem.org/assets/356890/image",
+      "retrievedAtUtc": "2026-11-16T01:00:00.950078+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356890/image",
+      "bytes": 210087,
+      "sha256": "109b03f0bbea4c22d9cebf01e754b64737cf7a08f221e4c669ef0d27fcf51b0e",
+      "path": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/pont-eau-mucem-native.jpg",
+      "dimensions": [
+        1280,
+        847
+      ]
+    },
+    {
+      "name": "pont-mousson",
+      "url": "https://mdc.mucem.org/assets/356889/image",
+      "retrievedAtUtc": "2026-11-16T01:00:02.391658+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356889/image",
+      "bytes": 231458,
+      "sha256": "7fab249479da816223acfa8fd8b31654e868182d166b01da137e927a4407b949",
+      "path": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/pont-mousson-mucem-native.jpg",
+      "dimensions": [
+        1280,
+        852
+      ]
+    },
+    {
+      "name": "ile-nuits",
+      "url": "https://mdc.mucem.org/assets/356892/image",
+      "retrievedAtUtc": "2026-11-16T01:00:02.400723+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356892/image",
+      "bytes": 247304,
+      "sha256": "db8cc1ae08a4f88c5c41eced0ec591db8369f91ded5067365de55b06088e9711",
+      "path": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/ile-nuits-mucem-native.jpg",
+      "dimensions": [
+        1280,
+        813
+      ]
+    }
+  ],
+  "corroboratingPrimaryArticle": {
+    "url": "https://cnum.cnam.fr/pgi/redir.php?ident=SCVIE.169&onglet=c",
+    "author": "L.-D. Fourcault",
+    "title": "La science de l’éclairage à l’Exposition coloniale",
+    "pages": "27–32",
+    "personallyRead": true,
+    "findings": [
+      "Grand Signal at opposite end of lake from main entrance, central floral stem and palms.",
+      "Three fluid illuminated arches between shores alongside separate pedestrian bridges.",
+      "Théâtre d’Eau hides the preserved Temple of Love; stage on the lake and decorated spectator boats. Proposed rainy-day reversal is a plan, not asserted as executed."
+    ]
+  },
+  "notIntegratedLeads": [
+    "Fontaine des Forges de Pont-à-Mousson, Mucem Sou.31.85.2, Aubert architecte; not the town’s Place Duroc fountain.",
+    "Île des Mille et Une Nuits, Mucem Sou.31.87.1, Gaillard et Chevalier; identity/zone and relationship to Miroir d’Eau not yet resolved."
+  ],
+  "sourceLimitations": [
+    {
+      "url": "https://archives.saint-gobain.com/sites/archives.saint-gobain.com/files/pdf/files/Valoriser_Hist_Catalogue_CartesPostales_Tome_4.pdf",
+      "retrievedAtUtc": "2026-11-16T01:02:24.934223+00:00",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.image-est.fr/fiche-documentaire-1284-0-0-328.html",
+      "result": "HTTP200 catalogue page now shows unrelated1974industrial records; search excerpt is not considered the individual photograph record."
+    }
+  ],
+  "coverage": {
+    "items": 8,
+    "itemsWithPhoto": 7,
+    "itemsWithoutPhoto": [
+      "Scenic Railway"
+    ],
+    "ownPhotographs": 14,
+    "privatePhotographs": 14,
+    "officialMaps": 1,
+    "historyEvents": 4
+  },
+  "fullAuditPerformed": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false
+}

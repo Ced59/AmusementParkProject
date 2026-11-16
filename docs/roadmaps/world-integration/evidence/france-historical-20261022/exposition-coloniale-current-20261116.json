@@ -7,7 +7,7 @@
   "newApplyCount": 5,
   "items": 8,
   "zones": 1,
-  "ownImages": 11,
+  "ownImages": 14,
   "historyEvents": 4,
   "fullAuditPerformed": false,
   "published": false,
@@ -19,7 +19,7 @@
     "Sources/specifications, references, map/GPS",
     "Single final audit and audited publication"
   ],
-  "lastDataIntegrationAt": "2026-11-16T00:52:03.549Z",
+  "lastDataIntegrationAt": "2026-11-16T01:02:14.078Z",
   "photoImports": [
     {
       "imageId": "b2bc130edcfe47ea886baf16bb04e0bd",
@@ -75,9 +75,24 @@
       "imageId": "f80852a49ff746bf9f619301beb6d302",
       "createdAt": "2026-11-16T00:52:03.549Z",
       "proof": "exposition-coloniale-photo-19-totems-night-20261116.json"
+    },
+    {
+      "imageId": "aa29c058b22e45059c07cec03b14b42f",
+      "createdAt": "2026-11-16T01:01:38.765Z",
+      "proof": "exposition-coloniale-photo-22-grand-signal-night-20261116.json"
+    },
+    {
+      "imageId": "7fd582e19ae643cc87667307d9215c24",
+      "createdAt": "2026-11-16T01:01:56.253Z",
+      "proof": "exposition-coloniale-photo-23-theatre-eau-night-20261116.json"
+    },
+    {
+      "imageId": "cc87cc938a0e428f9b859083ab36b0b0",
+      "createdAt": "2026-11-16T01:02:14.078Z",
+      "proof": "exposition-coloniale-photo-24-pont-eau-night-20261116.json"
     }
   ],
-  "newImportCount": 11,
+  "newImportCount": 14,
   "newApplyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-04-totems-correction-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-08-train-notice-20261116.json",
@@ -85,7 +100,7 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-12-cactus-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-16-belle-fleur-20261116.json"
   ],
-  "lastIntegrationImportedAtUtc": "2026-11-16T00:52:03.549Z",
+  "lastIntegrationImportedAtUtc": "2026-11-16T01:02:14.078Z",
   "mapUploads": [
     {
       "year": 1931,
@@ -96,13 +111,20 @@
   "lastMapUploadReceiptAtUtc": "2026-11-16T00:30:04.7984527Z",
   "mapAssociationPending": false,
   "officialMaps": 1,
-  "latestFollowupProof": "exposition-coloniale-train-map-cactus-followup-20261116.json",
-  "lastIdempotencePreviewAtUtc": "2026-11-16T00:38:58.8212898Z",
+  "latestFollowupProof": "exposition-coloniale-three-water-photos-followup-20261116.json",
+  "lastIdempotencePreviewAtUtc": "2026-11-16T00:53:17.1436997Z",
   "metadataCorrections": [
     {
       "imageId": "c925bcb94f6b464b8f4580cb9a504796",
       "updatedAt": "2026-11-16T00:51:15.128Z",
       "proof": "exposition-coloniale-20-train-credit-correction-20261116.json"
     }
-  ]
+  ],
+  "photoCoverage": {
+    "itemsWithPhotos": 7,
+    "items": 8,
+    "without": [
+      "Scenic Railway"
+    ]
+  }
 }

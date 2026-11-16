@@ -1,0 +1,293 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "24-pont-eau-night",
+    "source": {
+      "name": "pont-eau",
+      "url": "https://mdc.mucem.org/assets/356890/image",
+      "retrievedAtUtc": "2026-11-16T01:00:00.950078+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356890/image",
+      "bytes": 210087,
+      "sha256": "109b03f0bbea4c22d9cebf01e754b64737cf7a08f221e4c669ef0d27fcf51b0e",
+      "dimensions": [
+        1280,
+        847
+      ],
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/pont-eau-mucem-native.jpg",
+      "sourcePage": "https://mucem.org/notice/c/3188803/"
+    },
+    "ownerId": "d89601bf-b308-4588-bece-4d92f41d01b7",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Owner authorization for France historical images; institutional/publisher credits preserved, no open-license or named photographer invented.",
+    "review": "Root inspected the full native Mucem photographic postcard and personally authored/reviewed all 24 localized fields. Braun original printed monogram retained; no third-party overlay, crop or transformation. Institutional title and printed caption identify the existing item; CNUM contemporary article corroborates the setting."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d89601bf-b308-4588-bece-4d92f41d01b7",
+      "SourceUrl": "https://mdc.mucem.org/assets/356890/image",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/pont-eau-mucem-native.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/24-pont-eau-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/24-pont-eau-night-import-result.json"
+  },
+  "metadata": {
+    "description": "Un Pont d’Eau dessine une arche lumineuse sur le lac Daumesnil en 1931. La rambarde sombre au premier plan se détache devant le rideau de jets.",
+    "sourceUrl": "https://mdc.mucem.org/assets/356890/image",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une voûte de jets lumineux au-dessus du lac, vue derrière une rambarde et des arbustes."
+      },
+      {
+        "languageCode": "en",
+        "value": "An arch of illuminated water jets above the lake, seen behind a railing and shrubs."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Gewölbe aus leuchtenden Wasserstrahlen über dem See, hinter einem Geländer und Sträuchern gesehen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een gewelf van verlichte waterstralen boven het meer, gezien achter een hek en struiken."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una volta di getti luminosi sopra il lago, vista dietro una ringhiera e alcuni arbusti."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una bóveda de chorros luminosos sobre el lago, vista tras una barandilla y unos arbustos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Sklepienie ze świetlistych strumieni wody nad jeziorem, widziane zza barierki i krzewów."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma abóbada de jatos luminosos sobre o lago, vista por trás de um gradeamento e de arbustos."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un Pont d’Eau dessine une arche lumineuse sur le lac Daumesnil en 1931. La rambarde sombre au premier plan se détache devant le rideau de jets."
+      },
+      {
+        "languageCode": "en",
+        "value": "One of the Ponts d’Eau forms a luminous arch over Lac Daumesnil in 1931. A dark railing in the foreground stands out against the curtain of water jets."
+      },
+      {
+        "languageCode": "de",
+        "value": "Einer der Ponts d’Eau bildet 1931 einen leuchtenden Bogen über dem Lac Daumesnil. Im Vordergrund hebt sich ein dunkles Geländer vom Vorhang der Wasserstrahlen ab."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een van de Ponts d’Eau vormt in 1931 een lichtgevende boog over het Lac Daumesnil. Een donker hek op de voorgrond steekt af tegen het gordijn van waterstralen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Uno dei Ponts d’Eau disegna un arco luminoso sul lago Daumesnil nel 1931. La ringhiera scura in primo piano si staglia davanti alla cortina di getti."
+      },
+      {
+        "languageCode": "es",
+        "value": "Uno de los Ponts d’Eau dibuja un arco luminoso sobre el lago Daumesnil en 1931. La barandilla oscura del primer plano destaca ante la cortina de chorros."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Jeden z Ponts d’Eau tworzy świetlny łuk nad jeziorem Daumesnil w 1931 roku. Ciemna barierka na pierwszym planie odcina się od kurtyny wodnych strumieni."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um dos Ponts d’Eau desenha um arco luminoso sobre o lago Daumesnil em 1931. O gradeamento escuro em primeiro plano destaca-se diante da cortina de jatos."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.86.2."
+      },
+      {
+        "languageCode": "en",
+        "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.86.2."
+      },
+      {
+        "languageCode": "de",
+        "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.86.2."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.86.2."
+      },
+      {
+        "languageCode": "it",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.2."
+      },
+      {
+        "languageCode": "es",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.2."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.86.2."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.86.2."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "cc87cc938a0e428f9b859083ab36b0b0",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d89601bf-b308-4588-bece-4d92f41d01b7",
+      "path": "park_item/cc87cc938a0e428f9b859083ab36b0b0",
+      "description": "Un Pont d’Eau dessine une arche lumineuse sur le lac Daumesnil en 1931. La rambarde sombre au premier plan se détache devant le rideau de jets.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 847,
+      "sizeInBytes": 210087,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356890/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une voûte de jets lumineux au-dessus du lac, vue derrière une rambarde et des arbustes."
+        },
+        {
+          "languageCode": "en",
+          "value": "An arch of illuminated water jets above the lake, seen behind a railing and shrubs."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Gewölbe aus leuchtenden Wasserstrahlen über dem See, hinter einem Geländer und Sträuchern gesehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een gewelf van verlichte waterstralen boven het meer, gezien achter een hek en struiken."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una volta di getti luminosi sopra il lago, vista dietro una ringhiera e alcuni arbusti."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una bóveda de chorros luminosos sobre el lago, vista tras una barandilla y unos arbustos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sklepienie ze świetlistych strumieni wody nad jeziorem, widziane zza barierki i krzewów."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma abóbada de jatos luminosos sobre o lago, vista por trás de um gradeamento e de arbustos."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un Pont d’Eau dessine une arche lumineuse sur le lac Daumesnil en 1931. La rambarde sombre au premier plan se détache devant le rideau de jets."
+        },
+        {
+          "languageCode": "en",
+          "value": "One of the Ponts d’Eau forms a luminous arch over Lac Daumesnil in 1931. A dark railing in the foreground stands out against the curtain of water jets."
+        },
+        {
+          "languageCode": "de",
+          "value": "Einer der Ponts d’Eau bildet 1931 einen leuchtenden Bogen über dem Lac Daumesnil. Im Vordergrund hebt sich ein dunkles Geländer vom Vorhang der Wasserstrahlen ab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een van de Ponts d’Eau vormt in 1931 een lichtgevende boog over het Lac Daumesnil. Een donker hek op de voorgrond steekt af tegen het gordijn van waterstralen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Uno dei Ponts d’Eau disegna un arco luminoso sul lago Daumesnil nel 1931. La ringhiera scura in primo piano si staglia davanti alla cortina di getti."
+        },
+        {
+          "languageCode": "es",
+          "value": "Uno de los Ponts d’Eau dibuja un arco luminoso sobre el lago Daumesnil en 1931. La barandilla oscura del primer plano destaca ante la cortina de chorros."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Jeden z Ponts d’Eau tworzy świetlny łuk nad jeziorem Daumesnil w 1931 roku. Ciemna barierka na pierwszym planie odcina się od kurtyny wodnych strumieni."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um dos Ponts d’Eau desenha um arco luminoso sobre o lago Daumesnil em 1931. O gradeamento escuro em primeiro plano destaca-se diante da cortina de jatos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.86.2."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.86.2."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.86.2."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T01:02:14.078Z",
+      "updatedAt": "2026-11-16T01:02:17.622Z"
+    },
+    "startedAtUtc": "2026-11-16T01:02:12.6236430Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-16T01:02:20.7442444Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

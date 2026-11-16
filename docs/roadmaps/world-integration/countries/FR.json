@@ -6147,7 +6147,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-16T00:52:03.549Z",
+      "lastDataIntegrationAt": "2026-11-16T01:02:14.078Z",
       "integrationHistory": [
         {
           "eventId": "apply-9ad9d3c9-e054-432c-a3d3-c2a2dd4e0860",
@@ -6448,6 +6448,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-19-totems-night-20261116.json",
           "auditEvidence": null,
           "summary": "Exposition coloniale1931 : photographie historique 19-totems-night importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "import-photo-aa29c058b22e45059c07cec03b14b42f",
+          "appliedAt": "2026-11-16T01:01:38.765Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-22-grand-signal-night-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 22-grand-signal-night importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "import-photo-7fd582e19ae643cc87667307d9215c24",
+          "appliedAt": "2026-11-16T01:01:56.253Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-23-theatre-eau-night-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 23-theatre-eau-night importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "import-photo-cc87cc938a0e428f9b859083ab36b0b0",
+          "appliedAt": "2026-11-16T01:02:14.078Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-24-pont-eau-night-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 24-pont-eau-night importée privée ; original et24métadonnées vérifiés en huit langues."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
