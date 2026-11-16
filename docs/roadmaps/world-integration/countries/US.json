@@ -42206,7 +42206,7 @@
         "Gatlinburg Mountain Coaster"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-16T00:35:37.105Z",
+      "lastDataIntegrationAt": "2026-11-16T01:04:42.716Z",
       "integrationHistory": [
         {
           "eventId": "apply-677500cb-3680-4c4d-8b4a-414b533547af",
@@ -42297,9 +42297,39 @@
           "evidence": "PARK_DATA_EDITOR:apply:735c41d4-c4ea-4eac-99e0-d66056ba4cd2",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-moonshine-mountain-coaster-20261116/audit.json",
           "summary": "Descriptions révisées avant publication ; audit final 100/100 sans bloqueur."
+        },
+        {
+          "eventId": "photo-localization-948b6ec3d59144c98f11ca50291edf48-20261116",
+          "appliedAt": "2026-11-16T01:04:20.730Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:948b6ec3d59144c98f11ca50291edf48",
+          "auditEvidence": null,
+          "summary": "Texte alternatif et légende de photo traduits et différenciés dans les huit langues."
+        },
+        {
+          "eventId": "photo-localization-c3ab5eb7ac2749aab6f12a1c98696865-20261116",
+          "appliedAt": "2026-11-16T01:04:31.741Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:c3ab5eb7ac2749aab6f12a1c98696865",
+          "auditEvidence": null,
+          "summary": "Texte alternatif et légende de photo traduits et différenciés dans les huit langues."
+        },
+        {
+          "eventId": "photo-localization-fdb92bb3e2d0493e87e89f6c7cf4aa00-20261116",
+          "appliedAt": "2026-11-16T01:04:42.716Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "593f9132-08de-45ed-8e1e-73251b7d33bc",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:fdb92bb3e2d0493e87e89f6c7cf4aa00",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-localization-20261116/audit.json",
+          "summary": "Textes alternatifs et légendes de trois photos exactes révisés dans les huit langues ; audit final sans blocage et page allemande contrôlée."
         }
       ],
-      "nextAction": "Conserver la ligne et l’ancienne identité Park liée. Rafraîchir billets et horaires officiels avant la prochaine saison ; les photos de 2023 ne sont pas des vues de 2014.",
+      "nextAction": "Conserver la ligne et l’ancienne identité Park liée. Rafraîchir billets et horaires officiels avant la prochaine saison ; les photos de 2023 ne sont pas des vues de 2014. Textes alternatifs et légendes des trois photos traduits dans les huit langues le 16 novembre 2026.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -52207,7 +52237,7 @@
         "Rowdy Bear Mountain"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-16T00:54:38.732Z",
+      "lastDataIntegrationAt": "2026-11-16T01:05:17.515Z",
       "integrationHistory": [
         {
           "eventId": "apply-00330f77-7fcf-44f4-acdc-3a2b67af4bb4",
@@ -52298,9 +52328,39 @@
           "evidence": "PARK_DATA_EDITOR:photo-metadata:4c06e2fe101545828ba8d220cf1e4804",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-ripleys-mountain-coaster-20261116/audit.json",
           "summary": "Légendes distinctes dans les huit langues, trois images et pages publiques vérifiées ; audit final 90/100 sans bloqueur."
+        },
+        {
+          "eventId": "photo-localization-89a32b65ce4a45069215b2a5d1ef174f-20261116",
+          "appliedAt": "2026-11-16T01:04:52.085Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:89a32b65ce4a45069215b2a5d1ef174f",
+          "auditEvidence": null,
+          "summary": "Texte alternatif et légende de photo traduits et différenciés dans les huit langues."
+        },
+        {
+          "eventId": "photo-localization-d3528b932deb4f47822c2bc1bd64ba18-20261116",
+          "appliedAt": "2026-11-16T01:05:05.887Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:d3528b932deb4f47822c2bc1bd64ba18",
+          "auditEvidence": null,
+          "summary": "Texte alternatif et légende de photo traduits et différenciés dans les huit langues."
+        },
+        {
+          "eventId": "photo-localization-4c06e2fe101545828ba8d220cf1e4804-20261116",
+          "appliedAt": "2026-11-16T01:05:17.515Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:4c06e2fe101545828ba8d220cf1e4804",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-localization-20261116/audit.json",
+          "summary": "Textes alternatifs et légendes de trois photos exactes révisés dans les huit langues ; audit final sans blocage et page allemande contrôlée."
         }
       ],
-      "nextAction": "Conserver la ligne, les alias et la migration. Vérifier le calendrier hebdomadaire et les conditions d’accès auprès de Ripley’s ; prix adulte à partir de 12,99 USD, montant final variable.",
+      "nextAction": "Conserver la ligne, les alias et la migration. Vérifier le calendrier hebdomadaire et les conditions d’accès auprès de Ripley’s ; prix adulte à partir de 12,99 USD, montant final variable. Textes alternatifs et légendes des trois photos traduits dans les huit langues le 16 novembre 2026.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
