@@ -1,13 +1,13 @@
 {
   "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
   "status": "partial",
-  "lastApplyOperationId": "14a17d38-3cbb-4294-b8b8-740a9ea01b44",
-  "lastIntegrationAppliedAtUtc": "2026-11-16T00:45:20.4556859Z",
+  "lastApplyOperationId": "00a6a2c5-ce10-4b54-8fc9-aa5dea58490c",
+  "lastIntegrationAppliedAtUtc": "2026-11-16T01:07:17.0249705Z",
   "recoveredApplyCount": 12,
-  "newApplyCount": 5,
-  "items": 8,
+  "newApplyCount": 6,
+  "items": 9,
   "zones": 1,
-  "ownImages": 14,
+  "ownImages": 15,
   "historyEvents": 4,
   "fullAuditPerformed": false,
   "published": false,
@@ -19,7 +19,7 @@
     "Sources/specifications, references, map/GPS",
     "Single final audit and audited publication"
   ],
-  "lastDataIntegrationAt": "2026-11-16T01:02:14.078Z",
+  "lastDataIntegrationAt": "2026-11-16T01:08:04.277Z",
   "photoImports": [
     {
       "imageId": "b2bc130edcfe47ea886baf16bb04e0bd",
@@ -90,17 +90,23 @@
       "imageId": "cc87cc938a0e428f9b859083ab36b0b0",
       "createdAt": "2026-11-16T01:02:14.078Z",
       "proof": "exposition-coloniale-photo-24-pont-eau-night-20261116.json"
+    },
+    {
+      "imageId": "18e6ca8a67604eacb3dd75cf07ce1716",
+      "createdAt": "2026-11-16T01:08:04.277Z",
+      "proof": "exposition-coloniale-photo-26-pont-mousson-night-20261116.json"
     }
   ],
-  "newImportCount": 14,
+  "newImportCount": 15,
   "newApplyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-04-totems-correction-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-08-train-notice-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-11-map-association-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-12-cactus-20261116.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-16-belle-fleur-20261116.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-16-belle-fleur-20261116.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-25-pont-mousson-20261116.json"
   ],
-  "lastIntegrationImportedAtUtc": "2026-11-16T01:02:14.078Z",
+  "lastIntegrationImportedAtUtc": "2026-11-16T01:08:04.277Z",
   "mapUploads": [
     {
       "year": 1931,
@@ -111,8 +117,8 @@
   "lastMapUploadReceiptAtUtc": "2026-11-16T00:30:04.7984527Z",
   "mapAssociationPending": false,
   "officialMaps": 1,
-  "latestFollowupProof": "exposition-coloniale-three-water-photos-followup-20261116.json",
-  "lastIdempotencePreviewAtUtc": "2026-11-16T00:53:17.1436997Z",
+  "latestFollowupProof": "exposition-coloniale-pont-mousson-followup-20261116.json",
+  "lastIdempotencePreviewAtUtc": "2026-11-16T01:08:43.5293901Z",
   "metadataCorrections": [
     {
       "imageId": "c925bcb94f6b464b8f4580cb9a504796",
@@ -121,8 +127,8 @@
     }
   ],
   "photoCoverage": {
-    "itemsWithPhotos": 7,
-    "items": 8,
+    "itemsWithPhotos": 8,
+    "items": 9,
     "without": [
       "Scenic Railway"
     ]

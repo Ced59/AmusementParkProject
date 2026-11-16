@@ -6147,7 +6147,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-16T01:02:14.078Z",
+      "lastDataIntegrationAt": "2026-11-16T01:08:04.277Z",
       "integrationHistory": [
         {
           "eventId": "apply-9ad9d3c9-e054-432c-a3d3-c2a2dd4e0860",
@@ -6478,6 +6478,26 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-24-pont-eau-night-20261116.json",
           "auditEvidence": null,
           "summary": "Exposition coloniale1931 : photographie historique 24-pont-eau-night importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "apply-00a6a2c5-ce10-4b54-8fc9-aa5dea58490c",
+          "appliedAt": "2026-11-16T01:07:17.024Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-25-pont-mousson-20261116.json",
+          "auditEvidence": null,
+          "summary": "Fontaine des Forges de Pont-à-Mousson : nouveau lieu historique privé et huit notices relues ; cartes Mucem et ImageEst rapprochées, aucun jour, année d’ouverture ou GPS inventé."
+        },
+        {
+          "eventId": "import-photo-18e6ca8a67604eacb3dd75cf07ce1716",
+          "appliedAt": "2026-11-16T01:08:04.277Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-26-pont-mousson-night-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 26-pont-mousson-night importée privée ; original et24métadonnées vérifiés en huit langues."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

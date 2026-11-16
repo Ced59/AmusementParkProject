@@ -1,0 +1,293 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "26-pont-mousson-night",
+    "source": {
+      "name": "pont-mousson",
+      "url": "https://mdc.mucem.org/assets/356889/image",
+      "retrievedAtUtc": "2026-11-16T01:00:02.391658+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356889/image",
+      "bytes": 231458,
+      "sha256": "7fab249479da816223acfa8fd8b31654e868182d166b01da137e927a4407b949",
+      "dimensions": [
+        1280,
+        852
+      ],
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/pont-mousson-mucem-native.jpg",
+      "sourcePage": "https://mucem.org/notice/c/3188802/"
+    },
+    "ownerId": "c0dcb922-c5f2-4f3c-a339-e8ea7a461e57",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Owner authorization for France historical images; institutional/publisher credits preserved, no open-license or named photographer invented.",
+    "review": "Whole native postcard personally viewed;72fields of prior lot and24fields of this image individually authored/reviewed. Historical Braun monogram retained as part of original; no third-party overlay. Separate ImageEst card excluded due watermark. No edit or capture-date inference."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "c0dcb922-c5f2-4f3c-a339-e8ea7a461e57",
+      "SourceUrl": "https://mdc.mucem.org/assets/356889/image",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/pont-mousson-mucem-native.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/26-pont-mousson-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/26-pont-mousson-night-import-result.json"
+  },
+  "metadata": {
+    "description": "La chute d’eau enveloppe les bassins superposés de la fontaine des Forges de Pont-à-Mousson en 1931. De petits motifs lumineux ponctuent les abords boisés.",
+    "sourceUrl": "https://mdc.mucem.org/assets/356889/image",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La fontaine de Pont-à-Mousson éclairée de nuit, avec une grande nappe d’eau centrale, un socle à degrés et des luminaires parmi les arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Pont-à-Mousson fountain lit at night, with a broad central sheet of water, a stepped base and lights among the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die nachts beleuchtete Fontäne von Pont-à-Mousson mit einem breiten Wasserschleier in der Mitte, einem Stufensockel und Leuchten zwischen Bäumen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De fontein van Pont-à-Mousson bij nacht, met een breed waterscherm in het midden, een getrapte voet en verlichting tussen de bomen."
+      },
+      {
+        "languageCode": "it",
+        "value": "La fontana di Pont-à-Mousson illuminata di notte, con un’ampia cortina d’acqua centrale, una base a gradoni e luci tra gli alberi."
+      },
+      {
+        "languageCode": "es",
+        "value": "La fuente de Pont-à-Mousson iluminada de noche, con una amplia cortina de agua central, una base escalonada y luces entre los árboles."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fontanna Pont-à-Mousson oświetlona nocą, z szeroką kurtyną wody pośrodku, schodkowym cokołem i lampami wśród drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A fonte de Pont-à-Mousson iluminada à noite, com uma larga cortina de água central, uma base em degraus e luzes entre as árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La chute d’eau enveloppe les bassins superposés de la fontaine des Forges de Pont-à-Mousson en 1931. De petits motifs lumineux ponctuent les abords boisés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Falling water surrounds the stacked basins of the Forges de Pont-à-Mousson fountain in 1931. Small illuminated ornaments dot the wooded surroundings."
+      },
+      {
+        "languageCode": "de",
+        "value": "Fallendes Wasser umhüllt 1931 die übereinanderliegenden Becken der Fontaine des Forges de Pont-à-Mousson. Kleine Leuchtornamente verteilen sich in der bewaldeten Umgebung."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vallend water omhult in 1931 de boven elkaar geplaatste bassins van de fontein van de Forges de Pont-à-Mousson. Kleine lichtornamenten staan verspreid tussen de bomen."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’acqua avvolge le vasche sovrapposte della fontana delle Forges de Pont-à-Mousson nel 1931. Piccoli motivi luminosi punteggiano lo spazio alberato circostante."
+      },
+      {
+        "languageCode": "es",
+        "value": "El agua envuelve los estanques superpuestos de la fuente de las Forges de Pont-à-Mousson en 1931. Pequeños motivos luminosos salpican el entorno arbolado."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Spadająca woda otacza spiętrzone misy fontanny Forges de Pont-à-Mousson w 1931 roku. Niewielkie świetlne ozdoby rozjaśniają otoczenie wśród drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A água envolve os tanques sobrepostos da fonte das Forges de Pont-à-Mousson em 1931. Pequenos motivos luminosos pontuam o espaço arborizado em redor."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.85.2."
+      },
+      {
+        "languageCode": "en",
+        "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.85.2."
+      },
+      {
+        "languageCode": "de",
+        "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.85.2."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.85.2."
+      },
+      {
+        "languageCode": "it",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.85.2."
+      },
+      {
+        "languageCode": "es",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.85.2."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.85.2."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.85.2."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-16T01:08:11.5414857Z",
+    "result": {
+      "id": "18e6ca8a67604eacb3dd75cf07ce1716",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "c0dcb922-c5f2-4f3c-a339-e8ea7a461e57",
+      "path": "park_item/18e6ca8a67604eacb3dd75cf07ce1716",
+      "description": "La chute d’eau enveloppe les bassins superposés de la fontaine des Forges de Pont-à-Mousson en 1931. De petits motifs lumineux ponctuent les abords boisés.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 852,
+      "sizeInBytes": 231458,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356889/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine de Pont-à-Mousson éclairée de nuit, avec une grande nappe d’eau centrale, un socle à degrés et des luminaires parmi les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Pont-à-Mousson fountain lit at night, with a broad central sheet of water, a stepped base and lights among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die nachts beleuchtete Fontäne von Pont-à-Mousson mit einem breiten Wasserschleier in der Mitte, einem Stufensockel und Leuchten zwischen Bäumen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De fontein van Pont-à-Mousson bij nacht, met een breed waterscherm in het midden, een getrapte voet en verlichting tussen de bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana di Pont-à-Mousson illuminata di notte, con un’ampia cortina d’acqua centrale, una base a gradoni e luci tra gli alberi."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente de Pont-à-Mousson iluminada de noche, con una amplia cortina de agua central, una base escalonada y luces entre los árboles."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fontanna Pont-à-Mousson oświetlona nocą, z szeroką kurtyną wody pośrodku, schodkowym cokołem i lampami wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte de Pont-à-Mousson iluminada à noite, com uma larga cortina de água central, uma base em degraus e luzes entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La chute d’eau enveloppe les bassins superposés de la fontaine des Forges de Pont-à-Mousson en 1931. De petits motifs lumineux ponctuent les abords boisés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Falling water surrounds the stacked basins of the Forges de Pont-à-Mousson fountain in 1931. Small illuminated ornaments dot the wooded surroundings."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fallendes Wasser umhüllt 1931 die übereinanderliegenden Becken der Fontaine des Forges de Pont-à-Mousson. Kleine Leuchtornamente verteilen sich in der bewaldeten Umgebung."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vallend water omhult in 1931 de boven elkaar geplaatste bassins van de fontein van de Forges de Pont-à-Mousson. Kleine lichtornamenten staan verspreid tussen de bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’acqua avvolge le vasche sovrapposte della fontana delle Forges de Pont-à-Mousson nel 1931. Piccoli motivi luminosi punteggiano lo spazio alberato circostante."
+        },
+        {
+          "languageCode": "es",
+          "value": "El agua envuelve los estanques superpuestos de la fuente de las Forges de Pont-à-Mousson en 1931. Pequeños motivos luminosos salpican el entorno arbolado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Spadająca woda otacza spiętrzone misy fontanny Forges de Pont-à-Mousson w 1931 roku. Niewielkie świetlne ozdoby rozjaśniają otoczenie wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A água envolve os tanques sobrepostos da fonte das Forges de Pont-à-Mousson em 1931. Pequenos motivos luminosos pontuam o espaço arborizado em redor."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.85.2."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.85.2."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.85.2."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.85.2."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.85.2."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.85.2."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.85.2."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.85.2."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T01:08:04.277Z",
+      "updatedAt": "2026-11-16T01:08:08.426Z"
+    },
+    "startedAtUtc": "2026-11-16T01:08:00.6116323Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

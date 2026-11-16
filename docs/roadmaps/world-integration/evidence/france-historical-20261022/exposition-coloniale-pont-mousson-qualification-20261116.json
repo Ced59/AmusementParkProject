@@ -1,0 +1,121 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "qualifiedAtUtc": "2026-11-16T01:06:50.121710+00:00",
+  "identity": "Fontaine des Forges de Pont-à-Mousson",
+  "existingItemComparison": [
+    {
+      "id": "760df334-d1ad-4750-b594-263dfa73c20d",
+      "name": "Fontaine des Totems"
+    },
+    {
+      "id": "a5f8b7b1-13c4-462a-af93-6a78352238ff",
+      "name": "Grand Signal"
+    },
+    {
+      "id": "d89601bf-b308-4588-bece-4d92f41d01b7",
+      "name": "Ponts d’Eau"
+    },
+    {
+      "id": "1cde91df-8634-4cc9-90d8-b3aa97ea937d",
+      "name": "Scenic Railway"
+    },
+    {
+      "id": "3ade060c-3d5a-4337-ab11-303983973b6d",
+      "name": "Théâtre d’Eau"
+    },
+    {
+      "id": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+      "name": "Train de ceinture"
+    },
+    {
+      "id": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6",
+      "name": "Fontaine du Cactus"
+    },
+    {
+      "id": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+      "name": "La Belle Fleur"
+    }
+  ],
+  "personallyReadSources": [
+    {
+      "name": "pont-mousson-mucem",
+      "url": "https://mucem.org/notice/c/3188802/",
+      "retrievedAtUtc": "2026-11-16T00:59:41.185517+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/notice/c/3188802/",
+      "bytes": 630000,
+      "sha256": "71168d252f77b116c10d5be1c01e388a701b34ef4dfd2022df0a19df5489c951"
+    },
+    {
+      "name": "pont-mousson-image-est-record",
+      "url": "https://www.image-est.fr/fiche-documentaire-fontaine-lumineuse-paris-1284-46518-2-0.html",
+      "retrievedAtUtc": "2026-11-16T01:04:52.208662+00:00",
+      "status": 200,
+      "finalUrl": "https://www.image-est.fr/fiche-documentaire-fontaine-lumineuse-paris-1284-46518-2-0.html",
+      "bytes": 54883,
+      "sha256": "d772c852a4cc6eef55493446c91523096cc4679df46d72af8eaa6c2bee6c5788"
+    }
+  ],
+  "primaryImages": [
+    {
+      "source": {
+        "name": "pont-mousson",
+        "url": "https://mdc.mucem.org/assets/356889/image",
+        "retrievedAtUtc": "2026-11-16T01:00:02.391658+00:00",
+        "status": 200,
+        "finalUrl": "https://mdc.mucem.org/assets/356889/image",
+        "bytes": 231458,
+        "sha256": "7fab249479da816223acfa8fd8b31654e868182d166b01da137e927a4407b949",
+        "path": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/pont-mousson-mucem-native.jpg",
+        "dimensions": [
+          1280,
+          852
+        ]
+      },
+      "personallyViewed": true,
+      "disposition": "Accepted for later private import after actual item ID; intact Braun postcard no third-party watermark."
+    },
+    {
+      "source": {
+        "url": "https://diazie.oembed.diazinteregio.org/photos/PHOTOS-GRAND-EST/HOUIS%20Gerard%20FI-1417/FI-1417-0095.jpg",
+        "retrievedAtUtc": "2026-11-16T01:05:24.474188+00:00",
+        "status": 200,
+        "finalUrl": "https://diazie.oembed.diazinteregio.org/photos/PHOTOS-GRAND-EST/HOUIS%20Gerard%20FI-1417/FI-1417-0095.jpg",
+        "bytes": 929466,
+        "sha256": "422219efbe8a80f126ed45fcbd0c08fea90b3b7690501a8f9838612651d7ee95",
+        "path": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/pont-mousson-image-est-native.jpg",
+        "dimensions": [
+          775,
+          1200
+        ]
+      },
+      "personallyViewed": true,
+      "disposition": "Rejected for import: IMAGEEST watermark; used only to read globe and company labels, no editing/crop."
+    }
+  ],
+  "authorship": "Aubert, surname only as printed and institutional catalogue. No new manufacturer or architect reference.",
+  "lifecycle": "Closed historical incarnation at temporary exhibition; no first opening date, dismantling date or relocation inferred.",
+  "notAliases": [
+    "Fontaine des Totems",
+    "Fontaine du Cactus",
+    "La Belle Fleur",
+    "Place Duroc town memorial"
+  ],
+  "texts": {
+    "fr": "<h2>Une enseigne au sommet de la fontaine</h2><p>La fontaine des Forges de Pont-à-Mousson figurait parmi les décors lumineux de l’Exposition coloniale de Paris en 1931. Une succession de bassins arrondis élevait la composition jusqu’à un globe portant le nom de Pont-à-Mousson. Des arbres entouraient cette silhouette étagée.</p><h2>Des cascades dans la nuit</h2><p>L’eau retombait en larges nappes autour du corps central. Au pied de la fontaine, un soubassement en gradins, de petits jets et des motifs lumineux encadraient la cascade. Les photographies nocturnes montrent ces surfaces claires se détachant sur le feuillage sombre.</p><p>La carte photographique de Braun attribue le dessin à l’architecte Aubert. Une autre carte nomme la Société des hauts fourneaux et fonderies de Pont-à-Mousson : l’enseigne industrielle s’inscrivait dans la fontaine elle-même, au-dessus des jeux d’eau.</p>",
+    "en": "<h2>A name above the fountain</h2><p>The Forges de Pont-à-Mousson fountain was one of the illuminated features at the 1931 Colonial Exposition in Paris. A succession of rounded basins rose towards a globe bearing the name Pont-à-Mousson. Trees surrounded this tiered silhouette.</p><h2>Cascades after dark</h2><p>Broad sheets of water fell around the central structure. A stepped base, small jets and illuminated ornaments framed the cascade below. Night photographs show these bright surfaces standing out against dark foliage.</p><p>Braun’s photographic postcard credits the design to the architect Aubert. Another card names the Société des hauts fourneaux et fonderies de Pont-à-Mousson: the industrial company’s name formed part of the fountain itself, above the water display.</p>",
+    "de": "<h2>Ein Firmenname über der Fontäne</h2><p>Die Fontaine des Forges de Pont-à-Mousson gehörte zu den beleuchteten Anlagen der Pariser Kolonialausstellung von 1931. Abgerundete Becken stiegen übereinander bis zu einer Kugel mit dem Namen Pont-à-Mousson auf. Bäume umgaben diese gestufte Silhouette.</p><h2>Kaskaden in der Nacht</h2><p>Breite Wasserschleier fielen um den mittleren Aufbau herab. Ein abgestufter Sockel, kleine Wasserstrahlen und leuchtende Zierformen rahmten die Kaskade am Fuß ein. Nachtaufnahmen zeigen, wie sich die hellen Flächen vom dunklen Laub abhoben.</p><p>Die fotografische Postkarte von Braun nennt den Architekten Aubert als Entwerfer. Eine weitere Karte bezeichnet die Société des hauts fourneaux et fonderies de Pont-à-Mousson: Der Name des Industrieunternehmens war über den Wasserspielen in die Fontäne selbst eingebunden.</p>",
+    "nl": "<h2>Een bedrijfsnaam boven de fontein</h2><p>De fontein van de Forges de Pont-à-Mousson behoorde tot de verlichte decors van de Koloniale Tentoonstelling van Parijs in 1931. Afgeronde bassins stapelden zich op tot een bol met de naam Pont-à-Mousson. Bomen omringden het getrapte silhouet.</p><h2>Cascades in het donker</h2><p>Brede waterschermen vielen rond het centrale gedeelte omlaag. Een getrapte voet, kleine waterstralen en lichtgevende versieringen omlijstten de cascade onderaan. Nachtfoto’s laten de lichte vlakken afsteken tegen het donkere gebladerte.</p><p>De fotografische ansichtkaart van Braun noemt architect Aubert als ontwerper. Een andere kaart vermeldt de Société des hauts fourneaux et fonderies de Pont-à-Mousson: de bedrijfsnaam maakte deel uit van de fontein zelf, boven het waterspel.</p>",
+    "it": "<h2>Un’insegna sopra la fontana</h2><p>La fontana delle Forges de Pont-à-Mousson figurava tra gli allestimenti luminosi dell’Esposizione coloniale di Parigi del 1931. Una successione di vasche arrotondate saliva fino a un globo con il nome Pont-à-Mousson. Gli alberi circondavano questa sagoma a livelli sovrapposti.</p><h2>Cascate nella notte</h2><p>Ampi veli d’acqua ricadevano attorno al corpo centrale. Un basamento a gradoni, piccoli getti e motivi luminosi incorniciavano la cascata ai suoi piedi. Le fotografie notturne mostrano le superfici chiare risaltare sul fogliame scuro.</p><p>La cartolina fotografica di Braun attribuisce il progetto all’architetto Aubert. Un’altra cartolina nomina la Société des hauts fourneaux et fonderies de Pont-à-Mousson: l’insegna industriale faceva parte della fontana stessa, sopra i giochi d’acqua.</p>",
+    "es": "<h2>Un nombre sobre la fuente</h2><p>La fuente de las Forges de Pont-à-Mousson formaba parte de los decorados luminosos de la Exposición Colonial de París de 1931. Una sucesión de estanques redondeados ascendía hasta una esfera con el nombre Pont-à-Mousson. Los árboles rodeaban esta silueta escalonada.</p><h2>Cascadas en la noche</h2><p>Amplias cortinas de agua caían alrededor del cuerpo central. Un basamento escalonado, pequeños chorros y motivos luminosos enmarcaban la cascada al pie. Las fotografías nocturnas muestran las superficies claras recortadas contra el follaje oscuro.</p><p>La postal fotográfica de Braun atribuye el diseño al arquitecto Aubert. Otra postal nombra a la Société des hauts fourneaux et fonderies de Pont-à-Mousson: el nombre de la empresa industrial se integraba en la propia fuente, sobre los juegos de agua.</p>",
+    "pl": "<h2>Nazwa firmy nad fontanną</h2><p>Fontanna Forges de Pont-à-Mousson należała do świetlnych dekoracji paryskiej Wystawy Kolonialnej z 1931 roku. Kolejne zaokrąglone misy wznosiły się ku kuli z nazwą Pont-à-Mousson. Tę spiętrzoną sylwetkę otaczały drzewa.</p><h2>Kaskady po zmroku</h2><p>Szerokie kurtyny wody spływały wokół środkowej części. Schodkowy cokół, niewielkie strumienie i świetlne ozdoby otaczały kaskadę u podstawy. Nocne fotografie ukazują jasne powierzchnie odcinające się od ciemnych liści.</p><p>Fotograficzna pocztówka wydawnictwa Braun przypisuje projekt architektowi Aubertowi. Inna karta wymienia Société des hauts fourneaux et fonderies de Pont-à-Mousson: nazwa przedsiębiorstwa przemysłowego była częścią samej fontanny, ponad wodną dekoracją.</p>",
+    "pt": "<h2>Uma inscrição no alto da fonte</h2><p>A fonte das Forges de Pont-à-Mousson figurava entre os cenários luminosos da Exposição Colonial de Paris de 1931. Uma sucessão de tanques arredondados elevava a composição até um globo com o nome Pont-à-Mousson. As árvores rodeavam esta silhueta em patamares.</p><h2>Cascatas na noite</h2><p>Largos panos de água caíam em torno do corpo central. Um embasamento em degraus, pequenos jatos e motivos luminosos enquadravam a cascata na base. As fotografias noturnas mostram as superfícies claras a destacar-se da folhagem escura.</p><p>O postal fotográfico da Braun atribui o desenho ao arquiteto Aubert. Outro postal identifica a Société des hauts fourneaux et fonderies de Pont-à-Mousson: o nome da empresa industrial integrava a própria fonte, acima dos jogos de água.</p>"
+  },
+  "sourceLimitation": {
+    "url": "https://archives.saint-gobain.com/sites/archives.saint-gobain.com/files/pdf/files/Valoriser_Hist_Catalogue_CartesPostales_Tome_4.pdf",
+    "retrievedAtUtc": "2026-11-16T01:02:24.934223+00:00",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "publicationPerformed": false,
+  "fullAuditPerformed": false
+}

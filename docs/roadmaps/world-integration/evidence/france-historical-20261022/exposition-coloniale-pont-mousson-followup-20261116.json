@@ -1,0 +1,158 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "status": "partial",
+  "verifiedAtUtc": "2026-11-16T01:09:53.197866+00:00",
+  "itemId": "c0dcb922-c5f2-4f3c-a339-e8ea7a461e57",
+  "applyOperationId": "00a6a2c5-ce10-4b54-8fc9-aa5dea58490c",
+  "appliedAtUtc": "2026-11-16T01:07:17.0249705Z",
+  "imageId": "18e6ca8a67604eacb3dd75cf07ce1716",
+  "importCreatedAtUtc": "2026-11-16T01:08:04.277Z",
+  "qualificationProof": "exposition-coloniale-pont-mousson-qualification-20261116.json",
+  "exactReviewedLocalizedFields": {
+    "notices": 8,
+    "photoMetadata": 24
+  },
+  "idempotence": {
+    "operationId": "7cf5a3d1-c3be-4af5-baff-3ed2fffb0586",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:08:43.5293901Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c0dcb922-c5f2-4f3c-a339-e8ea7a461e57",
+        "entityKey": "exposition-coloniale-fontaine-pont-a-mousson",
+        "displayName": "Fontaine des Forges de Pont-à-Mousson",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 9,
+    "privateItems": 9,
+    "itemsDescribedInEightLanguages": 9,
+    "ownPrivatePhotos": 15,
+    "itemsWithPhoto": 8,
+    "withoutPhoto": [
+      "Scenic Railway"
+    ],
+    "zones": 1,
+    "officialMaps": 1,
+    "historyEvents": 4
+  },
+  "datePolicy": "Presence during1931 established; no opening date or individual demolition/relocation date inferred. Temporary historical incarnation marked closed.",
+  "excludedPhotograph": "IMAGEEST FI1417-0095 actual watermark, no crop/removal/import.",
+  "researchContinuation": {
+    "usCommissionReport": {
+      "access": {
+        "name": "us-report1931",
+        "url": "https://www.govinfo.gov/content/pkg/SERIALSET-09521_00_00-029-0094-0000/pdf/SERIALSET-09521_00_00-029-0094-0000.pdf",
+        "retrievedAtUtc": "2026-11-16T01:03:17.816364+00:00",
+        "status": 200,
+        "finalUrl": "https://www.govinfo.gov/content/pkg/SERIALSET-09521_00_00-029-0094-0000/pdf/SERIALSET-09521_00_00-029-0094-0000.pdf",
+        "bytes": 9538279,
+        "sha256": "ec7fd153eba94c4915c39e15e7a8b57db5ba0a64bdaa6cc349c2741ae77a23bd",
+        "pdf": true
+      },
+      "personallyRead": "Cover and pp2,15–17. Official report datedApril30,1932 transmittedMay13; fairextendedfromNov1toNov15; GrandSignal/Theatrewaterfetes specialoccasions.33million attendance is entries, not33million uniquepeople, permodernmuseum clarification."
+    },
+    "mappemonde": {
+      "author": "Sophie Dulucq",
+      "year": 1991,
+      "title": "L’Exposition coloniale de1931. Cartographie de l’imaginaire colonial",
+      "url": "https://www.persee.fr/doc/mappe_0764-3470_1991_num_21_1_1903",
+      "personallyReadPages": [
+        23,
+        26,
+        27,
+        28
+      ],
+      "access": [
+        {
+          "name": "mappemonde-page24",
+          "url": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0024_0000",
+          "retrievedAtUtc": "2026-11-16T01:08:29.818375+00:00",
+          "status": 200,
+          "finalUrl": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0024_0000",
+          "bytes": 1063,
+          "sha256": "b09344009eb1a7c9f9e66a7631cfb81e92ce814a84c7e4182e2ecc2a6ca2a8cd"
+        },
+        {
+          "name": "mappemonde-page25",
+          "url": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0025_0000",
+          "retrievedAtUtc": "2026-11-16T01:08:29.818972+00:00",
+          "status": 200,
+          "finalUrl": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0025_0000",
+          "bytes": 234,
+          "sha256": "258ef32485d45ad01a5e82ee6b0b5291e739da6017ff75af4b48198a7846365b"
+        },
+        {
+          "name": "mappemonde-page26",
+          "url": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0026_0000",
+          "retrievedAtUtc": "2026-11-16T01:08:29.819378+00:00",
+          "status": 200,
+          "finalUrl": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0026_0000",
+          "bytes": 15668,
+          "sha256": "be63d1bbea524063aded864a251b91fd9641f747bc4aa9f8be14a4d93850cf46"
+        },
+        {
+          "name": "mappemonde-page27",
+          "url": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0027_0000",
+          "retrievedAtUtc": "2026-11-16T01:08:31.105400+00:00",
+          "status": 200,
+          "finalUrl": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0027_0000",
+          "bytes": 15857,
+          "sha256": "eed4593e6ad5b94ee98ec504fe64b5ec2d513d5ae28097165c10bf710dd44d5b"
+        },
+        {
+          "name": "mappemonde-page28",
+          "url": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0028_0000",
+          "retrievedAtUtc": "2026-11-16T01:08:31.377416+00:00",
+          "status": 200,
+          "finalUrl": "https://www.persee.fr/doc/page/mappe_0764-3470_1991_num_21_1_1903/mappe_0764-3470_1991_num_21_1_T7_0028_0000",
+          "bytes": 6785,
+          "sha256": "0d4d6cb108192e64987c9298781eb5714f570cccd68ebce95e4acf9c4f0eb01b"
+        }
+      ],
+      "limitations": "Pages24–25areillustrations withnoOCR, notyetpersonallyread atthisproof. PDFformhascaptcha,notrequested/bypassed;publicpageURLsfromHTMLused."
+    },
+    "storymap": {
+      "url": "https://storymaps.arcgis.com/stories/5111a60a9f5a48edb57c33442beb1744",
+      "publicEmbeddedTextReadSections": [
+        "Animations",
+        "Zoo1931to1934"
+      ],
+      "limits": "Aquarium1935statement conflictswithPalaisofficial1931history, notusedtomutate. Bagdad/MilleEtUneNuitsidentitiesnotcollapsed;primaryGimpelMiroirnamealone insufficientphysicalnotice."
+    }
+  },
+  "fullAuditPerformed": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false
+}
