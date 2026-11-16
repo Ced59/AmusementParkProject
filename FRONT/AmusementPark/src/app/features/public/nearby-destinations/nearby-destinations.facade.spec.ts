@@ -29,7 +29,48 @@ describe('NearbyDestinationsFacade', () => {
     facade.setLanguage('fr');
   });
 
+  it('shows parks by default and toggles locally with correct empty states', () => {
+    facade.load('Park', 'source');
+    expect(facade.includeStandalone()).toBe(false);
+    expect(facade.cards().map(target => target.card.id)).toEqual(['park']);
+    facade.setIncludeStandalone(true);
+    expect(facade.cards().map(target => target.card.id)).toEqual(['alpine', 'park']);
+    facade.setIncludeStandalone(false);
+    expect(facade.cards().map(target => target.card.id)).toEqual(['park']);
+    expect(getNearby).toHaveBeenCalledTimes(1);
+
+    getNearby.mockReturnValue(of(mixedNearbyDestinations().slice(0, 1)));
+    facade.load('Park', 'without-parks');
+    expect(facade.state().kind).toBe('empty');
+    expect(facade.cards()).toEqual([]);
+    facade.setIncludeStandalone(true);
+    expect(facade.state().kind).toBe('ready');
+    expect(facade.cards()).toHaveLength(1);
+    facade.setIncludeStandalone(false);
+    expect(facade.state().kind).toBe('empty');
+    expect(getNearby).toHaveBeenCalledTimes(2);
+  });
+
+  it('keeps four parks available even when the four closest places are standalone attractions', () => {
+    const [attraction, park] = mixedNearbyDestinations();
+    const targets: NearbyDestination[] = [
+      ...Array.from({ length: 4 }, (_, index) => ({ ...attraction, standaloneAttraction: { ...attraction.standaloneAttraction!, id: `a${index}` } } as NearbyDestination)),
+      ...Array.from({ length: 4 }, (_, index) => ({ ...park, park: { ...park.park!, id: `p${index}` } } as NearbyDestination))
+    ];
+    getNearby.mockReturnValue(of(targets));
+    facade.load('StandaloneAttraction', 'source');
+    expect(facade.cards().map(target => target.card.id)).toEqual(['p0', 'p1', 'p2', 'p3']);
+    facade.setIncludeStandalone(true);
+    expect(facade.cards().map(target => target.card.id)).toEqual(['a0', 'a1', 'a2', 'a3']);
+    facade.setLanguage('en');
+    preference.set('Imperial');
+    facade.setIncludeStandalone(false);
+    expect(facade.cards().map(target => target.card.id)).toEqual(['p0', 'p1', 'p2', 'p3']);
+    expect(getNearby).toHaveBeenCalledTimes(1);
+  });
+
   it.each(['Park', 'StandaloneAttraction'] as const)('keeps mixed ranking and localized links for a %s source', kind => {
+    facade.setIncludeStandalone(true);
     facade.load(kind, 'source');
     expect(facade.state().kind).toBe('ready');
     expect(facade.cards().map(destination => destination.card.id)).toEqual(['alpine', 'park']);
@@ -41,6 +82,7 @@ describe('NearbyDestinationsFacade', () => {
   });
 
   it('preserves the exact cards after compact transport for all languages and both measurement systems', () => {
+    facade.setIncludeStandalone(true);
     const raw = mixedNearbyDestinations();
     raw[0].standaloneAttraction!.descriptions = [{ languageCode: 'fr', value: '<p>1 <<b>2> 3</p>' }, { languageCode: 'en', value: '<p>An English card</p>' }];
     getNearby.mockReturnValue(of(raw));
@@ -82,6 +124,7 @@ describe('NearbyDestinationsFacade', () => {
   });
 
   it('updates distances and links without another request when units or language change', () => {
+    facade.setIncludeStandalone(true);
     facade.load('Park', 'source');
     expect(facade.cards()[0].card.distanceLine).toBe('1,6 km');
     preference.set('Imperial');
@@ -93,6 +136,7 @@ describe('NearbyDestinationsFacade', () => {
   });
 
   it('uses the published standalone photo while preserving park logos and missing-photo fallbacks', () => {
+    facade.setIncludeStandalone(true);
     const targets = mixedNearbyDestinations();
     targets[0].photoImageId = 'published-photo';
     targets[1].park!.currentLogoImageId = 'park-logo';

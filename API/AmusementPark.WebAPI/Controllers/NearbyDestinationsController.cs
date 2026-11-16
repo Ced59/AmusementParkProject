@@ -34,10 +34,11 @@ public sealed class NearbyDestinationsController : ControllerBase
         [FromRoute] string sourceId,
         [FromQuery] int limit = 4,
         CancellationToken cancellationToken = default,
-        [FromQuery] bool cardView = false)
+        [FromQuery] bool cardView = false,
+        [FromQuery] bool groupByKind = false)
     {
         ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await this.handler.HandleAsync(
-            new GetNearbyDestinationsQuery(sourceKind, sourceId, limit), cancellationToken);
+            new GetNearbyDestinationsQuery(sourceKind, sourceId, limit, groupByKind), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);

@@ -71,6 +71,22 @@ public sealed class NearbyDestinationsControllerTests
     [Theory]
     [InlineData(NearbyDestinationKind.Park)]
     [InlineData(NearbyDestinationKind.StandaloneAttraction)]
+    public async Task GroupedCardRequest_ForwardsThePoolOptionInOneHandlerCall(NearbyDestinationKind kind)
+    {
+        Mock<IQueryHandler<GetNearbyDestinationsQuery, ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>>> handler = new(MockBehavior.Strict);
+        GetNearbyDestinationsQuery query = new GetNearbyDestinationsQuery(kind, "source", 4, GroupByKind: true);
+        handler.Setup(instance => instance.HandleAsync(query, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>.Success(Array.Empty<NearbyDestinationResult>()));
+        IActionResult result = await new NearbyDestinationsController(handler.Object).GetAsync(
+            kind, "source", cardView: true, groupByKind: true);
+        Assert.Empty(Assert.IsType<NearbyDestinationCardDto[]>(Assert.IsType<OkObjectResult>(result).Value));
+        handler.Verify(instance => instance.HandleAsync(query, It.IsAny<CancellationToken>()), Times.Once);
+        handler.VerifyNoOtherCalls();
+    }
+
+    [Theory]
+    [InlineData(NearbyDestinationKind.Park)]
+    [InlineData(NearbyDestinationKind.StandaloneAttraction)]
     public async Task GetAsync_ReturnsMixedPublicTargetsInRankOrder(NearbyDestinationKind kind)
     {
         Mock<IQueryHandler<GetNearbyDestinationsQuery, ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>>> handler =

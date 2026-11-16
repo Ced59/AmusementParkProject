@@ -31,6 +31,7 @@ describe('NearbyDestinationsApiService compact transport', () => {
     });
     const request = http.expectOne(r => r.url.endsWith('/nearby-destinations/Park/source'));
     expect(request.request.params.get('cardView')).toBe('true');
+    expect(request.request.params.get('groupByKind')).toBe('true');
     expect(request.request.params.get('limit')).toBe('4');
     expect(request.request.context.get(SKIP_AUTHORIZATION_HEADER)).toBe(true);
     const common = { countryCode: 'FR', city: 'Paris', latitude: 48, longitude: 2, shortDescriptions: [{ languageCode: 'fr', value: 'Bref' }, { languageCode: 'en', value: 'Short' }] };

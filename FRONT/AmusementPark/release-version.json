@@ -5,14 +5,14 @@
       "version": "6.0.40",
       "releasedAt": "2026-11-15",
       "labels": {
-        "fr": "Pages plus légères, expérience préservée",
-        "en": "Lighter pages, same experience",
-        "de": "Schlankere Seiten, gleiches Erlebnis",
-        "nl": "Lichtere pagina’s, dezelfde ervaring",
-        "it": "Pagine più leggere, stessa esperienza",
-        "es": "Páginas más ligeras, misma experiencia",
-        "pl": "Lżejsze strony, takie same wrażenia",
-        "pt": "Páginas mais leves, a mesma experiência"
+        "fr": "Pages allégées et choix des lieux à proximité",
+        "en": "Lighter pages and nearby place filters",
+        "de": "Schlankere Seiten und Filter für Orte in der Nähe",
+        "nl": "Lichtere pagina’s en filters voor plekken in de buurt",
+        "it": "Pagine più leggere e filtri per i luoghi vicini",
+        "es": "Páginas más ligeras y filtros de lugares cercanos",
+        "pl": "Lżejsze strony i filtry miejsc w pobliżu",
+        "pt": "Páginas mais leves e filtros de locais próximos"
       }
     },
     {

@@ -43,6 +43,47 @@ public sealed class GetNearbyDestinationsQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_GroupedPoolKeepsFourParksDespiteCloserStandaloneAttractions()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IStandaloneAttractionRepository> attractions = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        SetupSource(parks, attractions, NearbyDestinationKind.Park);
+        parks.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 5, null, false, ClosedEntityFilter.OpenOnly, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { Park("source", 0), Park("p1", 1), Park("p2", 2), Park("p3", 3), Park("p4", 4) });
+        attractions.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 5, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { Attraction("a1", .01), Attraction("a2", .02), Attraction("a3", .03), Attraction("a4", .04), Attraction("a5", .05) });
+        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object, EmptyImages())
+            .HandleAsync(new GetNearbyDestinationsQuery(NearbyDestinationKind.Park, "source", 4, GroupByKind: true));
+        Assert.True(result.IsSuccess);
+        Assert.Equal(new[] { "a1", "a2", "a3", "a4", "p1", "p2", "p3", "p4" },
+            result.Value!.Select(target => target.Park?.Id ?? target.StandaloneAttraction!.Id));
+        Assert.Equal(Enumerable.Range(1, 8), result.Value!.Select(target => target.ProximityRank));
+        parks.VerifyAll();
+        attractions.VerifyAll();
+        parks.VerifyNoOtherCalls();
+        attractions.VerifyNoOtherCalls();
+    }
+
+    [Theory]
+    [InlineData(NearbyDestinationKind.Park)]
+    [InlineData(NearbyDestinationKind.StandaloneAttraction)]
+    public async Task HandleAsync_GroupedPoolRespectsKindAndOnlyExcludesTheActualSource(NearbyDestinationKind kind)
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IStandaloneAttractionRepository> attractions = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        SetupSource(parks, attractions, kind);
+        parks.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 3, null, false, ClosedEntityFilter.OpenOnly, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { Park("source", 0), Park("p1", .2), Park("p2", .3) });
+        attractions.Setup(repository => repository.GetNearestByLocationAsync(49, 0, 3, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { Attraction("source", 0), Attraction("a1", .01), Attraction("a2", .02) });
+        ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>> result = await new GetNearbyDestinationsQueryHandler(parks.Object, attractions.Object, EmptyImages())
+            .HandleAsync(new GetNearbyDestinationsQuery(kind, "source", 2, GroupByKind: true));
+        Assert.Equal(2, result.Value!.Count(target => target.Park is not null));
+        Assert.Equal(2, result.Value!.Count(target => target.StandaloneAttraction is not null));
+        Assert.DoesNotContain(result.Value!, target => kind == NearbyDestinationKind.Park ? target.Park?.Id == "source" : target.StandaloneAttraction?.Id == "source");
+    }
+
+    [Fact]
     public async Task HandleAsync_DoesNotReservePlacesForParks()
     {
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);

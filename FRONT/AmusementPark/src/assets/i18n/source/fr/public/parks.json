@@ -66,7 +66,12 @@
         "emptyMessage": "Aucun parc ni attraction isolée n’a été trouvé à proximité.",
         "closestTitle": "Lieu le plus proche",
         "distanceNote": "Distance à vol d’oiseau estimée depuis ce lieu.",
-        "viewDestination": "Voir la fiche"
+        "viewDestination": "Voir la fiche",
+        "includeStandalone": "Inclure les attractions isolées",
+        "parksSubtitle": "Découvre les parcs les plus proches.",
+        "parksAlternativesSubtitle": "Découvre les parcs autour de ce lieu.",
+        "emptyParksTitle": "Aucun parc à proximité",
+        "emptyParksMessage": "Aucun parc n’a été trouvé à proximité de ce lieu."
       },
       "description": {
         "badge": "Présentation",

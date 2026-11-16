@@ -40,8 +40,24 @@ balises, traitement de `&nbsp;`, espaces ECMAScript, longueur UTF-16 et coupure 
 à 140 caractères. Le navigateur utilise ensuite ces résumés sans les reformater.
 Les textes principaux et leurs traductions intégrales restent dans les fiches de détail.
 
-Aucun changement de contenu éditorial, de visibilité, de canonical, de hreflang, de
-JSON-LD, de CSS ou de politique de rendu Google n'est introduit.
+Les optimisations de données conservent le contenu éditorial, les règles de visibilité,
+les canonical, les hreflang, le JSON-LD et la politique de rendu Google.
+
+## Filtre des destinations à proximité
+
+Une évolution fonctionnelle demandée séparément accompagne ces optimisations : les
+sections de proximité des parcs et des attractions isolées affichent les parcs seuls
+par défaut. Un switch « Inclure les attractions isolées », traduit dans les huit
+langues, permet de retrouver les quatre destinations les plus proches, toutes
+catégories confondues. La distance du lieu le plus proche et les états vides suivent
+le filtre actif.
+
+L'unique appel initial ajoute `groupByKind=true` : il charge au maximum quatre parcs
+et quatre attractions isolées en vue compacte, ordonnés par distance. Cela garantit
+quatre parcs disponibles même si des attractions sont plus proches. Le switch filtre
+ce petit ensemble en mémoire ; il ne refait aucun appel API. Les requêtes de recherche
+géographique restent bornées et identiques en nombre. Sans cette option, le contrat
+historique conserve sa limite globale et son mélange de destinations.
 
 ## Vérifications
 
@@ -51,8 +67,12 @@ JSON-LD, de CSS ou de politique de rendu Google n'est introduit.
 - Tests de pagination exacte sans exécution du mapper d'objets inutilisés.
 - Tests du transport HTTP et des façades existantes : liens, galeries, navigation,
   requêtes obsolètes, erreurs et disponibilité.
+- Tests du filtre par défaut et des allers-retours du switch sans nouvelle requête,
+  depuis les deux types de fiche, y compris un ensemble sans parc.
+- Contrôle responsive du switch avec un libellé long, dans les deux thèmes.
 - Captures de référence en production avant déploiement : les huit langues
   d'Adventuredome, SkyJump Las Vegas et quatre grandes fiches de parc.
 - Après déploiement : vérifier la version, mesurer le HTML/JSON et comparer les
-  textes, liens, métadonnées et données structurées avec ces références ; vérifier
+  textes, liens, métadonnées et données structurées avec ces références, en tenant
+  compte du nouveau filtre demandé dans la section de proximité ; vérifier
   l'hydratation dans Chromium mobile et bureau ainsi que les réponses historiques.

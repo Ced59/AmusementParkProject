@@ -7,6 +7,19 @@
     [subtitleKey]="subtitleKey">
   </app-ui-section-header>
 
+  <div class="park-nearby__filters">
+    <button
+      type="button"
+      role="switch"
+      class="park-nearby__switch"
+      [class.park-nearby__switch--checked]="includeStandalone()"
+      [attr.aria-checked]="includeStandalone()"
+      (click)="toggleStandalone()">
+      <span class="park-nearby__switch-track" aria-hidden="true"><span class="park-nearby__switch-thumb"></span></span>
+      <span class="park-nearby__switch-label">{{ 'parks.detail.nearby.includeStandalone' | translate }}</span>
+    </button>
+  </div>
+
   @if (nearestPark; as closestPark) {
     @if (closestPark.distanceLine) {
       <app-ui-distance-panel
@@ -28,8 +41,8 @@
       loadingMessageKey: 'parks.detail.nearby.loadingMessage',
       errorTitleKey: 'parks.detail.nearby.errorTitle',
       errorMessageKey: 'parks.detail.nearby.errorMessage',
-      emptyTitleKey: 'parks.detail.nearby.emptyTitle',
-      emptyMessageKey: 'parks.detail.nearby.emptyMessage'
+      emptyTitleKey: includeStandalone() ? 'parks.detail.nearby.emptyTitle' : 'parks.detail.nearby.emptyParksTitle',
+      emptyMessageKey: includeStandalone() ? 'parks.detail.nearby.emptyMessage' : 'parks.detail.nearby.emptyParksMessage'
     }">
     <div class="park-nearby__grid">
       <app-ui-park-card
