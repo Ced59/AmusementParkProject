@@ -1,0 +1,373 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "zones": [
+        {
+          "key": "exposition-coloniale-ile-mille-et-une-nuits",
+          "name": "Île des Mille et Une Nuits",
+          "names": [
+            {
+              "languageCode": "fr",
+              "value": "Île des Mille et Une Nuits"
+            },
+            {
+              "languageCode": "en",
+              "value": "Île des Mille et Une Nuits"
+            },
+            {
+              "languageCode": "de",
+              "value": "Île des Mille et Une Nuits"
+            },
+            {
+              "languageCode": "nl",
+              "value": "Île des Mille et Une Nuits"
+            },
+            {
+              "languageCode": "it",
+              "value": "Île des Mille et Une Nuits"
+            },
+            {
+              "languageCode": "es",
+              "value": "Île des Mille et Une Nuits"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Île des Mille et Une Nuits"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Île des Mille et Une Nuits"
+            }
+          ],
+          "isVisible": false,
+          "sortOrder": 20,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une île de conte sur le lac Daumesnil</h2><p>Pour l’Exposition coloniale de 1931, l’île de Bercy prit le nom d’Île des Mille et Une Nuits. Cette évocation de contes orientaux côtoyait les pavillons consacrés à des territoires réels. Restaurants, musique et promenades sous les arbres composaient un décor de divertissement au milieu du lac.</p><h2>Des gemmes et des fontaines parmi les feuillages</h2><p>La rotonde des gemmes appartenait à ce paysage imaginaire. De nuit, des boules lumineuses aux facettes géométriques se détachaient entre les palmes, à proximité de petites fontaines. Leurs motifs de triangles ou de polygones et les jets clairs donnaient aux sous-bois une présence précieuse et théâtrale.</p><p>Les embarcations et les passerelles reliaient ces jardins aux autres espaces de l’exposition. Autour des terrasses éclairées, les orchestres et les reflets sur l’eau prolongeaient cette mise en scène nocturne d’un Orient rêvé par les organisateurs.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A storybook island on Lac Daumesnil</h2><p>For the 1931 Colonial Exposition, the Île de Bercy became the Île des Mille et Une Nuits. This evocation of Arabian tales stood alongside pavilions devoted to real territories. Restaurants, music and walks beneath the trees created a setting for entertainment in the middle of the lake.</p><h2>Jewels and fountains beneath the leaves</h2><p>The Rotonde des Gemmes formed part of this imaginary landscape. After dark, glowing spheres with geometric facets stood out among palm fronds beside small fountains. Their triangular and polygonal patterns, together with the bright water jets, gave the woodland a theatrical, jewel-like appearance.</p><p>Boats and footbridges connected these gardens with other parts of the exposition. Around the illuminated terraces, orchestras and reflections on the water extended this nocturnal vision of an East imagined by the organisers.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Märcheninsel im Lac Daumesnil</h2><p>Zur Kolonialausstellung von 1931 erhielt die Île de Bercy den Namen Île des Mille et Une Nuits. Diese Anspielung auf orientalische Märchen stand neben Pavillons, die tatsächliche Länder und Gebiete darstellten. Restaurants, Musik und Spazierwege unter Bäumen machten die Insel mitten im See zu einem Ort der Unterhaltung.</p><h2>Edelsteine und Brunnen im Blattwerk</h2><p>Die Rotonde des Gemmes gehörte zu dieser Fantasielandschaft. Nachts leuchteten Kugeln mit geometrischen Facetten zwischen Palmwedeln neben kleinen Brunnen. Ihre Dreiecke und Vielecke verliehen dem Gehölz zusammen mit den hellen Wasserstrahlen eine kostbare, bühnenhafte Wirkung.</p><p>Boote und Fußgängerbrücken verbanden die Gärten mit anderen Teilen der Ausstellung. Rund um die beleuchteten Terrassen ergänzten Orchesterklänge und Spiegelungen auf dem Wasser diese nächtliche Inszenierung eines von den Veranstaltern erdachten Orients.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een sprookjeseiland in het Lac Daumesnil</h2><p>Voor de Koloniale Tentoonstelling van 1931 kreeg het Île de Bercy de naam Île des Mille et Une Nuits. Deze verwijzing naar oosterse vertellingen stond naast paviljoens die bestaande gebieden voorstelden. Restaurants, muziek en wandelpaden onder de bomen maakten van het eiland een plek voor vermaak midden in het meer.</p><h2>Edelstenen en fonteinen tussen het groen</h2><p>De Rotonde des Gemmes hoorde bij dit verzonnen landschap. In het donker lichtten bollen met geometrische vlakken op tussen de palmbladeren, naast kleine fonteinen. Hun driehoeken en veelhoeken gaven het bos samen met de heldere waterstralen de uitstraling van een kostbaar theaterdecor.</p><p>Boten en voetbruggen verbonden de tuinen met andere delen van de tentoonstelling. Rond de verlichte terrassen vulden orkesten en weerspiegelingen op het water dit nachtelijke beeld aan van een Oosten zoals de organisatoren het zich voorstelden.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un’isola da fiaba sul lago Daumesnil</h2><p>Per l’Esposizione coloniale del 1931, l’île de Bercy prese il nome di Île des Mille et Une Nuits. Questo richiamo ai racconti orientali affiancava i padiglioni dedicati a territori reali. Ristoranti, musica e passeggiate sotto gli alberi componevano uno scenario di svago al centro del lago.</p><h2>Gemme e fontane tra le foglie</h2><p>La Rotonde des Gemmes faceva parte di questo paesaggio immaginario. Di notte, sfere luminose dalle facce geometriche spiccavano tra le fronde delle palme, accanto a piccole fontane. I loro motivi triangolari o poligonali, insieme ai getti chiari, conferivano al boschetto un aspetto prezioso e teatrale.</p><p>Imbarcazioni e passerelle collegavano questi giardini agli altri spazi dell’esposizione. Intorno alle terrazze illuminate, le orchestre e i riflessi sull’acqua prolungavano questa rappresentazione notturna di un Oriente immaginato dagli organizzatori.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una isla de cuento en el lago Daumesnil</h2><p>Para la Exposición Colonial de 1931, la isla de Bercy recibió el nombre de Île des Mille et Une Nuits. Esta evocación de cuentos orientales convivía con pabellones dedicados a territorios reales. Restaurantes, música y paseos bajo los árboles formaban un escenario de ocio en medio del lago.</p><h2>Gemas y fuentes entre el follaje</h2><p>La Rotonde des Gemmes pertenecía a este paisaje imaginario. Por la noche, esferas luminosas con caras geométricas destacaban entre las hojas de las palmeras, junto a pequeñas fuentes. Sus motivos triangulares o poligonales y los chorros claros daban al arbolado un aspecto de joya y decorado teatral.</p><p>Las embarcaciones y las pasarelas conectaban estos jardines con otros espacios de la exposición. Alrededor de las terrazas iluminadas, las orquestas y los reflejos en el agua prolongaban esta escenificación nocturna de un Oriente soñado por los organizadores.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Baśniowa wyspa na jeziorze Daumesnil</h2><p>Na czas Wystawy Kolonialnej w 1931 roku wyspa Bercy otrzymała nazwę Île des Mille et Une Nuits. To nawiązanie do opowieści Wschodu sąsiadowało z pawilonami poświęconymi rzeczywistym terytoriom. Restauracje, muzyka i spacery pod drzewami tworzyły scenerię rozrywki pośrodku jeziora.</p><h2>Klejnoty i fontanny wśród liści</h2><p>Rotonde des Gemmes była częścią tego wyobrażonego krajobrazu. Po zmroku między liśćmi palm, obok niewielkich fontann, rozbłyskiwały kule o geometrycznych powierzchniach. Trójkątne i wielokątne wzory wraz z jasnymi strumieniami wody nadawały zadrzewionej przestrzeni wygląd drogocennej dekoracji teatralnej.</p><p>Łodzie i kładki łączyły ogrody z innymi częściami wystawy. Wokół oświetlonych tarasów muzyka orkiestr i odbicia na wodzie dopełniały tę nocną wizję Wschodu stworzoną przez organizatorów.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma ilha de contos no lago Daumesnil</h2><p>Para a Exposição Colonial de 1931, a ilha de Bercy recebeu o nome de Île des Mille et Une Nuits. Esta evocação de contos orientais convivia com pavilhões dedicados a territórios reais. Restaurantes, música e passeios sob as árvores compunham um cenário de diversão no meio do lago.</p><h2>Gemas e fontes entre a folhagem</h2><p>A Rotonde des Gemmes fazia parte desta paisagem imaginária. À noite, esferas luminosas com faces geométricas destacavam-se entre as folhas das palmeiras, junto a pequenas fontes. Os motivos triangulares ou poligonais e os jatos claros davam ao arvoredo um aspeto precioso e teatral.</p><p>Barcos e passadiços ligavam estes jardins aos outros espaços da exposição. Em redor das esplanadas iluminadas, as orquestras e os reflexos na água prolongavam esta encenação noturna de um Oriente imaginado pelos organizadores.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-exposition-coloniale-island",
+        "step": "02-zones",
+        "notes": "Historical island zone explicitly named by Braun1931 MucemSou31.87.1 and Cité2011.21.104(Île deBercy). Restaurants/orchestras/boats/footbridge described in1931 Afrique du Nord Illustrée reproduced byCemaroc; imaginary territorial framing corroboratedDulucq1991pp27–28. Not an alias/new duplicateofGravelle,TheatreEau orBagdad; noitem reassignment or GPS. Eight personal descriptions reviewed; historic proper name retained8languages. Source links in accompanying qualification."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "560a1f5c-31d9-440c-951f-44fbaa6d7a22",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:19:01.2248523Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "7464fd80-74a5-44e8-a297-d9ba88e8bc2f",
+        "entityKey": "exposition-coloniale-ile-mille-et-une-nuits",
+        "displayName": "Île des Mille et Une Nuits",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "sortOrder",
+            "oldValue": "0",
+            "newValue": "20"
+          },
+          {
+            "field": "names.de",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.en",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.es",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.fr",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.it",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.nl",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.pl",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.pt",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Märcheninsel im Lac Daumesnil</h2><p>Zur Kolonialausstellung von 1931 erhielt die Île de Bercy den Namen Île des Mille et Une Nuits. Diese Anspielung auf orientalische Märchen stand neben Pavillons, die tatsächliche Länder und Gebiete darstellten. Restaurants, Musik und Spazierwege unter Bäumen machten die Insel mitten im See zu einem Ort der Unterhaltung.</p><h2>Edelsteine und Brunnen im Blattwerk</h2><p>Die Rotonde des Gemmes gehörte zu dieser Fantasielandschaft. Nachts leuchteten Kugeln mit geometrischen Facetten zwischen Palmwedeln neben kleinen Brunnen. Ihre Dreiecke und Vielecke verliehen dem Gehölz zusammen mit den hellen Wasserstrahlen eine kostbare, bühnenhafte Wirkung.</p><p>Boote und Fußgängerbrücken verbanden die Gärten mit anderen Teilen der Ausstellung. Rund um die beleuchteten Terrassen ergänzten Orchesterklänge und Spiegelungen auf dem Wasser diese nächtliche Inszenierung eines von den Veranstaltern erdachten Orients.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A storybook island on Lac Daumesnil</h2><p>For the 1931 Colonial Exposition, the Île de Bercy became the Île des Mille et Une Nuits. This evocation of Arabian tales stood alongside pavilions devoted to real territories. Restaurants, music and walks beneath the trees created a setting for entertainment in the middle of the lake.</p><h2>Jewels and fountains beneath the leaves</h2><p>The Rotonde des Gemmes formed part of this imaginary landscape. After dark, glowing spheres with geometric facets stood out among palm fronds beside small fountains. Their triangular and polygonal patterns, together with the bright water jets, gave the woodland a theatrical, jewel-like appearance.</p><p>Boats and footbridges connected these gardens with other parts of the exposition. Around the illuminated terraces, orchestras and reflections on the water extended this nocturnal vision of an East imagined by the organisers.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una isla de cuento en el lago Daumesnil</h2><p>Para la Exposición Colonial de 1931, la isla de Bercy recibió el nombre de Île des Mille et Une Nuits. Esta evocación de cuentos orientales convivía con pabellones dedicados a territorios reales. Restaurantes, música y paseos bajo los árboles formaban un escenario de ocio en medio del lago.</p><h2>Gemas y fuentes entre el follaje</h2><p>La Rotonde des Gemmes pertenecía a este paisaje imaginario. Por la noche, esferas luminosas con caras geométricas destacaban entre las hojas de las palmeras, junto a pequeñas fuentes. Sus motivos triangulares o poligonales y los chorros claros daban al arbolado un aspecto de joya y decorado teatral.</p><p>Las embarcaciones y las pasarelas conectaban estos jardines con otros espacios de la exposición. Alrededor de las terrazas iluminadas, las orquestas y los reflejos en el agua prolongaban esta escenificación nocturna de un Oriente soñado por los organizadores.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une île de conte sur le lac Daumesnil</h2><p>Pour l’Exposition coloniale de 1931, l’île de Bercy prit le nom d’Île des Mille et Une Nuits. Cette évocation de contes orientaux côtoyait les pavillons consacrés à des territoires réels. Restaurants, musique et promenades sous les arbres composaient un décor de divertissement au milieu du lac.</p><h2>Des gemmes et des fontaines parmi les feuillages</h2><p>La rotonde des gemmes appartenait à ce paysage imaginaire. De nuit, des boules lumineuses aux facettes géométriques se détachaient entre les palmes, à proximité de petites fontaines. Leurs motifs de triangles ou de polygones et les jets clairs donnaient aux sous-bois une présence précieuse et théâtrale.</p><p>Les embarcations et les passerelles reliaient ces jardins aux autres espaces de l’exposition. Autour des terrasses éclairées, les orchestres et les reflets sur l’eau prolongeaient cette mise en scène nocturne d’un Orient rêvé par les organisateurs.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un’isola da fiaba sul lago Daumesnil</h2><p>Per l’Esposizione coloniale del 1931, l’île de Bercy prese il nome di Île des Mille et Une Nuits. Questo richiamo ai racconti orientali affiancava i padiglioni dedicati a territori reali. Ristoranti, musica e passeggiate sotto gli alberi componevano uno scenario di svago al centro del lago.</p><h2>Gemme e fontane tra le foglie</h2><p>La Rotonde des Gemmes faceva parte di questo paesaggio immaginario. Di notte, sfere luminose dalle facce geometriche spiccavano tra le fronde delle palme, accanto a piccole fontane. I loro motivi triangolari o poligonali, insieme ai getti chiari, conferivano al boschetto un aspetto prezioso e teatrale.</p><p>Imbarcazioni e passerelle collegavano questi giardini agli altri spazi dell’esposizione. Intorno alle terrazze illuminate, le orchestre e i riflessi sull’acqua prolungavano questa rappresentazione notturna di un Oriente immaginato dagli organizzatori.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een sprookjeseiland in het Lac Daumesnil</h2><p>Voor de Koloniale Tentoonstelling van 1931 kreeg het Île de Bercy de naam Île des Mille et Une Nuits. Deze verwijzing naar oosterse vertellingen stond naast paviljoens die bestaande gebieden voorstelden. Restaurants, muziek en wandelpaden onder de bomen maakten van het eiland een plek voor vermaak midden in het meer.</p><h2>Edelstenen en fonteinen tussen het groen</h2><p>De Rotonde des Gemmes hoorde bij dit verzonnen landschap. In het donker lichtten bollen met geometrische vlakken op tussen de palmbladeren, naast kleine fonteinen. Hun driehoeken en veelhoeken gaven het bos samen met de heldere waterstralen de uitstraling van een kostbaar theaterdecor.</p><p>Boten en voetbruggen verbonden de tuinen met andere delen van de tentoonstelling. Rond de verlichte terrassen vulden orkesten en weerspiegelingen op het water dit nachtelijke beeld aan van een Oosten zoals de organisatoren het zich voorstelden.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Baśniowa wyspa na jeziorze Daumesnil</h2><p>Na czas Wystawy Kolonialnej w 1931 roku wyspa Bercy otrzymała nazwę Île des Mille et Une Nuits. To nawiązanie do opowieści Wschodu sąsiadowało z pawilonami poświęconymi rzeczywistym terytoriom. Restauracje, muzyka i spacery pod drzewami tworzyły scenerię rozrywki pośrodku jeziora.</p><h2>Klejnoty i fontanny wśród liści</h2><p>Rotonde des Gemmes była częścią tego wyobrażonego krajobrazu. Po zmroku między liśćmi palm, obok niewielkich fontann, rozbłyskiwały kule o geometrycznych powierzchniach. Trójkątne i wielokątne wzory wraz z jasnymi strumieniami wody nadawały zadrzewionej przestrzeni wygląd drogocennej dekoracji teatralnej.</p><p>Łodzie i kładki łączyły ogrody z innymi częściami wystawy. Wokół oświetlonych tarasów muzyka orkiestr i odbicia na wodzie dopełniały tę nocną wizję Wschodu stworzoną przez organizatorów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma ilha de contos no lago Daumesnil</h2><p>Para a Exposição Colonial de 1931, a ilha de Bercy recebeu o nome de Île des Mille et Une Nuits. Esta evocação de contos orientais convivia com pavilhões dedicados a territórios reais. Restaurantes, música e passeios sob as árvores compunham um cenário de diversão no meio do lago.</p><h2>Gemas e fontes entre a folhagem</h2><p>A Rotonde des Gemmes fazia parte desta paisagem imaginária. À noite, esferas luminosas com faces geométricas destacavam-se entre as folhas das palmeiras, junto a pequenas fontes. Os motivos triangulares ou poligonais e os jatos claros davam ao arvoredo um aspeto precioso e teatral.</p><p>Barcos e passadiços ligavam estes jardins aos outros espaços da exposição. Em redor das esplanadas iluminadas, as orquestras e os reflexos na água prolongavam esta encenação noturna de um Oriente imaginado pelos organizadores.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "285b8a3f-3b3d-438c-ad31-758906de50b6",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:19:31.0359344Z",
+    "appliedAtUtc": "2026-11-16T01:19:31.035936Z",
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "a74e2748-0c80-40a5-9bb6-e142f24ef7ab",
+        "entityKey": "exposition-coloniale-ile-mille-et-une-nuits",
+        "displayName": "Île des Mille et Une Nuits",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "sortOrder",
+            "oldValue": "0",
+            "newValue": "20"
+          },
+          {
+            "field": "names.de",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.en",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.es",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.fr",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.it",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.nl",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.pl",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "names.pt",
+            "oldValue": null,
+            "newValue": "Île des Mille et Une Nuits"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Märcheninsel im Lac Daumesnil</h2><p>Zur Kolonialausstellung von 1931 erhielt die Île de Bercy den Namen Île des Mille et Une Nuits. Diese Anspielung auf orientalische Märchen stand neben Pavillons, die tatsächliche Länder und Gebiete darstellten. Restaurants, Musik und Spazierwege unter Bäumen machten die Insel mitten im See zu einem Ort der Unterhaltung.</p><h2>Edelsteine und Brunnen im Blattwerk</h2><p>Die Rotonde des Gemmes gehörte zu dieser Fantasielandschaft. Nachts leuchteten Kugeln mit geometrischen Facetten zwischen Palmwedeln neben kleinen Brunnen. Ihre Dreiecke und Vielecke verliehen dem Gehölz zusammen mit den hellen Wasserstrahlen eine kostbare, bühnenhafte Wirkung.</p><p>Boote und Fußgängerbrücken verbanden die Gärten mit anderen Teilen der Ausstellung. Rund um die beleuchteten Terrassen ergänzten Orchesterklänge und Spiegelungen auf dem Wasser diese nächtliche Inszenierung eines von den Veranstaltern erdachten Orients.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A storybook island on Lac Daumesnil</h2><p>For the 1931 Colonial Exposition, the Île de Bercy became the Île des Mille et Une Nuits. This evocation of Arabian tales stood alongside pavilions devoted to real territories. Restaurants, music and walks beneath the trees created a setting for entertainment in the middle of the lake.</p><h2>Jewels and fountains beneath the leaves</h2><p>The Rotonde des Gemmes formed part of this imaginary landscape. After dark, glowing spheres with geometric facets stood out among palm fronds beside small fountains. Their triangular and polygonal patterns, together with the bright water jets, gave the woodland a theatrical, jewel-like appearance.</p><p>Boats and footbridges connected these gardens with other parts of the exposition. Around the illuminated terraces, orchestras and reflections on the water extended this nocturnal vision of an East imagined by the organisers.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una isla de cuento en el lago Daumesnil</h2><p>Para la Exposición Colonial de 1931, la isla de Bercy recibió el nombre de Île des Mille et Une Nuits. Esta evocación de cuentos orientales convivía con pabellones dedicados a territorios reales. Restaurantes, música y paseos bajo los árboles formaban un escenario de ocio en medio del lago.</p><h2>Gemas y fuentes entre el follaje</h2><p>La Rotonde des Gemmes pertenecía a este paisaje imaginario. Por la noche, esferas luminosas con caras geométricas destacaban entre las hojas de las palmeras, junto a pequeñas fuentes. Sus motivos triangulares o poligonales y los chorros claros daban al arbolado un aspecto de joya y decorado teatral.</p><p>Las embarcaciones y las pasarelas conectaban estos jardines con otros espacios de la exposición. Alrededor de las terrazas iluminadas, las orquestas y los reflejos en el agua prolongaban esta escenificación nocturna de un Oriente soñado por los organizadores.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une île de conte sur le lac Daumesnil</h2><p>Pour l’Exposition coloniale de 1931, l’île de Bercy prit le nom d’Île des Mille et Une Nuits. Cette évocation de contes orientaux côtoyait les pavillons consacrés à des territoires réels. Restaurants, musique et promenades sous les arbres composaient un décor de divertissement au milieu du lac.</p><h2>Des gemmes et des fontaines parmi les feuillages</h2><p>La rotonde des gemmes appartenait à ce paysage imaginaire. De nuit, des boules lumineuses aux facettes géométriques se détachaient entre les palmes, à proximité de petites fontaines. Leurs motifs de triangles ou de polygones et les jets clairs donnaient aux sous-bois une présence précieuse et théâtrale.</p><p>Les embarcations et les passerelles reliaient ces jardins aux autres espaces de l’exposition. Autour des terrasses éclairées, les orchestres et les reflets sur l’eau prolongeaient cette mise en scène nocturne d’un Orient rêvé par les organisateurs.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un’isola da fiaba sul lago Daumesnil</h2><p>Per l’Esposizione coloniale del 1931, l’île de Bercy prese il nome di Île des Mille et Une Nuits. Questo richiamo ai racconti orientali affiancava i padiglioni dedicati a territori reali. Ristoranti, musica e passeggiate sotto gli alberi componevano uno scenario di svago al centro del lago.</p><h2>Gemme e fontane tra le foglie</h2><p>La Rotonde des Gemmes faceva parte di questo paesaggio immaginario. Di notte, sfere luminose dalle facce geometriche spiccavano tra le fronde delle palme, accanto a piccole fontane. I loro motivi triangolari o poligonali, insieme ai getti chiari, conferivano al boschetto un aspetto prezioso e teatrale.</p><p>Imbarcazioni e passerelle collegavano questi giardini agli altri spazi dell’esposizione. Intorno alle terrazze illuminate, le orchestre e i riflessi sull’acqua prolungavano questa rappresentazione notturna di un Oriente immaginato dagli organizzatori.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een sprookjeseiland in het Lac Daumesnil</h2><p>Voor de Koloniale Tentoonstelling van 1931 kreeg het Île de Bercy de naam Île des Mille et Une Nuits. Deze verwijzing naar oosterse vertellingen stond naast paviljoens die bestaande gebieden voorstelden. Restaurants, muziek en wandelpaden onder de bomen maakten van het eiland een plek voor vermaak midden in het meer.</p><h2>Edelstenen en fonteinen tussen het groen</h2><p>De Rotonde des Gemmes hoorde bij dit verzonnen landschap. In het donker lichtten bollen met geometrische vlakken op tussen de palmbladeren, naast kleine fonteinen. Hun driehoeken en veelhoeken gaven het bos samen met de heldere waterstralen de uitstraling van een kostbaar theaterdecor.</p><p>Boten en voetbruggen verbonden de tuinen met andere delen van de tentoonstelling. Rond de verlichte terrassen vulden orkesten en weerspiegelingen op het water dit nachtelijke beeld aan van een Oosten zoals de organisatoren het zich voorstelden.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Baśniowa wyspa na jeziorze Daumesnil</h2><p>Na czas Wystawy Kolonialnej w 1931 roku wyspa Bercy otrzymała nazwę Île des Mille et Une Nuits. To nawiązanie do opowieści Wschodu sąsiadowało z pawilonami poświęconymi rzeczywistym terytoriom. Restauracje, muzyka i spacery pod drzewami tworzyły scenerię rozrywki pośrodku jeziora.</p><h2>Klejnoty i fontanny wśród liści</h2><p>Rotonde des Gemmes była częścią tego wyobrażonego krajobrazu. Po zmroku między liśćmi palm, obok niewielkich fontann, rozbłyskiwały kule o geometrycznych powierzchniach. Trójkątne i wielokątne wzory wraz z jasnymi strumieniami wody nadawały zadrzewionej przestrzeni wygląd drogocennej dekoracji teatralnej.</p><p>Łodzie i kładki łączyły ogrody z innymi częściami wystawy. Wokół oświetlonych tarasów muzyka orkiestr i odbicia na wodzie dopełniały tę nocną wizję Wschodu stworzoną przez organizatorów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma ilha de contos no lago Daumesnil</h2><p>Para a Exposição Colonial de 1931, a ilha de Bercy recebeu o nome de Île des Mille et Une Nuits. Esta evocação de contos orientais convivia com pavilhões dedicados a territórios reais. Restaurantes, música e passeios sob as árvores compunham um cenário de diversão no meio do lago.</p><h2>Gemas e fontes entre a folhagem</h2><p>A Rotonde des Gemmes fazia parte desta paisagem imaginária. À noite, esferas luminosas com faces geométricas destacavam-se entre as folhas das palmeiras, junto a pequenas fontes. Os motivos triangulares ou poligonais e os jatos claros davam ao arvoredo um aspeto precioso e teatral.</p><p>Barcos e passadiços ligavam estes jardins aos outros espaços da exposição. Em redor das esplanadas iluminadas, as orquestras e os reflexos na água prolongavam esta encenação noturna de um Oriente imaginado pelos organizadores.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "qualification": "exposition-coloniale-island-zone-qualification-20261116.json",
+  "allEightDescriptionsPersonallyReviewedAndExact": true,
+  "dateQualification": "Historical islandzone; no exactdates or GPS asserted.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

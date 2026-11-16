@@ -1,0 +1,81 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "verifiedAtUtc": "2026-11-16T01:21:45.438433+00:00",
+  "zoneId": "a74e2748-0c80-40a5-9bb6-e142f24ef7ab",
+  "applyOperationId": "285b8a3f-3b3d-438c-ad31-758906de50b6",
+  "appliedAtUtc": "2026-11-16T01:19:31.035936Z",
+  "imageId": "de8c9dec5aef499eb8866095801e15b9",
+  "importCreatedAtUtc": "2026-11-16T01:20:33.394Z",
+  "personallyReviewedNewFields": {
+    "zoneDescriptions": 8,
+    "zoneNames": 8,
+    "imageMetadata": 24
+  },
+  "exactPreviewApplyImportChecked": true,
+  "retention": "State exact to8027a3a4 after removing onlynewzone/newphoto; all9items,existingzone,15photos,history,articles,maps,referencesretained unchanged.",
+  "idempotence": {
+    "operationId": "6db552d8-0b97-4785-b606-b8e653cc645c",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:21:19.7731679Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "a74e2748-0c80-40a5-9bb6-e142f24ef7ab",
+        "entityKey": "exposition-coloniale-ile-mille-et-une-nuits",
+        "displayName": "Île des Mille et Une Nuits",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 9,
+    "privateItems": 9,
+    "itemsDescribedInEightLanguages": 9,
+    "privateZones": 2,
+    "privateOwnPhotos": 16,
+    "itemsWithPhoto": 8,
+    "withoutPhoto": [
+      "Scenic Railway"
+    ],
+    "officialMaps": 1,
+    "historyEvents": 4
+  },
+  "limits": [
+    "Inventoryincomplete;Bagdad/theatre/MiroirdEau notcollapsed",
+    "No autonomouslogo",
+    "NoScenic genuinephotoyet;GillardPinxtillustrationrejected",
+    "Historicalpark/zone/articlecorpusfinalreviewpending"
+  ],
+  "fullAuditPerformed": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false
+}

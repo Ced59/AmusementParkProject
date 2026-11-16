@@ -1,0 +1,294 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "29-island-lights",
+    "source": {
+      "name": "ile-nuits",
+      "url": "https://mdc.mucem.org/assets/356892/image",
+      "retrievedAtUtc": "2026-11-16T01:00:02.400723+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356892/image",
+      "bytes": 247304,
+      "sha256": "db8cc1ae08a4f88c5c41eced0ec591db8369f91ded5067365de55b06088e9711",
+      "path": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/ile-nuits-mucem-native.jpg",
+      "dimensions": [
+        1280,
+        813
+      ],
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/ile-nuits-mucem-native.jpg",
+      "sourcePage": "https://mucem.org/notice/c/3188805/"
+    },
+    "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "ownerType": "Park",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Owner authorization for France historical images; institutional/publisher credits preserved, no open-license or photographer invented.",
+    "review": "Original photograph individually viewed: illuminatedgeometricglobes,fountains,palms,BAGDADsign;24fields personallyauthored/reviewed,originalBraunmonogramretained,no thirdpartyoverlay,no edit. Parkcontext ownership; no unsupported zoneimagecategory."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "SourceUrl": "https://mdc.mucem.org/assets/356892/image",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/ile-nuits-mucem-native.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/29-island-lights-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/29-island-lights-import-result.json"
+  },
+  "metadata": {
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des boules lumineuses à motifs géométriques et des jets d’eau apparaissent entre les palmiers ; une enseigne Bagdad se distingue à l’arrière-plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "Glowing spheres with geometric patterns and water jets appear among palm trees, with a Bagdad sign visible in the background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Leuchtende Kugeln mit geometrischen Mustern und Wasserstrahlen stehen zwischen Palmen; im Hintergrund ist ein Bagdad-Schild zu erkennen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Lichtgevende bollen met geometrische patronen en waterstralen staan tussen palmbomen; op de achtergrond is een bord met Bagdad te zien."
+      },
+      {
+        "languageCode": "it",
+        "value": "Sfere luminose con motivi geometrici e getti d’acqua appaiono tra le palme; sullo sfondo si distingue un’insegna Bagdad."
+      },
+      {
+        "languageCode": "es",
+        "value": "Esferas luminosas con motivos geométricos y chorros de agua aparecen entre palmeras; al fondo se distingue un rótulo Bagdad."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Świecące kule o geometrycznych wzorach i strumienie wody wśród palm; w głębi widać szyld Bagdad."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Esferas luminosas com padrões geométricos e jatos de água surgem entre palmeiras; ao fundo distingue-se um letreiro Bagdad."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Boules et fontaines lumineuses de l’Île des Mille et Une Nuits à l’Exposition coloniale de 1931. La carte photographique de Braun porte les noms des architectes Gaillard et Chevalier."
+      },
+      {
+        "languageCode": "en",
+        "value": "Illuminated spheres and fountains on the Île des Mille et Une Nuits at the 1931 Colonial Exposition. Braun’s photographic postcard names the architects Gaillard and Chevalier."
+      },
+      {
+        "languageCode": "de",
+        "value": "Leuchtkugeln und beleuchtete Brunnen auf der Île des Mille et Une Nuits bei der Kolonialausstellung von 1931. Brauns Fotopostkarte nennt die Architekten Gaillard und Chevalier."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Verlichte bollen en fonteinen op het Île des Mille et Une Nuits tijdens de Koloniale Tentoonstelling van 1931. De fotokaart van Braun vermeldt de architecten Gaillard en Chevalier."
+      },
+      {
+        "languageCode": "it",
+        "value": "Sfere e fontane luminose dell’Île des Mille et Une Nuits all’Esposizione coloniale del 1931. La cartolina fotografica di Braun riporta i nomi degli architetti Gaillard e Chevalier."
+      },
+      {
+        "languageCode": "es",
+        "value": "Esferas y fuentes luminosas de la Île des Mille et Une Nuits en la Exposición Colonial de 1931. La postal fotográfica de Braun menciona a los arquitectos Gaillard y Chevalier."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Świetlne kule i fontanny na Île des Mille et Une Nuits podczas Wystawy Kolonialnej w 1931 roku. Fotograficzna pocztówka wydawnictwa Braun wymienia architektów Gaillarda i Chevaliera."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Esferas e fontes luminosas da Île des Mille et Une Nuits na Exposição Colonial de 1931. O postal fotográfico da Braun identifica os arquitetos Gaillard e Chevalier."
+      }
+    ],
+    "description": "Boules et fontaines lumineuses de l’Île des Mille et Une Nuits à l’Exposition coloniale de 1931. La carte photographique de Braun porte les noms des architectes Gaillard et Chevalier.",
+    "sourceUrl": "https://mdc.mucem.org/assets/356892/image",
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.87.1."
+      },
+      {
+        "languageCode": "en",
+        "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.87.1."
+      },
+      {
+        "languageCode": "de",
+        "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.87.1."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.87.1."
+      },
+      {
+        "languageCode": "it",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.1."
+      },
+      {
+        "languageCode": "es",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.1."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.87.1."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.87.1."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "de8c9dec5aef499eb8866095801e15b9",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/de8c9dec5aef499eb8866095801e15b9",
+      "description": "Boules et fontaines lumineuses de l’Île des Mille et Une Nuits à l’Exposition coloniale de 1931. La carte photographique de Braun porte les noms des architectes Gaillard et Chevalier.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 813,
+      "sizeInBytes": 247304,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356892/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des boules lumineuses à motifs géométriques et des jets d’eau apparaissent entre les palmiers ; une enseigne Bagdad se distingue à l’arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "Glowing spheres with geometric patterns and water jets appear among palm trees, with a Bagdad sign visible in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Leuchtende Kugeln mit geometrischen Mustern und Wasserstrahlen stehen zwischen Palmen; im Hintergrund ist ein Bagdad-Schild zu erkennen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Lichtgevende bollen met geometrische patronen en waterstralen staan tussen palmbomen; op de achtergrond is een bord met Bagdad te zien."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sfere luminose con motivi geometrici e getti d’acqua appaiono tra le palme; sullo sfondo si distingue un’insegna Bagdad."
+        },
+        {
+          "languageCode": "es",
+          "value": "Esferas luminosas con motivos geométricos y chorros de agua aparecen entre palmeras; al fondo se distingue un rótulo Bagdad."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Świecące kule o geometrycznych wzorach i strumienie wody wśród palm; w głębi widać szyld Bagdad."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Esferas luminosas com padrões geométricos e jatos de água surgem entre palmeiras; ao fundo distingue-se um letreiro Bagdad."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Boules et fontaines lumineuses de l’Île des Mille et Une Nuits à l’Exposition coloniale de 1931. La carte photographique de Braun porte les noms des architectes Gaillard et Chevalier."
+        },
+        {
+          "languageCode": "en",
+          "value": "Illuminated spheres and fountains on the Île des Mille et Une Nuits at the 1931 Colonial Exposition. Braun’s photographic postcard names the architects Gaillard and Chevalier."
+        },
+        {
+          "languageCode": "de",
+          "value": "Leuchtkugeln und beleuchtete Brunnen auf der Île des Mille et Une Nuits bei der Kolonialausstellung von 1931. Brauns Fotopostkarte nennt die Architekten Gaillard und Chevalier."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Verlichte bollen en fonteinen op het Île des Mille et Une Nuits tijdens de Koloniale Tentoonstelling van 1931. De fotokaart van Braun vermeldt de architecten Gaillard en Chevalier."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sfere e fontane luminose dell’Île des Mille et Une Nuits all’Esposizione coloniale del 1931. La cartolina fotografica di Braun riporta i nomi degli architetti Gaillard e Chevalier."
+        },
+        {
+          "languageCode": "es",
+          "value": "Esferas y fuentes luminosas de la Île des Mille et Une Nuits en la Exposición Colonial de 1931. La postal fotográfica de Braun menciona a los arquitectos Gaillard y Chevalier."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Świetlne kule i fontanny na Île des Mille et Une Nuits podczas Wystawy Kolonialnej w 1931 roku. Fotograficzna pocztówka wydawnictwa Braun wymienia architektów Gaillarda i Chevaliera."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Esferas e fontes luminosas da Île des Mille et Une Nuits na Exposição Colonial de 1931. O postal fotográfico da Braun identifica os arquitetos Gaillard e Chevalier."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.87.1."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.87.1."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.87.1."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.87.1."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.1."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.87.1."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.87.1."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.87.1."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T01:20:33.394Z",
+      "updatedAt": "2026-11-16T01:20:37.038Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-16T01:20:40.1348685Z",
+    "startedAtUtc": "2026-11-16T01:20:31.3240274Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

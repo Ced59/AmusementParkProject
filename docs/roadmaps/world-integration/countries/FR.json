@@ -6147,7 +6147,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-16T01:08:04.277Z",
+      "lastDataIntegrationAt": "2026-11-16T01:20:33.394Z",
       "integrationHistory": [
         {
           "eventId": "apply-9ad9d3c9-e054-432c-a3d3-c2a2dd4e0860",
@@ -6498,6 +6498,26 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-26-pont-mousson-night-20261116.json",
           "auditEvidence": null,
           "summary": "Exposition coloniale1931 : photographie historique 26-pont-mousson-night importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "apply-285b8a3f-3b3d-438c-ad31-758906de50b6",
+          "appliedAt": "2026-11-16T01:19:31.035Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-28-island-zone-20261116.json",
+          "auditEvidence": null,
+          "summary": "Île des Mille et Une Nuits : zone historique privée et huit notices personnellement relues ; Mucem, Cité et publications de1931 rapprochés, sans alias Bagdad ou GPS inventé."
+        },
+        {
+          "eventId": "import-photo-de8c9dec5aef499eb8866095801e15b9",
+          "appliedAt": "2026-11-16T01:20:33.394Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-29-island-lights-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 29-island-lights importée privée ; original et24métadonnées vérifiés en huit langues."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
