@@ -10323,7 +10323,7 @@
       "entryId": "US-park-b90a1e7f-16fd-4733-ad23-91a18ee83607",
       "name": "Canyon Coaster Adventure Park",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "b90a1e7f-16fd-4733-ad23-91a18ee83607",
@@ -10334,13 +10334,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Rattachement au parc confirmé par le site officiel et le ParkItem existant ; aucune nouvelle standalone à créer.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer éditorialement la fiche Park masquée et son ParkItem Canyon Coaster (b5da2ce1-0c67-4d3c-9020-218b5a9f64c7) ; vérifier les photos, horaires et tarifs officiels. Conserver la ligne sans date d’intégration tant qu’aucun Apply/import n’a été fait.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -10361,13 +10361,18 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/19627.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — site multi-activités et coaster",
+          "url": "https://canyoncoasteradventurepark.com/",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Canyon Coaster",
@@ -10380,7 +10385,7 @@
             "sourceOpenedYear": "2022"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’exploitant présente Canyon Coaster Adventure Park avec coaster, tubing d’été et d’hiver, glow tubing et restauration. Le parc masqué possède déjà le ParkItem Canyon Coaster ; conserver ce rattachement et intégrer le parc plutôt que créer un doublon standalone."
       }
     },
     {

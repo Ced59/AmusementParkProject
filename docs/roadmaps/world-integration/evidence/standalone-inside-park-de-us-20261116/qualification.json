@@ -1,0 +1,31 @@
+{
+  "reviewedAt": "2026-11-16",
+  "purpose": "Qualify coaster candidates against existing hidden Park and ParkItem records; no site integration, no publication and no integration date asserted.",
+  "entries": [
+    {
+      "entryId": "DE-park-c94df8a6-41a7-4419-8bd2-834235abec72",
+      "venue": "Mehliskopf",
+      "parkId": "c94df8a6-41a7-4419-8bd2-834235abec72",
+      "parkItemId": "70db1651-b018-4984-a659-83a210532e76",
+      "parkItem": "Bob-Bahn",
+      "sources": [
+        "https://mehliskopf.de/",
+        "https://mehliskopf.de/sommer/mehliskopf-bobbahn"
+      ],
+      "finding": "Official site lists Bobbahn alongside climbing garden, downhill carts, bungee and winter activities. Hidden Park already has Bob-Bahn as ParkItem.",
+      "decision": "InsidePark; integrate existing Park and ParkItem."
+    },
+    {
+      "entryId": "US-park-b90a1e7f-16fd-4733-ad23-91a18ee83607",
+      "venue": "Canyon Coaster Adventure Park",
+      "parkId": "b90a1e7f-16fd-4733-ad23-91a18ee83607",
+      "parkItemId": "b5da2ce1-0c67-4d3c-9020-218b5a9f64c7",
+      "parkItem": "Canyon Coaster",
+      "sources": [
+        "https://canyoncoasteradventurepark.com/"
+      ],
+      "finding": "Official site lists coaster, summer and winter tubing, glow tubing and restaurant. Hidden Park already has Canyon Coaster as ParkItem.",
+      "decision": "InsidePark; integrate existing Park and ParkItem."
+    }
+  ]
+}
