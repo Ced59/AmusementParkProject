@@ -1,0 +1,64 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "qualifiedVenue": "Théâtre-cinéma de la Cité des informations",
+  "sources": [
+    {
+      "name": "cinema-enssib",
+      "url": "https://www.enssib.fr/bibliotheque-numerique/documents/56718-le-cinema-dans-les-expositions-internationales-et-universelles-parisiennes-de-1900-a-1937.pdf",
+      "requestedAtUtc": "2026-11-16T01:31:04.100754+00:00",
+      "status": 200,
+      "finalUrl": "https://www.enssib.fr/bibliotheque-numerique/documents/56718-le-cinema-dans-les-expositions-internationales-et-universelles-parisiennes-de-1900-a-1937.pdf",
+      "bytes": 8218183,
+      "sha256": "31224b29d89b63f7f049fb120201b1c61a82f34458162f379901d7fbd435f7fc",
+      "receivedAtUtc": "2026-11-16T01:33:46.818034+00:00",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/cinema-enssib.pdf"
+    },
+    {
+      "name": "cite-architecte1931",
+      "url": "https://gargantuart.com/books/l-architecte-1931-09",
+      "requestedAtUtc": "2026-11-16T01:31:04.101472+00:00",
+      "status": 200,
+      "finalUrl": "https://gargantuart.com/books/l-architecte-1931-09",
+      "bytes": 200101,
+      "sha256": "d2e800ac09b82d57c8688a0c5012d6ac00930c431b01070b63336e08ef87f85d",
+      "receivedAtUtc": "2026-11-16T01:31:04.831658+00:00",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/cite-architecte1931.html"
+    },
+    {
+      "name": "scenic-captain",
+      "url": "https://captaincoaster.com/fr/coasters/5322/scenic-railway-exposition-coloniale-internationale",
+      "requestedAtUtc": "2026-11-16T01:31:04.101905+00:00",
+      "status": 200,
+      "finalUrl": "https://captaincoaster.com/fr/coasters/5322/scenic-railway-exposition-coloniale-internationale",
+      "bytes": 64066,
+      "sha256": "a03eb95f20932107cc135163e4c74d524e7a7848312c08bdaad8eea560197d33",
+      "receivedAtUtc": "2026-11-16T01:31:04.872308+00:00",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/scenic-captain.html"
+    },
+    {
+      "name": "cite-cnum167",
+      "url": "https://cnum.cnam.fr/pgi/redir.php?ident=SCVIE.167&onglet=i",
+      "requestedAtUtc": "2026-11-16T01:31:04.102305+00:00",
+      "status": 200,
+      "finalUrl": "https://cnum.cnam.fr/pgi/redir.php?ident=SCVIE.167&onglet=i",
+      "bytes": 44841,
+      "sha256": "372b764f329acde213bd4b5c94bbee64666c75b10f9b59976b9d45260b6f190c",
+      "receivedAtUtc": "2026-11-16T01:31:05.398736+00:00",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/cite-cnum167.html"
+    }
+  ],
+  "personalReading": [
+    "LArchitecteSeptember1931primarytext pp8–9 reproducedfreepagesGargantuart",
+    "AudeBertrand ENSSIBmasterresearchSeptember2011 pp33–34,52–53; secondarywork explicitlyquotingofficial1933generalreportvol4p129",
+    "Officialprogramme12–21June1931scans previouslyviewed:theatre/cinemaCiteInformations named"
+  ],
+  "identity": "One room for cinema/theatre/dance/galas/receptions; no secondSalleDesFetesitem created. Not Theatre dEau or projectionhalls ofotherpavilions.",
+  "conflicts": [
+    "Capacity1200 inLArchitecte1931 vs1500officialreport/guide1931 vs2500earlyannouncements. Leftunknown.",
+    "Officialguideclaimsfree; officialreportcitedbyBertrandmentions3–5francs. Historicalpricingnotintegrated.",
+    "Noexactopeningday derivedfromgeneral6Mayfairopening or a laterprogramme."
+  ],
+  "photos": "No qualified specific venue photo atthisstage; no fullbuildingimage misrepresented as room.",
+  "allEightNoticesPersonallyAuthoredAndRead": true,
+  "inventoryComplete": false
+}

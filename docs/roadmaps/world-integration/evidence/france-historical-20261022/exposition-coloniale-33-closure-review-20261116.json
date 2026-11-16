@@ -1,0 +1,237 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "exposition-1931-11-15-closure",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+            "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+            "parkItemId": null,
+            "itemKey": null,
+            "parkItemKey": null,
+            "contextParkId": null,
+            "year": 1931,
+            "month": 11,
+            "day": 15,
+            "datePrecision": "Day",
+            "eventType": "Closure",
+            "isMajor": true,
+            "isVisible": false,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "L’exposition de 1931 ferme ses portes"
+              },
+              {
+                "languageCode": "en",
+                "value": "The 1931 exposition closes"
+              },
+              {
+                "languageCode": "de",
+                "value": "Die Kolonialausstellung von 1931 schließt"
+              },
+              {
+                "languageCode": "nl",
+                "value": "De koloniale tentoonstelling van 1931 sluit"
+              },
+              {
+                "languageCode": "it",
+                "value": "L’esposizione del 1931 chiude"
+              },
+              {
+                "languageCode": "es",
+                "value": "Clausura de la Exposición de 1931"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Zamknięcie wystawy z 1931 roku"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Encerra-se a exposição de 1931"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "La manifestation s’achève autour du lac Daumesnil. Le Palais des Colonies reste à la Porte Dorée, tandis que les pavillons du Togo et du Cameroun sont conservés au sud du lac ; ces derniers deviendront la Pagode de Vincennes."
+              },
+              {
+                "languageCode": "en",
+                "value": "The event around Lac Daumesnil comes to an end. The Palais des Colonies remains at the Porte Dorée, while the Togo and Cameroon pavilions survive south of the lake; those pavilions will later become the Pagode de Vincennes."
+              },
+              {
+                "languageCode": "de",
+                "value": "Die Veranstaltung rund um den Lac Daumesnil endet. Der Palais des Colonies bleibt an der Porte Dorée bestehen, ebenso die Pavillons von Togo und Kamerun südlich des Sees. Diese werden später zur Pagode de Vincennes."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het evenement rond het Lac Daumesnil eindigt. Het Palais des Colonies blijft bij de Porte Dorée staan, terwijl ten zuiden van het meer de paviljoens van Togo en Kameroen behouden blijven. Die paviljoens worden later de Pagode de Vincennes."
+              },
+              {
+                "languageCode": "it",
+                "value": "La manifestazione intorno al lago Daumesnil si conclude. Il Palais des Colonies rimane alla porte Dorée, mentre a sud del lago vengono conservati i padiglioni del Togo e del Camerun, destinati a diventare la Pagode de Vincennes."
+              },
+              {
+                "languageCode": "es",
+                "value": "La manifestación en torno al lago Daumesnil llega a su fin. El Palais des Colonies permanece en la porte Dorée, mientras al sur del lago se conservan los pabellones de Togo y Camerún, que más tarde se convertirán en la Pagode de Vincennes."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Wydarzenie wokół jeziora Daumesnil dobiega końca. Palais des Colonies pozostaje przy porte Dorée, a na południe od jeziora zachowane zostają pawilony Togo i Kamerunu. W późniejszych latach powstanie w nich Pagode de Vincennes."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A manifestação em redor do lago Daumesnil chega ao fim. O Palais des Colonies permanece na porte Dorée, enquanto a sul do lago são preservados os pavilhões do Togo e dos Camarões, que mais tarde se tornarão a Pagode de Vincennes."
+              }
+            ],
+            "mainImageId": null,
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Palais de la Porte Dorée — Transcription du parcours architecture, décembre 2025, p. 10",
+                "url": "https://www.palais-portedoree.fr/sites/default/files/2025-12/Transcription_parcours_visite_palais_archi_122025_0.pdf",
+                "accessedAt": "2026-10-20"
+              }
+            ],
+            "article": null
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-park-data-integration",
+        "notes": "Eight personally authored and reviewed closure summaries replace vague legacy statements with the surviving Palais des Colonies and Togo/Cameroon pavilions, supported by official architecture visit transcription p10. Event/date/title/source/visibility preserved; no image added because no actual closure photograph is qualified."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "7cca09bd-e195-4176-a93d-ff2c437e58eb",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:32:37.1502389Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c0be5b86-3591-4e25-a396-1da52d7b1ec6",
+        "entityKey": "exposition-1931-11-15-closure",
+        "displayName": "L’exposition de 1931 ferme ses portes",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Nach mehr als sechs Monaten endet das große, vorübergehende Ereignis. Für die erhaltenen Gebäude und das dauerhafte Museum beginnt eine andere Phase, während die Anlagen der Ausstellung unterschiedliche weitere Wege nehmen., en:The closure ends the major temporary event after more than six months. It begins another period for the retained buildings and the permanent museum, while the exposition’s installations follow different subsequent paths., es:La clausura pone fin al gran evento temporal después de más de seis meses. Comienza otra etapa para los edificios conservados y el museo permanente, mientras las instalaciones de la exposición siguen destinos distintos., fr:La clôture met fin au grand événement temporaire après plus de six mois. Elle ouvre une autre période pour les bâtiments conservés et le musée permanent, tandis que les installations de l’exposition connaissent des destins distincts., it:La chiusura mette fine al grande evento temporaneo dopo oltre sei mesi. Per gli edifici conservati e il museo permanente comincia un’altra fase, mentre le installazioni dell’esposizione seguono percorsi diversi., nl:Na ruim zes maanden komt er een einde aan het grote tijdelijke evenement. Voor de bewaarde gebouwen en het permanente museum begint een andere periode, terwijl de installaties van de tentoonstelling verschillende verdere bestemmingen krijgen., pl:Po ponad sześciu miesiącach wielkie, tymczasowe wydarzenie dobiega końca. Dla zachowanych budynków i stałego muzeum rozpoczyna się inny etap, a poszczególne instalacje wystawy czekają różne dalsze losy., pt:O encerramento põe fim ao grande evento temporário após mais de seis meses. Começa outra fase para os edifícios preservados e o museu permanente, enquanto as instalações da exposição seguem destinos diferentes.",
+            "newValue": "de:Die Veranstaltung rund um den Lac Daumesnil endet. Der Palais des Colonies bleibt an der Porte Dorée bestehen, ebenso die Pavillons von Togo und Kamerun südlich des Sees. Diese werden später zur Pagode de Vincennes., en:The event around Lac Daumesnil comes to an end. The Palais des Colonies remains at the Porte Dorée, while the Togo and Cameroon pavilions survive south of the lake; those pavilions will later become the Pagode de Vincennes., es:La manifestación en torno al lago Daumesnil llega a su fin. El Palais des Colonies permanece en la porte Dorée, mientras al sur del lago se conservan los pabellones de Togo y Camerún, que más tarde se convertirán en la Pagode de Vincennes., fr:La manifestation s’achève autour du lac Daumesnil. Le Palais des Colonies reste à la Porte Dorée, tandis que les pavillons du Togo et du Cameroun sont conservés au sud du lac ; ces derniers deviendront la Pagode de Vincennes., it:La manifestazione intorno al lago Daumesnil si conclude. Il Palais des Colonies rimane alla porte Dorée, mentre a sud del lago vengono conservati i padiglioni del Togo e del Camerun, destinati a diventare la Pagode de Vincennes., nl:Het evenement rond het Lac Daumesnil eindigt. Het Palais des Colonies blijft bij de Porte Dorée staan, terwijl ten zuiden van het meer de paviljoens van Togo en Kameroen behouden blijven. Die paviljoens worden later de Pagode de Vincennes., pl:Wydarzenie wokół jeziora Daumesnil dobiega końca. Palais des Colonies pozostaje przy porte Dorée, a na południe od jeziora zachowane zostają pawilony Togo i Kamerunu. W późniejszych latach powstanie w nich Pagode de Vincennes., pt:A manifestação em redor do lago Daumesnil chega ao fim. O Palais des Colonies permanece na porte Dorée, enquanto a sul do lago são preservados os pavilhões do Togo e dos Camarões, que mais tarde se tornarão a Pagode de Vincennes."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "b3d71e93-f611-4cdc-b864-b9d83716a0ca",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:33:11.8804326Z",
+    "appliedAtUtc": "2026-11-16T01:33:11.8804338Z",
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c0be5b86-3591-4e25-a396-1da52d7b1ec6",
+        "entityKey": "exposition-1931-11-15-closure",
+        "displayName": "L’exposition de 1931 ferme ses portes",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Nach mehr als sechs Monaten endet das große, vorübergehende Ereignis. Für die erhaltenen Gebäude und das dauerhafte Museum beginnt eine andere Phase, während die Anlagen der Ausstellung unterschiedliche weitere Wege nehmen., en:The closure ends the major temporary event after more than six months. It begins another period for the retained buildings and the permanent museum, while the exposition’s installations follow different subsequent paths., es:La clausura pone fin al gran evento temporal después de más de seis meses. Comienza otra etapa para los edificios conservados y el museo permanente, mientras las instalaciones de la exposición siguen destinos distintos., fr:La clôture met fin au grand événement temporaire après plus de six mois. Elle ouvre une autre période pour les bâtiments conservés et le musée permanent, tandis que les installations de l’exposition connaissent des destins distincts., it:La chiusura mette fine al grande evento temporaneo dopo oltre sei mesi. Per gli edifici conservati e il museo permanente comincia un’altra fase, mentre le installazioni dell’esposizione seguono percorsi diversi., nl:Na ruim zes maanden komt er een einde aan het grote tijdelijke evenement. Voor de bewaarde gebouwen en het permanente museum begint een andere periode, terwijl de installaties van de tentoonstelling verschillende verdere bestemmingen krijgen., pl:Po ponad sześciu miesiącach wielkie, tymczasowe wydarzenie dobiega końca. Dla zachowanych budynków i stałego muzeum rozpoczyna się inny etap, a poszczególne instalacje wystawy czekają różne dalsze losy., pt:O encerramento põe fim ao grande evento temporário após mais de seis meses. Começa outra fase para os edifícios preservados e o museu permanente, enquanto as instalações da exposição seguem destinos diferentes.",
+            "newValue": "de:Die Veranstaltung rund um den Lac Daumesnil endet. Der Palais des Colonies bleibt an der Porte Dorée bestehen, ebenso die Pavillons von Togo und Kamerun südlich des Sees. Diese werden später zur Pagode de Vincennes., en:The event around Lac Daumesnil comes to an end. The Palais des Colonies remains at the Porte Dorée, while the Togo and Cameroon pavilions survive south of the lake; those pavilions will later become the Pagode de Vincennes., es:La manifestación en torno al lago Daumesnil llega a su fin. El Palais des Colonies permanece en la porte Dorée, mientras al sur del lago se conservan los pabellones de Togo y Camerún, que más tarde se convertirán en la Pagode de Vincennes., fr:La manifestation s’achève autour du lac Daumesnil. Le Palais des Colonies reste à la Porte Dorée, tandis que les pavillons du Togo et du Cameroun sont conservés au sud du lac ; ces derniers deviendront la Pagode de Vincennes., it:La manifestazione intorno al lago Daumesnil si conclude. Il Palais des Colonies rimane alla porte Dorée, mentre a sud del lago vengono conservati i padiglioni del Togo e del Camerun, destinati a diventare la Pagode de Vincennes., nl:Het evenement rond het Lac Daumesnil eindigt. Het Palais des Colonies blijft bij de Porte Dorée staan, terwijl ten zuiden van het meer de paviljoens van Togo en Kameroen behouden blijven. Die paviljoens worden later de Pagode de Vincennes., pl:Wydarzenie wokół jeziora Daumesnil dobiega końca. Palais des Colonies pozostaje przy porte Dorée, a na południe od jeziora zachowane zostają pawilony Togo i Kamerunu. W późniejszych latach powstanie w nich Pagode de Vincennes., pt:A manifestação em redor do lago Daumesnil chega ao fim. O Palais des Colonies permanece na porte Dorée, enquanto a sul do lago são preservados os pavilhões do Togo e dos Camarões, que mais tarde se tornarão a Pagode de Vincennes."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "allEightSummariesPersonallyWrittenReviewedAndExact": true,
+  "sourceQualification": "Palais de la Porte Dorée official architecture visit transcription, December2025, page10 personally read; dates6May–15November1931 and surviving Togo/Cameroon pavilions identified.",
+  "noOtherFieldChanged": true,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

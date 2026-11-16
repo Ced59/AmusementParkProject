@@ -6147,7 +6147,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-16T01:20:33.394Z",
+      "lastDataIntegrationAt": "2026-11-16T01:36:31.178Z",
       "integrationHistory": [
         {
           "eventId": "apply-9ad9d3c9-e054-432c-a3d3-c2a2dd4e0860",
@@ -6518,6 +6518,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-29-island-lights-20261116.json",
           "auditEvidence": null,
           "summary": "Exposition coloniale1931 : photographie historique 29-island-lights importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "apply-a68864e7-e1d3-4122-8b5f-718c0ea3a2d6",
+          "appliedAt": "2026-11-16T01:28:38.454Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-31-history-images-20261116.json",
+          "auditEvidence": null,
+          "summary": "Photographies existantes rattachées au fait d’inauguration et à l’article sur les nuits du lac ; huit langues relues, textes et douze blocs conservés, contenus toujours privés."
+        },
+        {
+          "eventId": "apply-b3d71e93-f611-4cdc-b864-b9d83716a0ca",
+          "appliedAt": "2026-11-16T01:33:11.880Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-33-closure-review-20261116.json",
+          "auditEvidence": null,
+          "summary": "Huit résumés privés de la clôture du15novembre1931 précisés autour du Palais des Colonies et des pavillons Togo/Cameroun conservés ; dates, titres et autres données inchangés."
+        },
+        {
+          "eventId": "apply-a842555d-cc6e-41e8-ab2c-6a15cfd2dbb9",
+          "appliedAt": "2026-11-16T01:36:31.178Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-35-cite-cinema-20261116.json",
+          "auditEvidence": null,
+          "summary": "Théâtre-cinéma de la Cité des informations intégré en privé avec huit notices relues ; une seule salle polyvalente qualifiée, dates limitées à1931, capacité contradictoire non renseignée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

@@ -1,0 +1,320 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "exposition-coloniale-theatre-cinema-cite-informations",
+          "name": "Théâtre-cinéma de la Cité des informations",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "ClosedDefinitively",
+            "openingDateText": "1931",
+            "closingDateText": "1931",
+            "isIndoor": true,
+            "sourceUrl": "https://gargantuart.com/books/l-architecte-1931-09"
+          },
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La scène de la Cité des informations</h2><p>Dans l’Exposition coloniale de 1931, la Cité internationale des informations réunissait des services de documentation et des espaces de réception. Son théâtre-cinéma était accessible depuis le grand hall par un vestibule et un large escalier. Le bâtiment était l’œuvre de Jean Bourgon et de Fernand-Camille Chevalier ; le peintre Jaulmes avait reçu la décoration de la salle et de son rideau.</p><h2>Films coloniaux et représentations</h2><p>Les projections privilégiaient les documentaires consacrés aux colonies, dans le cadre du discours impérial porté par l’exposition. Des films muets, sonores et parlants se succédaient, avec notamment La Croisière noire de Léon Poirier parmi les œuvres programmées.</p><p>La scène accueillait aussi du théâtre, de la danse et des galas. Vision d’Afrique mêlait ces formes au cinéma lors du spectacle inaugural. Les fêtes, réceptions et congrès occupaient également la salle, parfois au détriment des séances annoncées : le lieu fonctionnait à la fois comme cinéma et comme salle des fêtes de la Cité.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The stage within the Cité des informations</h2><p>At the 1931 Colonial Exposition, the Cité internationale des informations combined documentation services with reception spaces. Its theatre-cinema was reached from the main hall through a vestibule and a broad staircase. Jean Bourgon and Fernand-Camille Chevalier designed the building; the painter Jaulmes was commissioned to decorate the auditorium and its curtain.</p><h2>Colonial films and performances</h2><p>Screenings gave priority to documentaries about the colonies, supporting the exposition’s imperial message. Silent films appeared alongside sound films and talkies, with Léon Poirier’s La Croisière noire among the works shown.</p><p>The stage also hosted theatre, dance and galas. The inaugural production, Vision d’Afrique, combined these forms with cinema. Celebrations, receptions and congresses shared the room, sometimes displacing scheduled screenings: the venue served both as a cinema and as the Cité’s ceremonial hall.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Bühne der Cité des informations</h2><p>Auf der Kolonialausstellung von 1931 vereinte die Cité internationale des informations Auskunftsstellen und Empfangsräume. Ihr Theaterkino war von der großen Halle aus über einen Vorraum und eine breite Treppe erreichbar. Jean Bourgon und Fernand-Camille Chevalier entwarfen das Gebäude; der Maler Jaulmes erhielt den Auftrag für die Ausmalung des Saals und die Gestaltung des Vorhangs.</p><h2>Kolonialfilme und Bühnenaufführungen</h2><p>Im Mittelpunkt der Vorführungen standen Dokumentarfilme über die Kolonien, die sich in die imperiale Botschaft der Ausstellung einfügten. Stummfilme wechselten mit Ton- und Sprechfilmen. Zu den gezeigten Werken gehörte Léon Poiriers La Croisière noire.</p><p>Auf der Bühne fanden auch Theater, Tanz und Galas statt. Das Eröffnungsprogramm Vision d’Afrique verband diese Darbietungen mit Film. Feste, Empfänge und Kongresse beanspruchten den Saal ebenfalls und verdrängten gelegentlich angekündigte Vorführungen. Er diente somit zugleich als Kino und als Festsaal der Cité.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Het podium van de Cité des informations</h2><p>Op de Koloniale Tentoonstelling van 1931 bracht de Cité internationale des informations documentatiediensten en ontvangstruimten samen. Het theater en de bioscoop deelden een zaal die vanuit de grote hal via een vestibule en een brede trap bereikbaar was. Jean Bourgon en Fernand-Camille Chevalier ontwierpen het gebouw; schilder Jaulmes kreeg de opdracht voor de decoratie van de zaal en het toneeldoek.</p><h2>Koloniale films en voorstellingen</h2><p>De vertoningen waren vooral gewijd aan documentaires over de koloniën en sloten aan bij de imperiale boodschap van de tentoonstelling. Stomme films stonden naast geluidsfilms en films met gesproken dialoog op het programma, waaronder La Croisière noire van Léon Poirier.</p><p>Het podium bood ook plaats aan toneel, dans en gala’s. De openingsvoorstelling Vision d’Afrique combineerde die vormen met film. Feesten, ontvangsten en congressen namen de zaal eveneens in gebruik, soms ten koste van aangekondigde filmvertoningen. Het was daardoor zowel de bioscoop als de feestzaal van de Cité.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Il palcoscenico della Cité des informations</h2><p>Nell’Esposizione coloniale del 1931, la Cité internationale des informations riuniva servizi di documentazione e spazi per ricevimenti. Al suo teatro-cinema si accedeva dal grande atrio attraverso un vestibolo e un’ampia scala. L’edificio era opera di Jean Bourgon e Fernand-Camille Chevalier; al pittore Jaulmes erano state affidate la decorazione della sala e quella del sipario.</p><h2>Film coloniali e rappresentazioni</h2><p>Le proiezioni privilegiavano i documentari sulle colonie, inseriti nel discorso imperiale dell’esposizione. Film muti, sonori e parlati si alternavano sullo schermo; tra le opere programmate figurava La Croisière noire di Léon Poirier.</p><p>Il palcoscenico ospitava anche teatro, danza e serate di gala. Lo spettacolo inaugurale Vision d’Afrique intrecciava queste forme con il cinema. Feste, ricevimenti e congressi occupavano a loro volta la sala, talvolta facendo rinviare le proiezioni annunciate: il luogo serviva quindi sia da cinema sia da sala delle feste della Cité.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El escenario de la Cité des informations</h2><p>En la Exposición Colonial de 1931, la Cité internationale des informations reunía servicios de documentación y espacios para recepciones. A su teatro-cine se accedía desde el gran vestíbulo por una antesala y una amplia escalera. El edificio fue obra de Jean Bourgon y Fernand-Camille Chevalier; el pintor Jaulmes recibió el encargo de decorar la sala y el telón.</p><h2>Películas coloniales y representaciones</h2><p>Las proyecciones daban prioridad a los documentales sobre las colonias, dentro del discurso imperial de la exposición. Se alternaban películas mudas, sonoras y habladas, con La Croisière noire de Léon Poirier entre las obras programadas.</p><p>El escenario también acogía teatro, danza y galas. El espectáculo inaugural Vision d’Afrique combinaba estas formas con el cine. Fiestas, recepciones y congresos ocupaban asimismo la sala, a veces desplazando proyecciones anunciadas: el recinto funcionaba tanto como cine como salón de fiestas de la Cité.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Scena w Cité des informations</h2><p>Podczas Wystawy Kolonialnej w 1931 roku Cité internationale des informations mieściła punkty dokumentacji oraz pomieszczenia na przyjęcia. Do jej sali teatralno-kinowej prowadziły z głównego holu przedsionek i szerokie schody. Budynek zaprojektowali Jean Bourgon i Fernand-Camille Chevalier; malarzowi Jaulmesowi powierzono dekorację sali oraz kurtyny.</p><h2>Filmy kolonialne i występy</h2><p>W programie dominowały dokumenty o koloniach, wpisujące się w imperialny przekaz wystawy. Pokazywano filmy nieme, udźwiękowione i mówione, a wśród wyświetlanych dzieł znalazła się La Croisière noire Léona Poiriera.</p><p>Na scenie odbywały się również przedstawienia teatralne, taniec i gale. Inauguracyjne widowisko Vision d’Afrique łączyło te formy z kinem. Z sali korzystano także podczas uroczystości, przyjęć i kongresów, czasem kosztem zapowiedzianych seansów. Pełniła więc jednocześnie funkcję kina i sali uroczystości Cité.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O palco da Cité des informations</h2><p>Na Exposição Colonial de 1931, a Cité internationale des informations reunia serviços de documentação e espaços de receção. Ao seu teatro-cinema chegava-se a partir do grande átrio, através de um vestíbulo e de uma ampla escadaria. O edifício era da autoria de Jean Bourgon e Fernand-Camille Chevalier; ao pintor Jaulmes foram confiadas a decoração da sala e a do pano de boca.</p><h2>Filmes coloniais e representações</h2><p>As projeções privilegiavam os documentários sobre as colónias, enquadrados no discurso imperial da exposição. Alternavam-se filmes mudos, sonoros e falados, com La Croisière noire, de Léon Poirier, entre as obras programadas.</p><p>O palco acolhia também teatro, dança e galas. O espetáculo inaugural Vision d’Afrique combinava essas formas com o cinema. Festas, receções e congressos ocupavam igualmente a sala, por vezes afastando sessões anunciadas: o espaço servia tanto de cinema como de salão de festas da Cité.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-exposition-coloniale-cite-cinema",
+        "notes": "One historical multipurpose theatre/cinema venue inside the1931exposition, distinct from Theatre dEau, not an independentcinema park or oneitemperfilm. LArchitecteSeptember1931pp8–9/plates51–53 identifies Bourgon/Chevalier, Jaulmes decoration and1200seats. AudeBertrand ENSSIB2011pp33–34 cites officialgeneralreport1933vol4p129: same theatre-cinema/SalleDesFetes, staircase/vestibule, film and live programming; 1500/2500seats conflict so capacityunasserted. Presence and purpose-built venue qualify1931yearonly; exactinauguration/publicopening/closureday not inferred. No fixedGPS or accessrestrictions sourced. No manufacturerreference inferred fromarchitects. Eight rich descriptions personallywritten/read. Allnewdataprivate."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "61715b1f-673d-4f7d-aef2-a5000c401875",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:36:11.1411756Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8e4a5255-fa85-4eff-87f3-1dd28e66e95e",
+        "entityKey": "exposition-coloniale-theatre-cinema-cite-informations",
+        "displayName": "Théâtre-cinéma de la Cité des informations",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Bühne der Cité des informations</h2><p>Auf der Kolonialausstellung von 1931 vereinte die Cité internationale des informations Auskunftsstellen und Empfangsräume. Ihr Theaterkino war von der großen Halle aus über einen Vorraum und eine breite Treppe erreichbar. Jean Bourgon und Fernand-Camille Chevalier entwarfen das Gebäude; der Maler Jaulmes erhielt den Auftrag für die Ausmalung des Saals und die Gestaltung des Vorhangs.</p><h2>Kolonialfilme und Bühnenaufführungen</h2><p>Im Mittelpunkt der Vorführungen standen Dokumentarfilme über die Kolonien, die sich in die imperiale Botschaft der Ausstellung einfügten. Stummfilme wechselten mit Ton- und Sprechfilmen. Zu den gezeigten Werken gehörte Léon Poiriers La Croisière noire.</p><p>Auf der Bühne fanden auch Theater, Tanz und Galas statt. Das Eröffnungsprogramm Vision d’Afrique verband diese Darbietungen mit Film. Feste, Empfänge und Kongresse beanspruchten den Saal ebenfalls und verdrängten gelegentlich angekündigte Vorführungen. Er diente somit zugleich als Kino und als Festsaal der Cité.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The stage within the Cité des informations</h2><p>At the 1931 Colonial Exposition, the Cité internationale des informations combined documentation services with reception spaces. Its theatre-cinema was reached from the main hall through a vestibule and a broad staircase. Jean Bourgon and Fernand-Camille Chevalier designed the building; the painter Jaulmes was commissioned to decorate the auditorium and its curtain.</p><h2>Colonial films and performances</h2><p>Screenings gave priority to documentaries about the colonies, supporting the exposition’s imperial message. Silent films appeared alongside sound films and talkies, with Léon Poirier’s La Croisière noire among the works shown.</p><p>The stage also hosted theatre, dance and galas. The inaugural production, Vision d’Afrique, combined these forms with cinema. Celebrations, receptions and congresses shared the room, sometimes displacing scheduled screenings: the venue served both as a cinema and as the Cité’s ceremonial hall.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El escenario de la Cité des informations</h2><p>En la Exposición Colonial de 1931, la Cité internationale des informations reunía servicios de documentación y espacios para recepciones. A su teatro-cine se accedía desde el gran vestíbulo por una antesala y una amplia escalera. El edificio fue obra de Jean Bourgon y Fernand-Camille Chevalier; el pintor Jaulmes recibió el encargo de decorar la sala y el telón.</p><h2>Películas coloniales y representaciones</h2><p>Las proyecciones daban prioridad a los documentales sobre las colonias, dentro del discurso imperial de la exposición. Se alternaban películas mudas, sonoras y habladas, con La Croisière noire de Léon Poirier entre las obras programadas.</p><p>El escenario también acogía teatro, danza y galas. El espectáculo inaugural Vision d’Afrique combinaba estas formas con el cine. Fiestas, recepciones y congresos ocupaban asimismo la sala, a veces desplazando proyecciones anunciadas: el recinto funcionaba tanto como cine como salón de fiestas de la Cité.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La scène de la Cité des informations</h2><p>Dans l’Exposition coloniale de 1931, la Cité internationale des informations réunissait des services de documentation et des espaces de réception. Son théâtre-cinéma était accessible depuis le grand hall par un vestibule et un large escalier. Le bâtiment était l’œuvre de Jean Bourgon et de Fernand-Camille Chevalier ; le peintre Jaulmes avait reçu la décoration de la salle et de son rideau.</p><h2>Films coloniaux et représentations</h2><p>Les projections privilégiaient les documentaires consacrés aux colonies, dans le cadre du discours impérial porté par l’exposition. Des films muets, sonores et parlants se succédaient, avec notamment La Croisière noire de Léon Poirier parmi les œuvres programmées.</p><p>La scène accueillait aussi du théâtre, de la danse et des galas. Vision d’Afrique mêlait ces formes au cinéma lors du spectacle inaugural. Les fêtes, réceptions et congrès occupaient également la salle, parfois au détriment des séances annoncées : le lieu fonctionnait à la fois comme cinéma et comme salle des fêtes de la Cité.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il palcoscenico della Cité des informations</h2><p>Nell’Esposizione coloniale del 1931, la Cité internationale des informations riuniva servizi di documentazione e spazi per ricevimenti. Al suo teatro-cinema si accedeva dal grande atrio attraverso un vestibolo e un’ampia scala. L’edificio era opera di Jean Bourgon e Fernand-Camille Chevalier; al pittore Jaulmes erano state affidate la decorazione della sala e quella del sipario.</p><h2>Film coloniali e rappresentazioni</h2><p>Le proiezioni privilegiavano i documentari sulle colonie, inseriti nel discorso imperiale dell’esposizione. Film muti, sonori e parlati si alternavano sullo schermo; tra le opere programmate figurava La Croisière noire di Léon Poirier.</p><p>Il palcoscenico ospitava anche teatro, danza e serate di gala. Lo spettacolo inaugurale Vision d’Afrique intrecciava queste forme con il cinema. Feste, ricevimenti e congressi occupavano a loro volta la sala, talvolta facendo rinviare le proiezioni annunciate: il luogo serviva quindi sia da cinema sia da sala delle feste della Cité.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het podium van de Cité des informations</h2><p>Op de Koloniale Tentoonstelling van 1931 bracht de Cité internationale des informations documentatiediensten en ontvangstruimten samen. Het theater en de bioscoop deelden een zaal die vanuit de grote hal via een vestibule en een brede trap bereikbaar was. Jean Bourgon en Fernand-Camille Chevalier ontwierpen het gebouw; schilder Jaulmes kreeg de opdracht voor de decoratie van de zaal en het toneeldoek.</p><h2>Koloniale films en voorstellingen</h2><p>De vertoningen waren vooral gewijd aan documentaires over de koloniën en sloten aan bij de imperiale boodschap van de tentoonstelling. Stomme films stonden naast geluidsfilms en films met gesproken dialoog op het programma, waaronder La Croisière noire van Léon Poirier.</p><p>Het podium bood ook plaats aan toneel, dans en gala’s. De openingsvoorstelling Vision d’Afrique combineerde die vormen met film. Feesten, ontvangsten en congressen namen de zaal eveneens in gebruik, soms ten koste van aangekondigde filmvertoningen. Het was daardoor zowel de bioscoop als de feestzaal van de Cité.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Scena w Cité des informations</h2><p>Podczas Wystawy Kolonialnej w 1931 roku Cité internationale des informations mieściła punkty dokumentacji oraz pomieszczenia na przyjęcia. Do jej sali teatralno-kinowej prowadziły z głównego holu przedsionek i szerokie schody. Budynek zaprojektowali Jean Bourgon i Fernand-Camille Chevalier; malarzowi Jaulmesowi powierzono dekorację sali oraz kurtyny.</p><h2>Filmy kolonialne i występy</h2><p>W programie dominowały dokumenty o koloniach, wpisujące się w imperialny przekaz wystawy. Pokazywano filmy nieme, udźwiękowione i mówione, a wśród wyświetlanych dzieł znalazła się La Croisière noire Léona Poiriera.</p><p>Na scenie odbywały się również przedstawienia teatralne, taniec i gale. Inauguracyjne widowisko Vision d’Afrique łączyło te formy z kinem. Z sali korzystano także podczas uroczystości, przyjęć i kongresów, czasem kosztem zapowiedzianych seansów. Pełniła więc jednocześnie funkcję kina i sali uroczystości Cité.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O palco da Cité des informations</h2><p>Na Exposição Colonial de 1931, a Cité internationale des informations reunia serviços de documentação e espaços de receção. Ao seu teatro-cinema chegava-se a partir do grande átrio, através de um vestíbulo e de uma ampla escadaria. O edifício era da autoria de Jean Bourgon e Fernand-Camille Chevalier; ao pintor Jaulmes foram confiadas a decoração da sala e a do pano de boca.</p><h2>Filmes coloniais e representações</h2><p>As projeções privilegiavam os documentários sobre as colónias, enquadrados no discurso imperial da exposição. Alternavam-se filmes mudos, sonoros e falados, com La Croisière noire, de Léon Poirier, entre as obras programadas.</p><p>O palco acolhia também teatro, dança e galas. O espetáculo inaugural Vision d’Afrique combinava essas formas com o cinema. Festas, receções e congressos ocupavam igualmente a sala, por vezes afastando sessões anunciadas: o espaço servia tanto de cinema como de salão de festas da Cité.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://gargantuart.com/books/l-architecte-1931-09"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "1931"
+          },
+          {
+            "field": "attractionDetails.closingDateText",
+            "oldValue": null,
+            "newValue": "1931"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "a842555d-cc6e-41e8-ab2c-6a15cfd2dbb9",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:36:31.1782407Z",
+    "appliedAtUtc": "2026-11-16T01:36:31.178242Z",
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2dfcd455-bead-4bd3-a868-8bf3b1ffebac",
+        "entityKey": "exposition-coloniale-theatre-cinema-cite-informations",
+        "displayName": "Théâtre-cinéma de la Cité des informations",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Bühne der Cité des informations</h2><p>Auf der Kolonialausstellung von 1931 vereinte die Cité internationale des informations Auskunftsstellen und Empfangsräume. Ihr Theaterkino war von der großen Halle aus über einen Vorraum und eine breite Treppe erreichbar. Jean Bourgon und Fernand-Camille Chevalier entwarfen das Gebäude; der Maler Jaulmes erhielt den Auftrag für die Ausmalung des Saals und die Gestaltung des Vorhangs.</p><h2>Kolonialfilme und Bühnenaufführungen</h2><p>Im Mittelpunkt der Vorführungen standen Dokumentarfilme über die Kolonien, die sich in die imperiale Botschaft der Ausstellung einfügten. Stummfilme wechselten mit Ton- und Sprechfilmen. Zu den gezeigten Werken gehörte Léon Poiriers La Croisière noire.</p><p>Auf der Bühne fanden auch Theater, Tanz und Galas statt. Das Eröffnungsprogramm Vision d’Afrique verband diese Darbietungen mit Film. Feste, Empfänge und Kongresse beanspruchten den Saal ebenfalls und verdrängten gelegentlich angekündigte Vorführungen. Er diente somit zugleich als Kino und als Festsaal der Cité.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The stage within the Cité des informations</h2><p>At the 1931 Colonial Exposition, the Cité internationale des informations combined documentation services with reception spaces. Its theatre-cinema was reached from the main hall through a vestibule and a broad staircase. Jean Bourgon and Fernand-Camille Chevalier designed the building; the painter Jaulmes was commissioned to decorate the auditorium and its curtain.</p><h2>Colonial films and performances</h2><p>Screenings gave priority to documentaries about the colonies, supporting the exposition’s imperial message. Silent films appeared alongside sound films and talkies, with Léon Poirier’s La Croisière noire among the works shown.</p><p>The stage also hosted theatre, dance and galas. The inaugural production, Vision d’Afrique, combined these forms with cinema. Celebrations, receptions and congresses shared the room, sometimes displacing scheduled screenings: the venue served both as a cinema and as the Cité’s ceremonial hall.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El escenario de la Cité des informations</h2><p>En la Exposición Colonial de 1931, la Cité internationale des informations reunía servicios de documentación y espacios para recepciones. A su teatro-cine se accedía desde el gran vestíbulo por una antesala y una amplia escalera. El edificio fue obra de Jean Bourgon y Fernand-Camille Chevalier; el pintor Jaulmes recibió el encargo de decorar la sala y el telón.</p><h2>Películas coloniales y representaciones</h2><p>Las proyecciones daban prioridad a los documentales sobre las colonias, dentro del discurso imperial de la exposición. Se alternaban películas mudas, sonoras y habladas, con La Croisière noire de Léon Poirier entre las obras programadas.</p><p>El escenario también acogía teatro, danza y galas. El espectáculo inaugural Vision d’Afrique combinaba estas formas con el cine. Fiestas, recepciones y congresos ocupaban asimismo la sala, a veces desplazando proyecciones anunciadas: el recinto funcionaba tanto como cine como salón de fiestas de la Cité.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La scène de la Cité des informations</h2><p>Dans l’Exposition coloniale de 1931, la Cité internationale des informations réunissait des services de documentation et des espaces de réception. Son théâtre-cinéma était accessible depuis le grand hall par un vestibule et un large escalier. Le bâtiment était l’œuvre de Jean Bourgon et de Fernand-Camille Chevalier ; le peintre Jaulmes avait reçu la décoration de la salle et de son rideau.</p><h2>Films coloniaux et représentations</h2><p>Les projections privilégiaient les documentaires consacrés aux colonies, dans le cadre du discours impérial porté par l’exposition. Des films muets, sonores et parlants se succédaient, avec notamment La Croisière noire de Léon Poirier parmi les œuvres programmées.</p><p>La scène accueillait aussi du théâtre, de la danse et des galas. Vision d’Afrique mêlait ces formes au cinéma lors du spectacle inaugural. Les fêtes, réceptions et congrès occupaient également la salle, parfois au détriment des séances annoncées : le lieu fonctionnait à la fois comme cinéma et comme salle des fêtes de la Cité.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il palcoscenico della Cité des informations</h2><p>Nell’Esposizione coloniale del 1931, la Cité internationale des informations riuniva servizi di documentazione e spazi per ricevimenti. Al suo teatro-cinema si accedeva dal grande atrio attraverso un vestibolo e un’ampia scala. L’edificio era opera di Jean Bourgon e Fernand-Camille Chevalier; al pittore Jaulmes erano state affidate la decorazione della sala e quella del sipario.</p><h2>Film coloniali e rappresentazioni</h2><p>Le proiezioni privilegiavano i documentari sulle colonie, inseriti nel discorso imperiale dell’esposizione. Film muti, sonori e parlati si alternavano sullo schermo; tra le opere programmate figurava La Croisière noire di Léon Poirier.</p><p>Il palcoscenico ospitava anche teatro, danza e serate di gala. Lo spettacolo inaugurale Vision d’Afrique intrecciava queste forme con il cinema. Feste, ricevimenti e congressi occupavano a loro volta la sala, talvolta facendo rinviare le proiezioni annunciate: il luogo serviva quindi sia da cinema sia da sala delle feste della Cité.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het podium van de Cité des informations</h2><p>Op de Koloniale Tentoonstelling van 1931 bracht de Cité internationale des informations documentatiediensten en ontvangstruimten samen. Het theater en de bioscoop deelden een zaal die vanuit de grote hal via een vestibule en een brede trap bereikbaar was. Jean Bourgon en Fernand-Camille Chevalier ontwierpen het gebouw; schilder Jaulmes kreeg de opdracht voor de decoratie van de zaal en het toneeldoek.</p><h2>Koloniale films en voorstellingen</h2><p>De vertoningen waren vooral gewijd aan documentaires over de koloniën en sloten aan bij de imperiale boodschap van de tentoonstelling. Stomme films stonden naast geluidsfilms en films met gesproken dialoog op het programma, waaronder La Croisière noire van Léon Poirier.</p><p>Het podium bood ook plaats aan toneel, dans en gala’s. De openingsvoorstelling Vision d’Afrique combineerde die vormen met film. Feesten, ontvangsten en congressen namen de zaal eveneens in gebruik, soms ten koste van aangekondigde filmvertoningen. Het was daardoor zowel de bioscoop als de feestzaal van de Cité.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Scena w Cité des informations</h2><p>Podczas Wystawy Kolonialnej w 1931 roku Cité internationale des informations mieściła punkty dokumentacji oraz pomieszczenia na przyjęcia. Do jej sali teatralno-kinowej prowadziły z głównego holu przedsionek i szerokie schody. Budynek zaprojektowali Jean Bourgon i Fernand-Camille Chevalier; malarzowi Jaulmesowi powierzono dekorację sali oraz kurtyny.</p><h2>Filmy kolonialne i występy</h2><p>W programie dominowały dokumenty o koloniach, wpisujące się w imperialny przekaz wystawy. Pokazywano filmy nieme, udźwiękowione i mówione, a wśród wyświetlanych dzieł znalazła się La Croisière noire Léona Poiriera.</p><p>Na scenie odbywały się również przedstawienia teatralne, taniec i gale. Inauguracyjne widowisko Vision d’Afrique łączyło te formy z kinem. Z sali korzystano także podczas uroczystości, przyjęć i kongresów, czasem kosztem zapowiedzianych seansów. Pełniła więc jednocześnie funkcję kina i sali uroczystości Cité.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O palco da Cité des informations</h2><p>Na Exposição Colonial de 1931, a Cité internationale des informations reunia serviços de documentação e espaços de receção. Ao seu teatro-cinema chegava-se a partir do grande átrio, através de um vestíbulo e de uma ampla escadaria. O edifício era da autoria de Jean Bourgon e Fernand-Camille Chevalier; ao pintor Jaulmes foram confiadas a decoração da sala e a do pano de boca.</p><h2>Filmes coloniais e representações</h2><p>As projeções privilegiavam os documentários sobre as colónias, enquadrados no discurso imperial da exposição. Alternavam-se filmes mudos, sonoros e falados, com La Croisière noire, de Léon Poirier, entre as obras programadas.</p><p>O palco acolhia também teatro, dança e galas. O espetáculo inaugural Vision d’Afrique combinava essas formas com o cinema. Festas, receções e congressos ocupavam igualmente a sala, por vezes afastando sessões anunciadas: o espaço servia tanto de cinema como de salão de festas da Cité.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://gargantuart.com/books/l-architecte-1931-09"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "1931"
+          },
+          {
+            "field": "attractionDetails.closingDateText",
+            "oldValue": null,
+            "newValue": "1931"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "qualification": "exposition-coloniale-cite-cinema-qualification-20261116.json",
+  "allEightDescriptionsPersonallyWrittenReviewedAndExact": true,
+  "structuralTextCheck": {
+    "bodyWords": {
+      "fr": 157,
+      "en": 130,
+      "de": 133,
+      "nl": 150,
+      "it": 144,
+      "es": 141,
+      "pl": 116,
+      "pt": 143
+    },
+    "nineWordDuplicatesAgainstExistingCorpus": [],
+    "htmlEntities": 0
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

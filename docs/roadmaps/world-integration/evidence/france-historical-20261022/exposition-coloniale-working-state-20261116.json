@@ -990,6 +990,58 @@
         }
       ],
       "id": "c0dcb922-c5f2-4f3c-a339-e8ea7a461e57"
+    },
+    {
+      "key": "2dfcd455-bead-4bd3-a868-8bf3b1ffebac",
+      "name": "Théâtre-cinéma de la Cité des informations",
+      "category": "Attraction",
+      "type": "Cinema",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "ClosedDefinitively",
+        "openingDateText": "1931",
+        "closingDateText": "1931",
+        "isIndoor": true,
+        "sourceUrl": "https://gargantuart.com/books/l-architecte-1931-09",
+        "openingDate": null,
+        "closingDate": null
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La scène de la Cité des informations</h2><p>Dans l’Exposition coloniale de 1931, la Cité internationale des informations réunissait des services de documentation et des espaces de réception. Son théâtre-cinéma était accessible depuis le grand hall par un vestibule et un large escalier. Le bâtiment était l’œuvre de Jean Bourgon et de Fernand-Camille Chevalier ; le peintre Jaulmes avait reçu la décoration de la salle et de son rideau.</p><h2>Films coloniaux et représentations</h2><p>Les projections privilégiaient les documentaires consacrés aux colonies, dans le cadre du discours impérial porté par l’exposition. Des films muets, sonores et parlants se succédaient, avec notamment La Croisière noire de Léon Poirier parmi les œuvres programmées.</p><p>La scène accueillait aussi du théâtre, de la danse et des galas. Vision d’Afrique mêlait ces formes au cinéma lors du spectacle inaugural. Les fêtes, réceptions et congrès occupaient également la salle, parfois au détriment des séances annoncées : le lieu fonctionnait à la fois comme cinéma et comme salle des fêtes de la Cité.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The stage within the Cité des informations</h2><p>At the 1931 Colonial Exposition, the Cité internationale des informations combined documentation services with reception spaces. Its theatre-cinema was reached from the main hall through a vestibule and a broad staircase. Jean Bourgon and Fernand-Camille Chevalier designed the building; the painter Jaulmes was commissioned to decorate the auditorium and its curtain.</p><h2>Colonial films and performances</h2><p>Screenings gave priority to documentaries about the colonies, supporting the exposition’s imperial message. Silent films appeared alongside sound films and talkies, with Léon Poirier’s La Croisière noire among the works shown.</p><p>The stage also hosted theatre, dance and galas. The inaugural production, Vision d’Afrique, combined these forms with cinema. Celebrations, receptions and congresses shared the room, sometimes displacing scheduled screenings: the venue served both as a cinema and as the Cité’s ceremonial hall.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Bühne der Cité des informations</h2><p>Auf der Kolonialausstellung von 1931 vereinte die Cité internationale des informations Auskunftsstellen und Empfangsräume. Ihr Theaterkino war von der großen Halle aus über einen Vorraum und eine breite Treppe erreichbar. Jean Bourgon und Fernand-Camille Chevalier entwarfen das Gebäude; der Maler Jaulmes erhielt den Auftrag für die Ausmalung des Saals und die Gestaltung des Vorhangs.</p><h2>Kolonialfilme und Bühnenaufführungen</h2><p>Im Mittelpunkt der Vorführungen standen Dokumentarfilme über die Kolonien, die sich in die imperiale Botschaft der Ausstellung einfügten. Stummfilme wechselten mit Ton- und Sprechfilmen. Zu den gezeigten Werken gehörte Léon Poiriers La Croisière noire.</p><p>Auf der Bühne fanden auch Theater, Tanz und Galas statt. Das Eröffnungsprogramm Vision d’Afrique verband diese Darbietungen mit Film. Feste, Empfänge und Kongresse beanspruchten den Saal ebenfalls und verdrängten gelegentlich angekündigte Vorführungen. Er diente somit zugleich als Kino und als Festsaal der Cité.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Het podium van de Cité des informations</h2><p>Op de Koloniale Tentoonstelling van 1931 bracht de Cité internationale des informations documentatiediensten en ontvangstruimten samen. Het theater en de bioscoop deelden een zaal die vanuit de grote hal via een vestibule en een brede trap bereikbaar was. Jean Bourgon en Fernand-Camille Chevalier ontwierpen het gebouw; schilder Jaulmes kreeg de opdracht voor de decoratie van de zaal en het toneeldoek.</p><h2>Koloniale films en voorstellingen</h2><p>De vertoningen waren vooral gewijd aan documentaires over de koloniën en sloten aan bij de imperiale boodschap van de tentoonstelling. Stomme films stonden naast geluidsfilms en films met gesproken dialoog op het programma, waaronder La Croisière noire van Léon Poirier.</p><p>Het podium bood ook plaats aan toneel, dans en gala’s. De openingsvoorstelling Vision d’Afrique combineerde die vormen met film. Feesten, ontvangsten en congressen namen de zaal eveneens in gebruik, soms ten koste van aangekondigde filmvertoningen. Het was daardoor zowel de bioscoop als de feestzaal van de Cité.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Il palcoscenico della Cité des informations</h2><p>Nell’Esposizione coloniale del 1931, la Cité internationale des informations riuniva servizi di documentazione e spazi per ricevimenti. Al suo teatro-cinema si accedeva dal grande atrio attraverso un vestibolo e un’ampia scala. L’edificio era opera di Jean Bourgon e Fernand-Camille Chevalier; al pittore Jaulmes erano state affidate la decorazione della sala e quella del sipario.</p><h2>Film coloniali e rappresentazioni</h2><p>Le proiezioni privilegiavano i documentari sulle colonie, inseriti nel discorso imperiale dell’esposizione. Film muti, sonori e parlati si alternavano sullo schermo; tra le opere programmate figurava La Croisière noire di Léon Poirier.</p><p>Il palcoscenico ospitava anche teatro, danza e serate di gala. Lo spettacolo inaugurale Vision d’Afrique intrecciava queste forme con il cinema. Feste, ricevimenti e congressi occupavano a loro volta la sala, talvolta facendo rinviare le proiezioni annunciate: il luogo serviva quindi sia da cinema sia da sala delle feste della Cité.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>El escenario de la Cité des informations</h2><p>En la Exposición Colonial de 1931, la Cité internationale des informations reunía servicios de documentación y espacios para recepciones. A su teatro-cine se accedía desde el gran vestíbulo por una antesala y una amplia escalera. El edificio fue obra de Jean Bourgon y Fernand-Camille Chevalier; el pintor Jaulmes recibió el encargo de decorar la sala y el telón.</p><h2>Películas coloniales y representaciones</h2><p>Las proyecciones daban prioridad a los documentales sobre las colonias, dentro del discurso imperial de la exposición. Se alternaban películas mudas, sonoras y habladas, con La Croisière noire de Léon Poirier entre las obras programadas.</p><p>El escenario también acogía teatro, danza y galas. El espectáculo inaugural Vision d’Afrique combinaba estas formas con el cine. Fiestas, recepciones y congresos ocupaban asimismo la sala, a veces desplazando proyecciones anunciadas: el recinto funcionaba tanto como cine como salón de fiestas de la Cité.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Scena w Cité des informations</h2><p>Podczas Wystawy Kolonialnej w 1931 roku Cité internationale des informations mieściła punkty dokumentacji oraz pomieszczenia na przyjęcia. Do jej sali teatralno-kinowej prowadziły z głównego holu przedsionek i szerokie schody. Budynek zaprojektowali Jean Bourgon i Fernand-Camille Chevalier; malarzowi Jaulmesowi powierzono dekorację sali oraz kurtyny.</p><h2>Filmy kolonialne i występy</h2><p>W programie dominowały dokumenty o koloniach, wpisujące się w imperialny przekaz wystawy. Pokazywano filmy nieme, udźwiękowione i mówione, a wśród wyświetlanych dzieł znalazła się La Croisière noire Léona Poiriera.</p><p>Na scenie odbywały się również przedstawienia teatralne, taniec i gale. Inauguracyjne widowisko Vision d’Afrique łączyło te formy z kinem. Z sali korzystano także podczas uroczystości, przyjęć i kongresów, czasem kosztem zapowiedzianych seansów. Pełniła więc jednocześnie funkcję kina i sali uroczystości Cité.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>O palco da Cité des informations</h2><p>Na Exposição Colonial de 1931, a Cité internationale des informations reunia serviços de documentação e espaços de receção. Ao seu teatro-cinema chegava-se a partir do grande átrio, através de um vestíbulo e de uma ampla escadaria. O edifício era da autoria de Jean Bourgon e Fernand-Camille Chevalier; ao pintor Jaulmes foram confiadas a decoração da sala e a do pano de boca.</p><h2>Filmes coloniais e representações</h2><p>As projeções privilegiavam os documentários sobre as colónias, enquadrados no discurso imperial da exposição. Alternavam-se filmes mudos, sonoros e falados, com La Croisière noire, de Léon Poirier, entre as obras programadas.</p><p>O palco acolhia também teatro, dança e galas. O espetáculo inaugural Vision d’Afrique combinava essas formas com o cinema. Festas, receções e congressos ocupavam igualmente a sala, por vezes afastando sessões anunciadas: o espaço servia tanto de cinema como de salão de festas da Cité.</p>"
+        }
+      ],
+      "id": "2dfcd455-bead-4bd3-a868-8bf3b1ffebac"
     }
   ],
   "images": [
@@ -3320,7 +3372,7 @@
             "value": "É inaugurada a exposição parisiense, em redor do lago Daumesnil e na porte Dorée. Pavilhões, artes e divertimentos compõem uma apresentação dos impérios coloniais, cuja narrativa deverá continuar no Palais des Colonies depois da exposição."
           }
         ],
-        "mainImageId": null,
+        "mainImageId": "17cdbb5775334137a4ff8c2be4f8bf7b",
         "previousName": null,
         "newName": null,
         "previousLogoImageId": null,
@@ -3448,7 +3500,7 @@
               "value": "Em redor do lago Daumesnil, a Exposição Colonial transforma arquitetura, água e luz num grande espetáculo. Por detrás do encanto surgem um projeto imperial, as suas contestações e legados que ultrapassam os seis meses do evento."
             }
           ],
-          "mainImageId": null,
+          "mainImageId": "aa29c058b22e45059c07cec03b14b42f",
           "blocks": [
             {
               "id": "f9ff80904bf65cd19bbc504982083002",
@@ -4057,35 +4109,35 @@
         "summaries": [
           {
             "languageCode": "fr",
-            "value": "La clôture met fin au grand événement temporaire après plus de six mois. Elle ouvre une autre période pour les bâtiments conservés et le musée permanent, tandis que les installations de l’exposition connaissent des destins distincts."
+            "value": "La manifestation s’achève autour du lac Daumesnil. Le Palais des Colonies reste à la Porte Dorée, tandis que les pavillons du Togo et du Cameroun sont conservés au sud du lac ; ces derniers deviendront la Pagode de Vincennes."
           },
           {
             "languageCode": "en",
-            "value": "The closure ends the major temporary event after more than six months. It begins another period for the retained buildings and the permanent museum, while the exposition’s installations follow different subsequent paths."
+            "value": "The event around Lac Daumesnil comes to an end. The Palais des Colonies remains at the Porte Dorée, while the Togo and Cameroon pavilions survive south of the lake; those pavilions will later become the Pagode de Vincennes."
           },
           {
             "languageCode": "de",
-            "value": "Nach mehr als sechs Monaten endet das große, vorübergehende Ereignis. Für die erhaltenen Gebäude und das dauerhafte Museum beginnt eine andere Phase, während die Anlagen der Ausstellung unterschiedliche weitere Wege nehmen."
+            "value": "Die Veranstaltung rund um den Lac Daumesnil endet. Der Palais des Colonies bleibt an der Porte Dorée bestehen, ebenso die Pavillons von Togo und Kamerun südlich des Sees. Diese werden später zur Pagode de Vincennes."
           },
           {
             "languageCode": "nl",
-            "value": "Na ruim zes maanden komt er een einde aan het grote tijdelijke evenement. Voor de bewaarde gebouwen en het permanente museum begint een andere periode, terwijl de installaties van de tentoonstelling verschillende verdere bestemmingen krijgen."
+            "value": "Het evenement rond het Lac Daumesnil eindigt. Het Palais des Colonies blijft bij de Porte Dorée staan, terwijl ten zuiden van het meer de paviljoens van Togo en Kameroen behouden blijven. Die paviljoens worden later de Pagode de Vincennes."
           },
           {
             "languageCode": "it",
-            "value": "La chiusura mette fine al grande evento temporaneo dopo oltre sei mesi. Per gli edifici conservati e il museo permanente comincia un’altra fase, mentre le installazioni dell’esposizione seguono percorsi diversi."
+            "value": "La manifestazione intorno al lago Daumesnil si conclude. Il Palais des Colonies rimane alla porte Dorée, mentre a sud del lago vengono conservati i padiglioni del Togo e del Camerun, destinati a diventare la Pagode de Vincennes."
           },
           {
             "languageCode": "es",
-            "value": "La clausura pone fin al gran evento temporal después de más de seis meses. Comienza otra etapa para los edificios conservados y el museo permanente, mientras las instalaciones de la exposición siguen destinos distintos."
+            "value": "La manifestación en torno al lago Daumesnil llega a su fin. El Palais des Colonies permanece en la porte Dorée, mientras al sur del lago se conservan los pabellones de Togo y Camerún, que más tarde se convertirán en la Pagode de Vincennes."
           },
           {
             "languageCode": "pl",
-            "value": "Po ponad sześciu miesiącach wielkie, tymczasowe wydarzenie dobiega końca. Dla zachowanych budynków i stałego muzeum rozpoczyna się inny etap, a poszczególne instalacje wystawy czekają różne dalsze losy."
+            "value": "Wydarzenie wokół jeziora Daumesnil dobiega końca. Palais des Colonies pozostaje przy porte Dorée, a na południe od jeziora zachowane zostają pawilony Togo i Kamerunu. W późniejszych latach powstanie w nich Pagode de Vincennes."
           },
           {
             "languageCode": "pt",
-            "value": "O encerramento põe fim ao grande evento temporário após mais de seis meses. Começa outra fase para os edifícios preservados e o museu permanente, enquanto as instalações da exposição seguem destinos diferentes."
+            "value": "A manifestação em redor do lago Daumesnil chega ao fim. O Palais des Colonies permanece na porte Dorée, enquanto a sul do lago são preservados os pavilhões do Togo e dos Camarões, que mais tarde se tornarão a Pagode de Vincennes."
           }
         ],
         "mainImageId": null,

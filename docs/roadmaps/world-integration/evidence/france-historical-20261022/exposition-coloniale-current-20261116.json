@@ -1,11 +1,11 @@
 {
   "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
   "status": "partial",
-  "lastApplyOperationId": "285b8a3f-3b3d-438c-ad31-758906de50b6",
-  "lastIntegrationAppliedAtUtc": "2026-11-16T01:19:31.035936Z",
+  "lastApplyOperationId": "a842555d-cc6e-41e8-ab2c-6a15cfd2dbb9",
+  "lastIntegrationAppliedAtUtc": "2026-11-16T01:36:31.178242Z",
   "recoveredApplyCount": 12,
-  "newApplyCount": 7,
-  "items": 9,
+  "newApplyCount": 10,
+  "items": 10,
   "zones": 2,
   "ownImages": 16,
   "historyEvents": 4,
@@ -19,7 +19,7 @@
     "Sources/specifications, references, map/GPS",
     "Single final audit and audited publication"
   ],
-  "lastDataIntegrationAt": "2026-11-16T01:20:33.394Z",
+  "lastDataIntegrationAt": "2026-11-16T01:36:31.178242Z",
   "photoImports": [
     {
       "imageId": "b2bc130edcfe47ea886baf16bb04e0bd",
@@ -110,7 +110,10 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-12-cactus-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-16-belle-fleur-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-25-pont-mousson-20261116.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-28-island-zone-20261116.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-28-island-zone-20261116.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-31-history-images-20261116.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-33-closure-review-20261116.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-35-cite-cinema-20261116.json"
   ],
   "lastIntegrationImportedAtUtc": "2026-11-16T01:20:33.394Z",
   "mapUploads": [
@@ -123,8 +126,8 @@
   "lastMapUploadReceiptAtUtc": "2026-11-16T00:30:04.7984527Z",
   "mapAssociationPending": false,
   "officialMaps": 1,
-  "latestFollowupProof": "exposition-coloniale-pont-mousson-followup-20261116.json",
-  "lastIdempotencePreviewAtUtc": "2026-11-16T01:21:19.7731679Z",
+  "latestFollowupProof": "exposition-coloniale-history-images-followup-20261116.json",
+  "lastIdempotencePreviewAtUtc": "2026-11-16T01:40:33.3135097Z",
   "metadataCorrections": [
     {
       "imageId": "c925bcb94f6b464b8f4580cb9a504796",
@@ -134,9 +137,10 @@
   ],
   "photoCoverage": {
     "itemsWithPhotos": 8,
-    "items": 9,
+    "items": 10,
     "without": [
-      "Scenic Railway"
+      "Scenic Railway",
+      "Théâtre-cinéma de la Cité des informations"
     ]
   },
   "lastIdempotenceCounts": {
@@ -147,5 +151,5 @@
     "warnings": 0,
     "errors": 0
   },
-  "latestFollowup": "exposition-coloniale-island-zone-followup-20261116.json"
+  "latestFollowup": "exposition-coloniale-history-images-followup-20261116.json"
 }

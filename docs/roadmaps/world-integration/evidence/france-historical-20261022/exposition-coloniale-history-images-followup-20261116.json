@@ -1,0 +1,160 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "status": "partial",
+  "lastApplyProof": "exposition-coloniale-35-cite-cinema-20261116.json",
+  "idempotence": {
+    "operationId": "c478a4bb-f68a-43a5-b8f1-7f948e33633d",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:40:33.3135097Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2dfcd455-bead-4bd3-a868-8bf3b1ffebac",
+        "entityKey": "exposition-coloniale-theatre-cinema-cite-informations",
+        "displayName": "Théâtre-cinéma de la Cité des informations",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "parkEightDescriptionsPersonallyRead": true,
+  "articleEightLanguagesPreviouslyReadAndUnchanged": true,
+  "historyImages": {
+    "openingActualProcession": "17cdbb5775334137a4ff8c2be4f8bf7b",
+    "articleGrandSignalNight": "aa29c058b22e45059c07cec03b14b42f"
+  },
+  "counts": {
+    "items": 10,
+    "zones": 2,
+    "ownImages": 16,
+    "events": 4,
+    "articles": 1,
+    "officialMaps": 1
+  },
+  "inheritedScenicRecheck": {
+    "RCDBParisRecord": "https://rcdb.com/19255.htm",
+    "qualifies": "The Paris RCDB record itself lists the specifications, three cars with ten riders each, chain lift and relocation to Great Yarmouth. Fresh CaptainCoaster Paris 5322 (HTTP200 2026-11-16T01:31:04.872308Z) independently matches the existing rounded 21m/982m/72kmh values, wooden sit-down coaster, zero inversions and Erich Heidrich; no technical Apply was needed.",
+    "HistoricEngland": "The statutory entry attributes design/manufacture in1928 to Erich Heidrich and opening inGreatYarmouth inApril1932. BloggerRichardMills has an alternativeHaase/1914 account: conflict retained, shared reference not altered.",
+    "photoGap": "H.Gillard Pinxt illustrated postcard excluded; no genuine Scenic photograph accepted.",
+    "CaptainCoasterParisRecord": "https://captaincoaster.com/fr/coasters/5322/scenic-railway-exposition-coloniale-internationale",
+    "localSource": "qualification-2357/scenic-captain.html"
+  },
+  "noNewFullExport": true,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "retention": {
+    "baselineCommit": "feb7face",
+    "allPriorDataExactOutsideExplicitScope": true,
+    "scope": [
+      "Opening event main image",
+      "Opening article main image",
+      "Eight closure summaries",
+      "One new private Cinema item"
+    ],
+    "priorEntitiesDeleted": 0
+  },
+  "historyIdempotence": {
+    "operationId": "2425b206-2cd8-45e2-a308-4e9e68399131",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T01:34:02.4528347Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "9ef060d6-976f-4066-a87c-ae9271271c12",
+        "entityKey": "exposition-1931-05-06-opening",
+        "displayName": "L’exposition est inaugurée à la Porte Dorée",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c0be5b86-3591-4e25-a396-1da52d7b1ec6",
+        "entityKey": "exposition-1931-11-15-closure",
+        "displayName": "L’exposition de 1931 ferme ses portes",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "closureReview": {
+    "proof": "exposition-coloniale-33-closure-review-20261116.json",
+    "eightSummariesPersonallyWrittenReadAndAppliedExactly": true,
+    "dateTitlesSourcesVisibilityRetained": true
+  },
+  "cinemaQualification": {
+    "proof": "exposition-coloniale-cite-cinema-qualification-20261116.json",
+    "itemId": "2dfcd455-bead-4bd3-a868-8bf3b1ffebac",
+    "eightDescriptionsPersonallyWrittenReadAndAppliedExactly": true,
+    "oneMultipurposeVenue": true,
+    "capacityConflictNotIntegrated": [
+      1200,
+      1500,
+      2500
+    ],
+    "preciseOpeningDayNotInferred": true,
+    "photoQualified": false
+  },
+  "remainingHistoryTitleSummaryPersonalReview": {
+    "counterExhibition": 16,
+    "closure": 16,
+    "scenicRelocation": 16
+  },
+  "checkedAtUtc": "2026-11-16T01:41:20.556156+00:00",
+  "noNewPhotoImport": true
+}
