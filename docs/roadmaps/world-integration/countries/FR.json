@@ -214,18 +214,18 @@
       "entryId": "FR-candidate-discovery-5ccd37119c7eba",
       "name": "Aérophare Évry 2",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Aérophare",
       "locality": "Évry",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Installation démontée sur le parking du centre commercial Évry 2 en juin 2015 ; photographies datées du 20 juin 2015.",
+      "identityConfidence": "Identité du site confirmée par la série photographique du démontage à Évry 2 ; installation historique disparue.",
       "possibleMatches": [],
       "aliases": [
         "Aerophare Evry Evry, France"
@@ -233,7 +233,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver le dossier historique hors du flux de créations : l’installation a été démontée en 2015. Ne pas créer de fiche d’exploitation actuelle ni d’annonce Facebook. Réévaluer uniquement en présence d’une preuve d’une nouvelle installation distincte.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -244,6 +244,16 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikimedia Commons — démontage de l’Aérophare d’Évry 2 en juin 2015",
+          "url": "https://commons.wikimedia.org/wiki/Category:Dismantling_of_%C3%89vry_2%27s_A%C3%A9rophare",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Wikimedia Commons — photographie du démontage, 20 juin 2015",
+          "url": "https://commons.wikimedia.org/wiki/File:Destruction_de_l%27A%C3%A9rophare_sur_le_parking_du_Centre_commercial_Evry_2_le_20_juin_2015_-_1.jpg",
+          "accessedAt": "2026-11-16"
         }
       ],
       "discovery": {
@@ -253,7 +263,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Aérophare Évry 2",
@@ -261,13 +271,13 @@
             "url": "https://www.aerophile.com/en/clients/aerophare-evry/",
             "family": "Aérophare",
             "sourceVenueName": "Aérophare Évry 2",
-            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; exploitation actuelle et permanence à vérifier.",
+            "sourceLifecycleSignal": "Référence constructeur datée 2007 ; installation démontée en juin 2015 selon la série photographique du centre commercial Évry 2.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Évry",
             "referenceId": "aerophile-aerophare-evry"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Ancienne installation démontée en juin 2015. Exclue du flux des standalone à intégrer tant qu’aucune réouverture ou nouvelle installation n’est démontrée."
       }
     },
     {

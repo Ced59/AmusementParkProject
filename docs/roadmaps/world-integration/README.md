@@ -16,10 +16,10 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 324 | 1870 | 7554 |
-| Standalone | 269 | 1 | 116 |
+| Parcs | 324 | 1869 | 7554 |
+| Standalone | 270 | 1 | 115 |
 
-**Reprise standalone :** en plus des 116 candidates sans correspondance, **209 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **552 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **71 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 115 candidates sans correspondance, **208 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **552 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **71 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **72** types à décider, **1266** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -102,7 +102,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Estonie](countries/EE.md) | 1 | 0 | 0 | 0 | 0 | 0 |
 | [État de la Cité du Vatican](countries/VA.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Finlande](countries/FI.md) | 1 | 0 | 0 | 0 | 6 | 0 |
-| [France](countries/FR.md) | 42 | 0 | 8 | 1 | 23 | 0 |
+| [France](countries/FR.md) | 42 | 0 | 7 | 1 | 23 | 0 |
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Grèce](countries/GR.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -139,7 +139,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 5 | 0 | 0 | 0 | 11 | 0 |
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **147** | **1** | **28** | **64** | **267** | **18** |
+| **Total** | **147** | **1** | **27** | **64** | **267** | **18** |
 
 Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **123**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
@@ -672,7 +672,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Cuba](countries/CU.md) | 0 | 0 | 0 | 10 | 12 |
 | [Curaçao](countries/CW.md) | 0 | 0 | 0 | 0 | 0 |
 | [Dominique](countries/DM.md) | 0 | 0 | 0 | 0 | 0 |
-| [États-Unis](countries/US.md) | 38 | 231 | 21 | 1527 | 2621 |
+| [États-Unis](countries/US.md) | 38 | 230 | 21 | 1527 | 2621 |
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 | 0 |
 | [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 0 |
@@ -701,7 +701,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 1 | 1 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 3 | 4 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 3 | 3 |
-| **Total** | **41** | **264** | **24** | **1771** | **3039** |
+| **Total** | **41** | **263** | **24** | **1771** | **3039** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -719,7 +719,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Cuba](countries/CU.md) | 0 | 0 | 0 | 0 | 2 | 0 |
 | [Curaçao](countries/CW.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Dominique](countries/DM.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [États-Unis](countries/US.md) | 41 | 0 | 25 | 2 | 170 | 0 |
+| [États-Unis](countries/US.md) | 42 | 0 | 25 | 2 | 170 | 0 |
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -748,13 +748,13 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **54** | **0** | **28** | **2** | **202** | **0** |
+| **Total** | **55** | **0** | **28** | **2** | **202** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **54**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **55**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Bahamas : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Canada : 12 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- États-Unis : 41 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- États-Unis : 42 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
@@ -771,7 +771,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Cuba](countries/CU.md) | 0 | 0 | 0 | 0 |
 | [Curaçao](countries/CW.md) | 0 | 0 | 0 | 0 |
 | [Dominique](countries/DM.md) | 0 | 0 | 0 | 0 |
-| [États-Unis](countries/US.md) | 27 | 3 | 61 | 6 |
+| [États-Unis](countries/US.md) | 26 | 3 | 61 | 6 |
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 |
 | [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 |
@@ -800,7 +800,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 0 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 0 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 0 |
-| **Total** | **33** | **4** | **78** | **7** |
+| **Total** | **32** | **4** | **78** | **7** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 
