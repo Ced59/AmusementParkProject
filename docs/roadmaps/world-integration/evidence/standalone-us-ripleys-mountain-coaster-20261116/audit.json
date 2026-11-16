@@ -1,0 +1,119 @@
+{
+  "work": "Ripley’s Mountain Coaster migré depuis une fiche Park masquée et son seul ParkItem : huit descriptions, trois photos exactes CC BY 2.0, billet adulte à partir de 12,99 USD enregistré comme prix variable, ouverture historique, huit pages publiques et Facebook publié.",
+  "qualification": "Ripley’s liste le coaster comme lieu propre au 386 Parkway et vend un billet pour une descente ; Moonshine Mountain Coaster est distinct au 306 Parkway. La piste s’appelait Rowdy Bear Coaster jusqu’en 2022 selon RCDB. La piste Rowdy Bear Mountain du backlog est liée comme ancienne identité.",
+  "sources": {
+    "Exploitant — lieu": "https://www.ripleys.com/attractions/ripleys-mountain-coaster-gatlinburg",
+    "Exploitant — billet": "https://www.ripleys.com/tickets/gatlinburg",
+    "RCDB — coaster": "https://rcdb.com/15080.htm",
+    "RCDB — lieu et anciens noms": "https://rcdb.com/15079.htm",
+    "Flickr — entrée": "https://www.flickr.com/photos/rollercoasterphilosophy/53005869527/",
+    "Flickr — montée": "https://www.flickr.com/photos/rollercoasterphilosophy/53006840210/",
+    "Flickr — virages": "https://www.flickr.com/photos/rollercoasterphilosophy/53006453761/",
+    "Licence CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+    "Fiche publiée": "https://amusement-parks.fun/fr/attraction/63469fbf-6044-42c4-bafd-54c1506336a1/ripleys-mountain-coaster"
+  },
+  "entity": {
+    "id": "63469fbf-6044-42c4-bafd-54c1506336a1",
+    "name": "Ripley's Mountain Coaster",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true,
+    "legacyParkId": "5651f7c9-782c-4fe6-9f7c-1c44cfe68850",
+    "legacyParkItemId": "f442aaee-b539-4826-b0c5-1f82ea80a891"
+  },
+  "photographs": [
+    {
+      "imageId": "89a32b65ce4a45069215b2a5d1ef174f",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53005869527/",
+      "createdAtUtc": "2026-11-16T00:52:55.341Z",
+      "metadataUpdatedAtUtc": "2026-11-16T00:54:16.442Z",
+      "takenAt": "2023-06-12",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "d3528b932deb4f47822c2bc1bd64ba18",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006840210/",
+      "createdAtUtc": "2026-11-16T00:53:08.263Z",
+      "metadataUpdatedAtUtc": "2026-11-16T00:54:27.766Z",
+      "takenAt": "2023-06-12",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "4c06e2fe101545828ba8d220cf1e4804",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53006453761/",
+      "createdAtUtc": "2026-11-16T00:53:20.961Z",
+      "metadataUpdatedAtUtc": "2026-11-16T00:54:38.732Z",
+      "takenAt": "2023-06-12",
+      "author": "Roller Coaster Philosophy",
+      "license": "CC BY 2.0",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "type": "RollerCoaster",
+    "subtype": "Alpine coaster",
+    "manufacturer": "Wiegand",
+    "model": "Alpine Coaster / Gen 1",
+    "openedAt": "2017-06-09",
+    "formerName": "Rowdy Bear Coaster",
+    "singleRideTicketConfirmed": true,
+    "adultPriceStartingAtUsd": 12.99,
+    "priceMode": "Dynamic",
+    "weeklySchedulePublished": false,
+    "accessRulesPublished": false,
+    "address": "386 Parkway, Gatlinburg, Tennessee 37738",
+    "operatorCoordinates": [
+      35.7169616836711,
+      -83.51087375999131
+    ]
+  },
+  "audit": {
+    "completenessScore": 90,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "historyEvents": 1,
+    "publishedExactAttractionImages": 3,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinariesHttpStatus": [
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/63469fbf-6044-42c4-bafd-54c1506336a1/ripleys-mountain-coaster",
+    "sitePublishedAtUtc": "2026-11-16T00:55:13.1703761Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:a8e12cfa-4248-4312-8f9a-3aeac173e700",
+    "facebookStatus": "Published",
+    "facebookId": "16323ea50f6a41b18be108f77a2e3b1c",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127527685424431",
+    "facebookPublishedAtUtc": "2026-11-16T00:55:57.2825489Z",
+    "facebookPublicHttpStatus": 200
+  },
+  "lastDataIntegrationAt": "2026-11-16T00:54:38.732Z",
+  "remainingGaps": [
+    "L’exploitant affiche un prix adulte de départ, non un prix final garanti ; aucun tarif enfant inféré.",
+    "La page officielle donne l’horaire du jour, mais aucun calendrier hebdomadaire fiable à importer.",
+    "Les conditions d’âge, de taille et de poids de cette piste ne sont pas publiées dans les sources contrôlées ; aucune règle copiée d’un autre coaster."
+  ]
+}

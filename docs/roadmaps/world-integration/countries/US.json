@@ -52170,25 +52170,121 @@
     {
       "entryId": "US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850",
       "name": "Ripley's Mountain Coaster",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "5651f7c9-782c-4fe6-9f7c-1c44cfe68850",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "386 Parkway, Gatlinburg, Tennessee 37738",
+      "siteId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+      "legacySiteIds": [
+        "5651f7c9-782c-4fe6-9f7c-1c44cfe68850"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-16T00:55:57.282Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — lieu propre et billet pour une descente listés par Ripley’s le 2026-11-16",
+      "identityConfidence": "Lieu distinct au 386 Parkway, à distance de Moonshine au 306 Parkway ; fiche Park mono-attraction migrée.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rowdy Bear Coaster",
+        "Rowdy Bear Mountain"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-16T00:54:38.732Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-00330f77-7fcf-44f4-acdc-3a2b67af4bb4",
+          "appliedAt": "2026-11-16T00:50:51.940Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:apply:00330f77-7fcf-44f4-acdc-3a2b67af4bb4",
+          "auditEvidence": null,
+          "summary": "Migration du Park masqué mono-attraction vers la standalone ; huit descriptions, adresse et fiche technique."
+        },
+        {
+          "eventId": "apply-36af060a-7b97-4dbc-9df7-a698f5e9e13f",
+          "appliedAt": "2026-11-16T00:51:54.831Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:apply:36af060a-7b97-4dbc-9df7-a698f5e9e13f",
+          "auditEvidence": null,
+          "summary": "Billet officiel pour une descente : prix adulte de départ en USD, enregistré comme tarif variable."
+        },
+        {
+          "eventId": "apply-ef5a68d4-fda0-477a-939d-07069d041ede",
+          "appliedAt": "2026-11-16T00:52:22.116Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:apply:ef5a68d4-fda0-477a-939d-07069d041ede",
+          "auditEvidence": null,
+          "summary": "Ouverture du 9 juin 2017 sous l’ancien nom Rowdy Bear Coaster."
+        },
+        {
+          "eventId": "photo-89a32b65ce4a45069215b2a5d1ef174f",
+          "appliedAt": "2026-11-16T00:52:55.341Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo:89a32b65ce4a45069215b2a5d1ef174f",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’entrée ou de la piste importée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-d3528b932deb4f47822c2bc1bd64ba18",
+          "appliedAt": "2026-11-16T00:53:08.263Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo:d3528b932deb4f47822c2bc1bd64ba18",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’entrée ou de la piste importée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-4c06e2fe101545828ba8d220cf1e4804",
+          "appliedAt": "2026-11-16T00:53:20.961Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo:4c06e2fe101545828ba8d220cf1e4804",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’entrée ou de la piste importée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-metadata-89a32b65ce4a45069215b2a5d1ef174f",
+          "appliedAt": "2026-11-16T00:54:16.442Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:89a32b65ce4a45069215b2a5d1ef174f",
+          "auditEvidence": null,
+          "summary": "Légendes de la photographie différenciées dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-d3528b932deb4f47822c2bc1bd64ba18",
+          "appliedAt": "2026-11-16T00:54:27.766Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:d3528b932deb4f47822c2bc1bd64ba18",
+          "auditEvidence": null,
+          "summary": "Légendes de la photographie différenciées dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-4c06e2fe101545828ba8d220cf1e4804",
+          "appliedAt": "2026-11-16T00:54:38.732Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63469fbf-6044-42c4-bafd-54c1506336a1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:4c06e2fe101545828ba8d220cf1e4804",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-ripleys-mountain-coaster-20261116/audit.json",
+          "summary": "Légendes distinctes dans les huit langues, trois images et pages publiques vérifiées ; audit final 90/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver la ligne, les alias et la migration. Vérifier le calendrier hebdomadaire et les conditions d’accès auprès de Ripley’s ; prix adulte à partir de 12,99 USD, montant final variable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -52204,27 +52300,60 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/15080.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ripley’s — fiche du lieu et adresse",
+          "url": "https://www.ripleys.com/attractions/ripleys-mountain-coaster-gatlinburg",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Ripley’s — billet pour une descente",
+          "url": "https://www.ripleys.com/tickets/gatlinburg",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — entrée CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53005869527/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — montée CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006840210/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — virages CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006453761/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/63469fbf-6044-42c4-bafd-54c1506336a1/ripleys-mountain-coaster",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Ripley's Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/15080.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Ripley's Mountain Coaster",
+            "source": "Ripley’s — lieu officiel",
+            "url": "https://www.ripleys.com/attractions/ripleys-mountain-coaster-gatlinburg",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Ripley's Mountain Coaster Gatlinburg",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Gatlinburg , Tennessee",
+            "sourceLocality": "Gatlinburg, Tennessee",
             "sourceOpenedYear": "2017"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Lieu Ripley’s indépendant au 386 Parkway et billet officiel pour une descente ; une seule piste dans la fiche Park masquée, migrée sans doublon."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-d87dcc4f6536b7"
+      ]
     },
     {
       "entryId": "US-candidate-15f8e18ee7dd32",
@@ -53715,26 +53844,40 @@
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-16",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "identityConfidence": "Ancien nom du lieu au 386 Parkway, aujourd’hui Ripley’s Mountain Coaster, confirmé par RCDB et la fiche Ripley’s.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Conserver le renvoi historique vers US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850 ; suivre cette attraction dans la fiche autonome publiée, sans créer de doublon ni inventer une date d’intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#United_States",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — anciens noms du lieu",
+          "url": "https://rcdb.com/15079.htm",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Ripley’s — nouvelle identité",
+          "url": "https://www.ripleys.com/attractions/ripleys-mountain-coaster-gatlinburg",
+          "accessedAt": "2026-11-16"
         }
-      ]
+      ],
+      "possibleBacklogEntries": [
+        "US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850"
+      ],
+      "duplicateOf": "US-park-5651f7c9-782c-4fe6-9f7c-1c44cfe68850"
     },
     {
       "entryId": "US-candidate-e9f76d90ed6173",
