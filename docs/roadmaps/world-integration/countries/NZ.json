@@ -2053,27 +2053,108 @@
     {
       "entryId": "NZ-candidate-discovery-09292beb69cf01",
       "name": "Auckland SkyWalk",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Marche extérieure sur tour",
       "locality": "Sky Tower, Auckland CBD",
-      "siteId": null,
+      "siteId": "1fc78bde-004c-448c-9641-1dc102a81e29",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-11-15",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-16T01:27:31.290Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Produit et billet distincts sur le site officiel AJ Hackett consulté le 15 novembre 2026.",
-      "identityConfidence": "Activité distincte de SkyJump ; identité à rapprocher des recherches officielles et photo exacte à obtenir avant publication.",
+      "sourceLifecycleSignal": "SkyWalk en vente et annoncé ouvert tous les jours sur la page officielle consultée le 16 novembre 2026.",
+      "identityConfidence": "Identité et autonomie confirmées : offre et réservation distinctes de SkyJump et SkyRide, aucune fiche SkyWalk avant création ; photo exacte CC BY 2.0 publiée.",
       "possibleMatches": [],
       "aliases": [
         "Sky Tower SkyWalk"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher Park et StandaloneAttraction, confirmer statut, tarif, horaires et accès ; trouver au moins une photographie réutilisable montrant exactement cette activité. Ne pas utiliser les photos SkyJump.",
+      "lastDataIntegrationAt": "2026-11-16T01:24:41.518Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-9fc92bcf-2933-4fa0-ae1e-b4fd5996899a",
+          "appliedAt": "2026-11-16T01:16:47.569Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+          "evidence": "PARK_DATA_EDITOR:apply:9fc92bcf-2933-4fa0-ae1e-b4fd5996899a",
+          "auditEvidence": null,
+          "summary": "SkyWalk créé en brouillon avec huit descriptions, identité et position vérifiées."
+        },
+        {
+          "eventId": "photo-import-0e817597010f4d868fdace2780578f7f",
+          "appliedAt": "2026-11-16T01:17:28.651Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+          "evidence": "PARK_DATA_EDITOR:photo-import:0e817597010f4d868fdace2780578f7f",
+          "auditEvidence": null,
+          "summary": "Premier import exact de la photo Flickr de Jason Pratt ; doublon masqué ensuite."
+        },
+        {
+          "eventId": "photo-import-cf4b3ce43b1b4dc08a1c4e4783304c1f",
+          "appliedAt": "2026-11-16T01:17:47.927Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+          "evidence": "PARK_DATA_EDITOR:photo-import:cf4b3ce43b1b4dc08a1c4e4783304c1f",
+          "auditEvidence": null,
+          "summary": "Photo exacte CC BY 2.0 publiée avec crédits et textes dans huit langues."
+        },
+        {
+          "eventId": "apply-dec05436-5e30-4970-8ef9-765075e42e02",
+          "appliedAt": "2026-11-16T01:18:42.334Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+          "evidence": "PARK_DATA_EDITOR:apply:dec05436-5e30-4970-8ef9-765075e42e02",
+          "auditEvidence": null,
+          "summary": "Deuxième exemplaire de la photo masqué ; une seule image publique."
+        },
+        {
+          "eventId": "apply-cafbfa03-3fc5-4ab5-8fa6-9940a6c102df",
+          "appliedAt": "2026-11-16T01:19:47.337Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+          "evidence": "PARK_DATA_EDITOR:apply:cafbfa03-3fc5-4ab5-8fa6-9940a6c102df",
+          "auditEvidence": null,
+          "summary": "Tarifs adulte/enfant, horaires quotidiens et conditions d’accès sourcés."
+        },
+        {
+          "eventId": "photo-metadata-0e817597010f4d868fdace2780578f7f-20261116",
+          "appliedAt": "2026-11-16T01:22:57.983Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:0e817597010f4d868fdace2780578f7f:2026-11-16T01:22:57.983Z",
+          "auditEvidence": null,
+          "summary": "Légendes et textes alternatifs du doublon masqué corrigés pour éliminer les répétitions."
+        },
+        {
+          "eventId": "apply-9f90dabe-c00e-4fcf-8ec0-610105069975",
+          "appliedAt": "2026-11-16T01:24:14.949Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+          "evidence": "PARK_DATA_EDITOR:apply:9f90dabe-c00e-4fcf-8ec0-610105069975",
+          "auditEvidence": null,
+          "summary": "Huit descriptions reformulées ; audit 94/100 sans blocage."
+        },
+        {
+          "eventId": "apply-9770cdd0-8ab2-4373-99c8-ab6228dd6212",
+          "appliedAt": "2026-11-16T01:24:41.518Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+          "evidence": "PARK_DATA_EDITOR:apply:9770cdd0-8ab2-4373-99c8-ab6228dd6212",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-auckland-skywalk-20261116/audit.json",
+          "summary": "SkyWalk publiée, photo exacte visible, huit pages vérifiées et annonce Facebook publiée."
+        }
+      ],
+      "nextAction": "Conserver la ligne et vérifier les horaires, les prix « à partir de » et les conditions météo lors de la prochaine actualisation.",
       "sources": [
         {
           "label": "Exploitant — activité dédiée",
@@ -2084,19 +2165,60 @@
           "label": "Exploitant — trois activités Sky Tower",
           "url": "https://www.bungy.co.nz/auckland/sky-tower/",
           "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Photo exacte — Jason Pratt, SkyWalkers, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/jasonpratt/5356964365/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Fiche SkyWalk publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/1fc78bde-004c-448c-9641-1dc102a81e29/auckland-skywalk",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "NZ",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-11-15",
-        "attractions": [],
-        "rationale": "Offre vendue séparément depuis la Sky Tower ; photo et qualification de fiche à compléter."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-16",
+        "attractions": [
+          {
+            "name": "Auckland SkyWalk",
+            "source": "AJ Hackett Bungy New Zealand — produit et réservation distincts",
+            "url": "https://www.bungy.co.nz/auckland/sky-tower/skywalk/",
+            "family": "Marche extérieure sur tour",
+            "sourceVenueName": "Sky Tower Auckland",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Auckland CBD"
+          }
+        ],
+        "rationale": "SkyWalk est une expérience extérieure autonome de SkyJump et SkyRide : billets et parcours distincts. Recherche PDE préalable sans doublon SkyWalk ; création et publication confirmées."
       },
       "possibleBacklogEntries": [
         "NZ-candidate-discovery-92659a55243cae"
-      ]
+      ],
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1fc78bde-004c-448c-9641-1dc102a81e29/auckland-skywalk",
+          "publishedAtUtc": "2026-11-16T01:24:41.5185328Z",
+          "verifiedAtUtc": "2026-11-16T01:27:31.290Z",
+          "evidence": "PARK_DATA_EDITOR:apply:9770cdd0-8ab2-4373-99c8-ab6228dd6212"
+        },
+        "facebook": {
+          "id": "49557eb4ccf84a7f98374eb016049305",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-16T01:25:42.6873691Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127529887424431",
+          "url": "https://amusement-parks.fun/fr/attraction/1fc78bde-004c-448c-9641-1dc102a81e29/auckland-skywalk"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-auckland-skywalk-20261116/audit.json",
+        "score": 94,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "NZ-candidate-discovery-2309f264a355db",
