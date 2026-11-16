@@ -18915,7 +18915,7 @@
       "entryId": "DE-park-c94df8a6-41a7-4419-8bd2-834235abec72",
       "name": "Mehliskopf",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "c94df8a6-41a7-4419-8bd2-834235abec72",
@@ -18926,7 +18926,7 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Rattachement au parc confirmé par le site officiel et le ParkItem existant ; aucune nouvelle standalone à créer.",
       "possibleMatches": [],
       "aliases": [
         "Mehliskopf Bobbahn"
@@ -18934,7 +18934,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer éditorialement la fiche Park masquée et son ParkItem Bob-Bahn (70db1651-b018-4984-a659-83a210532e76) ; vérifier les photos, horaires et tarifs officiels. Conserver la ligne sans date d’intégration tant qu’aucun Apply/import n’a été fait.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -18965,13 +18965,23 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.mehliskopf.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — site multi-activités",
+          "url": "https://mehliskopf.de/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — attraction existante",
+          "url": "https://mehliskopf.de/sommer/mehliskopf-bobbahn",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Bob-Bahn",
@@ -18992,7 +19002,7 @@
             "referenceId": "location-id-1020"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’exploitant présente la Bobbahn au sein de l’Erlebniswelt Mehliskopf avec Klettergarten, Downhill-Carts, Bungee et activités d’hiver. La fiche Park masquée possède déjà le ParkItem Bob-Bahn. Une billetterie par activité ne justifie pas une seconde fiche standalone."
       }
     },
     {

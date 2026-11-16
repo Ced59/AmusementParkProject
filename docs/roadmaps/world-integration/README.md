@@ -19,7 +19,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Parcs | 324 | 1868 | 7553 |
 | Standalone | 272 | 1 | 114 |
 
-**Reprise standalone :** en plus des 114 candidates sans correspondance, **205 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **550 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **73 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 114 candidates sans correspondance, **202 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **550 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **76 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **72** types à décider, **1264** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -168,7 +168,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
 | --- | ---: | ---: | ---: | ---: |
 | [Albanie](countries/AL.md) | 0 | 0 | 0 | 0 |
-| [Allemagne](countries/DE.md) | 27 | 3 | 58 | 15 |
+| [Allemagne](countries/DE.md) | 26 | 3 | 58 | 16 |
 | [Andorre](countries/AD.md) | 0 | 0 | 3 | 1 |
 | [Autriche](countries/AT.md) | 23 | 1 | 16 | 4 |
 | [Belgique](countries/BE.md) | 0 | 1 | 1 | 0 |
@@ -219,7 +219,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 11 | 1 | 8 | 1 |
 | [Ukraine](countries/UA.md) | 1 | 0 | 2 | 0 |
-| **Total** | **159** | **16** | **212** | **40** |
+| **Total** | **158** | **16** | **212** | **41** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 
@@ -771,7 +771,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Cuba](countries/CU.md) | 0 | 0 | 0 | 0 |
 | [Curaçao](countries/CW.md) | 0 | 0 | 0 | 0 |
 | [Dominique](countries/DM.md) | 0 | 0 | 0 | 0 |
-| [États-Unis](countries/US.md) | 23 | 3 | 59 | 8 |
+| [États-Unis](countries/US.md) | 21 | 3 | 59 | 10 |
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 |
 | [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 |
@@ -800,7 +800,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 0 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 0 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 0 |
-| **Total** | **29** | **4** | **76** | **9** |
+| **Total** | **27** | **4** | **76** | **11** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 
