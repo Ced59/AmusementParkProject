@@ -82,7 +82,7 @@ export class PublicManufacturersStateFacade {
     this.loadingSignal.set(true);
     this.errorKeySignal.set(null);
 
-    this.manufacturersPort.getAttractionManufacturersPage(safePage, safeSize, this.searchTermSignal())
+    this.manufacturersPort.getAttractionManufacturersPage(safePage, safeSize, this.searchTermSignal(), false, true)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (pageResult: PagedResult<AttractionManufacturer>): void => {

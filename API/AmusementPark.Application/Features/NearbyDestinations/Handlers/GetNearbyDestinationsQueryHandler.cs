@@ -72,11 +72,13 @@ public sealed class GetNearbyDestinationsQueryHandler
             .Select(candidate => new NearbyDestinationResult(null, candidate,
                 GeoDistanceCalculator.CalculateKilometers(position, candidate.Position!), 0, 0));
 
-        List<NearbyDestinationResult> targets = nearbyParks.Concat(nearbyAttractions)
-            .OrderBy(static target => target.DistanceKilometers)
-            .ThenBy(static target => target.Park?.Name ?? target.StandaloneAttraction!.Name, StringComparer.OrdinalIgnoreCase)
-            .ThenBy(static target => target.Park?.Id ?? target.StandaloneAttraction!.Id, StringComparer.Ordinal)
-            .Take(limit)
+        IEnumerable<NearbyDestinationResult> ordered = OrderCandidates(nearbyParks.Concat(nearbyAttractions));
+        // Reserve a bounded candidate pool for each local filter without an additional API request.
+        IEnumerable<NearbyDestinationResult> selected = query.GroupByKind
+            ? OrderCandidates(ordered.GroupBy(static target => target.Park is not null)
+                .SelectMany(group => group.Take(limit)))
+            : ordered.Take(limit);
+        List<NearbyDestinationResult> targets = selected
             .Select((target, index) => target with
             {
                 DistanceKilometers = Math.Round(target.DistanceKilometers, 2, MidpointRounding.AwayFromZero),
@@ -102,6 +104,13 @@ public sealed class GetNearbyDestinationsQueryHandler
         }
 
         return ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>.Success(targets);
+    }
+
+    private static IOrderedEnumerable<NearbyDestinationResult> OrderCandidates(IEnumerable<NearbyDestinationResult> candidates)
+    {
+        return candidates.OrderBy(static target => target.DistanceKilometers)
+            .ThenBy(static target => target.Park?.Name ?? target.StandaloneAttraction!.Name, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static target => target.Park?.Id ?? target.StandaloneAttraction!.Id, StringComparer.Ordinal);
     }
 
     private static bool HasValidPosition(GeoPoint? position)

@@ -20,6 +20,14 @@ describe('ManufacturersApiService', () => {
     httpTestingController.verify();
   });
 
+  it('keeps name-only lookup projection on every page without changing the accumulated ids or names', () => {
+    service.getAttractionManufacturers(false, true).subscribe(items => expect(items.map(item => item.id)).toEqual(['one', 'two']));
+    const first = httpTestingController.expectOne(request => request.params.get('page') === '1' && request.params.get('nameOnly') === 'true');
+    first.flush({ data: [{ id: 'one', name: 'One' }], pagination: { currentPage: 1, itemsPerPage: 1, totalItems: 2, totalPages: 2 } });
+    const second = httpTestingController.expectOne(request => request.params.get('page') === '2' && request.params.get('nameOnly') === 'true');
+    second.flush({ data: [{ id: 'two', name: 'Two' }], pagination: { currentPage: 2, itemsPerPage: 1, totalItems: 2, totalPages: 2 } });
+  });
+
   it('does not request hidden manufacturers for public pages by default', () => {
     service.getAttractionManufacturersPage(2, 12, ' ride ').subscribe();
 

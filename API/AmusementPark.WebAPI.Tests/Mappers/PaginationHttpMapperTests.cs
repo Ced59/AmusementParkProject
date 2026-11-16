@@ -8,6 +8,20 @@ namespace AmusementPark.WebAPI.Tests.Mappers;
 public sealed class PaginationHttpMapperTests
 {
     [Fact]
+    public void CountOnly_DoesNotMapOrSerializeItemsAndPreservesExactPagination()
+    {
+        PagedResult<int> source = new PagedResult<int>(new[] { 1 }, 3, 1, 42);
+        PagedResponseDto<string> response = source.ToPagedResponse<int, string>(
+            static _ => throw new InvalidOperationException("Unused item must not be mapped"), includeItems: false);
+        Assert.Empty(response.Data);
+        Assert.Equal(42, response.Pagination!.TotalItems);
+        Assert.Equal(42, response.Pagination.TotalPages);
+        Assert.Equal(3, response.Pagination.CurrentPage);
+        Assert.Equal(1, response.Pagination.ItemsPerPage);
+        Assert.False(new PaginationRequestDto { IncludeItems = false }.Override(size: 1).IncludeItems);
+    }
+
+    [Fact]
     public void ToApplication_WhenRequestProvided_ShouldMapPageAndSize()
     {
         PaginationRequestDto request = new PaginationRequestDto { Page = 3, Size = 25 };

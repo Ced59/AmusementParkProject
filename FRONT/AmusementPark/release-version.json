@@ -1,6 +1,20 @@
 {
-  "version": "6.0.39",
+  "version": "6.0.40",
   "history": [
+    {
+      "version": "6.0.40",
+      "releasedAt": "2026-11-15",
+      "labels": {
+        "fr": "Pages allégées et choix des lieux à proximité",
+        "en": "Lighter pages and nearby place filters",
+        "de": "Schlankere Seiten und Filter für Orte in der Nähe",
+        "nl": "Lichtere pagina’s en filters voor plekken in de buurt",
+        "it": "Pagine più leggere e filtri per i luoghi vicini",
+        "es": "Páginas más ligeras y filtros de lugares cercanos",
+        "pl": "Lżejsze strony i filtry miejsc w pobliżu",
+        "pt": "Páginas mais leves e filtros de locais próximos"
+      }
+    },
     {
       "version": "6.0.39",
       "releasedAt": "2026-11-15",

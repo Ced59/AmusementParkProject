@@ -19,6 +19,15 @@ describe('HistoryApiService', () => {
     httpTestingController.verify();
   });
 
+  it.each([
+    [true, true], [false, false], [{ events: [{}] }, true], [{ events: [] }, false]
+  ])('reads compact or legacy history availability without a second request', (body, expected) => {
+    service.hasParkItemHistory('item-1').subscribe(value => expect(value).toBe(expected));
+    const request = httpTestingController.expectOne(candidate => candidate.url.includes('history/park-items/item-1'));
+    expect(request.request.params.get('availabilityOnly')).toBe('true');
+    request.flush(body);
+  });
+
   it('leaves timeline retry orchestration to the shared HTTP policy', () => {
     const url: string = `${environment.apiBaseUrl}history/parks/park-1`;
     let receivedStatus: number | null = null;

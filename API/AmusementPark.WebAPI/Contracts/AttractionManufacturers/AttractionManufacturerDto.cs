@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using AmusementPark.WebAPI.Contracts.Common;
@@ -44,6 +45,9 @@ public sealed class AttractionManufacturerDto
     /// Biographie localisée.
     /// </summary>
     public List<LocalizedTextDto> Biography { get; set; } = new();
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<LocalizedTextDto>? BiographyPreviews { get; set; }
 
     /// <summary>
     /// Identifiant de l'image courante utilisee comme logo.

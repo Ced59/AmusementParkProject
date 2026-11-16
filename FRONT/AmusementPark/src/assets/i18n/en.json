@@ -8271,7 +8271,12 @@
         "emptyMessage": "No parks or standalone attractions were found nearby.",
         "closestTitle": "Closest place",
         "distanceNote": "Estimated straight-line distance from this place.",
-        "viewDestination": "View details"
+        "viewDestination": "View details",
+        "includeStandalone": "Include standalone attractions",
+        "parksSubtitle": "Discover the nearest parks.",
+        "parksAlternativesSubtitle": "Discover parks around this place.",
+        "emptyParksTitle": "No nearby parks",
+        "emptyParksMessage": "No parks were found near this place."
       },
       "description": {
         "badge": "Overview",

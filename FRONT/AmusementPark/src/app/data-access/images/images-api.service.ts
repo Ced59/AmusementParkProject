@@ -28,6 +28,7 @@ import { IMAGES_API_ENDPOINTS } from './images-api-endpoints';
 
 interface ImagesHttpOptions {
   context?: HttpContext;
+  includeItems?: boolean;
 }
 
 interface ImageUrlOptions {
@@ -116,9 +117,12 @@ export class ImagesApiService {
       ownerId,
       String(categoryApiValue)
     )}`;
-    const params: HttpParams = new HttpParams()
+    let params: HttpParams = new HttpParams()
       .set('page', String(page))
       .set('size', String(size));
+    if (options.includeItems === false) {
+      params = params.set('includeItems', 'false');
+    }
 
     return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url, { ...options, params }).pipe(
       map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => unwrapPagedCollection<ImageDto>(response))

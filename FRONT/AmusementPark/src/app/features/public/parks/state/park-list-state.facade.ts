@@ -431,6 +431,7 @@ export class ParkListStateFacade {
     const status: ParkStatus | null = this.selectedStatusSignal();
     return {
       ...anonymousHttpOptions(),
+      cardView: true,
       closedFilter: status === null ? 'all' : 'openOnly',
       status,
     };

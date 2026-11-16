@@ -24,6 +24,17 @@ describe('VideosApiService', () => {
     httpTestingController.verify();
   });
 
+  it('requests count-only pages without changing filters or losing totals', () => {
+    service.getVideosPage({ ownerType: VideoOwnerType.PARK, ownerId: 'park-1', includeItems: false }).subscribe(page => {
+      expect(page.items).toEqual([]);
+      expect(page.pagination.totalItems).toBe(7);
+    });
+    const request = httpTestingController.expectOne(candidate => candidate.url.endsWith('/videos'));
+    expect(request.request.params.get('includeItems')).toBe('false');
+    expect(request.request.params.get('ownerId')).toBe('park-1');
+    request.flush({ data: [], pagination: { currentPage: 1, itemsPerPage: 1, totalItems: 7, totalPages: 7 } });
+  });
+
   it('gets public videos with owner and filter query params', () => {
     service
       .getVideosPage({

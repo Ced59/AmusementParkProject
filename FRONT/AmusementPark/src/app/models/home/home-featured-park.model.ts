@@ -8,6 +8,7 @@ export interface HomeFeaturedParkCategoryCountModel {
 }
 
 export interface HomeFeaturedParkModel {
+  shortDescriptions?: LocalizedItem<string>[];
   id: string | null;
   name: string;
   countryCode: string | null;

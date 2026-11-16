@@ -5,5 +5,5 @@ using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.NearbyDestinations.Queries;
 
-public sealed record GetNearbyDestinationsQuery(NearbyDestinationKind SourceKind, string SourceId, int Limit = 4)
+public sealed record GetNearbyDestinationsQuery(NearbyDestinationKind SourceKind, string SourceId, int Limit = 4, bool GroupByKind = false)
     : IQuery<ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>>;

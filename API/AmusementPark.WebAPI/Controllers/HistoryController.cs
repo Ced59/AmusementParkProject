@@ -89,7 +89,8 @@ public sealed class HistoryController : ControllerBase
     public async Task<IActionResult> GetParkItemTimelineAsync(
         [FromRoute] string parkItemId,
         [FromQuery] int page = HistoryTimelinePaging.DefaultPage,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default,
+        [FromQuery] bool availabilityOnly = false)
     {
         ApplicationResult<HistoryTimelineResult> result = await this.getParkItemTimelineHandler.HandleAsync(
             new GetParkItemHistoryTimelineQuery(
@@ -104,7 +105,7 @@ public sealed class HistoryController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        return this.Ok(result.Value.ToHttp());
+        return availabilityOnly ? this.Ok(result.Value.Events.Count > 0) : this.Ok(result.Value.ToHttp());
     }
 
     [HttpGet("articles/{eventId}")]
@@ -129,7 +130,7 @@ public sealed class HistoryController : ControllerBase
     [AllowAnonymous]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [ProducesResponseType(typeof(IReadOnlyCollection<HomeLatestArticleDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetLatestArticlesAsync([FromQuery] int limit = 3, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetLatestArticlesAsync([FromQuery] int limit = 3, CancellationToken cancellationToken = default, [FromQuery] bool cardView = false)
     {
         ApplicationResult<IReadOnlyCollection<HistoryArticleResult>> result = await this.getLatestArticlesHandler.HandleAsync(
             new GetLatestHistoryArticlesQuery(limit),
@@ -140,7 +141,7 @@ public sealed class HistoryController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<HomeLatestArticleDto> response = result.Value.Select(static article => article.ToHomeLatestHttp()).ToList();
+        List<HomeLatestArticleDto> response = result.Value.Select(article => cardView ? article.ToHomeLatestHttp().ToCardHttp() : article.ToHomeLatestHttp()).ToList();
         return this.Ok(response);
     }
 

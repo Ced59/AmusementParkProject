@@ -36,6 +36,9 @@ public sealed class ParkDto
 
     public List<LocalizedTextDto> Descriptions { get; set; } = new();
 
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<LocalizedTextDto>? ShortDescriptions { get; set; }
+
     public bool IsVisible { get; set; }
 
     public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;

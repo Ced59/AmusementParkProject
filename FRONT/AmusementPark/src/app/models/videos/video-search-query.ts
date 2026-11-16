@@ -4,6 +4,7 @@ import { VideoType } from './video-type';
 
 export interface VideoSearchQuery {
   page?: number;
+  includeItems?: boolean;
   size?: number;
   search?: string | null;
   hostingProvider?: VideoHostingProvider | null;

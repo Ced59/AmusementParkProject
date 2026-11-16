@@ -416,12 +416,14 @@ export class ParkDetailStateFacade {
       parkVideos: this.videosApiService.getVideosPage({
         page: 1,
         size: 1,
+        includeItems: false,
         ownerType: VideoOwnerType.PARK,
         ownerId: parkId
       }, anonymousHttpOptions()),
       itemVideos: this.videosApiService.getParkItemVideosByPark(parkId, {
         page: 1,
-        size: 1
+        size: 1,
+        includeItems: false
       }, anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: { parkVideos: PagedResult<VideoDto>; itemVideos: PagedResult<ParkItemVideoDto> }) => {
@@ -452,7 +454,7 @@ export class ParkDetailStateFacade {
 
     forkJoin({
       parkImages: this.imagesApiService.getImagesPage(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 1, anonymousHttpOptions()),
-      logoImages: this.imagesApiService.getImagesPage(ImageOwnerType.PARK, parkId, ImageCategory.LOGO, 1, 1, anonymousHttpOptions()),
+      logoImages: this.imagesApiService.getImagesPage(ImageOwnerType.PARK, parkId, ImageCategory.LOGO, 1, 1, { ...anonymousHttpOptions(), includeItems: false }),
       itemImages: this.imagesApiService.getParkItemImagesByPark(parkId, 1, 1, anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: { parkImages: PagedResult<ImageDto>; logoImages: PagedResult<ImageDto>; itemImages: PagedResult<ParkItemImageDto> }) => {

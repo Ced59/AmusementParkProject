@@ -121,7 +121,7 @@ export class HomeStateFacade {
     this.heroParksStateStore.setLoading(previousHeroData);
     this.featuredStateStore.setLoading(previousFeaturedData);
 
-    this.parksApiService.getRandomVisibleParks(4, { ...anonymousHttpOptions(), transferCache: false }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getRandomVisibleParks(4, { ...anonymousHttpOptions(), transferCache: false, cardView: true }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: Park[]) => {
         const heroParks: ParkCardModel[] = mapArray(response, (park: Park) =>
           mapParkToCardModel(park, currentLanguage, this.countryDisplayService, this.textTruncator));
@@ -210,7 +210,7 @@ export class HomeStateFacade {
 
     const previousData: HomeFeaturedViewModel | undefined = this.featuredStateStore.data();
 
-    this.homeApiService.getFeaturedParks(excludedParkIds, 3, { ...anonymousHttpOptions(), transferCache: false }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.homeApiService.getFeaturedParks(excludedParkIds, 3, { ...anonymousHttpOptions(), transferCache: false, cardView: true }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: HomeFeaturedParkModel[]) => {
         const parks: HomeFeaturedParkCardModel[] = response.map((park: HomeFeaturedParkModel, index: number) =>
           mapHomeFeaturedParkToCardModel(park, currentLanguage, this.textTruncator, index, this.countryDisplayService));

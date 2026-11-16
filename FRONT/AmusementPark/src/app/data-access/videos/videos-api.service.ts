@@ -112,6 +112,7 @@ export class VideosApiService {
     params = this.appendOptionalParam(params, 'creatorName', query.creatorName);
     params = this.appendOptionalParam(params, 'languageCode', query.languageCode);
     params = this.appendOptionalBooleanParam(params, 'isPublished', query.isPublished);
+    params = this.appendOptionalBooleanParam(params, 'includeItems', query.includeItems);
     params = this.appendOptionalParam(params, 'sortBy', query.sortBy);
     params = this.appendOptionalParam(params, 'sortDirection', query.sortDirection);
 

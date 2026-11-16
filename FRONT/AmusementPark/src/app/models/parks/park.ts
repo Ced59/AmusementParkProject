@@ -7,6 +7,7 @@ import { ParkAudienceClassification } from './park-audience-classification';
 import { DataCompletenessScore } from '../shared/data-completeness-score';
 
 export interface Park {
+  shortDescriptions?: LocalizedItem<string>[];
   id?: string;
   name?: string;
   countryCode?: string;

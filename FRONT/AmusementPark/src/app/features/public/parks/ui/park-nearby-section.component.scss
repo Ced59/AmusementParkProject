@@ -33,3 +33,62 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+.park-nearby__filters {
+  min-width: 0;
+  display: flex;
+}
+
+.park-nearby__switch {
+  min-height: 2.75rem;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md, 1rem);
+  background: var(--app-surface);
+  color: var(--app-text);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.park-nearby__switch:focus-visible {
+  outline: 2px solid var(--app-text);
+  outline-offset: 3px;
+}
+
+.park-nearby__switch-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.park-nearby__switch-track {
+  position: relative;
+  flex: 0 0 2.5rem;
+  width: 2.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  background: var(--app-text-muted);
+}
+
+.park-nearby__switch-thumb {
+  position: absolute;
+  inset-inline-start: 0.25rem;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--app-surface);
+  box-shadow: 0 0 0 1px var(--app-text);
+}
+
+.park-nearby__switch--checked .park-nearby__switch-track {
+  background: var(--app-primary);
+}
+
+.park-nearby__switch--checked .park-nearby__switch-thumb {
+  inset-inline-start: 1.25rem;
+}
