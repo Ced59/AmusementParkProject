@@ -15,13 +15,13 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 230 |
-| À qualifier | 1728 |
+| À qualifier | 1727 |
 | En cours | 0 |
 | Bloqué | 2 |
 | Intégration achevée | 42 |
 | Publié, date inconnue | 38 |
 | Hors périmètre enregistré | 17 |
-| Doublon conservé | 4 |
+| Doublon conservé | 5 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **2621**. Sources : ADG — Project Book, AZA, Aerophile — références constructeur, Brogent — projet constructeur, Découverte complémentaire — site officiel, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte), ZipRider — référence constructeur.
 
@@ -29,9 +29,9 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **38 publiés**, **230 masqués à intégrer**, **21 masqués NotRelevant à réexaminer**, **1527 candidats sans fiche**.
 
-Standalone : **42 publiées**, **0 masquées**, **25 candidates sans fiche**. Autres dossiers : **2 types à décider**, **170 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **42 publiées**, **0 masquées**, **25 candidates sans fiche**. Autres dossiers : **2 types à décider**, **169 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **26 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **61 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **6 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **25 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **60 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **7 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
