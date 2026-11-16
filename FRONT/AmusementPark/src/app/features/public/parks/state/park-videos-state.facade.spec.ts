@@ -214,6 +214,7 @@ describe('ParkVideosStateFacade', () => {
         query: {
           page: 1,
           size: 1,
+          includeItems: false,
           type: VideoType.ON_RIDE,
           tagId: 'tag-1',
           creatorName: 'creator',
@@ -271,6 +272,7 @@ describe('ParkVideosStateFacade', () => {
         query: {
           page: 1,
           size: 1,
+          includeItems: false,
           type: null,
           tagId: null,
           creatorName: '',
@@ -332,6 +334,7 @@ describe('ParkVideosStateFacade', () => {
         query: {
           page: 1,
           size: 1,
+          includeItems: false,
           type: null,
           tagId: null,
           creatorName: '',

@@ -27,6 +27,7 @@ public static class PaginationHttpMapper
         {
             Page = page ?? request.Page,
             Size = size ?? request.Size,
+            IncludeItems = request.IncludeItems,
         };
     }
 
@@ -43,14 +44,14 @@ public static class PaginationHttpMapper
         };
     }
 
-    public static PagedResponseDto<TTarget> ToPagedResponse<TSource, TTarget>(this PagedResult<TSource> result, Func<TSource, TTarget> mapper)
+    public static PagedResponseDto<TTarget> ToPagedResponse<TSource, TTarget>(this PagedResult<TSource> result, Func<TSource, TTarget> mapper, bool includeItems = true)
     {
         ArgumentNullException.ThrowIfNull(result);
         ArgumentNullException.ThrowIfNull(mapper);
 
         return new PagedResponseDto<TTarget>
         {
-            Data = result.Items.Select(mapper).ToList(),
+            Data = includeItems ? result.Items.Select(mapper).ToList() : Array.Empty<TTarget>(),
             Pagination = result.ToHttp(),
         };
     }

@@ -8271,7 +8271,12 @@
         "emptyMessage": "Er zijn geen parken of losse attracties in de buurt gevonden.",
         "closestTitle": "Dichtstbijzijnde plek",
         "distanceNote": "Geschatte afstand in vogelvlucht vanaf deze plek.",
-        "viewDestination": "Bekijk de details"
+        "viewDestination": "Bekijk de details",
+        "includeStandalone": "Losse attracties tonen",
+        "parksSubtitle": "Ontdek de dichtstbijzijnde parken.",
+        "parksAlternativesSubtitle": "Ontdek parken rond deze plek.",
+        "emptyParksTitle": "Geen parken in de buurt",
+        "emptyParksMessage": "Er zijn geen parken gevonden in de buurt van deze plek."
       },
       "description": {
         "badge": "Overzicht",

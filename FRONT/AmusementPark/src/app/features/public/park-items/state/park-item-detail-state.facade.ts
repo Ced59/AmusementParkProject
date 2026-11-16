@@ -8,7 +8,6 @@ import { Park } from '@app/models/parks/park';
 import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
-import { HistoryTimeline } from '@app/models/history/history.models';
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
@@ -209,6 +208,7 @@ export class ParkItemDetailStateFacade {
     this.videosApiService.getVideosPage({
       page: 1,
       size: 1,
+      includeItems: false,
       ownerType: VideoOwnerType.PARK_ITEM,
       ownerId: item.id
     }, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
@@ -226,11 +226,11 @@ export class ParkItemDetailStateFacade {
       }
     });
 
-    this.historyApiService.getParkItemTimeline(item.id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (timeline: HistoryTimeline) => {
+    this.historyApiService.hasParkItemHistory(item.id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (hasHistory: boolean) => {
         this.updateReadyData(expectedItemId, (current: ParkItemDetailSourceData) => ({
           ...current,
-          hasHistory: (timeline.events?.length ?? 0) > 0
+          hasHistory
         }));
       },
       error: () => {

@@ -72,6 +72,14 @@ export class HistoryApiService {
     return this.getTimeline(url, options);
   }
 
+  hasParkItemHistory(parkItemId: string, options: HistoryHttpOptions = {}): Observable<boolean> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkItemTimeline(parkItemId, 1)}`;
+    return this.http.get<boolean | HistoryTimeline>(url, { ...options, params: { availabilityOnly: true } }).pipe(
+      // Accept legacy API responses during a rolling deployment or rollback, without another request.
+      map(response => typeof response === 'boolean' ? response : (response.events?.length ?? 0) > 0)
+    );
+  }
+
   getParkItemTimeline(parkItemId: string, options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {
     const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkItemTimeline(parkItemId, page)}`;
     return this.getTimeline(url, options);

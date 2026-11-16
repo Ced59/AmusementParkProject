@@ -12,7 +12,7 @@ import { PaginationComponent } from '@shared/components/pagination/pagination.co
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PaginationContract } from '@shared/models/contracts';
 import { LocalizedPluralPipe } from '@shared/pipes';
-import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/localized-text.helpers';
+import { resolveLocalizedText, resolveLocalizedValue, stripHtml } from '@shared/utils/localization/localized-text.helpers';
 import { buildPublicParkReferenceRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
 import { PUBLIC_MANUFACTURERS_PAGE_SIZE, PublicDirectoryLocation, buildPublicDirectoryPagePath, resolvePublicDirectoryLocation } from '@shared/utils/routing/public-directory-location';
@@ -149,6 +149,9 @@ export class ManufacturersPageComponent implements OnInit {
   }
 
   protected biographyPreview(manufacturer: AttractionManufacturer): string | null {
+    if (manufacturer.biographyPreviews !== undefined) {
+      return resolveLocalizedValue(manufacturer.biographyPreviews, this.currentLang()) ?? null;
+    }
     const text: string = stripHtml(resolveLocalizedText(manufacturer.biography, this.currentLang(), ''));
     if (!text) {
       return null;

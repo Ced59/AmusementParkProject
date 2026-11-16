@@ -133,7 +133,7 @@ export class ParkVideosStateFacade {
     forkJoin({
       summary: this.parksPort.getParkDetailSummary(parkId, anonymousHttpOptions()),
       parkVideoPage: this.videosPort.getVideosPage(this.buildParkVideoQuery(parkId, normalizedFilters, 1), anonymousHttpOptions()),
-      itemVideoProbe: this.videosPort.getParkItemVideosByPark(parkId, this.buildItemVideoQuery(normalizedFilters, 1, 1), anonymousHttpOptions()),
+      itemVideoProbe: this.videosPort.getParkItemVideosByPark(parkId, { ...this.buildItemVideoQuery(normalizedFilters, 1, 1), includeItems: false }, anonymousHttpOptions()),
       videoTags: this.videosPort.getVideoTags(anonymousHttpOptions())
     }).pipe(
       switchMap((response: ParkVideosInitialResponse) => this.loadDefaultItemTabWhenNeeded(parkId, normalizedFilters, response, preferredTab)),

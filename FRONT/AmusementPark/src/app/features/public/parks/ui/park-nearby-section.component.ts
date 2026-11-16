@@ -22,6 +22,7 @@ export class ParkNearbySectionComponent implements OnChanges {
   private readonly facade = inject(NearbyDestinationsFacade);
   protected readonly destinations = this.facade.cards;
   protected readonly state = this.facade.state;
+  protected readonly includeStandalone = this.facade.includeStandalone;
   @Input() sourceId: string | null = null;
   @Input() sourceKind: NearbyDestinationKind = 'Park';
   @Input() currentLang: string = 'en';
@@ -34,6 +35,10 @@ export class ParkNearbySectionComponent implements OnChanges {
     }
   }
 
+  protected toggleStandalone(): void {
+    this.facade.setIncludeStandalone(!this.includeStandalone());
+  }
+
   protected get nearestPark(): ParkCardModel | null {
     return this.destinations()[0]?.card ?? null;
   }
@@ -43,6 +48,9 @@ export class ParkNearbySectionComponent implements OnChanges {
   }
 
   protected get subtitleKey(): string {
+    if (!this.includeStandalone()) {
+      return this.alternativesMode ? 'parks.detail.nearby.parksAlternativesSubtitle' : 'parks.detail.nearby.parksSubtitle';
+    }
     return this.alternativesMode ? 'parks.detail.nearby.alternativesSubtitle' : 'parks.detail.nearby.subtitle';
   }
 }

@@ -2,6 +2,7 @@ import { HistoryEntityType } from '../history/history.models';
 import { LocalizedItem } from '../shared/localized-item';
 
 export interface HomeLatestArticleModel {
+  shortSummaries?: LocalizedItem<string>[];
   eventId: string | null;
   entityType: HistoryEntityType | string;
   parkId: string | null;

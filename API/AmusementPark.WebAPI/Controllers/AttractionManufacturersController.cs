@@ -58,7 +58,7 @@ public sealed class AttractionManufacturersController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicReferenceData)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<AttractionManufacturerDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? search = null, [FromQuery] bool includeHidden = false, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? search = null, [FromQuery] bool includeHidden = false, CancellationToken cancellationToken = default, [FromQuery] bool cardView = false, [FromQuery] bool nameOnly = false)
     {
         bool effectiveIncludeHidden = includeHidden && this.User.IsInRole(AuthorizationRoleGroups.Admin);
         ApplicationResult<PagedResult<AttractionManufacturerResult>> result = await this.getAttractionManufacturersQueryHandler.HandleAsync(
@@ -69,7 +69,16 @@ public sealed class AttractionManufacturersController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<AttractionManufacturerDto> response = result.Value.ToPagedResponse(static value => value.ToHttp());
+        if (nameOnly)
+        {
+            return this.Ok(result.Value.ToPagedResponse(static value =>
+            {
+                AttractionManufacturerDto mapped = value.ToHttp();
+                return new AttractionManufacturerNameDto(mapped.Id, mapped.Name);
+            }));
+        }
+
+        PagedResponseDto<AttractionManufacturerDto> response = result.Value.ToPagedResponse(value => cardView ? value.ToHttp().ToCardHttp() : value.ToHttp());
         return this.Ok(response);
     }
 

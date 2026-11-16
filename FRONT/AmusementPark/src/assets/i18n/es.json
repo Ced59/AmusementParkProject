@@ -8271,7 +8271,12 @@
         "emptyMessage": "No se han encontrado parques ni atracciones independientes cerca de aquí.",
         "closestTitle": "Lugar más cercano",
         "distanceNote": "Distancia estimada en línea recta desde este lugar.",
-        "viewDestination": "Ver la ficha"
+        "viewDestination": "Ver la ficha",
+        "includeStandalone": "Incluir atracciones independientes",
+        "parksSubtitle": "Descubre los parques más cercanos.",
+        "parksAlternativesSubtitle": "Descubre los parques alrededor de este lugar.",
+        "emptyParksTitle": "No hay parques cercanos",
+        "emptyParksMessage": "No se encontraron parques cerca de este lugar."
       },
       "description": {
         "badge": "Presentación",

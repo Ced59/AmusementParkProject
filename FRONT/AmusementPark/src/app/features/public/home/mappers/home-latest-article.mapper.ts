@@ -28,7 +28,9 @@ export function mapHomeLatestArticleToCardModel(
   return {
     id: normalizeOptionalString(article.eventId),
     title,
-    description: truncator.truncate(plainDescription, { maxLength: ARTICLE_DESCRIPTION_MAX_LENGTH }),
+    description: article.shortSummaries !== undefined
+      ? resolveLocalizedValue(article.shortSummaries, currentLanguage) ?? null
+      : truncator.truncate(plainDescription, { maxLength: ARTICLE_DESCRIPTION_MAX_LENGTH }),
     contextLabel: buildContextLabel(article),
     mainImageId: normalizeOptionalString(article.mainImageId),
     detailLink: buildDetailLink(article, title, currentLanguage),

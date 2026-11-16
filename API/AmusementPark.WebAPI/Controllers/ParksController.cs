@@ -119,7 +119,7 @@ public sealed class ParksController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetRandomVisibleParksAsync([FromQuery] int limit = 4, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetRandomVisibleParksAsync([FromQuery] int limit = 4, CancellationToken cancellationToken = default, [FromQuery] bool cardView = false)
     {
         ApplicationResult<IReadOnlyCollection<Park>> result = await this.getRandomVisibleParksQueryHandler.HandleAsync(
             new GetRandomVisibleParksQuery(limit, ClosedEntityFilter.OpenOnly),
@@ -130,7 +130,7 @@ public sealed class ParksController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<ParkDto> response = result.Value.Select(static park => park.ToHttp()).ToList();
+        List<ParkDto> response = result.Value.Select(park => cardView ? park.ToHttp().ToCardHttp() : park.ToHttp()).ToList();
         return this.Ok(response);
     }
 
@@ -139,7 +139,7 @@ public sealed class ParksController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<HomeFeaturedParkDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetHomeFeaturedParksAsync([FromQuery] int limit = 3, [FromQuery] string[]? excludeIds = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetHomeFeaturedParksAsync([FromQuery] int limit = 3, [FromQuery] string[]? excludeIds = null, CancellationToken cancellationToken = default, [FromQuery] bool cardView = false)
     {
         ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>> result = await this.getHomeFeaturedParksQueryHandler.HandleAsync(
             new GetHomeFeaturedParksQuery(limit, excludeIds ?? Array.Empty<string>()),
@@ -150,7 +150,7 @@ public sealed class ParksController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<HomeFeaturedParkDto> response = result.Value.Select(static park => park.ToHttp()).ToList();
+        List<HomeFeaturedParkDto> response = result.Value.Select(park => cardView ? park.ToHttp().ToCardHttp() : park.ToHttp()).ToList();
         return this.Ok(response);
     }
 
@@ -158,7 +158,7 @@ public sealed class ParksController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<HomeFeaturedParkDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetLatestHomeParksAsync([FromQuery] int limit = 3, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetLatestHomeParksAsync([FromQuery] int limit = 3, CancellationToken cancellationToken = default, [FromQuery] bool cardView = false)
     {
         ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>> result = await this.getLatestHomeParksQueryHandler.HandleAsync(
             new GetLatestHomeParksQuery(limit),
@@ -169,7 +169,7 @@ public sealed class ParksController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<HomeFeaturedParkDto> response = result.Value.Select(static park => park.ToHttp()).ToList();
+        List<HomeFeaturedParkDto> response = result.Value.Select(park => cardView ? park.ToHttp().ToCardHttp() : park.ToHttp()).ToList();
         return this.Ok(response);
     }
 
@@ -244,7 +244,7 @@ public sealed class ParksController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetParkById([FromRoute] string id, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetParkById([FromRoute] string id, CancellationToken cancellationToken = default, [FromQuery] bool cardView = false)
     {
         ApplicationResult<Park> result = await this.getParkByIdQueryHandler.HandleAsync(new GetParkByIdQuery(id, this.UserCanSeeNonVisible()), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -252,7 +252,7 @@ public sealed class ParksController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        return this.Ok(result.Value.ToHttp());
+        return this.Ok(cardView ? result.Value.ToHttp().ToCardHttp() : result.Value.ToHttp());
     }
 
     [HttpGet]
@@ -276,7 +276,7 @@ public sealed class ParksController : ControllerBase
         [FromQuery] string? openingHoursStatus = null,
         [FromQuery] string? sortBy = null,
         [FromQuery] string? sortDirection = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default, [FromQuery] bool cardView = false)
     {
         bool canSeeNonVisible = this.UserCanSeeNonVisible();
         bool includeNonVisible = !visibleOnly && canSeeNonVisible;
@@ -304,7 +304,7 @@ public sealed class ParksController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ParkDto> response = result.Value.ToPagedResponse(static park => park.ToHttp());
+        PagedResponseDto<ParkDto> response = result.Value.ToPagedResponse(park => cardView ? park.ToHttp().ToCardHttp() : park.ToHttp());
 
         return this.Ok(response);
     }

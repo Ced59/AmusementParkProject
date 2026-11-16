@@ -54,7 +54,7 @@ describe('Manufacturer directory URL navigation and resolved SEO', () => {
     await harness.navigateByUrl('/fr/manufacturers?page=2', ManufacturersPageComponent);
     harness.detectChanges();
     expect(port.getAttractionManufacturersPage).toHaveBeenCalledOnce();
-    expect(port.getAttractionManufacturersPage).toHaveBeenCalledWith(2, 24, '');
+    expect(port.getAttractionManufacturersPage).toHaveBeenCalledWith(2, 24, '', false, true);
     expect(port.getAllAttractionManufacturers).not.toHaveBeenCalled();
     expect(harness.routeNativeElement?.querySelectorAll('.manufacturer-card')).toHaveLength(24);
     expect(harness.routeNativeElement?.querySelector('a[href="/fr/park-manufacturer/manufacturer-25/fabricant-25"]')).not.toBeNull();
@@ -92,7 +92,7 @@ describe('Manufacturer directory URL navigation and resolved SEO', () => {
     harness.detectChanges();
     expect(TestBed.inject(Router).url).toBe('/fr/manufacturers');
     expect(harness.routeDebugElement!.injector.get(PublicManufacturersStateFacade).searchTerm()).toBe('ride');
-    expect(port.getAttractionManufacturersPage).toHaveBeenLastCalledWith(1, 24, 'ride');
+    expect(port.getAttractionManufacturersPage).toHaveBeenLastCalledWith(1, 24, 'ride', false, true);
     expect(harness.routeNativeElement?.querySelector('.app-pagination a')).toBeNull();
     expect(seo.applyManufacturersListSeo).toHaveBeenLastCalledWith('fr', '/fr/manufacturers', null);
     page.clearSearch();

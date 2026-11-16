@@ -64,7 +64,7 @@ export class HomeLatestContentStateFacade {
     const previousData: HomeLatestParksViewModel | undefined = this.latestParksStateStore.data();
     this.latestParksStateStore.setLoading(previousData);
 
-    this.dataPort.getLatestParks(HomeLatestContentStateFacade.ContentLimit, anonymousHttpOptions())
+    this.dataPort.getLatestParks(HomeLatestContentStateFacade.ContentLimit, { ...anonymousHttpOptions(), cardView: true })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (parks: HomeFeaturedParkModel[]) => {
@@ -84,7 +84,7 @@ export class HomeLatestContentStateFacade {
     const previousData: HomeLatestArticlesViewModel | undefined = this.latestArticlesStateStore.data();
     this.latestArticlesStateStore.setLoading(previousData);
 
-    this.dataPort.getLatestArticles(HomeLatestContentStateFacade.ContentLimit, anonymousHttpOptions())
+    this.dataPort.getLatestArticles(HomeLatestContentStateFacade.ContentLimit, { ...anonymousHttpOptions(), cardView: true })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (articles: HomeLatestArticleModel[]) => {

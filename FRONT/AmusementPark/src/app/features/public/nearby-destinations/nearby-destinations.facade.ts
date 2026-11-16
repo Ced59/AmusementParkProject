@@ -7,6 +7,7 @@ import { MeasurementPreferenceService } from '@app/services/measurements/measure
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
+import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { mapNearbyDestinationToCard } from './nearby-destination-card.mapper';
 import { NEARBY_DESTINATIONS_PORT } from './nearby-destinations.ports';
@@ -21,12 +22,28 @@ export class NearbyDestinationsFacade {
   private readonly measurements = inject(MeasurementConversionService);
   private readonly store = new SignalScreenStateStore<NearbyDestination[]>();
   private readonly language = signal('en');
+  private readonly includeStandaloneSignal = signal(false);
+  readonly includeStandalone = this.includeStandaloneSignal.asReadonly();
+  private readonly visibleTargets = computed(() => (this.store.data() ?? [])
+    .filter(target => this.includeStandaloneSignal() || target.kind === 'Park')
+    .slice(0, 4));
   private request: Subscription | null = null;
 
-  readonly state = this.store.state;
-  readonly cards = computed(() => (this.store.data() ?? []).map(target => mapNearbyDestinationToCard(
+  readonly state = computed<ScreenState<NearbyDestination[]>>(() => {
+    const state = this.store.state();
+    if (state.kind === 'ready' || state.kind === 'empty') {
+      const targets = this.visibleTargets();
+      return { ...state, kind: targets.length ? 'ready' : 'empty', data: targets };
+    }
+    return state;
+  });
+  readonly cards = computed(() => this.visibleTargets().map(target => mapNearbyDestinationToCard(
     target, this.language(), this.countries, this.truncator, this.preference.preferredSystem(), this.measurements
   )));
+
+  setIncludeStandalone(include: boolean): void {
+    this.includeStandaloneSignal.set(include);
+  }
 
   setLanguage(language: string): void {
     this.language.set(language || 'en');
@@ -47,7 +64,7 @@ export class NearbyDestinationsFacade {
           const nearby = targets.filter(target => {
             const targetId = target.park?.id ?? target.standaloneAttraction?.id;
             return !!targetId && (target.kind !== kind || targetId !== sourceId);
-          }).slice(0, 4);
+          });
           if (nearby.length) {
             this.store.setReady(nearby);
           } else {

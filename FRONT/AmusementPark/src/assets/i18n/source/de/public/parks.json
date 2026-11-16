@@ -66,7 +66,12 @@
         "emptyMessage": "In der Nähe wurden keine Parks oder eigenständigen Attraktionen gefunden.",
         "closestTitle": "Nächstgelegener Ort",
         "distanceNote": "Geschätzte Entfernung in Luftlinie von diesem Ort.",
-        "viewDestination": "Details ansehen"
+        "viewDestination": "Details ansehen",
+        "includeStandalone": "Einzelattraktionen einbeziehen",
+        "parksSubtitle": "Entdecke die nächstgelegenen Parks.",
+        "parksAlternativesSubtitle": "Entdecke Parks rund um diesen Ort.",
+        "emptyParksTitle": "Keine Parks in der Nähe",
+        "emptyParksMessage": "In der Nähe dieses Ortes wurden keine Parks gefunden."
       },
       "description": {
         "badge": "Übersicht",

@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using System.Collections.Generic;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Parks;
@@ -22,6 +23,9 @@ public sealed class HomeFeaturedParkDto
     public double Longitude { get; set; }
 
     public List<LocalizedTextDto> Descriptions { get; set; } = new();
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<LocalizedTextDto>? ShortDescriptions { get; set; }
 
     public string? City { get; set; }
 

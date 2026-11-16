@@ -11,6 +11,7 @@ import { HOME_API_ENDPOINTS } from './home-api-endpoints';
 interface HomeHttpOptions {
   context?: HttpContext;
   transferCache?: boolean;
+  cardView?: boolean;
 }
 
 @Injectable({
@@ -29,6 +30,8 @@ export class HomeApiService {
     const url: string = `${environment.apiBaseUrl}${HOME_API_ENDPOINTS.getFeaturedParks}`;
     const queryParts: string[] = [`limit=${encodeURIComponent(String(limit))}`];
 
+    if (options.cardView) { queryParts.push('cardView=true'); }
+
     for (const parkId of excludedParkIds) {
       if (parkId.trim().length > 0) {
         queryParts.push(`excludeIds=${encodeURIComponent(parkId.trim())}`);
@@ -40,11 +43,11 @@ export class HomeApiService {
 
   getLatestParks(limit: number = 3, options: HomeHttpOptions = {}): Observable<HomeFeaturedParkModel[]> {
     const url: string = `${environment.apiBaseUrl}${HOME_API_ENDPOINTS.getLatestParks}`;
-    return this.http.get<HomeFeaturedParkModel[]>(`${url}?limit=${encodeURIComponent(String(limit))}`, options);
+    return this.http.get<HomeFeaturedParkModel[]>(`${url}?limit=${encodeURIComponent(String(limit))}${options.cardView ? '&cardView=true' : ''}`, options);
   }
 
   getLatestArticles(limit: number = 3, options: HomeHttpOptions = {}): Observable<HomeLatestArticleModel[]> {
     const url: string = `${environment.apiBaseUrl}${HOME_API_ENDPOINTS.getLatestArticles}`;
-    return this.http.get<HomeLatestArticleModel[]>(`${url}?limit=${encodeURIComponent(String(limit))}`, options);
+    return this.http.get<HomeLatestArticleModel[]>(`${url}?limit=${encodeURIComponent(String(limit))}${options.cardView ? '&cardView=true' : ''}`, options);
   }
 }

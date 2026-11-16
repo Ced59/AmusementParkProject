@@ -328,7 +328,7 @@ export class ParkItemsPageStateFacade {
         anonymousHttpOptions()),
       manufacturers: useMinimalSsrData
         ? of([] as AttractionManufacturer[])
-        : this.manufacturersApiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
+        : this.manufacturersApiService.getAttractionManufacturers(false, true).pipe(catchError(() => of([] as AttractionManufacturer[]))),
       zones: this.parkZonesApiService.getParkZonesByParkId(parkId, anonymousHttpOptions()).pipe(catchError(() => of([] as ParkZone[]))),
       parkPhotos: useMinimalSsrData
         ? of([] as ImageDto[])
