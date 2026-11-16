@@ -1,0 +1,179 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "checkedAtUtc": "2026-11-16T00:03:25.317472+00:00",
+  "sourceReceipt": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/integration-history-result.json",
+  "retrievedAtUtc": "2026-11-15T23:59:20.5913759Z",
+  "operations": [
+    {
+      "operationId": "9ad9d3c9-e054-432c-a3d3-c2a2dd4e0860",
+      "appliedAtUtc": "2026-10-20T08:32:39.5372326Z",
+      "step": "exposition-coloniale-internationale-step01-historical-lifecycle",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "ExactexistingparkidentityfromfreshsequentialscopedSearchandnarrowParkBasics/Items/Referencesexport; oneexistingCaptain5322ScenicRailway at1931Exposition, notMarseille1922/1906orcurrentmuseum/zoo. ActualPalaisPorteDoreeprimaryPapNdiaye2022bodyand2025architecturetranscriptprintedp10/PDFindex9 state1931event6May–15NovaroundLacDaumesnil/BoisVincennesParis. CorrectfalsecurrentOperatingtoClosedDefinitively; exactdatesbelongtotheexhibitiononly, notautomaticallyeveryride. AmusementPark is broad availablecatalogtypeforhistoricexhibitionwithseparateforaincomponent; notmodernThemePark/Zooorentireexposolelyentertainment. Parisconfirmed, no inventedstreet/entranceGPS/postaladdressorassigningmuseumcurrentaddressaswhole110hasite. PreservehiddenToProcessLater, allitem/references/adminscope; no articles/media/emptyarrayreplacementorpublication. ExistingmanufacturerErichHeidrichsourceCaptaincorroborated, sharedreferenceunmodified. ExistingcoasterfakeJan1dates/invalidRelocatedstatus/restraintInconnu/technicalprovenanceauditedseparately. Wholeexhibitioncriticalpublicnarrativeandpersonsnotreducedtoamusementinventory, colonialstereotypesnotadopted; KanakexhibitionatJardinAcclimatationhistoricallyindependent, notmisownedhere. PresentPalais/Aquariumand1934Zooarenotthe1931eventlifecycle. No newfullroutineexport/finalStep09/FB."
+    },
+    {
+      "operationId": "fb1d0ee3-fda3-4cd4-b452-054e2bc97445",
+      "appliedAtUtc": "2026-10-20T08:35:28.3418533Z",
+      "step": "exposition-coloniale-internationale-step03-scenic-precision",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "One exactexistingprivatePariscoasterID/source5322. ActualCaptainmetricbody21m982m72kmh0inversionsWoodSitDownChainLift/ErichHeidrich/opening1931closing1931; preserveexistingmeasurements/unitpairs/manufacturer/providerID/source ratherthanroundingtoRCDB70ft/3223.1ft/45mph. ActualRCDBParis19255notjustUK811 explicitly3:30duration/3cars/train/2across5rows=10riderspercar30pertrain; add210sec/3/10 only, nottraincount/currentUKcapacity/accessrestrictions. FullfirstpartyHistoricEngland1436976andoperatorhistorycorroborateParisoriginandUK1932reerection, RCDBexplicitlylinksParis/UKsamephysicalride. CurrentRemovedforParisnotRelocatedhistoryword; sourceuncertaintyofpreciseshipdatehasnoeffectonnolongerinstalledhere. Sourceonlyyears1931forParisincarnation; clearsyntheticJan1exactdatesandsetyeartexts. UnknownrestraintInconnu=>null; no guessedLapBar. Firstbuilt1928inHistoricEnglandisNOTParisexpoopeningdate; operatorParkHistorymisdatesColonialExpo1929/1932summervsHistoricEnglandApril/othercatalogueMay14, donotimportcontradictoryexactdatesorUKpost1935/1970srebuiltfeaturesas1931Parisfacts. EntireexhibitionactualMay6Nov15doesnotproveindividualcoasterexactdays. No sharedmanufacturerbiography/sourceIDchange, noimport/visibility/publication/finalaudit/FB."
+    },
+    {
+      "operationId": "50e5f44c-23d8-4412-bb87-6f9140818e66",
+      "appliedAtUtc": "2026-10-20T08:49:15.1045503Z",
+      "step": "exposition-coloniale-internationale-step01-04-park-editorial",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "ExistinghiddenhistoricalParis1931exhibition, all8descriptionsindependentlyauthoredandpersonallysubstantiallyreviewed4h2/7p, identicalfactaxes/naturalidiom. ActualprimaryPalais2022historianbody/2025architecturetranscriptp10/current1931history/lightingarticle, actualfirstpartycatalogueParcGravelle/coaster; no copiedmachine/APItranslation. Sourceboundhistoricalexhibitionidentity/dates/place/colonialpoliticalpurpose; AngkorreplicaIndochina, LapradeArtDecoPalaisintendedpermanent, nocturnes/lightcolumns/fountains/ThéâtreEauIleReuillydancescolouredwater, actualforainScenicRailwayandcircularexhibitiontrain, exhibitedpeople/artisans/stallswithinorganiserscolonialhierarchy, concealedexploitation/violence, surrealistboycott/counterexhibition, distinctpost1931Palais/Aquarium/preservedTogoCameroonPagodeheritage. People nevertreatedasAnimalExhibititems/racistperiodepithetsadopted; independentJardinAcclimatationKanakexhibitionnotmisowned. No assumedconsent/transportconditions, inventedfeelings/rideparameters/itineraryadvice/currenteventhours, unreliablecountrylists/physicaldimensionclaims, falseonlysurvivingPalais. Refinedfirsttwoendingsfromvaguecontinuitiesintospecificpreservedpavilions; naturalDE/EN/IT/ESlightcolumnsandPLamusementsection. CoordinatesactualRCDB19254Google/HEREpin48.829598,2.411919insideformerParcGravelleamusementsection; notsurveyedentrance/whole110hacentroid orcurrentmuseumaddress; nativeHTMLsaved, no guessedgeolocation. PrimaryNov15closingpreserveddespiteRCDBNov6conflict. No otherlifecycle/item/reference/visibility/reviewstatechange, noimagepixels/import/finalaudit/publication/FB."
+    },
+    {
+      "operationId": "13251ed5-a4cf-4636-82cb-fd815c421add",
+      "appliedAtUtc": "2026-10-20T08:55:12.6581115Z",
+      "step": "exposition-coloniale-internationale-step02-04-gravelle-zone",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "One genuinelynamedhistoricalamusementzoneonly: actualfirstpartycatalogueRCDB19254etymologyexplicitlypostcardsamusementsectionParcdelaGravelle; exactcoasterRCDB19255ParisownsScenicRailway. NoexistingzonesinactualnarrowZonesHistoryexport. OriginalFrenchpropernamepreservedall8, descriptionspersonallyauthored/reviewed1h2pcompactsourceboundnarrative, identity/popularamusementwithincolonialexpositioncontext; no imaginedtheme/décor/boundaries/gps/perimeter/openingday. IleReuillyphysicallocationofTheatreEauisNOTautomaticallyanotherofficialzone, notcreatedfromapproximategeography; no restaurants/familycategoryzones. ZoneprivateToReview sort10presentationonlynotvisitorderclaim; soleexistingprivateSceniclinkedbyzoneKeywithintransaction, notnewduplicatecoaster. ActualnewzoneIDmustbefromApply, neverPreview-generatedID. Preservestatus/lifecycle/technical/copy/references/visibilityofcoasterandpark. No otherinventory/media/historymutation, nofinalaudit/pub/FB."
+    },
+    {
+      "operationId": "9cc6509a-08bd-42ae-8e96-fc944844127d",
+      "appliedAtUtc": "2026-10-20T09:01:41.2729021Z",
+      "step": "exposition-coloniale-internationale-step04-scenic-editorial",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "One existingprivateParisSceniconly, all8independentlyauthored/personallyreviewed2h2/3p heritagecopy. ActualfirstpartycataloguesRCDB19254/19255/811 andCaptain5322identifyFrench1931incarnation/Gravelle/Wood/ErichHeidrich andsamephysicalrideUKRollerCoaster. ActualHistoricEngland1436976fullstatutoryhistory1928construction/manufacture/Erich/Paris/UK1932andGradeIIlisted18Oct2016, corroboratedofficialoperatorridesBuiltInFrance1928; useconstruction1928versusParisincarnation1931distinct, no falseParisexpo1928/1929opening. Officialoperatorhistorymisdatesexhibition1929andgives1932summerversusHistoricEnglandApril, omitexactUKopeningday/month. Removedredundantsecondparagraphthirdsentenceinfirstfourlanguageversions(includingEnglisherroneouspluraldraft), addsourceconstructionyearinall8sofactaxesparallel. ThirdparagraphspecificallyBritishstructureheritage2016andmaintenance/restoration, neverclaimalltimbers/trainsoriginal orimportpost1935UKfeatures/measurements/accessintoParis. No unviewedParisAlpinescenery/colonialdécorinvented,currentvisitadviceorengineeringsequence; publicidentity/setting/maker/history/legacy, specsremainstructured. DateInItemDescriptionsignalsall8legitimate1928construction1931French/1932Britishincarnation2016heritage, notpresentitinerary. Genuine source-boundcompactlanguageexceptionsfornaturallyshorterDE/PLpreserveall3paragraphs; no filler. Globalname/providerID/currentlifecycle/zoneIdtechnicalfieldsnotchanged. No changeUKparkentity/sharedmanufacturerbiography/imageimport/publication/finalaudit/FB."
+    },
+    {
+      "operationId": "f26b08a9-f722-4fd1-a8d4-40028d98b958",
+      "appliedAtUtc": "2026-10-20T09:12:27.8886656Z",
+      "step": "exposition-coloniale-internationale-step03-04-theatre-eau",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "One new missinghistoricalShowvenue, no duplicateamongactualonecoasteritemsexport/currentconsolidated. ActualofficialPalaislightingbodyidentifiesThéâtreEau,pointeIleReuilly,dancesevenings/colouredwater. ActualcontemporaryL-D.Fourcault,LaSciencedeleclairagealExpositioncoloniale,LaScienceetlaVie169July1931printedp27–32, especiallyp30–31/OCR806–814: stageonlakeinfrontcolouredcascade, oldTempleAmourNOTdemolishedbutmaskedbywaterterraces/structure; spectatorsinboats. OCRtwo-columnorderreconstructedforreadingonly, notpixelsclaimed. Wordgradinsprimarilydescribessteppedcascadeframe, no assumedclassicauditorium/seatcount; proposedrainplanreverseswaterterracesintospectatorstandsbutnotassertedactuallyused, noweatherpromise. Removedliteralengineeringphraseinfirst4drafts, preservedoldTemplebehindscenery; naturalPLboatsentence. All8independentlyauthored/personallyreviewed2h2/3p equalfacts, sourceboundcompactlanguageexceptionsif<120notpaddedwithimaginedsounds/costumes/culture/feelings. Culturalperformancesplacedin1931colonialexpositionpoliticalcontextwithcriticalattribution, no racialepithets/currentethnicityclaims. CurrentClosedDefinitivelyreferstooriginal1931venue/programmeatclosedexposition, physicaldismantling/removaldateunprovenhencenotRemovedorDemolished; individualexactopening/closingdays/yearsnotinferredfromwholeexpo. CurrentTempleRomantiqueReuillyisnotthesameShowandnotcreated/changedas1931attraction. No zoneassignedfromgeography: IleReuillynotinventedzone/ParcGravelleforainnotclaimedhere. No inventedspecificGPS/builders/manufacturer/accessconditions/technicalfieldmisuseforstagewidth/pumps/lights/seatcapacity. ArchivesParisINV2411PDF404onlyindexed50W602leadnotactualplansread,nobypass/retry; contemporarysourceprimarybodyread, searchfoundnoprovenmoderncontinuationofthisnamed1931venue; notcurrentCharlesTrenetTheatreEauChelles. PrivateToReview; no newimages/visibility/publication/finalaudit/FB."
+    },
+    {
+      "operationId": "59f36221-686d-4ce4-ad75-7571796b9f3a",
+      "appliedAtUtc": "2026-10-20T09:29:55.6927153Z",
+      "step": "exposition-coloniale-internationale-step08-four-milestones",
+      "counts": {
+        "created": 4,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "Four missing privatehistoricalmilestonesonly, actualnarrowHistoryexportempty andnomutationsHistorysincesaved; mergepreservesanyunrelatedconcurrentdata. ThreeParkevents, one exactexistingParisScenicitemRelocationDeparture1932; correctowner+entityType+actualIDallaliasesforitem, no park-ownedcoastertransfer/newUKentity. ActualprimaryPalais2025transcriptp10states6May–15Nov1931, PapNdiaye2022bodyopeningMay6/counterexhibitionautumn1931outsideofficialsite/currentPlaceColonelFabien; structuredDayfortwoexactdates/Yearcounter, no inferredSept/Octoberday. ClosureprimaryNov15overcatalogueRCDBNov6uncorroboratedvariant, alreadydocumented. HistoricEnglandfullhistoryshippedtoEngland1932/rebuilt/opened1932, actualRCDB19255explicitParisUKrelocation; year1932only,no disputedexactBritishopeningday/month/purchase1931forcedasshipdate orPariscreated1928event. OriginalFrenchincarnationcurrentlyRemovednotOperatingafteroverseasreopening. All64titles/summaries personallyauthored/substantiallycurated/reviewedall8, properFrenchcounterexhibitiontitlepreserved; sourcesoriginaltitlesnotmachine-translated. NativeDEopeningverb/ENintentphrase/NL/PTopening/PLcounterwording/ESPTviolenceconditions/clearclosuretitlescurated. Summariesfactandlastingrole, no mechanicalspecs/itinerary/genericclonedparagraphs; popularsuccessnotassumedunanimity/colonialviewnotadopted; countervenueexternalclearlynotparkItem. Palaispermanentlegacybeyondtemporaryevent, notfalseallbuildingsdemolishedorcurrentexhibitionprogramme. Allprivate/no mainimagesguessed/noarticleplaceholder,newIDsfromApplyonly. No fullroutineexport/finalaudit/datapublication/FB."
+    },
+    {
+      "operationId": "7bc2b9db-852c-4bd2-b0bf-59c39535aa1b",
+      "appliedAtUtc": "2026-10-20T09:33:11.2467916Z",
+      "step": "exposition-coloniale-internationale-step03-04-train-ceinture",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "One missing historical internal transport, independently identified in actual institutional historian Pap Ndiaye 2022 body: petit train de ceinture, foreign section then French empire presentation, avenue and reconstructed Angkor. Not mainline/Metro/Petite Ceinture external access, not static full-sized PLM vehicle exhibit (actual CNUM 4LE348.4 previously read) and not Paris1937/1889 or present park railway. Transport category/TransportRide type; original1931 service ClosedDefinitively, no unsupported assertion of physical removal or present descendant, individual opening/closing dates not inferred from whole fair. No zone from rough geography, unknown rolling stock/manufacturer/operator/track length/gauge/speed/duration/capacity/station count left absent. Decauville collector article timed out, no alternate retry or indexed maker imported; ACHAC story actual page yields0body lines, index route/6station/15kmh/25min not promoted to verified fields. All8 personally authored and reviewed same2h3p factual axes, compact source-bound texts instead of engineering detail or invented sensory scenery. Critical colonial staging interpretation grounded in primary institutional article, no authentic global journey claim or itinerary advice. No invented platform/access restrictions/prices/logo/photos. All private ToReview; no publication/finalaudit/FB."
+    },
+    {
+      "operationId": "d48def5e-15a0-4447-941e-2e712df1c616",
+      "appliedAtUtc": "2026-10-20T09:37:29.4082756Z",
+      "step": "exposition-coloniale-internationale-step03-04-two-fountains",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "Two missing named1931 luminous water ensembles; actual existing working inventory only Scenic/Theatre/Train so no duplicates. Other/Other because monumental decorative installations, no dedicated fountain enum; not ride, Transport, boatride or forced Show performance. Original1931 programme ClosedDefinitively; physical removal/destruction date unknown, no default whole-fair dates or Removed/Demolished guessed. Grand Signal actual contemporary Fourcault July1931 p28–30 details far lake end opposite main gate/above trees/floralstem/palms/gold/silverywhite. Actual Cite architecture notice2011.21.40:1931nightpastel Alexandre-Mathurin Peche, retained in collection, not image pixels or current display viewed. Drawing author not fountain manufacturer; whole illumination credits Granet/Expert not guessed shared manufacturer entries. Ponts Eau actual July1931 p29–30 three water arches between bank/island accompanying footbridges, white/changing colours/cascade sound; no walking through water claim, not three anonymous duplicates. Actual SFP Gimpel finding aid PDFp84 entries806-PP-521 photoJune5,1931;806-PP-523/524 testsOct8,1930 A.C.Dilly. Test authorship does not establish manufacturer of final wholeensemble, test dimensions not copied finalstats. No actual photos viewed/imported; SFP archival record statement accurate and no publication-rights assumption. Twoh3p all8 personally authored and reviewed; compact languages after genuine source search not inflated with scene invention. No shared technical performance values misused as ride specs, pumps/projectors excluded from public description, no unknown GPS/zones. Historical dates in public copy are contextual identity/artistic legacy, not calendar planning. Primary source colonial stereotypes/boasts not adopted. Current museum opening hours/address not part1931 item. ArchivedGrandSignal csustan failed, no alternate retry/bypass, not source for copied facts. No logo/currentmedia/visibility/publication/finalaudit/FB."
+    },
+    {
+      "operationId": "bbfa8d2f-581f-4ddf-8999-ac5f890f36c5",
+      "appliedAtUtc": "2026-10-20T09:45:19.861484Z",
+      "step": "exposition-coloniale-internationale-step08-nocturnes-article",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "New durable private article attached to actual existing Park opening event9ef060d6-976f-4066-a87c-ae9271271c12 using exactowner+key, full existing event preserved incl source/date/eventType/visibility/title/summary; not new milestone/ownership reparent. Four specific sections/eight developed paragraphs12intentionalnewstableblockIDs/all8title+subtitle+summary+body120localizedtexts personally authored and fully reviewed, no translator output. Actual institutional PapNdiaye2022 history/lighting body, contemporary Fourcault July1931 primaryOCRp27–32 with two-column order reconstructed for reading (no pixels claim), primary2025architecturetranscriptp10, heritageauthority fullhistory/currentfirstpartycatalogue relocation. Critical distinction visitor persons~8m vs tickets~33m, event6May–15Nov perprimary despite RCDBNov6variant; unchanged exact individual dates. Water narrative not engineering sequence/spec sheet, no misread gradins as spectatorstands; oldTempleAmour retained, boat spectators reported1931, no proposedrainplan assertedused. No colonial language/claims adopted fromperiodpress; public text attributes staging/power and recounts contemporaneouscriticism. Counterexhibitionautumn1931outsideofficialsite/currentPlaceColonelFabien, no unproven exactday; boycott opposition does not equal unanimouscritique/allvisitorsgullible. No false merging independentJardinAcclimatationKanakexhibition or current1934Zoo. Palaisintendedpermanent not onlysurvivor; Togo/Cameroon retainedPagode, current museum and Aquarium described fromactualinstitutionalbody, no assumption alltemporarybuildingsdemolished. Scenicbuilt1928distinctFrenchExpo1931; UKreopen1932yearonly/GradeII2016structure, currentBritishride stats and 1935fire not transferredFrenchinstance. No visitoritinerary genericfiller/boilerplate; all8same factaxes/sections, nativeNLintro clarified. Sourcebound p8coaster archivallegacy purposefulnotcurrenttripadvice. Coverimage unknown/null, no images imported/assigned, no media copyright/pixelreview claim. All private; no finalaudit or publication/FB."
+    },
+    {
+      "operationId": "db95899f-f5d8-4dd1-809f-84b6699f6cdb",
+      "appliedAtUtc": "2026-10-20T09:48:16.0180461Z",
+      "step": "exposition-coloniale-internationale-step01-audience-review-state",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "Completes step1 mandatory audience classification previously absent, and puts an actively enriched hidden park into ToReview per step1 rather than initial ToProcessLater. International is historical notoriety/attendance, not merely adjective in name: actual Histoire et Patrimoine12e newsletter22 Nov2024 p2 explicitly ~8million unique visitors/15percent foreigners and nationalregionaldraw; institutional PapNdiaye2022 actualbody corroborates8m and international participating sections. No exact foreign visitor percentage added to public fields/copy because secondary estimate not independently primary-statistics rechecked; enough for qualitative editorial classification. No present attraction/operating claim. Exact1931dates/closedlifecycle/GPS/all8descriptions/identity/references unchanged. Preservehidden, no reviewed-validation completion/publishing/media/FB. Current full audit not complete."
+    },
+    {
+      "operationId": "fcb4ca28-63e9-41c8-974e-2ae114c9bf0f",
+      "appliedAtUtc": "2026-10-20T09:52:40.9998248Z",
+      "step": "exposition-coloniale-internationale-step03-04-totems",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "notes": "One missing named historic decorativefountain, Other/Other because no dedicatedenum, not ride or animal/culturalpeople exhibit. Actual Carnavalet PH19427 fullnotice and explicitlylinkedmanifest320070902 establish1931stereoscopic anonymous photograph from opposite lakebank, fountain before AOFpalace; no assumedindividual GPS/zone. Actual Fourcault July1931 primary p30 identifies tall red wall toppedmasks inAOFsetting; public paraphrase avoids quoteddegrading grimacing adjective, no ethnic/culturalorigin authenticity assertion from Totems name. ActualPalaislightingbodylistsnamedfountain. Sculptural/light identity and setting all8 personally authored/reviewed2h3p; sourceboundcompact languages do not pad with fiction or repeatGrandSignal/Ponts/Theatre paragraphs. Public museum photograph statement comes from actual iconographiccuration, not claimCodexviewedpixels. Exactimagepublic4kURL3840x1754/CC0 fromactualsuccessfulIIIFmetadata recorded separately as candidate only, no download/view/import/assignment while memorypause. Original1931 installation programme ClosedDefinitively; exact construction/removal day and materialfate unknown, no unsupportedRemoved/Demolished or wholedesignbuildersasmanufacturer. PreservenewprivateToReview, no newglobalauthors, unknown dates/specs/access sourceleftabsent, no mainimageguesses/publication/FB/finalaudit."
+    }
+  ],
+  "newDataMutation": false,
+  "newFullAudit": false,
+  "scope": "Recovery of actual prior Apply dates; source-search and multilingual review still in progress. No publication or completion inferred."
+}

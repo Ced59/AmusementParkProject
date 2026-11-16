@@ -1,0 +1,291 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "06-museum-night",
+    "source": {
+      "key": "eclairage_facade",
+      "sourcePage": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+      "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_facade_musee_des_colonies_1931.jpg",
+      "caption": "Façade du Musée des Colonies éclairée. Anonyme, Exposition coloniale de 1931 (ensemble), 1931.",
+      "startedAtUtc": "2026-11-16T00:04:46.539121+00:00",
+      "httpStatus": 200,
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/eclairage_facade.jpg",
+      "bytes": 302407,
+      "sha256": "2a1bebf643c09570785d7ea5c6a61e5fb7a26db1d7b7252280536d7099684b38",
+      "dimensions": [
+        1440,
+        948
+      ]
+    },
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+    "review": "All24 localized fields personally authored/reviewed. Native publisher file intact; no edit or capture date inference."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "SourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_facade_musee_des_colonies_1931.jpg",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/eclairage_facade.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/06-museum-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/06-museum-night-import-result.json"
+  },
+  "metadata": {
+    "description": "En 1931, la lumière souligne le bas-relief d’Alfred Janniot sur la façade du Palais de la Porte Dorée. Les colonnes et les grands panneaux sculptés forment une longue perspective nocturne.",
+    "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_facade_musee_des_colonies_1931.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une rangée de colonnes se détache devant la façade sculptée du Musée des Colonies, éclairée de nuit."
+      },
+      {
+        "languageCode": "en",
+        "value": "A row of columns stands before the sculpted façade of the Musée des Colonies, illuminated at night."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Säulenreihe steht vor der nachts beleuchteten Relieffassade des Musée des Colonies."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een rij zuilen staat voor de ’s nachts verlichte, gebeeldhouwde gevel van het Musée des Colonies."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una fila di colonne si staglia davanti alla facciata scolpita del Musée des Colonies, illuminata di notte."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una fila de columnas se recorta ante la fachada esculpida del Musée des Colonies, iluminada de noche."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Rząd kolumn na tle oświetlonej nocą fasady Musée des Colonies, pokrytej płaskorzeźbami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma fila de colunas destaca-se diante da fachada esculpida do Musée des Colonies, iluminada de noite."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "En 1931, la lumière souligne le bas-relief d’Alfred Janniot sur la façade du Palais de la Porte Dorée. Les colonnes et les grands panneaux sculptés forment une longue perspective nocturne."
+      },
+      {
+        "languageCode": "en",
+        "value": "In 1931, lighting highlighted Alfred Janniot’s relief on the façade of the Palais de la Porte Dorée. The columns and large sculpted panels form a long nighttime perspective."
+      },
+      {
+        "languageCode": "de",
+        "value": "1931 hob die Beleuchtung Alfred Janniots Relief an der Fassade des Palais de la Porte Dorée hervor. Säulen und große Reliefplatten bilden eine lange nächtliche Perspektive."
+      },
+      {
+        "languageCode": "nl",
+        "value": "In 1931 benadrukte de verlichting het reliëf van Alfred Janniot op de gevel van het Palais de la Porte Dorée. De zuilen en grote reliëfpanelen vormen een lang nachtelijk perspectief."
+      },
+      {
+        "languageCode": "it",
+        "value": "Nel 1931 la luce metteva in risalto il bassorilievo di Alfred Janniot sulla facciata del Palais de la Porte Dorée. Le colonne e i grandi pannelli scolpiti formano una lunga prospettiva notturna."
+      },
+      {
+        "languageCode": "es",
+        "value": "En 1931, la luz realzaba el bajorrelieve de Alfred Janniot en la fachada del Palais de la Porte Dorée. Las columnas y los grandes paneles esculpidos forman una larga perspectiva nocturna."
+      },
+      {
+        "languageCode": "pl",
+        "value": "W 1931 roku światło podkreślało płaskorzeźbę Alfreda Janniota na fasadzie Palais de la Porte Dorée. Kolumny i duże rzeźbione panele tworzą długą nocną perspektywę."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Em 1931, a luz realçava o baixo-relevo de Alfred Janniot na fachada do Palais de la Porte Dorée. As colunas e os grandes painéis esculpidos formam uma longa perspetiva noturna."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-16T00:15:59.5396849Z",
+    "startedAtUtc": "2026-11-16T00:15:48.8585249Z",
+    "result": {
+      "id": "90cef56a7c5b4a638e83abe07ce3cbd0",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/90cef56a7c5b4a638e83abe07ce3cbd0",
+      "description": "En 1931, la lumière souligne le bas-relief d’Alfred Janniot sur la façade du Palais de la Porte Dorée. Les colonnes et les grands panneaux sculptés forment une longue perspective nocturne.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1440,
+      "height": 948,
+      "sizeInBytes": 302407,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_facade_musee_des_colonies_1931.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une rangée de colonnes se détache devant la façade sculptée du Musée des Colonies, éclairée de nuit."
+        },
+        {
+          "languageCode": "en",
+          "value": "A row of columns stands before the sculpted façade of the Musée des Colonies, illuminated at night."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Säulenreihe steht vor der nachts beleuchteten Relieffassade des Musée des Colonies."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een rij zuilen staat voor de ’s nachts verlichte, gebeeldhouwde gevel van het Musée des Colonies."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una fila di colonne si staglia davanti alla facciata scolpita del Musée des Colonies, illuminata di notte."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una fila de columnas se recorta ante la fachada esculpida del Musée des Colonies, iluminada de noche."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rząd kolumn na tle oświetlonej nocą fasady Musée des Colonies, pokrytej płaskorzeźbami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma fila de colunas destaca-se diante da fachada esculpida do Musée des Colonies, iluminada de noite."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "En 1931, la lumière souligne le bas-relief d’Alfred Janniot sur la façade du Palais de la Porte Dorée. Les colonnes et les grands panneaux sculptés forment une longue perspective nocturne."
+        },
+        {
+          "languageCode": "en",
+          "value": "In 1931, lighting highlighted Alfred Janniot’s relief on the façade of the Palais de la Porte Dorée. The columns and large sculpted panels form a long nighttime perspective."
+        },
+        {
+          "languageCode": "de",
+          "value": "1931 hob die Beleuchtung Alfred Janniots Relief an der Fassade des Palais de la Porte Dorée hervor. Säulen und große Reliefplatten bilden eine lange nächtliche Perspektive."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In 1931 benadrukte de verlichting het reliëf van Alfred Janniot op de gevel van het Palais de la Porte Dorée. De zuilen en grote reliëfpanelen vormen een lang nachtelijk perspectief."
+        },
+        {
+          "languageCode": "it",
+          "value": "Nel 1931 la luce metteva in risalto il bassorilievo di Alfred Janniot sulla facciata del Palais de la Porte Dorée. Le colonne e i grandi pannelli scolpiti formano una lunga prospettiva notturna."
+        },
+        {
+          "languageCode": "es",
+          "value": "En 1931, la luz realzaba el bajorrelieve de Alfred Janniot en la fachada del Palais de la Porte Dorée. Las columnas y los grandes paneles esculpidos forman una larga perspectiva nocturna."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W 1931 roku światło podkreślało płaskorzeźbę Alfreda Janniota na fasadzie Palais de la Porte Dorée. Kolumny i duże rzeźbione panele tworzą długą nocną perspektywę."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em 1931, a luz realçava o baixo-relevo de Alfred Janniot na fachada do Palais de la Porte Dorée. As colunas e os grandes painéis esculpidos formam uma longa perspetiva noturna."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:15:52.848Z",
+      "updatedAt": "2026-11-16T00:15:56.421Z"
+    }
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

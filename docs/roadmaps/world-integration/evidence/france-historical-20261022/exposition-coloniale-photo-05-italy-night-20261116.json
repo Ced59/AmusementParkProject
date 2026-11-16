@@ -1,0 +1,291 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "05-italy-night",
+    "source": {
+      "key": "vue_nuit_pavillon",
+      "sourcePage": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+      "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/vue_nuit_pavillon_italie_exposition_1931.jpg",
+      "caption": "Des lampadaires chenilles devant le pavillon principal de l’Italie. Négatif sur plaque de verre stéréoscopique.",
+      "startedAtUtc": "2026-11-16T00:04:46.326348+00:00",
+      "httpStatus": 200,
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/vue_nuit_pavillon.jpg",
+      "bytes": 309320,
+      "sha256": "d8b4d0c1485a02ac1dc66b8ea0fc9466a1059ec5a87d6f0a2fb9240c0abc699b",
+      "dimensions": [
+        1440,
+        960
+      ]
+    },
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+    "review": "All24 localized fields personally authored/reviewed. Native publisher file intact; no edit or capture date inference."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "SourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/vue_nuit_pavillon_italie_exposition_1931.jpg",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/vue_nuit_pavillon.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/05-italy-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/05-italy-night-import-result.json"
+  },
+  "metadata": {
+    "description": "Devant le pavillon principal de l’Italie, les candélabres dits « chenilles » accompagnent les statues et les colonnes. Cette vue conserve les illuminations de l’exposition de 1931.",
+    "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/vue_nuit_pavillon_italie_exposition_1931.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La colonnade du pavillon italien éclairée de nuit, encadrée par des lampadaires aux formes superposées."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Italian pavilion’s colonnade lit at night, framed by street lamps with stacked shapes."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die nachts beleuchtete Kolonnade des italienischen Pavillons, eingerahmt von Leuchten mit übereinandergesetzten Formen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De ’s nachts verlichte zuilengalerij van het Italiaanse paviljoen, geflankeerd door lantaarns met gestapelde vormen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il colonnato del padiglione italiano illuminato di notte, incorniciato da lampioni dalle forme sovrapposte."
+      },
+      {
+        "languageCode": "es",
+        "value": "La columnata del pabellón italiano iluminada de noche, enmarcada por farolas de formas superpuestas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Nocna iluminacja kolumnady pawilonu włoskiego, po bokach latarnie z nałożonych na siebie form."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A colunata do pavilhão italiano iluminada de noite, enquadrada por candeeiros de formas sobrepostas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Devant le pavillon principal de l’Italie, les candélabres dits « chenilles » accompagnent les statues et les colonnes. Cette vue conserve les illuminations de l’exposition de 1931."
+      },
+      {
+        "languageCode": "en",
+        "value": "In front of Italy’s main pavilion, the lamps known as “chenilles” stand alongside the statues and columns. This view records the illuminations of the 1931 exposition."
+      },
+      {
+        "languageCode": "de",
+        "value": "Vor dem italienischen Hauptpavillon stehen die als „chenilles“ bezeichneten Leuchten neben Statuen und Säulen. Die Aufnahme zeigt die Beleuchtung der Ausstellung von 1931."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Voor het hoofdpaviljoen van Italië staan de zogeheten “chenilles”-lantaarns naast de beelden en zuilen. Deze opname toont de verlichting van de tentoonstelling van 1931."
+      },
+      {
+        "languageCode": "it",
+        "value": "Davanti al padiglione principale dell’Italia, i lampioni detti « chenilles » affiancano statue e colonne. Questa veduta conserva le illuminazioni dell’esposizione del 1931."
+      },
+      {
+        "languageCode": "es",
+        "value": "Ante el pabellón principal de Italia, las farolas conocidas como « chenilles » acompañan a las estatuas y columnas. Esta vista muestra la iluminación de la exposición de 1931."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Przed głównym pawilonem Włoch latarnie zwane „chenilles” stoją obok posągów i kolumn. Zdjęcie utrwala iluminację wystawy z 1931 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Diante do pavilhão principal de Itália, os candeeiros conhecidos como « chenilles » acompanham as estátuas e as colunas. Esta vista regista a iluminação da exposição de 1931."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-16T00:15:26.6111261Z",
+    "startedAtUtc": "2026-11-16T00:15:16.6742066Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "1f84c8b5efa34e7898d249171fd6f963",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/1f84c8b5efa34e7898d249171fd6f963",
+      "description": "Devant le pavillon principal de l’Italie, les candélabres dits « chenilles » accompagnent les statues et les colonnes. Cette vue conserve les illuminations de l’exposition de 1931.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1440,
+      "height": 960,
+      "sizeInBytes": 309320,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/vue_nuit_pavillon_italie_exposition_1931.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La colonnade du pavillon italien éclairée de nuit, encadrée par des lampadaires aux formes superposées."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Italian pavilion’s colonnade lit at night, framed by street lamps with stacked shapes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die nachts beleuchtete Kolonnade des italienischen Pavillons, eingerahmt von Leuchten mit übereinandergesetzten Formen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De ’s nachts verlichte zuilengalerij van het Italiaanse paviljoen, geflankeerd door lantaarns met gestapelde vormen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il colonnato del padiglione italiano illuminato di notte, incorniciato da lampioni dalle forme sovrapposte."
+        },
+        {
+          "languageCode": "es",
+          "value": "La columnata del pabellón italiano iluminada de noche, enmarcada por farolas de formas superpuestas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Nocna iluminacja kolumnady pawilonu włoskiego, po bokach latarnie z nałożonych na siebie form."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A colunata do pavilhão italiano iluminada de noite, enquadrada por candeeiros de formas sobrepostas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Devant le pavillon principal de l’Italie, les candélabres dits « chenilles » accompagnent les statues et les colonnes. Cette vue conserve les illuminations de l’exposition de 1931."
+        },
+        {
+          "languageCode": "en",
+          "value": "In front of Italy’s main pavilion, the lamps known as “chenilles” stand alongside the statues and columns. This view records the illuminations of the 1931 exposition."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vor dem italienischen Hauptpavillon stehen die als „chenilles“ bezeichneten Leuchten neben Statuen und Säulen. Die Aufnahme zeigt die Beleuchtung der Ausstellung von 1931."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Voor het hoofdpaviljoen van Italië staan de zogeheten “chenilles”-lantaarns naast de beelden en zuilen. Deze opname toont de verlichting van de tentoonstelling van 1931."
+        },
+        {
+          "languageCode": "it",
+          "value": "Davanti al padiglione principale dell’Italia, i lampioni detti « chenilles » affiancano statue e colonne. Questa veduta conserva le illuminazioni dell’esposizione del 1931."
+        },
+        {
+          "languageCode": "es",
+          "value": "Ante el pabellón principal de Italia, las farolas conocidas como « chenilles » acompañan a las estatuas y columnas. Esta vista muestra la iluminación de la exposición de 1931."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przed głównym pawilonem Włoch latarnie zwane „chenilles” stoją obok posągów i kolumn. Zdjęcie utrwala iluminację wystawy z 1931 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Diante do pavilhão principal de Itália, os candeeiros conhecidos como « chenilles » acompanham as estátuas e as colunas. Esta vista regista a iluminação da exposição de 1931."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:15:19.728Z",
+      "updatedAt": "2026-11-16T00:15:23.488Z"
+    }
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,280 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "01-aerial",
+    "source": {
+      "url": "https://monument.palais-portedoree.fr/sites/default/files/styles/visuel_moyen_desktop/public/2022-03/vue-aerienne_exposition-1931.jpg?itok=9E0zJnGp",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/aerial-native-1088.jpg",
+      "bytes": 408984,
+      "dimensions": [
+        1088,
+        767
+      ],
+      "sha256": "459a92e914e46f3f696ceeb1a8aac74b83e65d76d1ca9b147ee78b6eaccac4c4",
+      "status": 200,
+      "receivedAtUtc": "2026-11-16T00:05:29.356228+00:00",
+      "sourcePage": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931"
+    },
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+    "review": "All 24 localized fields personally authored and reviewed; original intact, no date inferred from upload folder."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "SourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/styles/visuel_moyen_desktop/public/2022-03/vue-aerienne_exposition-1931.jpg?itok=9E0zJnGp",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/aerial-native-1088.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/01-aerial-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/01-aerial-import-result.json"
+  },
+  "metadata": {
+    "description": "L’exposition occupait le bois de Vincennes autour du lac Daumesnil. Au premier plan de cette vue de 1931, l’entrée monumentale rejoint le tissu urbain de la Porte Dorée.",
+    "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/styles/visuel_moyen_desktop/public/2022-03/vue-aerienne_exposition-1931.jpg?itok=9E0zJnGp",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vue aérienne des grands bâtiments et de l’entrée de l’Exposition coloniale de 1931, à la lisière des rues de Paris."
+      },
+      {
+        "languageCode": "en",
+        "value": "Aerial view of the large buildings and entrance of the 1931 Colonial Exposition beside the streets of Paris."
+      },
+      {
+        "languageCode": "de",
+        "value": "Luftaufnahme der großen Gebäude und des Eingangs der Kolonialausstellung von 1931 am Rand der Pariser Straßen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Luchtfoto van de grote gebouwen en de ingang van de Koloniale Tentoonstelling van 1931, naast de straten van Parijs."
+      },
+      {
+        "languageCode": "it",
+        "value": "Veduta aerea dei grandi edifici e dell’ingresso dell’Esposizione coloniale del 1931, accanto alle strade di Parigi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vista aérea de los grandes edificios y la entrada de la Exposición Colonial de 1931, junto a las calles de París."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Widok z lotu ptaka na duże budynki i wejście na Wystawę Kolonialną z 1931 roku, obok paryskich ulic."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vista aérea dos grandes edifícios e da entrada da Exposição Colonial de 1931, junto às ruas de Paris."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "L’exposition occupait le bois de Vincennes autour du lac Daumesnil. Au premier plan de cette vue de 1931, l’entrée monumentale rejoint le tissu urbain de la Porte Dorée."
+      },
+      {
+        "languageCode": "en",
+        "value": "The exposition occupied the Bois de Vincennes around Lac Daumesnil. In the foreground of this 1931 view, the monumental entrance meets the streets of the Porte Dorée neighbourhood."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Ausstellung erstreckte sich im Bois de Vincennes um den Lac Daumesnil. Im Vordergrund dieser Aufnahme von 1931 schließt der monumentale Eingang an das Stadtviertel Porte Dorée an."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De tentoonstelling lag in het Bois de Vincennes rond het Lac Daumesnil. Op de voorgrond van deze opname uit 1931 sluit de monumentale ingang aan op de wijk Porte Dorée."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’esposizione occupava il Bois de Vincennes attorno al lago Daumesnil. In primo piano, in questa veduta del 1931, l’ingresso monumentale si raccorda al quartiere della Porte Dorée."
+      },
+      {
+        "languageCode": "es",
+        "value": "La exposición ocupaba el Bois de Vincennes alrededor del lago Daumesnil. En primer plano de esta vista de 1931, la entrada monumental enlaza con el barrio de la Porte Dorée."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wystawa zajmowała teren Bois de Vincennes wokół jeziora Daumesnil. Na pierwszym planie zdjęcia z 1931 roku monumentalne wejście łączy się z zabudową dzielnicy Porte Dorée."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A exposição ocupava o Bois de Vincennes em redor do lago Daumesnil. Em primeiro plano nesta vista de 1931, a entrada monumental liga-se ao bairro da Porte Dorée."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Roger-Viollet — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Roger-Viollet — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Roger-Viollet — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Roger-Viollet — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Roger-Viollet — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Roger-Viollet — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Roger-Viollet — Palais de la Porte Dorée."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Roger-Viollet — Palais de la Porte Dorée."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-16T00:07:53.8982161Z",
+    "result": {
+      "id": "b2bc130edcfe47ea886baf16bb04e0bd",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/b2bc130edcfe47ea886baf16bb04e0bd",
+      "description": "L’exposition occupait le bois de Vincennes autour du lac Daumesnil. Au premier plan de cette vue de 1931, l’entrée monumentale rejoint le tissu urbain de la Porte Dorée.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1088,
+      "height": 767,
+      "sizeInBytes": 408984,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/styles/visuel_moyen_desktop/public/2022-03/vue-aerienne_exposition-1931.jpg?itok=9E0zJnGp",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue aérienne des grands bâtiments et de l’entrée de l’Exposition coloniale de 1931, à la lisière des rues de Paris."
+        },
+        {
+          "languageCode": "en",
+          "value": "Aerial view of the large buildings and entrance of the 1931 Colonial Exposition beside the streets of Paris."
+        },
+        {
+          "languageCode": "de",
+          "value": "Luftaufnahme der großen Gebäude und des Eingangs der Kolonialausstellung von 1931 am Rand der Pariser Straßen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Luchtfoto van de grote gebouwen en de ingang van de Koloniale Tentoonstelling van 1931, naast de straten van Parijs."
+        },
+        {
+          "languageCode": "it",
+          "value": "Veduta aerea dei grandi edifici e dell’ingresso dell’Esposizione coloniale del 1931, accanto alle strade di Parigi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista aérea de los grandes edificios y la entrada de la Exposición Colonial de 1931, junto a las calles de París."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok z lotu ptaka na duże budynki i wejście na Wystawę Kolonialną z 1931 roku, obok paryskich ulic."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista aérea dos grandes edifícios e da entrada da Exposição Colonial de 1931, junto às ruas de Paris."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "L’exposition occupait le bois de Vincennes autour du lac Daumesnil. Au premier plan de cette vue de 1931, l’entrée monumentale rejoint le tissu urbain de la Porte Dorée."
+        },
+        {
+          "languageCode": "en",
+          "value": "The exposition occupied the Bois de Vincennes around Lac Daumesnil. In the foreground of this 1931 view, the monumental entrance meets the streets of the Porte Dorée neighbourhood."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Ausstellung erstreckte sich im Bois de Vincennes um den Lac Daumesnil. Im Vordergrund dieser Aufnahme von 1931 schließt der monumentale Eingang an das Stadtviertel Porte Dorée an."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De tentoonstelling lag in het Bois de Vincennes rond het Lac Daumesnil. Op de voorgrond van deze opname uit 1931 sluit de monumentale ingang aan op de wijk Porte Dorée."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’esposizione occupava il Bois de Vincennes attorno al lago Daumesnil. In primo piano, in questa veduta del 1931, l’ingresso monumentale si raccorda al quartiere della Porte Dorée."
+        },
+        {
+          "languageCode": "es",
+          "value": "La exposición ocupaba el Bois de Vincennes alrededor del lago Daumesnil. En primer plano de esta vista de 1931, la entrada monumental enlaza con el barrio de la Porte Dorée."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wystawa zajmowała teren Bois de Vincennes wokół jeziora Daumesnil. Na pierwszym planie zdjęcia z 1931 roku monumentalne wejście łączy się z zabudową dzielnicy Porte Dorée."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A exposição ocupava o Bois de Vincennes em redor do lago Daumesnil. Em primeiro plano nesta vista de 1931, a entrada monumental liga-se ao bairro da Porte Dorée."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:07:47.313Z",
+      "updatedAt": "2026-11-16T00:07:50.803Z"
+    },
+    "startedAtUtc": "2026-11-16T00:07:45.6029570Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,291 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "02-angkor-night",
+    "source": {
+      "key": "2013.22.31-1",
+      "sourcePage": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+      "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.31-1.jpg",
+      "caption": "Temple d&#039;Angkor de nuit. Exposition coloniale internationale de Paris, 1931.",
+      "startedAtUtc": "2026-11-16T00:04:45.439916+00:00",
+      "httpStatus": 200,
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/2013.22.31-1.jpg",
+      "bytes": 299648,
+      "sha256": "cf56c87a0a3479515995b35777f284b59267abea32fd0a2f4c13691c102d0fac",
+      "dimensions": [
+        1262,
+        903
+      ]
+    },
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+    "review": "All 24 localized fields personally authored and reviewed; original intact, no date inferred from upload folder."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "SourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.31-1.jpg",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/2013.22.31-1.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/02-angkor-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/02-angkor-night-import-result.json"
+  },
+  "metadata": {
+    "description": "Cette carte postale photographique montre les illuminations du pavillon indochinois à l’Exposition coloniale de Paris en 1931.",
+    "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.31-1.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Les tours du temple d’Angkor reconstitué sont éclairées de nuit, avec des faisceaux lumineux dans le ciel et des chaises devant la façade."
+      },
+      {
+        "languageCode": "en",
+        "value": "The towers of the reconstructed Angkor temple are lit at night, with beams crossing the sky and chairs in front of the façade."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Türme des nachgebildeten Angkor-Tempels sind nachts beleuchtet; Lichtstrahlen durchziehen den Himmel, vor der Fassade stehen Stühle."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De torens van de nagebouwde Angkor-tempel zijn ’s nachts verlicht, met lichtbundels in de lucht en stoelen voor de gevel."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le torri della ricostruzione del tempio di Angkor sono illuminate di notte, con fasci di luce nel cielo e sedie davanti alla facciata."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las torres de la reproducción del templo de Angkor aparecen iluminadas de noche, con haces de luz en el cielo y sillas ante la fachada."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wieże rekonstrukcji świątyni Angkor są oświetlone nocą; na niebie widać snopy światła, a przed fasadą stoją krzesła."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As torres da reconstrução do templo de Angkor estão iluminadas de noite, com feixes de luz no céu e cadeiras diante da fachada."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Cette carte postale photographique montre les illuminations du pavillon indochinois à l’Exposition coloniale de Paris en 1931."
+      },
+      {
+        "languageCode": "en",
+        "value": "This photographic postcard shows the illuminations of the Indochina pavilion at the 1931 Colonial Exposition in Paris."
+      },
+      {
+        "languageCode": "de",
+        "value": "Diese fotografische Postkarte zeigt die Beleuchtung des Indochina-Pavillons auf der Pariser Kolonialausstellung von 1931."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Deze fotografische ansichtkaart toont de verlichting van het Indochinese paviljoen op de Koloniale Tentoonstelling van 1931 in Parijs."
+      },
+      {
+        "languageCode": "it",
+        "value": "Questa cartolina fotografica mostra le illuminazioni del padiglione indocinese all’Esposizione coloniale di Parigi del 1931."
+      },
+      {
+        "languageCode": "es",
+        "value": "Esta postal fotográfica muestra la iluminación del pabellón de Indochina en la Exposición Colonial de París de 1931."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pocztówka fotograficzna przedstawia iluminację pawilonu Indochin na paryskiej Wystawie Kolonialnej w 1931 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Este postal fotográfico mostra a iluminação do pavilhão da Indochina na Exposição Colonial de Paris de 1931."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Carte postale — © collection Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "en",
+        "value": "Postcard — © collection of the Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "de",
+        "value": "Postkarte — © Sammlung des Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Ansichtkaart — © collectie Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cartolina — © collezione del Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "es",
+        "value": "Postal — © colección del Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pocztówka — © zbiory Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Postal — © coleção do Musée national de l’histoire de l’immigration."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "82381798767841feb959282339cae094",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/82381798767841feb959282339cae094",
+      "description": "Cette carte postale photographique montre les illuminations du pavillon indochinois à l’Exposition coloniale de Paris en 1931.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1262,
+      "height": 903,
+      "sizeInBytes": 299648,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.31-1.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Les tours du temple d’Angkor reconstitué sont éclairées de nuit, avec des faisceaux lumineux dans le ciel et des chaises devant la façade."
+        },
+        {
+          "languageCode": "en",
+          "value": "The towers of the reconstructed Angkor temple are lit at night, with beams crossing the sky and chairs in front of the façade."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Türme des nachgebildeten Angkor-Tempels sind nachts beleuchtet; Lichtstrahlen durchziehen den Himmel, vor der Fassade stehen Stühle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De torens van de nagebouwde Angkor-tempel zijn ’s nachts verlicht, met lichtbundels in de lucht en stoelen voor de gevel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le torri della ricostruzione del tempio di Angkor sono illuminate di notte, con fasci di luce nel cielo e sedie davanti alla facciata."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las torres de la reproducción del templo de Angkor aparecen iluminadas de noche, con haces de luz en el cielo y sillas ante la fachada."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wieże rekonstrukcji świątyni Angkor są oświetlone nocą; na niebie widać snopy światła, a przed fasadą stoją krzesła."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As torres da reconstrução do templo de Angkor estão iluminadas de noite, com feixes de luz no céu e cadeiras diante da fachada."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Cette carte postale photographique montre les illuminations du pavillon indochinois à l’Exposition coloniale de Paris en 1931."
+        },
+        {
+          "languageCode": "en",
+          "value": "This photographic postcard shows the illuminations of the Indochina pavilion at the 1931 Colonial Exposition in Paris."
+        },
+        {
+          "languageCode": "de",
+          "value": "Diese fotografische Postkarte zeigt die Beleuchtung des Indochina-Pavillons auf der Pariser Kolonialausstellung von 1931."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Deze fotografische ansichtkaart toont de verlichting van het Indochinese paviljoen op de Koloniale Tentoonstelling van 1931 in Parijs."
+        },
+        {
+          "languageCode": "it",
+          "value": "Questa cartolina fotografica mostra le illuminazioni del padiglione indocinese all’Esposizione coloniale di Parigi del 1931."
+        },
+        {
+          "languageCode": "es",
+          "value": "Esta postal fotográfica muestra la iluminación del pabellón de Indochina en la Exposición Colonial de París de 1931."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pocztówka fotograficzna przedstawia iluminację pawilonu Indochin na paryskiej Wystawie Kolonialnej w 1931 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Este postal fotográfico mostra a iluminação do pavilhão da Indochina na Exposição Colonial de Paris de 1931."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Carte postale — © collection Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "en",
+          "value": "Postcard — © collection of the Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "de",
+          "value": "Postkarte — © Sammlung des Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ansichtkaart — © collectie Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cartolina — © collezione del Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "es",
+          "value": "Postal — © colección del Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pocztówka — © zbiory Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Postal — © coleção do Musée national de l’histoire de l’immigration."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:11:10.765Z",
+      "updatedAt": "2026-11-16T00:11:14.484Z"
+    },
+    "receivedAtUtc": "2026-11-16T00:11:17.9930570Z",
+    "startedAtUtc": "2026-11-16T00:11:07.9152763Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

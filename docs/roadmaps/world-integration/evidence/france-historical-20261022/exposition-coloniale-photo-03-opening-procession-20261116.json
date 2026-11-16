@@ -1,0 +1,291 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "03-opening-procession",
+    "source": {
+      "key": "2013.22.49-1",
+      "sourcePage": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+      "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.49-1.jpg",
+      "caption": "Défilé présidentiel (président Gaston Doumergue) pour l&#039;ouverture de l&#039;Exposition coloniale internationale de 1931, devant les temples d&#039;Angkor, en présence des troupes des différentes colonies et possessions française.\n",
+      "startedAtUtc": "2026-11-16T00:04:45.440497+00:00",
+      "httpStatus": 200,
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/2013.22.49-1.jpg",
+      "bytes": 274857,
+      "sha256": "7c71e0c8417a38cf6788bad1a2201b9d7cb3f44e7d04ec25b93d502840ae9dca",
+      "dimensions": [
+        1356,
+        1042
+      ]
+    },
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+    "review": "All 24 localized fields personally authored and reviewed; original intact, no date inferred from upload folder."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "SourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.49-1.jpg",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/2013.22.49-1.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/03-opening-procession-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/03-opening-procession-import-result.json"
+  },
+  "metadata": {
+    "description": "Le défilé présidentiel de Gaston Doumergue marque l’ouverture de l’Exposition coloniale de 1931. Cette carte postale photographique en conserve la scène devant le pavillon indochinois.",
+    "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.49-1.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un cortège de voitures et de cavaliers passe devant le temple d’Angkor reconstitué, entre les troupes et la foule."
+      },
+      {
+        "languageCode": "en",
+        "value": "A procession of cars and mounted riders passes the reconstructed Angkor temple between troops and crowds."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Zug aus Autos und Reitern zieht zwischen Truppen und Menschenmengen am nachgebildeten Angkor-Tempel vorbei."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een stoet auto’s en ruiters trekt tussen troepen en publiek langs de nagebouwde Angkor-tempel."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un corteo di automobili e cavalieri passa davanti alla ricostruzione del tempio di Angkor, tra le truppe e la folla."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un cortejo de automóviles y jinetes pasa ante la reproducción del templo de Angkor, entre las tropas y la multitud."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kolumna samochodów i jeźdźców przejeżdża przed rekonstrukcją świątyni Angkor, między oddziałami wojskowymi a tłumem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um cortejo de automóveis e cavaleiros passa diante da reconstrução do templo de Angkor, entre as tropas e a multidão."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le défilé présidentiel de Gaston Doumergue marque l’ouverture de l’Exposition coloniale de 1931. Cette carte postale photographique en conserve la scène devant le pavillon indochinois."
+      },
+      {
+        "languageCode": "en",
+        "value": "President Gaston Doumergue’s procession marks the opening of the 1931 Colonial Exposition. This photographic postcard records the scene outside the Indochina pavilion."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Festzug von Präsident Gaston Doumergue markiert die Eröffnung der Kolonialausstellung von 1931. Die fotografische Postkarte hält die Szene vor dem Indochina-Pavillon fest."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De presidentiële stoet van Gaston Doumergue markeert de opening van de Koloniale Tentoonstelling van 1931. Deze fotografische ansichtkaart bewaart het beeld voor het Indochinese paviljoen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il corteo presidenziale di Gaston Doumergue segna l’apertura dell’Esposizione coloniale del 1931. Questa cartolina fotografica conserva la scena davanti al padiglione indocinese."
+      },
+      {
+        "languageCode": "es",
+        "value": "El cortejo presidencial de Gaston Doumergue marca la apertura de la Exposición Colonial de 1931. Esta postal fotográfica conserva la escena ante el pabellón de Indochina."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Przejazd prezydenta Gastona Doumergue’a towarzyszy otwarciu Wystawy Kolonialnej w 1931 roku. Ta pocztówka fotograficzna utrwala scenę przed pawilonem Indochin."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O cortejo presidencial de Gaston Doumergue assinala a abertura da Exposição Colonial de 1931. Este postal fotográfico preserva a cena diante do pavilhão da Indochina."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Carte postale — © collection Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "en",
+        "value": "Postcard — © collection of the Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "de",
+        "value": "Postkarte — © Sammlung des Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Ansichtkaart — © collectie Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cartolina — © collezione del Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "es",
+        "value": "Postal — © colección del Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pocztówka — © zbiory Musée national de l’histoire de l’immigration."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Postal — © coleção do Musée national de l’histoire de l’immigration."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "17cdbb5775334137a4ff8c2be4f8bf7b",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/17cdbb5775334137a4ff8c2be4f8bf7b",
+      "description": "Le défilé présidentiel de Gaston Doumergue marque l’ouverture de l’Exposition coloniale de 1931. Cette carte postale photographique en conserve la scène devant le pavillon indochinois.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1356,
+      "height": 1042,
+      "sizeInBytes": 274857,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.49-1.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un cortège de voitures et de cavaliers passe devant le temple d’Angkor reconstitué, entre les troupes et la foule."
+        },
+        {
+          "languageCode": "en",
+          "value": "A procession of cars and mounted riders passes the reconstructed Angkor temple between troops and crowds."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Zug aus Autos und Reitern zieht zwischen Truppen und Menschenmengen am nachgebildeten Angkor-Tempel vorbei."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een stoet auto’s en ruiters trekt tussen troepen en publiek langs de nagebouwde Angkor-tempel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un corteo di automobili e cavalieri passa davanti alla ricostruzione del tempio di Angkor, tra le truppe e la folla."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un cortejo de automóviles y jinetes pasa ante la reproducción del templo de Angkor, entre las tropas y la multitud."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kolumna samochodów i jeźdźców przejeżdża przed rekonstrukcją świątyni Angkor, między oddziałami wojskowymi a tłumem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um cortejo de automóveis e cavaleiros passa diante da reconstrução do templo de Angkor, entre as tropas e a multidão."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le défilé présidentiel de Gaston Doumergue marque l’ouverture de l’Exposition coloniale de 1931. Cette carte postale photographique en conserve la scène devant le pavillon indochinois."
+        },
+        {
+          "languageCode": "en",
+          "value": "President Gaston Doumergue’s procession marks the opening of the 1931 Colonial Exposition. This photographic postcard records the scene outside the Indochina pavilion."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Festzug von Präsident Gaston Doumergue markiert die Eröffnung der Kolonialausstellung von 1931. Die fotografische Postkarte hält die Szene vor dem Indochina-Pavillon fest."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De presidentiële stoet van Gaston Doumergue markeert de opening van de Koloniale Tentoonstelling van 1931. Deze fotografische ansichtkaart bewaart het beeld voor het Indochinese paviljoen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il corteo presidenziale di Gaston Doumergue segna l’apertura dell’Esposizione coloniale del 1931. Questa cartolina fotografica conserva la scena davanti al padiglione indocinese."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cortejo presidencial de Gaston Doumergue marca la apertura de la Exposición Colonial de 1931. Esta postal fotográfica conserva la escena ante el pabellón de Indochina."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przejazd prezydenta Gastona Doumergue’a towarzyszy otwarciu Wystawy Kolonialnej w 1931 roku. Ta pocztówka fotograficzna utrwala scenę przed pawilonem Indochin."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cortejo presidencial de Gaston Doumergue assinala a abertura da Exposição Colonial de 1931. Este postal fotográfico preserva a cena diante do pavilhão da Indochina."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Carte postale — © collection Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "en",
+          "value": "Postcard — © collection of the Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "de",
+          "value": "Postkarte — © Sammlung des Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ansichtkaart — © collectie Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cartolina — © collezione del Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "es",
+          "value": "Postal — © colección del Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pocztówka — © zbiory Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Postal — © coleção do Musée national de l’histoire de l’immigration."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:11:44.23Z",
+      "updatedAt": "2026-11-16T00:11:47.789Z"
+    },
+    "receivedAtUtc": "2026-11-16T00:11:50.8851455Z",
+    "startedAtUtc": "2026-11-16T00:11:41.9488282Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

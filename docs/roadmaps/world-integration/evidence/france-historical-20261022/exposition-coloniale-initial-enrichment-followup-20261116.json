@@ -1,0 +1,305 @@
+{
+  "checkedAtUtc": "2026-11-16T00:18:13.804487+00:00",
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "scope": "Retain existing1931 exposition record with Gravelle amusement zone; no duplicate amusement park created. Exhibition entity already has12 historical Apply receipts, six items and one zone. Current museum and aquarium are not substituted for the1931 event.",
+  "counts": {
+    "recoveredApply": 12,
+    "newApply": 1,
+    "newPhotoImports": 5,
+    "items": 6,
+    "privateItems": 6,
+    "zones": 1,
+    "privateImages": 5,
+    "historyEvents": 4
+  },
+  "lastActualApplyAtUtc": "2026-11-16T00:14:14.4187955Z",
+  "lastActualImportAtUtc": "2026-11-16T00:15:52.848Z",
+  "personallyReviewedThisPhase": {
+    "newPhotoLocalizedFields": 120,
+    "correctedItemDescriptions": 8,
+    "totalInheritedCorpusReviewComplete": false
+  },
+  "photos": [
+    {
+      "stem": "01-aerial",
+      "source": {
+        "url": "https://monument.palais-portedoree.fr/sites/default/files/styles/visuel_moyen_desktop/public/2022-03/vue-aerienne_exposition-1931.jpg?itok=9E0zJnGp",
+        "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/aerial-native-1088.jpg",
+        "bytes": 408984,
+        "dimensions": [
+          1088,
+          767
+        ],
+        "sha256": "459a92e914e46f3f696ceeb1a8aac74b83e65d76d1ca9b147ee78b6eaccac4c4",
+        "status": 200,
+        "receivedAtUtc": "2026-11-16T00:05:29.356228+00:00",
+        "sourcePage": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931"
+      },
+      "personallyViewed": true,
+      "historicalYear": 1931,
+      "captureTimestamp": null,
+      "current": false,
+      "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+      "review": "All 24 localized fields personally authored and reviewed; original intact, no date inferred from upload folder."
+    },
+    {
+      "stem": "02-angkor-night",
+      "source": {
+        "key": "2013.22.31-1",
+        "sourcePage": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+        "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.31-1.jpg",
+        "caption": "Temple d&#039;Angkor de nuit. Exposition coloniale internationale de Paris, 1931.",
+        "startedAtUtc": "2026-11-16T00:04:45.439916+00:00",
+        "httpStatus": 200,
+        "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/2013.22.31-1.jpg",
+        "bytes": 299648,
+        "sha256": "cf56c87a0a3479515995b35777f284b59267abea32fd0a2f4c13691c102d0fac",
+        "dimensions": [
+          1262,
+          903
+        ]
+      },
+      "personallyViewed": true,
+      "historicalYear": 1931,
+      "captureTimestamp": null,
+      "current": false,
+      "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+      "review": "All 24 localized fields personally authored and reviewed; original intact, no date inferred from upload folder."
+    },
+    {
+      "stem": "03-opening-procession",
+      "source": {
+        "key": "2013.22.49-1",
+        "sourcePage": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+        "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.49-1.jpg",
+        "caption": "Défilé présidentiel (président Gaston Doumergue) pour l&#039;ouverture de l&#039;Exposition coloniale internationale de 1931, devant les temples d&#039;Angkor, en présence des troupes des différentes colonies et possessions française.\n",
+        "startedAtUtc": "2026-11-16T00:04:45.440497+00:00",
+        "httpStatus": 200,
+        "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/2013.22.49-1.jpg",
+        "bytes": 274857,
+        "sha256": "7c71e0c8417a38cf6788bad1a2201b9d7cb3f44e7d04ec25b93d502840ae9dca",
+        "dimensions": [
+          1356,
+          1042
+        ]
+      },
+      "personallyViewed": true,
+      "historicalYear": 1931,
+      "captureTimestamp": null,
+      "current": false,
+      "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+      "review": "All 24 localized fields personally authored and reviewed; original intact, no date inferred from upload folder."
+    },
+    {
+      "stem": "05-italy-night",
+      "source": {
+        "key": "vue_nuit_pavillon",
+        "sourcePage": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+        "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/vue_nuit_pavillon_italie_exposition_1931.jpg",
+        "caption": "Des lampadaires chenilles devant le pavillon principal de l’Italie. Négatif sur plaque de verre stéréoscopique.",
+        "startedAtUtc": "2026-11-16T00:04:46.326348+00:00",
+        "httpStatus": 200,
+        "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/vue_nuit_pavillon.jpg",
+        "bytes": 309320,
+        "sha256": "d8b4d0c1485a02ac1dc66b8ea0fc9466a1059ec5a87d6f0a2fb9240c0abc699b",
+        "dimensions": [
+          1440,
+          960
+        ]
+      },
+      "personallyViewed": true,
+      "historicalYear": 1931,
+      "captureTimestamp": null,
+      "current": false,
+      "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+      "review": "All24 localized fields personally authored/reviewed. Native publisher file intact; no edit or capture date inference."
+    },
+    {
+      "stem": "06-museum-night",
+      "source": {
+        "key": "eclairage_facade",
+        "sourcePage": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+        "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_facade_musee_des_colonies_1931.jpg",
+        "caption": "Façade du Musée des Colonies éclairée. Anonyme, Exposition coloniale de 1931 (ensemble), 1931.",
+        "startedAtUtc": "2026-11-16T00:04:46.539121+00:00",
+        "httpStatus": 200,
+        "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/eclairage_facade.jpg",
+        "bytes": 302407,
+        "sha256": "2a1bebf643c09570785d7ea5c6a61e5fb7a26db1d7b7252280536d7099684b38",
+        "dimensions": [
+          1440,
+          948
+        ]
+      },
+      "personallyViewed": true,
+      "historicalYear": 1931,
+      "captureTimestamp": null,
+      "current": false,
+      "rights": "Publisher credits preserved; owner-authorized France photo integration. No open licence inferred.",
+      "review": "All24 localized fields personally authored/reviewed. Native publisher file intact; no edit or capture date inference."
+    }
+  ],
+  "sourceAccess": {
+    "photo-source-access.json": [
+      {
+        "name": "totems",
+        "url": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/fontaine-des-totems-exposition-coloniale-internationale-bois-de-vincennes",
+        "retrievedAtUtc": "2026-11-16T00:03:46.775350+00:00",
+        "status": 200,
+        "finalUrl": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/fontaine-des-totems-exposition-coloniale-internationale-bois-de-vincennes",
+        "bytes": 161031,
+        "sha256": "293e92c9272d0169264322390e5c691ab384c6d92f46efa44686dec4ad440d3d"
+      },
+      {
+        "name": "lighting",
+        "url": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+        "retrievedAtUtc": "2026-11-16T00:03:46.776183+00:00",
+        "status": 200,
+        "finalUrl": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+        "bytes": 77087,
+        "sha256": "559135c3e7dae67f2c6f6a978609cc78bd229220d15f046fbd2bdb91a10a077a"
+      },
+      {
+        "name": "scenic",
+        "url": "https://rcdb.com/19255.htm",
+        "retrievedAtUtc": "2026-11-16T00:03:46.776786+00:00",
+        "status": 200,
+        "finalUrl": "https://rcdb.com/19255.htm",
+        "bytes": 59669,
+        "sha256": "2b479ef4dcdb40f7bf2f83a05d0b5872955a9958c02944dc1919aa738ba7e6c0"
+      },
+      {
+        "name": "scenic-heritage",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1436976",
+        "retrievedAtUtc": "2026-11-16T00:03:46.777443+00:00",
+        "status": 200,
+        "finalUrl": "https://historicengland.org.uk/listing/the-list/list-entry/1436976",
+        "bytes": 124315,
+        "sha256": "0e5ca7211b15728d459a8bf1b7e190442bb317743b49d049d62ed1aecb9d53e6"
+      }
+    ],
+    "plan-logo-source-access.json": [
+      {
+        "name": "plan-bnf-official",
+        "url": "https://catalogue.bnf.fr/ark:/12148/cb40460000d",
+        "retrievedAtUtc": "2026-11-16T00:14:22.273404+00:00",
+        "status": 200,
+        "finalUrl": "https://catalogue.bnf.fr/ark:/12148/cb40460000d",
+        "bytes": 72407,
+        "sha256": "f12f517e2fee714509862acf5c832e18fae6279db03c0aeb0f8f75c4ca0952a4"
+      },
+      {
+        "name": "plan-bnf-peltier",
+        "url": "https://catalogue.bnf.fr/ark:/12148/cb40760456n",
+        "retrievedAtUtc": "2026-11-16T00:14:22.274205+00:00",
+        "status": 200,
+        "finalUrl": "https://catalogue.bnf.fr/ark:/12148/cb40760456n",
+        "bytes": 75706,
+        "sha256": "5d86b85b866988abf06c67f62369ca849fbd98b1452f6887778e837a953e3f6b"
+      },
+      {
+        "name": "plan-commons",
+        "url": "https://commons.wikimedia.org/wiki/File:Plan_g%C3%A9n%C3%A9ral_de_l%27Exposition_coloniale_internationale_de_Paris_de_1931_-_btv1b84590341.jpg",
+        "retrievedAtUtc": "2026-11-16T00:14:22.274643+00:00",
+        "status": 200,
+        "finalUrl": "https://commons.wikimedia.org/wiki/File:Plan_g%C3%A9n%C3%A9ral_de_l%27Exposition_coloniale_internationale_de_Paris_de_1931_-_btv1b84590341.jpg",
+        "bytes": 114754,
+        "sha256": "d3404b3c557751dc3f91ec218fa6b0055545c6ce74397e8491750fa5de9712bd"
+      },
+      {
+        "name": "plan-rumsey",
+        "url": "https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~340031~90108193:Exposition-Coloniale-Internationale",
+        "retrievedAtUtc": "2026-11-16T00:14:22.275119+00:00",
+        "status": 200,
+        "finalUrl": "https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~340031~90108193:Exposition-Coloniale-Internationale",
+        "bytes": 4116,
+        "sha256": "c9cd585afffcf7fa592f0cf1b68e526e3d9df3ab5b548ed97e9327ce52c3f292"
+      },
+      {
+        "name": "poster-official",
+        "url": "https://monument.palais-portedoree.fr/collections/affiche-de-l-exposition-coloniale-internationale-de-paris-en-1931",
+        "retrievedAtUtc": "2026-11-16T00:14:22.685237+00:00",
+        "status": 200,
+        "finalUrl": "https://monument.palais-portedoree.fr/collections/affiche-de-l-exposition-coloniale-internationale-de-paris-en-1931",
+        "bytes": 93202,
+        "sha256": "b4a3fe4388f64a6d0526acfcaa9beda7bca6d35e7859ba7493a8885cdcef81dc"
+      }
+    ],
+    "plan-image-access.json": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Plan_g%C3%A9n%C3%A9ral_de_l%27Exposition_coloniale_internationale_de_Paris_de_1931_-_btv1b84590341.jpg",
+        "file": "plan-general-1931.jpg",
+        "status": 200,
+        "finalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Plan_g%C3%A9n%C3%A9ral_de_l%27Exposition_coloniale_internationale_de_Paris_de_1931_-_btv1b84590341.jpg",
+        "bytes": 8293022,
+        "sha256": "5b5e15060acdaf8fb221e97318b22e8d307fa7d5240c76ea928f6bc1a92c5040",
+        "receivedAtUtc": "2026-11-16T00:15:43.289629+00:00"
+      },
+      {
+        "url": "https://gallica.bnf.fr/ark:/12148/btv1b530666671/f1.thumbnail.highres",
+        "file": "plan-peltier-recto.jpg",
+        "error": "HTTP Error 403: Forbidden"
+      },
+      {
+        "url": "https://gallica.bnf.fr/ark:/12148/btv1b530666671/f2.thumbnail.highres",
+        "file": "plan-peltier-verso.jpg",
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "scenic-photo-source-access.json": [
+      {
+        "name": "scenic-railway-article",
+        "url": "https://cfchanteraines.fr/lvdc/lvdc0277/expo1931.htm",
+        "retrievedAtUtc": "2026-11-16T00:16:50.768598+00:00",
+        "status": 200,
+        "finalUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo1931.htm",
+        "bytes": 26681,
+        "sha256": "19c982f4688ea9869edbe2ae60fe85e76dc1f4c45f2840d1b323262856a0ff20"
+      },
+      {
+        "name": "scenic-flickr-south",
+        "url": "https://www.flickr.com/photos/32335433%40N07/9859175706",
+        "retrievedAtUtc": "2026-11-16T00:16:50.769436+00:00",
+        "status": 200,
+        "finalUrl": "https://www.flickr.com/photos/32335433%40N07/9859175706",
+        "bytes": 501524,
+        "sha256": "7fc3e41d1816bac1e83a7909b68e6e89bda2c7742a9493f8cd896a458acf0003"
+      },
+      {
+        "name": "scenic-flickr-other",
+        "url": "https://www.flickr.com/photos/32335433%40N07/9859152004",
+        "retrievedAtUtc": "2026-11-16T00:16:50.770031+00:00",
+        "status": 200,
+        "finalUrl": "https://www.flickr.com/photos/32335433%40N07/9859152004",
+        "bytes": 524601,
+        "sha256": "ff8b0bbf2970b645889b0b443a57f086f27a9728dfca2c600f9ca78bec71a6a2"
+      },
+      {
+        "name": "plan-bnf-general",
+        "url": "https://catalogue.bnf.fr/ark:/12148/cb40749667m",
+        "retrievedAtUtc": "2026-11-16T00:16:50.770462+00:00",
+        "status": 200,
+        "finalUrl": "https://catalogue.bnf.fr/ark:/12148/cb40749667m",
+        "bytes": 74767,
+        "sha256": "84afc06ba34c18ac09489a5f0810601f778738abd101549c981d5172779fb83a"
+      }
+    ]
+  },
+  "sourceLimits": [
+    "Two Carnavalet stereo views titled Totems conflict with primary pastel: neither imported, no other item identity inferred.",
+    "Bottin-Publicité/Desfossés map1931 retrieved from Commons/BnF provenance; official publisher authorization not established, no map upload yet.",
+    "Map full original8293022B SHA2565b5e15060acdaf8fb221e97318b22e8d307fa7d5240c76ea928f6bc1a92c5040 preserved. Reduced local views created solely to read the large document, never eligible for import.",
+    "Rumsey pageHTTP200 is Verify Access, not read or bypassed. Gallica Peltier front/back thumbnailsHTTP403; Commons published thumbnailHTTP403; original Commons public fileHTTP200 accessed before thumbnail failure.",
+    "PosterJosephdeLaNézière1928 and officialprogramme cover are not autonomous logos; no crop or logo substitution."
+  ],
+  "notCompleted": [
+    "Historical inventory",
+    "Item images",
+    "Logo",
+    "Official map qualification",
+    "Full eight-language inherited corpus review",
+    "Final audit",
+    "Site publication",
+    "Facebook publication"
+  ]
+}

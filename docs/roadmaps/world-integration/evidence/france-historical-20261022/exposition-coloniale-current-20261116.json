@@ -1,0 +1,55 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "status": "partial",
+  "lastApplyOperationId": "292c2a14-e174-4eb1-9e2d-135f365b7d86",
+  "lastIntegrationAppliedAtUtc": "2026-11-16T00:14:14.4187955Z",
+  "recoveredApplyCount": 12,
+  "newApplyCount": 1,
+  "items": 6,
+  "zones": 1,
+  "ownImages": 5,
+  "historyEvents": 4,
+  "fullAuditPerformed": false,
+  "published": false,
+  "sourceTargetedExport": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/targeted-export.json",
+  "remaining": [
+    "Historical inventory expansion and primary qualification of individual venues",
+    "Historical inventory, photos and standalone logo",
+    "Personal eight-language review of inherited corpus",
+    "Sources/specifications, references, map/GPS",
+    "Single final audit and audited publication"
+  ],
+  "lastDataIntegrationAt": "2026-11-16T00:15:52.848Z",
+  "photoImports": [
+    {
+      "imageId": "b2bc130edcfe47ea886baf16bb04e0bd",
+      "createdAt": "2026-11-16T00:07:47.313Z",
+      "proof": "exposition-coloniale-photo-01-aerial-20261116.json"
+    },
+    {
+      "imageId": "82381798767841feb959282339cae094",
+      "createdAt": "2026-11-16T00:11:10.765Z",
+      "proof": "exposition-coloniale-photo-02-angkor-night-20261116.json"
+    },
+    {
+      "imageId": "17cdbb5775334137a4ff8c2be4f8bf7b",
+      "createdAt": "2026-11-16T00:11:44.23Z",
+      "proof": "exposition-coloniale-photo-03-opening-procession-20261116.json"
+    },
+    {
+      "imageId": "1f84c8b5efa34e7898d249171fd6f963",
+      "createdAt": "2026-11-16T00:15:19.728Z",
+      "proof": "exposition-coloniale-photo-05-italy-night-20261116.json"
+    },
+    {
+      "imageId": "90cef56a7c5b4a638e83abe07ce3cbd0",
+      "createdAt": "2026-11-16T00:15:52.848Z",
+      "proof": "exposition-coloniale-photo-06-museum-night-20261116.json"
+    }
+  ],
+  "newImportCount": 5,
+  "newApplyProofs": [
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-04-totems-correction-20261116.json"
+  ],
+  "lastIntegrationImportedAtUtc": "2026-11-16T00:15:52.848Z"
+}

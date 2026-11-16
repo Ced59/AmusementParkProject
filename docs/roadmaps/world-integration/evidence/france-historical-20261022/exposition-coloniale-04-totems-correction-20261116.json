@@ -1,0 +1,252 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "760df334-d1ad-4750-b594-263dfa73c20d",
+          "key": "760df334-d1ad-4750-b594-263dfa73c20d",
+          "name": "Fontaine des Totems",
+          "category": "Other",
+          "type": "Other",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Devant le palais de l’Afrique occidentale française</h2><p>La fontaine des Totems appartenait aux grands décors de l’Exposition coloniale de 1931. Elle se dressait devant le palais de l’Afrique occidentale française, dont elle accompagnait la présentation monumentale dans le paysage du lac Daumesnil.</p><h2>Une muraille rouge et des masques</h2><p>La presse de l’époque décrit une haute paroi rouge surmontée de masques. L’ensemble associait la sculpture, l’eau et les illuminations, au sein d’une représentation de l’Afrique composée par les organisateurs de l’exposition.</p><p>Alexandre-Mathurin Pêche en a fixé les couleurs dans un pastel de 1931. Les jets retombent dans un bassin allongé devant les visages sculptés, tandis que les hautes silhouettes du palais se dressent à l’arrière-plan.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>In front of the French West Africa palace</h2><p>Fontaine des Totems belonged to the grand decorative settings of the 1931 Colonial Exposition. It stood before the French West Africa palace, accompanying the building’s monumental presentation within the landscape of Lac Daumesnil.</p><h2>A red wall crowned with masks</h2><p>The contemporary press described a tall red wall topped with masks. Sculpture, water and illumination came together within a representation of Africa arranged by the exposition’s organisers.</p><p>Alexandre-Mathurin Pêche captured its colours in a pastel in 1931. Jets fall into an elongated basin in front of the sculpted faces, while the tall outlines of the palace rise in the background.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Vor dem Palast von Französisch-Westafrika</h2><p>Die Fontaine des Totems gehörte zu den großen dekorativen Anlagen der Kolonialausstellung von 1931. Sie stand vor dem Palast von Französisch-Westafrika und ergänzte dessen monumentale Inszenierung in der Landschaft am Lac Daumesnil.</p><h2>Eine rote Wand mit Masken</h2><p>Die zeitgenössische Presse beschrieb eine hohe rote Wand, die von Masken bekrönt wurde. Skulptur, Wasser und Beleuchtung verbanden sich hier zu einer von den Ausstellungsorganisatoren gestalteten Darstellung Afrikas.</p><p>Alexandre-Mathurin Pêche hielt die Farben 1931 in einem Pastell fest. Wasserstrahlen fallen vor den geschnitzten Gesichtern in ein langgestrecktes Becken; dahinter ragen die hohen Umrisse des Palastes auf.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Voor het paleis van Frans-West-Afrika</h2><p>De Fontaine des Totems hoorde bij de grote decoratieve ensembles van de Koloniale Tentoonstelling van 1931. Zij stond voor het paleis van Frans-West-Afrika en begeleidde de monumentale presentatie van dat gebouw in het landschap rond het Lac Daumesnil.</p><h2>Een rode wand met maskers</h2><p>De toenmalige pers beschreef een hoge rode wand met maskers erboven. Beeldhouwwerk, water en verlichting kwamen samen in een voorstelling van Afrika die door de organisatoren was samengesteld.</p><p>Alexandre-Mathurin Pêche legde de kleuren in 1931 vast in een pastel. Waterstralen vallen voor de gebeeldhouwde gezichten in een langgerekt bassin, met de hoge contouren van het paleis op de achtergrond.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Davanti al palazzo dell’Africa occidentale francese</h2><p>La Fontaine des Totems apparteneva ai grandi scenari decorativi dell’Esposizione coloniale del 1931. Sorgeva davanti al palazzo dell’Africa occidentale francese, accompagnandone la presentazione monumentale nel paesaggio del lago Daumesnil.</p><h2>Una parete rossa coronata da maschere</h2><p>La stampa dell’epoca descriveva un’alta parete rossa sormontata da maschere. Scultura, acqua e illuminazioni si univano in una rappresentazione dell’Africa composta dagli organizzatori dell’esposizione.</p><p>Alexandre-Mathurin Pêche ne fissò i colori in un pastello del 1931. I getti ricadono in una vasca allungata davanti ai volti scolpiti, mentre le alte sagome del palazzo si stagliano sullo sfondo.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Ante el palacio del África Occidental Francesa</h2><p>La Fontaine des Totems formaba parte de los grandes escenarios decorativos de la Exposición Colonial de 1931. Se alzaba ante el palacio del África Occidental Francesa y acompañaba su presentación monumental en el paisaje del lago Daumesnil.</p><h2>Una pared roja coronada de máscaras</h2><p>La prensa de la época describía una pared alta y roja rematada con máscaras. Escultura, agua e iluminación se unían en una representación de África compuesta por los organizadores de la exposición.</p><p>Alexandre-Mathurin Pêche plasmó sus colores en un pastel de 1931. Los chorros caen en un estanque alargado ante los rostros esculpidos, mientras las altas siluetas del palacio se recortan al fondo.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Przed pałacem Francuskiej Afryki Zachodniej</h2><p>Fontaine des Totems należała do wielkich zespołów dekoracyjnych Wystawy Kolonialnej z 1931 roku. Stała przed pałacem Francuskiej Afryki Zachodniej, uzupełniając jego monumentalną prezentację w krajobrazie jeziora Daumesnil.</p><h2>Czerwona ściana zwieńczona maskami</h2><p>Ówczesna prasa opisywała wysoką czerwoną ścianę, nad którą umieszczono maski. Rzeźba, woda i iluminacje łączyły się w przedstawienie Afryki ułożone przez organizatorów wystawy.</p><p>Alexandre-Mathurin Pêche utrwalił jej barwy na pastelu z 1931 roku. Strumienie wody opadają do podłużnego basenu przed rzeźbionymi twarzami, a w tle wznoszą się wysokie bryły pałacu.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Diante do palácio da África Ocidental Francesa</h2><p>A Fontaine des Totems pertencia aos grandes cenários decorativos da Exposição Colonial de 1931. Erguia-se diante do palácio da África Ocidental Francesa, acompanhando a sua apresentação monumental na paisagem do lago Daumesnil.</p><h2>Uma parede vermelha coroada de máscaras</h2><p>A imprensa da época descrevia uma parede alta e vermelha rematada por máscaras. Escultura, água e iluminações uniam-se numa representação de África composta pelos organizadores da exposição.</p><p>Alexandre-Mathurin Pêche registou as suas cores num pastel de 1931. Os jatos caem num tanque alongado diante dos rostos esculpidos, enquanto as silhuetas altas do palácio se erguem ao fundo.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "sourceUrl": "https://www.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-section-de-lafrique-occidentale-francaise-la"
+          }
+        }
+      ],
+      "metadata": {
+        "source": "codex-exposition-coloniale-totems-primary-drawing-review",
+        "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "notes": "Correct eight final paragraphs and source URL only. Pêche pastel1931 inventory2011.21.46 personally viewed. Carnavalet PH19426/PH19427 stereoscopic photographs bear Totems titles but depict a different lakeside structure; attribution unresolved, no substitute identity inferred. No visibility, lifecycle, date, manufacturer or GPS change."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "20b4d3bf-3659-4ce8-bb6c-56c57902cb92",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:13:08.7876669Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "760df334-d1ad-4750-b594-263dfa73c20d",
+        "entityKey": "760df334-d1ad-4750-b594-263dfa73c20d",
+        "displayName": "Fontaine des Totems",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Vor dem Palast von Französisch-Westafrika</h2><p>Die Fontaine des Totems gehörte zu den großen dekorativen Anlagen der Kolonialausstellung von 1931. Sie stand vor dem Palast von Französisch-Westafrika und ergänzte dessen monumentale Inszenierung in der Landschaft am Lac Daumesnil.</p><h2>Eine rote Wand mit Masken</h2><p>Die zeitgenössische Presse beschrieb eine hohe rote Wand, die von Masken bekrönt wurde. Skulptur, Wasser und Beleuchtung verbanden sich hier zu einer von den Ausstellungsorganisatoren gestalteten Darstellung Afrikas.</p><p>Eine anonyme Fotografie im Musée Carnavalet zeigt die Fontäne vom gegenüberliegenden Ufer aus. Die stereoskopische Aufnahme von 1931 bewahrt ihre ursprüngliche Umgebung vor dem Palast.</p>",
+            "newValue": "<h2>Vor dem Palast von Französisch-Westafrika</h2><p>Die Fontaine des Totems gehörte zu den großen dekorativen Anlagen der Kolonialausstellung von 1931. Sie stand vor dem Palast von Französisch-Westafrika und ergänzte dessen monumentale Inszenierung in der Landschaft am Lac Daumesnil.</p><h2>Eine rote Wand mit Masken</h2><p>Die zeitgenössische Presse beschrieb eine hohe rote Wand, die von Masken bekrönt wurde. Skulptur, Wasser und Beleuchtung verbanden sich hier zu einer von den Ausstellungsorganisatoren gestalteten Darstellung Afrikas.</p><p>Alexandre-Mathurin Pêche hielt die Farben 1931 in einem Pastell fest. Wasserstrahlen fallen vor den geschnitzten Gesichtern in ein langgestrecktes Becken; dahinter ragen die hohen Umrisse des Palastes auf.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>In front of the French West Africa palace</h2><p>Fontaine des Totems belonged to the grand decorative settings of the 1931 Colonial Exposition. It stood before the French West Africa palace, accompanying the building’s monumental presentation within the landscape of Lac Daumesnil.</p><h2>A red wall crowned with masks</h2><p>The contemporary press described a tall red wall topped with masks. Sculpture, water and illumination came together within a representation of Africa arranged by the exposition’s organisers.</p><p>An anonymous photograph held by the Musée Carnavalet records the fountain from the opposite shore. This stereoscopic view from 1931 preserves its setting in front of the palace, within the original exposition landscape.</p>",
+            "newValue": "<h2>In front of the French West Africa palace</h2><p>Fontaine des Totems belonged to the grand decorative settings of the 1931 Colonial Exposition. It stood before the French West Africa palace, accompanying the building’s monumental presentation within the landscape of Lac Daumesnil.</p><h2>A red wall crowned with masks</h2><p>The contemporary press described a tall red wall topped with masks. Sculpture, water and illumination came together within a representation of Africa arranged by the exposition’s organisers.</p><p>Alexandre-Mathurin Pêche captured its colours in a pastel in 1931. Jets fall into an elongated basin in front of the sculpted faces, while the tall outlines of the palace rise in the background.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Ante el palacio del África Occidental Francesa</h2><p>La Fontaine des Totems formaba parte de los grandes escenarios decorativos de la Exposición Colonial de 1931. Se alzaba ante el palacio del África Occidental Francesa y acompañaba su presentación monumental en el paisaje del lago Daumesnil.</p><h2>Una pared roja coronada de máscaras</h2><p>La prensa de la época describía una pared alta y roja rematada con máscaras. Escultura, agua e iluminación se unían en una representación de África compuesta por los organizadores de la exposición.</p><p>Una fotografía anónima conservada en el Musée Carnavalet muestra la fuente desde la orilla opuesta. Esta vista estereoscópica de 1931 mantiene el recuerdo de su entorno original, ante el palacio.</p>",
+            "newValue": "<h2>Ante el palacio del África Occidental Francesa</h2><p>La Fontaine des Totems formaba parte de los grandes escenarios decorativos de la Exposición Colonial de 1931. Se alzaba ante el palacio del África Occidental Francesa y acompañaba su presentación monumental en el paisaje del lago Daumesnil.</p><h2>Una pared roja coronada de máscaras</h2><p>La prensa de la época describía una pared alta y roja rematada con máscaras. Escultura, agua e iluminación se unían en una representación de África compuesta por los organizadores de la exposición.</p><p>Alexandre-Mathurin Pêche plasmó sus colores en un pastel de 1931. Los chorros caen en un estanque alargado ante los rostros esculpidos, mientras las altas siluetas del palacio se recortan al fondo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Devant le palais de l’Afrique occidentale française</h2><p>La fontaine des Totems appartenait aux grands décors de l’Exposition coloniale de 1931. Elle se dressait devant le palais de l’Afrique occidentale française, dont elle accompagnait la présentation monumentale dans le paysage du lac Daumesnil.</p><h2>Une muraille rouge et des masques</h2><p>La presse de l’époque décrit une haute paroi rouge surmontée de masques. L’ensemble associait la sculpture, l’eau et les illuminations, au sein d’une représentation de l’Afrique composée par les organisateurs de l’exposition.</p><p>Une photographie anonyme conservée au musée Carnavalet montre la fontaine depuis l’autre rive du lac. Cette vue stéréoscopique de 1931 en garde le souvenir face au palais, dans son environnement d’origine.</p>",
+            "newValue": "<h2>Devant le palais de l’Afrique occidentale française</h2><p>La fontaine des Totems appartenait aux grands décors de l’Exposition coloniale de 1931. Elle se dressait devant le palais de l’Afrique occidentale française, dont elle accompagnait la présentation monumentale dans le paysage du lac Daumesnil.</p><h2>Une muraille rouge et des masques</h2><p>La presse de l’époque décrit une haute paroi rouge surmontée de masques. L’ensemble associait la sculpture, l’eau et les illuminations, au sein d’une représentation de l’Afrique composée par les organisateurs de l’exposition.</p><p>Alexandre-Mathurin Pêche en a fixé les couleurs dans un pastel de 1931. Les jets retombent dans un bassin allongé devant les visages sculptés, tandis que les hautes silhouettes du palais se dressent à l’arrière-plan.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Davanti al palazzo dell’Africa occidentale francese</h2><p>La Fontaine des Totems apparteneva ai grandi scenari decorativi dell’Esposizione coloniale del 1931. Sorgeva davanti al palazzo dell’Africa occidentale francese, accompagnandone la presentazione monumentale nel paesaggio del lago Daumesnil.</p><h2>Una parete rossa coronata da maschere</h2><p>La stampa dell’epoca descriveva un’alta parete rossa sormontata da maschere. Scultura, acqua e illuminazioni si univano in una rappresentazione dell’Africa composta dagli organizzatori dell’esposizione.</p><p>Una fotografia anonima conservata al Musée Carnavalet mostra la fontana dalla riva opposta del lago. Questa veduta stereoscopica del 1931 ne tramanda il ricordo davanti al palazzo, nel suo ambiente originario.</p>",
+            "newValue": "<h2>Davanti al palazzo dell’Africa occidentale francese</h2><p>La Fontaine des Totems apparteneva ai grandi scenari decorativi dell’Esposizione coloniale del 1931. Sorgeva davanti al palazzo dell’Africa occidentale francese, accompagnandone la presentazione monumentale nel paesaggio del lago Daumesnil.</p><h2>Una parete rossa coronata da maschere</h2><p>La stampa dell’epoca descriveva un’alta parete rossa sormontata da maschere. Scultura, acqua e illuminazioni si univano in una rappresentazione dell’Africa composta dagli organizzatori dell’esposizione.</p><p>Alexandre-Mathurin Pêche ne fissò i colori in un pastello del 1931. I getti ricadono in una vasca allungata davanti ai volti scolpiti, mentre le alte sagome del palazzo si stagliano sullo sfondo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Voor het paleis van Frans-West-Afrika</h2><p>De Fontaine des Totems hoorde bij de grote decoratieve ensembles van de Koloniale Tentoonstelling van 1931. Zij stond voor het paleis van Frans-West-Afrika en begeleidde de monumentale presentatie van dat gebouw in het landschap rond het Lac Daumesnil.</p><h2>Een rode wand met maskers</h2><p>De toenmalige pers beschreef een hoge rode wand met maskers erboven. Beeldhouwwerk, water en verlichting kwamen samen in een voorstelling van Afrika die door de organisatoren was samengesteld.</p><p>Een anonieme foto in het Musée Carnavalet toont de fontein vanaf de overkant van het meer. Deze stereoscopische opname uit 1931 bewaart het beeld van haar oorspronkelijke omgeving voor het paleis.</p>",
+            "newValue": "<h2>Voor het paleis van Frans-West-Afrika</h2><p>De Fontaine des Totems hoorde bij de grote decoratieve ensembles van de Koloniale Tentoonstelling van 1931. Zij stond voor het paleis van Frans-West-Afrika en begeleidde de monumentale presentatie van dat gebouw in het landschap rond het Lac Daumesnil.</p><h2>Een rode wand met maskers</h2><p>De toenmalige pers beschreef een hoge rode wand met maskers erboven. Beeldhouwwerk, water en verlichting kwamen samen in een voorstelling van Afrika die door de organisatoren was samengesteld.</p><p>Alexandre-Mathurin Pêche legde de kleuren in 1931 vast in een pastel. Waterstralen vallen voor de gebeeldhouwde gezichten in een langgerekt bassin, met de hoge contouren van het paleis op de achtergrond.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Przed pałacem Francuskiej Afryki Zachodniej</h2><p>Fontaine des Totems należała do wielkich zespołów dekoracyjnych Wystawy Kolonialnej z 1931 roku. Stała przed pałacem Francuskiej Afryki Zachodniej, uzupełniając jego monumentalną prezentację w krajobrazie jeziora Daumesnil.</p><h2>Czerwona ściana zwieńczona maskami</h2><p>Ówczesna prasa opisywała wysoką czerwoną ścianę, nad którą umieszczono maski. Rzeźba, woda i iluminacje łączyły się w przedstawienie Afryki ułożone przez organizatorów wystawy.</p><p>Anonimowa fotografia zachowana w Musée Carnavalet pokazuje fontannę z przeciwległego brzegu jeziora. Ten stereoskopowy widok z 1931 roku utrwala jej pierwotne otoczenie przed pałacem.</p>",
+            "newValue": "<h2>Przed pałacem Francuskiej Afryki Zachodniej</h2><p>Fontaine des Totems należała do wielkich zespołów dekoracyjnych Wystawy Kolonialnej z 1931 roku. Stała przed pałacem Francuskiej Afryki Zachodniej, uzupełniając jego monumentalną prezentację w krajobrazie jeziora Daumesnil.</p><h2>Czerwona ściana zwieńczona maskami</h2><p>Ówczesna prasa opisywała wysoką czerwoną ścianę, nad którą umieszczono maski. Rzeźba, woda i iluminacje łączyły się w przedstawienie Afryki ułożone przez organizatorów wystawy.</p><p>Alexandre-Mathurin Pêche utrwalił jej barwy na pastelu z 1931 roku. Strumienie wody opadają do podłużnego basenu przed rzeźbionymi twarzami, a w tle wznoszą się wysokie bryły pałacu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Diante do palácio da África Ocidental Francesa</h2><p>A Fontaine des Totems pertencia aos grandes cenários decorativos da Exposição Colonial de 1931. Erguia-se diante do palácio da África Ocidental Francesa, acompanhando a sua apresentação monumental na paisagem do lago Daumesnil.</p><h2>Uma parede vermelha coroada de máscaras</h2><p>A imprensa da época descrevia uma parede alta e vermelha rematada por máscaras. Escultura, água e iluminações uniam-se numa representação de África composta pelos organizadores da exposição.</p><p>Uma fotografia anónima conservada no Musée Carnavalet mostra a fonte a partir da margem oposta. Esta vista estereoscópica de 1931 preserva a memória do seu ambiente original, diante do palácio.</p>",
+            "newValue": "<h2>Diante do palácio da África Ocidental Francesa</h2><p>A Fontaine des Totems pertencia aos grandes cenários decorativos da Exposição Colonial de 1931. Erguia-se diante do palácio da África Ocidental Francesa, acompanhando a sua apresentação monumental na paisagem do lago Daumesnil.</p><h2>Uma parede vermelha coroada de máscaras</h2><p>A imprensa da época descrevia uma parede alta e vermelha rematada por máscaras. Escultura, água e iluminações uniam-se numa representação de África composta pelos organizadores da exposição.</p><p>Alexandre-Mathurin Pêche registou as suas cores num pastel de 1931. Os jatos caem num tanque alongado diante dos rostos esculpidos, enquanto as silhuetas altas do palácio se erguem ao fundo.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/fontaine-des-totems-exposition-coloniale-internationale-bois-de-vincennes",
+            "newValue": "https://www.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-section-de-lafrique-occidentale-francaise-la"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "292c2a14-e174-4eb1-9e2d-135f365b7d86",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:14:14.4187949Z",
+    "appliedAtUtc": "2026-11-16T00:14:14.4187955Z",
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "760df334-d1ad-4750-b594-263dfa73c20d",
+        "entityKey": "760df334-d1ad-4750-b594-263dfa73c20d",
+        "displayName": "Fontaine des Totems",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Vor dem Palast von Französisch-Westafrika</h2><p>Die Fontaine des Totems gehörte zu den großen dekorativen Anlagen der Kolonialausstellung von 1931. Sie stand vor dem Palast von Französisch-Westafrika und ergänzte dessen monumentale Inszenierung in der Landschaft am Lac Daumesnil.</p><h2>Eine rote Wand mit Masken</h2><p>Die zeitgenössische Presse beschrieb eine hohe rote Wand, die von Masken bekrönt wurde. Skulptur, Wasser und Beleuchtung verbanden sich hier zu einer von den Ausstellungsorganisatoren gestalteten Darstellung Afrikas.</p><p>Eine anonyme Fotografie im Musée Carnavalet zeigt die Fontäne vom gegenüberliegenden Ufer aus. Die stereoskopische Aufnahme von 1931 bewahrt ihre ursprüngliche Umgebung vor dem Palast.</p>",
+            "newValue": "<h2>Vor dem Palast von Französisch-Westafrika</h2><p>Die Fontaine des Totems gehörte zu den großen dekorativen Anlagen der Kolonialausstellung von 1931. Sie stand vor dem Palast von Französisch-Westafrika und ergänzte dessen monumentale Inszenierung in der Landschaft am Lac Daumesnil.</p><h2>Eine rote Wand mit Masken</h2><p>Die zeitgenössische Presse beschrieb eine hohe rote Wand, die von Masken bekrönt wurde. Skulptur, Wasser und Beleuchtung verbanden sich hier zu einer von den Ausstellungsorganisatoren gestalteten Darstellung Afrikas.</p><p>Alexandre-Mathurin Pêche hielt die Farben 1931 in einem Pastell fest. Wasserstrahlen fallen vor den geschnitzten Gesichtern in ein langgestrecktes Becken; dahinter ragen die hohen Umrisse des Palastes auf.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>In front of the French West Africa palace</h2><p>Fontaine des Totems belonged to the grand decorative settings of the 1931 Colonial Exposition. It stood before the French West Africa palace, accompanying the building’s monumental presentation within the landscape of Lac Daumesnil.</p><h2>A red wall crowned with masks</h2><p>The contemporary press described a tall red wall topped with masks. Sculpture, water and illumination came together within a representation of Africa arranged by the exposition’s organisers.</p><p>An anonymous photograph held by the Musée Carnavalet records the fountain from the opposite shore. This stereoscopic view from 1931 preserves its setting in front of the palace, within the original exposition landscape.</p>",
+            "newValue": "<h2>In front of the French West Africa palace</h2><p>Fontaine des Totems belonged to the grand decorative settings of the 1931 Colonial Exposition. It stood before the French West Africa palace, accompanying the building’s monumental presentation within the landscape of Lac Daumesnil.</p><h2>A red wall crowned with masks</h2><p>The contemporary press described a tall red wall topped with masks. Sculpture, water and illumination came together within a representation of Africa arranged by the exposition’s organisers.</p><p>Alexandre-Mathurin Pêche captured its colours in a pastel in 1931. Jets fall into an elongated basin in front of the sculpted faces, while the tall outlines of the palace rise in the background.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Ante el palacio del África Occidental Francesa</h2><p>La Fontaine des Totems formaba parte de los grandes escenarios decorativos de la Exposición Colonial de 1931. Se alzaba ante el palacio del África Occidental Francesa y acompañaba su presentación monumental en el paisaje del lago Daumesnil.</p><h2>Una pared roja coronada de máscaras</h2><p>La prensa de la época describía una pared alta y roja rematada con máscaras. Escultura, agua e iluminación se unían en una representación de África compuesta por los organizadores de la exposición.</p><p>Una fotografía anónima conservada en el Musée Carnavalet muestra la fuente desde la orilla opuesta. Esta vista estereoscópica de 1931 mantiene el recuerdo de su entorno original, ante el palacio.</p>",
+            "newValue": "<h2>Ante el palacio del África Occidental Francesa</h2><p>La Fontaine des Totems formaba parte de los grandes escenarios decorativos de la Exposición Colonial de 1931. Se alzaba ante el palacio del África Occidental Francesa y acompañaba su presentación monumental en el paisaje del lago Daumesnil.</p><h2>Una pared roja coronada de máscaras</h2><p>La prensa de la época describía una pared alta y roja rematada con máscaras. Escultura, agua e iluminación se unían en una representación de África compuesta por los organizadores de la exposición.</p><p>Alexandre-Mathurin Pêche plasmó sus colores en un pastel de 1931. Los chorros caen en un estanque alargado ante los rostros esculpidos, mientras las altas siluetas del palacio se recortan al fondo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Devant le palais de l’Afrique occidentale française</h2><p>La fontaine des Totems appartenait aux grands décors de l’Exposition coloniale de 1931. Elle se dressait devant le palais de l’Afrique occidentale française, dont elle accompagnait la présentation monumentale dans le paysage du lac Daumesnil.</p><h2>Une muraille rouge et des masques</h2><p>La presse de l’époque décrit une haute paroi rouge surmontée de masques. L’ensemble associait la sculpture, l’eau et les illuminations, au sein d’une représentation de l’Afrique composée par les organisateurs de l’exposition.</p><p>Une photographie anonyme conservée au musée Carnavalet montre la fontaine depuis l’autre rive du lac. Cette vue stéréoscopique de 1931 en garde le souvenir face au palais, dans son environnement d’origine.</p>",
+            "newValue": "<h2>Devant le palais de l’Afrique occidentale française</h2><p>La fontaine des Totems appartenait aux grands décors de l’Exposition coloniale de 1931. Elle se dressait devant le palais de l’Afrique occidentale française, dont elle accompagnait la présentation monumentale dans le paysage du lac Daumesnil.</p><h2>Une muraille rouge et des masques</h2><p>La presse de l’époque décrit une haute paroi rouge surmontée de masques. L’ensemble associait la sculpture, l’eau et les illuminations, au sein d’une représentation de l’Afrique composée par les organisateurs de l’exposition.</p><p>Alexandre-Mathurin Pêche en a fixé les couleurs dans un pastel de 1931. Les jets retombent dans un bassin allongé devant les visages sculptés, tandis que les hautes silhouettes du palais se dressent à l’arrière-plan.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Davanti al palazzo dell’Africa occidentale francese</h2><p>La Fontaine des Totems apparteneva ai grandi scenari decorativi dell’Esposizione coloniale del 1931. Sorgeva davanti al palazzo dell’Africa occidentale francese, accompagnandone la presentazione monumentale nel paesaggio del lago Daumesnil.</p><h2>Una parete rossa coronata da maschere</h2><p>La stampa dell’epoca descriveva un’alta parete rossa sormontata da maschere. Scultura, acqua e illuminazioni si univano in una rappresentazione dell’Africa composta dagli organizzatori dell’esposizione.</p><p>Una fotografia anonima conservata al Musée Carnavalet mostra la fontana dalla riva opposta del lago. Questa veduta stereoscopica del 1931 ne tramanda il ricordo davanti al palazzo, nel suo ambiente originario.</p>",
+            "newValue": "<h2>Davanti al palazzo dell’Africa occidentale francese</h2><p>La Fontaine des Totems apparteneva ai grandi scenari decorativi dell’Esposizione coloniale del 1931. Sorgeva davanti al palazzo dell’Africa occidentale francese, accompagnandone la presentazione monumentale nel paesaggio del lago Daumesnil.</p><h2>Una parete rossa coronata da maschere</h2><p>La stampa dell’epoca descriveva un’alta parete rossa sormontata da maschere. Scultura, acqua e illuminazioni si univano in una rappresentazione dell’Africa composta dagli organizzatori dell’esposizione.</p><p>Alexandre-Mathurin Pêche ne fissò i colori in un pastello del 1931. I getti ricadono in una vasca allungata davanti ai volti scolpiti, mentre le alte sagome del palazzo si stagliano sullo sfondo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Voor het paleis van Frans-West-Afrika</h2><p>De Fontaine des Totems hoorde bij de grote decoratieve ensembles van de Koloniale Tentoonstelling van 1931. Zij stond voor het paleis van Frans-West-Afrika en begeleidde de monumentale presentatie van dat gebouw in het landschap rond het Lac Daumesnil.</p><h2>Een rode wand met maskers</h2><p>De toenmalige pers beschreef een hoge rode wand met maskers erboven. Beeldhouwwerk, water en verlichting kwamen samen in een voorstelling van Afrika die door de organisatoren was samengesteld.</p><p>Een anonieme foto in het Musée Carnavalet toont de fontein vanaf de overkant van het meer. Deze stereoscopische opname uit 1931 bewaart het beeld van haar oorspronkelijke omgeving voor het paleis.</p>",
+            "newValue": "<h2>Voor het paleis van Frans-West-Afrika</h2><p>De Fontaine des Totems hoorde bij de grote decoratieve ensembles van de Koloniale Tentoonstelling van 1931. Zij stond voor het paleis van Frans-West-Afrika en begeleidde de monumentale presentatie van dat gebouw in het landschap rond het Lac Daumesnil.</p><h2>Een rode wand met maskers</h2><p>De toenmalige pers beschreef een hoge rode wand met maskers erboven. Beeldhouwwerk, water en verlichting kwamen samen in een voorstelling van Afrika die door de organisatoren was samengesteld.</p><p>Alexandre-Mathurin Pêche legde de kleuren in 1931 vast in een pastel. Waterstralen vallen voor de gebeeldhouwde gezichten in een langgerekt bassin, met de hoge contouren van het paleis op de achtergrond.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Przed pałacem Francuskiej Afryki Zachodniej</h2><p>Fontaine des Totems należała do wielkich zespołów dekoracyjnych Wystawy Kolonialnej z 1931 roku. Stała przed pałacem Francuskiej Afryki Zachodniej, uzupełniając jego monumentalną prezentację w krajobrazie jeziora Daumesnil.</p><h2>Czerwona ściana zwieńczona maskami</h2><p>Ówczesna prasa opisywała wysoką czerwoną ścianę, nad którą umieszczono maski. Rzeźba, woda i iluminacje łączyły się w przedstawienie Afryki ułożone przez organizatorów wystawy.</p><p>Anonimowa fotografia zachowana w Musée Carnavalet pokazuje fontannę z przeciwległego brzegu jeziora. Ten stereoskopowy widok z 1931 roku utrwala jej pierwotne otoczenie przed pałacem.</p>",
+            "newValue": "<h2>Przed pałacem Francuskiej Afryki Zachodniej</h2><p>Fontaine des Totems należała do wielkich zespołów dekoracyjnych Wystawy Kolonialnej z 1931 roku. Stała przed pałacem Francuskiej Afryki Zachodniej, uzupełniając jego monumentalną prezentację w krajobrazie jeziora Daumesnil.</p><h2>Czerwona ściana zwieńczona maskami</h2><p>Ówczesna prasa opisywała wysoką czerwoną ścianę, nad którą umieszczono maski. Rzeźba, woda i iluminacje łączyły się w przedstawienie Afryki ułożone przez organizatorów wystawy.</p><p>Alexandre-Mathurin Pêche utrwalił jej barwy na pastelu z 1931 roku. Strumienie wody opadają do podłużnego basenu przed rzeźbionymi twarzami, a w tle wznoszą się wysokie bryły pałacu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Diante do palácio da África Ocidental Francesa</h2><p>A Fontaine des Totems pertencia aos grandes cenários decorativos da Exposição Colonial de 1931. Erguia-se diante do palácio da África Ocidental Francesa, acompanhando a sua apresentação monumental na paisagem do lago Daumesnil.</p><h2>Uma parede vermelha coroada de máscaras</h2><p>A imprensa da época descrevia uma parede alta e vermelha rematada por máscaras. Escultura, água e iluminações uniam-se numa representação de África composta pelos organizadores da exposição.</p><p>Uma fotografia anónima conservada no Musée Carnavalet mostra a fonte a partir da margem oposta. Esta vista estereoscópica de 1931 preserva a memória do seu ambiente original, diante do palácio.</p>",
+            "newValue": "<h2>Diante do palácio da África Ocidental Francesa</h2><p>A Fontaine des Totems pertencia aos grandes cenários decorativos da Exposição Colonial de 1931. Erguia-se diante do palácio da África Ocidental Francesa, acompanhando a sua apresentação monumental na paisagem do lago Daumesnil.</p><h2>Uma parede vermelha coroada de máscaras</h2><p>A imprensa da época descrevia uma parede alta e vermelha rematada por máscaras. Escultura, água e iluminações uniam-se numa representação de África composta pelos organizadores da exposição.</p><p>Alexandre-Mathurin Pêche registou as suas cores num pastel de 1931. Os jatos caem num tanque alongado diante dos rostos esculpidos, enquanto as silhuetas altas do palácio se erguem ao fundo.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/fontaine-des-totems-exposition-coloniale-internationale-bois-de-vincennes",
+            "newValue": "https://www.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-section-de-lafrique-occidentale-francaise-la"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sourceComparison": "exposition-coloniale-totems-source-comparison-20261116.json",
+  "allEightLanguagesPersonallyReviewed": true,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

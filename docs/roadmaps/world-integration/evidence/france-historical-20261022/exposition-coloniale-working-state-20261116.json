@@ -1,0 +1,2466 @@
+{
+  "documentType": "AmusementParkParkGraphUpsert",
+  "schemaVersion": "2026-09-05",
+  "mode": "merge",
+  "identity": {
+    "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "name": "Exposition Coloniale Internationale",
+    "countryCode": "FR"
+  },
+  "park": {
+    "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "name": "Exposition Coloniale Internationale",
+    "countryCode": "FR",
+    "type": "AmusementPark",
+    "status": "ClosedDefinitively",
+    "openingDate": "1931-05-06T00:00:00Z",
+    "closingDate": "1931-11-15T00:00:00Z",
+    "openingDateText": "1931-05-06",
+    "closingDateText": "1931-11-15",
+    "founderId": null,
+    "founderKey": null,
+    "operatorId": null,
+    "operatorKey": null,
+    "websiteUrl": null,
+    "audienceClassification": "International",
+    "latitude": 48.829598,
+    "longitude": 2.411919,
+    "descriptions": [
+      {
+        "languageCode": "fr",
+        "value": "<h2>Une ville d’exposition au bord du lac Daumesnil</h2><p>L’Exposition coloniale internationale se tint à Paris du 6 mai au 15 novembre 1931, à la Porte Dorée et dans le bois de Vincennes. Autour du lac Daumesnil, elle composa une ville temporaire de pavillons, de spectacles et de lieux de loisirs. Son ambition était politique : promouvoir les empires coloniaux, au premier rang desquels l’empire français.</p><p>Les architectures donnaient une présence monumentale à cette mise en scène. Une reconstitution du temple d’Angkor représentait l’Indochine, tandis que le Palais des Colonies, conçu par Albert Laprade dans le style Art déco, présentait les territoires et les ressources de l’empire. Ce dernier bâtiment avait été pensé pour durer après l’événement.</p><h2>Les nuits de lumière et les spectacles d’eau</h2><p>À la tombée du jour, les illuminations transformaient les allées et les façades. Les pylônes tricolores, les fontaines lumineuses et les reflets du lac participaient au spectacle. Sur la pointe de l’île de Reuilly, le Théâtre d’Eau associait des représentations de danse à des gerbes d’eau colorées. Cette féerie affichait aussi une démonstration de modernité et de puissance.</p><h2>Les divertissements et le regard colonial</h2><p>La partie foraine, appelée Parc de la Gravelle, accueillait notamment le Scenic Railway, des montagnes russes en bois. Un petit train de ceinture desservait l’ensemble de l’exposition. Les attractions et les transports participaient à l’organisation d’un grand événement populaire, dont les loisirs accompagnaient la présentation politique des colonies.</p><p>Des personnes venues des territoires colonisés dansaient, travaillaient comme artisans ou tenaient des stands devant le public. Leur présence était inscrite dans des villages et des décors reconstitués. Cette présentation mettait en scène une diversité choisie par les organisateurs, tout en taisant les rapports de domination, l’exploitation et les violences de la colonisation. Les résistances des populations colonisées restaient elles aussi hors du récit. La vie de ces sociétés, leurs transformations culturelles et leurs expériences échappaient à cette image composée pour présenter l’empire au public métropolitain.</p><h2>Les contestations et les traces laissées</h2><p>Des voix anticoloniales s’élevèrent dès avant l’inauguration. Des surréalistes appelèrent à ne pas visiter l’exposition ; à l’automne, une contre-exposition, La Vérité sur les colonies, dénonça le récit officiel. Le succès populaire de la manifestation coexistait ainsi avec des critiques de son projet.</p><p>La clôture de novembre mit fin à cette ville temporaire. Le Palais de la Porte Dorée poursuivit son histoire muséale, avec son aquarium. Les pavillons du Togo et du Cameroun, également préservés, sont devenus la Pagode de Vincennes. Ces traces matérielles gardent la mémoire de l’événement et de son imaginaire colonial.</p>"
+      },
+      {
+        "languageCode": "en",
+        "value": "<h2>An exhibition city beside Lac Daumesnil</h2><p>The International Colonial Exposition took place in Paris from 6 May to 15 November 1931, at the Porte Dorée and in the Bois de Vincennes. Around Lac Daumesnil, it formed a temporary city of pavilions, performances and amusements. Its purpose was political: to promote the colonial empires, with the French empire at the forefront.</p><p>Architecture gave monumental form to that presentation. A reconstruction of Angkor represented Indochina, while the Art Deco Palais des Colonies, designed by Albert Laprade, displayed the empire’s territories and resources. The palace was intended to remain after the event.</p><h2>Illuminated nights and water performances</h2><p>After dark, lighting transformed the avenues and façades. Illuminated columns in the French colours, fountains and reflections on the lake became part of the spectacle. At the tip of the Île de Reuilly, the Théâtre d’Eau combined dance performances with coloured jets of water. This dazzling setting also served as a demonstration of modernity and power.</p><h2>Amusements within a colonial vision</h2><p>The fairground section, known as the Parc de la Gravelle, included the wooden Scenic Railway roller coaster. A small circular railway served the wider exposition. Rides and transport helped organise a large popular event whose amusements accompanied the political presentation of the colonies.</p><p>People brought from colonised territories danced, worked as craftspeople or ran stalls before the public. They appeared within reconstructed villages and settings. The organisers presented a selected image of diversity while leaving out the relationships of domination, exploitation and violence that underpinned colonial rule. The resistance of colonised peoples was also absent from the official account. Their own lives, cultural change and experiences could not be contained in an image composed to display the empire to a metropolitan audience.</p><h2>Opposition and lasting traces</h2><p>Anticolonial voices were raised before the inauguration. Surrealists called on people to boycott the exposition; in the autumn, a counter-exhibition, La Vérité sur les colonies, challenged its official account. Popular success thus coexisted with criticism of the project.</p><p>The November closure ended this temporary city. The Palais de la Porte Dorée continued its museum history, with its aquarium. The preserved Togo and Cameroon pavilions became the Pagode de Vincennes. These material traces retain the memory of the event and its colonial imagery.</p>"
+      },
+      {
+        "languageCode": "de",
+        "value": "<h2>Eine Ausstellungsstadt am Lac Daumesnil</h2><p>Die Internationale Kolonialausstellung fand vom 6. Mai bis zum 15. November 1931 in Paris statt, an der Porte Dorée und im Bois de Vincennes. Rund um den Lac Daumesnil entstand eine vorübergehende Stadt aus Pavillons, Aufführungen und Vergnügungen. Ihr Ziel war politisch: Sie sollte die Kolonialreiche darstellen und fördern, allen voran das französische.</p><p>Die Architektur verlieh dieser Inszenierung monumentale Formen. Eine Nachbildung von Angkor repräsentierte Indochina. Der von Albert Laprade entworfene Palais des Colonies im Art-déco-Stil zeigte die Gebiete und Ressourcen des Kolonialreichs. Der Palast war für eine Nutzung über das Ereignis hinaus bestimmt.</p><h2>Lichtnächte und Wasserschauspiele</h2><p>Nach Einbruch der Dunkelheit veränderten Beleuchtungen die Alleen und Fassaden. Lichtsäulen in den französischen Nationalfarben, leuchtende Brunnen und Spiegelungen im See gehörten zum Schauspiel. An der Spitze der Île de Reuilly verband das Théâtre d’Eau Tanzaufführungen mit farbigen Wasserfontänen. Die zauberhafte Wirkung diente zugleich als Demonstration von Modernität und Macht.</p><h2>Vergnügungen im kolonialen Weltbild</h2><p>Zum Vergnügungsteil, dem Parc de la Gravelle, gehörte die Holzachterbahn Scenic Railway. Eine kleine Ringbahn erschloss die Ausstellung. Fahrgeschäfte und Verkehrsmittel prägten die Organisation eines großen Publikumsereignisses, dessen Vergnügungen die politische Darstellung der Kolonien begleiteten.</p><p>Menschen aus kolonisierten Gebieten tanzten, arbeiteten als Handwerker oder betrieben Stände vor dem Publikum. Sie wurden in nachgebauten Dörfern und Kulissen gezeigt. Die Veranstalter präsentierten damit ein ausgewähltes Bild von Vielfalt und verschwiegen zugleich die Herrschaftsverhältnisse, Ausbeutung und Gewalt der Kolonisation. Auch der Widerstand kolonisierter Bevölkerungen blieb außerhalb der offiziellen Erzählung. Ihr eigenes Leben, kultureller Wandel und Erfahrungen fanden keinen Platz in einem Bild, das dem Publikum im Mutterland das Kolonialreich vorführen sollte.</p><h2>Widerspruch und erhaltene Spuren</h2><p>Antikoloniale Stimmen meldeten sich bereits vor der Eröffnung. Surrealisten riefen zum Boykott auf; im Herbst widersprach die Gegenausstellung La Vérité sur les colonies der offiziellen Darstellung. Der große Publikumserfolg bestand somit neben deutlicher Kritik an dem Vorhaben.</p><p>Mit der Schließung im November endete die vorübergehende Stadt. Der Palais de la Porte Dorée setzte seine Museumsgeschichte mit dem Aquarium fort. Die ebenfalls erhaltenen Pavillons von Togo und Kamerun wurden zur Pagode de Vincennes. Diese materiellen Spuren bewahren die Erinnerung an das Ereignis und seine kolonialen Vorstellungen.</p>"
+      },
+      {
+        "languageCode": "nl",
+        "value": "<h2>Een tentoonstellingsstad aan het Lac Daumesnil</h2><p>De Internationale Koloniale Tentoonstelling vond van 6 mei tot 15 november 1931 plaats in Parijs, bij de Porte Dorée en in het Bois de Vincennes. Rond het Lac Daumesnil verrees een tijdelijke stad van paviljoens, voorstellingen en vermaak. Het doel was politiek: de koloniale rijken onder de aandacht brengen en bevorderen, met het Franse rijk voorop.</p><p>De architectuur gaf deze presentatie een monumentale vorm. Een reconstructie van Angkor vertegenwoordigde Indochina. Het door Albert Laprade ontworpen Palais des Colonies in art-decostijl toonde de gebieden en grondstoffen van het rijk. Dit paleis was bedoeld om ook na de tentoonstelling te blijven bestaan.</p><h2>Lichtnachten en watervoorstellingen</h2><p>Na het invallen van de duisternis veranderden de verlichte lanen en gevels van karakter. Driekleurige lichtzuilen, verlichte fonteinen en weerspiegelingen op het meer maakten deel uit van het schouwspel. Op de punt van het Île de Reuilly combineerde het Théâtre d’Eau dansvoorstellingen met gekleurde waterstralen. Die betoverende omgeving moest ook moderniteit en macht uitdrukken.</p><h2>Vermaak binnen een koloniaal wereldbeeld</h2><p>Het kermisgedeelte, bekend als het Parc de la Gravelle, omvatte onder meer de houten achtbaan Scenic Railway. Een kleine ringlijn bediende de tentoonstelling. Attracties en vervoer hielpen een groot publieksevenement organiseren, waarin het vermaak de politieke voorstelling van de koloniën begeleidde.</p><p>Mensen uit gekoloniseerde gebieden dansten, werkten als ambachtslieden of bemanden kramen voor het publiek. Zij verschenen in nagebouwde dorpen en decors. Zo presenteerden de organisatoren een geselecteerd beeld van verscheidenheid, terwijl de machtsverhoudingen, uitbuiting en het geweld van de kolonisatie buiten beeld bleven. Ook het verzet van gekoloniseerde bevolkingen bleef buiten het officiële verhaal. Hun eigen leven, culturele veranderingen en ervaringen pasten niet in het beeld dat het rijk aan het publiek in het moederland moest tonen.</p><h2>Verzet en bewaarde sporen</h2><p>Al vóór de opening klonken antikoloniale stemmen. Surrealisten riepen op tot een boycot; in de herfst weersprak de tegententoonstelling La Vérité sur les colonies het officiële verhaal. Het grote publiekssucces ging zo samen met kritiek op het project.</p><p>De sluiting in november maakte een einde aan deze tijdelijke stad. Het Palais de la Porte Dorée zette zijn museumgeschiedenis voort, met het aquarium. De eveneens bewaarde paviljoens van Togo en Kameroen werden de Pagode de Vincennes. Deze tastbare sporen bewaren de herinnering aan het evenement en zijn koloniale denkbeelden.</p>"
+      },
+      {
+        "languageCode": "it",
+        "value": "<h2>Una città espositiva sul lago Daumesnil</h2><p>L’Esposizione coloniale internazionale si svolse a Parigi dal 6 maggio al 15 novembre 1931, alla porte Dorée e nel bois de Vincennes. Intorno al lago Daumesnil sorse una città temporanea di padiglioni, spettacoli e divertimenti. L’ambizione era politica: promuovere gli imperi coloniali, con quello francese in primo piano.</p><p>Le architetture davano una forma monumentale a questa rappresentazione. Una ricostruzione di Angkor rappresentava l’Indocina, mentre il Palais des Colonies, progettato da Albert Laprade in stile Art déco, presentava i territori e le risorse dell’impero. Il palazzo era stato concepito per durare oltre l’evento.</p><h2>Notti di luce e spettacoli d’acqua</h2><p>Al calare del buio, le illuminazioni trasformavano i viali e le facciate. Colonne luminose nei colori della Francia, fontane luminose e riflessi sul lago componevano lo spettacolo. Sulla punta dell’île de Reuilly, il Théâtre d’Eau associava rappresentazioni di danza a getti d’acqua colorati. Questa atmosfera fiabesca serviva anche a mostrare modernità e potenza.</p><h2>I divertimenti dentro una visione coloniale</h2><p>La parte dedicata alle attrazioni, chiamata Parc de la Gravelle, comprendeva lo Scenic Railway, montagne russe in legno. Un trenino circolare serviva l’intera esposizione. Attrazioni e trasporti contribuivano all’organizzazione di un grande evento popolare, in cui il divertimento accompagnava la presentazione politica delle colonie.</p><p>Persone provenienti dai territori colonizzati danzavano, lavoravano come artigiani o gestivano bancarelle davanti al pubblico. Erano inserite in villaggi e ambientazioni ricostruiti. Gli organizzatori proponevano un’immagine selezionata della diversità, tacendo i rapporti di dominio, lo sfruttamento e le violenze della colonizzazione. Anche le resistenze delle popolazioni colonizzate restavano fuori dal racconto ufficiale. La loro vita, le trasformazioni culturali e le esperienze non trovavano posto in un’immagine costruita per presentare l’impero al pubblico della metropoli.</p><h2>Le contestazioni e le tracce rimaste</h2><p>Voci anticoloniali si levarono prima dell’inaugurazione. I surrealisti invitarono a boicottare l’esposizione; in autunno, la controesposizione La Vérité sur les colonies contestò il racconto ufficiale. Il successo popolare della manifestazione conviveva quindi con critiche al suo progetto.</p><p>La chiusura di novembre mise fine a questa città temporanea. Il Palais de la Porte Dorée proseguì la propria storia museale, con l’acquario. Anche i padiglioni del Togo e del Camerun furono conservati e divennero la Pagode de Vincennes. Queste tracce materiali custodiscono la memoria dell’evento e del suo immaginario coloniale.</p>"
+      },
+      {
+        "languageCode": "es",
+        "value": "<h2>Una ciudad de exposición junto al lago Daumesnil</h2><p>La Exposición Colonial Internacional se celebró en París del 6 de mayo al 15 de noviembre de 1931, en la porte Dorée y el bois de Vincennes. Alrededor del lago Daumesnil surgió una ciudad temporal de pabellones, espectáculos y diversiones. Su propósito era político: promover los imperios coloniales, con el francés en primer plano.</p><p>Las arquitecturas daban forma monumental a aquella puesta en escena. Una reconstrucción de Angkor representaba a Indochina, mientras que el Palais des Colonies, diseñado por Albert Laprade en estilo art déco, presentaba los territorios y los recursos del imperio. El palacio había sido concebido para permanecer después del evento.</p><h2>Noches de luz y espectáculos de agua</h2><p>Al anochecer, la iluminación transformaba avenidas y fachadas. Las columnas de luz tricolores, las fuentes luminosas y los reflejos del lago formaban parte del espectáculo. En la punta de la île de Reuilly, el Théâtre d’Eau combinaba representaciones de danza con chorros de agua de colores. Aquel ambiente de fantasía también exhibía modernidad y poder.</p><h2>El ocio dentro de una visión colonial</h2><p>La zona de feria, llamada Parc de la Gravelle, incluía el Scenic Railway, una montaña rusa de madera. Un pequeño ferrocarril circular prestaba servicio al conjunto de la exposición. Atracciones y transportes contribuían a organizar un gran evento popular cuyo ocio acompañaba la presentación política de las colonias.</p><p>Personas procedentes de territorios colonizados bailaban, trabajaban como artesanos o atendían puestos ante el público. Aparecían en aldeas y decorados reconstruidos. Los organizadores presentaban una imagen seleccionada de la diversidad, mientras silenciaban las relaciones de dominación, la explotación y las violencias de la colonización. La resistencia de las poblaciones colonizadas también quedaba fuera del relato oficial. Sus propias vidas, cambios culturales y experiencias no tenían cabida en una imagen compuesta para presentar el imperio al público metropolitano.</p><h2>Las protestas y las huellas conservadas</h2><p>Las voces anticoloniales se alzaron antes de la inauguración. Los surrealistas llamaron al boicot; en otoño, la contraexposición La Vérité sur les colonies cuestionó el relato oficial. El éxito popular de la manifestación coexistía así con las críticas a su proyecto.</p><p>La clausura de noviembre puso fin a aquella ciudad temporal. El Palais de la Porte Dorée continuó su historia como museo, con el acuario. Los pabellones de Togo y Camerún, también conservados, se convirtieron en la Pagode de Vincennes. Estos vestigios materiales guardan la memoria del evento y de su imaginario colonial.</p>"
+      },
+      {
+        "languageCode": "pl",
+        "value": "<h2>Miasto wystawy nad jeziorem Daumesnil</h2><p>Międzynarodowa Wystawa Kolonialna odbywała się w Paryżu od 6 maja do 15 listopada 1931 roku, przy porte Dorée i w bois de Vincennes. Wokół jeziora Daumesnil powstało tymczasowe miasto pawilonów, widowisk i rozrywek. Cel był polityczny: promowanie imperiów kolonialnych, przede wszystkim francuskiego.</p><p>Architektura nadawała tej inscenizacji monumentalny kształt. Rekonstrukcja Angkoru reprezentowała Indochiny, a Palais des Colonies projektu Alberta Laprade’a, utrzymany w stylu art déco, przedstawiał terytoria i zasoby imperium. Pałac zaplanowano jako budynek, który przetrwa zakończenie wystawy.</p><h2>Świetlne noce i wodne widowiska</h2><p>Po zmroku iluminacje odmieniały aleje i fasady. Świetlne kolumny w barwach Francji, podświetlone fontanny i odbicia w jeziorze tworzyły widowisko. Na krańcu île de Reuilly Théâtre d’Eau łączył pokazy tańca z kolorowymi strumieniami wody. Bajkowa oprawa służyła również prezentacji nowoczesności i potęgi.</p><h2>Rozrywka w kolonialnym obrazie świata</h2><p>Część rozrywkowa wystawy, zwana Parc de la Gravelle, obejmowała drewnianą kolejkę Scenic Railway. Mały pociąg kursował wokół wystawy. Atrakcje i transport współtworzyły organizację wielkiego wydarzenia dla szerokiej publiczności, w którym rozrywka towarzyszyła politycznej prezentacji kolonii.</p><p>Ludzie z kolonizowanych terytoriów tańczyli, pracowali jako rzemieślnicy lub prowadzili stoiska na oczach publiczności. Pokazywano ich w odtworzonych wioskach i dekoracjach. Organizatorzy przedstawiali wybrany obraz różnorodności, przemilczając stosunki dominacji, wyzysk i przemoc kolonizacji. Poza oficjalną opowieścią pozostawał również opór kolonizowanych społeczności. Ich własne życie, przemiany kulturowe i doświadczenia nie mieściły się w obrazie podporządkowanym prezentacji imperium przed publicznością metropolii.</p><h2>Sprzeciw i zachowane ślady</h2><p>Głosy antykolonialne rozbrzmiewały przed inauguracją. Surrealiści wzywali do bojkotu, a jesienią kontrwystawa La Vérité sur les colonies podważała oficjalną narrację. Sukcesowi wśród publiczności towarzyszyła więc krytyka całego przedsięwzięcia.</p><p>Listopadowe zamknięcie zakończyło istnienie tego tymczasowego miasta. Palais de la Porte Dorée kontynuował historię muzealną, wraz z akwarium. Zachowane pawilony Togo i Kamerunu stały się Pagode de Vincennes. Te materialne ślady przechowują pamięć o wydarzeniu i jego kolonialnych wyobrażeniach.</p>"
+      },
+      {
+        "languageCode": "pt",
+        "value": "<h2>Uma cidade de exposição junto ao lago Daumesnil</h2><p>A Exposição Colonial Internacional decorreu em Paris entre 6 de maio e 15 de novembro de 1931, na porte Dorée e no bois de Vincennes. Em redor do lago Daumesnil formou-se uma cidade temporária de pavilhões, espetáculos e divertimentos. A ambição era política: promover os impérios coloniais, com o francês em primeiro plano.</p><p>As arquiteturas davam uma forma monumental a essa encenação. Uma reconstrução de Angkor representava a Indochina, enquanto o Palais des Colonies, concebido por Albert Laprade em estilo Art Déco, apresentava os territórios e os recursos do império. O palácio fora pensado para permanecer depois do evento.</p><h2>Noites de luz e espetáculos de água</h2><p>Ao cair da noite, a iluminação transformava as alamedas e as fachadas. Colunas luminosas tricolores, fontes iluminadas e reflexos no lago faziam parte do espetáculo. Na ponta da île de Reuilly, o Théâtre d’Eau associava apresentações de dança a jatos de água coloridos. Este ambiente feérico também demonstrava modernidade e poder.</p><h2>O divertimento numa visão colonial</h2><p>A zona de diversões, chamada Parc de la Gravelle, incluía o Scenic Railway, uma montanha-russa de madeira. Um pequeno comboio circular servia o conjunto da exposição. Atrações e transportes contribuíam para organizar um grande evento popular em que o lazer acompanhava a apresentação política das colónias.</p><p>Pessoas oriundas dos territórios colonizados dançavam, trabalhavam como artesãos ou ocupavam bancas perante o público. Surgiam em aldeias e cenários reconstruídos. Os organizadores apresentavam uma imagem selecionada da diversidade, silenciando as relações de domínio, a exploração e as violências da colonização. A resistência das populações colonizadas também ficava fora da narrativa oficial. A sua vida, as transformações culturais e as experiências não cabiam numa imagem composta para apresentar o império ao público da metrópole.</p><h2>As contestações e os vestígios preservados</h2><p>Vozes anticoloniais fizeram-se ouvir antes da inauguração. Os surrealistas apelaram ao boicote; no outono, a contraexposição La Vérité sur les colonies contestou a narrativa oficial. O sucesso popular da manifestação coexistia assim com críticas ao seu projeto.</p><p>O encerramento de novembro pôs fim a esta cidade temporária. O Palais de la Porte Dorée continuou a sua história museológica, com o aquário. Os pavilhões do Togo e dos Camarões, também preservados, tornaram-se a Pagode de Vincennes. Estes vestígios materiais guardam a memória do evento e do seu imaginário colonial.</p>"
+      }
+    ],
+    "isVisible": false,
+    "adminReviewStatus": "ToReview",
+    "street": null,
+    "city": "Paris",
+    "postalCode": null
+  },
+  "references": {
+    "founders": [],
+    "operators": [],
+    "manufacturers": [
+      {
+        "key": "2e23c5fc-e3f2-4a78-b623-f684efaf97c9",
+        "id": "2e23c5fc-e3f2-4a78-b623-f684efaf97c9",
+        "name": "Erich Heidrich",
+        "legalName": null,
+        "foundedYear": null,
+        "closedYear": null,
+        "contactDetails": null,
+        "biography": [],
+        "isVisible": true,
+        "adminReviewStatus": "ToReview"
+      }
+    ]
+  },
+  "zones": [
+    {
+      "key": "a15bd25c-65c7-48c7-8c4e-e34c1de596ca",
+      "id": "a15bd25c-65c7-48c7-8c4e-e34c1de596ca",
+      "name": "Parc de la Gravelle",
+      "names": [
+        {
+          "languageCode": "fr",
+          "value": "Parc de la Gravelle"
+        },
+        {
+          "languageCode": "en",
+          "value": "Parc de la Gravelle"
+        },
+        {
+          "languageCode": "de",
+          "value": "Parc de la Gravelle"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Parc de la Gravelle"
+        },
+        {
+          "languageCode": "it",
+          "value": "Parc de la Gravelle"
+        },
+        {
+          "languageCode": "es",
+          "value": "Parc de la Gravelle"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Parc de la Gravelle"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Parc de la Gravelle"
+        }
+      ],
+      "slug": null,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La partie foraine de l’exposition</h2><p>Le Parc de la Gravelle était la partie foraine de l’Exposition coloniale internationale. Le Scenic Railway figurait parmi ses divertissements, au sein du grand ensemble éphémère aménagé dans le bois de Vincennes.</p><p>Son nom a traversé le temps dans les cartes postales. Il rappelle la place des attractions dans cette exposition, qui associait spectacle populaire et présentation des empires coloniaux.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The exposition’s fairground section</h2><p>Parc de la Gravelle was the fairground section of the International Colonial Exposition. Scenic Railway was among its amusements, within the large temporary complex laid out in the Bois de Vincennes.</p><p>Postcards preserved the area’s name. It recalls the place of rides in an exposition that combined popular spectacle with the presentation of the colonial empires.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Der Vergnügungsteil der Ausstellung</h2><p>Parc de la Gravelle war der Vergnügungsteil der Internationalen Kolonialausstellung. Die Scenic Railway gehörte zu seinen Attraktionen innerhalb der großen, vorübergehenden Anlage im Bois de Vincennes.</p><p>Postkarten bewahrten den Namen des Bereichs. Er erinnert an den Platz der Fahrgeschäfte in einer Ausstellung, die Unterhaltung für ein breites Publikum mit der Darstellung der Kolonialreiche verband.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Het kermisgedeelte van de tentoonstelling</h2><p>Parc de la Gravelle was het kermisgedeelte van de Internationale Koloniale Tentoonstelling. Scenic Railway hoorde bij het vermaak in deze zone, binnen het grote tijdelijke complex in het Bois de Vincennes.</p><p>Ansichtkaarten bewaarden de naam van het gebied. Die herinnert aan de plaats van attracties in een tentoonstelling die vermaak voor een breed publiek verbond met de presentatie van koloniale rijken.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La parte dedicata alle attrazioni</h2><p>Il Parc de la Gravelle era la zona di divertimenti dell’Esposizione coloniale internazionale. Lo Scenic Railway figurava tra le sue attrazioni, all’interno del grande complesso temporaneo allestito nel bois de Vincennes.</p><p>Le cartoline hanno conservato il nome dell’area. Ricorda il posto delle attrazioni in un’esposizione che univa spettacolo popolare e rappresentazione degli imperi coloniali.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La zona de feria de la exposición</h2><p>El Parc de la Gravelle era la zona de feria de la Exposición Colonial Internacional. El Scenic Railway figuraba entre sus diversiones, dentro del gran recinto temporal instalado en el bois de Vincennes.</p><p>Las postales conservaron el nombre de la zona. Recuerda el lugar de las atracciones en una exposición que combinaba espectáculo popular y presentación de los imperios coloniales.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Rozrywkowa część wystawy</h2><p>Parc de la Gravelle stanowił część rozrywkową Międzynarodowej Wystawy Kolonialnej. Scenic Railway należała do jej atrakcji w obrębie rozległego, tymczasowego kompleksu urządzonego w bois de Vincennes.</p><p>Pocztówki zachowały nazwę tej strefy. Przypomina ona miejsce atrakcji w wystawie łączącej widowiska dla szerokiej publiczności z prezentacją imperiów kolonialnych.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A zona de diversões da exposição</h2><p>O Parc de la Gravelle era a zona de diversões da Exposição Colonial Internacional. O Scenic Railway figurava entre as suas atrações, dentro do grande recinto temporário instalado no bois de Vincennes.</p><p>Os postais preservaram o nome desta zona. Recorda o lugar das atrações numa exposição que associava espetáculo popular à apresentação dos impérios coloniais.</p>"
+        }
+      ],
+      "isVisible": false,
+      "sortOrder": 10,
+      "latitude": null,
+      "longitude": null
+    }
+  ],
+  "items": [
+    {
+      "key": "760df334-d1ad-4750-b594-263dfa73c20d",
+      "id": "760df334-d1ad-4750-b594-263dfa73c20d",
+      "name": "Fontaine des Totems",
+      "category": "Other",
+      "type": "Other",
+      "subtype": null,
+      "zoneId": null,
+      "zoneKey": null,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Devant le palais de l’Afrique occidentale française</h2><p>La fontaine des Totems appartenait aux grands décors de l’Exposition coloniale de 1931. Elle se dressait devant le palais de l’Afrique occidentale française, dont elle accompagnait la présentation monumentale dans le paysage du lac Daumesnil.</p><h2>Une muraille rouge et des masques</h2><p>La presse de l’époque décrit une haute paroi rouge surmontée de masques. L’ensemble associait la sculpture, l’eau et les illuminations, au sein d’une représentation de l’Afrique composée par les organisateurs de l’exposition.</p><p>Alexandre-Mathurin Pêche en a fixé les couleurs dans un pastel de 1931. Les jets retombent dans un bassin allongé devant les visages sculptés, tandis que les hautes silhouettes du palais se dressent à l’arrière-plan.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>In front of the French West Africa palace</h2><p>Fontaine des Totems belonged to the grand decorative settings of the 1931 Colonial Exposition. It stood before the French West Africa palace, accompanying the building’s monumental presentation within the landscape of Lac Daumesnil.</p><h2>A red wall crowned with masks</h2><p>The contemporary press described a tall red wall topped with masks. Sculpture, water and illumination came together within a representation of Africa arranged by the exposition’s organisers.</p><p>Alexandre-Mathurin Pêche captured its colours in a pastel in 1931. Jets fall into an elongated basin in front of the sculpted faces, while the tall outlines of the palace rise in the background.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Vor dem Palast von Französisch-Westafrika</h2><p>Die Fontaine des Totems gehörte zu den großen dekorativen Anlagen der Kolonialausstellung von 1931. Sie stand vor dem Palast von Französisch-Westafrika und ergänzte dessen monumentale Inszenierung in der Landschaft am Lac Daumesnil.</p><h2>Eine rote Wand mit Masken</h2><p>Die zeitgenössische Presse beschrieb eine hohe rote Wand, die von Masken bekrönt wurde. Skulptur, Wasser und Beleuchtung verbanden sich hier zu einer von den Ausstellungsorganisatoren gestalteten Darstellung Afrikas.</p><p>Alexandre-Mathurin Pêche hielt die Farben 1931 in einem Pastell fest. Wasserstrahlen fallen vor den geschnitzten Gesichtern in ein langgestrecktes Becken; dahinter ragen die hohen Umrisse des Palastes auf.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Voor het paleis van Frans-West-Afrika</h2><p>De Fontaine des Totems hoorde bij de grote decoratieve ensembles van de Koloniale Tentoonstelling van 1931. Zij stond voor het paleis van Frans-West-Afrika en begeleidde de monumentale presentatie van dat gebouw in het landschap rond het Lac Daumesnil.</p><h2>Een rode wand met maskers</h2><p>De toenmalige pers beschreef een hoge rode wand met maskers erboven. Beeldhouwwerk, water en verlichting kwamen samen in een voorstelling van Afrika die door de organisatoren was samengesteld.</p><p>Alexandre-Mathurin Pêche legde de kleuren in 1931 vast in een pastel. Waterstralen vallen voor de gebeeldhouwde gezichten in een langgerekt bassin, met de hoge contouren van het paleis op de achtergrond.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Davanti al palazzo dell’Africa occidentale francese</h2><p>La Fontaine des Totems apparteneva ai grandi scenari decorativi dell’Esposizione coloniale del 1931. Sorgeva davanti al palazzo dell’Africa occidentale francese, accompagnandone la presentazione monumentale nel paesaggio del lago Daumesnil.</p><h2>Una parete rossa coronata da maschere</h2><p>La stampa dell’epoca descriveva un’alta parete rossa sormontata da maschere. Scultura, acqua e illuminazioni si univano in una rappresentazione dell’Africa composta dagli organizzatori dell’esposizione.</p><p>Alexandre-Mathurin Pêche ne fissò i colori in un pastello del 1931. I getti ricadono in una vasca allungata davanti ai volti scolpiti, mentre le alte sagome del palazzo si stagliano sullo sfondo.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Ante el palacio del África Occidental Francesa</h2><p>La Fontaine des Totems formaba parte de los grandes escenarios decorativos de la Exposición Colonial de 1931. Se alzaba ante el palacio del África Occidental Francesa y acompañaba su presentación monumental en el paisaje del lago Daumesnil.</p><h2>Una pared roja coronada de máscaras</h2><p>La prensa de la época describía una pared alta y roja rematada con máscaras. Escultura, agua e iluminación se unían en una representación de África compuesta por los organizadores de la exposición.</p><p>Alexandre-Mathurin Pêche plasmó sus colores en un pastel de 1931. Los chorros caen en un estanque alargado ante los rostros esculpidos, mientras las altas siluetas del palacio se recortan al fondo.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Przed pałacem Francuskiej Afryki Zachodniej</h2><p>Fontaine des Totems należała do wielkich zespołów dekoracyjnych Wystawy Kolonialnej z 1931 roku. Stała przed pałacem Francuskiej Afryki Zachodniej, uzupełniając jego monumentalną prezentację w krajobrazie jeziora Daumesnil.</p><h2>Czerwona ściana zwieńczona maskami</h2><p>Ówczesna prasa opisywała wysoką czerwoną ścianę, nad którą umieszczono maski. Rzeźba, woda i iluminacje łączyły się w przedstawienie Afryki ułożone przez organizatorów wystawy.</p><p>Alexandre-Mathurin Pêche utrwalił jej barwy na pastelu z 1931 roku. Strumienie wody opadają do podłużnego basenu przed rzeźbionymi twarzami, a w tle wznoszą się wysokie bryły pałacu.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Diante do palácio da África Ocidental Francesa</h2><p>A Fontaine des Totems pertencia aos grandes cenários decorativos da Exposição Colonial de 1931. Erguia-se diante do palácio da África Ocidental Francesa, acompanhando a sua apresentação monumental na paisagem do lago Daumesnil.</p><h2>Uma parede vermelha coroada de máscaras</h2><p>A imprensa da época descrevia uma parede alta e vermelha rematada por máscaras. Escultura, água e iluminações uniam-se numa representação de África composta pelos organizadores da exposição.</p><p>Alexandre-Mathurin Pêche registou as suas cores num pastel de 1931. Os jatos caem num tanque alongado diante dos rostos esculpidos, enquanto as silhuetas altas do palácio se erguem ao fundo.</p>"
+        }
+      ],
+      "attractionDetails": {
+        "manufacturerId": null,
+        "manufacturerKey": null,
+        "model": null,
+        "externalSource": null,
+        "externalId": null,
+        "sourceUrl": "https://www.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-section-de-lafrique-occidentale-francaise-la",
+        "status": "ClosedDefinitively",
+        "materialType": null,
+        "seatingType": null,
+        "launchType": null,
+        "restraintType": null,
+        "isLaunched": null,
+        "openingDate": null,
+        "closingDate": null,
+        "openingDateText": null,
+        "closingDateText": null,
+        "durationInSeconds": null,
+        "capacityPerHour": null,
+        "heightInFeet": null,
+        "heightInMeters": null,
+        "lengthInFeet": null,
+        "lengthInMeters": null,
+        "speedInMph": null,
+        "speedInKmH": null,
+        "dropInFeet": null,
+        "dropInMeters": null,
+        "inversionCount": null,
+        "trainCount": null,
+        "carsPerTrain": null,
+        "ridersPerVehicle": null,
+        "hasSingleRider": null,
+        "hasFastPass": null,
+        "isAccessibleForReducedMobility": null,
+        "isIndoor": null,
+        "waterExposureLevel": null,
+        "accessConditions": []
+      },
+      "attractionLocations": null,
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "a5f8b7b1-13c4-462a-af93-6a78352238ff",
+      "id": "a5f8b7b1-13c4-462a-af93-6a78352238ff",
+      "name": "Grand Signal",
+      "category": "Other",
+      "type": "Other",
+      "subtype": null,
+      "zoneId": null,
+      "zoneKey": null,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une fontaine au-dessus des arbres</h2><p>Le Grand Signal dressait sa silhouette à l’extrémité du lac Daumesnil opposée à l’entrée principale de l’Exposition coloniale de 1931. Dépassant les arbres environnants, cette fontaine monumentale donnait un repère spectaculaire aux soirées du bois de Vincennes.</p><h2>Une floraison d’or et d’argent</h2><p>Son décor évoquait une grande tige chargée de fleurs, accompagnée de palmes latérales. Les eaux éclairées d’or et de blanc argenté transformaient cette composition végétale en une architecture lumineuse.</p><p>Le peintre Alexandre-Mathurin Pêche en a laissé un pastel nocturne daté de 1931, conservé par la Cité de l’architecture et du patrimoine. Cette œuvre prolonge la mémoire d’un décor conçu pour l’exposition temporaire.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A fountain above the trees</h2><p>Grand Signal stood at the end of Lac Daumesnil opposite the main entrance to the 1931 Colonial Exposition. Rising above the surrounding trees, this monumental fountain formed a striking landmark for evenings in the Bois de Vincennes.</p><h2>A flowering of gold and silver</h2><p>Its design suggested a tall stem laden with flowers and flanked by palm forms. Water lit in gold and silvery white turned this botanical composition into an illuminated architectural scene.</p><p>Alexandre-Mathurin Pêche recorded its night-time appearance in a pastel dated 1931, held by the Cité de l’architecture et du patrimoine. The work preserves the memory of a setting created for the temporary exposition.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Fontäne über den Bäumen</h2><p>Der Grand Signal erhob sich am Ende des Lac Daumesnil gegenüber dem Haupteingang der Kolonialausstellung von 1931. Über die umstehenden Bäume hinausragend, bildete die monumentale Fontäne einen markanten Blickpunkt der Abende im Bois de Vincennes.</p><h2>Blüten in Gold und Silber</h2><p>Ihre Gestaltung erinnerte an einen hohen, mit Blüten besetzten Stängel mit seitlichen Palmenformen. Goldfarben und silberweiß beleuchtetes Wasser verwandelte diese Pflanzenkomposition in eine leuchtende Architektur.</p><p>Alexandre-Mathurin Pêche hielt den nächtlichen Anblick in einem Pastell von 1931 fest, das die Cité de l’architecture et du patrimoine bewahrt. Das Werk überliefert die Erinnerung an eine für die vorübergehende Ausstellung geschaffene Szenerie.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een fontein boven de bomen</h2><p>De Grand Signal stond aan het uiteinde van het Lac Daumesnil tegenover de hoofdingang van de Koloniale Tentoonstelling van 1931. Deze monumentale fontein stak boven de omringende bomen uit en vormde een opvallend herkenningspunt tijdens de avonden in het Bois de Vincennes.</p><h2>Bloei in goud en zilver</h2><p>Het ontwerp deed denken aan een hoge, met bloemen bezette stengel met palmvormen aan weerszijden. Goudkleurig en zilverwit verlicht water veranderde deze plantencompositie in lichtgevende architectuur.</p><p>Alexandre-Mathurin Pêche legde het nachtelijke beeld vast in een pastel uit 1931, bewaard door de Cité de l’architecture et du patrimoine. Het werk houdt de herinnering aan dit tijdelijke tentoonstellingsdecor levend.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una fontana sopra gli alberi</h2><p>Il Grand Signal si innalzava all’estremità del lago Daumesnil opposta all’ingresso principale dell’Esposizione coloniale del 1931. Superando gli alberi circostanti, questa fontana monumentale diventava un punto di riferimento spettacolare nelle serate del bois de Vincennes.</p><h2>Una fioritura d’oro e d’argento</h2><p>Il disegno evocava un grande stelo carico di fiori, affiancato da forme di palme. Le acque illuminate d’oro e di bianco argenteo trasformavano questa composizione vegetale in un’architettura luminosa.</p><p>Alexandre-Mathurin Pêche ne lasciò un’immagine notturna in un pastello del 1931, conservato dalla Cité de l’architecture et du patrimoine. L’opera tramanda la memoria di uno scenario creato per l’esposizione temporanea.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una fuente por encima de los árboles</h2><p>El Grand Signal se alzaba en el extremo del lago Daumesnil opuesto a la entrada principal de la Exposición Colonial de 1931. Por encima de los árboles cercanos, esta fuente monumental ofrecía un punto de referencia espectacular en las veladas del bois de Vincennes.</p><h2>Una floración de oro y plata</h2><p>Su diseño evocaba un gran tallo cargado de flores, flanqueado por formas de palmas. Las aguas iluminadas de oro y blanco plateado convertían esta composición vegetal en una arquitectura luminosa.</p><p>Alexandre-Mathurin Pêche dejó una imagen nocturna en un pastel de 1931, conservado por la Cité de l’architecture et du patrimoine. La obra prolonga el recuerdo de un escenario creado para la exposición temporal.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Fontanna ponad drzewami</h2><p>Grand Signal wznosił się na krańcu jeziora Daumesnil, naprzeciw głównego wejścia na Wystawę Kolonialną z 1931 roku. Monumentalna fontanna górowała nad pobliskimi drzewami i stanowiła wyrazisty punkt wieczornego krajobrazu bois de Vincennes.</p><h2>Kwiaty w złocie i srebrze</h2><p>Dekoracja przypominała wysoką łodygę obsypaną kwiatami, otoczoną palmowymi formami. Woda oświetlona na złoto i srebrzystą biel zamieniała tę roślinną kompozycję w świetlną architekturę.</p><p>Alexandre-Mathurin Pêche utrwalił nocny widok na pastelu z 1931 roku, przechowywanym przez Cité de l’architecture et du patrimoine. Dzieło zachowuje pamięć scenografii stworzonej na czas wystawy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma fonte acima das árvores</h2><p>O Grand Signal erguia-se na extremidade do lago Daumesnil oposta à entrada principal da Exposição Colonial de 1931. Acima das árvores em redor, esta fonte monumental tornava-se uma referência marcante nas noites do bois de Vincennes.</p><h2>Uma floração de ouro e prata</h2><p>O desenho evocava uma grande haste coberta de flores, ladeada por formas de palmas. As águas iluminadas a ouro e branco prateado transformavam esta composição vegetal numa arquitetura luminosa.</p><p>Alexandre-Mathurin Pêche deixou uma imagem noturna num pastel de 1931, conservado pela Cité de l’architecture et du patrimoine. A obra prolonga a memória de um cenário criado para a exposição temporária.</p>"
+        }
+      ],
+      "attractionDetails": {
+        "manufacturerId": null,
+        "manufacturerKey": null,
+        "model": null,
+        "externalSource": null,
+        "externalId": null,
+        "sourceUrl": "https://www.citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-le-grand-signal-vu-de-nuit",
+        "status": "ClosedDefinitively",
+        "materialType": null,
+        "seatingType": null,
+        "launchType": null,
+        "restraintType": null,
+        "isLaunched": null,
+        "openingDate": null,
+        "closingDate": null,
+        "openingDateText": null,
+        "closingDateText": null,
+        "durationInSeconds": null,
+        "capacityPerHour": null,
+        "heightInFeet": null,
+        "heightInMeters": null,
+        "lengthInFeet": null,
+        "lengthInMeters": null,
+        "speedInMph": null,
+        "speedInKmH": null,
+        "dropInFeet": null,
+        "dropInMeters": null,
+        "inversionCount": null,
+        "trainCount": null,
+        "carsPerTrain": null,
+        "ridersPerVehicle": null,
+        "hasSingleRider": null,
+        "hasFastPass": null,
+        "isAccessibleForReducedMobility": null,
+        "isIndoor": null,
+        "waterExposureLevel": null,
+        "accessConditions": []
+      },
+      "attractionLocations": null,
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "d89601bf-b308-4588-bece-4d92f41d01b7",
+      "id": "d89601bf-b308-4588-bece-4d92f41d01b7",
+      "name": "Ponts d’Eau",
+      "category": "Other",
+      "type": "Other",
+      "subtype": null,
+      "zoneId": null,
+      "zoneKey": null,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des arches lumineuses sur le lac</h2><p>Les Ponts d’Eau formaient un ensemble de trois voûtes liquides à l’Exposition coloniale de 1931. Entre la rive du lac Daumesnil et son île, ces arches spectaculaires accompagnaient les passerelles piétonnes et donnaient au paysage une autre apparence la nuit.</p><h2>Un décor d’eau changeante</h2><p>André Granet et Roger-Henri Expert associaient ici l’eau aux couleurs des illuminations. Le blanc et les teintes changeantes se mêlaient au bruit de cascade que décrivait la presse contemporaine, faisant des abords du lac un spectacle à part entière.</p><p>Le fonds Léon Gimpel de la Société française de photographie conserve la trace d’essais de voûte d’eau dès 1930 et d’une vue des ponts pendant l’exposition. Ces témoignages documentent la préparation puis la présence de ce décor éphémère.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Illuminated arches across the lake</h2><p>Ponts d’Eau formed an ensemble of three arches of water at the 1931 Colonial Exposition. Between the shore of Lac Daumesnil and its island, these spectacular vaults accompanied the pedestrian footbridges and gave the landscape a different appearance at night.</p><h2>A scene of changing water</h2><p>André Granet and Roger-Henri Expert combined water with the colours of the illuminations. White and changing shades joined the sound of cascading water described by the contemporary press, turning the lakeside into a spectacle in its own right.</p><p>The Société française de photographie’s Léon Gimpel collection records water-vault trials as early as 1930 and a view of the bridges during the exposition. These records document both the preparation and presence of this temporary setting.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Leuchtende Bögen über dem See</h2><p>Die Ponts d’Eau bildeten ein Ensemble aus drei Wassergewölben auf der Kolonialausstellung von 1931. Zwischen dem Ufer des Lac Daumesnil und seiner Insel begleiteten die eindrucksvollen Bögen die Fußgängerstege und veränderten nachts das Landschaftsbild.</p><h2>Wasser als wechselnde Szenerie</h2><p>André Granet und Roger-Henri Expert verbanden hier Wasser mit den Farben der Illuminationen. Weißes und farbig wechselndes Licht traf auf das von der zeitgenössischen Presse beschriebene Rauschen der Kaskaden. So wurde das Seeufer selbst zum Schauspiel.</p><p>Der Bestand Léon Gimpel der Société française de photographie verzeichnet Versuche mit einem Wassergewölbe bereits 1930 sowie eine Aufnahme der Brücken während der Ausstellung. Die Zeugnisse dokumentieren Vorbereitung und Verwirklichung dieser vergänglichen Szenerie.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Lichtgevende bogen over het meer</h2><p>De Ponts d’Eau vormden een geheel van drie watergewelven op de Koloniale Tentoonstelling van 1931. Tussen de oever van het Lac Daumesnil en het eiland begeleidden deze opvallende bogen de voetgangersbruggen en gaven het landschap ’s nachts een ander aanzien.</p><h2>Een decor van veranderend water</h2><p>André Granet en Roger-Henri Expert verbonden hier water met de kleuren van de verlichting. Wit en wisselende tinten gingen samen met het door de toenmalige pers beschreven geraas van vallend water. De omgeving van het meer werd zo zelf een schouwspel.</p><p>De collectie Léon Gimpel van de Société française de photographie vermeldt al in 1930 proeven met een watergewelf en een opname van de bruggen tijdens de tentoonstelling. Deze getuigenissen documenteren de voorbereiding en aanwezigheid van het tijdelijke decor.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Archi luminosi sul lago</h2><p>I Ponts d’Eau formavano un insieme di tre volte d’acqua all’Esposizione coloniale del 1931. Tra la riva del lago Daumesnil e la sua isola, questi archi spettacolari accompagnavano le passerelle pedonali e davano al paesaggio un aspetto diverso di notte.</p><h2>Uno scenario d’acqua mutevole</h2><p>André Granet e Roger-Henri Expert univano qui l’acqua ai colori delle illuminazioni. Il bianco e le tonalità cangianti si mescolavano al rumore di cascata descritto dalla stampa dell’epoca, trasformando le rive del lago in uno spettacolo autonomo.</p><p>Il fondo Léon Gimpel della Société française de photographie documenta prove di volte d’acqua già nel 1930 e una veduta dei ponti durante l’esposizione. Queste testimonianze raccontano la preparazione e la presenza dello scenario effimero.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Arcos luminosos sobre el lago</h2><p>Los Ponts d’Eau formaban un conjunto de tres bóvedas de agua en la Exposición Colonial de 1931. Entre la orilla del lago Daumesnil y su isla, estos arcos espectaculares acompañaban las pasarelas peatonales y daban al paisaje otro aspecto de noche.</p><h2>Un escenario de agua cambiante</h2><p>André Granet y Roger-Henri Expert unían aquí el agua con los colores de las iluminaciones. El blanco y los tonos cambiantes se mezclaban con el ruido de cascada descrito por la prensa de la época, convirtiendo las orillas del lago en un espectáculo propio.</p><p>El fondo Léon Gimpel de la Société française de photographie recoge pruebas de bóvedas de agua ya en 1930 y una vista de los puentes durante la exposición. Estos testimonios documentan la preparación y la presencia de aquel escenario efímero.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Świetlne łuki nad jeziorem</h2><p>Ponts d’Eau tworzyły zespół trzech wodnych sklepień na Wystawie Kolonialnej z 1931 roku. Między brzegiem jeziora Daumesnil a wyspą te efektowne łuki towarzyszyły pieszym kładkom i zmieniały nocny krajobraz.</p><h2>Sceneria zmiennej wody</h2><p>André Granet i Roger-Henri Expert połączyli tu wodę z barwami iluminacji. Biel i zmieniające się kolory mieszały się z opisanym w ówczesnej prasie szumem kaskad. Otoczenie jeziora stawało się osobnym widowiskiem.</p><p>Zbiór Léona Gimpela w Société française de photographie odnotowuje próby wodnego sklepienia już w 1930 roku oraz widok mostów podczas wystawy. Świadectwa te dokumentują przygotowanie i obecność tej tymczasowej scenografii.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Arcos luminosos sobre o lago</h2><p>Os Ponts d’Eau formavam um conjunto de três abóbadas de água na Exposição Colonial de 1931. Entre a margem do lago Daumesnil e a sua ilha, estes arcos espetaculares acompanhavam as pontes pedonais e davam à paisagem outro aspeto à noite.</p><h2>Um cenário de água mutável</h2><p>André Granet e Roger-Henri Expert uniam aqui a água às cores das iluminações. O branco e os tons cambiantes misturavam-se com o ruído de cascata descrito pela imprensa da época, tornando as margens do lago um espetáculo por si só.</p><p>O fundo Léon Gimpel da Société française de photographie regista ensaios de abóbadas de água já em 1930 e uma vista das pontes durante a exposição. Estes testemunhos documentam a preparação e a presença daquele cenário efémero.</p>"
+        }
+      ],
+      "attractionDetails": {
+        "manufacturerId": null,
+        "manufacturerKey": null,
+        "model": null,
+        "externalSource": null,
+        "externalId": null,
+        "sourceUrl": "https://cnum.cnam.fr/pgi/redir.php?ident=SCVIE.169&onglet=c",
+        "status": "ClosedDefinitively",
+        "materialType": null,
+        "seatingType": null,
+        "launchType": null,
+        "restraintType": null,
+        "isLaunched": null,
+        "openingDate": null,
+        "closingDate": null,
+        "openingDateText": null,
+        "closingDateText": null,
+        "durationInSeconds": null,
+        "capacityPerHour": null,
+        "heightInFeet": null,
+        "heightInMeters": null,
+        "lengthInFeet": null,
+        "lengthInMeters": null,
+        "speedInMph": null,
+        "speedInKmH": null,
+        "dropInFeet": null,
+        "dropInMeters": null,
+        "inversionCount": null,
+        "trainCount": null,
+        "carsPerTrain": null,
+        "ridersPerVehicle": null,
+        "hasSingleRider": null,
+        "hasFastPass": null,
+        "isAccessibleForReducedMobility": null,
+        "isIndoor": null,
+        "waterExposureLevel": null,
+        "accessConditions": []
+      },
+      "attractionLocations": null,
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "1cde91df-8634-4cc9-90d8-b3aa97ea937d",
+      "id": "1cde91df-8634-4cc9-90d8-b3aa97ea937d",
+      "name": "Scenic Railway",
+      "category": "Attraction",
+      "type": "RollerCoaster",
+      "subtype": null,
+      "zoneId": "a15bd25c-65c7-48c7-8c4e-e34c1de596ca",
+      "zoneKey": "a15bd25c-65c7-48c7-8c4e-e34c1de596ca",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les montagnes russes du Parc de la Gravelle</h2><p>Le Scenic Railway faisait partie des divertissements de l’Exposition coloniale internationale de 1931, dans le secteur forain du Parc de la Gravelle. Cette attraction en bois d’Erich Heidrich donnait une place aux montagnes russes dans la grande manifestation temporaire du bois de Vincennes. Sa construction remontait à 1928, avant son passage à l’exposition parisienne.</p><h2>Une seconde vie sur le littoral anglais</h2><p>Son histoire se poursuivit à Great Yarmouth Pleasure Beach, en Angleterre. Rachetée pour ce parc balnéaire, l’attraction y rouvrit en 1932 sous le nom de Roller Coaster.</p><p>La structure britannique a obtenu une protection patrimoniale de catégorie Grade II en 2016. Entre entretien et restaurations, sa conservation prolonge le souvenir d’une culture foraine de l’entre-deux-guerres et d’une attraction dont le parcours historique a traversé la Manche.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The roller coaster of the Parc de la Gravelle</h2><p>Scenic Railway was among the amusements at the 1931 International Colonial Exposition, in the fairground section known as the Parc de la Gravelle. This wooden attraction by Erich Heidrich brought a roller coaster into the large temporary event in the Bois de Vincennes. It had been built in 1928, before its time at the Paris exposition.</p><h2>A second life on the English coast</h2><p>Its story continued at Great Yarmouth Pleasure Beach in England. Purchased for the seaside park, the attraction reopened there in 1932 as Roller Coaster.</p><p>The British structure received Grade II heritage protection in 2016. Its preservation through maintenance and restoration carries forward the memory of interwar amusement culture and of an attraction whose history crossed the English Channel.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Achterbahn des Parc de la Gravelle</h2><p>Die Scenic Railway gehörte zu den Vergnügungen der Internationalen Kolonialausstellung von 1931 im Parc de la Gravelle. Diese Holzattraktion von Erich Heidrich brachte eine Achterbahn in den Vergnügungsteil der großen, vorübergehenden Veranstaltung im Bois de Vincennes. Sie war 1928 gebaut worden, vor ihrer Zeit auf der Pariser Ausstellung.</p><h2>Ein zweites Leben an Englands Küste</h2><p>Ihre Geschichte setzte sich im englischen Great Yarmouth Pleasure Beach fort. Für diesen Küstenpark gekauft, eröffnete die Attraktion dort 1932 als Roller Coaster wieder.</p><p>Die britische Konstruktion wurde 2016 als Denkmal der Kategorie Grade II geschützt. Ihre Erhaltung durch Wartung und Restaurierungen bewahrt die Erinnerung an die Vergnügungskultur der Zwischenkriegszeit und an eine Attraktion, deren Geschichte über den Ärmelkanal führte.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De achtbaan van het Parc de la Gravelle</h2><p>Scenic Railway hoorde bij het vermaak van de Internationale Koloniale Tentoonstelling van 1931, in het kermisgedeelte Parc de la Gravelle. Deze houten attractie van Erich Heidrich gaf de achtbaan een plaats binnen het grote tijdelijke evenement in het Bois de Vincennes. De baan was in 1928 gebouwd, vóór haar periode op de Parijse tentoonstelling.</p><h2>Een tweede leven aan de Engelse kust</h2><p>De geschiedenis ging verder bij Great Yarmouth Pleasure Beach in Engeland. De attractie werd voor dit kustpark gekocht en heropende er in 1932 als Roller Coaster.</p><p>De Britse constructie kreeg in 2016 erfgoedbescherming in de categorie Grade II. Het behoud door onderhoud en restauraties houdt de herinnering levend aan de pretparkcultuur van het interbellum en aan een attractie waarvan de geschiedenis het Kanaal overstak.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Le montagne russe del Parc de la Gravelle</h2><p>Lo Scenic Railway faceva parte dei divertimenti dell’Esposizione coloniale internazionale del 1931, nel settore del Parc de la Gravelle dedicato alle attrazioni. Questa creazione in legno di Erich Heidrich dava spazio alle montagne russe nel grande evento temporaneo del bois de Vincennes. La sua realizzazione risaliva al 1928, prima del periodo trascorso all’esposizione parigina.</p><h2>Una seconda vita sulla costa inglese</h2><p>La storia proseguì a Great Yarmouth Pleasure Beach, in Inghilterra. Acquistata per questo parco balneare, l’attrazione riaprì nel 1932 con il nome Roller Coaster.</p><p>La struttura britannica ottenne nel 2016 la tutela patrimoniale di categoria Grade II. La conservazione, attraverso manutenzione e restauri, prolunga il ricordo della cultura dei divertimenti tra le due guerre e di un’attrazione la cui storia attraversò la Manica.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La montaña rusa del Parc de la Gravelle</h2><p>El Scenic Railway formaba parte de las diversiones de la Exposición Colonial Internacional de 1931, en el sector de feria del Parc de la Gravelle. Esta atracción de madera de Erich Heidrich daba cabida a una montaña rusa en el gran evento temporal del bois de Vincennes. Su construcción se remontaba a 1928, antes de su paso por la exposición parisina.</p><h2>Una segunda vida en la costa inglesa</h2><p>Su historia continuó en Great Yarmouth Pleasure Beach, en Inglaterra. Adquirida para este parque costero, la atracción reabrió en 1932 con el nombre de Roller Coaster.</p><p>La estructura británica obtuvo protección patrimonial de categoría Grade II en 2016. Su conservación mediante mantenimiento y restauraciones prolonga el recuerdo de la cultura de los parques de entreguerras y de una atracción cuya historia cruzó el canal de la Mancha.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kolejka w Parc de la Gravelle</h2><p>Scenic Railway należała do rozrywek Międzynarodowej Wystawy Kolonialnej z 1931 roku, w części wesołego miasteczka zwanej Parc de la Gravelle. Drewniana atrakcja Ericha Heidricha wprowadzała kolejkę górską do wielkiego, tymczasowego wydarzenia w bois de Vincennes. Powstała w 1928 roku, przed okresem spędzonym na paryskiej wystawie.</p><h2>Drugie życie na angielskim wybrzeżu</h2><p>Jej historia trwała dalej w Great Yarmouth Pleasure Beach w Anglii. Kupiona dla tego nadmorskiego parku, atrakcja otworzyła się ponownie w 1932 roku jako Roller Coaster.</p><p>Brytyjską konstrukcję objęto w 2016 roku ochroną zabytkową w kategorii Grade II. Zachowanie jej dzięki konserwacji i renowacjom podtrzymuje pamięć o międzywojennej kulturze rozrywki oraz o atrakcji, której historia przekroczyła kanał La Manche.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A montanha-russa do Parc de la Gravelle</h2><p>O Scenic Railway fazia parte dos divertimentos da Exposição Colonial Internacional de 1931, no setor de diversões do Parc de la Gravelle. Esta atração de madeira de Erich Heidrich dava lugar a uma montanha-russa no grande evento temporário do bois de Vincennes. A sua construção remontava a 1928, antes da passagem pela exposição parisiense.</p><h2>Uma segunda vida na costa inglesa</h2><p>A história continuou no Great Yarmouth Pleasure Beach, em Inglaterra. Comprada para este parque balnear, a atração reabriu em 1932 com o nome Roller Coaster.</p><p>A estrutura britânica recebeu proteção patrimonial de categoria Grade II em 2016. A conservação através de manutenção e restauros prolonga a memória da cultura de divertimentos entre guerras e de uma atração cuja história atravessou o canal da Mancha.</p>"
+        }
+      ],
+      "attractionDetails": {
+        "manufacturerId": "2e23c5fc-e3f2-4a78-b623-f684efaf97c9",
+        "manufacturerKey": "2e23c5fc-e3f2-4a78-b623-f684efaf97c9",
+        "model": null,
+        "externalSource": "CaptainCoaster",
+        "externalId": "5322",
+        "sourceUrl": "https://captaincoaster.com/fr/coasters/5322/scenic-railway-exposition-coloniale-internationale",
+        "status": "Removed",
+        "materialType": "Wood",
+        "seatingType": "Sit Down",
+        "launchType": "Lift à chaîne",
+        "restraintType": null,
+        "isLaunched": false,
+        "openingDate": null,
+        "closingDate": null,
+        "openingDateText": "1931",
+        "closingDateText": "1931",
+        "durationInSeconds": 210,
+        "capacityPerHour": null,
+        "heightInFeet": 68.9,
+        "heightInMeters": 21,
+        "lengthInFeet": 3221.78,
+        "lengthInMeters": 982,
+        "speedInMph": 44.74,
+        "speedInKmH": 72,
+        "dropInFeet": null,
+        "dropInMeters": null,
+        "inversionCount": 0,
+        "trainCount": null,
+        "carsPerTrain": 3,
+        "ridersPerVehicle": 10,
+        "hasSingleRider": null,
+        "hasFastPass": null,
+        "isAccessibleForReducedMobility": null,
+        "isIndoor": null,
+        "waterExposureLevel": null,
+        "accessConditions": []
+      },
+      "attractionLocations": null,
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "3ade060c-3d5a-4337-ab11-303983973b6d",
+      "id": "3ade060c-3d5a-4337-ab11-303983973b6d",
+      "name": "Théâtre d’Eau",
+      "category": "Show",
+      "type": "Show",
+      "subtype": null,
+      "zoneId": null,
+      "zoneKey": null,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une scène sur le lac Daumesnil</h2><p>Le Théâtre d’Eau faisait partie des spectacles nocturnes de l’Exposition coloniale internationale de 1931. Installé à la pointe de l’île de Reuilly, il associait des représentations de danse à des jeux d’eau et de lumière dans le paysage du lac Daumesnil.</p><p>La scène s’avançait sur le lac, devant une cascade aux couleurs changeantes. Des embarcations accueillaient des spectateurs sur l’eau et prolongeaient le caractère nautique de la fête. Derrière le décor, le petit temple de l’Amour subsistait, dérobé aux regards.</p><h2>Les nuits de l’exposition et leur imaginaire</h2><p>Cette mise en scène participait à l’éclat des soirées voulues par les organisateurs. Les danses entraient dans une présentation des territoires colonisés qui transformait des cultures et des personnes en éléments d’un spectacle impérial. Le souvenir des cascades lumineuses du Théâtre d’Eau reste ainsi lié au projet politique de l’exposition.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A stage on Lac Daumesnil</h2><p>The Théâtre d’Eau formed part of the evening entertainments at the 1931 International Colonial Exposition. At the tip of the Île de Reuilly, it combined dance performances with water and lighting effects in the setting of Lac Daumesnil.</p><p>The stage extended over the lake, with a colour-changing cascade behind it. Boats carried spectators on the water, adding to the celebration’s nautical character. Behind the scenery, the small Temple of Love remained, hidden from view.</p><h2>The exposition’s nights and their imagery</h2><p>This staging contributed to the dazzling evenings sought by the organisers. The dances belonged to a presentation of colonised territories that turned cultures and people into elements of an imperial spectacle. The memory of the Théâtre d’Eau’s illuminated cascades therefore remains connected with the exposition’s political purpose.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Bühne auf dem Lac Daumesnil</h2><p>Das Théâtre d’Eau gehörte zu den Abendveranstaltungen der Internationalen Kolonialausstellung von 1931. An der Spitze der Île de Reuilly verband es Tanzaufführungen mit Wasser- und Lichteffekten in der Landschaft des Lac Daumesnil.</p><p>Die Bühne ragte über den See hinaus, vor einer Kaskade mit wechselnden Farben. Boote trugen Zuschauer auf dem Wasser und unterstrichen den nautischen Charakter des Festes. Der kleine Liebestempel blieb hinter der Kulisse erhalten und dem Publikum verborgen.</p><h2>Die Ausstellungsnächte und ihre Vorstellungswelt</h2><p>Diese Inszenierung gehörte zum Glanz, den die Veranstalter ihren Abenden verleihen wollten. Die Tänze waren Teil einer Darstellung kolonisierter Gebiete, die Kulturen und Menschen zu Bestandteilen eines imperialen Schauspiels machte. Die Erinnerung an die leuchtenden Kaskaden des Théâtre d’Eau bleibt daher mit dem politischen Projekt der Ausstellung verbunden.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een podium op het Lac Daumesnil</h2><p>Het Théâtre d’Eau hoorde bij de avondvoorstellingen van de Internationale Koloniale Tentoonstelling van 1931. Aan het uiteinde van het Île de Reuilly kregen dans, water en licht een gezamenlijke plek aan het Lac Daumesnil.</p><p>Het podium stak boven het meer uit, met daarachter een cascade die van kleur veranderde. Boten boden plaats aan toeschouwers op het water en versterkten het nautische karakter van het feest. Achter het decor bleef de kleine Liefdestempel bewaard, aan het zicht onttrokken.</p><h2>De tentoonstellingsnachten en hun denkbeelden</h2><p>Deze enscenering droeg bij aan de schitterende avonden die de organisatoren voor ogen hadden. De dansen maakten deel uit van een voorstelling van gekoloniseerde gebieden die culturen en mensen tot elementen van een imperiaal spektakel maakte. De herinnering aan de verlichte cascades van het Théâtre d’Eau blijft zo verbonden met het politieke doel van de tentoonstelling.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una scena sul lago Daumesnil</h2><p>Il Théâtre d’Eau faceva parte degli spettacoli serali dell’Esposizione coloniale internazionale del 1931. Sulla punta dell’île de Reuilly, univa rappresentazioni di danza a giochi d’acqua e di luce nel paesaggio del lago Daumesnil.</p><p>La scena si protendeva sul lago, davanti a una cascata dai colori mutevoli. Alcune imbarcazioni accoglievano spettatori sull’acqua, accentuando il carattere nautico della festa. Dietro questa scenografia, il piccolo tempio dell’Amore era stato conservato e rimaneva nascosto alla vista.</p><h2>Le notti dell’esposizione e il loro immaginario</h2><p>La messa in scena contribuiva allo splendore delle serate volute dagli organizzatori. Le danze rientravano in una rappresentazione dei territori colonizzati che trasformava culture e persone in elementi di uno spettacolo imperiale. Il ricordo delle cascate luminose del Théâtre d’Eau resta quindi legato al progetto politico dell’esposizione.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un escenario sobre el lago Daumesnil</h2><p>El Théâtre d’Eau formaba parte de los espectáculos nocturnos de la Exposición Colonial Internacional de 1931. En la punta de la île de Reuilly, combinaba representaciones de danza con juegos de agua y luz en el paisaje del lago Daumesnil.</p><p>El escenario se proyectaba sobre el lago, delante de una cascada de colores cambiantes. Algunas embarcaciones acogían a espectadores en el agua y reforzaban el carácter náutico de la fiesta. Detrás de aquella escenografía, el pequeño templo del Amor se había conservado y permanecía oculto a la vista.</p><h2>Las noches de la exposición y su imaginario</h2><p>La puesta en escena contribuía al esplendor de las veladas que buscaban los organizadores. Las danzas formaban parte de una presentación de los territorios colonizados que convertía culturas y personas en elementos de un espectáculo imperial. El recuerdo de las cascadas luminosas del Théâtre d’Eau sigue ligado así al proyecto político de la exposición.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Scena na jeziorze Daumesnil</h2><p>Théâtre d’Eau należał do wieczornych widowisk Międzynarodowej Wystawy Kolonialnej z 1931 roku. Na cyplu wyspy Reuilly, nad jeziorem Daumesnil, pokazy tańca spotykały się z wodnymi i świetlnymi efektami.</p><p>Scena wychodziła nad jezioro, przed kaskadą o zmieniających się kolorach. Spektakl oglądano z łodzi na jeziorze, co podkreślało wodny charakter wydarzenia. Za dekoracją zachowano małą świątynię Miłości, ukrytą przed wzrokiem publiczności.</p><h2>Noce wystawy i ich wyobrażenia</h2><p>Inscenizacja współtworzyła blask wieczorów planowanych przez organizatorów. Tańce wpisywały się w prezentację kolonizowanych terytoriów, która zamieniała kultury i ludzi w elementy imperialnego widowiska. Pamięć o świetlnych kaskadach Théâtre d’Eau pozostaje więc związana z politycznym projektem wystawy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um palco sobre o lago Daumesnil</h2><p>O Théâtre d’Eau fazia parte dos espetáculos noturnos da Exposição Colonial Internacional de 1931. Na ponta da île de Reuilly, associava apresentações de dança a jogos de água e de luz na paisagem do lago Daumesnil.</p><p>O palco avançava sobre o lago, diante de uma cascata de cores variáveis. Embarcações acolhiam espectadores na água e reforçavam o caráter náutico da festa. Atrás deste cenário, o pequeno templo do Amor fora conservado e permanecia escondido dos olhares.</p><h2>As noites da exposição e o seu imaginário</h2><p>A encenação contribuía para o esplendor das noites desejadas pelos organizadores. As danças integravam uma apresentação dos territórios colonizados que transformava culturas e pessoas em elementos de um espetáculo imperial. A memória das cascatas luminosas do Théâtre d’Eau continua assim ligada ao projeto político da exposição.</p>"
+        }
+      ],
+      "attractionDetails": {
+        "manufacturerId": null,
+        "manufacturerKey": null,
+        "model": null,
+        "externalSource": null,
+        "externalId": null,
+        "sourceUrl": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+        "status": "ClosedDefinitively",
+        "materialType": null,
+        "seatingType": null,
+        "launchType": null,
+        "restraintType": null,
+        "isLaunched": null,
+        "openingDate": null,
+        "closingDate": null,
+        "openingDateText": null,
+        "closingDateText": null,
+        "durationInSeconds": null,
+        "capacityPerHour": null,
+        "heightInFeet": null,
+        "heightInMeters": null,
+        "lengthInFeet": null,
+        "lengthInMeters": null,
+        "speedInMph": null,
+        "speedInKmH": null,
+        "dropInFeet": null,
+        "dropInMeters": null,
+        "inversionCount": null,
+        "trainCount": null,
+        "carsPerTrain": null,
+        "ridersPerVehicle": null,
+        "hasSingleRider": null,
+        "hasFastPass": null,
+        "isAccessibleForReducedMobility": null,
+        "isIndoor": null,
+        "waterExposureLevel": null,
+        "accessConditions": []
+      },
+      "attractionLocations": null,
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+      "id": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+      "name": "Train de ceinture",
+      "category": "Transport",
+      "type": "TransportRide",
+      "subtype": null,
+      "zoneId": null,
+      "zoneKey": null,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le petit train de l’exposition</h2><p>Le train de ceinture parcourait l’Exposition coloniale internationale de 1931, dans le bois de Vincennes. Ce chemin de fer intérieur reliait les paysages et les pavillons d’un événement qui avait pris l’ampleur d’une ville temporaire.</p><h2>Des pavillons étrangers à l’avenue des Colonies</h2><p>Son parcours passait par la section étrangère avant de se poursuivre vers la présentation de l’empire français. La grande avenue et la reconstitution du temple d’Angkor figuraient parmi les grands décors de cet ensemble.</p><p>Cette succession d’architectures proposait un voyage composé par les organisateurs. Elle faisait aussi du déplacement en train un élément de la mise en scène coloniale de l’exposition.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The exposition’s little train</h2><p>The perimeter train ran through the 1931 International Colonial Exposition in the Bois de Vincennes. This internal railway linked the landscapes and pavilions of an event that had grown to the scale of a temporary town.</p><h2>From foreign pavilions to the Avenue des Colonies</h2><p>Its route passed through the foreign section before continuing towards the presentation of the French empire. The main avenue and the reconstruction of the temple of Angkor were prominent settings within this ensemble.</p><p>The succession of architectural scenes offered a journey arranged by the organisers. Travelling by train also became part of the exposition’s staging of the colonial world.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Der kleine Zug der Ausstellung</h2><p>Die Ringbahn durchquerte die Internationale Kolonialausstellung von 1931 im Bois de Vincennes. Diese interne Eisenbahn verband die Landschaften und Pavillons einer Veranstaltung, die das Ausmaß einer vorübergehenden Stadt angenommen hatte.</p><h2>Von den ausländischen Pavillons zur Avenue des Colonies</h2><p>Die Fahrt führte durch den ausländischen Ausstellungsbereich und weiter zur Darstellung des französischen Kolonialreichs. Die große Allee und der Nachbau des Tempels von Angkor bildeten markante Schauplätze dieses Ensembles.</p><p>Die Abfolge unterschiedlicher Architekturen bot eine von den Veranstaltern gestaltete Reise. Damit wurde auch die Zugfahrt zu einem Bestandteil der kolonialen Inszenierung der Ausstellung.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Het treintje van de tentoonstelling</h2><p>De ringlijn reed door de Internationale Koloniale Tentoonstelling van 1931 in het Bois de Vincennes. Deze interne spoorweg verbond de landschappen en paviljoens van een evenement dat de omvang van een tijdelijke stad had aangenomen.</p><h2>Van buitenlandse paviljoens naar de Avenue des Colonies</h2><p>De route liep door het buitenlandse gedeelte en vervolgens langs de presentatie van het Franse koloniale rijk. De grote laan en de nagebouwde tempel van Angkor vormden opvallende decors binnen dit geheel.</p><p>De opeenvolging van verschillende bouwstijlen bood een reis die door de organisatoren was samengesteld. Zo maakte ook de treinrit deel uit van de koloniale enscenering van de tentoonstelling.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Il trenino dell’esposizione</h2><p>La ferrovia circolare attraversava l’Esposizione coloniale internazionale del 1931, nel bois de Vincennes. Questa linea interna collegava i paesaggi e i padiglioni di un evento che aveva assunto le dimensioni di una città temporanea.</p><h2>Dai padiglioni stranieri all’avenue des Colonies</h2><p>Il percorso passava dalla sezione straniera per proseguire verso la presentazione dell’impero francese. Il grande viale e la ricostruzione del tempio di Angkor erano tra gli scenari più riconoscibili di questo insieme.</p><p>La successione di architetture proponeva un viaggio composto dagli organizzatori. Anche lo spostamento in treno diventava così parte della rappresentazione coloniale costruita dall’esposizione.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>El pequeño tren de la exposición</h2><p>El ferrocarril circular recorría la Exposición Colonial Internacional de 1931, en el bois de Vincennes. Esta línea interior enlazaba los paisajes y pabellones de un evento que había adquirido las dimensiones de una ciudad temporal.</p><h2>De los pabellones extranjeros a la avenue des Colonies</h2><p>El recorrido pasaba por la sección extranjera antes de continuar hacia la presentación del imperio francés. La gran avenida y la reconstrucción del templo de Angkor eran algunos de los escenarios destacados del conjunto.</p><p>La sucesión de arquitecturas ofrecía un viaje compuesto por los organizadores. El desplazamiento en tren formaba también parte de la puesta en escena colonial de la exposición.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Mały pociąg na wystawie</h2><p>Kolejka okrężna kursowała po Międzynarodowej Wystawie Kolonialnej z 1931 roku w bois de Vincennes. Wewnętrzna linia łączyła krajobrazy i pawilony wydarzenia, które przybrało rozmiary tymczasowego miasta.</p><h2>Od zagranicznych pawilonów do avenue des Colonies</h2><p>Trasa prowadziła przez część zagraniczną, a następnie ku prezentacji francuskiego imperium kolonialnego. Wielka aleja i rekonstrukcja świątyni Angkor należały do charakterystycznych scenerii tego zespołu.</p><p>Następujące po sobie formy architektoniczne składały się na podróż ułożoną przez organizatorów. Także przejazd pociągiem stawał się elementem kolonialnej inscenizacji wystawy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>O pequeno comboio da exposição</h2><p>O caminho de ferro circular percorria a Exposição Colonial Internacional de 1931, no bois de Vincennes. Esta linha interna ligava as paisagens e os pavilhões de um evento que tinha adquirido a dimensão de uma cidade temporária.</p><h2>Dos pavilhões estrangeiros à avenue des Colonies</h2><p>O percurso passava pela secção estrangeira antes de prosseguir para a apresentação do império francês. A grande avenida e a reconstrução do templo de Angkor eram alguns dos cenários mais marcantes do conjunto.</p><p>A sucessão de arquiteturas propunha uma viagem composta pelos organizadores. A deslocação de comboio fazia também parte da encenação colonial da exposição.</p>"
+        }
+      ],
+      "attractionDetails": {
+        "manufacturerId": null,
+        "manufacturerKey": null,
+        "model": null,
+        "externalSource": null,
+        "externalId": null,
+        "sourceUrl": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+        "status": "ClosedDefinitively",
+        "materialType": null,
+        "seatingType": null,
+        "launchType": null,
+        "restraintType": null,
+        "isLaunched": null,
+        "openingDate": null,
+        "closingDate": null,
+        "openingDateText": null,
+        "closingDateText": null,
+        "durationInSeconds": null,
+        "capacityPerHour": null,
+        "heightInFeet": null,
+        "heightInMeters": null,
+        "lengthInFeet": null,
+        "lengthInMeters": null,
+        "speedInMph": null,
+        "speedInKmH": null,
+        "dropInFeet": null,
+        "dropInMeters": null,
+        "inversionCount": null,
+        "trainCount": null,
+        "carsPerTrain": null,
+        "ridersPerVehicle": null,
+        "hasSingleRider": null,
+        "hasFastPass": null,
+        "isAccessibleForReducedMobility": null,
+        "isIndoor": null,
+        "waterExposureLevel": null,
+        "accessConditions": []
+      },
+      "attractionLocations": null,
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "latitude": null,
+      "longitude": null
+    }
+  ],
+  "images": [
+    {
+      "id": "b2bc130edcfe47ea886baf16bb04e0bd",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/b2bc130edcfe47ea886baf16bb04e0bd",
+      "description": "L’exposition occupait le bois de Vincennes autour du lac Daumesnil. Au premier plan de cette vue de 1931, l’entrée monumentale rejoint le tissu urbain de la Porte Dorée.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1088,
+      "height": 767,
+      "sizeInBytes": 408984,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/styles/visuel_moyen_desktop/public/2022-03/vue-aerienne_exposition-1931.jpg?itok=9E0zJnGp",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue aérienne des grands bâtiments et de l’entrée de l’Exposition coloniale de 1931, à la lisière des rues de Paris."
+        },
+        {
+          "languageCode": "en",
+          "value": "Aerial view of the large buildings and entrance of the 1931 Colonial Exposition beside the streets of Paris."
+        },
+        {
+          "languageCode": "de",
+          "value": "Luftaufnahme der großen Gebäude und des Eingangs der Kolonialausstellung von 1931 am Rand der Pariser Straßen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Luchtfoto van de grote gebouwen en de ingang van de Koloniale Tentoonstelling van 1931, naast de straten van Parijs."
+        },
+        {
+          "languageCode": "it",
+          "value": "Veduta aerea dei grandi edifici e dell’ingresso dell’Esposizione coloniale del 1931, accanto alle strade di Parigi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista aérea de los grandes edificios y la entrada de la Exposición Colonial de 1931, junto a las calles de París."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok z lotu ptaka na duże budynki i wejście na Wystawę Kolonialną z 1931 roku, obok paryskich ulic."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista aérea dos grandes edifícios e da entrada da Exposição Colonial de 1931, junto às ruas de Paris."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "L’exposition occupait le bois de Vincennes autour du lac Daumesnil. Au premier plan de cette vue de 1931, l’entrée monumentale rejoint le tissu urbain de la Porte Dorée."
+        },
+        {
+          "languageCode": "en",
+          "value": "The exposition occupied the Bois de Vincennes around Lac Daumesnil. In the foreground of this 1931 view, the monumental entrance meets the streets of the Porte Dorée neighbourhood."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Ausstellung erstreckte sich im Bois de Vincennes um den Lac Daumesnil. Im Vordergrund dieser Aufnahme von 1931 schließt der monumentale Eingang an das Stadtviertel Porte Dorée an."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De tentoonstelling lag in het Bois de Vincennes rond het Lac Daumesnil. Op de voorgrond van deze opname uit 1931 sluit de monumentale ingang aan op de wijk Porte Dorée."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’esposizione occupava il Bois de Vincennes attorno al lago Daumesnil. In primo piano, in questa veduta del 1931, l’ingresso monumentale si raccorda al quartiere della Porte Dorée."
+        },
+        {
+          "languageCode": "es",
+          "value": "La exposición ocupaba el Bois de Vincennes alrededor del lago Daumesnil. En primer plano de esta vista de 1931, la entrada monumental enlaza con el barrio de la Porte Dorée."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wystawa zajmowała teren Bois de Vincennes wokół jeziora Daumesnil. Na pierwszym planie zdjęcia z 1931 roku monumentalne wejście łączy się z zabudową dzielnicy Porte Dorée."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A exposição ocupava o Bois de Vincennes em redor do lago Daumesnil. Em primeiro plano nesta vista de 1931, a entrada monumental liga-se ao bairro da Porte Dorée."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Roger-Viollet — Palais de la Porte Dorée."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:07:47.313Z",
+      "updatedAt": "2026-11-16T00:07:50.803Z",
+      "key": "b2bc130edcfe47ea886baf16bb04e0bd",
+      "imageId": "b2bc130edcfe47ea886baf16bb04e0bd",
+      "ownerKey": "park"
+    },
+    {
+      "id": "82381798767841feb959282339cae094",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/82381798767841feb959282339cae094",
+      "description": "Cette carte postale photographique montre les illuminations du pavillon indochinois à l’Exposition coloniale de Paris en 1931.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1262,
+      "height": 903,
+      "sizeInBytes": 299648,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.31-1.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Les tours du temple d’Angkor reconstitué sont éclairées de nuit, avec des faisceaux lumineux dans le ciel et des chaises devant la façade."
+        },
+        {
+          "languageCode": "en",
+          "value": "The towers of the reconstructed Angkor temple are lit at night, with beams crossing the sky and chairs in front of the façade."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Türme des nachgebildeten Angkor-Tempels sind nachts beleuchtet; Lichtstrahlen durchziehen den Himmel, vor der Fassade stehen Stühle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De torens van de nagebouwde Angkor-tempel zijn ’s nachts verlicht, met lichtbundels in de lucht en stoelen voor de gevel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le torri della ricostruzione del tempio di Angkor sono illuminate di notte, con fasci di luce nel cielo e sedie davanti alla facciata."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las torres de la reproducción del templo de Angkor aparecen iluminadas de noche, con haces de luz en el cielo y sillas ante la fachada."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wieże rekonstrukcji świątyni Angkor są oświetlone nocą; na niebie widać snopy światła, a przed fasadą stoją krzesła."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As torres da reconstrução do templo de Angkor estão iluminadas de noite, com feixes de luz no céu e cadeiras diante da fachada."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Cette carte postale photographique montre les illuminations du pavillon indochinois à l’Exposition coloniale de Paris en 1931."
+        },
+        {
+          "languageCode": "en",
+          "value": "This photographic postcard shows the illuminations of the Indochina pavilion at the 1931 Colonial Exposition in Paris."
+        },
+        {
+          "languageCode": "de",
+          "value": "Diese fotografische Postkarte zeigt die Beleuchtung des Indochina-Pavillons auf der Pariser Kolonialausstellung von 1931."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Deze fotografische ansichtkaart toont de verlichting van het Indochinese paviljoen op de Koloniale Tentoonstelling van 1931 in Parijs."
+        },
+        {
+          "languageCode": "it",
+          "value": "Questa cartolina fotografica mostra le illuminazioni del padiglione indocinese all’Esposizione coloniale di Parigi del 1931."
+        },
+        {
+          "languageCode": "es",
+          "value": "Esta postal fotográfica muestra la iluminación del pabellón de Indochina en la Exposición Colonial de París de 1931."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pocztówka fotograficzna przedstawia iluminację pawilonu Indochin na paryskiej Wystawie Kolonialnej w 1931 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Este postal fotográfico mostra a iluminação do pavilhão da Indochina na Exposição Colonial de Paris de 1931."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Carte postale — © collection Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "en",
+          "value": "Postcard — © collection of the Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "de",
+          "value": "Postkarte — © Sammlung des Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ansichtkaart — © collectie Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cartolina — © collezione del Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "es",
+          "value": "Postal — © colección del Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pocztówka — © zbiory Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Postal — © coleção do Musée national de l’histoire de l’immigration."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:11:10.765Z",
+      "updatedAt": "2026-11-16T00:11:14.484Z",
+      "key": "82381798767841feb959282339cae094",
+      "imageId": "82381798767841feb959282339cae094",
+      "ownerKey": "park"
+    },
+    {
+      "id": "17cdbb5775334137a4ff8c2be4f8bf7b",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/17cdbb5775334137a4ff8c2be4f8bf7b",
+      "description": "Le défilé présidentiel de Gaston Doumergue marque l’ouverture de l’Exposition coloniale de 1931. Cette carte postale photographique en conserve la scène devant le pavillon indochinois.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1356,
+      "height": 1042,
+      "sizeInBytes": 274857,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-03/2013.22.49-1.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un cortège de voitures et de cavaliers passe devant le temple d’Angkor reconstitué, entre les troupes et la foule."
+        },
+        {
+          "languageCode": "en",
+          "value": "A procession of cars and mounted riders passes the reconstructed Angkor temple between troops and crowds."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Zug aus Autos und Reitern zieht zwischen Truppen und Menschenmengen am nachgebildeten Angkor-Tempel vorbei."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een stoet auto’s en ruiters trekt tussen troepen en publiek langs de nagebouwde Angkor-tempel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un corteo di automobili e cavalieri passa davanti alla ricostruzione del tempio di Angkor, tra le truppe e la folla."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un cortejo de automóviles y jinetes pasa ante la reproducción del templo de Angkor, entre las tropas y la multitud."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kolumna samochodów i jeźdźców przejeżdża przed rekonstrukcją świątyni Angkor, między oddziałami wojskowymi a tłumem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um cortejo de automóveis e cavaleiros passa diante da reconstrução do templo de Angkor, entre as tropas e a multidão."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le défilé présidentiel de Gaston Doumergue marque l’ouverture de l’Exposition coloniale de 1931. Cette carte postale photographique en conserve la scène devant le pavillon indochinois."
+        },
+        {
+          "languageCode": "en",
+          "value": "President Gaston Doumergue’s procession marks the opening of the 1931 Colonial Exposition. This photographic postcard records the scene outside the Indochina pavilion."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Festzug von Präsident Gaston Doumergue markiert die Eröffnung der Kolonialausstellung von 1931. Die fotografische Postkarte hält die Szene vor dem Indochina-Pavillon fest."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De presidentiële stoet van Gaston Doumergue markeert de opening van de Koloniale Tentoonstelling van 1931. Deze fotografische ansichtkaart bewaart het beeld voor het Indochinese paviljoen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il corteo presidenziale di Gaston Doumergue segna l’apertura dell’Esposizione coloniale del 1931. Questa cartolina fotografica conserva la scena davanti al padiglione indocinese."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cortejo presidencial de Gaston Doumergue marca la apertura de la Exposición Colonial de 1931. Esta postal fotográfica conserva la escena ante el pabellón de Indochina."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przejazd prezydenta Gastona Doumergue’a towarzyszy otwarciu Wystawy Kolonialnej w 1931 roku. Ta pocztówka fotograficzna utrwala scenę przed pawilonem Indochin."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cortejo presidencial de Gaston Doumergue assinala a abertura da Exposição Colonial de 1931. Este postal fotográfico preserva a cena diante do pavilhão da Indochina."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Carte postale — © collection Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "en",
+          "value": "Postcard — © collection of the Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "de",
+          "value": "Postkarte — © Sammlung des Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ansichtkaart — © collectie Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cartolina — © collezione del Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "es",
+          "value": "Postal — © colección del Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pocztówka — © zbiory Musée national de l’histoire de l’immigration."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Postal — © coleção do Musée national de l’histoire de l’immigration."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:11:44.23Z",
+      "updatedAt": "2026-11-16T00:11:47.789Z",
+      "key": "17cdbb5775334137a4ff8c2be4f8bf7b",
+      "imageId": "17cdbb5775334137a4ff8c2be4f8bf7b",
+      "ownerKey": "park"
+    },
+    {
+      "id": "1f84c8b5efa34e7898d249171fd6f963",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/1f84c8b5efa34e7898d249171fd6f963",
+      "description": "Devant le pavillon principal de l’Italie, les candélabres dits « chenilles » accompagnent les statues et les colonnes. Cette vue conserve les illuminations de l’exposition de 1931.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1440,
+      "height": 960,
+      "sizeInBytes": 309320,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/vue_nuit_pavillon_italie_exposition_1931.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La colonnade du pavillon italien éclairée de nuit, encadrée par des lampadaires aux formes superposées."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Italian pavilion’s colonnade lit at night, framed by street lamps with stacked shapes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die nachts beleuchtete Kolonnade des italienischen Pavillons, eingerahmt von Leuchten mit übereinandergesetzten Formen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De ’s nachts verlichte zuilengalerij van het Italiaanse paviljoen, geflankeerd door lantaarns met gestapelde vormen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il colonnato del padiglione italiano illuminato di notte, incorniciato da lampioni dalle forme sovrapposte."
+        },
+        {
+          "languageCode": "es",
+          "value": "La columnata del pabellón italiano iluminada de noche, enmarcada por farolas de formas superpuestas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Nocna iluminacja kolumnady pawilonu włoskiego, po bokach latarnie z nałożonych na siebie form."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A colunata do pavilhão italiano iluminada de noite, enquadrada por candeeiros de formas sobrepostas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Devant le pavillon principal de l’Italie, les candélabres dits « chenilles » accompagnent les statues et les colonnes. Cette vue conserve les illuminations de l’exposition de 1931."
+        },
+        {
+          "languageCode": "en",
+          "value": "In front of Italy’s main pavilion, the lamps known as “chenilles” stand alongside the statues and columns. This view records the illuminations of the 1931 exposition."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vor dem italienischen Hauptpavillon stehen die als „chenilles“ bezeichneten Leuchten neben Statuen und Säulen. Die Aufnahme zeigt die Beleuchtung der Ausstellung von 1931."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Voor het hoofdpaviljoen van Italië staan de zogeheten “chenilles”-lantaarns naast de beelden en zuilen. Deze opname toont de verlichting van de tentoonstelling van 1931."
+        },
+        {
+          "languageCode": "it",
+          "value": "Davanti al padiglione principale dell’Italia, i lampioni detti « chenilles » affiancano statue e colonne. Questa veduta conserva le illuminazioni dell’esposizione del 1931."
+        },
+        {
+          "languageCode": "es",
+          "value": "Ante el pabellón principal de Italia, las farolas conocidas como « chenilles » acompañan a las estatuas y columnas. Esta vista muestra la iluminación de la exposición de 1931."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przed głównym pawilonem Włoch latarnie zwane „chenilles” stoją obok posągów i kolumn. Zdjęcie utrwala iluminację wystawy z 1931 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Diante do pavilhão principal de Itália, os candeeiros conhecidos como « chenilles » acompanham as estátuas e as colunas. Esta vista regista a iluminação da exposição de 1931."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:15:19.728Z",
+      "updatedAt": "2026-11-16T00:15:23.488Z",
+      "key": "1f84c8b5efa34e7898d249171fd6f963",
+      "imageId": "1f84c8b5efa34e7898d249171fd6f963",
+      "ownerKey": "park"
+    },
+    {
+      "id": "90cef56a7c5b4a638e83abe07ce3cbd0",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+      "path": "park/90cef56a7c5b4a638e83abe07ce3cbd0",
+      "description": "En 1931, la lumière souligne le bas-relief d’Alfred Janniot sur la façade du Palais de la Porte Dorée. Les colonnes et les grands panneaux sculptés forment une longue perspective nocturne.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1440,
+      "height": 948,
+      "sizeInBytes": 302407,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_facade_musee_des_colonies_1931.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une rangée de colonnes se détache devant la façade sculptée du Musée des Colonies, éclairée de nuit."
+        },
+        {
+          "languageCode": "en",
+          "value": "A row of columns stands before the sculpted façade of the Musée des Colonies, illuminated at night."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Säulenreihe steht vor der nachts beleuchteten Relieffassade des Musée des Colonies."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een rij zuilen staat voor de ’s nachts verlichte, gebeeldhouwde gevel van het Musée des Colonies."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una fila di colonne si staglia davanti alla facciata scolpita del Musée des Colonies, illuminata di notte."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una fila de columnas se recorta ante la fachada esculpida del Musée des Colonies, iluminada de noche."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rząd kolumn na tle oświetlonej nocą fasady Musée des Colonies, pokrytej płaskorzeźbami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma fila de colunas destaca-se diante da fachada esculpida do Musée des Colonies, iluminada de noite."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "En 1931, la lumière souligne le bas-relief d’Alfred Janniot sur la façade du Palais de la Porte Dorée. Les colonnes et les grands panneaux sculptés forment une longue perspective nocturne."
+        },
+        {
+          "languageCode": "en",
+          "value": "In 1931, lighting highlighted Alfred Janniot’s relief on the façade of the Palais de la Porte Dorée. The columns and large sculpted panels form a long nighttime perspective."
+        },
+        {
+          "languageCode": "de",
+          "value": "1931 hob die Beleuchtung Alfred Janniots Relief an der Fassade des Palais de la Porte Dorée hervor. Säulen und große Reliefplatten bilden eine lange nächtliche Perspektive."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In 1931 benadrukte de verlichting het reliëf van Alfred Janniot op de gevel van het Palais de la Porte Dorée. De zuilen en grote reliëfpanelen vormen een lang nachtelijk perspectief."
+        },
+        {
+          "languageCode": "it",
+          "value": "Nel 1931 la luce metteva in risalto il bassorilievo di Alfred Janniot sulla facciata del Palais de la Porte Dorée. Le colonne e i grandi pannelli scolpiti formano una lunga prospettiva notturna."
+        },
+        {
+          "languageCode": "es",
+          "value": "En 1931, la luz realzaba el bajorrelieve de Alfred Janniot en la fachada del Palais de la Porte Dorée. Las columnas y los grandes paneles esculpidos forman una larga perspectiva nocturna."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W 1931 roku światło podkreślało płaskorzeźbę Alfreda Janniota na fasadzie Palais de la Porte Dorée. Kolumny i duże rzeźbione panele tworzą długą nocną perspektywę."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em 1931, a luz realçava o baixo-relevo de Alfred Janniot na fachada do Palais de la Porte Dorée. As colunas e os grandes painéis esculpidos formam uma longa perspetiva noturna."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Musée national de l’histoire de l’immigration — Palais de la Porte Dorée."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:15:52.848Z",
+      "updatedAt": "2026-11-16T00:15:56.421Z",
+      "key": "90cef56a7c5b4a638e83abe07ce3cbd0",
+      "imageId": "90cef56a7c5b4a638e83abe07ce3cbd0",
+      "ownerKey": "park"
+    }
+  ],
+  "history": {
+    "events": [
+      {
+        "key": "exposition-1931-counter-exhibition",
+        "entityType": "Park",
+        "owner": "park",
+        "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "parkItemId": null,
+        "itemKey": null,
+        "parkItemKey": null,
+        "contextParkId": null,
+        "year": 1931,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "Other",
+        "isMajor": true,
+        "isVisible": false,
+        "slug": null,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Une contre-exposition conteste le récit colonial"
+          },
+          {
+            "languageCode": "en",
+            "value": "A counter-exhibition challenges the colonial account"
+          },
+          {
+            "languageCode": "de",
+            "value": "Eine Gegenausstellung widerspricht der kolonialen Erzählung"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een tegententoonstelling bestrijdt het koloniale verhaal"
+          },
+          {
+            "languageCode": "it",
+            "value": "Una controesposizione contesta il racconto coloniale"
+          },
+          {
+            "languageCode": "es",
+            "value": "Una contraexposición cuestiona el relato colonial"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Kontrwystawa podważa kolonialną narrację"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Uma contraexposição contesta a narrativa colonial"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "À l’automne, La Vérité sur les colonies est présentée hors du site officiel, sur l’actuelle place du Colonel-Fabien. Elle dénonce les violences de la colonisation et la situation économique des colonies, donnant une forme publique à la contestation du projet impérial."
+          },
+          {
+            "languageCode": "en",
+            "value": "In the autumn, La Vérité sur les colonies is presented outside the official grounds, on what is now Place du Colonel-Fabien. It denounces colonial violence and the colonies’ economic conditions, giving public form to opposition to the imperial project."
+          },
+          {
+            "languageCode": "de",
+            "value": "Im Herbst wird La Vérité sur les colonies außerhalb des offiziellen Geländes auf der heutigen Place du Colonel-Fabien gezeigt. Sie prangert Kolonialgewalt und die wirtschaftliche Lage der Kolonien an und gibt dem Widerspruch gegen das imperiale Projekt eine öffentliche Form."
+          },
+          {
+            "languageCode": "nl",
+            "value": "In de herfst wordt La Vérité sur les colonies buiten het officiële terrein getoond, op de huidige Place du Colonel-Fabien. Zij hekelt koloniaal geweld en de economische toestand van de koloniën en geeft zo een openbare vorm aan verzet tegen het imperiale project."
+          },
+          {
+            "languageCode": "it",
+            "value": "In autunno, La Vérité sur les colonies viene presentata fuori dal sito ufficiale, nell’attuale place du Colonel-Fabien. Denuncia le violenze coloniali e la situazione economica delle colonie, dando una forma pubblica alla contestazione del progetto imperiale."
+          },
+          {
+            "languageCode": "es",
+            "value": "En otoño, La Vérité sur les colonies se presenta fuera del recinto oficial, en la actual place du Colonel-Fabien. Denuncia la violencia colonial y las condiciones económicas de las colonias, dando forma pública a la oposición al proyecto imperial."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Jesienią La Vérité sur les colonies zostaje pokazana poza oficjalnym terenem, przy dzisiejszej place du Colonel-Fabien. Pokazuje przemoc kolonialną i krytykuje sytuację gospodarczą kolonii, nadając publiczną formę sprzeciwowi wobec projektu imperialnego."
+          },
+          {
+            "languageCode": "pt",
+            "value": "No outono, La Vérité sur les colonies é apresentada fora do recinto oficial, na atual place du Colonel-Fabien. Denuncia a violência colonial e as condições económicas das colónias, dando uma forma pública à contestação do projeto imperial."
+          }
+        ],
+        "mainImageId": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "sources": [
+          {
+            "label": "Pap Ndiaye — L’Exposition coloniale de 1931, Palais de la Porte Dorée, 2022",
+            "url": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+            "accessedAt": "2026-10-20"
+          }
+        ],
+        "article": null
+      },
+      {
+        "key": "exposition-1931-05-06-opening",
+        "entityType": "Park",
+        "owner": "park",
+        "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "parkItemId": null,
+        "itemKey": null,
+        "parkItemKey": null,
+        "contextParkId": null,
+        "year": 1931,
+        "month": 5,
+        "day": 6,
+        "datePrecision": "Day",
+        "eventType": "Opening",
+        "isMajor": true,
+        "isVisible": false,
+        "slug": null,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "L’exposition est inaugurée à la Porte Dorée"
+          },
+          {
+            "languageCode": "en",
+            "value": "The exposition is inaugurated at the Porte Dorée"
+          },
+          {
+            "languageCode": "de",
+            "value": "Die Ausstellung wird an der Porte Dorée eröffnet"
+          },
+          {
+            "languageCode": "nl",
+            "value": "De tentoonstelling opent bij de Porte Dorée"
+          },
+          {
+            "languageCode": "it",
+            "value": "L’esposizione viene inaugurata alla porte Dorée"
+          },
+          {
+            "languageCode": "es",
+            "value": "La exposición se inaugura en la porte Dorée"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Otwarcie wystawy przy porte Dorée"
+          },
+          {
+            "languageCode": "pt",
+            "value": "A exposição é inaugurada na porte Dorée"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Le grand événement parisien est inauguré autour du lac Daumesnil et à la Porte Dorée. Pavillons, arts et divertissements composent une présentation des empires coloniaux, dont le Palais des Colonies est destiné à prolonger le récit après l’exposition."
+          },
+          {
+            "languageCode": "en",
+            "value": "The exposition opens around Lac Daumesnil and at the Porte Dorée in Paris. Pavilions, arts and amusements present the colonial empires, with the Palais des Colonies intended to continue that presentation after the temporary event."
+          },
+          {
+            "languageCode": "de",
+            "value": "Die Ausstellung wird am Lac Daumesnil und an der Porte Dorée eröffnet. Pavillons, Kunst und Vergnügungen bilden eine Darstellung der Kolonialreiche, deren Erzählung der Palais des Colonies über die Ausstellung hinaus fortführen soll."
+          },
+          {
+            "languageCode": "nl",
+            "value": "De Parijse tentoonstelling gaat van start rond het Lac Daumesnil en bij de Porte Dorée. Paviljoens, kunst en vermaak vormen een presentatie van de koloniale rijken. Het Palais des Colonies moet dat verhaal ook na de tentoonstelling blijven uitdragen."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il grande evento parigino si apre intorno al lago Daumesnil e alla porte Dorée. Padiglioni, arti e divertimenti compongono una rappresentazione degli imperi coloniali, il cui racconto è destinato a proseguire nel Palais des Colonies dopo l’esposizione."
+          },
+          {
+            "languageCode": "es",
+            "value": "El gran evento parisino se inaugura alrededor del lago Daumesnil y en la porte Dorée. Pabellones, artes y diversiones componen una presentación de los imperios coloniales, cuyo relato está destinado a prolongarse en el Palais des Colonies después de la exposición."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Wielkie paryskie wydarzenie rozpoczyna się wokół jeziora Daumesnil i przy porte Dorée. Pawilony, sztuka i rozrywki tworzą prezentację imperiów kolonialnych, której opowieść ma być kontynuowana w Palais des Colonies po zakończeniu wystawy."
+          },
+          {
+            "languageCode": "pt",
+            "value": "É inaugurada a exposição parisiense, em redor do lago Daumesnil e na porte Dorée. Pavilhões, artes e divertimentos compõem uma apresentação dos impérios coloniais, cuja narrativa deverá continuar no Palais des Colonies depois da exposição."
+          }
+        ],
+        "mainImageId": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "sources": [
+          {
+            "label": "Palais de la Porte Dorée — Transcription du parcours architecture, décembre 2025, p. 10",
+            "url": "https://www.palais-portedoree.fr/sites/default/files/2025-12/Transcription_parcours_visite_palais_archi_122025_0.pdf",
+            "accessedAt": "2026-10-20"
+          },
+          {
+            "label": "Pap Ndiaye — L’Exposition coloniale de 1931, Palais de la Porte Dorée, 2022",
+            "url": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+            "accessedAt": "2026-10-20"
+          }
+        ],
+        "article": {
+          "slug": "exposition-coloniale-1931-nights-water-and-empire",
+          "titles": [
+            {
+              "languageCode": "fr",
+              "value": "1931 : les nuits du lac, le récit de l’empire"
+            },
+            {
+              "languageCode": "en",
+              "value": "1931: nights on the lake, a story of empire"
+            },
+            {
+              "languageCode": "de",
+              "value": "1931: Nächte am See und die Erzählung vom Kolonialreich"
+            },
+            {
+              "languageCode": "nl",
+              "value": "1931: nachten aan het meer, het verhaal van een imperium"
+            },
+            {
+              "languageCode": "it",
+              "value": "1931: le notti del lago, il racconto dell’impero"
+            },
+            {
+              "languageCode": "es",
+              "value": "1931: las noches del lago, el relato del imperio"
+            },
+            {
+              "languageCode": "pl",
+              "value": "1931: noce nad jeziorem i opowieść o imperium"
+            },
+            {
+              "languageCode": "pt",
+              "value": "1931: as noites do lago, a narrativa do império"
+            }
+          ],
+          "subtitles": [
+            {
+              "languageCode": "fr",
+              "value": "Fontaines, contestations et héritages de l’Exposition coloniale"
+            },
+            {
+              "languageCode": "en",
+              "value": "Fountains, opposition and the legacies of the Colonial Exposition"
+            },
+            {
+              "languageCode": "de",
+              "value": "Fontänen, Widerspruch und das Erbe der Kolonialausstellung"
+            },
+            {
+              "languageCode": "nl",
+              "value": "Fonteinen, verzet en de erfenis van de Koloniale Tentoonstelling"
+            },
+            {
+              "languageCode": "it",
+              "value": "Fontane, opposizioni ed eredità dell’Esposizione coloniale"
+            },
+            {
+              "languageCode": "es",
+              "value": "Fuentes, críticas y legados de la Exposición Colonial"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Fontanny, sprzeciw i dziedzictwo Wystawy Kolonialnej"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Fontes, contestações e legados da Exposição Colonial"
+            }
+          ],
+          "summaries": [
+            {
+              "languageCode": "fr",
+              "value": "Autour du lac Daumesnil, l’Exposition coloniale transforme l’architecture, l’eau et la lumière en grand spectacle. Derrière cette féerie se dessinent un projet impérial, ses contestations et des héritages qui dépassent les six mois de l’événement."
+            },
+            {
+              "languageCode": "en",
+              "value": "Around Lac Daumesnil, the Colonial Exposition turns architecture, water and light into a great spectacle. Behind the enchantment lie an imperial project, its critics and legacies extending beyond the event’s six months."
+            },
+            {
+              "languageCode": "de",
+              "value": "Rund um den Lac Daumesnil macht die Kolonialausstellung aus Architektur, Wasser und Licht ein großes Schauspiel. Hinter dem Zauber stehen ein imperiales Vorhaben, seine Kritiker und ein Erbe, das über die sechsmonatige Veranstaltung hinausreicht."
+            },
+            {
+              "languageCode": "nl",
+              "value": "Rond het Lac Daumesnil maakt de Koloniale Tentoonstelling van architectuur, water en licht een groot schouwspel. Achter de betovering liggen een imperiaal project, de kritiek daarop en een erfenis die verder reikt dan het halfjaar van het evenement."
+            },
+            {
+              "languageCode": "it",
+              "value": "Intorno al lago Daumesnil, l’Esposizione coloniale trasforma architettura, acqua e luce in un grande spettacolo. Dietro l’incanto emergono un progetto imperiale, le sue contestazioni e un’eredità che supera i sei mesi dell’evento."
+            },
+            {
+              "languageCode": "es",
+              "value": "En torno al lago Daumesnil, la Exposición Colonial convierte arquitectura, agua y luz en un gran espectáculo. Detrás del encanto aparecen un proyecto imperial, sus críticas y unos legados que superan los seis meses del evento."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Wokół jeziora Daumesnil Wystawa Kolonialna zamienia architekturę, wodę i światło w wielkie widowisko. Za jego urokiem kryją się imperialny projekt, sprzeciw wobec niego i dziedzictwo wykraczające poza sześć miesięcy wydarzenia."
+            },
+            {
+              "languageCode": "pt",
+              "value": "Em redor do lago Daumesnil, a Exposição Colonial transforma arquitetura, água e luz num grande espetáculo. Por detrás do encanto surgem um projeto imperial, as suas contestações e legados que ultrapassam os seis meses do evento."
+            }
+          ],
+          "mainImageId": null,
+          "blocks": [
+            {
+              "id": "f9ff80904bf65cd19bbc504982083002",
+              "type": "Heading",
+              "sortOrder": 10,
+              "headingLevel": 2,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Une ville construite pour convaincre"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "A town built to persuade"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Eine Stadt, die überzeugen soll"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Een stad die moest overtuigen"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Una città costruita per convincere"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Una ciudad construida para convencer"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Miasto zbudowane, by przekonywać"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Uma cidade construída para convencer"
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "63398ba810b35376b939d8e9d6a93dd4",
+              "type": "Paragraph",
+              "sortOrder": 20,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Du 6 mai au 15 novembre 1931, une vaste manifestation occupe la Porte Dorée et une partie du bois de Vincennes. Sur environ 110 hectares, elle accueille près de huit millions de visiteurs. Les quelque 33 millions de billets vendus comptent des entrées répétées : ils ne correspondent pas à autant de personnes différentes. Cette affluence donne à l’entreprise coloniale une visibilité considérable au cœur de la capitale."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "From 6 May to 15 November 1931, a major event occupied the Porte Dorée and part of the Bois de Vincennes. Spread over roughly 110 hectares, it welcomed close to eight million visitors. Around 33 million tickets were sold, a figure including repeat entries rather than that many different people. Such attendance gave the colonial enterprise extraordinary visibility in the French capital."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Vom 6. Mai bis zum 15. November 1931 belegte eine große Veranstaltung die Porte Dorée und einen Teil des Bois de Vincennes. Auf etwa 110 Hektar empfing sie annähernd acht Millionen Besucher. Die rund 33 Millionen verkauften Eintrittskarten umfassen wiederholte Eintritte und stehen nicht für ebenso viele verschiedene Menschen. Dieser Andrang verschaffte dem kolonialen Unternehmen eine enorme Sichtbarkeit in der französischen Hauptstadt."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Van 6 mei tot 15 november 1931 nam een groot evenement de Porte Dorée en een deel van het Bois de Vincennes in beslag. Op ongeveer 110 hectare ontving het bijna acht miljoen bezoekers. De circa 33 miljoen verkochte kaartjes omvatten herhaalde bezoeken en staan dus niet voor evenveel verschillende personen. Die toeloop gaf het koloniale project een enorme zichtbaarheid in de Franse hoofdstad."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Dal 6 maggio al 15 novembre 1931, una vasta manifestazione occupa la porte Dorée e parte del bois de Vincennes. Su circa 110 ettari accoglie quasi otto milioni di visitatori. I circa 33 milioni di biglietti venduti comprendono ingressi ripetuti e non corrispondono ad altrettante persone diverse. Questa affluenza conferisce all’impresa coloniale una visibilità enorme nel cuore della capitale francese."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Del 6 de mayo al 15 de noviembre de 1931, una gran manifestación ocupa la porte Dorée y parte del bois de Vincennes. En unas 110 hectáreas recibe cerca de ocho millones de visitantes. Los aproximadamente 33 millones de billetes vendidos incluyen entradas repetidas y no corresponden a otras tantas personas diferentes. Esta afluencia da al proyecto colonial una visibilidad extraordinaria en la capital francesa."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Od 6 maja do 15 listopada 1931 roku wielkie wydarzenie zajmowało porte Dorée i część bois de Vincennes. Na około 110 hektarach przyjęło blisko osiem milionów zwiedzających. Około 33 milionów sprzedanych biletów obejmowało wielokrotne wejścia i nie oznacza tylu różnych osób. Tak duża frekwencja zapewniła kolonialnemu przedsięwzięciu ogromną widoczność w stolicy Francji."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "De 6 de maio a 15 de novembro de 1931, uma grande manifestação ocupa a porte Dorée e parte do bois de Vincennes. Em cerca de 110 hectares recebe perto de oito milhões de visitantes. Os aproximadamente 33 milhões de bilhetes vendidos incluem entradas repetidas e não correspondem a outras tantas pessoas diferentes. Esta afluência dá ao empreendimento colonial uma visibilidade extraordinária na capital francesa."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "f2541c768b995a898c00a640d41b6074",
+              "type": "Paragraph",
+              "sortOrder": 30,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Les pavillons composent un paysage volontairement dépaysant, dominé notamment par une reconstitution du temple d’Angkor. Leur juxtaposition transforme des territoires éloignés en un ensemble que le public peut parcourir. Le Palais des Colonies porte une ambition plus durable : son musée doit continuer à présenter l’histoire et les ressources de l’empire après la fin de l’exposition. L’architecture participe ainsi pleinement à la démonstration politique."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "The pavilions created a deliberately unfamiliar landscape, with a reconstruction of the temple of Angkor among its dominant features. Placing distant territories beside one another made them into an ensemble the public could traverse. The Palais des Colonies had a longer purpose: its museum was to continue presenting the empire’s history and resources after the exposition ended. Architecture was integral to the political demonstration."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Die Pavillons bildeten eine bewusst fremdartig inszenierte Landschaft, zu deren beherrschenden Bauten ein Nachbau des Tempels von Angkor gehörte. Weit voneinander entfernte Gebiete erschienen nebeneinander als begehbares Ensemble. Der Palais des Colonies erfüllte einen längerfristigen Zweck: Sein Museum sollte Geschichte und Ressourcen des Kolonialreichs auch nach dem Ende der Ausstellung präsentieren. Architektur war damit ein wesentlicher Teil der politischen Demonstration."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "De paviljoens vormden een landschap dat verre gebieden moest oproepen, met een reconstructie van de tempel van Angkor als een van de opvallendste gebouwen. Ver uit elkaar gelegen gebieden stonden naast elkaar in een geheel waar het publiek doorheen kon lopen. Het Palais des Colonies had een duurzamer doel: zijn museum moest de geschiedenis en rijkdommen van het imperium na afloop blijven presenteren. Architectuur maakte zo deel uit van de politieke boodschap."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "I padiglioni compongono un paesaggio pensato per evocare terre lontane, dominato anche da una ricostruzione del tempio di Angkor. La vicinanza di territori distanti li trasforma in un insieme percorribile dal pubblico. Il Palais des Colonies ha un’ambizione più duratura: il suo museo deve continuare a presentare la storia e le risorse dell’impero dopo la chiusura dell’esposizione. L’architettura partecipa dunque alla dimostrazione politica."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Los pabellones componen un paisaje concebido para evocar tierras lejanas, con una reconstrucción del templo de Angkor entre sus elementos dominantes. La proximidad de territorios distantes los convierte en un conjunto que el público puede recorrer. El Palais des Colonies tiene una ambición más duradera: su museo debe seguir presentando la historia y los recursos del imperio una vez terminada la exposición. La arquitectura participa así en la demostración política."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Pawilony tworzyły krajobraz mający przywoływać odległe ziemie. Jedną z dominujących budowli była rekonstrukcja świątyni Angkor. Sąsiedztwo dalekich terytoriów układało je w zespół dostępny pieszo dla publiczności. Palais des Colonies miał trwalsze zadanie: jego muzeum miało nadal przedstawiać historię i zasoby imperium po zakończeniu wystawy. Architektura stanowiła zatem część politycznej demonstracji."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Os pavilhões compõem uma paisagem pensada para evocar terras distantes, com uma reconstrução do templo de Angkor entre os elementos dominantes. A proximidade de territórios longínquos transforma-os num conjunto que o público pode percorrer. O Palais des Colonies tem uma ambição mais duradoura: o seu museu deve continuar a apresentar a história e os recursos do império depois da exposição. A arquitetura participa assim na demonstração política."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "966c57192c175e4fbd0b16122e3239b4",
+              "type": "Heading",
+              "sortOrder": 40,
+              "headingLevel": 2,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Le lac devient une scène nocturne"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "The lake becomes a night-time stage"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Der See wird zur nächtlichen Bühne"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Het meer wordt een nachtelijk podium"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Il lago diventa una scena notturna"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "El lago se convierte en escenario nocturno"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Jezioro staje się nocną sceną"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "O lago torna-se um palco noturno"
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "0cf44310b58a5ae7b78d6c6c2710e142",
+              "type": "Paragraph",
+              "sortOrder": 50,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "À la tombée du jour, les illuminations conçues par André Granet et Roger-Henri Expert donnent au lac une présence nouvelle. La silhouette florale du Grand Signal se détache au-dessus des arbres. Ailleurs, des arches d’eau éclairées relient visuellement les rives et l’île près des passerelles. La revue La Science et la Vie décrit les contrastes de couleurs et le fracas des cascades : l’eau est devenue une matière de spectacle."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "At dusk, illuminations designed by André Granet and Roger-Henri Expert transformed the lake’s presence. Grand Signal’s floral silhouette rose above the trees. Elsewhere, illuminated arches of water visually linked the shore and island near the footbridges. La Science et la Vie described contrasting colours and the roar of cascading water. Water itself had become a medium for spectacle."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Mit Einbruch der Dunkelheit veränderten die von André Granet und Roger-Henri Expert entworfenen Illuminationen die Wirkung des Sees. Die blütenartige Silhouette des Grand Signal ragte über die Bäume. An anderer Stelle verbanden beleuchtete Wasserbögen das Ufer und die Insel optisch nahe den Fußgängerstegen. La Science et la Vie beschrieb Farbkontraste und das Rauschen der Kaskaden. Das Wasser selbst wurde zum Stoff des Schauspiels."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Bij het invallen van de duisternis veranderde de door André Granet en Roger-Henri Expert ontworpen verlichting de aanblik van het meer. De bloemachtige gestalte van de Grand Signal stak boven de bomen uit. Elders verbonden verlichte waterbogen de oever en het eiland visueel bij de voetgangersbruggen. La Science et la Vie beschreef kleurcontrasten en het geraas van de watervallen. Het water zelf werd materiaal voor een schouwspel."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Al calare della sera, le illuminazioni progettate da André Granet e Roger-Henri Expert danno al lago una presenza nuova. La sagoma floreale del Grand Signal si staglia sopra gli alberi. Altrove, archi d’acqua illuminati collegano visivamente la riva e l’isola vicino alle passerelle. La Science et la Vie descrive i contrasti cromatici e il fragore delle cascate. L’acqua stessa è diventata materia di spettacolo."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Al anochecer, las iluminaciones diseñadas por André Granet y Roger-Henri Expert dan al lago una presencia nueva. La silueta floral del Grand Signal sobresale por encima de los árboles. En otros puntos, arcos de agua iluminados enlazan visualmente la orilla y la isla junto a las pasarelas. La Science et la Vie describe los contrastes de color y el estruendo de las cascadas. La propia agua se convierte en materia de espectáculo."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Po zmroku iluminacje zaprojektowane przez André Graneta i Rogera-Henriego Experta zmieniały oblicze jeziora. Kwiatowa sylwetka Grand Signal wyrastała ponad drzewa. W innych miejscach rozświetlone wodne łuki łączyły wizualnie brzeg i wyspę w pobliżu kładek. La Science et la Vie opisywała kontrasty barw i huk kaskad. Sama woda stawała się tworzywem widowiska."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Ao cair da noite, as iluminações concebidas por André Granet e Roger-Henri Expert dão ao lago uma presença nova. A silhueta floral do Grand Signal destaca-se acima das árvores. Noutros pontos, arcos de água iluminados ligam visualmente a margem e a ilha perto das pontes pedonais. La Science et la Vie descreve os contrastes de cor e o estrondo das cascatas. A própria água torna-se matéria de espetáculo."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "4af2a76b4afd547caf6c9b8df0d14bb0",
+              "type": "Paragraph",
+              "sortOrder": 60,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Le Théâtre d’Eau pousse cette transformation jusqu’à la scène. À l’extrémité de l’île de Reuilly, une scène associe les représentations à une cascade lumineuse. Le petit temple de l’Amour demeure derrière le décor, caché plutôt que détruit. Le même reportage de 1931 décrit un public installé dans des embarcations sur le lac. Paysage existant, scénographie et fête nautique s’entremêlent dans ce lieu singulier."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Théâtre d’Eau carried that transformation onto the stage. At the tip of the Île de Reuilly, performances were set against an illuminated cascade. The small Temple of Love remained behind the scenery, concealed rather than destroyed. The same 1931 report described spectators in boats on the lake. Existing landscape, theatrical design and nautical festivities came together in this unusual setting."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Das Théâtre d’Eau übertrug diese Verwandlung auf die Bühne. An der Spitze der Île de Reuilly verbanden sich Aufführungen mit einer leuchtenden Kaskade. Der kleine Liebestempel blieb hinter der Kulisse erhalten: Er wurde verdeckt, nicht zerstört. Derselbe Bericht von 1931 beschreibt Zuschauer in Booten auf dem See. Vorhandene Landschaft, Bühnenbild und Wasserfest fanden an diesem besonderen Ort zusammen."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Het Théâtre d’Eau voerde die verandering door tot op het podium. Aan de punt van het Île de Reuilly werden voorstellingen gecombineerd met een lichtgevende cascade. De kleine Liefdestempel bleef achter het decor bewaard: verborgen in plaats van afgebroken. Hetzelfde verslag uit 1931 beschrijft toeschouwers in boten op het meer. Het bestaande landschap, de enscenering en het waterfeest kwamen hier samen."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Il Théâtre d’Eau porta questa trasformazione fino al palcoscenico. Alla punta dell’île de Reuilly, le rappresentazioni si accompagnano a una cascata luminosa. Il piccolo tempio dell’Amore rimane dietro la scenografia, nascosto invece di essere demolito. Lo stesso reportage del 1931 descrive spettatori sistemati su imbarcazioni nel lago. Paesaggio esistente, allestimento teatrale e festa nautica si intrecciano in questo luogo particolare."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "El Théâtre d’Eau lleva esa transformación hasta el escenario. En la punta de la île de Reuilly, las representaciones se combinan con una cascada luminosa. El pequeño templo del Amor permanece detrás del decorado, oculto en lugar de demolido. El mismo reportaje de 1931 describe espectadores instalados en embarcaciones sobre el lago. Paisaje existente, escenografía y fiesta náutica se entrelazan en este lugar singular."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Théâtre d’Eau przenosił tę przemianę na scenę. Na cyplu wyspy Reuilly przedstawieniom towarzyszyła świetlna kaskada. Mała świątynia Miłości pozostała za dekoracją: została zasłonięta, a nie zburzona. Ten sam reportaż z 1931 roku opisuje publiczność w łodziach na jeziorze. Istniejący krajobraz, scenografia i wodne święto splatały się w tym niezwykłym miejscu."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "O Théâtre d’Eau leva essa transformação até ao palco. Na ponta da île de Reuilly, as representações combinam-se com uma cascata luminosa. O pequeno templo do Amor permanece atrás do cenário, oculto em vez de demolido. A mesma reportagem de 1931 descreve espectadores instalados em embarcações no lago. Paisagem existente, cenografia e festa náutica entrelaçam-se neste lugar singular."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "724346c7694d5ba382b3e739eee2f74b",
+              "type": "Heading",
+              "sortOrder": 70,
+              "headingLevel": 2,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Ce que la fête montre et dissimule"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "What the festivities reveal and conceal"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Was das Fest zeigt und verdeckt"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Wat het feest toont en verbergt"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Ciò che la festa mostra e nasconde"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Lo que la fiesta muestra y oculta"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Co święto pokazuje, a co ukrywa"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "O que a festa mostra e esconde"
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "b85499bf2165586a9e5ec8a5833e779a",
+              "type": "Paragraph",
+              "sortOrder": 80,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "La beauté des décors ne résume pourtant pas ce qui est présenté. Des hommes et des femmes venus des colonies travaillent, fabriquent des objets ou participent à des spectacles sous le regard des visiteurs. L’exposition organise leur présence dans un récit de puissance impériale. Les violences de la domination, l’exploitation et les résistances des populations colonisées n’occupent pas la place que leur donnerait une histoire critique de la colonisation."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "The beauty of the surroundings did not explain everything on display. Men and women from the colonies worked, made objects or took part in performances under visitors’ scrutiny. The exposition arranged their presence within a narrative of imperial power. The violence of domination, exploitation and colonised peoples’ resistance did not receive the place they would have in a critical history of colonialism."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Die Schönheit der Kulissen erklärt jedoch nicht alles, was gezeigt wurde. Männer und Frauen aus den Kolonien arbeiteten, fertigten Gegenstände oder nahmen unter den Blicken des Publikums an Vorführungen teil. Die Ausstellung ordnete ihre Anwesenheit in eine Erzählung imperialer Macht ein. Gewalt, Ausbeutung und der Widerstand kolonisierter Bevölkerungen erhielten darin nicht den Platz, den ihnen eine kritische Kolonialgeschichte geben würde."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "De schoonheid van de decors verklaart echter niet alles wat er werd getoond. Mannen en vrouwen uit de koloniën werkten, maakten voorwerpen of traden op onder de blikken van het publiek. De tentoonstelling plaatste hun aanwezigheid binnen een verhaal van imperiale macht. Geweld, uitbuiting en verzet van gekoloniseerde bevolkingen kregen daarin niet de plaats die een kritische koloniale geschiedschrijving eraan zou geven."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "La bellezza degli scenari non esaurisce però ciò che viene mostrato. Uomini e donne provenienti dalle colonie lavorano, fabbricano oggetti o partecipano a spettacoli sotto lo sguardo dei visitatori. L’esposizione dispone la loro presenza all’interno di un racconto di potenza imperiale. Le violenze del dominio, lo sfruttamento e le resistenze delle popolazioni colonizzate non occupano lo spazio che darebbe loro una storia critica del colonialismo."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "La belleza de los decorados no resume, sin embargo, todo lo que se presenta. Hombres y mujeres procedentes de las colonias trabajan, fabrican objetos o participan en espectáculos bajo la mirada del público. La exposición ordena su presencia dentro de un relato de poder imperial. La violencia de la dominación, la explotación y las resistencias de las poblaciones colonizadas no ocupan el espacio que les daría una historia crítica del colonialismo."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Piękno dekoracji nie wyjaśnia jednak wszystkiego, co pokazywano. Kobiety i mężczyźni z kolonii pracowali, wytwarzali przedmioty lub uczestniczyli w pokazach pod spojrzeniami zwiedzających. Wystawa wpisywała ich obecność w opowieść o imperialnej potędze. Przemoc dominacji, wyzysk i opór kolonizowanych społeczności nie otrzymywały w niej miejsca, jakie dałaby im krytyczna historia kolonializmu."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "A beleza dos cenários não resume, porém, tudo o que é apresentado. Homens e mulheres vindos das colónias trabalham, fabricam objetos ou participam em espetáculos sob o olhar dos visitantes. A exposição organiza a sua presença numa narrativa de poder imperial. A violência da dominação, a exploração e as resistências das populações colonizadas não ocupam o lugar que uma história crítica do colonialismo lhes daria."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "0634729bfc5e57399db7c936d0f486dd",
+              "type": "Paragraph",
+              "sortOrder": 90,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "La foule ne fait pas taire les voix dissidentes. Des surréalistes appellent au boycott avant l’inauguration, puis organisent avec des communistes une réponse publique à l’automne. Leur contre-exposition, La Vérité sur les colonies, occupe le lieu devenu la place du Colonel-Fabien, loin des installations de Vincennes. Ses panneaux dénoncent les crimes coloniaux et la précarité économique des territoires dominés. Ils opposent ainsi au récit gouvernemental une critique du principe même de la colonisation, sans que cette protestation atteigne une audience comparable à celle de la manifestation officielle."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "The crowds did not silence dissent. Surrealists called for a boycott before the inauguration, then joined Communists in organising a public response in the autumn. Their counter-exhibition, La Vérité sur les colonies, occupied the site now known as Place du Colonel-Fabien, away from the Vincennes grounds. Its panels condemned colonial crimes and the economic insecurity of dominated territories. They challenged the government’s account by criticising colonialism itself, although the protest reached a far smaller audience than the official event."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Der Andrang ließ die kritischen Stimmen nicht verstummen. Surrealisten riefen vor der Einweihung zum Boykott auf und organisierten im Herbst gemeinsam mit Kommunisten eine öffentliche Antwort. Ihre Gegenausstellung La Vérité sur les colonies fand am späteren Standort der Place du Colonel-Fabien statt, fern vom Gelände in Vincennes. Tafeln prangerten koloniale Verbrechen und die wirtschaftliche Not der beherrschten Gebiete an. Der Darstellung der Regierung stand damit eine grundsätzliche Kolonialismuskritik gegenüber, auch wenn der Protest ein viel kleineres Publikum als die offizielle Veranstaltung erreichte."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "De toeloop deed de kritische stemmen niet verstommen. Surrealisten riepen vóór de opening op tot een boycot en organiseerden in de herfst samen met communisten een openbaar antwoord. Hun tegententoonstelling La Vérité sur les colonies stond op de plek die nu Place du Colonel-Fabien heet, ver van het terrein in Vincennes. Panelen hekelden koloniale misdaden en de economische onzekerheid van overheerste gebieden. Tegenover het regeringsverhaal stelden zij zo een fundamentele kritiek op het kolonialisme, al bereikte het protest een veel kleiner publiek dan het officiële evenement."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "La folla non mette a tacere le voci dissidenti. I surrealisti invitano al boicottaggio prima dell’inaugurazione e in autunno organizzano con i comunisti una risposta pubblica. La loro controesposizione, La Vérité sur les colonies, occupa il luogo oggi chiamato place du Colonel-Fabien, lontano dal recinto di Vincennes. I pannelli denunciano i crimini coloniali e la precarietà economica dei territori dominati. Al racconto governativo oppongono così una critica del principio stesso della colonizzazione, pur raggiungendo un pubblico molto più ridotto rispetto all’evento ufficiale."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "La multitud no silencia las voces disidentes. Los surrealistas llaman al boicot antes de la inauguración y en otoño organizan con los comunistas una respuesta pública. Su contraexposición, La Vérité sur les colonies, ocupa el lugar hoy llamado place du Colonel-Fabien, lejos de las instalaciones de Vincennes. Sus paneles denuncian los crímenes coloniales y la precariedad económica de los territorios dominados. Frente al relato gubernamental plantean así una crítica del propio principio de la colonización, aunque llegan a un público mucho menor que el evento oficial."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Tłumy nie uciszyły głosów sprzeciwu. Surrealiści wzywali do bojkotu jeszcze przed inauguracją, a jesienią wraz z komunistami zorganizowali publiczną odpowiedź. Ich kontrwystawa La Vérité sur les colonies zajęła miejsce noszące dziś nazwę place du Colonel-Fabien, z dala od terenu w Vincennes. Plansze potępiały kolonialne zbrodnie i pokazywały niepewną sytuację gospodarczą podporządkowanych terytoriów. Rządowej narracji przeciwstawiono więc krytykę samej zasady kolonizacji, choć protest przyciągnął znacznie mniej osób niż oficjalne wydarzenie."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "A multidão não silencia as vozes discordantes. Os surrealistas apelam ao boicote antes da inauguração e no outono organizam com os comunistas uma resposta pública. A sua contraexposição, La Vérité sur les colonies, ocupa o lugar hoje chamado place du Colonel-Fabien, longe das instalações de Vincennes. Os painéis denunciam os crimes coloniais e a precariedade económica dos territórios dominados. À narrativa governamental opõem assim uma crítica do próprio princípio da colonização, embora cheguem a um público muito menor do que o evento oficial."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "47a65d3f15bf5c4fa8c9b7d792da46a1",
+              "type": "Heading",
+              "sortOrder": 100,
+              "headingLevel": 2,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Des traces au-delà de novembre"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Traces beyond November"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Spuren über den November hinaus"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Sporen na november"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Tracce oltre novembre"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Huellas más allá de noviembre"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Ślady po listopadzie"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Vestígios para além de novembro"
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "e9e46f47c78e544783982aa8ca23d369",
+              "type": "Paragraph",
+              "sortOrder": 110,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Après la clôture, les bâtiments ne connaissent pas tous le même sort. Le palais, conçu pour durer, conserve la mémoire matérielle du musée colonial et abrite aujourd’hui le Musée national de l’histoire de l’immigration ainsi que l’Aquarium tropical. Deux autres constructions sauvées, celles du Togo et du Cameroun, seront réunies dans la Pagode de Vincennes. Ces survivances invitent à distinguer la fin de la manifestation de la disparition de chacun de ses lieux."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "After the closure, the buildings followed different paths. Intended to endure, the palace retains the material memory of the colonial museum and now houses the Musée national de l’histoire de l’immigration and the Aquarium tropical. The preserved pavilions of Togo and Cameroon would become the Pagode de Vincennes. These surviving places distinguish the event’s end from the disappearance of each individual site."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Nach dem Schluss der Ausstellung nahmen die Gebäude unterschiedliche Wege. Der auf Dauer angelegte Palast bewahrt die materielle Erinnerung an das Kolonialmuseum und beherbergt heute das Musée national de l’histoire de l’immigration sowie das Aquarium tropical. Aus den bewahrten Bauten für Togo und Kamerun entstand später die Pagode de Vincennes. Ihr Fortbestehen unterscheidet das Ende der Veranstaltung vom Verschwinden jedes einzelnen Ortes."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Na de sluiting kregen de gebouwen verschillende bestemmingen. Het paleis, bedoeld om te blijven bestaan, bewaart de materiële herinnering aan het koloniale museum. Nu huisvest het het Musée national de l’histoire de l’immigration en het Aquarium tropical. De eveneens behouden paviljoens van Togo en Kameroen werden later de Pagode de Vincennes. Deze overblijfselen onderscheiden het einde van het evenement van het verdwijnen van elke afzonderlijke plek."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Dopo la chiusura, gli edifici seguono destini diversi. Il palazzo, concepito per durare, conserva la memoria materiale del museo coloniale e oggi ospita il Musée national de l’histoire de l’immigration e l’Aquarium tropical. I padiglioni del Togo e del Camerun, anch’essi preservati, diventeranno la Pagode de Vincennes. Queste sopravvivenze distinguono la fine della manifestazione dalla scomparsa di ogni singolo luogo."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Tras la clausura, los edificios siguen destinos distintos. Concebido para perdurar, el palacio conserva la memoria material del museo colonial y alberga hoy el Musée national de l’histoire de l’immigration y el Aquarium tropical. Los pabellones de Togo y Camerún, también preservados, se convertirán en la Pagode de Vincennes. Estas supervivencias permiten distinguir el final del evento de la desaparición de cada uno de sus lugares."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Po zamknięciu budynki czekały różne losy. Pałac, zaplanowany jako trwały, zachowuje materialną pamięć muzeum kolonialnego, a dziś mieści Musée national de l’histoire de l’immigration i Aquarium tropical. Zachowane pawilony Togo i Kamerunu utworzyły później Pagode de Vincennes. Te ocalałe miejsca odróżniają koniec wydarzenia od zniknięcia każdego z jego obiektów."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Depois do encerramento, os edifícios seguem destinos diferentes. Concebido para durar, o palácio conserva a memória material do museu colonial e acolhe hoje o Musée national de l’histoire de l’immigration e o Aquarium tropical. Dos edifícios preservados do Togo e dos Camarões nascerá a Pagode de Vincennes. Estas permanências distinguem o fim do evento do desaparecimento de cada um dos seus lugares."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "1427b493c2135e349554d0e95ff78718",
+              "type": "Paragraph",
+              "sortOrder": 120,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Une autre trace se trouve sur la côte anglaise. Le Scenic Railway du secteur forain, construit en 1928, est transféré à Great Yarmouth Pleasure Beach, où son exploitation reprend en 1932, sous l’appellation Roller Coaster. En 2016, la structure est protégée au titre de la catégorie Grade II. Son histoire illustre la circulation des attractions après les grandes expositions, tandis que le palais parisien reste attaché au lieu et aux questions soulevées par son origine."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Another trace lies on the English coast. Built in 1928, the fairground section’s Scenic Railway was transferred to Great Yarmouth Pleasure Beach, reopening in 1932 as Roller Coaster. The structure received Grade II protection in 2016. Its history shows how attractions travelled beyond the great expositions, while the Paris palace remains tied to its location and the questions raised by its origins."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Eine weitere Spur führt an die englische Küste. Die 1928 gebaute Scenic Railway aus dem Vergnügungsbereich wurde zum Great Yarmouth Pleasure Beach gebracht und dort 1932 als Roller Coaster wiedereröffnet. Die Konstruktion erhielt 2016 Denkmalschutz der Kategorie Grade II. Ihre Geschichte zeigt, wie Attraktionen nach den großen Ausstellungen weiterreisten, während der Pariser Palast mit seinem Standort und den Fragen seiner Entstehung verbunden bleibt."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Een ander spoor ligt aan de Engelse kust. De in 1928 gebouwde Scenic Railway uit het kermisgedeelte verhuisde naar Great Yarmouth Pleasure Beach en heropende daar in 1932 als Roller Coaster. De constructie kreeg in 2016 de beschermde status Grade II. Haar geschiedenis laat zien hoe attracties na grote tentoonstellingen verder reisden, terwijl het Parijse paleis verbonden blijft met zijn locatie en de vragen rond zijn oorsprong."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Un’altra traccia si trova sulla costa inglese. Lo Scenic Railway del settore delle attrazioni, costruito nel 1928, viene trasferito a Great Yarmouth Pleasure Beach, dove riapre nel 1932 con il nome Roller Coaster. La struttura ottiene nel 2016 la tutela di categoria Grade II. La sua storia racconta la circolazione delle attrazioni dopo le grandi esposizioni, mentre il palazzo parigino resta legato al sito e alle domande sollevate dalla propria origine."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Otra huella se encuentra en la costa inglesa. El Scenic Railway del sector de atracciones, construido en 1928, se traslada a Great Yarmouth Pleasure Beach, donde reabre en 1932 como Roller Coaster. La estructura obtiene protección de categoría Grade II en 2016. Su historia muestra la circulación de las atracciones después de las grandes exposiciones, mientras el palacio parisino sigue ligado a su emplazamiento y a las preguntas que plantea su origen."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Inny ślad znajduje się na angielskim wybrzeżu. Scenic Railway z części rozrywkowej, zbudowaną w 1928 roku, przeniesiono do Great Yarmouth Pleasure Beach. W 1932 roku otwarto ją tam ponownie jako Roller Coaster. Konstrukcja otrzymała w 2016 roku ochronę zabytkową Grade II. Jej historia pokazuje wędrówkę atrakcji po wielkich wystawach, podczas gdy paryski pałac pozostaje związany z miejscem i pytaniami o własną genezę."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Outro vestígio encontra-se na costa inglesa. O Scenic Railway do setor de diversões, construído em 1928, é transferido para Great Yarmouth Pleasure Beach, onde reabre em 1932 com o nome Roller Coaster. A estrutura obtém proteção de categoria Grade II em 2016. A sua história mostra a circulação das atrações depois das grandes exposições, enquanto o palácio parisiense continua ligado ao local e às questões levantadas pela sua origem."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            }
+          ],
+          "sources": [
+            {
+              "label": "Pap Ndiaye — L’Exposition coloniale de 1931, Palais de la Porte Dorée, 2022",
+              "url": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+              "accessedAt": "2026-10-20"
+            },
+            {
+              "label": "Palais de la Porte Dorée — L’éclairage de l’Exposition coloniale internationale de 1931",
+              "url": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+              "accessedAt": "2026-10-20"
+            },
+            {
+              "label": "L.-D. Fourcault — La science de l’éclairage à l’Exposition coloniale, La Science et la Vie 169, juillet 1931, p. 27–32",
+              "url": "https://cnum.cnam.fr/pgi/redir.php?ident=SCVIE.169&onglet=c",
+              "accessedAt": "2026-10-20"
+            },
+            {
+              "label": "Palais de la Porte Dorée — Transcription du parcours architecture, décembre 2025, p. 10",
+              "url": "https://www.palais-portedoree.fr/sites/default/files/2025-12/Transcription_parcours_visite_palais_archi_122025_0.pdf",
+              "accessedAt": "2026-10-20"
+            },
+            {
+              "label": "Historic England — The Scenic Railway Roller Coaster, NHLE 1436976",
+              "url": "https://historicengland.org.uk/listing/the-list/list-entry/1436976",
+              "accessedAt": "2026-10-20"
+            },
+            {
+              "label": "RCDB — Scenic Railway, Exposition Coloniale Internationale, 19255",
+              "url": "https://rcdb.com/19255.htm",
+              "accessedAt": "2026-10-20"
+            }
+          ],
+          "isPublished": false
+        }
+      },
+      {
+        "key": "exposition-1931-11-15-closure",
+        "entityType": "Park",
+        "owner": "park",
+        "ownerId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "parkItemId": null,
+        "itemKey": null,
+        "parkItemKey": null,
+        "contextParkId": null,
+        "year": 1931,
+        "month": 11,
+        "day": 15,
+        "datePrecision": "Day",
+        "eventType": "Closure",
+        "isMajor": true,
+        "isVisible": false,
+        "slug": null,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "L’exposition de 1931 ferme ses portes"
+          },
+          {
+            "languageCode": "en",
+            "value": "The 1931 exposition closes"
+          },
+          {
+            "languageCode": "de",
+            "value": "Die Kolonialausstellung von 1931 schließt"
+          },
+          {
+            "languageCode": "nl",
+            "value": "De koloniale tentoonstelling van 1931 sluit"
+          },
+          {
+            "languageCode": "it",
+            "value": "L’esposizione del 1931 chiude"
+          },
+          {
+            "languageCode": "es",
+            "value": "Clausura de la Exposición de 1931"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Zamknięcie wystawy z 1931 roku"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Encerra-se a exposição de 1931"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "La clôture met fin au grand événement temporaire après plus de six mois. Elle ouvre une autre période pour les bâtiments conservés et le musée permanent, tandis que les installations de l’exposition connaissent des destins distincts."
+          },
+          {
+            "languageCode": "en",
+            "value": "The closure ends the major temporary event after more than six months. It begins another period for the retained buildings and the permanent museum, while the exposition’s installations follow different subsequent paths."
+          },
+          {
+            "languageCode": "de",
+            "value": "Nach mehr als sechs Monaten endet das große, vorübergehende Ereignis. Für die erhaltenen Gebäude und das dauerhafte Museum beginnt eine andere Phase, während die Anlagen der Ausstellung unterschiedliche weitere Wege nehmen."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Na ruim zes maanden komt er een einde aan het grote tijdelijke evenement. Voor de bewaarde gebouwen en het permanente museum begint een andere periode, terwijl de installaties van de tentoonstelling verschillende verdere bestemmingen krijgen."
+          },
+          {
+            "languageCode": "it",
+            "value": "La chiusura mette fine al grande evento temporaneo dopo oltre sei mesi. Per gli edifici conservati e il museo permanente comincia un’altra fase, mentre le installazioni dell’esposizione seguono percorsi diversi."
+          },
+          {
+            "languageCode": "es",
+            "value": "La clausura pone fin al gran evento temporal después de más de seis meses. Comienza otra etapa para los edificios conservados y el museo permanente, mientras las instalaciones de la exposición siguen destinos distintos."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Po ponad sześciu miesiącach wielkie, tymczasowe wydarzenie dobiega końca. Dla zachowanych budynków i stałego muzeum rozpoczyna się inny etap, a poszczególne instalacje wystawy czekają różne dalsze losy."
+          },
+          {
+            "languageCode": "pt",
+            "value": "O encerramento põe fim ao grande evento temporário após mais de seis meses. Começa outra fase para os edifícios preservados e o museu permanente, enquanto as instalações da exposição seguem destinos diferentes."
+          }
+        ],
+        "mainImageId": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "sources": [
+          {
+            "label": "Palais de la Porte Dorée — Transcription du parcours architecture, décembre 2025, p. 10",
+            "url": "https://www.palais-portedoree.fr/sites/default/files/2025-12/Transcription_parcours_visite_palais_archi_122025_0.pdf",
+            "accessedAt": "2026-10-20"
+          }
+        ],
+        "article": null
+      },
+      {
+        "key": "exposition-scenic-1932-relocation-departure",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "1cde91df-8634-4cc9-90d8-b3aa97ea937d",
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "parkItemId": "1cde91df-8634-4cc9-90d8-b3aa97ea937d",
+        "itemKey": "1cde91df-8634-4cc9-90d8-b3aa97ea937d",
+        "parkItemKey": "1cde91df-8634-4cc9-90d8-b3aa97ea937d",
+        "contextParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "year": 1932,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "RelocationDeparture",
+        "isMajor": true,
+        "isVisible": false,
+        "slug": null,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Le Scenic Railway rejoint Great Yarmouth"
+          },
+          {
+            "languageCode": "en",
+            "value": "Scenic Railway moves to Great Yarmouth"
+          },
+          {
+            "languageCode": "de",
+            "value": "Die Scenic Railway zieht nach Great Yarmouth"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Scenic Railway verhuist naar Great Yarmouth"
+          },
+          {
+            "languageCode": "it",
+            "value": "Lo Scenic Railway arriva a Great Yarmouth"
+          },
+          {
+            "languageCode": "es",
+            "value": "El Scenic Railway se traslada a Great Yarmouth"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Scenic Railway trafia do Great Yarmouth"
+          },
+          {
+            "languageCode": "pt",
+            "value": "O Scenic Railway segue para Great Yarmouth"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Les montagnes russes sont transférées en Angleterre et reprennent leur histoire à Great Yarmouth Pleasure Beach sous le nom de Roller Coaster. Cette nouvelle implantation balnéaire prolonge la vie d’une attraction précédemment exploitée dans l’exposition parisienne."
+          },
+          {
+            "languageCode": "en",
+            "value": "The roller coaster is transferred to England and continues its story at Great Yarmouth Pleasure Beach as Roller Coaster. This new seaside home extends the life of an attraction previously operated at the Paris exposition."
+          },
+          {
+            "languageCode": "de",
+            "value": "Die Achterbahn wird nach England gebracht und setzt ihre Geschichte im Great Yarmouth Pleasure Beach als Roller Coaster fort. Der neue Standort an der Küste verlängert das Leben einer Attraktion, die zuvor auf der Pariser Ausstellung betrieben wurde."
+          },
+          {
+            "languageCode": "nl",
+            "value": "De achtbaan wordt naar Engeland overgebracht en zet haar geschiedenis voort bij Great Yarmouth Pleasure Beach als Roller Coaster. De nieuwe plek aan zee verlengt het leven van een attractie die eerder op de Parijse tentoonstelling draaide."
+          },
+          {
+            "languageCode": "it",
+            "value": "Le montagne russe vengono trasferite in Inghilterra e proseguono la loro storia a Great Yarmouth Pleasure Beach con il nome Roller Coaster. La nuova sede balneare prolunga la vita di un’attrazione precedentemente attiva nell’esposizione parigina."
+          },
+          {
+            "languageCode": "es",
+            "value": "La montaña rusa se traslada a Inglaterra y continúa su historia en Great Yarmouth Pleasure Beach con el nombre de Roller Coaster. Esta nueva ubicación costera prolonga la vida de una atracción antes explotada en la exposición parisina."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Kolejka zostaje przeniesiona do Anglii i kontynuuje historię w Great Yarmouth Pleasure Beach jako Roller Coaster. Nowa nadmorska lokalizacja przedłuża życie atrakcji, która wcześniej działała na paryskiej wystawie."
+          },
+          {
+            "languageCode": "pt",
+            "value": "A montanha-russa é transferida para Inglaterra e continua a sua história no Great Yarmouth Pleasure Beach com o nome Roller Coaster. A nova localização balnear prolonga a vida de uma atração anteriormente explorada na exposição parisiense."
+          }
+        ],
+        "mainImageId": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": "Great Yarmouth Pleasure Beach, Great Yarmouth, England",
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "sources": [
+          {
+            "label": "Historic England — The Scenic Railway Roller Coaster, NHLE 1436976",
+            "url": "https://historicengland.org.uk/listing/the-list/list-entry/1436976",
+            "accessedAt": "2026-10-20"
+          },
+          {
+            "label": "RCDB — Scenic Railway, Exposition Coloniale Internationale, 19255",
+            "url": "https://rcdb.com/19255.htm",
+            "accessedAt": "2026-10-20"
+          }
+        ],
+        "article": null
+      }
+    ]
+  },
+  "metadata": {
+    "source": "admin-bulk-park-graph-export",
+    "exportedAtUtc": "2026-11-15T23:58:11.3235242Z"
+  }
+}
