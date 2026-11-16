@@ -1,0 +1,127 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "sourceAccess": [
+    {
+      "name": "belle-fleur-cite",
+      "url": "https://citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-la-belle-fleur",
+      "retrievedAtUtc": "2026-11-16T00:38:59.204364+00:00",
+      "status": 200,
+      "finalUrl": "https://citedelarchitecture.fr/fr/oeuvre/exposition-coloniale-internationale-de-1931-la-fontaine-lumineuse-la-belle-fleur",
+      "bytes": 57520,
+      "sha256": "10bd1d1d5adbfdb54987a13664f5be7faad9eefe9c3b550cbfe72a11ae07bbe7"
+    },
+    {
+      "name": "belle-fleur-commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Fontaine_%22la_belle_fleur%22_%C3%A0_l%27exposition_coloniale_de_1931,_par_Andr%C3%A9_Granet.jpg",
+      "retrievedAtUtc": "2026-11-16T00:38:59.205051+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Fontaine_%22la_belle_fleur%22_%C3%A0_l%27exposition_coloniale_de_1931,_par_Andr%C3%A9_Granet.jpg",
+      "bytes": 92152,
+      "sha256": "d6035049e087f13fe71317cc4674f44f26680ea5405b3989162e2f4a970cd116"
+    },
+    {
+      "name": "belle-fleur-grande-masse",
+      "url": "https://www.grandemasse.org/breves_historiques/filiation-de-latelier-libre-darchitecture-daumet-devenu-officiel-en-1952/",
+      "retrievedAtUtc": "2026-11-16T00:38:59.205499+00:00",
+      "status": 200,
+      "finalUrl": "https://www.grandemasse.org/breves_historiques/filiation-de-latelier-libre-darchitecture-daumet-devenu-officiel-en-1952/",
+      "bytes": 296926,
+      "sha256": "f4b6fbdcdcb0d5c66898fd953807663501df3d3c103a71990c4ff25ff0bc6a11"
+    },
+    {
+      "name": "fountains-mucem",
+      "url": "https://mucem.org/les-collections-du-mucem/explorez-les-collections/?keyword=Exposition+coloniale%2C+exposition+internationale",
+      "retrievedAtUtc": "2026-11-16T00:38:59.205878+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/les-collections-du-mucem/explorez-les-collections/?keyword=Exposition+coloniale%2C+exposition+internationale",
+      "bytes": 715572,
+      "sha256": "374d94c6cc019143ce5e1c7464476cfe6a51d4642a77dbc2ae9686799f184b3c"
+    },
+    {
+      "name": "totems-mucem",
+      "url": "https://mucem.org/notice/c/3188808/",
+      "retrievedAtUtc": "2026-11-16T00:41:57.422417+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/notice/c/3188808/",
+      "bytes": 631135,
+      "sha256": "fe854375282cbf747a71f62a3cbfeb32ef9c0743729579b17b6c9bed41c6a13a"
+    },
+    {
+      "name": "belle-fleur-mucem",
+      "url": "https://mucem.org/notice/c/3188801/",
+      "retrievedAtUtc": "2026-11-16T00:41:57.423435+00:00",
+      "status": 200,
+      "finalUrl": "https://mucem.org/notice/c/3188801/",
+      "bytes": 630964,
+      "sha256": "9bf727b251b3feaf882d09087f396e5536b015e131b7a077f749c7543ee997ed"
+    }
+  ],
+  "imageAccess": [
+    {
+      "name": "belle-fleur-pastel.jpg",
+      "url": "https://citedelarchitecture.fr/sites/default/files/styles/oeuvres_collections/public/flora-images/folder_0001/folder_0001/folder_0001/folder_0061/elem_0118/79_ap1.jpg?itok=vT5UD9dg",
+      "retrievedAtUtc": "2026-11-16T00:41:58.759352+00:00",
+      "status": 200,
+      "finalUrl": "https://citedelarchitecture.fr/sites/default/files/styles/oeuvres_collections/public/flora-images/folder_0001/folder_0001/folder_0001/folder_0061/elem_0118/79_ap1.jpg?itok=vT5UD9dg",
+      "bytes": 47866,
+      "sha256": "a3c97087286ca40d9ab0a25fbeb9b47601a8c269bf67a00257f287bd6655444c"
+    },
+    {
+      "name": "belle-fleur-architecture1931.jpg",
+      "url": "https://www.grandemasse.org/wp-content/uploads/2026/08/13-Exposition-coloniale-Fontaine-Belle-Fleur-LArchitecture-n%C2%B08-15.08.1931-1024x748.jpg",
+      "retrievedAtUtc": "2026-11-16T00:41:58.760550+00:00",
+      "status": 200,
+      "finalUrl": "https://www.grandemasse.org/wp-content/uploads/2026/08/13-Exposition-coloniale-Fontaine-Belle-Fleur-LArchitecture-n%C2%B08-15.08.1931-1024x748.jpg",
+      "bytes": 201074,
+      "sha256": "64278b4d5fc07cc87d6e5414352c5f921628bc04e238d212ea5dc729444afb44"
+    },
+    {
+      "name": "totems-mucem-native.jpg",
+      "url": "https://mdc.mucem.org/assets/356895/image",
+      "retrievedAtUtc": "2026-11-16T00:42:32.110564+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356895/image",
+      "bytes": 253412,
+      "sha256": "e2bc6735ee486ddab4dc7018f143caa7fd774299c258cb53dff38792175a05e8"
+    },
+    {
+      "name": "belle-fleur-mucem-native.jpg",
+      "url": "https://mdc.mucem.org/assets/356888/image",
+      "retrievedAtUtc": "2026-11-16T00:42:32.111413+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356888/image",
+      "bytes": 249767,
+      "sha256": "1ecd1cf0ca819d49e435beb25b9afbe44c883d134d8abadee7ce788b5453eee6"
+    }
+  ],
+  "sourcesPersonallyRead": true,
+  "originalsPersonallyViewed": [
+    "belle-fleur-pastel.jpg",
+    "belle-fleur-architecture1931.jpg",
+    "eclairage_fontaine.jpg",
+    "totems-mucem-native.jpg",
+    "belle-fleur-mucem-native.jpg"
+  ],
+  "identityComparison": {
+    "belleFleur": "Citépastel2011.21.79,MucemexplicitlycaptionedBraun2406,1931LArchitecturephotograph and Palaisnightphoto all share zigzagstem,concentricrosette,sailingvessel and lowcurvingdecorativebase. Thus formerlyunassignedPalaisphoto2006.17.165 nowidentified by multiplevisual/primarymatches.",
+    "totems": "MucemSou31.93.2Braun1389card namesTotems and Granet/Expert, shows steppedwall/masks/waterarcs withAOFpalacebehind, matchingCitépastel. CarnavaletPH19426/27whitewaterfrontstage remains ambiguous and excluded."
+  },
+  "mediaSelection": {
+    "accepted": [
+      "LArchitecturedayreproduction",
+      "Palaisnightwholepublishedview",
+      "MucemTotemsnightwholecard"
+    ],
+    "notSelected": [
+      "Citépastelisartworknotphotograph",
+      "MucemBelleFleurnight resembles opposite/mirroredviewofPalaisphoto; separate exposure notproven, no redundantimport"
+    ]
+  },
+  "openingYear": 1931,
+  "exactOpeningClosingDates": null,
+  "gps": null,
+  "allEightNewNoticesPersonallyAuthoredReviewed": true,
+  "previousPublicationsPerformed": false,
+  "inventoryRemainsPartial": true
+}

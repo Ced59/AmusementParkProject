@@ -1,13 +1,13 @@
 {
   "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
   "status": "partial",
-  "lastApplyOperationId": "c62453bd-4ea8-46ad-900b-6719ccd3460d",
-  "lastIntegrationAppliedAtUtc": "2026-11-16T00:36:08.2304369Z",
+  "lastApplyOperationId": "14a17d38-3cbb-4294-b8b8-740a9ea01b44",
+  "lastIntegrationAppliedAtUtc": "2026-11-16T00:45:20.4556859Z",
   "recoveredApplyCount": 12,
-  "newApplyCount": 4,
-  "items": 7,
+  "newApplyCount": 5,
+  "items": 8,
   "zones": 1,
-  "ownImages": 8,
+  "ownImages": 11,
   "historyEvents": 4,
   "fullAuditPerformed": false,
   "published": false,
@@ -19,7 +19,7 @@
     "Sources/specifications, references, map/GPS",
     "Single final audit and audited publication"
   ],
-  "lastDataIntegrationAt": "2026-11-16T00:38:22.9Z",
+  "lastDataIntegrationAt": "2026-11-16T00:52:03.549Z",
   "photoImports": [
     {
       "imageId": "b2bc130edcfe47ea886baf16bb04e0bd",
@@ -60,16 +60,32 @@
       "imageId": "889d3d9061cf4b98bdf2503a92e6aa28",
       "createdAt": "2026-11-16T00:38:22.9Z",
       "proof": "exposition-coloniale-photo-14-cactus-day-20261116.json"
+    },
+    {
+      "imageId": "6cbe9861670247b993166e13d154cb74",
+      "createdAt": "2026-11-16T00:47:25.115Z",
+      "proof": "exposition-coloniale-photo-17-belle-fleur-day-20261116.json"
+    },
+    {
+      "imageId": "76918452d99e4d42938e89a4cf79a3d9",
+      "createdAt": "2026-11-16T00:51:47.535Z",
+      "proof": "exposition-coloniale-photo-18-belle-fleur-night-20261116.json"
+    },
+    {
+      "imageId": "f80852a49ff746bf9f619301beb6d302",
+      "createdAt": "2026-11-16T00:52:03.549Z",
+      "proof": "exposition-coloniale-photo-19-totems-night-20261116.json"
     }
   ],
-  "newImportCount": 8,
+  "newImportCount": 11,
   "newApplyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-04-totems-correction-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-08-train-notice-20261116.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-11-map-association-20261116.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-12-cactus-20261116.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-12-cactus-20261116.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-16-belle-fleur-20261116.json"
   ],
-  "lastIntegrationImportedAtUtc": "2026-11-16T00:38:22.9Z",
+  "lastIntegrationImportedAtUtc": "2026-11-16T00:52:03.549Z",
   "mapUploads": [
     {
       "year": 1931,
@@ -81,5 +97,12 @@
   "mapAssociationPending": false,
   "officialMaps": 1,
   "latestFollowupProof": "exposition-coloniale-train-map-cactus-followup-20261116.json",
-  "lastIdempotencePreviewAtUtc": "2026-11-16T00:38:58.8212898Z"
+  "lastIdempotencePreviewAtUtc": "2026-11-16T00:38:58.8212898Z",
+  "metadataCorrections": [
+    {
+      "imageId": "c925bcb94f6b464b8f4580cb9a504796",
+      "updatedAt": "2026-11-16T00:51:15.128Z",
+      "proof": "exposition-coloniale-20-train-credit-correction-20261116.json"
+    }
+  ]
 }

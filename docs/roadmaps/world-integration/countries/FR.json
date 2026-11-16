@@ -6147,7 +6147,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-16T00:38:22.900Z",
+      "lastDataIntegrationAt": "2026-11-16T00:52:03.549Z",
       "integrationHistory": [
         {
           "eventId": "apply-9ad9d3c9-e054-432c-a3d3-c2a2dd4e0860",
@@ -6398,6 +6398,56 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-14-cactus-day-20261116.json",
           "auditEvidence": null,
           "summary": "Exposition coloniale1931 : photographie historique 14-cactus-day importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "apply-14a17d38-3cbb-4294-b8b8-740a9ea01b44",
+          "appliedAt": "2026-11-16T00:45:20.455Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-16-belle-fleur-20261116.json",
+          "auditEvidence": null,
+          "summary": "La Belle Fleur : nouvelle fontaine historique privée et huit notices relues ; identité rapprochée du pastel, de la revue de1931 et des photographies nommées, sans dates précises ni GPS inventés."
+        },
+        {
+          "eventId": "import-photo-6cbe9861670247b993166e13d154cb74",
+          "appliedAt": "2026-11-16T00:47:25.115Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-17-belle-fleur-day-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 17-belle-fleur-day importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "update-photo-metadata-c925bcb94f6b464b8f4580cb9a504796-2026-11-16T005115.128Z",
+          "appliedAt": "2026-11-16T00:51:15.128Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-20-train-credit-correction-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : correction des huit crédits de la photographie du train. Granet et Expert sont les architectes, pas un éditeur Garent. Image et autres métadonnées conservées."
+        },
+        {
+          "eventId": "import-photo-76918452d99e4d42938e89a4cf79a3d9",
+          "appliedAt": "2026-11-16T00:51:47.535Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-18-belle-fleur-night-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 18-belle-fleur-night importée privée ; original et24métadonnées vérifiés en huit langues."
+        },
+        {
+          "eventId": "import-photo-f80852a49ff746bf9f619301beb6d302",
+          "appliedAt": "2026-11-16T00:52:03.549Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-photo-19-totems-night-20261116.json",
+          "auditEvidence": null,
+          "summary": "Exposition coloniale1931 : photographie historique 19-totems-night importée privée ; original et24métadonnées vérifiés en huit langues."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

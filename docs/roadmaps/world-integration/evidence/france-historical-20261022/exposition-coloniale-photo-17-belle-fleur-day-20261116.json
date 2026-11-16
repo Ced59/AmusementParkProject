@@ -1,0 +1,284 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "17-belle-fleur-day",
+    "source": {
+      "name": "belle-fleur-architecture1931.jpg",
+      "url": "https://www.grandemasse.org/wp-content/uploads/2026/08/13-Exposition-coloniale-Fontaine-Belle-Fleur-LArchitecture-n%C2%B08-15.08.1931-1024x748.jpg",
+      "retrievedAtUtc": "2026-11-16T00:41:58.760550+00:00",
+      "status": 200,
+      "finalUrl": "https://www.grandemasse.org/wp-content/uploads/2026/08/13-Exposition-coloniale-Fontaine-Belle-Fleur-LArchitecture-n%C2%B08-15.08.1931-1024x748.jpg",
+      "bytes": 201074,
+      "sha256": "64278b4d5fc07cc87d6e5414352c5f921628bc04e238d212ea5dc729444afb44",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/belle-fleur-architecture1931.jpg",
+      "dimensions": [
+        1024,
+        748
+      ],
+      "sourcePage": "https://www.grandemasse.org/breves_historiques/filiation-de-latelier-libre-darchitecture-daumet-devenu-officiel-en-1952/"
+    },
+    "ownerId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Owner authorization for France historical images; institutional/publisher credits preserved, no open-license or named photographer invented.",
+    "review": "Original viewed individually;24 localized alt/caption/credit fields personally written/reviewed, no transformation. Primary source identity triangulation in exposition-coloniale-belle-fleur-totems-qualification-20261116.json."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+      "SourceUrl": "https://www.grandemasse.org/wp-content/uploads/2026/08/13-Exposition-coloniale-Fontaine-Belle-Fleur-LArchitecture-n%C2%B08-15.08.1931-1024x748.jpg",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/belle-fleur-architecture1931.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/17-belle-fleur-day-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/17-belle-fleur-day-import-result.json"
+  },
+  "metadata": {
+    "description": "La Belle Fleur et son bassin dans une photographie publiée par L’Architecture en août 1931. Des passants et des bâtiments aux toits débordants apparaissent derrière les jets.",
+    "sourceUrl": "https://www.grandemasse.org/wp-content/uploads/2026/08/13-Exposition-coloniale-Fontaine-Belle-Fleur-LArchitecture-n%C2%B08-15.08.1931-1024x748.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La Belle Fleur de jour, avec son disque surmonté d’un voilier, sa tige en zigzag et ses jets en arcs devant les arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Belle Fleur by day, with a sailing ship above its disc, a zigzag stem and arched jets in front of trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Belle Fleur bei Tag mit einem Segelschiff über der Scheibe, einem Zickzackstängel und Wasserbögen vor den Bäumen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Belle Fleur overdag, met een zeilschip boven de schijf, een zigzagstengel en gebogen waterstralen voor de bomen."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Belle Fleur di giorno, con un veliero sopra il disco, uno stelo a zigzag e getti ad arco davanti agli alberi."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Belle Fleur de día, con un velero sobre el disco, un tallo en zigzag y chorros en arco ante los árboles."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Belle Fleur za dnia, z żaglowcem nad dyskiem, zygzakowatą łodygą i łukami wody na tle drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Belle Fleur de dia, com um veleiro sobre o disco, uma haste em ziguezague e jatos em arco diante das árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La Belle Fleur et son bassin dans une photographie publiée par L’Architecture en août 1931. Des passants et des bâtiments aux toits débordants apparaissent derrière les jets."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Belle Fleur and its basin in a photograph published by L’Architecture in August 1931. Passers-by and buildings with overhanging roofs appear behind the jets."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Belle Fleur und ihr Becken auf einem Foto, das L’Architecture im August 1931 veröffentlichte. Hinter den Wasserstrahlen sind Spaziergänger und Gebäude mit überhängenden Dächern zu sehen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Belle Fleur en het bassin op een foto die L’Architecture in augustus 1931 publiceerde. Achter de waterstralen staan voorbijgangers en gebouwen met overstekende daken."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Belle Fleur e la vasca in una fotografia pubblicata da L’Architecture nell’agosto 1931. Dietro i getti compaiono passanti ed edifici dai tetti sporgenti."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Belle Fleur y su estanque en una fotografía publicada por L’Architecture en agosto de 1931. Tras los chorros se ven paseantes y edificios de tejados salientes."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Belle Fleur i jej basen na fotografii opublikowanej w L’Architecture w sierpniu 1931 roku. Za strumieniami wody widać przechodniów i budynki z wysuniętymi okapami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Belle Fleur e o tanque numa fotografia publicada pela L’Architecture em agosto de 1931. Atrás dos jatos veem-se passeantes e edifícios com telhados salientes."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "L’Architecture, n° 8, 15 août 1931 ; reproduction Grande Masse des Beaux-Arts. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "L’Architecture, no. 8, 15 August 1931; reproduction by Grande Masse des Beaux-Arts. Photographer unidentified."
+      },
+      {
+        "languageCode": "de",
+        "value": "L’Architecture, Nr. 8, 15. August 1931; Reproduktion der Grande Masse des Beaux-Arts. Fotograf unbekannt."
+      },
+      {
+        "languageCode": "nl",
+        "value": "L’Architecture, nr. 8, 15 augustus 1931; reproductie Grande Masse des Beaux-Arts. Fotograaf onbekend."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’Architecture, n. 8, 15 agosto 1931; riproduzione Grande Masse des Beaux-Arts. Fotografo non identificato."
+      },
+      {
+        "languageCode": "es",
+        "value": "L’Architecture, n.º 8, 15 de agosto de 1931; reproducción de Grande Masse des Beaux-Arts. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "pl",
+        "value": "L’Architecture, nr 8, 15 sierpnia 1931 roku; reprodukcja Grande Masse des Beaux-Arts. Fotograf nieznany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "L’Architecture, n.º 8, 15 de agosto de 1931; reprodução da Grande Masse des Beaux-Arts. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-16T00:47:23.0012906Z",
+    "result": {
+      "id": "6cbe9861670247b993166e13d154cb74",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+      "path": "park_item/6cbe9861670247b993166e13d154cb74",
+      "description": "La Belle Fleur et son bassin dans une photographie publiée par L’Architecture en août 1931. Des passants et des bâtiments aux toits débordants apparaissent derrière les jets.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1024,
+      "height": 748,
+      "sizeInBytes": 201074,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.grandemasse.org/wp-content/uploads/2026/08/13-Exposition-coloniale-Fontaine-Belle-Fleur-LArchitecture-n%C2%B08-15.08.1931-1024x748.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La Belle Fleur de jour, avec son disque surmonté d’un voilier, sa tige en zigzag et ses jets en arcs devant les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Belle Fleur by day, with a sailing ship above its disc, a zigzag stem and arched jets in front of trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "La Belle Fleur bei Tag mit einem Segelschiff über der Scheibe, einem Zickzackstängel und Wasserbögen vor den Bäumen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "La Belle Fleur overdag, met een zeilschip boven de schijf, een zigzagstengel en gebogen waterstralen voor de bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La Belle Fleur di giorno, con un veliero sopra il disco, uno stelo a zigzag e getti ad arco davanti agli alberi."
+        },
+        {
+          "languageCode": "es",
+          "value": "La Belle Fleur de día, con un velero sobre el disco, un tallo en zigzag y chorros en arco ante los árboles."
+        },
+        {
+          "languageCode": "pl",
+          "value": "La Belle Fleur za dnia, z żaglowcem nad dyskiem, zygzakowatą łodygą i łukami wody na tle drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "La Belle Fleur de dia, com um veleiro sobre o disco, uma haste em ziguezague e jatos em arco diante das árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La Belle Fleur et son bassin dans une photographie publiée par L’Architecture en août 1931. Des passants et des bâtiments aux toits débordants apparaissent derrière les jets."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Belle Fleur and its basin in a photograph published by L’Architecture in August 1931. Passers-by and buildings with overhanging roofs appear behind the jets."
+        },
+        {
+          "languageCode": "de",
+          "value": "La Belle Fleur und ihr Becken auf einem Foto, das L’Architecture im August 1931 veröffentlichte. Hinter den Wasserstrahlen sind Spaziergänger und Gebäude mit überhängenden Dächern zu sehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "La Belle Fleur en het bassin op een foto die L’Architecture in augustus 1931 publiceerde. Achter de waterstralen staan voorbijgangers en gebouwen met overstekende daken."
+        },
+        {
+          "languageCode": "it",
+          "value": "La Belle Fleur e la vasca in una fotografia pubblicata da L’Architecture nell’agosto 1931. Dietro i getti compaiono passanti ed edifici dai tetti sporgenti."
+        },
+        {
+          "languageCode": "es",
+          "value": "La Belle Fleur y su estanque en una fotografía publicada por L’Architecture en agosto de 1931. Tras los chorros se ven paseantes y edificios de tejados salientes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "La Belle Fleur i jej basen na fotografii opublikowanej w L’Architecture w sierpniu 1931 roku. Za strumieniami wody widać przechodniów i budynki z wysuniętymi okapami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "La Belle Fleur e o tanque numa fotografia publicada pela L’Architecture em agosto de 1931. Atrás dos jatos veem-se passeantes e edifícios com telhados salientes."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "L’Architecture, n° 8, 15 août 1931 ; reproduction Grande Masse des Beaux-Arts. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "L’Architecture, no. 8, 15 August 1931; reproduction by Grande Masse des Beaux-Arts. Photographer unidentified."
+        },
+        {
+          "languageCode": "de",
+          "value": "L’Architecture, Nr. 8, 15. August 1931; Reproduktion der Grande Masse des Beaux-Arts. Fotograf unbekannt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "L’Architecture, nr. 8, 15 augustus 1931; reproductie Grande Masse des Beaux-Arts. Fotograaf onbekend."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’Architecture, n. 8, 15 agosto 1931; riproduzione Grande Masse des Beaux-Arts. Fotografo non identificato."
+        },
+        {
+          "languageCode": "es",
+          "value": "L’Architecture, n.º 8, 15 de agosto de 1931; reproducción de Grande Masse des Beaux-Arts. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "L’Architecture, nr 8, 15 sierpnia 1931 roku; reprodukcja Grande Masse des Beaux-Arts. Fotograf nieznany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "L’Architecture, n.º 8, 15 de agosto de 1931; reprodução da Grande Masse des Beaux-Arts. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:47:25.115Z",
+      "updatedAt": "2026-11-16T00:47:28.905Z"
+    },
+    "receivedAtUtc": "2026-11-16T00:47:32.0440783Z"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

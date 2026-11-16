@@ -1,0 +1,295 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "name": "Exposition Coloniale Internationale",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "exposition-coloniale-belle-fleur",
+          "name": "La Belle Fleur",
+          "category": "Other",
+          "type": "Other",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "ClosedDefinitively",
+            "openingDate": "1931",
+            "sourceUrl": "https://mucem.org/notice/c/3188801/"
+          },
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une fleur géométrique à l’entrée de l’exposition</h2><p>La Belle Fleur accueillait les visiteurs de l’Exposition coloniale de 1931 avec une haute composition de disques, de zigzags et de jets d’eau. La rosace qui la couronnait portait un voilier en silhouette. Au-dessous, la tige anguleuse descendait vers un socle orné de boucles et de grandes feuilles recourbées.</p><p>Le bassin bas laissait voir l’ensemble depuis les allées voisines. Dans la photographie publiée par L’Architecture en août 1931, la fontaine se détache devant les arbres, avec des constructions à toitures débordantes et des passants à l’arrière-plan. L’eau forme des arcs de part et d’autre du décor central.</p><h2>Les éventails d’eau de Granet et Expert</h2><p>André Granet et Roger-Henri Expert signaient cette fontaine dont les vues nocturnes montrent une autre présence. Les jets étagés dessinent deux grands éventails autour de la tige éclairée, tandis que la rosace et le petit navire émergent au-dessus des feuillages sombres.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A geometric flower at the exposition entrance</h2><p>La Belle Fleur greeted visitors to the 1931 Colonial Exposition with a tall composition of discs, zigzags and water jets. A sailing ship in silhouette stood above its crowning rosette. Below it, an angular stem descended to a base decorated with loops and large curling leaves.</p><p>The low basin left the whole structure visible from the surrounding paths. In the photograph published by L’Architecture in August 1931, the fountain stands against the trees, with overhanging roofs and passers-by in the background. Water arches out on either side of the central decoration.</p><h2>Granet and Expert’s fans of water</h2><p>André Granet and Roger-Henri Expert designed this fountain, which takes on a different presence in night-time views. The tiers of jets form two broad fans around the illuminated stem, while the rosette and little ship rise above the dark foliage.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine geometrische Blume am Ausstellungseingang</h2><p>La Belle Fleur empfing die Besucher der Kolonialausstellung von 1931 mit einer hohen Komposition aus Scheiben, Zickzackformen und Wasserstrahlen. Über der bekrönenden Rosette stand die Silhouette eines Segelschiffs. Darunter führte ein kantiger Stängel zu einem Sockel mit Schleifen und großen geschwungenen Blättern.</p><p>Das niedrige Becken gab von den benachbarten Wegen aus den Blick auf die gesamte Anlage frei. Auf dem im August 1931 in L’Architecture veröffentlichten Foto hebt sich der Brunnen vor den Bäumen ab; im Hintergrund stehen Gebäude mit überhängenden Dächern und Spaziergänger. Beiderseits des mittleren Dekors spannt sich das Wasser in Bögen.</p><h2>Die Wasserfächer von Granet und Expert</h2><p>André Granet und Roger-Henri Expert entwarfen den Brunnen, der auf Nachtaufnahmen eine andere Wirkung entfaltet. Die übereinander angeordneten Strahlen bilden zwei breite Fächer um den beleuchteten Stängel. Rosette und Segelschiff ragen über das dunkle Laub hinaus.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een geometrische bloem bij de ingang</h2><p>La Belle Fleur verwelkomde bezoekers van de Koloniale Tentoonstelling van 1931 met een hoge compositie van schijven, zigzaglijnen en waterstralen. Boven op de rozet stond het silhouet van een zeilschip. Daaronder liep een hoekige stengel naar een voetstuk met lussen en grote gekrulde bladeren.</p><p>Door het lage bassin bleef het geheel zichtbaar vanaf de omliggende paden. Op de foto die L’Architecture in augustus 1931 publiceerde, steekt de fontein af tegen de bomen, met overstekende daken en voorbijgangers op de achtergrond. Het water vormt bogen aan weerszijden van het middendeel.</p><h2>De waterwaaiers van Granet en Expert</h2><p>André Granet en Roger-Henri Expert ontwierpen de fontein, die op nachtfoto’s een andere uitstraling krijgt. De waterstralen vormen boven elkaar twee brede waaiers rond de verlichte stengel. De rozet en het scheepje steken boven het donkere gebladerte uit.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un fiore geometrico all’ingresso dell’esposizione</h2><p>La Belle Fleur accoglieva i visitatori dell’Esposizione coloniale del 1931 con un’alta composizione di dischi, zigzag e getti d’acqua. Sopra la rosetta che la coronava si stagliava la sagoma di un veliero. Più in basso, lo stelo angolare scendeva verso un basamento ornato di anelli e grandi foglie ricurve.</p><p>La vasca bassa lasciava vedere l’intera struttura dai viali vicini. Nella fotografia pubblicata da L’Architecture nell’agosto 1931, la fontana si distingue davanti agli alberi, con edifici dai tetti sporgenti e passanti sullo sfondo. L’acqua disegna archi ai lati della decorazione centrale.</p><h2>I ventagli d’acqua di Granet ed Expert</h2><p>André Granet e Roger-Henri Expert firmarono questa fontana, che nelle vedute notturne assume un aspetto diverso. I getti sovrapposti formano due ampi ventagli attorno allo stelo illuminato, mentre la rosetta e il piccolo veliero emergono sopra le chiome scure.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una flor geométrica a la entrada de la exposición</h2><p>La Belle Fleur recibía a los visitantes de la Exposición Colonial de 1931 con una alta composición de discos, zigzags y chorros de agua. La roseta que la coronaba llevaba la silueta de un velero. Debajo, el tallo anguloso descendía hacia una base adornada con bucles y grandes hojas curvadas.</p><p>El estanque bajo permitía contemplar el conjunto desde los caminos cercanos. En la fotografía publicada por L’Architecture en agosto de 1931, la fuente destaca ante los árboles, con edificios de tejados salientes y paseantes al fondo. El agua forma arcos a ambos lados del adorno central.</p><h2>Los abanicos de agua de Granet y Expert</h2><p>André Granet y Roger-Henri Expert diseñaron esta fuente, que adquiere otra presencia en las vistas nocturnas. Los chorros escalonados dibujan dos grandes abanicos alrededor del tallo iluminado, mientras la roseta y el pequeño barco sobresalen del follaje oscuro.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Geometryczny kwiat przy wejściu na wystawę</h2><p>La Belle Fleur witała zwiedzających Wystawę Kolonialną w 1931 roku wysoką kompozycją z dysków, zygzaków i strumieni wody. Nad wieńczącą ją rozetą widniała sylwetka żaglowca. Niżej kanciasta łodyga opadała ku podstawie ozdobionej pętlami i dużymi wygiętymi liśćmi.</p><p>Niski basen pozwalał oglądać całą budowlę z pobliskich alejek. Na fotografii opublikowanej w L’Architecture w sierpniu 1931 roku fontanna odcina się od drzew, a w tle widać budynki z wysuniętymi okapami i przechodniów. Woda tworzy łuki po obu stronach środkowej dekoracji.</p><h2>Wodne wachlarze Graneta i Experta</h2><p>André Granet i Roger-Henri Expert zaprojektowali fontannę, która na nocnych zdjęciach nabiera innego wyrazu. Piętrzące się strumienie tworzą dwa szerokie wachlarze wokół oświetlonej łodygi, a rozeta i mały statek wyłaniają się ponad ciemnym listowiem.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma flor geométrica à entrada da exposição</h2><p>La Belle Fleur recebia os visitantes da Exposição Colonial de 1931 com uma composição alta de discos, ziguezagues e jatos de água. A rosácea que a coroava era encimada pela silhueta de um veleiro. Mais abaixo, a haste angulosa descia até uma base ornamentada com laços e grandes folhas recurvadas.</p><p>O tanque baixo permitia ver o conjunto a partir das alamedas próximas. Na fotografia publicada pela L’Architecture em agosto de 1931, a fonte destaca-se diante das árvores, com edifícios de telhados salientes e passeantes ao fundo. A água forma arcos de ambos os lados da decoração central.</p><h2>Os leques de água de Granet e Expert</h2><p>André Granet e Roger-Henri Expert conceberam esta fonte, que ganha outra presença nas vistas noturnas. Os jatos sobrepostos desenham dois grandes leques em torno da haste iluminada, enquanto a rosácea e o pequeno navio sobressaem da folhagem escura.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-exposition-coloniale-belle-fleur",
+        "notes": "Distinct1931fountain. Cité2011.21.79pastel, MucemSou31.85.1Braun photograph, LArchitecture8/15Aug1931 reproduced by GrandeMasse, Palais2006.17.165nightphotograph matched visually. No new/shared architectreference; Granet/Expert in prose confirmed primarycard. Closed1931exposition incarnation; no removal/exactopening/closingday inferred. No GPS/accessconstraints proven. Eight notices personally authored and fully reviewed. Photoimport separate, itemprivate; nofinalaudit/publication."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "8325a217-257b-4595-ba40-54bcc1b73524",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:45:06.1198208Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2edbd74a-fe1f-48c4-ad51-1c1c83213ead",
+        "entityKey": "exposition-coloniale-belle-fleur",
+        "displayName": "La Belle Fleur",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Other"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Other"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine geometrische Blume am Ausstellungseingang</h2><p>La Belle Fleur empfing die Besucher der Kolonialausstellung von 1931 mit einer hohen Komposition aus Scheiben, Zickzackformen und Wasserstrahlen. Über der bekrönenden Rosette stand die Silhouette eines Segelschiffs. Darunter führte ein kantiger Stängel zu einem Sockel mit Schleifen und großen geschwungenen Blättern.</p><p>Das niedrige Becken gab von den benachbarten Wegen aus den Blick auf die gesamte Anlage frei. Auf dem im August 1931 in L’Architecture veröffentlichten Foto hebt sich der Brunnen vor den Bäumen ab; im Hintergrund stehen Gebäude mit überhängenden Dächern und Spaziergänger. Beiderseits des mittleren Dekors spannt sich das Wasser in Bögen.</p><h2>Die Wasserfächer von Granet und Expert</h2><p>André Granet und Roger-Henri Expert entwarfen den Brunnen, der auf Nachtaufnahmen eine andere Wirkung entfaltet. Die übereinander angeordneten Strahlen bilden zwei breite Fächer um den beleuchteten Stängel. Rosette und Segelschiff ragen über das dunkle Laub hinaus.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A geometric flower at the exposition entrance</h2><p>La Belle Fleur greeted visitors to the 1931 Colonial Exposition with a tall composition of discs, zigzags and water jets. A sailing ship in silhouette stood above its crowning rosette. Below it, an angular stem descended to a base decorated with loops and large curling leaves.</p><p>The low basin left the whole structure visible from the surrounding paths. In the photograph published by L’Architecture in August 1931, the fountain stands against the trees, with overhanging roofs and passers-by in the background. Water arches out on either side of the central decoration.</p><h2>Granet and Expert’s fans of water</h2><p>André Granet and Roger-Henri Expert designed this fountain, which takes on a different presence in night-time views. The tiers of jets form two broad fans around the illuminated stem, while the rosette and little ship rise above the dark foliage.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una flor geométrica a la entrada de la exposición</h2><p>La Belle Fleur recibía a los visitantes de la Exposición Colonial de 1931 con una alta composición de discos, zigzags y chorros de agua. La roseta que la coronaba llevaba la silueta de un velero. Debajo, el tallo anguloso descendía hacia una base adornada con bucles y grandes hojas curvadas.</p><p>El estanque bajo permitía contemplar el conjunto desde los caminos cercanos. En la fotografía publicada por L’Architecture en agosto de 1931, la fuente destaca ante los árboles, con edificios de tejados salientes y paseantes al fondo. El agua forma arcos a ambos lados del adorno central.</p><h2>Los abanicos de agua de Granet y Expert</h2><p>André Granet y Roger-Henri Expert diseñaron esta fuente, que adquiere otra presencia en las vistas nocturnas. Los chorros escalonados dibujan dos grandes abanicos alrededor del tallo iluminado, mientras la roseta y el pequeño barco sobresalen del follaje oscuro.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une fleur géométrique à l’entrée de l’exposition</h2><p>La Belle Fleur accueillait les visiteurs de l’Exposition coloniale de 1931 avec une haute composition de disques, de zigzags et de jets d’eau. La rosace qui la couronnait portait un voilier en silhouette. Au-dessous, la tige anguleuse descendait vers un socle orné de boucles et de grandes feuilles recourbées.</p><p>Le bassin bas laissait voir l’ensemble depuis les allées voisines. Dans la photographie publiée par L’Architecture en août 1931, la fontaine se détache devant les arbres, avec des constructions à toitures débordantes et des passants à l’arrière-plan. L’eau forme des arcs de part et d’autre du décor central.</p><h2>Les éventails d’eau de Granet et Expert</h2><p>André Granet et Roger-Henri Expert signaient cette fontaine dont les vues nocturnes montrent une autre présence. Les jets étagés dessinent deux grands éventails autour de la tige éclairée, tandis que la rosace et le petit navire émergent au-dessus des feuillages sombres.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un fiore geometrico all’ingresso dell’esposizione</h2><p>La Belle Fleur accoglieva i visitatori dell’Esposizione coloniale del 1931 con un’alta composizione di dischi, zigzag e getti d’acqua. Sopra la rosetta che la coronava si stagliava la sagoma di un veliero. Più in basso, lo stelo angolare scendeva verso un basamento ornato di anelli e grandi foglie ricurve.</p><p>La vasca bassa lasciava vedere l’intera struttura dai viali vicini. Nella fotografia pubblicata da L’Architecture nell’agosto 1931, la fontana si distingue davanti agli alberi, con edifici dai tetti sporgenti e passanti sullo sfondo. L’acqua disegna archi ai lati della decorazione centrale.</p><h2>I ventagli d’acqua di Granet ed Expert</h2><p>André Granet e Roger-Henri Expert firmarono questa fontana, che nelle vedute notturne assume un aspetto diverso. I getti sovrapposti formano due ampi ventagli attorno allo stelo illuminato, mentre la rosetta e il piccolo veliero emergono sopra le chiome scure.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een geometrische bloem bij de ingang</h2><p>La Belle Fleur verwelkomde bezoekers van de Koloniale Tentoonstelling van 1931 met een hoge compositie van schijven, zigzaglijnen en waterstralen. Boven op de rozet stond het silhouet van een zeilschip. Daaronder liep een hoekige stengel naar een voetstuk met lussen en grote gekrulde bladeren.</p><p>Door het lage bassin bleef het geheel zichtbaar vanaf de omliggende paden. Op de foto die L’Architecture in augustus 1931 publiceerde, steekt de fontein af tegen de bomen, met overstekende daken en voorbijgangers op de achtergrond. Het water vormt bogen aan weerszijden van het middendeel.</p><h2>De waterwaaiers van Granet en Expert</h2><p>André Granet en Roger-Henri Expert ontwierpen de fontein, die op nachtfoto’s een andere uitstraling krijgt. De waterstralen vormen boven elkaar twee brede waaiers rond de verlichte stengel. De rozet en het scheepje steken boven het donkere gebladerte uit.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Geometryczny kwiat przy wejściu na wystawę</h2><p>La Belle Fleur witała zwiedzających Wystawę Kolonialną w 1931 roku wysoką kompozycją z dysków, zygzaków i strumieni wody. Nad wieńczącą ją rozetą widniała sylwetka żaglowca. Niżej kanciasta łodyga opadała ku podstawie ozdobionej pętlami i dużymi wygiętymi liśćmi.</p><p>Niski basen pozwalał oglądać całą budowlę z pobliskich alejek. Na fotografii opublikowanej w L’Architecture w sierpniu 1931 roku fontanna odcina się od drzew, a w tle widać budynki z wysuniętymi okapami i przechodniów. Woda tworzy łuki po obu stronach środkowej dekoracji.</p><h2>Wodne wachlarze Graneta i Experta</h2><p>André Granet i Roger-Henri Expert zaprojektowali fontannę, która na nocnych zdjęciach nabiera innego wyrazu. Piętrzące się strumienie tworzą dwa szerokie wachlarze wokół oświetlonej łodygi, a rozeta i mały statek wyłaniają się ponad ciemnym listowiem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma flor geométrica à entrada da exposição</h2><p>La Belle Fleur recebia os visitantes da Exposição Colonial de 1931 com uma composição alta de discos, ziguezagues e jatos de água. A rosácea que a coroava era encimada pela silhueta de um veleiro. Mais abaixo, a haste angulosa descia até uma base ornamentada com laços e grandes folhas recurvadas.</p><p>O tanque baixo permitia ver o conjunto a partir das alamedas próximas. Na fotografia publicada pela L’Architecture em agosto de 1931, a fonte destaca-se diante das árvores, com edifícios de telhados salientes e passeantes ao fundo. A água forma arcos de ambos os lados da decoração central.</p><h2>Os leques de água de Granet e Expert</h2><p>André Granet e Roger-Henri Expert conceberam esta fonte, que ganha outra presença nas vistas noturnas. Os jatos sobrepostos desenham dois grandes leques em torno da haste iluminada, enquanto a rosácea e o pequeno navio sobressaem da folhagem escura.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://mucem.org/notice/c/3188801/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "1931"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "14a17d38-3cbb-4294-b8b8-740a9ea01b44",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:45:20.4556852Z",
+    "appliedAtUtc": "2026-11-16T00:45:20.4556859Z",
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+        "entityKey": "exposition-coloniale-belle-fleur",
+        "displayName": "La Belle Fleur",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Other"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Other"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine geometrische Blume am Ausstellungseingang</h2><p>La Belle Fleur empfing die Besucher der Kolonialausstellung von 1931 mit einer hohen Komposition aus Scheiben, Zickzackformen und Wasserstrahlen. Über der bekrönenden Rosette stand die Silhouette eines Segelschiffs. Darunter führte ein kantiger Stängel zu einem Sockel mit Schleifen und großen geschwungenen Blättern.</p><p>Das niedrige Becken gab von den benachbarten Wegen aus den Blick auf die gesamte Anlage frei. Auf dem im August 1931 in L’Architecture veröffentlichten Foto hebt sich der Brunnen vor den Bäumen ab; im Hintergrund stehen Gebäude mit überhängenden Dächern und Spaziergänger. Beiderseits des mittleren Dekors spannt sich das Wasser in Bögen.</p><h2>Die Wasserfächer von Granet und Expert</h2><p>André Granet und Roger-Henri Expert entwarfen den Brunnen, der auf Nachtaufnahmen eine andere Wirkung entfaltet. Die übereinander angeordneten Strahlen bilden zwei breite Fächer um den beleuchteten Stängel. Rosette und Segelschiff ragen über das dunkle Laub hinaus.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A geometric flower at the exposition entrance</h2><p>La Belle Fleur greeted visitors to the 1931 Colonial Exposition with a tall composition of discs, zigzags and water jets. A sailing ship in silhouette stood above its crowning rosette. Below it, an angular stem descended to a base decorated with loops and large curling leaves.</p><p>The low basin left the whole structure visible from the surrounding paths. In the photograph published by L’Architecture in August 1931, the fountain stands against the trees, with overhanging roofs and passers-by in the background. Water arches out on either side of the central decoration.</p><h2>Granet and Expert’s fans of water</h2><p>André Granet and Roger-Henri Expert designed this fountain, which takes on a different presence in night-time views. The tiers of jets form two broad fans around the illuminated stem, while the rosette and little ship rise above the dark foliage.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una flor geométrica a la entrada de la exposición</h2><p>La Belle Fleur recibía a los visitantes de la Exposición Colonial de 1931 con una alta composición de discos, zigzags y chorros de agua. La roseta que la coronaba llevaba la silueta de un velero. Debajo, el tallo anguloso descendía hacia una base adornada con bucles y grandes hojas curvadas.</p><p>El estanque bajo permitía contemplar el conjunto desde los caminos cercanos. En la fotografía publicada por L’Architecture en agosto de 1931, la fuente destaca ante los árboles, con edificios de tejados salientes y paseantes al fondo. El agua forma arcos a ambos lados del adorno central.</p><h2>Los abanicos de agua de Granet y Expert</h2><p>André Granet y Roger-Henri Expert diseñaron esta fuente, que adquiere otra presencia en las vistas nocturnas. Los chorros escalonados dibujan dos grandes abanicos alrededor del tallo iluminado, mientras la roseta y el pequeño barco sobresalen del follaje oscuro.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une fleur géométrique à l’entrée de l’exposition</h2><p>La Belle Fleur accueillait les visiteurs de l’Exposition coloniale de 1931 avec une haute composition de disques, de zigzags et de jets d’eau. La rosace qui la couronnait portait un voilier en silhouette. Au-dessous, la tige anguleuse descendait vers un socle orné de boucles et de grandes feuilles recourbées.</p><p>Le bassin bas laissait voir l’ensemble depuis les allées voisines. Dans la photographie publiée par L’Architecture en août 1931, la fontaine se détache devant les arbres, avec des constructions à toitures débordantes et des passants à l’arrière-plan. L’eau forme des arcs de part et d’autre du décor central.</p><h2>Les éventails d’eau de Granet et Expert</h2><p>André Granet et Roger-Henri Expert signaient cette fontaine dont les vues nocturnes montrent une autre présence. Les jets étagés dessinent deux grands éventails autour de la tige éclairée, tandis que la rosace et le petit navire émergent au-dessus des feuillages sombres.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un fiore geometrico all’ingresso dell’esposizione</h2><p>La Belle Fleur accoglieva i visitatori dell’Esposizione coloniale del 1931 con un’alta composizione di dischi, zigzag e getti d’acqua. Sopra la rosetta che la coronava si stagliava la sagoma di un veliero. Più in basso, lo stelo angolare scendeva verso un basamento ornato di anelli e grandi foglie ricurve.</p><p>La vasca bassa lasciava vedere l’intera struttura dai viali vicini. Nella fotografia pubblicata da L’Architecture nell’agosto 1931, la fontana si distingue davanti agli alberi, con edifici dai tetti sporgenti e passanti sullo sfondo. L’acqua disegna archi ai lati della decorazione centrale.</p><h2>I ventagli d’acqua di Granet ed Expert</h2><p>André Granet e Roger-Henri Expert firmarono questa fontana, che nelle vedute notturne assume un aspetto diverso. I getti sovrapposti formano due ampi ventagli attorno allo stelo illuminato, mentre la rosetta e il piccolo veliero emergono sopra le chiome scure.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een geometrische bloem bij de ingang</h2><p>La Belle Fleur verwelkomde bezoekers van de Koloniale Tentoonstelling van 1931 met een hoge compositie van schijven, zigzaglijnen en waterstralen. Boven op de rozet stond het silhouet van een zeilschip. Daaronder liep een hoekige stengel naar een voetstuk met lussen en grote gekrulde bladeren.</p><p>Door het lage bassin bleef het geheel zichtbaar vanaf de omliggende paden. Op de foto die L’Architecture in augustus 1931 publiceerde, steekt de fontein af tegen de bomen, met overstekende daken en voorbijgangers op de achtergrond. Het water vormt bogen aan weerszijden van het middendeel.</p><h2>De waterwaaiers van Granet en Expert</h2><p>André Granet en Roger-Henri Expert ontwierpen de fontein, die op nachtfoto’s een andere uitstraling krijgt. De waterstralen vormen boven elkaar twee brede waaiers rond de verlichte stengel. De rozet en het scheepje steken boven het donkere gebladerte uit.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Geometryczny kwiat przy wejściu na wystawę</h2><p>La Belle Fleur witała zwiedzających Wystawę Kolonialną w 1931 roku wysoką kompozycją z dysków, zygzaków i strumieni wody. Nad wieńczącą ją rozetą widniała sylwetka żaglowca. Niżej kanciasta łodyga opadała ku podstawie ozdobionej pętlami i dużymi wygiętymi liśćmi.</p><p>Niski basen pozwalał oglądać całą budowlę z pobliskich alejek. Na fotografii opublikowanej w L’Architecture w sierpniu 1931 roku fontanna odcina się od drzew, a w tle widać budynki z wysuniętymi okapami i przechodniów. Woda tworzy łuki po obu stronach środkowej dekoracji.</p><h2>Wodne wachlarze Graneta i Experta</h2><p>André Granet i Roger-Henri Expert zaprojektowali fontannę, która na nocnych zdjęciach nabiera innego wyrazu. Piętrzące się strumienie tworzą dwa szerokie wachlarze wokół oświetlonej łodygi, a rozeta i mały statek wyłaniają się ponad ciemnym listowiem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma flor geométrica à entrada da exposição</h2><p>La Belle Fleur recebia os visitantes da Exposição Colonial de 1931 com uma composição alta de discos, ziguezagues e jatos de água. A rosácea que a coroava era encimada pela silhueta de um veleiro. Mais abaixo, a haste angulosa descia até uma base ornamentada com laços e grandes folhas recurvadas.</p><p>O tanque baixo permitia ver o conjunto a partir das alamedas próximas. Na fotografia publicada pela L’Architecture em agosto de 1931, a fonte destaca-se diante das árvores, com edifícios de telhados salientes e passeantes ao fundo. A água forma arcos de ambos os lados da decoração central.</p><h2>Os leques de água de Granet e Expert</h2><p>André Granet e Roger-Henri Expert conceberam esta fonte, que ganha outra presença nas vistas noturnas. Os jatos sobrepostos desenham dois grandes leques em torno da haste iluminada, enquanto a rosácea e o pequeno navio sobressaem da folhagem escura.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://mucem.org/notice/c/3188801/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "1931"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "qualification": "exposition-coloniale-belle-fleur-totems-qualification-20261116.json",
+  "allEightDescriptionsPersonallyReviewedAndExact": true,
+  "dateNormalization": "Raw openingDate1931 maps to openingDateText1931 and exact openingDate null; no further mutation.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -819,6 +819,55 @@
         "openingDateText": "1931"
       },
       "id": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6"
+    },
+    {
+      "key": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+      "name": "La Belle Fleur",
+      "category": "Other",
+      "type": "Other",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "ClosedDefinitively",
+        "openingDate": null,
+        "sourceUrl": "https://mucem.org/notice/c/3188801/",
+        "openingDateText": "1931"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une fleur géométrique à l’entrée de l’exposition</h2><p>La Belle Fleur accueillait les visiteurs de l’Exposition coloniale de 1931 avec une haute composition de disques, de zigzags et de jets d’eau. La rosace qui la couronnait portait un voilier en silhouette. Au-dessous, la tige anguleuse descendait vers un socle orné de boucles et de grandes feuilles recourbées.</p><p>Le bassin bas laissait voir l’ensemble depuis les allées voisines. Dans la photographie publiée par L’Architecture en août 1931, la fontaine se détache devant les arbres, avec des constructions à toitures débordantes et des passants à l’arrière-plan. L’eau forme des arcs de part et d’autre du décor central.</p><h2>Les éventails d’eau de Granet et Expert</h2><p>André Granet et Roger-Henri Expert signaient cette fontaine dont les vues nocturnes montrent une autre présence. Les jets étagés dessinent deux grands éventails autour de la tige éclairée, tandis que la rosace et le petit navire émergent au-dessus des feuillages sombres.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A geometric flower at the exposition entrance</h2><p>La Belle Fleur greeted visitors to the 1931 Colonial Exposition with a tall composition of discs, zigzags and water jets. A sailing ship in silhouette stood above its crowning rosette. Below it, an angular stem descended to a base decorated with loops and large curling leaves.</p><p>The low basin left the whole structure visible from the surrounding paths. In the photograph published by L’Architecture in August 1931, the fountain stands against the trees, with overhanging roofs and passers-by in the background. Water arches out on either side of the central decoration.</p><h2>Granet and Expert’s fans of water</h2><p>André Granet and Roger-Henri Expert designed this fountain, which takes on a different presence in night-time views. The tiers of jets form two broad fans around the illuminated stem, while the rosette and little ship rise above the dark foliage.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine geometrische Blume am Ausstellungseingang</h2><p>La Belle Fleur empfing die Besucher der Kolonialausstellung von 1931 mit einer hohen Komposition aus Scheiben, Zickzackformen und Wasserstrahlen. Über der bekrönenden Rosette stand die Silhouette eines Segelschiffs. Darunter führte ein kantiger Stängel zu einem Sockel mit Schleifen und großen geschwungenen Blättern.</p><p>Das niedrige Becken gab von den benachbarten Wegen aus den Blick auf die gesamte Anlage frei. Auf dem im August 1931 in L’Architecture veröffentlichten Foto hebt sich der Brunnen vor den Bäumen ab; im Hintergrund stehen Gebäude mit überhängenden Dächern und Spaziergänger. Beiderseits des mittleren Dekors spannt sich das Wasser in Bögen.</p><h2>Die Wasserfächer von Granet und Expert</h2><p>André Granet und Roger-Henri Expert entwarfen den Brunnen, der auf Nachtaufnahmen eine andere Wirkung entfaltet. Die übereinander angeordneten Strahlen bilden zwei breite Fächer um den beleuchteten Stängel. Rosette und Segelschiff ragen über das dunkle Laub hinaus.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een geometrische bloem bij de ingang</h2><p>La Belle Fleur verwelkomde bezoekers van de Koloniale Tentoonstelling van 1931 met een hoge compositie van schijven, zigzaglijnen en waterstralen. Boven op de rozet stond het silhouet van een zeilschip. Daaronder liep een hoekige stengel naar een voetstuk met lussen en grote gekrulde bladeren.</p><p>Door het lage bassin bleef het geheel zichtbaar vanaf de omliggende paden. Op de foto die L’Architecture in augustus 1931 publiceerde, steekt de fontein af tegen de bomen, met overstekende daken en voorbijgangers op de achtergrond. Het water vormt bogen aan weerszijden van het middendeel.</p><h2>De waterwaaiers van Granet en Expert</h2><p>André Granet en Roger-Henri Expert ontwierpen de fontein, die op nachtfoto’s een andere uitstraling krijgt. De waterstralen vormen boven elkaar twee brede waaiers rond de verlichte stengel. De rozet en het scheepje steken boven het donkere gebladerte uit.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un fiore geometrico all’ingresso dell’esposizione</h2><p>La Belle Fleur accoglieva i visitatori dell’Esposizione coloniale del 1931 con un’alta composizione di dischi, zigzag e getti d’acqua. Sopra la rosetta che la coronava si stagliava la sagoma di un veliero. Più in basso, lo stelo angolare scendeva verso un basamento ornato di anelli e grandi foglie ricurve.</p><p>La vasca bassa lasciava vedere l’intera struttura dai viali vicini. Nella fotografia pubblicata da L’Architecture nell’agosto 1931, la fontana si distingue davanti agli alberi, con edifici dai tetti sporgenti e passanti sullo sfondo. L’acqua disegna archi ai lati della decorazione centrale.</p><h2>I ventagli d’acqua di Granet ed Expert</h2><p>André Granet e Roger-Henri Expert firmarono questa fontana, che nelle vedute notturne assume un aspetto diverso. I getti sovrapposti formano due ampi ventagli attorno allo stelo illuminato, mentre la rosetta e il piccolo veliero emergono sopra le chiome scure.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una flor geométrica a la entrada de la exposición</h2><p>La Belle Fleur recibía a los visitantes de la Exposición Colonial de 1931 con una alta composición de discos, zigzags y chorros de agua. La roseta que la coronaba llevaba la silueta de un velero. Debajo, el tallo anguloso descendía hacia una base adornada con bucles y grandes hojas curvadas.</p><p>El estanque bajo permitía contemplar el conjunto desde los caminos cercanos. En la fotografía publicada por L’Architecture en agosto de 1931, la fuente destaca ante los árboles, con edificios de tejados salientes y paseantes al fondo. El agua forma arcos a ambos lados del adorno central.</p><h2>Los abanicos de agua de Granet y Expert</h2><p>André Granet y Roger-Henri Expert diseñaron esta fuente, que adquiere otra presencia en las vistas nocturnas. Los chorros escalonados dibujan dos grandes abanicos alrededor del tallo iluminado, mientras la roseta y el pequeño barco sobresalen del follaje oscuro.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Geometryczny kwiat przy wejściu na wystawę</h2><p>La Belle Fleur witała zwiedzających Wystawę Kolonialną w 1931 roku wysoką kompozycją z dysków, zygzaków i strumieni wody. Nad wieńczącą ją rozetą widniała sylwetka żaglowca. Niżej kanciasta łodyga opadała ku podstawie ozdobionej pętlami i dużymi wygiętymi liśćmi.</p><p>Niski basen pozwalał oglądać całą budowlę z pobliskich alejek. Na fotografii opublikowanej w L’Architecture w sierpniu 1931 roku fontanna odcina się od drzew, a w tle widać budynki z wysuniętymi okapami i przechodniów. Woda tworzy łuki po obu stronach środkowej dekoracji.</p><h2>Wodne wachlarze Graneta i Experta</h2><p>André Granet i Roger-Henri Expert zaprojektowali fontannę, która na nocnych zdjęciach nabiera innego wyrazu. Piętrzące się strumienie tworzą dwa szerokie wachlarze wokół oświetlonej łodygi, a rozeta i mały statek wyłaniają się ponad ciemnym listowiem.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma flor geométrica à entrada da exposição</h2><p>La Belle Fleur recebia os visitantes da Exposição Colonial de 1931 com uma composição alta de discos, ziguezagues e jatos de água. A rosácea que a coroava era encimada pela silhueta de um veleiro. Mais abaixo, a haste angulosa descia até uma base ornamentada com laços e grandes folhas recurvadas.</p><p>O tanque baixo permitia ver o conjunto a partir das alamedas próximas. Na fotografia publicada pela L’Architecture em agosto de 1931, a fonte destaca-se diante das árvores, com edifícios de telhados salientes e passeantes ao fundo. A água forma arcos de ambos os lados da decoração central.</p><h2>Os leques de água de Granet e Expert</h2><p>André Granet e Roger-Henri Expert conceberam esta fonte, que ganha outra presença nas vistas noturnas. Os jatos sobrepostos desenham dois grandes leques em torno da haste iluminada, enquanto a rosácea e o pequeno navio sobressaem da folhagem escura.</p>"
+        }
+      ],
+      "id": "276c8724-ee25-41b9-92ab-2c727fa8fcc8"
     }
   ],
   "images": [
@@ -1582,40 +1631,40 @@
       "credits": [
         {
           "languageCode": "fr",
-          "value": "Carte postale « Fontaine lumineuse — Le Cactus », Garent, éditeur, Arches — reproduction CFC, article de Marc André Dubout."
+          "value": "Carte postale « Fontaine lumineuse — Le Cactus » ; Granet et Expert, architectes. Reproduction CFC, article de Marc André Dubout. Photographe non identifié."
         },
         {
           "languageCode": "en",
-          "value": "Postcard “Fontaine lumineuse — Le Cactus”, Garent, publisher, Arches — reproduced by CFC in an article by Marc André Dubout."
+          "value": "Postcard “Fontaine lumineuse — Le Cactus”; Granet and Expert, architects. Reproduced by CFC in an article by Marc André Dubout. Photographer unidentified."
         },
         {
           "languageCode": "de",
-          "value": "Postkarte „Fontaine lumineuse — Le Cactus“, Verlag Garent, Arches — Wiedergabe beim CFC im Beitrag von Marc André Dubout."
+          "value": "Postkarte „Fontaine lumineuse — Le Cactus“; Granet und Expert, Architekten. Wiedergabe beim CFC im Beitrag von Marc André Dubout. Fotograf unbekannt."
         },
         {
           "languageCode": "nl",
-          "value": "Ansichtkaart “Fontaine lumineuse — Le Cactus”, uitgever Garent, Arches — reproductie CFC bij een artikel van Marc André Dubout."
+          "value": "Ansichtkaart “Fontaine lumineuse — Le Cactus”; Granet en Expert, architecten. Reproductie CFC bij een artikel van Marc André Dubout. Fotograaf onbekend."
         },
         {
           "languageCode": "it",
-          "value": "Cartolina « Fontaine lumineuse — Le Cactus », Garent, editore, Arches — riproduzione CFC nell’articolo di Marc André Dubout."
+          "value": "Cartolina « Fontaine lumineuse — Le Cactus »; Granet ed Expert, architetti. Riproduzione CFC nell’articolo di Marc André Dubout. Fotografo non identificato."
         },
         {
           "languageCode": "es",
-          "value": "Postal « Fontaine lumineuse — Le Cactus », Garent, editor, Arches — reproducción CFC en el artículo de Marc André Dubout."
+          "value": "Postal « Fontaine lumineuse — Le Cactus »; Granet y Expert, arquitectos. Reproducción CFC en el artículo de Marc André Dubout. Fotógrafo no identificado."
         },
         {
           "languageCode": "pl",
-          "value": "Pocztówka „Fontaine lumineuse — Le Cactus”, wydawca Garent, Arches — reprodukcja CFC w artykule Marca André Dubouta."
+          "value": "Pocztówka „Fontaine lumineuse — Le Cactus”; architekci Granet i Expert. Reprodukcja CFC w artykule Marca André Dubouta. Fotograf nieznany."
         },
         {
           "languageCode": "pt",
-          "value": "Postal « Fontaine lumineuse — Le Cactus », Garent, editor, Arches — reprodução CFC no artigo de Marc André Dubout."
+          "value": "Postal « Fontaine lumineuse — Le Cactus »; Granet e Expert, arquitetos. Reprodução CFC no artigo de Marc André Dubout. Fotógrafo não identificado."
         }
       ],
       "tagIds": [],
       "createdAt": "2026-11-16T00:22:07.346Z",
-      "updatedAt": "2026-11-16T00:22:10.968Z",
+      "updatedAt": "2026-11-16T00:51:15.128Z",
       "key": "c925bcb94f6b464b8f4580cb9a504796",
       "imageId": "c925bcb94f6b464b8f4580cb9a504796",
       "ownerKey": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1"
@@ -1873,6 +1922,405 @@
       "key": "889d3d9061cf4b98bdf2503a92e6aa28",
       "imageId": "889d3d9061cf4b98bdf2503a92e6aa28",
       "ownerKey": "d854ba3e-7ceb-4d22-8624-f80aba5d09d6"
+    },
+    {
+      "id": "6cbe9861670247b993166e13d154cb74",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+      "path": "park_item/6cbe9861670247b993166e13d154cb74",
+      "description": "La Belle Fleur et son bassin dans une photographie publiée par L’Architecture en août 1931. Des passants et des bâtiments aux toits débordants apparaissent derrière les jets.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1024,
+      "height": 748,
+      "sizeInBytes": 201074,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.grandemasse.org/wp-content/uploads/2026/08/13-Exposition-coloniale-Fontaine-Belle-Fleur-LArchitecture-n%C2%B08-15.08.1931-1024x748.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La Belle Fleur de jour, avec son disque surmonté d’un voilier, sa tige en zigzag et ses jets en arcs devant les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Belle Fleur by day, with a sailing ship above its disc, a zigzag stem and arched jets in front of trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "La Belle Fleur bei Tag mit einem Segelschiff über der Scheibe, einem Zickzackstängel und Wasserbögen vor den Bäumen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "La Belle Fleur overdag, met een zeilschip boven de schijf, een zigzagstengel en gebogen waterstralen voor de bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La Belle Fleur di giorno, con un veliero sopra il disco, uno stelo a zigzag e getti ad arco davanti agli alberi."
+        },
+        {
+          "languageCode": "es",
+          "value": "La Belle Fleur de día, con un velero sobre el disco, un tallo en zigzag y chorros en arco ante los árboles."
+        },
+        {
+          "languageCode": "pl",
+          "value": "La Belle Fleur za dnia, z żaglowcem nad dyskiem, zygzakowatą łodygą i łukami wody na tle drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "La Belle Fleur de dia, com um veleiro sobre o disco, uma haste em ziguezague e jatos em arco diante das árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La Belle Fleur et son bassin dans une photographie publiée par L’Architecture en août 1931. Des passants et des bâtiments aux toits débordants apparaissent derrière les jets."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Belle Fleur and its basin in a photograph published by L’Architecture in August 1931. Passers-by and buildings with overhanging roofs appear behind the jets."
+        },
+        {
+          "languageCode": "de",
+          "value": "La Belle Fleur und ihr Becken auf einem Foto, das L’Architecture im August 1931 veröffentlichte. Hinter den Wasserstrahlen sind Spaziergänger und Gebäude mit überhängenden Dächern zu sehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "La Belle Fleur en het bassin op een foto die L’Architecture in augustus 1931 publiceerde. Achter de waterstralen staan voorbijgangers en gebouwen met overstekende daken."
+        },
+        {
+          "languageCode": "it",
+          "value": "La Belle Fleur e la vasca in una fotografia pubblicata da L’Architecture nell’agosto 1931. Dietro i getti compaiono passanti ed edifici dai tetti sporgenti."
+        },
+        {
+          "languageCode": "es",
+          "value": "La Belle Fleur y su estanque en una fotografía publicada por L’Architecture en agosto de 1931. Tras los chorros se ven paseantes y edificios de tejados salientes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "La Belle Fleur i jej basen na fotografii opublikowanej w L’Architecture w sierpniu 1931 roku. Za strumieniami wody widać przechodniów i budynki z wysuniętymi okapami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "La Belle Fleur e o tanque numa fotografia publicada pela L’Architecture em agosto de 1931. Atrás dos jatos veem-se passeantes e edifícios com telhados salientes."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "L’Architecture, n° 8, 15 août 1931 ; reproduction Grande Masse des Beaux-Arts. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "L’Architecture, no. 8, 15 August 1931; reproduction by Grande Masse des Beaux-Arts. Photographer unidentified."
+        },
+        {
+          "languageCode": "de",
+          "value": "L’Architecture, Nr. 8, 15. August 1931; Reproduktion der Grande Masse des Beaux-Arts. Fotograf unbekannt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "L’Architecture, nr. 8, 15 augustus 1931; reproductie Grande Masse des Beaux-Arts. Fotograaf onbekend."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’Architecture, n. 8, 15 agosto 1931; riproduzione Grande Masse des Beaux-Arts. Fotografo non identificato."
+        },
+        {
+          "languageCode": "es",
+          "value": "L’Architecture, n.º 8, 15 de agosto de 1931; reproducción de Grande Masse des Beaux-Arts. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "L’Architecture, nr 8, 15 sierpnia 1931 roku; reprodukcja Grande Masse des Beaux-Arts. Fotograf nieznany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "L’Architecture, n.º 8, 15 de agosto de 1931; reprodução da Grande Masse des Beaux-Arts. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:47:25.115Z",
+      "updatedAt": "2026-11-16T00:47:28.905Z",
+      "key": "6cbe9861670247b993166e13d154cb74",
+      "imageId": "6cbe9861670247b993166e13d154cb74",
+      "ownerKey": "276c8724-ee25-41b9-92ab-2c727fa8fcc8"
+    },
+    {
+      "id": "76918452d99e4d42938e89a4cf79a3d9",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+      "path": "park_item/76918452d99e4d42938e89a4cf79a3d9",
+      "description": "La fontaine La Belle Fleur photographiée de nuit à l’Exposition coloniale de 1931. L’eau et le décor éclairés se détachent sur les arbres sombres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1440,
+      "height": 1286,
+      "sizeInBytes": 264100,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_fontaine_exposition_1931.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La Belle Fleur illuminée, avec deux éventails de jets autour d’une tige géométrique et un petit navire au-dessus de la rosace."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Belle Fleur illuminated, with two fans of water around a geometric stem and a little ship above the rosette."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die beleuchtete La Belle Fleur mit zwei Wasserfächern um einen geometrischen Stängel und einem kleinen Schiff über der Rosette."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De verlichte La Belle Fleur, met twee waterwaaiers rond een geometrische stengel en een scheepje boven de rozet."
+        },
+        {
+          "languageCode": "it",
+          "value": "La Belle Fleur illuminata, con due ventagli d’acqua attorno a uno stelo geometrico e un piccolo veliero sopra la rosetta."
+        },
+        {
+          "languageCode": "es",
+          "value": "La Belle Fleur iluminada, con dos abanicos de agua alrededor de un tallo geométrico y un pequeño barco sobre la roseta."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oświetlona La Belle Fleur z dwoma wachlarzami wody wokół geometrycznej łodygi i małym statkiem nad rozetą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "La Belle Fleur iluminada, com dois leques de água em torno de uma haste geométrica e um pequeno navio sobre a rosácea."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine La Belle Fleur photographiée de nuit à l’Exposition coloniale de 1931. L’eau et le décor éclairés se détachent sur les arbres sombres."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Belle Fleur fountain photographed at night during the 1931 Colonial Exposition. The lit water and decoration stand out against dark trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Nachtaufnahme des Brunnens La Belle Fleur während der Kolonialausstellung 1931. Beleuchtetes Wasser und Dekor heben sich von den dunklen Bäumen ab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De fontein La Belle Fleur bij nacht tijdens de Koloniale Tentoonstelling van 1931. Het verlichte water en de versieringen steken af tegen de donkere bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana La Belle Fleur fotografata di notte durante l’Esposizione coloniale del 1931. L’acqua e la decorazione illuminate risaltano sugli alberi scuri."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente La Belle Fleur fotografiada de noche durante la Exposición Colonial de 1931. El agua y el adorno iluminados destacan sobre los árboles oscuros."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fontanna La Belle Fleur sfotografowana nocą podczas Wystawy Kolonialnej w 1931 roku. Oświetlona woda i dekoracja odcinają się od ciemnych drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte La Belle Fleur fotografada à noite durante a Exposição Colonial de 1931. A água e a decoração iluminadas destacam-se das árvores escuras."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165 ; auteur inconnu, 1931."
+        },
+        {
+          "languageCode": "en",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; unknown photographer, 1931."
+        },
+        {
+          "languageCode": "de",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, Inv. 2006.17.165; Fotograf unbekannt, 1931."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; fotograaf onbekend, 1931."
+        },
+        {
+          "languageCode": "it",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autore ignoto, 1931."
+        },
+        {
+          "languageCode": "es",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autor desconocido, 1931."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, nr inw. 2006.17.165; autor nieznany, 1931."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autor desconhecido, 1931."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:51:47.535Z",
+      "updatedAt": "2026-11-16T00:51:51.112Z",
+      "key": "76918452d99e4d42938e89a4cf79a3d9",
+      "imageId": "76918452d99e4d42938e89a4cf79a3d9",
+      "ownerKey": "276c8724-ee25-41b9-92ab-2c727fa8fcc8"
+    },
+    {
+      "id": "f80852a49ff746bf9f619301beb6d302",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "760df334-d1ad-4750-b594-263dfa73c20d",
+      "path": "park_item/f80852a49ff746bf9f619301beb6d302",
+      "description": "Des nappes et des arcs d’eau encadrent la fontaine des Totems sur cette carte photographique Braun de 1931. Les reliefs de la paroi ressortent dans l’éclairage nocturne.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 854,
+      "sizeInBytes": 253412,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356895/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine des Totems vue de nuit, avec des masques au-dessus d’une haute paroi et des jets courbes devant le palais en arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Totems fountain at night, with masks above a tall wall and arched jets in front of the palace in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Totems-Fontäne bei Nacht mit Masken über einer hohen Wand und Wasserbögen vor dem Palast im Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Totemsfontein bij nacht, met maskers boven een hoge wand en gebogen waterstralen voor het paleis op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana dei Totems di notte, con maschere sopra un’alta parete e getti ad arco davanti al palazzo sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente de los Totems de noche, con máscaras sobre una pared alta y chorros curvos ante el palacio del fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fontanna Totems nocą, z maskami nad wysoką ścianą i łukami wody na tle pałacu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte dos Totems à noite, com máscaras sobre uma parede alta e jatos curvos diante do palácio ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des nappes et des arcs d’eau encadrent la fontaine des Totems sur cette carte photographique Braun de 1931. Les reliefs de la paroi ressortent dans l’éclairage nocturne."
+        },
+        {
+          "languageCode": "en",
+          "value": "Sheets and arcs of water surround the Totems fountain on this 1931 Braun photographic postcard. Lighting brings out the wall’s relief decoration at night."
+        },
+        {
+          "languageCode": "de",
+          "value": "Wasserschleier und Bögen rahmen die Totems-Fontäne auf dieser fotografischen Postkarte von Braun aus dem Jahr 1931 ein. Die nächtliche Beleuchtung hebt die Reliefs der Wand hervor."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Waterschermen en bogen omringen de Totemsfontein op deze fotografische ansichtkaart van Braun uit 1931. De nachtelijke verlichting benadrukt de reliëfs op de wand."
+        },
+        {
+          "languageCode": "it",
+          "value": "Veli e archi d’acqua incorniciano la fontana dei Totems su questa cartolina fotografica Braun del 1931. L’illuminazione notturna mette in risalto i rilievi della parete."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cortinas y arcos de agua enmarcan la fuente de los Totems en esta postal fotográfica de Braun de 1931. La iluminación nocturna resalta los relieves de la pared."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kurtyny i łuki wody otaczają fontannę Totems na fotograficznej pocztówce wydawnictwa Braun z 1931 roku. Nocne oświetlenie wydobywa płaskorzeźby na ścianie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cortinas e arcos de água enquadram a fonte dos Totems neste postal fotográfico da Braun de 1931. A iluminação noturna realça os relevos da parede."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.93.2."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.93.2."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:52:03.549Z",
+      "updatedAt": "2026-11-16T00:52:07.314Z",
+      "key": "f80852a49ff746bf9f619301beb6d302",
+      "imageId": "f80852a49ff746bf9f619301beb6d302",
+      "ownerKey": "760df334-d1ad-4750-b594-263dfa73c20d"
     }
   ],
   "history": {

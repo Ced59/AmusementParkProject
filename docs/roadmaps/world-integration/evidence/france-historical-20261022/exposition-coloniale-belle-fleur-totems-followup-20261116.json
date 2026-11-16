@@ -1,0 +1,77 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "recordedAtUtc": "2026-11-16T00:53:55.451108+00:00",
+  "counts": {
+    "items": 8,
+    "itemsWithEightDescriptions": 8,
+    "ownPrivateImages": 11,
+    "privateOfficialMaps": 1
+  },
+  "retention": {
+    "baselineCommit": "037fbc07",
+    "oldStateExactExcept": [
+      "one new Belle Fleur item with eight descriptions",
+      "three private photographs",
+      "eight corrected credits on existing train photograph and its updatedAt"
+    ],
+    "allPriorEntitiesAndHistoryPreserved": true
+  },
+  "newItemApply": "14a17d38-3cbb-4294-b8b8-740a9ea01b44",
+  "photoIds": [
+    "6cbe9861670247b993166e13d154cb74",
+    "76918452d99e4d42938e89a4cf79a3d9",
+    "f80852a49ff746bf9f619301beb6d302"
+  ],
+  "idempotence": {
+    "operationId": "b1805dc3-bc10-45e2-b987-a61783152d64",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-16T00:53:17.1436997Z",
+    "appliedAtUtc": null,
+    "targetParkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+    "targetParkName": "Exposition Coloniale Internationale",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+        "entityKey": "park",
+        "displayName": "Exposition Coloniale Internationale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+        "entityKey": "exposition-coloniale-belle-fleur",
+        "displayName": "La Belle Fleur",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "belleFleurDescriptions": 8,
+    "photoMetadataFields": 72,
+    "correctedTrainCredits": 8,
+    "nativeOriginalsIndividuallyViewed": true
+  },
+  "remaining": "Historical inventory and photographic coverage remain incomplete. No autonomous official logo qualified. Existing park, zone and complete history still need final personal review; no full final audit performed.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false
+}

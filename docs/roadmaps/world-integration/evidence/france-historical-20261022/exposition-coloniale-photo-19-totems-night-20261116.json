@@ -1,0 +1,293 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "19-totems-night",
+    "source": {
+      "name": "totems-mucem-native.jpg",
+      "url": "https://mdc.mucem.org/assets/356895/image",
+      "retrievedAtUtc": "2026-11-16T00:42:32.110564+00:00",
+      "status": 200,
+      "finalUrl": "https://mdc.mucem.org/assets/356895/image",
+      "bytes": 253412,
+      "sha256": "e2bc6735ee486ddab4dc7018f143caa7fd774299c258cb53dff38792175a05e8",
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/totems-mucem-native.jpg",
+      "dimensions": [
+        1280,
+        854
+      ],
+      "sourcePage": "https://mucem.org/notice/c/3188808/"
+    },
+    "ownerId": "760df334-d1ad-4750-b594-263dfa73c20d",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Owner authorization for France historical images; institutional/publisher credits preserved, no open-license or named photographer invented.",
+    "review": "Original viewed individually;24 localized alt/caption/credit fields personally written/reviewed, no transformation. Primary source identity triangulation in exposition-coloniale-belle-fleur-totems-qualification-20261116.json."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "760df334-d1ad-4750-b594-263dfa73c20d",
+      "SourceUrl": "https://mdc.mucem.org/assets/356895/image",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/totems-mucem-native.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/19-totems-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/19-totems-night-import-result.json"
+  },
+  "metadata": {
+    "description": "Des nappes et des arcs d’eau encadrent la fontaine des Totems sur cette carte photographique Braun de 1931. Les reliefs de la paroi ressortent dans l’éclairage nocturne.",
+    "sourceUrl": "https://mdc.mucem.org/assets/356895/image",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La fontaine des Totems vue de nuit, avec des masques au-dessus d’une haute paroi et des jets courbes devant le palais en arrière-plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Totems fountain at night, with masks above a tall wall and arched jets in front of the palace in the background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Totems-Fontäne bei Nacht mit Masken über einer hohen Wand und Wasserbögen vor dem Palast im Hintergrund."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De Totemsfontein bij nacht, met maskers boven een hoge wand en gebogen waterstralen voor het paleis op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "La fontana dei Totems di notte, con maschere sopra un’alta parete e getti ad arco davanti al palazzo sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "La fuente de los Totems de noche, con máscaras sobre una pared alta y chorros curvos ante el palacio del fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fontanna Totems nocą, z maskami nad wysoką ścianą i łukami wody na tle pałacu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A fonte dos Totems à noite, com máscaras sobre uma parede alta e jatos curvos diante do palácio ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des nappes et des arcs d’eau encadrent la fontaine des Totems sur cette carte photographique Braun de 1931. Les reliefs de la paroi ressortent dans l’éclairage nocturne."
+      },
+      {
+        "languageCode": "en",
+        "value": "Sheets and arcs of water surround the Totems fountain on this 1931 Braun photographic postcard. Lighting brings out the wall’s relief decoration at night."
+      },
+      {
+        "languageCode": "de",
+        "value": "Wasserschleier und Bögen rahmen die Totems-Fontäne auf dieser fotografischen Postkarte von Braun aus dem Jahr 1931 ein. Die nächtliche Beleuchtung hebt die Reliefs der Wand hervor."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Waterschermen en bogen omringen de Totemsfontein op deze fotografische ansichtkaart van Braun uit 1931. De nachtelijke verlichting benadrukt de reliëfs op de wand."
+      },
+      {
+        "languageCode": "it",
+        "value": "Veli e archi d’acqua incorniciano la fontana dei Totems su questa cartolina fotografica Braun del 1931. L’illuminazione notturna mette in risalto i rilievi della parete."
+      },
+      {
+        "languageCode": "es",
+        "value": "Cortinas y arcos de agua enmarcan la fuente de los Totems en esta postal fotográfica de Braun de 1931. La iluminación nocturna resalta los relieves de la pared."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kurtyny i łuki wody otaczają fontannę Totems na fotograficznej pocztówce wydawnictwa Braun z 1931 roku. Nocne oświetlenie wydobywa płaskorzeźby na ścianie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cortinas e arcos de água enquadram a fonte dos Totems neste postal fotográfico da Braun de 1931. A iluminação noturna realça os relevos da parede."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.93.2."
+      },
+      {
+        "languageCode": "en",
+        "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.93.2."
+      },
+      {
+        "languageCode": "de",
+        "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.93.2."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.93.2."
+      },
+      {
+        "languageCode": "it",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.93.2."
+      },
+      {
+        "languageCode": "es",
+        "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.93.2."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.93.2."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.93.2."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-16T00:52:10.4371895Z",
+    "startedAtUtc": "2026-11-16T00:52:00.0809415Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "f80852a49ff746bf9f619301beb6d302",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "760df334-d1ad-4750-b594-263dfa73c20d",
+      "path": "park_item/f80852a49ff746bf9f619301beb6d302",
+      "description": "Des nappes et des arcs d’eau encadrent la fontaine des Totems sur cette carte photographique Braun de 1931. Les reliefs de la paroi ressortent dans l’éclairage nocturne.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 854,
+      "sizeInBytes": 253412,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://mdc.mucem.org/assets/356895/image",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine des Totems vue de nuit, avec des masques au-dessus d’une haute paroi et des jets courbes devant le palais en arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Totems fountain at night, with masks above a tall wall and arched jets in front of the palace in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Totems-Fontäne bei Nacht mit Masken über einer hohen Wand und Wasserbögen vor dem Palast im Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Totemsfontein bij nacht, met maskers boven een hoge wand en gebogen waterstralen voor het paleis op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana dei Totems di notte, con maschere sopra un’alta parete e getti ad arco davanti al palazzo sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente de los Totems de noche, con máscaras sobre una pared alta y chorros curvos ante el palacio del fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fontanna Totems nocą, z maskami nad wysoką ścianą i łukami wody na tle pałacu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte dos Totems à noite, com máscaras sobre uma parede alta e jatos curvos diante do palácio ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des nappes et des arcs d’eau encadrent la fontaine des Totems sur cette carte photographique Braun de 1931. Les reliefs de la paroi ressortent dans l’éclairage nocturne."
+        },
+        {
+          "languageCode": "en",
+          "value": "Sheets and arcs of water surround the Totems fountain on this 1931 Braun photographic postcard. Lighting brings out the wall’s relief decoration at night."
+        },
+        {
+          "languageCode": "de",
+          "value": "Wasserschleier und Bögen rahmen die Totems-Fontäne auf dieser fotografischen Postkarte von Braun aus dem Jahr 1931 ein. Die nächtliche Beleuchtung hebt die Reliefs der Wand hervor."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Waterschermen en bogen omringen de Totemsfontein op deze fotografische ansichtkaart van Braun uit 1931. De nachtelijke verlichting benadrukt de reliëfs op de wand."
+        },
+        {
+          "languageCode": "it",
+          "value": "Veli e archi d’acqua incorniciano la fontana dei Totems su questa cartolina fotografica Braun del 1931. L’illuminazione notturna mette in risalto i rilievi della parete."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cortinas y arcos de agua enmarcan la fuente de los Totems en esta postal fotográfica de Braun de 1931. La iluminación nocturna resalta los relieves de la pared."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kurtyny i łuki wody otaczają fontannę Totems na fotograficznej pocztówce wydawnictwa Braun z 1931 roku. Nocne oświetlenie wydobywa płaskorzeźby na ścianie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cortinas e arcos de água enquadram a fonte dos Totems neste postal fotográfico da Braun de 1931. A iluminação noturna realça os relevos da parede."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Braun et Cie, 1931 ; Mucem, fonds Gustave Soury, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "en",
+          "value": "Braun et Cie, 1931; Mucem, Gustave Soury collection, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braun et Cie, 1931; Mucem, Sammlung Gustave Soury, Inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Braun et Cie, 1931; Mucem, collectie Gustave Soury, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "it",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "es",
+          "value": "Braun et Cie, 1931; Mucem, fondo Gustave Soury, inv. Sou.31.93.2."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Braun et Cie, 1931; Mucem, kolekcja Gustave’a Soury’ego, nr inw. Sou.31.93.2."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Braun et Cie, 1931; Mucem, fundo Gustave Soury, inv. Sou.31.93.2."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:52:03.549Z",
+      "updatedAt": "2026-11-16T00:52:07.314Z"
+    }
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

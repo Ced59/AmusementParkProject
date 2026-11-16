@@ -1,0 +1,283 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "receipt": {
+    "startedAtUtc": "2026-11-16T00:51:13.9669275Z",
+    "result": {
+      "id": "c925bcb94f6b464b8f4580cb9a504796",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+      "path": "park_item/c925bcb94f6b464b8f4580cb9a504796",
+      "description": "Le train de ceinture longe la fontaine Cactus à l’Exposition coloniale de 1931. Des visiteurs traversent l’allée au premier plan de cette carte postale photographique.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 600,
+      "height": 382,
+      "sizeInBytes": 84425,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_12.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un petit train à voitures ouvertes passe au pied de la grande fontaine Cactus, devant des arbres et des pavillons."
+        },
+        {
+          "languageCode": "en",
+          "value": "A small train with open carriages passes the tall Cactus fountain, with trees and pavilions behind it."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein kleiner Zug mit offenen Wagen fährt an der hohen Cactus-Fontäne vorbei; dahinter stehen Bäume und Pavillons."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een treintje met open rijtuigen rijdt langs de hoge Cactus-fontein, met bomen en paviljoens op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un trenino con carrozze aperte passa ai piedi dell’alta fontana Cactus, davanti ad alberi e padiglioni."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un pequeño tren de coches abiertos pasa al pie de la alta fuente Cactus, ante árboles y pabellones."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mały pociąg z otwartymi wagonami przejeżdża obok wysokiej fontanny Cactus; w tle stoją drzewa i pawilony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um pequeno comboio de carruagens abertas passa junto da alta fonte Cactus, diante de árvores e pavilhões."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le train de ceinture longe la fontaine Cactus à l’Exposition coloniale de 1931. Des visiteurs traversent l’allée au premier plan de cette carte postale photographique."
+        },
+        {
+          "languageCode": "en",
+          "value": "The perimeter train passes the Cactus fountain at the 1931 Colonial Exposition. Visitors cross the avenue in the foreground of this photographic postcard."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Ringbahn fährt an der Cactus-Fontäne der Kolonialausstellung von 1931 entlang. Im Vordergrund dieser fotografischen Postkarte überqueren Besucher die Allee."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De ringlijn passeert de Cactus-fontein op de Koloniale Tentoonstelling van 1931. Op de voorgrond van deze fotografische ansichtkaart steken bezoekers de laan over."
+        },
+        {
+          "languageCode": "it",
+          "value": "La ferrovia circolare costeggia la fontana Cactus all’Esposizione coloniale del 1931. Alcuni visitatori attraversano il viale in primo piano in questa cartolina fotografica."
+        },
+        {
+          "languageCode": "es",
+          "value": "El ferrocarril circular pasa junto a la fuente Cactus en la Exposición Colonial de 1931. Varios visitantes cruzan la avenida en primer plano de esta postal fotográfica."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kolejka okrężna mija fontannę Cactus na Wystawie Kolonialnej w 1931 roku. Na pierwszym planie pocztówki fotograficznej zwiedzający przechodzą przez aleję."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O caminho de ferro circular passa ao lado da fonte Cactus na Exposição Colonial de 1931. Vários visitantes atravessam a alameda em primeiro plano neste postal fotográfico."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Carte postale « Fontaine lumineuse — Le Cactus » ; Granet et Expert, architectes. Reproduction CFC, article de Marc André Dubout. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Postcard “Fontaine lumineuse — Le Cactus”; Granet and Expert, architects. Reproduced by CFC in an article by Marc André Dubout. Photographer unidentified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Postkarte „Fontaine lumineuse — Le Cactus“; Granet und Expert, Architekten. Wiedergabe beim CFC im Beitrag von Marc André Dubout. Fotograf unbekannt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ansichtkaart “Fontaine lumineuse — Le Cactus”; Granet en Expert, architecten. Reproductie CFC bij een artikel van Marc André Dubout. Fotograaf onbekend."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cartolina « Fontaine lumineuse — Le Cactus »; Granet ed Expert, architetti. Riproduzione CFC nell’articolo di Marc André Dubout. Fotografo non identificato."
+        },
+        {
+          "languageCode": "es",
+          "value": "Postal « Fontaine lumineuse — Le Cactus »; Granet y Expert, arquitectos. Reproducción CFC en el artículo de Marc André Dubout. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pocztówka „Fontaine lumineuse — Le Cactus”; architekci Granet i Expert. Reprodukcja CFC w artykule Marca André Dubouta. Fotograf nieznany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Postal « Fontaine lumineuse — Le Cactus »; Granet e Expert, arquitetos. Reprodução CFC no artigo de Marc André Dubout. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:22:07.346Z",
+      "updatedAt": "2026-11-16T00:51:15.128Z"
+    },
+    "action": "UpdatePhotoMetadata",
+    "receivedAtUtc": "2026-11-16T00:51:18.2340895Z"
+  },
+  "metadata": {
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "625b10ca-e196-4ba6-b7d7-696e7cedc0f1",
+    "isCurrent": false,
+    "description": "Le train de ceinture longe la fontaine Cactus à l’Exposition coloniale de 1931. Des visiteurs traversent l’allée au premier plan de cette carte postale photographique.",
+    "geoLocation": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un petit train à voitures ouvertes passe au pied de la grande fontaine Cactus, devant des arbres et des pavillons."
+      },
+      {
+        "languageCode": "en",
+        "value": "A small train with open carriages passes the tall Cactus fountain, with trees and pavilions behind it."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein kleiner Zug mit offenen Wagen fährt an der hohen Cactus-Fontäne vorbei; dahinter stehen Bäume und Pavillons."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een treintje met open rijtuigen rijdt langs de hoge Cactus-fontein, met bomen en paviljoens op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un trenino con carrozze aperte passa ai piedi dell’alta fontana Cactus, davanti ad alberi e padiglioni."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un pequeño tren de coches abiertos pasa al pie de la alta fuente Cactus, ante árboles y pabellones."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Mały pociąg z otwartymi wagonami przejeżdża obok wysokiej fontanny Cactus; w tle stoją drzewa i pawilony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um pequeno comboio de carruagens abertas passa junto da alta fonte Cactus, diante de árvores e pavilhões."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le train de ceinture longe la fontaine Cactus à l’Exposition coloniale de 1931. Des visiteurs traversent l’allée au premier plan de cette carte postale photographique."
+      },
+      {
+        "languageCode": "en",
+        "value": "The perimeter train passes the Cactus fountain at the 1931 Colonial Exposition. Visitors cross the avenue in the foreground of this photographic postcard."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Ringbahn fährt an der Cactus-Fontäne der Kolonialausstellung von 1931 entlang. Im Vordergrund dieser fotografischen Postkarte überqueren Besucher die Allee."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De ringlijn passeert de Cactus-fontein op de Koloniale Tentoonstelling van 1931. Op de voorgrond van deze fotografische ansichtkaart steken bezoekers de laan over."
+      },
+      {
+        "languageCode": "it",
+        "value": "La ferrovia circolare costeggia la fontana Cactus all’Esposizione coloniale del 1931. Alcuni visitatori attraversano il viale in primo piano in questa cartolina fotografica."
+      },
+      {
+        "languageCode": "es",
+        "value": "El ferrocarril circular pasa junto a la fuente Cactus en la Exposición Colonial de 1931. Varios visitantes cruzan la avenida en primer plano de esta postal fotográfica."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kolejka okrężna mija fontannę Cactus na Wystawie Kolonialnej w 1931 roku. Na pierwszym planie pocztówki fotograficznej zwiedzający przechodzą przez aleję."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O caminho de ferro circular passa ao lado da fonte Cactus na Exposição Colonial de 1931. Vários visitantes atravessam a alameda em primeiro plano neste postal fotográfico."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Carte postale « Fontaine lumineuse — Le Cactus » ; Granet et Expert, architectes. Reproduction CFC, article de Marc André Dubout. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Postcard “Fontaine lumineuse — Le Cactus”; Granet and Expert, architects. Reproduced by CFC in an article by Marc André Dubout. Photographer unidentified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Postkarte „Fontaine lumineuse — Le Cactus“; Granet und Expert, Architekten. Wiedergabe beim CFC im Beitrag von Marc André Dubout. Fotograf unbekannt."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Ansichtkaart “Fontaine lumineuse — Le Cactus”; Granet en Expert, architecten. Reproductie CFC bij een artikel van Marc André Dubout. Fotograaf onbekend."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cartolina « Fontaine lumineuse — Le Cactus »; Granet ed Expert, architetti. Riproduzione CFC nell’articolo di Marc André Dubout. Fotografo non identificato."
+      },
+      {
+        "languageCode": "es",
+        "value": "Postal « Fontaine lumineuse — Le Cactus »; Granet y Expert, arquitectos. Reproducción CFC en el artículo de Marc André Dubout. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pocztówka „Fontaine lumineuse — Le Cactus”; architekci Granet i Expert. Reprodukcja CFC w artykule Marca André Dubouta. Fotograf nieznany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Postal « Fontaine lumineuse — Le Cactus »; Granet e Expert, arquitetos. Reprodução CFC no artigo de Marc André Dubout. Fotógrafo não identificado."
+      }
+    ],
+    "tagIds": [],
+    "isPublished": false,
+    "sourceUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_12.jpg",
+    "imageId": "c925bcb94f6b464b8f4580cb9a504796"
+  },
+  "previousCredits": [
+    {
+      "languageCode": "fr",
+      "value": "Carte postale « Fontaine lumineuse — Le Cactus », Garent, éditeur, Arches — reproduction CFC, article de Marc André Dubout."
+    },
+    {
+      "languageCode": "en",
+      "value": "Postcard “Fontaine lumineuse — Le Cactus”, Garent, publisher, Arches — reproduced by CFC in an article by Marc André Dubout."
+    },
+    {
+      "languageCode": "de",
+      "value": "Postkarte „Fontaine lumineuse — Le Cactus“, Verlag Garent, Arches — Wiedergabe beim CFC im Beitrag von Marc André Dubout."
+    },
+    {
+      "languageCode": "nl",
+      "value": "Ansichtkaart “Fontaine lumineuse — Le Cactus”, uitgever Garent, Arches — reproductie CFC bij een artikel van Marc André Dubout."
+    },
+    {
+      "languageCode": "it",
+      "value": "Cartolina « Fontaine lumineuse — Le Cactus », Garent, editore, Arches — riproduzione CFC nell’articolo di Marc André Dubout."
+    },
+    {
+      "languageCode": "es",
+      "value": "Postal « Fontaine lumineuse — Le Cactus », Garent, editor, Arches — reproducción CFC en el artículo de Marc André Dubout."
+    },
+    {
+      "languageCode": "pl",
+      "value": "Pocztówka „Fontaine lumineuse — Le Cactus”, wydawca Garent, Arches — reprodukcja CFC w artykule Marca André Dubouta."
+    },
+    {
+      "languageCode": "pt",
+      "value": "Postal « Fontaine lumineuse — Le Cactus », Garent, editor, Arches — reprodução CFC no artigo de Marc André Dubout."
+    }
+  ],
+  "review": "Root reread native postcard bottom-right: Granet et Expert, Arches (architectes). Previous Garent publisher attribution was erroneous. Eight credits personally corrected; image, ownership, captions, alt texts, visibility and all other metadata unchanged. No reimport.",
+  "sourceUrl": "https://cfchanteraines.fr/lvdc/lvdc0277/expo-1931_12.jpg"
+}

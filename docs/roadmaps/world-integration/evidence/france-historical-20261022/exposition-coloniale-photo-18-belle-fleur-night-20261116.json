@@ -1,0 +1,293 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "outcome": "partial",
+  "source": {
+    "stem": "18-belle-fleur-night",
+    "source": {
+      "key": "eclairage_fontaine",
+      "sourcePage": "https://monument.palais-portedoree.fr/l-eclairage-de-l-exposition-coloniale-internationale-de-1931",
+      "url": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_fontaine_exposition_1931.jpg",
+      "caption": "Anonyme, éclairages dans l&#039;Exposition coloniale de 1931 (ensemble), 1931, Paris, négatif sur plaque de verre stéréoscopique, Musée national de l&#039;histoire de l&#039;immigration, inv. 2006.17.165\n",
+      "startedAtUtc": "2026-11-16T00:04:46.339207+00:00",
+      "httpStatus": 200,
+      "file": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/eclairage_fontaine.jpg",
+      "bytes": 264100,
+      "sha256": "a5f8cd0ea5e31884d5858af2073b64e5aeaccfa713688371850e92b652f3361d",
+      "dimensions": [
+        1440,
+        1286
+      ]
+    },
+    "ownerId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+    "ownerType": "ParkItem",
+    "personallyViewed": true,
+    "historicalYear": 1931,
+    "captureTimestamp": null,
+    "current": false,
+    "rights": "Owner authorization for France historical images; institutional/publisher credits preserved, no open-license or named photographer invented.",
+    "review": "Original viewed individually;24 localized alt/caption/credit fields personally written/reviewed, no transformation. Primary source identity triangulation in exposition-coloniale-belle-fleur-totems-qualification-20261116.json."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+      "SourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_fontaine_exposition_1931.jpg",
+      "FilePath": "/workspace/france-historical-20261114/exposition-coloniale/qualification-2357/eclairage_fontaine.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/exposition-coloniale/18-belle-fleur-night-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/exposition-coloniale/18-belle-fleur-night-import-result.json"
+  },
+  "metadata": {
+    "description": "La fontaine La Belle Fleur photographiée de nuit à l’Exposition coloniale de 1931. L’eau et le décor éclairés se détachent sur les arbres sombres.",
+    "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_fontaine_exposition_1931.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La Belle Fleur illuminée, avec deux éventails de jets autour d’une tige géométrique et un petit navire au-dessus de la rosace."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Belle Fleur illuminated, with two fans of water around a geometric stem and a little ship above the rosette."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die beleuchtete La Belle Fleur mit zwei Wasserfächern um einen geometrischen Stängel und einem kleinen Schiff über der Rosette."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De verlichte La Belle Fleur, met twee waterwaaiers rond een geometrische stengel en een scheepje boven de rozet."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Belle Fleur illuminata, con due ventagli d’acqua attorno a uno stelo geometrico e un piccolo veliero sopra la rosetta."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Belle Fleur iluminada, con dos abanicos de agua alrededor de un tallo geométrico y un pequeño barco sobre la roseta."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Oświetlona La Belle Fleur z dwoma wachlarzami wody wokół geometrycznej łodygi i małym statkiem nad rozetą."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Belle Fleur iluminada, com dois leques de água em torno de uma haste geométrica e um pequeno navio sobre a rosácea."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La fontaine La Belle Fleur photographiée de nuit à l’Exposition coloniale de 1931. L’eau et le décor éclairés se détachent sur les arbres sombres."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Belle Fleur fountain photographed at night during the 1931 Colonial Exposition. The lit water and decoration stand out against dark trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Nachtaufnahme des Brunnens La Belle Fleur während der Kolonialausstellung 1931. Beleuchtetes Wasser und Dekor heben sich von den dunklen Bäumen ab."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De fontein La Belle Fleur bij nacht tijdens de Koloniale Tentoonstelling van 1931. Het verlichte water en de versieringen steken af tegen de donkere bomen."
+      },
+      {
+        "languageCode": "it",
+        "value": "La fontana La Belle Fleur fotografata di notte durante l’Esposizione coloniale del 1931. L’acqua e la decorazione illuminate risaltano sugli alberi scuri."
+      },
+      {
+        "languageCode": "es",
+        "value": "La fuente La Belle Fleur fotografiada de noche durante la Exposición Colonial de 1931. El agua y el adorno iluminados destacan sobre los árboles oscuros."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fontanna La Belle Fleur sfotografowana nocą podczas Wystawy Kolonialnej w 1931 roku. Oświetlona woda i dekoracja odcinają się od ciemnych drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A fonte La Belle Fleur fotografada à noite durante a Exposição Colonial de 1931. A água e a decoração iluminadas destacam-se das árvores escuras."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165 ; auteur inconnu, 1931."
+      },
+      {
+        "languageCode": "en",
+        "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; unknown photographer, 1931."
+      },
+      {
+        "languageCode": "de",
+        "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, Inv. 2006.17.165; Fotograf unbekannt, 1931."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; fotograaf onbekend, 1931."
+      },
+      {
+        "languageCode": "it",
+        "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autore ignoto, 1931."
+      },
+      {
+        "languageCode": "es",
+        "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autor desconocido, 1931."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, nr inw. 2006.17.165; autor nieznany, 1931."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autor desconhecido, 1931."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "76918452d99e4d42938e89a4cf79a3d9",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "276c8724-ee25-41b9-92ab-2c727fa8fcc8",
+      "path": "park_item/76918452d99e4d42938e89a4cf79a3d9",
+      "description": "La fontaine La Belle Fleur photographiée de nuit à l’Exposition coloniale de 1931. L’eau et le décor éclairés se détachent sur les arbres sombres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1440,
+      "height": 1286,
+      "sizeInBytes": 264100,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://monument.palais-portedoree.fr/sites/default/files/2022-02/eclairage_fontaine_exposition_1931.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La Belle Fleur illuminée, avec deux éventails de jets autour d’une tige géométrique et un petit navire au-dessus de la rosace."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Belle Fleur illuminated, with two fans of water around a geometric stem and a little ship above the rosette."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die beleuchtete La Belle Fleur mit zwei Wasserfächern um einen geometrischen Stängel und einem kleinen Schiff über der Rosette."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De verlichte La Belle Fleur, met twee waterwaaiers rond een geometrische stengel en een scheepje boven de rozet."
+        },
+        {
+          "languageCode": "it",
+          "value": "La Belle Fleur illuminata, con due ventagli d’acqua attorno a uno stelo geometrico e un piccolo veliero sopra la rosetta."
+        },
+        {
+          "languageCode": "es",
+          "value": "La Belle Fleur iluminada, con dos abanicos de agua alrededor de un tallo geométrico y un pequeño barco sobre la roseta."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oświetlona La Belle Fleur z dwoma wachlarzami wody wokół geometrycznej łodygi i małym statkiem nad rozetą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "La Belle Fleur iluminada, com dois leques de água em torno de uma haste geométrica e um pequeno navio sobre a rosácea."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine La Belle Fleur photographiée de nuit à l’Exposition coloniale de 1931. L’eau et le décor éclairés se détachent sur les arbres sombres."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Belle Fleur fountain photographed at night during the 1931 Colonial Exposition. The lit water and decoration stand out against dark trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Nachtaufnahme des Brunnens La Belle Fleur während der Kolonialausstellung 1931. Beleuchtetes Wasser und Dekor heben sich von den dunklen Bäumen ab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De fontein La Belle Fleur bij nacht tijdens de Koloniale Tentoonstelling van 1931. Het verlichte water en de versieringen steken af tegen de donkere bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana La Belle Fleur fotografata di notte durante l’Esposizione coloniale del 1931. L’acqua e la decorazione illuminate risaltano sugli alberi scuri."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente La Belle Fleur fotografiada de noche durante la Exposición Colonial de 1931. El agua y el adorno iluminados destacan sobre los árboles oscuros."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fontanna La Belle Fleur sfotografowana nocą podczas Wystawy Kolonialnej w 1931 roku. Oświetlona woda i dekoracja odcinają się od ciemnych drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte La Belle Fleur fotografada à noite durante a Exposição Colonial de 1931. A água e a decoração iluminadas destacam-se das árvores escuras."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165 ; auteur inconnu, 1931."
+        },
+        {
+          "languageCode": "en",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; unknown photographer, 1931."
+        },
+        {
+          "languageCode": "de",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, Inv. 2006.17.165; Fotograf unbekannt, 1931."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; fotograaf onbekend, 1931."
+        },
+        {
+          "languageCode": "it",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autore ignoto, 1931."
+        },
+        {
+          "languageCode": "es",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autor desconocido, 1931."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, nr inw. 2006.17.165; autor nieznany, 1931."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Musée national de l’histoire de l’immigration, Palais de la Porte Dorée, inv. 2006.17.165; autor desconhecido, 1931."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-16T00:51:47.535Z",
+      "updatedAt": "2026-11-16T00:51:51.112Z"
+    },
+    "startedAtUtc": "2026-11-16T00:51:45.0223889Z",
+    "receivedAtUtc": "2026-11-16T00:51:54.2261653Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Original individually viewed;24 localized fields personally authored/reviewed;no transformation or capture timestamp inference.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
