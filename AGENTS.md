@@ -273,3 +273,13 @@ Instead, split work into small PRs, such as:
 - Split one oversized class.
 - Improve one admin responsive screen.
 - Add one missing CI check.
+
+## Futur discovery roadmap — scoped implementation contract
+
+- For work on PARKLINKS (C01), Effet papillon (C02), DoppelPark (C03), Train sans rails (C07), or their shared discovery/sharing infrastructure, read `futur/README.md`, `futur/00-regles-codex.md`, the common technical, dissemination, acceptance and delivery documents, and the selected concept specification before changing application code.
+- Before each concept implementation, give the owner an exhaustive functional and technical description following `futur/00-regles-codex.md` and record it in that concept's delivery dossier. Inspect the current repository and distinguish observed facts, proposed decisions and unverified assumptions.
+- Implement only one concept at a time. The recommended order is C02, C01, C03, C07. Do not start the next concept until the previous one is merged, successfully deployed, activated for its intended audience and evidenced as VERIFIED by production acceptance checks. A merge, a running deployment or a disabled feature flag is not sufficient. Stop after the requested concept; do not automatically implement the rest of the roadmap.
+- Anticipate later concepts only through minimal contracts or components actually used and tested by the current concept. Do not implement later features behind flags or create speculative runtime infrastructure.
+- These features and their dissemination must never depend on LLM APIs, local generative models, embeddings or runtime AI translation/generation. Codex development/review is not a product dependency. Do not introduce paid services, subscriptions or infrastructure increases without a new explicit instruction; use the documented no-cost fallbacks instead.
+- Content preparation/export is not authorization to publish. Keep new network/account/concept publication policies disabled until explicitly authorized; reuse the existing social publishing services and preserve the separate park-data publication rules above. Never publish to real social accounts from CI tests.
+- Treat a change limited to this future backlog and its execution rules as a backlog-only documentation update under the existing release-version exemption. The roadmap itself does not authorize application implementation, data changes or social publication.
