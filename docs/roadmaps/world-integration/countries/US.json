@@ -3034,21 +3034,23 @@
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-16",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Deux références Wiegand désignent le Rocky Top Mountain Coaster déjà représenté par la fiche autonome issue de la migration Park.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec"
+      ],
       "aliases": [
         "Rocky Top"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Doublon de découverte constructeur conservé ; suivre les données et leur date sur US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -3082,8 +3084,9 @@
             "referenceId": "location-id-2052"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Les deux références constructeur concernent l’unique coaster du lieu ; fiche autonome publiée sous US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec."
+      },
+      "duplicateOf": "US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec"
     },
     {
       "entryId": "US-candidate-standalone-b1b127a00745e9",
@@ -52791,25 +52794,121 @@
     {
       "entryId": "US-park-df47a44c-6fad-44ee-ab40-af7c32e042ec",
       "name": "Rocky Top Mountain Coaster",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "df47a44c-6fad-44ee-ab40-af7c32e042ec",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "2940 Veterans Boulevard, Pigeon Forge, Tennessee 37863",
+      "siteId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+      "legacySiteIds": [
+        "df47a44c-6fad-44ee-ab40-af7c32e042ec"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-16T00:18:11.015Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — billetterie et horaires officiels vérifiés le 2026-11-16",
+      "identityConfidence": "Unique piste du site, billet propre vendu par l’exploitant ; ancienne fiche Park mono-attraction migrée et masquée NotRelevant.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rocky Top Mountain Coaster",
+        "Rocky Top Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-16T00:16:45.952Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-23269b09-5c6f-4a69-b22f-e2e4806ae105",
+          "appliedAt": "2026-11-16T00:09:41.935Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:23269b09-5c6f-4a69-b22f-e2e4806ae105",
+          "auditEvidence": null,
+          "summary": "Migration de la fiche Park masquée et de son item vers la standalone, huit descriptions et données techniques."
+        },
+        {
+          "eventId": "apply-5f34c57c-8217-4fe1-95ab-62828ef3c65c",
+          "appliedAt": "2026-11-16T00:12:07.288Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:5f34c57c-8217-4fe1-95ab-62828ef3c65c",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels en dollars pour billets individuels intégrés."
+        },
+        {
+          "eventId": "apply-456c4772-cf5a-487f-8f9a-e989c988701c",
+          "appliedAt": "2026-11-16T00:12:29.623Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:456c4772-cf5a-487f-8f9a-e989c988701c",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès de la FAQ officielle intégrées."
+        },
+        {
+          "eventId": "apply-4e9bde74-f551-4c26-8586-b2d455db10f5",
+          "appliedAt": "2026-11-16T00:12:45.853Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:4e9bde74-f551-4c26-8586-b2d455db10f5",
+          "auditEvidence": null,
+          "summary": "Deux règles hebdomadaires publiées par l’exploitant, sans horizon futur inventé."
+        },
+        {
+          "eventId": "photo-e0a3a6aa2c7340d4ae11c546ac5e8df1",
+          "appliedAt": "2026-11-16T00:13:50.215Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:photo:e0a3a6aa2c7340d4ae11c546ac5e8df1",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-09376a8b86bf4ab99937a1d4620e3e8b",
+          "appliedAt": "2026-11-16T00:14:04.430Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:photo:09376a8b86bf4ab99937a1d4620e3e8b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "photo-736987e57b8b4cc19b5093bceb3be27b",
+          "appliedAt": "2026-11-16T00:14:19.628Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:photo:736987e57b8b4cc19b5093bceb3be27b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée avec crédit CC BY 2.0."
+        },
+        {
+          "eventId": "apply-1fe48505-5d7b-4075-a877-e64639d088a9",
+          "appliedAt": "2026-11-16T00:16:23.765Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:1fe48505-5d7b-4075-a877-e64639d088a9",
+          "auditEvidence": null,
+          "summary": "Ouverture et longueur issues de RCDB intégrées."
+        },
+        {
+          "eventId": "apply-5f3ffce7-4587-4cee-8a1e-e58ccf647967",
+          "appliedAt": "2026-11-16T00:16:45.952Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+          "evidence": "PARK_DATA_EDITOR:apply:5f3ffce7-4587-4cee-8a1e-e58ccf647967",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-rocky-top-mountain-coaster-20261116/audit.json",
+          "summary": "Événement d’ouverture du 22 novembre 2018 intégré ; audit final 100/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver la ligne et l’ancienne identité Park liée. Rafraîchir les tarifs et horaires affichés par l’exploitant et chercher une photo de l’ouverture de 2018 sous licence compatible.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -52830,27 +52929,70 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/16439.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — fonctionnement et horaires",
+          "url": "https://www.rockytopcoaster.com/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://www.rockytopcoaster.com/tickets",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Exploitant — FAQ et conditions",
+          "url": "https://www.rockytopcoaster.com/faqs",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "OpenStreetMap — emprise de l’attraction",
+          "url": "https://www.openstreetmap.org/way/686664991",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — piste de jour CC BY 2.0",
+          "url": "https://www.flickr.com/photos/milst1/51415233551/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — piste de nuit CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006457469/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — station CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006676530/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/f807c731-c7ca-4eaf-a29d-1cd0533b4822/rocky-top-mountain-coaster",
+          "accessedAt": "2026-11-16"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-16",
         "attractions": [
           {
             "name": "Rocky Top Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/16439.htm",
-            "family": "Mountain coaster",
+            "source": "Rocky Top — site officiel",
+            "url": "https://www.rockytopcoaster.com/",
+            "family": "Alpine coaster",
             "sourceVenueName": "Rocky Top Mountain Coaster",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Pigeon Forge , Tennessee",
+            "sourceLocality": "Pigeon Forge, Tennessee",
             "sourceOpenedYear": "2018"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Une attraction fixe avec billetterie individuelle et aucune zone ou autre attraction structurée ; migration contrôlée de la fiche Park masquée et de son seul ParkItem."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-139cfdf83a2e31"
+      ]
     },
     {
       "entryId": "US-candidate-68c127f5444e1d",
