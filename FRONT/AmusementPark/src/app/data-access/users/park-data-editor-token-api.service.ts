@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { CreatedParkDataEditorTokenResponse } from '@app/models/users/created-park-data-editor-token-response';
+import { ParkDataEditorToken } from '@app/models/users/user-admin-responses';
 import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -17,6 +18,10 @@ export class ParkDataEditorTokenApiService {
       label: 'Codex cloud editor',
       expiresInDays: 30
     });
+  }
+
+  listTokens(): Observable<ParkDataEditorToken[]> {
+    return this.http.get<ParkDataEditorToken[]>(this.url);
   }
 
   revoke(tokenId: string): Observable<void> {

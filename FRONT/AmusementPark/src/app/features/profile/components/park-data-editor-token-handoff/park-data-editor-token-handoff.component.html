@@ -17,7 +17,7 @@
     spellcheck="false"></textarea>
   <p id="park-editor-key-help" class="editor-handoff__help">{{ 'parkEditorAccess.keyHelp' | translate }}</p>
 
-  <button appUiButton="primary" type="button" [disabled]="busy()" (click)="createPackage()">
+  <button appUiButton="primary" type="button" [disabled]="busy() || revokingTokenId() !== null" (click)="createPackage()">
     {{ (busy() ? 'parkEditorAccess.creating' : 'parkEditorAccess.create') | translate }}
   </button>
 
@@ -40,5 +40,32 @@
 
   @if (errorKey(); as error) {
     <p class="editor-handoff__error" role="alert">{{ error | translate }}</p>
+  }
+
+  <button appUiButton="soft" type="button" [disabled]="loadingTokens() || busy()" (click)="loadTokens()">
+    {{ (loadingTokens() ? 'parkEditorAccess.loadingTokens' : 'parkEditorAccess.manageTokens') | translate }}
+  </button>
+
+  @if (tokensVisible() && !loadingTokens()) {
+    <div class="editor-handoff__tokens">
+      <h3>{{ 'parkEditorAccess.activeTokens' | translate }}</h3>
+      @if (activeTokens().length === 0) {
+        <p>{{ 'parkEditorAccess.noActiveTokens' | translate }}</p>
+      } @else {
+        <ul class="editor-handoff__token-list">
+          @for (token of activeTokens(); track token.id) {
+            <li class="editor-handoff__token">
+              <div>
+                <strong>{{ token.label }}</strong>
+                <span>{{ token.displayPrefix }}…</span>
+                <small>{{ 'parkEditorAccess.expires' | translate }} {{ token.expiresAtUtc | date:'mediumDate' }}</small>
+              </div>
+              <button appUiButton="soft" type="button" [disabled]="busy() || revokingTokenId() !== null"
+                (click)="revokeToken(token.id)">{{ 'parkEditorAccess.revokeToken' | translate }}</button>
+            </li>
+          }
+        </ul>
+      }
+    </div>
   }
 </section>

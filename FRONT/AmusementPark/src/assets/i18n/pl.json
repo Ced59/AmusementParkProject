@@ -344,7 +344,22 @@
     "invalidKey": "Klucz publiczny jest nieprawidłowy lub szyfrowanie jest niedostępne. Nie utworzono tokenu.",
     "createFailed": "Nie udało się utworzyć tokenu. Sprawdź połączenie i spróbuj ponownie.",
     "revokeFailed": "Szyfrowanie nie powiodło się i nie udało się unieważnić tokenu. Unieważnij go w panelu zarządzania tokenami.",
-    "copyFailed": "Kopiowanie nie powiodło się. Zaznacz i skopiuj pakiet ręcznie."
+    "copyFailed": "Kopiowanie nie powiodło się. Zaznacz i skopiuj pakiet ręcznie.",
+    "encryptionFailed": "Nie udało się zaszyfrować nowego tokenu. Został unieważniony; spróbuj ponownie.",
+    "activeLimit": "Trzy tokeny są już aktywne. Unieważnij jeden poniżej i spróbuj ponownie.",
+    "sessionExpired": "Sesja wygasła. Zaloguj się ponownie i spróbuj jeszcze raz.",
+    "roleRequired": "To konto wymaga roli PARK_DATA_EDITOR, aby utworzyć token.",
+    "rateLimited": "Zbyt wiele prób. Odczekaj przed ponowną próbą.",
+    "networkFailed": "Serwer jest niedostępny. Sprawdź połączenie.",
+    "tokensLoadFailed": "Nie udało się wczytać aktywnych tokenów.",
+    "manageTokens": "Zarządzaj aktywnymi tokenami",
+    "loadingTokens": "Wczytywanie tokenów…",
+    "activeTokens": "Aktywne tokeny",
+    "noActiveTokens": "Brak aktywnych tokenów.",
+    "expires": "Wygasa",
+    "revokeToken": "Unieważnij",
+    "confirmRevoke": "Unieważnić ten token dostępu do danych parków?",
+    "tokenRevokeFailed": "Nie udało się unieważnić tokenu. Spróbuj ponownie."
   },
   "parkFitProfiles": {
     "kicker": "Prywatne profile Park Fit",
