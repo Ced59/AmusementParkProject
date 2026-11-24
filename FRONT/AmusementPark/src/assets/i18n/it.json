@@ -344,22 +344,7 @@
     "invalidKey": "La chiave pubblica non è valida o la cifratura non è disponibile. Non è stato creato alcun token.",
     "createFailed": "Impossibile creare il token. Controlla la connessione e riprova.",
     "revokeFailed": "La cifratura non è riuscita e il token non è stato revocato. Revocalo dalla gestione dei token.",
-    "copyFailed": "Copia non riuscita. Seleziona e copia manualmente il pacchetto.",
-    "encryptionFailed": "Impossibile cifrare il nuovo token. È stato revocato; riprova.",
-    "activeLimit": "Sono già attivi tre token. Revocane uno qui sotto, poi riprova.",
-    "sessionExpired": "La sessione è scaduta. Accedi di nuovo e riprova.",
-    "roleRequired": "Per creare un token, questo account deve avere il ruolo PARK_DATA_EDITOR.",
-    "rateLimited": "Troppi tentativi. Attendi prima di riprovare.",
-    "networkFailed": "Il server non è raggiungibile. Controlla la connessione.",
-    "tokensLoadFailed": "Impossibile caricare i token attivi.",
-    "manageTokens": "Gestisci i miei token attivi",
-    "loadingTokens": "Caricamento dei token…",
-    "activeTokens": "Token attivi",
-    "noActiveTokens": "Nessun token attivo.",
-    "expires": "Scade il",
-    "revokeToken": "Revoca",
-    "confirmRevoke": "Revocare questo token per i dati dei parchi?",
-    "tokenRevokeFailed": "Impossibile revocare il token. Riprova."
+    "copyFailed": "Copia non riuscita. Seleziona e copia manualmente il pacchetto."
   },
   "parkFitProfiles": {
     "kicker": "Profili Park Fit privati",
