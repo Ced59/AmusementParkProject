@@ -1702,15 +1702,15 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Le guide officiel Visit Dubai 2026 mentionne encore la tour, mais elle est absente de la liste actuelle des attractions d’Expo City Dubai ; exploitation et horaires à confirmer.",
+      "identityConfidence": "Tour Intamin identifiée à Jubilee Park, Expo City Dubai ; identité dans le site et exploitation actuelle à confirmer",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Vérifier directement la reprise des tours et une billetterie actuelle auprès d’Expo City Dubai ; aucune date, horaire ou tarif actuel n’est confirmé. Rechercher Garden in the Sky, Jubilee Park et Expo City dans Park et StandaloneAttraction via le client officiel avant toute création. Photo exacte de la tour disponible sous CC BY 2.0 (amanderson2, prise le 22 mars 2022) ; la dater comme vue d’archive. Ne pas publier ni annoncer une ouverture sans confirmation.",
       "sources": [
         {
           "label": "Intamin — référence constructeur",
@@ -1721,11 +1721,31 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.visitdubai.com/en/places-to-visit/garden-in-the-sky",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Expo City Dubai — attractions actuellement listées (tour absente)",
+          "url": "https://www.expocitydubai.com/en/things-to-do/attractions/",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Visit Dubai — guide de la ville 2026 mentionnant la tour",
+          "url": "https://www.visitdubai.com/-/media/Images/pdf/2026/dubai-city-guide-en-2026.pdf",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Expo City Dubai — Jubilee Park et emplacement de la tour",
+          "url": "https://expocitydubai.com/en/things-to-do/events-and-workshops/move-connect-feel-by-lululemon/",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Flickr — photo exacte par amanderson2, 22 mars 2022, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/amanderson/51974563113/",
+          "accessedAt": "2026-11-24"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-24",
         "attractions": [
           {
             "name": "Garden in the Sky",
@@ -1735,7 +1755,7 @@
             "sourceVenueName": "Garden in the Sky"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Tour panoramique à billet propre historiquement située dans Jubilee Park ; le statut d’exploitation actuel reste incertain car la tour a disparu du catalogue d’attractions actuel de l’exploitant, malgré des mentions touristiques en 2026. Aucune migration automatique."
       }
     },
     {
