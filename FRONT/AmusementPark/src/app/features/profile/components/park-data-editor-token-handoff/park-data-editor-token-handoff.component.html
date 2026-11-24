@@ -49,7 +49,9 @@
   @if (tokensVisible() && !loadingTokens()) {
     <div class="editor-handoff__tokens">
       <h3>{{ 'parkEditorAccess.activeTokens' | translate }}</h3>
-      @if (activeTokens().length === 0) {
+      @if (tokensLoadFailed()) {
+        <p class="editor-handoff__error" role="alert">{{ 'parkEditorAccess.tokensLoadFailed' | translate }}</p>
+      } @else if (activeTokens().length === 0) {
         <p>{{ 'parkEditorAccess.noActiveTokens' | translate }}</p>
       } @else {
         <ul class="editor-handoff__token-list">

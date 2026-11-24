@@ -29,6 +29,7 @@ export class ParkDataEditorTokenHandoffComponent {
   protected readonly activeTokens = signal<ParkDataEditorToken[]>([]);
   protected readonly tokensVisible = signal(false);
   protected readonly loadingTokens = signal(false);
+  protected readonly tokensLoadFailed = signal(false);
   protected readonly revokingTokenId = signal<string | null>(null);
 
   protected updatePublicKey(event: Event): void {
@@ -103,11 +104,12 @@ export class ParkDataEditorTokenHandoffComponent {
     }
     this.tokensVisible.set(true);
     this.loadingTokens.set(true);
+    this.tokensLoadFailed.set(false);
     try {
       const tokens: ParkDataEditorToken[] = await firstValueFrom(this.tokenApi.listTokens());
       this.activeTokens.set(tokens.filter((token: ParkDataEditorToken) => token.isActive));
     } catch {
-      this.errorKey.set(this.errorKey() ?? 'parkEditorAccess.tokensLoadFailed');
+      this.tokensLoadFailed.set(true);
     } finally {
       this.loadingTokens.set(false);
     }

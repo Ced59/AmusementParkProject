@@ -153,6 +153,19 @@ describe('ParkDataEditorTokenHandoffComponent', () => {
     expect(component.activeTokens()).toEqual([]);
   });
 
+  it('shows a lookup error instead of an empty list when token loading fails', async () => {
+    api.listTokens.mockReturnValue(throwError(() => new HttpErrorResponse({ status: 500 })));
+    const fixture = TestBed.createComponent(ParkDataEditorTokenHandoffComponent);
+    const component = fixture.componentInstance as unknown as { loadTokens(): Promise<void> };
+
+    await component.loadTokens();
+    fixture.detectChanges();
+
+    const tokenSection = (fixture.nativeElement as HTMLElement).querySelector('.editor-handoff__tokens');
+    expect(tokenSection?.querySelector('.editor-handoff__error[role="alert"]')).not.toBeNull();
+    expect(tokenSection?.querySelectorAll('p')).toHaveLength(1);
+  });
+
   it('identifies an expired sign-in session', async () => {
     api.createToken.mockReturnValue(throwError(() => new HttpErrorResponse({ status: 401 })));
     const fixture = TestBed.createComponent(ParkDataEditorTokenHandoffComponent);
