@@ -13,6 +13,21 @@
     "invalidKey": "De openbare sleutel is ongeldig of versleuteling is niet beschikbaar. Er is geen token gemaakt.",
     "createFailed": "Het maken van het token is mislukt. Controleer uw verbinding en probeer het opnieuw.",
     "revokeFailed": "Versleuteling is mislukt en het token kon niet worden ingetrokken. Trek het in via tokenbeheer.",
-    "copyFailed": "Kopiëren is mislukt. Selecteer en kopieer het pakket handmatig."
+    "copyFailed": "Kopiëren is mislukt. Selecteer en kopieer het pakket handmatig.",
+    "encryptionFailed": "Het nieuwe token kon niet worden versleuteld. Het is ingetrokken; probeer het opnieuw.",
+    "activeLimit": "Er zijn al drie actieve tokens. Trek er hieronder een in en probeer het opnieuw.",
+    "sessionExpired": "Uw sessie is verlopen. Meld u opnieuw aan en probeer het opnieuw.",
+    "roleRequired": "Dit account heeft de rol PARK_DATA_EDITOR nodig om een token te maken.",
+    "rateLimited": "Te veel pogingen. Wacht voordat u het opnieuw probeert.",
+    "networkFailed": "De server is niet bereikbaar. Controleer uw verbinding.",
+    "tokensLoadFailed": "Actieve tokens konden niet worden geladen.",
+    "manageTokens": "Mijn actieve tokens beheren",
+    "loadingTokens": "Tokens laden…",
+    "activeTokens": "Actieve tokens",
+    "noActiveTokens": "Geen actieve tokens.",
+    "expires": "Verloopt op",
+    "revokeToken": "Intrekken",
+    "confirmRevoke": "Dit token voor parkgegevens intrekken?",
+    "tokenRevokeFailed": "Dit token kon niet worden ingetrokken. Probeer het opnieuw."
   }
 }

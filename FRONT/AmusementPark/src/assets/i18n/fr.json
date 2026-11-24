@@ -344,7 +344,22 @@
     "invalidKey": "La clé publique est invalide ou le chiffrement est indisponible. Aucun jeton n’a été créé.",
     "createFailed": "La création a échoué. Vérifiez votre connexion et réessayez.",
     "revokeFailed": "Le chiffrement a échoué et le jeton n’a pas pu être révoqué. Révoquez-le depuis la gestion des jetons.",
-    "copyFailed": "La copie a échoué. Sélectionnez et copiez le paquet manuellement."
+    "copyFailed": "La copie a échoué. Sélectionnez et copiez le paquet manuellement.",
+    "encryptionFailed": "Le jeton créé n’a pas pu être chiffré. Il a été révoqué ; réessayez.",
+    "activeLimit": "Trois jetons sont déjà actifs. Révoquez-en un ci-dessous, puis réessayez.",
+    "sessionExpired": "Votre session a expiré. Reconnectez-vous, puis réessayez.",
+    "roleRequired": "Ce compte doit avoir le rôle PARK_DATA_EDITOR pour créer un jeton.",
+    "rateLimited": "Trop de tentatives. Patientez avant de réessayer.",
+    "networkFailed": "Le serveur est inaccessible. Vérifiez votre connexion, puis réessayez.",
+    "tokensLoadFailed": "Impossible de charger vos jetons actifs.",
+    "manageTokens": "Gérer mes jetons actifs",
+    "loadingTokens": "Chargement des jetons…",
+    "activeTokens": "Jetons actifs",
+    "noActiveTokens": "Aucun jeton actif.",
+    "expires": "Expire le",
+    "revokeToken": "Révoquer",
+    "confirmRevoke": "Révoquer ce jeton d’accès aux données de parcs ?",
+    "tokenRevokeFailed": "Impossible de révoquer ce jeton. Réessayez."
   },
   "parkFitProfiles": {
     "kicker": "Profils privés Park Fit",
