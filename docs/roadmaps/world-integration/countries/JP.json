@@ -17684,6 +17684,51 @@
         "publicationBlockers": [],
         "gapCount": 2
       }
+    },
+    {
+      "entryId": "JP-candidate-yokohama-air-cabin-20261124",
+      "name": "Yokohama Air Cabin",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique urbain touristique",
+      "locality": "Sakuragichō – Unga Park, Naka-ku, Yokohama",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-24",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif en 2026 : horaires et billets propres affichés, programmation datée du 9 octobre 2026 ; disponibilité quotidienne variable selon météo et maintenance.",
+      "identityConfidence": "Identité, exploitant et trajet confirmés par le site officiel ; aucune recherche PARK_DATA_EDITOR encore effectuée pour exclure une fiche cachée ou un alias.",
+      "possibleMatches": [],
+      "aliases": ["YOKOHAMA AIR CABIN", "横浜エアキャビン", "ヨコハマ・エア・キャビン"],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher Yokohama Air Cabin, 横浜エアキャビン, Sakuragichō et Unga Park dans Park et StandaloneAttraction via le client officiel avant création. Confirmer la modélisation touristique autonome malgré sa fonction de liaison urbaine. Vérifier le calendrier et les billets actuels, intégrer au moins une des trois photos exactes CC0 recensées, auditer la fiche puis publier le site et Facebook. La découverte du 24 novembre n’est pas une intégration de données.",
+      "sources": [
+        {"label": "Yokohama Air Cabin — exploitant, billets et état de service", "url": "https://yokohama-air-cabin.jp/en/", "accessedAt": "2026-11-24"},
+        {"label": "Yokohama Air Cabin — trajet, capacités et vocation touristique", "url": "https://yokohama-air-cabin.jp/en/about/", "accessedAt": "2026-11-24"},
+        {"label": "Yokohama Air Cabin — animation datée du 9 octobre 2026", "url": "https://yokohama-air-cabin.jp/2026100910971/", "accessedAt": "2026-11-24"},
+        {"label": "Office national du tourisme japonais — attraction de Yokohama", "url": "https://www.japan.travel/en/japans-local-treasures/yokohama-air-cabin/", "accessedAt": "2026-11-24"},
+        {"label": "Wikimedia Commons — cabines et gare, Syced, CC0 (2022)", "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin.jpg", "accessedAt": "2026-11-24"},
+        {"label": "Wikimedia Commons — gare et cabines, Syced, CC0 (2022)", "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_2.jpg", "accessedAt": "2026-11-24"},
+        {"label": "Wikimedia Commons — cabines en circulation, Wadakuramon, CC0 (2025)", "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_2025-11-23.jpg", "accessedAt": "2026-11-24"}
+      ],
+      "discovery": {
+        "batch": "2026-11-24-new-standalone-discovery",
+        "method": "Recherche hors catalogue dans les sources de l’exploitant, du tourisme japonais et des photographies libres ; rapprochement textuel du backlog japonais, recherche API encore requise.",
+        "foundAt": "2026-11-24"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-24",
+        "attractions": [
+          {"name": "Yokohama Air Cabin", "source": "Senyo Kogyo — site officiel", "url": "https://yokohama-air-cabin.jp/en/about/", "family": "Téléphérique urbain panoramique", "sourceVenueName": "Yokohama Air Cabin", "sourceLifecycleSignal": "Billets propres et programmation 2026", "sourceLocality": "Sakuragichō – Unga Park, Yokohama", "matchingMethod": "Exploitant et billetterie autonomes ; recherche API de doublons encore requise"}
+        ],
+        "rationale": "L’exploitant décrit une attraction touristique à billetterie propre reliant deux stations urbaines, en dehors de Yokohama Cosmo World ; la vente de billets combinés avec sa grande roue ne constitue pas un rattachement à ce parc."
+      }
     }
   ]
 }
