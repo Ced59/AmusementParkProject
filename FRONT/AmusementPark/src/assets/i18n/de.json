@@ -344,7 +344,22 @@
     "invalidKey": "Der öffentliche Schlüssel ist ungültig oder die Verschlüsselung ist nicht verfügbar. Es wurde kein Token erstellt.",
     "createFailed": "Das Token konnte nicht erstellt werden. Prüfen Sie die Verbindung und versuchen Sie es erneut.",
     "revokeFailed": "Die Verschlüsselung ist fehlgeschlagen und das Token konnte nicht widerrufen werden. Widerrufen Sie es in der Tokenverwaltung.",
-    "copyFailed": "Kopieren fehlgeschlagen. Markieren und kopieren Sie das Paket manuell."
+    "copyFailed": "Kopieren fehlgeschlagen. Markieren und kopieren Sie das Paket manuell.",
+    "encryptionFailed": "Das neue Token konnte nicht verschlüsselt werden. Es wurde widerrufen. Bitte erneut versuchen.",
+    "activeLimit": "Drei Token sind bereits aktiv. Widerrufe unten eines und versuche es erneut.",
+    "sessionExpired": "Deine Sitzung ist abgelaufen. Melde dich erneut an.",
+    "roleRequired": "Dieses Konto benötigt die Rolle PARK_DATA_EDITOR, um ein Token zu erstellen.",
+    "rateLimited": "Zu viele Versuche. Warte vor dem nächsten Versuch.",
+    "networkFailed": "Der Server ist nicht erreichbar. Prüfe deine Verbindung.",
+    "tokensLoadFailed": "Aktive Token konnten nicht geladen werden.",
+    "manageTokens": "Meine aktiven Token verwalten",
+    "loadingTokens": "Token werden geladen…",
+    "activeTokens": "Aktive Token",
+    "noActiveTokens": "Keine aktiven Token.",
+    "expires": "Läuft ab am",
+    "revokeToken": "Widerrufen",
+    "confirmRevoke": "Dieses Token für Parkdaten widerrufen?",
+    "tokenRevokeFailed": "Dieses Token konnte nicht widerrufen werden. Bitte erneut versuchen."
   },
   "parkFitProfiles": {
     "kicker": "Private Park-Fit-Profile",

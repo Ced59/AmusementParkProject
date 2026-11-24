@@ -13,6 +13,21 @@
     "invalidKey": "La clave pública no es válida o el cifrado no está disponible. No se ha creado ningún token.",
     "createFailed": "No se pudo crear el token. Comprueba la conexión e inténtalo de nuevo.",
     "revokeFailed": "Falló el cifrado y no se pudo revocar el token. Revócalo desde la gestión de tokens.",
-    "copyFailed": "No se pudo copiar. Selecciona y copia el paquete manualmente."
+    "copyFailed": "No se pudo copiar. Selecciona y copia el paquete manualmente.",
+    "encryptionFailed": "No se pudo cifrar el nuevo token. Se ha revocado; inténtalo de nuevo.",
+    "activeLimit": "Ya hay tres tokens activos. Revoca uno abajo y vuelve a intentarlo.",
+    "sessionExpired": "Tu sesión ha caducado. Inicia sesión de nuevo e inténtalo otra vez.",
+    "roleRequired": "Esta cuenta necesita el rol PARK_DATA_EDITOR para crear un token.",
+    "rateLimited": "Demasiados intentos. Espera antes de volver a intentarlo.",
+    "networkFailed": "No se puede acceder al servidor. Comprueba tu conexión.",
+    "tokensLoadFailed": "No se pudieron cargar los tokens activos.",
+    "manageTokens": "Gestionar mis tokens activos",
+    "loadingTokens": "Cargando tokens…",
+    "activeTokens": "Tokens activos",
+    "noActiveTokens": "No hay tokens activos.",
+    "expires": "Caduca el",
+    "revokeToken": "Revocar",
+    "confirmRevoke": "¿Revocar este token de datos de parques?",
+    "tokenRevokeFailed": "No se pudo revocar el token. Inténtalo de nuevo."
   }
 }

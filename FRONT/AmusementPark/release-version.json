@@ -1,6 +1,20 @@
 {
-  "version": "6.0.40",
+  "version": "6.0.41",
   "history": [
+    {
+      "version": "6.0.41",
+      "releasedAt": "2026-11-24",
+      "labels": {
+        "fr": "Gestion des accès améliorée",
+        "en": "Improved access management",
+        "de": "Verbesserte Zugriffsverwaltung",
+        "nl": "Verbeterd toegangsbeheer",
+        "it": "Gestione degli accessi migliorata",
+        "es": "Gestión de accesos mejorada",
+        "pl": "Ulepszone zarządzanie dostępem",
+        "pt": "Gestão de acessos melhorada"
+      }
+    },
     {
       "version": "6.0.40",
       "releasedAt": "2026-11-15",

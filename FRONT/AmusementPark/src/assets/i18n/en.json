@@ -344,7 +344,22 @@
     "invalidKey": "The public key is invalid or encryption is unavailable. No token was created.",
     "createFailed": "Token creation failed. Check your connection and try again.",
     "revokeFailed": "Encryption failed and the token could not be revoked. Revoke it from token management.",
-    "copyFailed": "Copy failed. Select and copy the package manually."
+    "copyFailed": "Copy failed. Select and copy the package manually.",
+    "encryptionFailed": "The new token could not be encrypted. It was revoked; please try again.",
+    "activeLimit": "Three tokens are already active. Revoke one below, then try again.",
+    "sessionExpired": "Your session has expired. Sign in again, then retry.",
+    "roleRequired": "This account needs the PARK_DATA_EDITOR role to create a token.",
+    "rateLimited": "Too many attempts. Wait before trying again.",
+    "networkFailed": "The server is unreachable. Check your connection, then retry.",
+    "tokensLoadFailed": "Could not load your active tokens.",
+    "manageTokens": "Manage my active tokens",
+    "loadingTokens": "Loading tokens…",
+    "activeTokens": "Active tokens",
+    "noActiveTokens": "No active tokens.",
+    "expires": "Expires",
+    "revokeToken": "Revoke",
+    "confirmRevoke": "Revoke this park data editor token?",
+    "tokenRevokeFailed": "Could not revoke this token. Please retry."
   },
   "parkFitProfiles": {
     "kicker": "Private Park Fit profiles",
