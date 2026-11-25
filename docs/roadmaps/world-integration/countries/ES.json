@@ -7898,6 +7898,163 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "ES-candidate-discovery-montjuic-cable-car-20261125",
+      "name": "Montjuïc Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Avinguda de Miramar 30, 08038 Barcelone",
+      "siteId": "806384d6-fa8d-4752-8432-30eed57166eb",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T21:41:06Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Tarifs 2026 et horaires publiés par l’exploitant au 25 novembre 2026.",
+      "identityConfidence": "Nom, adresse, trajet, tarifs et accès officiels ; six recherches sans doublon ; trois photos exactes avec licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Telefèric de Montjuïc",
+        "Teleférico de Montjuïc"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T21:38:50.966Z",
+      "integrationHistory": [
+        {
+          "eventId": "b4f77cd0-8754-4c69-9012-8d61b7e216aa",
+          "appliedAt": "2026-11-25T21:36:41.146Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "806384d6-fa8d-4752-8432-30eed57166eb",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-montjuic-cable-car-20261125/operations.json#b4f77cd0-8754-4c69-9012-8d61b7e216aa",
+          "auditEvidence": null,
+          "summary": "Création masquée après six recherches de doublon ; identité, adresse et huit descriptions."
+        },
+        {
+          "eventId": "a18cab8f-8d6a-4e0e-867e-e8deaea6424e",
+          "appliedAt": "2026-11-25T21:37:04.075Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "806384d6-fa8d-4752-8432-30eed57166eb",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-montjuic-cable-car-20261125/operations.json#a18cab8f-8d6a-4e0e-867e-e8deaea6424e",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs officiels séparant guichet et en ligne, horaires saisonniers et dates spéciales intégrés."
+        },
+        {
+          "eventId": "84608e64-8adf-4978-8fb6-61393218dbd0",
+          "appliedAt": "2026-11-25T21:38:06.923Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "806384d6-fa8d-4752-8432-30eed57166eb",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-montjuic-cable-car-20261125/operations.json#84608e64-8adf-4978-8fb6-61393218dbd0",
+          "auditEvidence": null,
+          "summary": "Inauguration en 1970 et réouverture en 2007 documentées et traduites."
+        },
+        {
+          "eventId": "ab0df96b-9158-442a-b330-57e634bbc948",
+          "appliedAt": "2026-11-25T21:38:18.071Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "806384d6-fa8d-4752-8432-30eed57166eb",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-montjuic-cable-car-20261125/operations.json#ab0df96b-9158-442a-b330-57e634bbc948",
+          "auditEvidence": null,
+          "summary": "Accès adapté et aide en station intégrés depuis la FAQ officielle."
+        },
+        {
+          "eventId": "photo-a4776f13f77b46eb9dd22dd5b8a1a64c",
+          "appliedAt": "2026-11-25T21:38:35.194Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "806384d6-fa8d-4752-8432-30eed57166eb",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-montjuic-cable-car-20261125/operations.json#photo-a4776f13f77b46eb9dd22dd5b8a1a64c",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Enric (CC BY 4.0)."
+        },
+        {
+          "eventId": "photo-26e7f35acf534946a1ebbfc80d0f915f",
+          "appliedAt": "2026-11-25T21:38:42.753Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "806384d6-fa8d-4752-8432-30eed57166eb",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-montjuic-cable-car-20261125/operations.json#photo-26e7f35acf534946a1ebbfc80d0f915f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Mariordo (Mario Roberto Durán Ortiz) (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-3b3b62507dc0415480476579124893b5",
+          "appliedAt": "2026-11-25T21:38:50.966Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "806384d6-fa8d-4752-8432-30eed57166eb",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-montjuic-cable-car-20261125/operations.json#photo-3b3b62507dc0415480476579124893b5",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-es-montjuic-cable-car-20261125/audit.json",
+          "summary": "Photo exacte 3/3 importée : Zeineb Ghorbel (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; contrôler les tarifs 2027, les maintenances et le traitement exact des enfants de 4 ans sans republier le même post Facebook.",
+      "sources": [
+        {
+          "label": "Telefèric de Montjuïc — prix et modalités de billets 2026",
+          "url": "https://www.telefericdemontjuic.cat/en/teleferic-fares-and-prices",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Telefèric de Montjuïc — saisons et horaires",
+          "url": "https://www.telefericdemontjuic.cat/en/teleferic-timetables-seasons",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Telefèric de Montjuïc — itinéraire et stations",
+          "url": "https://www.telefericdemontjuic.cat/en/cable-car-route",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Telefèric de Montjuïc — FAQ et accessibilité",
+          "url": "https://www.telefericdemontjuic.cat/en/teleferic-frequently-asked-questions",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "TMB — inauguration de 1970 et réouverture de 2007",
+          "url": "https://noticies.tmb.cat/historia/teleferic-de-montjuic-50-anys-mirant-barcelona-des-cel",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "TMB — adresse de la station basse",
+          "url": "https://pro.static.holabarcelona.com/tickets/cable-car-montjuic-barcelona",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Parc de Montjuïc — position de la station adjacente",
+          "url": "https://en.wikipedia.org/wiki/Parc_de_Montju%C3%AFc_station",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — 329 Telefèric de Montjuïc, cabina entrant a l'estació inferior (Barcelona).jpg (Enric, CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:329_Telefèric_de_Montjuïc,_cabina_entrant_a_l'estació_inferior_(Barcelona).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Montjuïc Cable Car BCN 04 2016 7101.jpg (Mariordo (Mario Roberto Durán Ortiz), CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Montjuïc_Cable_Car_BCN_04_2016_7101.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Teleferique de Montjuic, barcelone 2018.jpg (Zeineb Ghorbel, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Teleferique_de_Montjuic,_barcelone_2018.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "ES",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Téléphérique touristique à billet propre ; distinct du funiculaire et du Téléphérique du Port."
+      }
     }
   ]
 }

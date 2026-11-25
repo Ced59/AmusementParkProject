@@ -1,0 +1,63 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions ES pour Montjuïc Cable Car, Telefèric de Montjuïc et Teleférico de Montjuïc : zéro résultat dans six recherches ; aucun homonyme dans le backlog ES.",
+  "decision": "Téléphérique panoramique à billet propre entre Parc Montjuïc, Castell et Mirador ; distinct du funiculaire intégré au métro et du Téléphérique du Port. Le château possède une billetterie distincte.",
+  "officialPricing": "2026 : aller-retour adulte 19 € au guichet, 17,10 € en ligne ; enfant 4–12 ans 13 € au guichet, 11,70 € en ligne. Aller simple vendu au guichet seulement : adulte 12 €, enfant 10 €. Le tableau dit gratuit moins de 4 ans, tandis que la FAQ présente la frontière à 4 ans différemment ; confirmation requise pour cet âge exact.",
+  "officialHours": "Toute l’année. Janvier–février et novembre–décembre 10:00–18:00, mars–mai et octobre 10:00–19:00, juin–septembre 10:00–21:00. Dernier accès 15 min avant fermeture ou 20 min pour circuit complet. Les 25 décembre, 1 et 6 janvier 10:00–14:30. Maintenance exceptionnelle à vérifier ; 2027 non garanti.",
+  "accessibility": "La FAQ officielle indique que les installations sont adaptées aux personnes à mobilité réduite ; aide supplémentaire disponible auprès du personnel en station.",
+  "history": "Inauguration officielle le 22 juin 1970 et reprise du service le 16 mai 2007 après reconstruction, selon TMB.",
+  "photos": "Trois photos exactes inspectées : cabine à la station inférieure en 2023, cabine sur fond de Barcelone en 2016, cabines sur la ligne en 2018. Crédits et licences Commons vérifiés ; miniatures réduites, huit alt et légendes distincts.",
+  "sources": [
+    {
+      "label": "Telefèric de Montjuïc — prix et modalités de billets 2026",
+      "url": "https://www.telefericdemontjuic.cat/en/teleferic-fares-and-prices",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Telefèric de Montjuïc — saisons et horaires",
+      "url": "https://www.telefericdemontjuic.cat/en/teleferic-timetables-seasons",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Telefèric de Montjuïc — itinéraire et stations",
+      "url": "https://www.telefericdemontjuic.cat/en/cable-car-route",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Telefèric de Montjuïc — FAQ et accessibilité",
+      "url": "https://www.telefericdemontjuic.cat/en/teleferic-frequently-asked-questions",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "TMB — inauguration de 1970 et réouverture de 2007",
+      "url": "https://noticies.tmb.cat/historia/teleferic-de-montjuic-50-anys-mirant-barcelona-des-cel",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "TMB — adresse de la station basse",
+      "url": "https://pro.static.holabarcelona.com/tickets/cable-car-montjuic-barcelona",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Parc de Montjuïc — position de la station adjacente",
+      "url": "https://en.wikipedia.org/wiki/Parc_de_Montju%C3%AFc_station",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — 329 Telefèric de Montjuïc, cabina entrant a l'estació inferior (Barcelona).jpg (Enric, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:329_Telefèric_de_Montjuïc,_cabina_entrant_a_l'estació_inferior_(Barcelona).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Montjuïc Cable Car BCN 04 2016 7101.jpg (Mariordo (Mario Roberto Durán Ortiz), CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Montjuïc_Cable_Car_BCN_04_2016_7101.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Teleferique de Montjuic, barcelone 2018.jpg (Zeineb Ghorbel, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Teleferique_de_Montjuic,_barcelone_2018.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Tarifs 2026 à revérifier en 2027 ; frontière du tarif enfant à 4 ans à confirmer ; maintenance susceptible de modifier les horaires."
+}
