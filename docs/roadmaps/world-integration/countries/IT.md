@@ -30,7 +30,7 @@ Parcs : **5 publiés**, **97 masqués à intégrer**, **139 masqués NotRelevant
 
 Standalone : **5 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **2 anciens parcs liés à une standalone**.
 
-Revue standalone : **18 pistes dans des fiches Park masquées**, **2 dans des fiches Park publiées**, **18 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **17 pistes dans des fiches Park masquées**, **2 dans des fiches Park publiées**, **17 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **2 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 

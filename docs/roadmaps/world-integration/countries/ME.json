@@ -198,7 +198,7 @@
       "entryId": "ME-park-e82ce40d-f7b9-41cc-bbde-128ecce04308",
       "name": "Kotor Cable Car",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "e82ce40d-f7b9-41cc-bbde-128ecce04308",
@@ -208,14 +208,14 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Complexe fermé jusqu’au printemps 2027 selon l’exploitant.",
+      "identityConfidence": "Le site de l’exploitant présente le Kotor Cable Car comme un complexe réunissant télécabine, Alpine Coaster, Falcon Fly, Aerobar et aire de jeux. La page annonce une fermeture jusqu’au printemps 2027.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la fiche Park masquée ; intégrer le complexe et l’Alpine Coaster comme ParkItem. Vérifier la réouverture annoncée au printemps 2027 et ne pas migrer le complexe en attraction standalone.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -231,6 +231,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/21530.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Kotor Cable Car — Adventures, complex and Alpine Coaster",
+          "url": "https://www.kotorcablecar.me/experience/adventures",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": null,
@@ -247,8 +252,8 @@
         ]
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
             "name": "Alpine Coaster",
@@ -261,7 +266,7 @@
             "sourceOpenedYear": "2023"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le site de l’exploitant présente le Kotor Cable Car comme un complexe réunissant télécabine, Alpine Coaster, Falcon Fly, Aerobar et aire de jeux. La page annonce une fermeture jusqu’au printemps 2027."
       }
     }
   ]

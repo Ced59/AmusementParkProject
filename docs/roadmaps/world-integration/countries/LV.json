@@ -73,9 +73,9 @@
     },
     {
       "entryId": "LV-candidate-standalone-3189752d034966",
-      "name": "Alpine Coaster Wiegand — Ventspils",
+      "name": "Rodeļu trase — Piedzīvojumu parks",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
@@ -85,30 +85,38 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Présence de la piste annoncée pour la saison 2026 ; conditions saisonnières à vérifier.",
+      "identityConfidence": "La Ville de Ventspils annonce la Rodeļu trase dans le Piedzīvojumu parks avec zone d’attractions, parcours de cordes, wakepark, paintball et laser tag. Une annonce de fin de saison limite ensuite certaines activités aux groupes sur réservation.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "LV-park-7a718fce-9537-4166-a200-cd4b6d13ea9a"
+      ],
       "aliases": [
-        "Ventspils"
+        "Ventspils",
+        "Alpine Coaster Wiegand — Ventspils"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence constructeur comme attraction interne du parc masqué LV-park-7a718fce-9537-4166-a200-cd4b6d13ea9a. Intégrer la Rodeļu trase comme ParkItem avec calendrier saisonnier vérifié.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=287#location-id-2170",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ventspils / OC Ventspils — saison 2026 du Piedzīvojumu parks",
+          "url": "https://www.ventspils.lv/jaunumi/izklaide/piedzivojumu-parks-uzsaks-vasaras-sezonu/",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Ventspils",
+            "name": "Rodeļu trase — Piedzīvojumu parks",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=287#location-id-2170",
             "family": "Alpine coaster",
@@ -116,7 +124,7 @@
             "referenceId": "location-id-2170"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "La Ville de Ventspils annonce la Rodeļu trase dans le Piedzīvojumu parks avec zone d’attractions, parcours de cordes, wakepark, paintball et laser tag. Une annonce de fin de saison limite ensuite certaines activités aux groupes sur réservation."
       }
     },
     {
@@ -778,14 +786,14 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Présence de la piste annoncée pour la saison 2026 ; conditions saisonnières à vérifier.",
+      "identityConfidence": "La Ville de Ventspils annonce la Rodeļu trase dans le Piedzīvojumu parks avec zone d’attractions, parcours de cordes, wakepark, paintball et laser tag. Une annonce de fin de saison limite ensuite certaines activités aux groupes sur réservation.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche Park masquée et sa Rodeļu trase comme ParkItem, ainsi que les autres activités pertinentes. Relever les horaires de la nouvelle saison avant publication.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -801,6 +809,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/21532.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ventspils / OC Ventspils — saison 2026 du Piedzīvojumu parks",
+          "url": "https://www.ventspils.lv/jaunumi/izklaide/piedzivojumu-parks-uzsaks-vasaras-sezonu/",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": null,
@@ -817,8 +830,8 @@
         ]
       },
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
             "name": "Rodeļu trase",
@@ -831,7 +844,7 @@
             "sourceOpenedYear": "2023"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "La Ville de Ventspils annonce la Rodeļu trase dans le Piedzīvojumu parks avec zone d’attractions, parcours de cordes, wakepark, paintball et laser tag. Une annonce de fin de saison limite ensuite certaines activités aux groupes sur réservation."
       }
     },
     {

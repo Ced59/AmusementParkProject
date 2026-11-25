@@ -1,0 +1,43 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions JP : aucun résultat pour Kuchu Teien Observatory, Umeda Sky Building, Floating Garden Observatory et 空中庭園展望台 ; aucun homonyme dans le backlog JP.",
+  "decision": "Belvédère panoramique à billet propre reliant les deux tours de l’Umeda Sky Building ; le musée d’art voisin et le café sont des offres distinctes ou accessoires, pas une raison de transformer la fiche en parc.",
+  "officialPricing": "Site officiel : adulte 2 000 JPY, 4–12 ans 500 JPY, moins de 4 ans gratuit ; avec certificat, tarif handicap adulte 1 000 JPY et enfant 250 JPY, même réduction pour un accompagnateur. Quatre offres structurées.",
+  "officialHours": "Site officiel : tous les jours 09:30–22:30, dernier accès 22:00. Journées spéciales possibles ; terrasse extérieure susceptible de fermer en cas de forte pluie.",
+  "accessibility": "L’exploitant indique aux visiteurs en fauteuil d’emprunter l’ascenseur des étages supérieurs depuis le rez-de-chaussée de la tour Est ; fermeture météo possible de la terrasse extérieure.",
+  "history": "Le bâtiment a ouvert en 1993 selon l’Office de tourisme d’Osaka ; événement publié avec précision à l’année.",
+  "photos": "Trois photos exactes vérifiées visuellement : architecture des deux tours, terrasse circulaire, vue nocturne depuis le belvédère. Crédits Commons et licences vérifiés, miniatures réduites ; alt et légendes distinctes en huit langues.",
+  "sources": [
+    {
+      "label": "Umeda Sky Building — Kuchu Teien Observatory, tarifs, heures et accès",
+      "url": "https://www.skybldg.co.jp/en/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Osaka Tourism Bureau — ouverture en 1993",
+      "url": "https://osaka-info.jp/experience/en/osaka/spot/225",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "DMO Osaka Umeda — adresse du belvédère",
+      "url": "https://dmo-umeda.jp/en/facilities/713/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Umeda Sky Building 20260305.jpg (KishujiRapid, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Umeda_Sky_Building_20260305.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Osaka Umeda Sky Building Aussichtsplattform 1.jpg (Zairon, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Osaka_Umeda_Sky_Building_Aussichtsplattform_1.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Night view from Umeda Sky Building (west side) 20250830.jpg (掬茶, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Night_view_from_Umeda_Sky_Building_(west_side)_20250830.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les journées spéciales et la forte pluie peuvent changer l’accès à la terrasse. Les tarifs réduits nécessitent un justificatif."
+}

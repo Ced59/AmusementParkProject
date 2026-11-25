@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "2a135647-4535-40d0-920c-f9822410a851",
+    "appliedAtUtc": "2026-11-25T20:25:47.4212363Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "4e18f9fc-66b6-40ee-8ea7-4c04bfbd4ed9",
+    "appliedAtUtc": "2026-11-25T20:26:18.2220905Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-f07c3571d9f842318ed72ca2e7353949",
+    "imageId": "f07c3571d9f842318ed72ca2e7353949",
+    "createdAtUtc": "2026-11-25T20:26:41.806Z",
+    "updatedAtUtc": "2026-11-25T20:26:45.351Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Umeda_Sky_Building_20260305.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-66a1939797ab4c84977f8e0984316194",
+    "imageId": "66a1939797ab4c84977f8e0984316194",
+    "createdAtUtc": "2026-11-25T20:26:49.806Z",
+    "updatedAtUtc": "2026-11-25T20:26:53.161Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osaka_Umeda_Sky_Building_Aussichtsplattform_1.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-c3db4264e3b64a65a4f9bcd09f1a832e",
+    "imageId": "c3db4264e3b64a65a4f9bcd09f1a832e",
+    "createdAtUtc": "2026-11-25T20:26:57.421Z",
+    "updatedAtUtc": "2026-11-25T20:27:00.939Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Night_view_from_Umeda_Sky_Building_(west_side)_20250830.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "history",
+    "operationId": "7484785b-d45f-48f6-9958-7f18e39a8708",
+    "appliedAtUtc": "2026-11-25T20:27:49.0470544Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "d425b48a-361e-482a-93cc-ffeac4532e13",
+    "appliedAtUtc": "2026-11-25T20:28:05.0629886Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "7cd4eed0-f633-4492-aa67-341dc023625d",
+    "appliedAtUtc": "2026-11-25T20:28:42.6696549Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "a6dc11a12f8b4bf5b46d7911dcf03fae",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T20:30:28.2215381Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128851129424431"
+  }
+]
