@@ -34,7 +34,8 @@
     "Découverte du 25 novembre : One World Observatory vérifié et publié comme plateforme autonome avec prix dynamique, exception Thanksgiving et trois photos exactes.",
     "Découverte du 25 novembre : Reunion Tower GeO-Deck publié comme observatoire autonome, avec six horaires datés, tarifs variables et trois photos exactes.",
     "Découverte du 25 novembre : Empire State Building Observatory publié avec deux formules, tarifs officiels de départ et trois photos exactes.",
-    "Découverte du 25 novembre : Top of the Rock Observation Deck publié avec tarif officiel, horaires et trois photos exactes."
+    "Découverte du 25 novembre : Top of the Rock Observation Deck publié avec tarif officiel, horaires et trois photos exactes.",
+    "Découverte du 25 novembre : Sky View Observatory publié avec trois formules, calendrier officiel et trois vues exactes créditées."
   ],
   "entries": [
     {
@@ -7929,6 +7930,151 @@
         "publicationBlockers": [],
         "gapCount": 7,
         "auditedAtUtc": "2026-10-22T21:41:08.205Z"
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-sky-view-observatory-20261125",
+      "name": "Sky View Observatory",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme d’observation à billet propre",
+      "locality": "700 4th Avenue, Floor 73, Seattle, WA",
+      "siteId": "d84ae7cb-aced-4608-aad9-19d0c36fa512",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T15:04:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie, expérience et calendrier saisonnier actuels publiés par l’exploitant.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans homonyme ; entrée et billet propres à l’observatoire du Columbia Center.",
+      "possibleMatches": [],
+      "aliases": [
+        "Columbia Center Sky View Observatory",
+        "Sky View Observatory Seattle"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T15:01:59.584Z",
+      "integrationHistory": [
+        {
+          "eventId": "09230ba5-42cb-4214-ba21-3f89f993f2d5",
+          "appliedAt": "2026-11-25T15:00:06.024Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d84ae7cb-aced-4608-aad9-19d0c36fa512",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sky-view-observatory-20261125/operations.json#09230ba5-42cb-4214-ba21-3f89f993f2d5",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches PDE Park et StandaloneAttraction sans homonyme ; accès et descriptions en huit langues."
+        },
+        {
+          "eventId": "25087eff-fb33-44f0-b217-36a2043b257a",
+          "appliedAt": "2026-11-25T15:00:40.651Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d84ae7cb-aced-4608-aad9-19d0c36fa512",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sky-view-observatory-20261125/operations.json#25087eff-fb33-44f0-b217-36a2043b257a",
+          "auditEvidence": null,
+          "summary": "Trois formules de billets et calendrier officiel octobre–février avec fermetures exceptionnelles intégrés."
+        },
+        {
+          "eventId": "photo-import-ef37e5b21b4447b0b5fcf958bf7d96f7",
+          "appliedAt": "2026-11-25T15:01:11.501Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d84ae7cb-aced-4608-aad9-19d0c36fa512",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sky-view-observatory-20261125/operations.json#photo-import-ef37e5b21b4447b0b5fcf958bf7d96f7",
+          "auditEvidence": null,
+          "summary": "Vue nord depuis le belvédère. Photo créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-a031dd18468a4de99b043e2b900c11f7",
+          "appliedAt": "2026-11-25T15:01:35.388Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d84ae7cb-aced-4608-aad9-19d0c36fa512",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sky-view-observatory-20261125/operations.json#photo-import-a031dd18468a4de99b043e2b900c11f7",
+          "auditEvidence": null,
+          "summary": "Panorama au crépuscule depuis le belvédère. Photo créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-ca2cba6e409b4f97a22ff300486dcbf4",
+          "appliedAt": "2026-11-25T15:01:59.584Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d84ae7cb-aced-4608-aad9-19d0c36fa512",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sky-view-observatory-20261125/operations.json#photo-import-ca2cba6e409b4f97a22ff300486dcbf4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-sky-view-observatory-20261125/audit.json",
+          "summary": "Vue plongeante depuis le belvédère. Photo créditée et légendée dans huit langues. Audit projeté 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; suivre les horaires modifiés par les événements privés et actualiser la grille après février 2027.",
+      "sources": [
+        {
+          "label": "Sky View Observatory — trois formules et prix",
+          "url": "https://skyviewobservatory.com/tickets/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sky View Observatory — accès, calendrier et fermetures",
+          "url": "https://skyviewobservatory.com/location/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sky View Observatory — visuel officiel des horaires octobre–février",
+          "url": "https://skyviewobservatory.com/wp-content/uploads/2026/04/SVO-Oct-Feb-2026-Rvsd-scaled.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama nord",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_skyline_2021.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama au crépuscule",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_Columbia_Pano2.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — vue sur Seattle Municipal Tower",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_Municipal_Tower_.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche d’observatoire à billet propre ; contrôle PDE et inspection de trois photographies exactes réutilisables.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "L’observatoire possède son entrée, sa billetterie et ses propres horaires au sein du Columbia Center."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d84ae7cb-aced-4608-aad9-19d0c36fa512/sky-view-observatory",
+          "publishedAtUtc": "2026-11-25T15:02:48.1335903Z",
+          "verifiedAtUtc": "2026-11-25T15:04:00Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sky-view-observatory-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "cd52ed40f4894567b924cd86a1898812",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d84ae7cb-aced-4608-aad9-19d0c36fa512/sky-view-observatory?facebook-image=ef37e5b21b4447b0b5fcf958bf7d96f7",
+          "publishedAtUtc": "2026-11-25T15:03:48.0793278Z",
+          "externalPostId": "1285475681307050_122128821561424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128821561424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sky-view-observatory-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
       }
     },
     {
