@@ -1,0 +1,83 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "e71305af-08de-4316-a492-70fc3ecc35d1",
+  "name": "At the Top, Burj Khalifa",
+  "countryCode": "AE",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/e71305af-08de-4316-a492-70fc3ecc35d1/at-the-top-burj-khalifa",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T12:53:15Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "976e77e7c2084342a0534f4c4b3fa0fd",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128806801424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T12:51:55.719Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Burj Khalifa » : aucune fiche existante.",
+  "completeness": {
+    "completenessScore": 97,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 68,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "1c5776be61384ab092a62dcb00113817",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:At_the_Top,_Burj_Khalifa,_Dubai_(7997570791).jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "e1a0773924454166b8042be61045c848",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dubai-_At_The_Top_Burj_Khalifa_-_140515-2193-jikatu_(15100351735).jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "e21558bd1bdf4116aa49c01186547dda",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:At_The_Top_Burj_Khalifa_Dubai_(157940823).jpeg",
+      "isPublished": true
+    }
+  ],
+  "sources": [
+    {
+      "label": "At the Top — billet Silver, prix, horaires et accès",
+      "url": "https://ticket.atthetop.ae/experiences/at-the-top-burj-khalifa/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Billetterie officielle At the Top",
+      "url": "https://ticket.atthetop.ae/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Bayut — reportage contemporain sur l’ouverture, archive",
+      "url": "https://web.archive.org/web/20100105155448/http://www.bayut.com/Property_News/uae_property_news/burj_dubai_observation_deck_opens_t-650.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 1",
+      "url": "https://commons.wikimedia.org/wiki/File:At_the_Top,_Burj_Khalifa,_Dubai_(7997570791).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Dubai-_At_The_Top_Burj_Khalifa_-_140515-2193-jikatu_(15100351735).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 3",
+      "url": "https://commons.wikimedia.org/wiki/File:At_The_Top_Burj_Khalifa_Dubai_(157940823).jpeg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Billet Silver des niveaux 124 et 125 ; SKY, The Lounge et la tour comme bâtiment sont des produits distincts.",
+  "remainingUncertainty": "Le tarif affiché peut dépendre du créneau et des options. Les horaires peuvent changer ; vérifier la billetterie avant la visite."
+}
