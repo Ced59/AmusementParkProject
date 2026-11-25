@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions EE pour Tallinn TV Tower et Tallinna teletorn ; recherche supplémentaire Teletorn en standalone : zéro résultat. Aucun homonyme dans le backlog EE.",
+  "decision": "Tour de visite autonome avec billetterie propre, belvédère et expositions ; le jardin botanique voisin est une entité distincte, même si un billet combiné existe.",
+  "officialPricing": "Billet tour adulte 18 € en ligne et 19 € au guichet ; réduit 13/14 € (7–19 ans, étudiants, enseignants, retraités) ; famille 36/37 € pour deux adultes avec enfants jusqu’à 19 ans. Offres jardin botanique, pass annuel et Edge Walk séparées.",
+  "officialHours": "Tour normalement 10:00–18:00 sur le site officiel. Exceptions TV Tower intégrées : 18, 19, 23, 24 et 31 décembre 2026, 1er janvier 2027. Les exceptions du restaurant ne sont pas imputées à la tour. Billets sur place jusqu’à une heure avant fermeture.",
+  "accessibility": "Source officielle détaillée : entrée principale avec rampe, ascenseur avec assistance du personnel vers le café et le niveau panoramique ; escalier en colimaçon inadapté aux personnes en fauteuil. Les conditions de l’Edge Walk ne sont pas inférées de celles du belvédère.",
+  "history": "Ouverture le 11 juillet 1980 pour les Jeux olympiques, dont les épreuves de voile se tenaient à Tallinn. Lieu important de la restauration de l’indépendance estonienne en 1991. Fermeture en 2007 pour non-conformité aux règles incendie, puis réouverture en 2012 après rénovation.",
+  "photos": "Trois photographies exactes inspectées : tour depuis Karukella tee en 2017, espace d’exposition en 2012, visiteurs équipés sur l’Edge Walk en 2017. Métadonnées Commons, auteur, date et licences CC vérifiés.",
+  "sources": [
+    {
+      "label": "Tallinn TV Tower — billetterie et tarifs",
+      "url": "https://teletorn.ee/en/for-visitor/tickets/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Tallinn TV Tower — horaires courants",
+      "url": "https://teletorn.ee/en/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Tallinn TV Tower — exceptions horaires de décembre 2026 et janvier 2027",
+      "url": "https://teletorn.ee/en/exceptional-opening-hours/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Tallinn TV Tower — accessibilité",
+      "url": "https://teletorn.ee/en/acessibility/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Tallinn TV Tower — histoire officielle",
+      "url": "https://teletorn.ee/en/about-tv-tower/history/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikipedia — coordonnées de la tour de Tallinn",
+      "url": "https://en.wikipedia.org/wiki/Tallinn_TV_Tower",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Tallinn TV Tower 01.jpg (Erko, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Tallinn_TV_Tower_01.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Tallinn TV Tower inside.jpg (Frank Jania, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Tallinn_TV_Tower_inside.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Visitors on Edge Walk - Tallinn TV Tower - Tallinn - Estonia (35917778062).jpg (Adam Jones, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Visitors_on_Edge_Walk_-_Tallinn_TV_Tower_-_Tallinn_-_Estonia_(35917778062).jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les horaires peuvent évoluer, particulièrement pendant les fêtes. Tarifs et conditions de l’Edge Walk à recontrôler séparément."
+}

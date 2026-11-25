@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "ca8114a0-a520-4380-a51d-dd0c77d94bac",
+    "appliedAtUtc": "2026-11-25T22:40:49.037685Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "f367005c-a2bd-4af9-adc6-72b1bbd3d50f",
+    "appliedAtUtc": "2026-11-25T22:41:39.0796337Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "022f230b-65af-4226-bbce-0b4f6a161479",
+    "appliedAtUtc": "2026-11-25T22:41:50.4417721Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "318aaa00-da22-4804-a80b-3017d1de88a0",
+    "appliedAtUtc": "2026-11-25T22:42:01.5308144Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-b7cec951f78e41fca80750e427b29fd9",
+    "imageId": "b7cec951f78e41fca80750e427b29fd9",
+    "createdAtUtc": "2026-11-25T22:42:15.529Z",
+    "updatedAtUtc": "2026-11-25T22:42:18.929Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tallinn_TV_Tower_01.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-0dbecddaea8b4f3e8ba20b7021a1c456",
+    "imageId": "0dbecddaea8b4f3e8ba20b7021a1c456",
+    "createdAtUtc": "2026-11-25T22:42:22.933Z",
+    "updatedAtUtc": "2026-11-25T22:42:26.262Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tallinn_TV_Tower_inside.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-4c38202b2a01458d8dfe97fd0dab00fb",
+    "imageId": "4c38202b2a01458d8dfe97fd0dab00fb",
+    "createdAtUtc": "2026-11-25T22:42:30.342Z",
+    "updatedAtUtc": "2026-11-25T22:42:33.684Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Visitors_on_Edge_Walk_-_Tallinn_TV_Tower_-_Tallinn_-_Estonia_(35917778062).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "fbf2b82e-5f22-4f0e-bd64-e62fbf6a3f31",
+    "appliedAtUtc": "2026-11-25T22:43:03.2486627Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "806e7a4a8cd34bb4851c227922828543",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T22:43:48.5185939Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128860663424431"
+  }
+]
