@@ -1,0 +1,59 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions MY pour « Genting Gohtong Jaya Cable Car » et « Genting SkyWay » : zéro résultat dans les quatre recherches avant création. Aucune ligne Genting SkyWay dans le backlog MY, à distinguer de la fiche Awana SkyWay déjà publiée.",
+  "decision": "Ligne autonome Gohtong Sentral–Resorts World Station à billet propre, distincte de la ligne Awana SkyWay et du parc Genting SkyWorlds ; ancien nom Genting SkyWay.",
+  "officialPrices": {
+    "currency": "MYR",
+    "standardOneWay": 11,
+    "standardReturn": 19,
+    "expressOneWay": 17,
+    "expressReturn": 32,
+    "privateOneWay": 324,
+    "privateReturn": 594,
+    "under90cm": "Free",
+    "standardFareMaintenanceCaveat": true
+  },
+  "officialHours": {
+    "daily": "09:00–19:00",
+    "lastBoarding": "Not stated",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-02-28",
+    "daysCovered": 96
+  },
+  "history": "Renommage Genting SkyWay → Genting Gohtong Jaya Cable Car annoncé pour le 1er octobre 2024. Année d’ouverture initiale contradictoire entre deux pages officielles : 1997 / 1998.",
+  "accessibility": "Fauteuils roulants et poussettes à plier avant embarquement ; assistance auprès du personnel. Les jeunes de 16 ans ou moins sont accompagnés et surveillés.",
+  "photos": "Trois photos de la ligne vérifiées visuellement : deux vues de cabines 2016 par Marufish sous CC BY-SA 2.0 et une arrivée en station par Rudolph.A.furtado dans le domaine public. Alt, légendes distinctes et crédits en huit langues.",
+  "sources": [
+    {
+      "label": "Resorts World Genting — Genting SkyWay, ligne, horaires, tarifs et règlement",
+      "url": "https://www.rwgenting.com/en/getting-here/cable-car/genting-gohtong-jaya-cable-car.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Resorts World Genting — nouveau nom et distinction entre les deux lignes",
+      "url": "https://www.rwgenting.com/en/blog/two-cable-car-routes-now-open-genting-gohtong-jaya-cable-car-genting-highlands-premium-outlets-cable-car.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — station Gohtong Sentral",
+      "url": "https://www.openstreetmap.org/way/154967081",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabines Genting SkyWay, Marufish, CC BY-SA 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Genting_Skyway_(31640153062).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — versant Genting SkyWay, Marufish, CC BY-SA 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Genting_Skyway_(30977558813).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — arrivée en station, Rudolph.A.furtado, domaine public",
+      "url": "https://commons.wikimedia.org/wiki/File:Arrival_of_cable_Car_into_Genting_Resort.JPG",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les deux pages officielles ne concordent pas sur l’année de première ouverture (1997 et 1998) : aucune date d’ouverture initiale n’a été publiée sur cette fiche. La page de tarifs précise que le tarif standard Genting SkyWay s’applique lors d’une fermeture de maintenance d’Awana, tandis que l’annonce de 2024 présente les deux lignes en exploitation simultanée : vérifier le service et le prix avant départ. Dernier embarquement non publié ; calendrier daté à prolonger après le 28 février 2027. Les trois photos montrent la ligne à des dates antérieures et pas nécessairement sa présentation actuelle."
+}
