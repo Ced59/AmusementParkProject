@@ -1,0 +1,125 @@
+[
+  {
+    "step": "core",
+    "operationId": "69e607d7-4794-488c-9cb3-0c2c77566163",
+    "appliedAtUtc": "2026-11-25T23:21:03.5862432Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "24f0ff4b-33a4-4ff5-a560-1227e965a95a",
+    "appliedAtUtc": "2026-11-25T23:21:42.4219532Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-import-3a75aa6d5dad4847a23c2a3d178ba892",
+    "imageId": "3a75aa6d5dad4847a23c2a3d178ba892",
+    "updatedAtUtc": "2026-11-25T23:22:10.506Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tower_of_Americas_2019.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-import-9f94d38467b84413b33f8b6b2b94c158",
+    "imageId": "9f94d38467b84413b33f8b6b2b94c158",
+    "updatedAtUtc": "2026-11-25T23:22:24.252Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:TOTA_observation_deck.JPG",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-import-0b895d6bf0f7411bbae188f82ee3e4a6",
+    "imageId": "0b895d6bf0f7411bbae188f82ee3e4a6",
+    "updatedAtUtc": "2026-11-25T23:22:38.206Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Entrance_to_Tower_of_the_Americas_IMG_4576.JPG",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "history",
+    "operationId": "e2b665d5-e665-4353-80ef-31ac1c987307",
+    "appliedAtUtc": "2026-11-25T23:23:32.9627401Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "photo-1-metadata",
+    "eventId": "photo-metadata-3a75aa6d5dad4847a23c2a3d178ba892",
+    "imageId": "3a75aa6d5dad4847a23c2a3d178ba892",
+    "updatedAtUtc": "2026-11-25T23:24:24.683Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tower_of_Americas_2019.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2-metadata",
+    "eventId": "photo-metadata-9f94d38467b84413b33f8b6b2b94c158",
+    "imageId": "9f94d38467b84413b33f8b6b2b94c158",
+    "updatedAtUtc": "2026-11-25T23:24:35.698Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:TOTA_observation_deck.JPG",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3-metadata",
+    "eventId": "photo-metadata-0b895d6bf0f7411bbae188f82ee3e4a6",
+    "imageId": "0b895d6bf0f7411bbae188f82ee3e4a6",
+    "updatedAtUtc": "2026-11-25T23:24:46.694Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Entrance_to_Tower_of_the_Americas_IMG_4576.JPG",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "f08fa02b-155a-4c06-9eef-a63f805b1e32",
+    "appliedAtUtc": "2026-11-25T23:25:28.5655591Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "de4cea2bf380433183287591d3424a86",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T23:26:29.2833565Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128864167424431"
+  }
+]
