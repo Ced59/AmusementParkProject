@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "330d7e41-14b7-440e-add2-d2338e4d8dd2",
+    "appliedAtUtc": "2026-11-25T22:15:49.3010992Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "4d583362-38b5-4829-a537-94c2ed4bf024",
+    "appliedAtUtc": "2026-11-25T22:17:23.1350385Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "79ff90f7-ecec-4512-9c2a-02fbdc043c4d",
+    "appliedAtUtc": "2026-11-25T22:17:34.3155902Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "38071bbc-c453-45c0-bd6b-332a140d4248",
+    "appliedAtUtc": "2026-11-25T22:17:45.4147266Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-fde0e703dd354132b955dfafcc6daa08",
+    "imageId": "fde0e703dd354132b955dfafcc6daa08",
+    "createdAtUtc": "2026-11-25T22:18:12.1Z",
+    "updatedAtUtc": "2026-11-25T22:18:16.444Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_Torre_Latinoamericana_from_Alameda_Central_-_Mexico_2024.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-8239c3fcd3234a00b914e1c75e678721",
+    "imageId": "8239c3fcd3234a00b914e1c75e678721",
+    "createdAtUtc": "2026-11-25T22:18:21.669Z",
+    "updatedAtUtc": "2026-11-25T22:18:25.097Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador_latinoamericana.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-48a18f84e8404b4fa5863e676bbcfcdc",
+    "imageId": "48a18f84e8404b4fa5863e676bbcfcdc",
+    "createdAtUtc": "2026-11-25T22:18:30.216Z",
+    "updatedAtUtc": "2026-11-25T22:18:33.587Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_de_la_Ciudad_de_México_desde_el_mirador_de_la_Torre_Latinoamericana.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "6d198abe-f3c9-49f1-b8fc-084dffe47c0d",
+    "appliedAtUtc": "2026-11-25T22:19:03.3800257Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "3399e082dd694915a57b049547c90e58",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T22:19:47.4350136Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128859079424431"
+  }
+]

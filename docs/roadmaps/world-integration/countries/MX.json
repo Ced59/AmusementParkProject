@@ -3640,6 +3640,153 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "MX-candidate-discovery-mirador-torre-latino-20261125",
+      "name": "Mirador Torre Latino",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère panoramique à billet propre",
+      "locality": "Eje Central Lázaro Cárdenas 2, Centro Histórico, Ciudad de México",
+      "siteId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T22:20:35Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billets et horaires publiés par l’exploitant au 25 novembre 2026.",
+      "identityConfidence": "Nom, adresse, admission et horaires officiels ; six recherches sans doublon ; trois photos exactes sous licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Mirador Torre Latinoamericana",
+        "Torre Latinoamericana Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T22:18:33.587Z",
+      "integrationHistory": [
+        {
+          "eventId": "330d7e41-14b7-440e-add2-d2338e4d8dd2",
+          "appliedAt": "2026-11-25T22:15:49.301Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-mirador-torre-latino-20261125/operations.json#330d7e41-14b7-440e-add2-d2338e4d8dd2",
+          "auditEvidence": null,
+          "summary": "Création masquée après six recherches de doublon ; identité, adresse et huit descriptions."
+        },
+        {
+          "eventId": "4d583362-38b5-4829-a537-94c2ed4bf024",
+          "appliedAt": "2026-11-25T22:17:23.135Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-mirador-torre-latino-20261125/operations.json#4d583362-38b5-4829-a537-94c2ed4bf024",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs officiels en ligne et horaires quotidiens intégrés."
+        },
+        {
+          "eventId": "79ff90f7-ecec-4512-9c2a-02fbdc043c4d",
+          "appliedAt": "2026-11-25T22:17:34.315Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-mirador-torre-latino-20261125/operations.json#79ff90f7-ecec-4512-9c2a-02fbdc043c4d",
+          "auditEvidence": null,
+          "summary": "Achèvement de la tour en 1956 documenté et traduit."
+        },
+        {
+          "eventId": "38071bbc-c453-45c0-bd6b-332a140d4248",
+          "appliedAt": "2026-11-25T22:17:45.414Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-mirador-torre-latino-20261125/operations.json#38071bbc-c453-45c0-bd6b-332a140d4248",
+          "auditEvidence": null,
+          "summary": "Politique des chiens d’assistance intégrée ; accès en fauteuil explicitement non confirmé."
+        },
+        {
+          "eventId": "photo-fde0e703dd354132b955dfafcc6daa08",
+          "appliedAt": "2026-11-25T22:18:16.444Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-mirador-torre-latino-20261125/operations.json#photo-fde0e703dd354132b955dfafcc6daa08",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : José Luiz (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-8239c3fcd3234a00b914e1c75e678721",
+          "appliedAt": "2026-11-25T22:18:25.097Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-mirador-torre-latino-20261125/operations.json#photo-8239c3fcd3234a00b914e1c75e678721",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : AirLiner (Public domain)."
+        },
+        {
+          "eventId": "photo-48a18f84e8404b4fa5863e676bbcfcdc",
+          "appliedAt": "2026-11-25T22:18:33.587Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-mirador-torre-latino-20261125/operations.json#photo-48a18f84e8404b4fa5863e676bbcfcdc",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mx-mirador-torre-latino-20261125/audit.json",
+          "summary": "Photo exacte 3/3 importée : Pillolino77 (CC0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier les tarifs et horaires ultérieurs et obtenir de l’exploitant une confirmation des conditions d’accès en fauteuil roulant.",
+      "sources": [
+        {
+          "label": "Mirador Torre Latino — billets, tarifs, horaires et conditions",
+          "url": "https://www.miradortorrelatino.com/boletos",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Mirador Torre Latino — politique des billets et chiens d’assistance",
+          "url": "https://www.miradortorrelatino.com/politicadeboletosenlinea",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Torre Latinoamericana — adresse officielle",
+          "url": "https://torrelatinoamericana.com.mx/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Torre Latinoamericana — histoire officielle",
+          "url": "https://torrelatinoamericana.com.mx/historia/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikipedia — coordonnées de la Torre Latinoamericana",
+          "url": "https://en.wikipedia.org/wiki/Torre_Latinoamericana",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — View of Torre Latinoamericana from Alameda Central - Mexico 2024.jpg (José Luiz, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:View_of_Torre_Latinoamericana_from_Alameda_Central_-_Mexico_2024.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Mirador latinoamericana.jpg (AirLiner, Public domain)",
+          "url": "https://commons.wikimedia.org/wiki/File:Mirador_latinoamericana.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Vista de la Ciudad de México desde el mirador de la Torre Latinoamericana.jpg (Pillolino77, CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Vista_de_la_Ciudad_de_México_desde_el_mirador_de_la_Torre_Latinoamericana.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "MX",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Belvédère touristique avec billetterie propre, distinct des musées et restaurants de la tour."
+      }
     }
   ]
 }
