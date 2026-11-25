@@ -1,0 +1,35 @@
+{
+  "reviewedAt": "2026-11-25",
+  "countryCode": "DE",
+  "reviewedBacklogEntries": [
+    "DE-park-43678da3-7858-4db3-8fba-383d21fa774d",
+    "DE-candidate-standalone-b12dd3745b4bb5",
+    "DE-candidate-c66baed55d2d96"
+  ],
+  "decision": "Conserver le Park masqué d’Rodelbahn St. Englmar ; classer la piste Wiegand comme attraction interne et l’ancienne dénomination comme doublon du parc.",
+  "presenceSearch": "PDE SearchParks « Englmar » : un Park masqué DE, identifiant 43678da3-7858-4db3-8fba-383d21fa774d ; PDE SearchStandaloneAttractions : aucun résultat. ExportPark : parkItems Bayerwald-Coaster 00be922d-4c54-46d4-9ffe-4f7a6fe487a4 et Voglwuide Sepp 5d5850f4-b792-4c18-966a-5a5aaccedb12.",
+  "sources": [
+    {
+      "label": "d’Rodelbahn St. Englmar — site officiel et attractions",
+      "url": "https://sommerrodeln.de/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "d’Rodelbahn St. Englmar — tarifs multi-activités",
+      "url": "https://sommerrodeln.de/oeffnungszeiten-preise/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "d’Rodelbahn St. Englmar — plan du parc",
+      "url": "https://sommerrodeln.de/parkplan/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "RCDB — ancien nom et deux coasters dans le parc",
+      "url": "https://rcdb.com/12790.htm",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "evidence": "Le site officiel décrit Bayerwald-Bob, Bayerwald-Coaster, Voglwuide Sepp, Bungee-Trampolin, golf et d’autres activités dans le même parc. Le billet journalier couvre plusieurs attractions. RCDB liste Rodel- und Freizeitparadies St. Englmar comme ancien nom du site actuel. Aucun Apply de données n’a été réalisé pendant cette qualification.",
+  "remainingUncertainty": "Les deux références Wiegand St. Englmar doivent être rapprochées de façon précise avec Bayerwald-Coaster et Bayerwald-Bob avant de corriger les parkItems. L’intégration éditoriale du Park masqué demeure à faire ; aucune date de dernière intégration n’est inventée."
+}

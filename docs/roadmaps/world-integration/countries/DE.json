@@ -27,7 +27,8 @@
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 177 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
-    "Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
+    "Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Qualification du 25 novembre : d’Rodelbahn St. Englmar est un Park multi-activités masqué. Bayerwald-Coaster est un parkItem ; les références Wiegand ne créent aucune standalone, et Rodel- und Freizeitparadies est l’ancien nom du même parc."
   ],
   "entries": [
     {
@@ -2114,27 +2115,29 @@
       "entryId": "DE-candidate-standalone-b12dd3745b4bb5",
       "name": "Alpine Coaster Wiegand — St. Englmar",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Coaster documenté comme attraction interne de d’Rodelbahn St. Englmar, site multi-activités actif.",
+      "identityConfidence": "Références constructeur « St. Englmar » rapprochées du Bayerwald-Coaster au sein de la fiche Park masquée confirmée par l’éditeur.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-park-43678da3-7858-4db3-8fba-383d21fa774d"
+      ],
       "aliases": [
         "St. Englmar"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Référence constructeur rapprochée du Park masqué d’Rodelbahn St. Englmar. Conserver cette ligne comme doublon documenté ; vérifier l’identité précise des deux références Wiegand avant toute mise à jour du parkItem Bayerwald-Coaster. Ne pas créer de standalone.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2155,11 +2158,31 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.sommerrodeln.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — site officiel et attractions",
+          "url": "https://sommerrodeln.de/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — tarifs multi-activités",
+          "url": "https://sommerrodeln.de/oeffnungszeiten-preise/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — plan du parc",
+          "url": "https://sommerrodeln.de/parkplan/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "RCDB — ancien nom et deux coasters dans le parc",
+          "url": "https://rcdb.com/12790.htm",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
             "name": "St. Englmar",
@@ -2178,7 +2201,7 @@
             "referenceId": "location-id-1248"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le site officiel liste Bayerwald-Coaster et Bayerwald-Bob parmi de nombreuses attractions du même parc ; l’éditeur a déjà Bayerwald-Coaster comme parkItem. Les deux références constructeur demandent un rapprochement fin, pas une création standalone."
       }
     },
     {
@@ -6036,7 +6059,7 @@
       "entryId": "DE-park-43678da3-7858-4db3-8fba-383d21fa774d",
       "name": "D'Rodelbahn St. Englmar",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "43678da3-7858-4db3-8fba-383d21fa774d",
@@ -6046,14 +6069,16 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "L’exploitant présente un parc multi-activités actif : Bayerwald-Bob, Bayerwald-Coaster, Voglwuide Sepp, jeux, golf et autres activités.",
+      "identityConfidence": "Fiche Park masquée confirmée par PDE SearchParks et ExportPark : Bayerwald-Coaster et Voglwuide Sepp sont déjà des parkItems. RCDB associe l’ancien nom Rodel- und Freizeitparadies à ce même parc.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rodel- und Freizeitparadies St. Englmar"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer éditorialement la fiche Park masquée existante et compléter ses attractions, tarifs, horaires et photos. Conserver Bayerwald-Coaster et Voglwuide Sepp comme parkItems ; ne pas créer une standalone pour le coaster ni une seconde fiche pour l’ancien nom.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6074,13 +6099,28 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13192.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — site officiel et attractions",
+          "url": "https://sommerrodeln.de/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — tarifs multi-activités",
+          "url": "https://sommerrodeln.de/oeffnungszeiten-preise/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — plan du parc",
+          "url": "https://sommerrodeln.de/parkplan/",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
             "name": "Bayerwald-Coaster",
@@ -6093,7 +6133,7 @@
             "sourceOpenedYear": "2007"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’exploitant vend un site multi-activités avec billet journalier commun et tickets par attraction. Le Bayerwald-Coaster est déjà un parkItem de la fiche Park masquée ; le parc ne doit pas être migré en standalone."
       }
     },
     {
@@ -21374,37 +21414,60 @@
       "entryId": "DE-candidate-c66baed55d2d96",
       "name": "Rodel- und Freizeitparadies St. Englmar",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Attractions",
       "locality": "Sankt Englmar",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Ancien nom de d’Rodelbahn St. Englmar selon RCDB ; parc actuellement exploité.",
+      "identityConfidence": "RCDB donne explicitement « Rodel- und Freizeitparadies St. Englmar » comme ancien nom de d’Rodelbahn St. Englmar, dont la fiche Park masquée existe.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ancienne identité comme doublon de la fiche Park masquée d’Rodelbahn St. Englmar ; pas de nouvelle fiche et pas de standalone.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Germany",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — site officiel et attractions",
+          "url": "https://sommerrodeln.de/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — tarifs multi-activités",
+          "url": "https://sommerrodeln.de/oeffnungszeiten-preise/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "d’Rodelbahn St. Englmar — plan du parc",
+          "url": "https://sommerrodeln.de/parkplan/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "RCDB — ancien nom et deux coasters dans le parc",
+          "url": "https://rcdb.com/12790.htm",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Ancien nom du même parc multi-activités selon RCDB ; la fiche Park masquée existe déjà sous le nom actuel."
+      },
+      "possibleBacklogEntries": [
+        "DE-park-43678da3-7858-4db3-8fba-383d21fa774d"
+      ]
     },
     {
       "entryId": "DE-candidate-74e7fa77996173",
