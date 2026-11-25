@@ -1,0 +1,99 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "4a5a3241-1867-4cbe-b5a3-d6bc28112d2e",
+  "name": "Sky Garden",
+  "countryCode": "GB",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/4a5a3241-1867-4cbe-b5a3-d6bc28112d2e/sky-garden",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T15:37:30Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "7fd8738deb0c48c389b19d1c47394deb",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128824603424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T15:36:08.857Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Sky Garden » en GB : zéro homonyme, y compris masqué ; backlog GB sans entrée correspondante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "990ce859441a47e980739f641b417fc3",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Inside_the_Sky_Garden.jpg",
+      "isPublished": true,
+      "author": "Scglossop1",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "836cf98047dd43a9a8ddcf0c8e27fd3b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sky_Garden.jpg",
+      "isPublished": true,
+      "author": "Colin",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "d3798ee4a35b4885839094b601090675",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Looking_down_on_the_Thames_from_the_Sky_Garden_at_20_Fenchurch_Street_-_geograph.org.uk_-_4757964.jpg",
+      "isPublished": true,
+      "author": "Rod Allday",
+      "license": "CC BY-SA 2.0"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Sky Garden — réservation gratuite",
+      "url": "https://skygarden.london/booking/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sky Garden — horaires publics et adresse",
+      "url": "https://skygarden.london/visit/getting-here-hours/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sky Garden — fermetures annoncées",
+      "url": "https://skygarden.london/sky-garden-closure-dates/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sky Garden — entrée Philpot Lane",
+      "url": "https://skygarden.london/faqs-search/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "GOV.UK — jours fériés 2026-2027",
+      "url": "https://www.gov.uk/bank-holidays",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — jardin intérieur",
+      "url": "https://commons.wikimedia.org/wiki/File:Inside_the_Sky_Garden.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — galerie panoramique",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Sky_Garden.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — vue Tamise",
+      "url": "https://commons.wikimedia.org/wiki/File:Looking_down_on_the_Thames_from_the_Sky_Garden_at_20_Fenchurch_Street_-_geograph.org.uk_-_4757964.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Jardin panoramique à accès gratuit réservé, entrée Philpot Lane ; horaires publics et huit exceptions dont fermetures privées, maintenance et jours fériés ; trois photos exactes créditées.",
+  "remainingUncertainty": "Créneaux gratuits ouverts trois semaines avant la visite et capacité limitée ; vérifier disponibilités et fermetures avant de se déplacer. Les horaires des restaurants diffèrent de ceux du jardin public."
+}

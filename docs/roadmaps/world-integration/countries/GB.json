@@ -31,7 +31,8 @@
     "Revue standalone du 22 octobre : 18 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
     "Contrôle supplémentaire alpine coasters : 1 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.",
-    "Découverte du 25 novembre : The View from The Shard publié avec tarifs officiels, calendrier à exceptions et trois photos exactes créditées."
+    "Découverte du 25 novembre : The View from The Shard publié avec tarifs officiels, calendrier à exceptions et trois photos exactes créditées.",
+    "Découverte du 25 novembre : Sky Garden publié avec réservation gratuite, fermetures officielles et trois photos exactes créditées."
   ],
   "entries": [
     {
@@ -12385,6 +12386,161 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "GB-candidate-discovery-sky-garden-20261125",
+      "name": "Sky Garden",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Jardin panoramique à réservation gratuite",
+      "locality": "1 Sky Garden Walk, entrance Philpot Lane, London EC3M 8AF",
+      "siteId": "4a5a3241-1867-4cbe-b5a3-d6bc28112d2e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T15:37:30Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Réservation publique gratuite, horaires et fermetures actuels publiés par l’exploitant.",
+      "identityConfidence": "PDE sans homonyme ; accès, réservation et horaires publics propres au jardin, distincts des restaurants du bâtiment.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sky Garden London",
+        "20 Fenchurch Street Sky Garden"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T15:36:08.857Z",
+      "integrationHistory": [
+        {
+          "eventId": "60f9d5b0-71d7-4e89-ad9e-21fb8417173e",
+          "appliedAt": "2026-11-25T15:34:39.868Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4a5a3241-1867-4cbe-b5a3-d6bc28112d2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-sky-garden-20261125/operations.json#60f9d5b0-71d7-4e89-ad9e-21fb8417173e",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches PDE Park et StandaloneAttraction sans homonyme ; entrée propre et descriptions en huit langues."
+        },
+        {
+          "eventId": "8b41be79-373c-4bf7-a2c9-125cedc62942",
+          "appliedAt": "2026-11-25T15:35:16.456Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4a5a3241-1867-4cbe-b5a3-d6bc28112d2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-sky-garden-20261125/operations.json#8b41be79-373c-4bf7-a2c9-125cedc62942",
+          "auditEvidence": null,
+          "summary": "Billet public gratuit à créneau réservé ; horaires hebdomadaires, fermetures privées et maintenance, exceptions de jours fériés intégrés."
+        },
+        {
+          "eventId": "photo-import-990ce859441a47e980739f641b417fc3",
+          "appliedAt": "2026-11-25T15:35:42.848Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4a5a3241-1867-4cbe-b5a3-d6bc28112d2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-sky-garden-20261125/operations.json#photo-import-990ce859441a47e980739f641b417fc3",
+          "auditEvidence": null,
+          "summary": "Allées plantées de la serre panoramique. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-836cf98047dd43a9a8ddcf0c8e27fd3b",
+          "appliedAt": "2026-11-25T15:35:56.030Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4a5a3241-1867-4cbe-b5a3-d6bc28112d2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-sky-garden-20261125/operations.json#photo-import-836cf98047dd43a9a8ddcf0c8e27fd3b",
+          "auditEvidence": null,
+          "summary": "Visiteurs dans la grande galerie vitrée. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-d3798ee4a35b4885839094b601090675",
+          "appliedAt": "2026-11-25T15:36:08.857Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4a5a3241-1867-4cbe-b5a3-d6bc28112d2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-sky-garden-20261125/operations.json#photo-import-d3798ee4a35b4885839094b601090675",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-sky-garden-20261125/audit.json",
+          "summary": "Vue sur la Tamise depuis les fenêtres. Photo exacte, créditée et légendée dans huit langues. Audit projeté 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; recontrôler disponibilités et fermetures temporaires ainsi que les horaires après janvier 2027.",
+      "sources": [
+        {
+          "label": "Sky Garden — réservation gratuite",
+          "url": "https://skygarden.london/booking/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sky Garden — horaires publics et adresse",
+          "url": "https://skygarden.london/visit/getting-here-hours/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sky Garden — fermetures annoncées",
+          "url": "https://skygarden.london/sky-garden-closure-dates/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sky Garden — entrée Philpot Lane",
+          "url": "https://skygarden.london/faqs-search/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "GOV.UK — jours fériés 2026-2027",
+          "url": "https://www.gov.uk/bank-holidays",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — jardin intérieur",
+          "url": "https://commons.wikimedia.org/wiki/File:Inside_the_Sky_Garden.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — galerie panoramique",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Sky_Garden.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — vue Tamise",
+          "url": "https://commons.wikimedia.org/wiki/File:Looking_down_on_the_Thames_from_the_Sky_Garden_at_20_Fenchurch_Street_-_geograph.org.uk_-_4757964.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche de belvédère et jardin à réservation propre ; contrôle PDE et inspection de trois photographies exactes réutilisables.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Le jardin public se réserve gratuitement via une entrée dédiée sur Philpot Lane ; les restaurants sont des services distincts."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/4a5a3241-1867-4cbe-b5a3-d6bc28112d2e/sky-garden",
+          "publishedAtUtc": "2026-11-25T15:37:12.8938042Z",
+          "verifiedAtUtc": "2026-11-25T15:37:30Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-sky-garden-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "7fd8738deb0c48c389b19d1c47394deb",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/4a5a3241-1867-4cbe-b5a3-d6bc28112d2e/sky-garden?facebook-image=990ce859441a47e980739f641b417fc3",
+          "publishedAtUtc": "2026-11-25T15:38:00.1455402Z",
+          "externalPostId": "1285475681307050_122128824603424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128824603424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-sky-garden-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "GB-park-d9c95e34-0726-45e0-bd6d-3c00e70dcc84",

@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "60f9d5b0-71d7-4e89-ad9e-21fb8417173e",
+    "appliedAtUtc": "2026-11-25T15:34:39.8689634Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "8b41be79-373c-4bf7-a2c9-125cedc62942",
+    "appliedAtUtc": "2026-11-25T15:35:16.4569917Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-990ce859441a47e980739f641b417fc3",
+    "imageId": "990ce859441a47e980739f641b417fc3",
+    "updatedAtUtc": "2026-11-25T15:35:42.848Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Inside_the_Sky_Garden.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 325191
+  },
+  {
+    "step": "photo-import-836cf98047dd43a9a8ddcf0c8e27fd3b",
+    "imageId": "836cf98047dd43a9a8ddcf0c8e27fd3b",
+    "updatedAtUtc": "2026-11-25T15:35:56.03Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sky_Garden.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 263990
+  },
+  {
+    "step": "photo-import-d3798ee4a35b4885839094b601090675",
+    "imageId": "d3798ee4a35b4885839094b601090675",
+    "updatedAtUtc": "2026-11-25T15:36:08.857Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Looking_down_on_the_Thames_from_the_Sky_Garden_at_20_Fenchurch_Street_-_geograph.org.uk_-_4757964.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 97444
+  },
+  {
+    "step": "publish",
+    "operationId": "dda1d87d-9fd1-422a-817d-4314757c3a08",
+    "appliedAtUtc": "2026-11-25T15:37:12.8938042Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "7fd8738deb0c48c389b19d1c47394deb",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T15:38:00.1455402Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128824603424431"
+  }
+]
