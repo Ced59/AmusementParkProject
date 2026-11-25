@@ -1,0 +1,127 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "00f37d15-3192-4776-9684-a63a8f1d5742",
+  "name": "SUMMIT One Vanderbilt",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/00f37d15-3192-4776-9684-a63a8f1d5742/summit-one-vanderbilt",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T17:43:46Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "43ac6d4448f141b9bf9eee9148beab9e",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128835601424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T17:38:42.643Z",
+  "lastDataEventId": "photo-4369b4171e0a46fb9ad844cbadd1e61d",
+  "presenceSearch": "Avant création, PDE SearchStandaloneAttractions pour « SUMMIT » et « Vanderbilt » : aucun résultat ; PDE SearchParks pour « Vanderbilt » : aucun résultat. SearchParks pour « SUMMIT » renvoyait trois parcs sans rapport (Anakeesta, Bad Kleinkirchheimer Bergbahnen, Erlebnispark Teichland) via le texte descriptif, aucun homonyme. Le backlog US ne contenait pas SUMMIT One Vanderbilt.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "d6c6153121c8460490d4d5e9acfdf6c0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SUMMIT_One_Vanderbilt.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "SUMMIT One Vanderbilt"
+    },
+    {
+      "id": "1d8169bc82e84c15b69ac12b8f6b462a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Summit_One_Vanderbilt.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Corsario CL"
+    },
+    {
+      "id": "4369b4171e0a46fb9ad844cbadd1e61d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bryant_Park_from_One_Vanderbilt.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "MemeGod27"
+    }
+  ],
+  "sources": [
+    {
+      "label": "SUMMIT — horaires, accès et présentation officiels",
+      "url": "https://summitov.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SUMMIT — parcours, Levitation, terrasse et Ascent",
+      "url": "https://summitov.com/visit/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SUMMIT — billets et prix variables",
+      "url": "https://summitov.com/tickets/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SUMMIT — accessibilité officielle",
+      "url": "https://summitov.com/accessibility/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SUMMIT — conditions des billets et enfants de 5 ans et moins",
+      "url": "https://summitov.com/ticketterms/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — sommet et Ascent, SUMMIT One Vanderbilt, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:SUMMIT_One_Vanderbilt.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — intérieur aux miroirs, Corsario CL, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Summit_One_Vanderbilt.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — vue sur Bryant Park, MemeGod27, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Bryant_Park_from_One_Vanderbilt.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": {
+    "descriptions": 8,
+    "pricingOffers": 1,
+    "currency": "USD",
+    "pricingMode": "Dynamic",
+    "openingHoursRules": 1,
+    "openingHoursOverrides": 0,
+    "openingHoursFirstDate": "2026-11-25",
+    "openingHoursLastDate": "2027-02-28",
+    "openingHoursDays": 96,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0,
+    "photographs": 3,
+    "facebook": "Published"
+  },
+  "remainingUncertainty": "Le prix de départ affiché sur le site peut changer selon la date et le créneau ; le tarif enfant n’est pas publié de façon stable. Les horaires datés jusqu’au 28 février 2027 devront être revérifiés et prolongés."
+}

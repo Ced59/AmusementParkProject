@@ -36,7 +36,8 @@
     "Découverte du 25 novembre : Empire State Building Observatory publié avec deux formules, tarifs officiels de départ et trois photos exactes.",
     "Découverte du 25 novembre : Top of the Rock Observation Deck publié avec tarif officiel, horaires et trois photos exactes.",
     "Découverte du 25 novembre : Sky View Observatory publié avec trois formules, calendrier officiel et trois vues exactes créditées.",
-    "Skydeck Chicago : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Tarifs dynamiques et horaires d’hiver suivis dans le backlog permanent."
+    "Skydeck Chicago : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Tarifs dynamiques et horaires d’hiver suivis dans le backlog permanent.",
+    "SUMMIT One Vanderbilt : observatoire immersif new-yorkais créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Prix variables et horaires datés suivis dans le backlog permanent."
   ],
   "entries": [
     {
@@ -78699,6 +78700,157 @@
           "publishedAtUtc": "2026-11-25T17:26:59.0993599Z",
           "externalPostId": "1285475681307050_122128834533424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128834533424431",
+          "failureCode": null,
+          "failureMessage": null,
+          "network": "Facebook"
+        }
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-summit-one-vanderbilt-20261125",
+      "name": "SUMMIT One Vanderbilt",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire urbain immersif à billet propre",
+      "locality": "One Vanderbilt, 45 E 42nd St, New York, New York",
+      "siteId": "00f37d15-3192-4776-9684-a63a8f1d5742",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T17:43:46Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires officiels actifs au 25 novembre 2026.",
+      "identityConfidence": "Aucun homonyme dans PDE ; accès payant propre à SUMMIT dans One Vanderbilt.",
+      "possibleMatches": [],
+      "aliases": [
+        "Summit One Vanderbilt",
+        "SUMMIT OV",
+        "One Vanderbilt observation deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T17:38:42.643Z",
+      "integrationHistory": [
+        {
+          "eventId": "12c6794e-bf51-410a-a564-c95567cf6d1d",
+          "appliedAt": "2026-11-25T17:37:13.792Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "00f37d15-3192-4776-9684-a63a8f1d5742",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-summit-one-vanderbilt-20261125/operations.json#12c6794e-bf51-410a-a564-c95567cf6d1d",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche de doublons, identité et huit descriptions éditoriales."
+        },
+        {
+          "eventId": "88765ece-00e3-4059-b406-de3afe158f77",
+          "appliedAt": "2026-11-25T17:37:44.820Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "00f37d15-3192-4776-9684-a63a8f1d5742",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-summit-one-vanderbilt-20261125/operations.json#88765ece-00e3-4059-b406-de3afe158f77",
+          "auditEvidence": null,
+          "summary": "Prix variable officiel et calendrier quotidien daté intégrés."
+        },
+        {
+          "eventId": "photo-d6c6153121c8460490d4d5e9acfdf6c0",
+          "appliedAt": "2026-11-25T17:38:16.230Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "00f37d15-3192-4776-9684-a63a8f1d5742",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-summit-one-vanderbilt-20261125/operations.json#photo-d6c6153121c8460490d4d5e9acfdf6c0",
+          "auditEvidence": null,
+          "summary": "Photo du sommet et de l’ascenseur Ascent publiée avec métadonnées localisées."
+        },
+        {
+          "eventId": "photo-1d8169bc82e84c15b69ac12b8f6b462a",
+          "appliedAt": "2026-11-25T17:38:29.523Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "00f37d15-3192-4776-9684-a63a8f1d5742",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-summit-one-vanderbilt-20261125/operations.json#photo-1d8169bc82e84c15b69ac12b8f6b462a",
+          "auditEvidence": null,
+          "summary": "Photo de l’intérieur aux miroirs publiée avec métadonnées localisées."
+        },
+        {
+          "eventId": "photo-4369b4171e0a46fb9ad844cbadd1e61d",
+          "appliedAt": "2026-11-25T17:38:42.643Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "00f37d15-3192-4776-9684-a63a8f1d5742",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-summit-one-vanderbilt-20261125/operations.json#photo-4369b4171e0a46fb9ad844cbadd1e61d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-summit-one-vanderbilt-20261125/audit.json",
+          "summary": "Photo depuis le belvédère publiée ; trois images exactes et audit final 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revérifier les prix variables et prolonger les horaires après le 28 février 2027 sur le site officiel.",
+      "sources": [
+        {
+          "label": "SUMMIT — horaires, accès et présentation officiels",
+          "url": "https://summitov.com/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SUMMIT — parcours, Levitation, terrasse et Ascent",
+          "url": "https://summitov.com/visit/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SUMMIT — billets et prix variables",
+          "url": "https://summitov.com/tickets/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SUMMIT — accessibilité officielle",
+          "url": "https://summitov.com/accessibility/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SUMMIT — conditions des billets et enfants de 5 ans et moins",
+          "url": "https://summitov.com/ticketterms/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — sommet et Ascent, SUMMIT One Vanderbilt, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:SUMMIT_One_Vanderbilt.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur aux miroirs, Corsario CL, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Summit_One_Vanderbilt.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — vue sur Bryant Park, MemeGod27, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bryant_Park_from_One_Vanderbilt.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors inventaire de l’observatoire à billet propre ; comparaison PDE des alias, source exploitant et trois photos Commons exactes et libres.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "SUMMIT vend une expérience autonome avec accès propre à ses niveaux panoramiques ; Ascent est une option de cette expérience, pas un parkItem de parc de loisirs."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/00f37d15-3192-4776-9684-a63a8f1d5742/summit-one-vanderbilt",
+          "publishedAtUtc": "2026-11-25T17:40:28.6873359Z",
+          "verifiedAtUtc": "2026-11-25T17:43:46Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-summit-one-vanderbilt-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "43ac6d4448f141b9bf9eee9148beab9e",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/00f37d15-3192-4776-9684-a63a8f1d5742/summit-one-vanderbilt?facebook-image=d6c6153121c8460490d4d5e9acfdf6c0",
+          "publishedAtUtc": "2026-11-25T17:41:17.8694043Z",
+          "externalPostId": "1285475681307050_122128835601424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128835601424431",
           "failureCode": null,
           "failureMessage": null,
           "network": "Facebook"
