@@ -1,0 +1,87 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+  "name": "SkyPark Observation Deck",
+  "countryCode": "SG",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/f46d2c87-b1de-48b9-91ab-7f6da2c07b09/skypark-observation-deck",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T16:10:00Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "f43e8ecf784d43518f692c86ec530b62",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128827411424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T16:09:02.683Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions sous SkyPark, Marina Bay Sands et Observation Deck : aucune fiche du belvédère de Singapour. Le Park masqué « SkyPark » sans pays comporte Cyclone, coaster déplacé en 2018 ; cette fiche ne représente pas le belvédère.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "0bada48db5694230b4c5c2d68decc1fd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_2.jpg",
+      "isPublished": true,
+      "author": "Zairon",
+      "license": "CC BY-SA 4.0",
+      "subject": "Terrasse publique et visiteurs."
+    },
+    {
+      "imageId": "381a9fb15c88451298fea18f0026aaf5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_3.jpg",
+      "isPublished": true,
+      "author": "Zairon",
+      "license": "CC BY-SA 4.0",
+      "subject": "Garde-corps du belvédère et panorama."
+    },
+    {
+      "imageId": "0ca65c57611c4b43828ab31a1a4fc8c7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gardens_by_the_Bay,_Singapore_(54150067279).jpg",
+      "isPublished": true,
+      "author": "Mustang Joe",
+      "license": "CC0",
+      "subject": "Gardens by the Bay vus depuis le belvédère."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Marina Bay Sands — belvédère, horaires, tarifs et accès",
+      "url": "https://www.marinabaysands.com/attractions/skypark-observation-deck.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Marina Bay Sands — conditions d’entrée",
+      "url": "https://www.marinabaysands.com/entertainment/terms-and-conditions.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — terrasse, Zairon",
+      "url": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_2.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — garde-corps, Zairon",
+      "url": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_3.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama des jardins, Mustang Joe",
+      "url": "https://commons.wikimedia.org/wiki/File:Gardens_by_the_Bay,_Singapore_(54150067279).jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Belvédère public à billet propre au niveau 56 de Marina Bay Sands ; tarifs adultes/réduits selon pointe, horaires 2026 et nouvelle plage annoncée pour 2027 ; trois photos exactes créditées.",
+  "remainingUncertainty": "L’heure de dernière entrée à partir de janvier 2027 n’est pas publiée. Vérifier la billetterie et les variations de prix pour 2027 avant d’étendre le calendrier. Fermeture météo possible."
+}
