@@ -1,0 +1,124 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+  "name": "Dubrovnik Cable Car",
+  "countryCode": "HR",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/e3f86469-452a-42e2-bfb8-5cddba1c0669/dubrovnik-cable-car",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T19:17:03Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "7ad3cf9e280b4050898ca29f205f3119",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128845915424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T19:13:04.085Z",
+  "lastDataEventId": "photo-887f04ab9e89423582edb458ba134c37",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions HR pour « Dubrovnik Cable Car » et « Mount Srd Cable Car » : zéro résultat dans les quatre recherches avant création. Aucun Dubrovnik Cable Car dans le backlog HR.",
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "013da5b9ae7e43d4bf45a4e712d1238e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_2.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Z thomas"
+    },
+    {
+      "id": "80bc988f170543f4afee8abe7adb0e05",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_3.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Z thomas"
+    },
+    {
+      "id": "887f04ab9e89423582edb458ba134c37",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_4.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Z thomas"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Dubrovnik Cable Car — opérateur, tarifs et calendrier saisonnier",
+      "url": "https://www.dubrovnikcablecar.com/timetable-and-prices/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Dubrovnik Cable Car — FAQ officielle, adresse, accessibilité, météo et animaux",
+      "url": "https://www.dubrovnikcablecar.com/contact/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Dubrovnik Cable Car — histoire de l’installation de 1969",
+      "url": "https://www.dubrovnikcablecar.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — billetterie et station basse près de la porte Ploče",
+      "url": "https://www.openstreetmap.org/node/10051019557",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — station basse, Z thomas, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_2.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine à quai, Z thomas, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_3.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — station haute, Z thomas, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_4.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": {
+    "descriptions": 8,
+    "pricingOffers": 4,
+    "currency": "EUR",
+    "openingHoursRules": 2,
+    "openingHoursFirstDate": "2026-11-25",
+    "openingHoursLastDate": "2027-02-28",
+    "openingHoursDays": 96,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0,
+    "photographs": 3,
+    "historyEvents": 1,
+    "accessConditions": 3,
+    "facebook": "Published"
+  },
+  "remainingUncertainty": "Le site officiel indique novembre ouvert et décembre à février fermés ; les heures d’avril 2027 ne sont pas reconduites sans nouvelle vérification. Les départs peuvent être interrompus par vent ou orage. La grille officielle juxtapose « enfant de 4 à 12 ans » et « jusqu’à 4 ans gratuit » : le cas exact de l’anniversaire des 4 ans est à clarifier. Achat en ligne possible avec frais de transaction de 2 €. Trois photos de 2019 montrent la ligne à cette date."
+}

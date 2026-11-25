@@ -8,6 +8,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
+- Dubrovnik Cable Car : ligne autonome créée et publiée le 25 novembre 2026 avec quatre tarifs, calendrier saisonnier, trois règles d’accès, histoire, trois photos libres exactes, huit descriptions et publication Facebook. Saison 2027, météo et limite d’âge suivies dans le backlog permanent.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -15,7 +16,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 20 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 7 |
 | Doublon conservé | 0 |
@@ -26,7 +27,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **5 masqués à intégrer**, **7 masqués NotRelevant à réexaminer**, **20 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -46,6 +47,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | HR-park-3f85bbe0-3428-484d-984d-7765ef82ba9f | Dalmaland | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/14322.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Croatia) |
 | HR-park-611d2c1d-c78d-42ff-9210-0db2027bc101 | Dinopark | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | HR-candidate-95b918f187a275 | Dinopark Funtana | Funtana , Istria | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/13340.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Croatia) |
+| HR-candidate-discovery-dubrovnik-cable-car-20261125 | Dubrovnik Cable Car | Petra Krešimira IV 10a, Dubrovnik | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T19:13:04.085Z | — | Conserver cette ligne ; vérifier météo et la limite d’âge de 4 ans, puis actualiser le calendrier à l’ouverture de la saison 2027. Qualification standalone : AlreadyStandalone. Téléphérique à billetterie propre, distinct du restaurant, du musée et des autres activités du mont Srđ. Signal source : Billetterie officielle et calendrier publiés au 25 novembre 2026 ; fermé décembre à février, météo variable.. [Dubrovnik Cable Car — opérateur, tarifs et calendrier saisonnier](https://www.dubrovnikcablecar.com/timetable-and-prices/) · [Dubrovnik Cable Car — FAQ officielle, adresse, accessibilité, météo et animaux](https://www.dubrovnikcablecar.com/contact/) · [Dubrovnik Cable Car — histoire de l’installation de 1969](https://www.dubrovnikcablecar.com/) · [OpenStreetMap — billetterie et station basse près de la porte Ploče](https://www.openstreetmap.org/node/10051019557) · [Wikimedia Commons — station basse, Z thomas, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_2.jpg) · [Wikimedia Commons — cabine à quai, Z thomas, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_3.jpg) · [Wikimedia Commons — station haute, Z thomas, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_4.jpg) |
 | HR-park-c4beff10-0c8b-4983-824c-124281b51ffa | Family Park Medulin | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/6410.htm) |
 | HR-candidate-ba0db3e883d8d6 | Glavani Park | Barban, Pula | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Croatia) |
 | HR-candidate-36294c35c38544 | Istralandia | Brtonigla , Istria County | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Croatia) |
