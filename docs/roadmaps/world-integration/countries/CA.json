@@ -7358,6 +7358,157 @@
           "failureMessage": null
         }
       }
+    },
+    {
+      "entryId": "CA-candidate-discovery-skylon-tower-20261125",
+      "name": "Skylon Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique à billet propre",
+      "locality": "5200 Robinson Street, Niagara Falls, Ontario",
+      "siteId": "341ba7ee-8495-43ca-9f67-df9736f9efb1",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T22:04:39Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Belvédère ouvert et billets vendus par l’exploitant au 25 novembre 2026.",
+      "identityConfidence": "Nom, adresse, admission et accès officiels ; recherches sans doublon ; trois photos exactes sous licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Skylon Tower Niagara Falls"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T22:02:27.376Z",
+      "integrationHistory": [
+        {
+          "eventId": "2d2a06cb-f5c6-47a4-9b05-94e6d686aa7b",
+          "appliedAt": "2026-11-25T22:00:10.594Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "341ba7ee-8495-43ca-9f67-df9736f9efb1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-skylon-tower-20261125/operations.json#2d2a06cb-f5c6-47a4-9b05-94e6d686aa7b",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches de doublon ; identité, adresse et huit descriptions."
+        },
+        {
+          "eventId": "fcc15524-aa5d-4000-8b65-8edb7def3cda",
+          "appliedAt": "2026-11-25T22:01:19.018Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "341ba7ee-8495-43ca-9f67-df9736f9efb1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-skylon-tower-20261125/operations.json#fcc15524-aa5d-4000-8b65-8edb7def3cda",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs en ligne officiels et horaires hebdomadaires intégrés."
+        },
+        {
+          "eventId": "15ef6175-aea5-43db-b3a2-f473e68318cc",
+          "appliedAt": "2026-11-25T22:01:38.806Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "341ba7ee-8495-43ca-9f67-df9736f9efb1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-skylon-tower-20261125/operations.json#15ef6175-aea5-43db-b3a2-f473e68318cc",
+          "auditEvidence": null,
+          "summary": "Ouverture au public en 1965 documentée et traduite."
+        },
+        {
+          "eventId": "5b9f1264-af96-4aa0-9f92-b2f15fd0fc0a",
+          "appliedAt": "2026-11-25T22:01:50.100Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "341ba7ee-8495-43ca-9f67-df9736f9efb1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-skylon-tower-20261125/operations.json#5b9f1264-af96-4aa0-9f92-b2f15fd0fc0a",
+          "auditEvidence": null,
+          "summary": "Belvédère intérieur accessible et trois marches extérieures documentées."
+        },
+        {
+          "eventId": "photo-d0801609922749d888aa58c124c2a3fe",
+          "appliedAt": "2026-11-25T22:02:10.551Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "341ba7ee-8495-43ca-9f67-df9736f9efb1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-skylon-tower-20261125/operations.json#photo-d0801609922749d888aa58c124c2a3fe",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : TheWxResearcher (CC0)."
+        },
+        {
+          "eventId": "photo-35d81a320e4548b282f85e3e1cd11aeb",
+          "appliedAt": "2026-11-25T22:02:19.044Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "341ba7ee-8495-43ca-9f67-df9736f9efb1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-skylon-tower-20261125/operations.json#photo-35d81a320e4548b282f85e3e1cd11aeb",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Wladyslaw (CC BY-SA 3.0)."
+        },
+        {
+          "eventId": "photo-1c6d6c5250b74ec7b4b2b7f39e3d4cd3",
+          "appliedAt": "2026-11-25T22:02:27.376Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "341ba7ee-8495-43ca-9f67-df9736f9efb1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-skylon-tower-20261125/operations.json#photo-1c6d6c5250b74ec7b4b2b7f39e3d4cd3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-skylon-tower-20261125/audit.json",
+          "summary": "Photo exacte 3/3 importée : Ken Lund (CC BY-SA 2.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; contrôler les tarifs et horaires ultérieurs, les prix au guichet et le code postal contradictoire sur la page officielle.",
+      "sources": [
+        {
+          "label": "Skylon Tower — billets et tarifs en ligne",
+          "url": "https://www.skylon.com/tickets/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Skylon Tower — horaires et adresse",
+          "url": "https://www.skylon.com/contact-skylon-tower/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Skylon Tower — belvédères et accessibilité",
+          "url": "https://www.skylon.com/the-view/observation-deck/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Skylon Tower — histoire officielle",
+          "url": "https://www.skylon.com/niagara-falls-history/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Skylon Tower — FAQ (ouverture toute l’année)",
+          "url": "https://www.skylon.com/faq/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikipedia — coordonnées de la Skylon Tower",
+          "url": "https://en.wikipedia.org/wiki/Skylon_Tower",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Skylon Tower (Niagara Falls) in October 2024.jpg (TheWxResearcher, CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Skylon_Tower_(Niagara_Falls)_in_October_2024.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Niagara Falls - ON - Skylon Tower (Aussichtsdeck).jpg (Wladyslaw, CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Niagara_Falls_-_ON_-_Skylon_Tower_(Aussichtsdeck).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Skylon Tower, Niagara Falls, Ontario (29951160246).jpg (Ken Lund, CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Skylon_Tower,_Niagara_Falls,_Ontario_(29951160246).jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "CA",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Tour panoramique touristique avec billet d’entrée au belvédère propre."
+      }
     }
   ]
 }
