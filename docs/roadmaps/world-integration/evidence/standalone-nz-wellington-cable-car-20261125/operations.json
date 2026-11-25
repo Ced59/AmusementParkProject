@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "0cb28be3-3186-4d66-aff1-99a53270734a",
+    "appliedAtUtc": "2026-11-25T20:50:29.3951844Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "1a918f8d-0f32-4030-8a4b-5f581605bf87",
+    "appliedAtUtc": "2026-11-25T20:50:51.8412814Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "81c54088-0e01-47b4-9e64-202f54ed340b",
+    "appliedAtUtc": "2026-11-25T20:51:40.1804346Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "0bec75c5-bfb1-4ceb-9a2b-51c65136418a",
+    "appliedAtUtc": "2026-11-25T20:51:55.1067915Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-dc8e791d512447c693159abf1f988fa8",
+    "imageId": "dc8e791d512447c693159abf1f988fa8",
+    "createdAtUtc": "2026-11-25T20:52:27.931Z",
+    "updatedAtUtc": "2026-11-25T20:52:31.706Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wellington_Cable_Car_(20240206a)_(53532605708).jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-6a784603df51486688af0137d4e235b6",
+    "imageId": "6a784603df51486688af0137d4e235b6",
+    "createdAtUtc": "2026-11-25T20:52:36.489Z",
+    "updatedAtUtc": "2026-11-25T20:52:39.886Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Inside_the_Wellington_Cable_Car.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-2e87b481f14c4c459bc9671eba7c018d",
+    "imageId": "2e87b481f14c4c459bc9671eba7c018d",
+    "createdAtUtc": "2026-11-25T20:52:46.605Z",
+    "updatedAtUtc": "2026-11-25T20:52:49.991Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Car_1_Wellington_Cable_Car,_2013_(01).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "b141531a-b44b-4514-9f72-78c6906f6b8f",
+    "appliedAtUtc": "2026-11-25T20:53:23.1367549Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "54d140cc8219414691150b221fd959fd",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T20:54:11.7769705Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128852899424431"
+  }
+]
