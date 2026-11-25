@@ -25,7 +25,8 @@
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 1 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
-    "Recherche externe dédiée aux absences : 3 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
+    "Recherche externe dédiée aux absences : 3 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Découverte du 25 novembre : SkyPark Observation Deck publié avec tarifs et horaires officiels, trois photos exactes créditées et annonce Facebook."
   ],
   "entries": [
     {
@@ -1689,6 +1690,175 @@
       "possibleBacklogEntries": [
         "SG-candidate-discovery-cefe9df983d182be"
       ]
+    },
+    {
+      "entryId": "SG-candidate-discovery-skypark-observation-deck-20261125",
+      "name": "SkyPark Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère public à billet propre",
+      "locality": "10 Bayfront Avenue, Hotel Tower 3, Singapore",
+      "siteId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T16:10:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires officiels en vigueur le 25 novembre 2026.",
+      "identityConfidence": "Recherche PDE sans fiche du belvédère ; billet public et accès propres. Le Park masqué homonyme héberge Cyclone, coaster ancien distinct.",
+      "possibleMatches": [],
+      "aliases": [
+        "Marina Bay Sands SkyPark Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T16:09:02.683Z",
+      "integrationHistory": [
+        {
+          "eventId": "a439a9de-1eb9-4552-b806-e3259708f80c",
+          "appliedAt": "2026-11-25T16:06:04.998Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/operations.json#a439a9de-1eb9-4552-b806-e3259708f80c",
+          "auditEvidence": null,
+          "summary": "Création masquée du belvédère public après recherche des homonymes, avec localisation, accès et huit descriptions."
+        },
+        {
+          "eventId": "70ca796a-32f5-4093-99d2-00111949b16a",
+          "appliedAt": "2026-11-25T16:06:37.256Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/operations.json#70ca796a-32f5-4093-99d2-00111949b16a",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels de pointe et hors pointe, formule familiale signalée, calendrier quotidien 2026 et changement annoncé pour 2027."
+        },
+        {
+          "eventId": "photo-import-0bada48db5694230b4c5c2d68decc1fd",
+          "appliedAt": "2026-11-25T16:07:13.541Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/operations.json#photo-import-0bada48db5694230b4c5c2d68decc1fd",
+          "auditEvidence": null,
+          "summary": "Terrasse publique et visiteurs. Photo libre exacte, publiée avec huit légendes."
+        },
+        {
+          "eventId": "photo-import-381a9fb15c88451298fea18f0026aaf5",
+          "appliedAt": "2026-11-25T16:07:26.441Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/operations.json#photo-import-381a9fb15c88451298fea18f0026aaf5",
+          "auditEvidence": null,
+          "summary": "Garde-corps du belvédère et panorama. Photo libre exacte, publiée avec huit légendes."
+        },
+        {
+          "eventId": "photo-import-0ca65c57611c4b43828ab31a1a4fc8c7",
+          "appliedAt": "2026-11-25T16:07:39.544Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/operations.json#photo-import-0ca65c57611c4b43828ab31a1a4fc8c7",
+          "auditEvidence": null,
+          "summary": "Gardens by the Bay vus depuis le belvédère. Photo libre exacte, publiée avec huit légendes."
+        },
+        {
+          "eventId": "photo-metadata-0bada48db5694230b4c5c2d68decc1fd",
+          "appliedAt": "2026-11-25T16:08:40.444Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/operations.json#photo-metadata-0bada48db5694230b4c5c2d68decc1fd",
+          "auditEvidence": null,
+          "summary": "Métadonnées photographiques revues : légendes distinctes dans huit langues, auteur, licence, lien vers la licence et source exacte."
+        },
+        {
+          "eventId": "photo-metadata-381a9fb15c88451298fea18f0026aaf5",
+          "appliedAt": "2026-11-25T16:08:51.776Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/operations.json#photo-metadata-381a9fb15c88451298fea18f0026aaf5",
+          "auditEvidence": null,
+          "summary": "Métadonnées photographiques revues : légendes distinctes dans huit langues, auteur, licence, lien vers la licence et source exacte."
+        },
+        {
+          "eventId": "photo-metadata-0ca65c57611c4b43828ab31a1a4fc8c7",
+          "appliedAt": "2026-11-25T16:09:02.683Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f46d2c87-b1de-48b9-91ab-7f6da2c07b09",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/operations.json#photo-metadata-0ca65c57611c4b43828ab31a1a4fc8c7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/audit.json",
+          "summary": "Métadonnées photographiques revues : légendes distinctes dans huit langues, auteur, licence, lien vers la licence et source exacte. Contrôle de qualité 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; vérifier l’heure de dernière entrée et les prix 2027, ainsi que les fermetures météo, avant de prolonger le calendrier.",
+      "sources": [
+        {
+          "label": "Marina Bay Sands — belvédère, horaires, tarifs et accès",
+          "url": "https://www.marinabaysands.com/attractions/skypark-observation-deck.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Marina Bay Sands — conditions d’entrée",
+          "url": "https://www.marinabaysands.com/entertainment/terms-and-conditions.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — terrasse, Zairon",
+          "url": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_2.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — garde-corps, Zairon",
+          "url": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_3.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama des jardins, Mustang Joe",
+          "url": "https://commons.wikimedia.org/wiki/File:Gardens_by_the_Bay,_Singapore_(54150067279).jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche du belvédère à billet propre, contrôle PDE des homonymes et inspection visuelle de trois photos exactes libres.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Le belvédère public possède un billet et un accès séparés de la piscine et des espaces de l’hôtel."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f46d2c87-b1de-48b9-91ab-7f6da2c07b09/skypark-observation-deck",
+          "publishedAtUtc": "2026-11-25T16:09:55.8773148Z",
+          "verifiedAtUtc": "2026-11-25T16:10:00Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "f43e8ecf784d43518f692c86ec530b62",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f46d2c87-b1de-48b9-91ab-7f6da2c07b09/skypark-observation-deck?facebook-image=0bada48db5694230b4c5c2d68decc1fd",
+          "publishedAtUtc": "2026-11-25T16:10:54.6619432Z",
+          "externalPostId": "1285475681307050_122128827411424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128827411424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skypark-observation-deck-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "SG-candidate-d4067342cda21c",

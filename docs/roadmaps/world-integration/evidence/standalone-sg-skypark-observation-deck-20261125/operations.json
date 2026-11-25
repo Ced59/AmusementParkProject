@@ -1,0 +1,102 @@
+[
+  {
+    "step": "core",
+    "operationId": "a439a9de-1eb9-4552-b806-e3259708f80c",
+    "appliedAtUtc": "2026-11-25T16:06:04.9987743Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "70ca796a-32f5-4093-99d2-00111949b16a",
+    "appliedAtUtc": "2026-11-25T16:06:37.2568328Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-0bada48db5694230b4c5c2d68decc1fd",
+    "imageId": "0bada48db5694230b4c5c2d68decc1fd",
+    "updatedAtUtc": "2026-11-25T16:07:13.541Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_2.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-import-381a9fb15c88451298fea18f0026aaf5",
+    "imageId": "381a9fb15c88451298fea18f0026aaf5",
+    "updatedAtUtc": "2026-11-25T16:07:26.441Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_3.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-import-0ca65c57611c4b43828ab31a1a4fc8c7",
+    "imageId": "0ca65c57611c4b43828ab31a1a4fc8c7",
+    "updatedAtUtc": "2026-11-25T16:07:39.544Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gardens_by_the_Bay,_Singapore_(54150067279).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-metadata-0bada48db5694230b4c5c2d68decc1fd",
+    "imageId": "0bada48db5694230b4c5c2d68decc1fd",
+    "updatedAtUtc": "2026-11-25T16:08:40.444Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_2.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-metadata-381a9fb15c88451298fea18f0026aaf5",
+    "imageId": "381a9fb15c88451298fea18f0026aaf5",
+    "updatedAtUtc": "2026-11-25T16:08:51.776Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Sands_Dach_3.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-metadata-0ca65c57611c4b43828ab31a1a4fc8c7",
+    "imageId": "0ca65c57611c4b43828ab31a1a4fc8c7",
+    "updatedAtUtc": "2026-11-25T16:09:02.683Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gardens_by_the_Bay,_Singapore_(54150067279).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "2f9e916d-549c-4ea9-bff8-3fd6d7a727d6",
+    "appliedAtUtc": "2026-11-25T16:09:55.8773148Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "f43e8ecf784d43518f692c86ec530b62",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T16:10:54.6619432Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128827411424431"
+  }
+]
