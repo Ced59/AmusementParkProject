@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 1898,
+  "sourceObservationCount": 1899,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "RCDB",
@@ -22,7 +22,8 @@
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
-    "Recherche externe dédiée aux absences : 5 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
+    "Recherche externe dédiée aux absences : 5 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Découverte du 25 novembre : Top of Shanghai Observatory vérifié comme plateforme autonome, publié avec trois photos exactes ; prix municipaux de mai 2026 explicitement datés et à recontrôler."
   ],
   "entries": [
     {
@@ -61178,6 +61179,156 @@
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125712565424431",
           "evidence": "PARK_DATA_EDITOR:facebook:90514bc3ceaa4fcebfe2da3877e56c58"
         }
+      }
+    },
+    {
+      "entryId": "CN-candidate-discovery-top-of-shanghai-observatory-20261125",
+      "name": "Top of Shanghai Observatory",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme d’observation à billet propre",
+      "locality": "501 Middle Yincheng Road, Lujiazui, Shanghai",
+      "siteId": "35a5ef04-9a7a-46db-a869-892b595b94f8",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T12:43:40Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Shanghai Tower et l’office du tourisme décrivent l’observatoire exploité et ouvert au public.",
+      "identityConfidence": "Recherches PDE Park et StandaloneAttraction sans fiche ; billet propre pour l’observatoire, distinct de SKY632.",
+      "possibleMatches": [],
+      "aliases": [
+        "Shanghai Tower Observatory",
+        "Shanghai Tower Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T12:40:50.929Z",
+      "integrationHistory": [
+        {
+          "eventId": "9bf32249-f661-418d-9001-79ce028c64ea",
+          "appliedAt": "2026-11-25T12:37:42.615Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "35a5ef04-9a7a-46db-a869-892b595b94f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-shanghai-observatory-20261125/operations.json#9bf32249-f661-418d-9001-79ce028c64ea",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée après recherche des doublons ; identité, localisation et descriptions en huit langues."
+        },
+        {
+          "eventId": "b13e7fbf-a8c2-477d-b66d-6c5d970d4c5f",
+          "appliedAt": "2026-11-25T12:38:57.120Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "35a5ef04-9a7a-46db-a869-892b595b94f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-shanghai-observatory-20261125/operations.json#b13e7fbf-a8c2-477d-b66d-6c5d970d4c5f",
+          "auditEvidence": null,
+          "summary": "Tarifs datés et sourcés, horaires touristiques, historique officiel de 2017 intégrés."
+        },
+        {
+          "eventId": "photo-import-9ee2abdb9b23486392fdbe03d933b721",
+          "appliedAt": "2026-11-25T12:40:00.431Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "35a5ef04-9a7a-46db-a869-892b595b94f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-shanghai-observatory-20261125/operations.json#photo-import-9ee2abdb9b23486392fdbe03d933b721",
+          "auditEvidence": null,
+          "summary": "Photo exacte du 119e étage : GG001213, CC0, métadonnées en huit langues."
+        },
+        {
+          "eventId": "photo-import-ad90c4ff08c14bf993c03b4882bee344",
+          "appliedAt": "2026-11-25T12:40:27.414Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "35a5ef04-9a7a-46db-a869-892b595b94f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-shanghai-observatory-20261125/operations.json#photo-import-ad90c4ff08c14bf993c03b4882bee344",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la vue sur Shanghai : Cotopaxi5897, CC BY-SA 4.0, métadonnées en huit langues."
+        },
+        {
+          "eventId": "photo-import-a07ac9b3f3794a44b3b9f1b394fd8a3c",
+          "appliedAt": "2026-11-25T12:40:50.929Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "35a5ef04-9a7a-46db-a869-892b595b94f8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-shanghai-observatory-20261125/operations.json#photo-import-a07ac9b3f3794a44b3b9f1b394fd8a3c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-shanghai-observatory-20261125/audit.json",
+          "summary": "Photo exacte du 118e étage : O.S., CC BY-SA 4.0, métadonnées en huit langues. Audit final 94/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revérifier le prix du jour, les horaires et les modalités de SKY632 avant le 31 janvier 2027. Ne pas confondre avec un billet combiné.",
+      "sources": [
+        {
+          "label": "Shanghai Tower — observatoire officiel",
+          "url": "https://en.shanghaitower.com/shagnhai.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Office du tourisme de Shanghai — horaires et adresse",
+          "url": "https://www.meet-in-shanghai.net/en/tourist-attraction/top-of-shanghai-observatory-914985/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Ville de Shanghai — tarifs normaux de mai 2026",
+          "url": "https://english.shanghai.gov.cn/en-FestivalsCelebrations/20260515/ee03e0a7bc6e4d87acc0a1cbe5d8ca49.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Shanghai Tower — ouverture officielle",
+          "url": "https://en.shanghaitower.com/news_1/7.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo 119F",
+          "url": "https://commons.wikimedia.org/wiki/File:View_on_the_observatory_level_of_Shanghai_Tower.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Shanghai_Tower_Observation_Deck.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo 118F",
+          "url": "https://commons.wikimedia.org/wiki/File:Shanghai_Tower_Aussichtsplattform.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche de plateformes panoramiques à billet propre ; vérification de l’identité dans le PDE et de trois photos Commons exactes.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "L’observatoire a sa propre entrée et son propre billet ; la zone SKY632 est une offre supérieure distincte. Trois photographies exactes sont publiées."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/35a5ef04-9a7a-46db-a869-892b595b94f8/top-of-shanghai-observatory",
+          "publishedAtUtc": "2026-11-25T12:41:47.2166657Z",
+          "verifiedAtUtc": "2026-11-25T12:43:40Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-shanghai-observatory-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "afab7f484bc5450aa866e31acf75dd7c",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/35a5ef04-9a7a-46db-a869-892b595b94f8/top-of-shanghai-observatory?facebook-image=ad90c4ff08c14bf993c03b4882bee344",
+          "publishedAtUtc": "2026-11-25T12:43:23.5898912Z",
+          "externalPostId": "1285475681307050_122128805799424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128805799424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-shanghai-observatory-20261125/audit.json",
+        "score": 94,
+        "publicationBlockers": []
       }
     }
   ]

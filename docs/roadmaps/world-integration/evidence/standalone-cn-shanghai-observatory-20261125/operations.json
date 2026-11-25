@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "9bf32249-f661-418d-9001-79ce028c64ea",
+    "appliedAtUtc": "2026-11-25T12:37:42.6154312Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "b13e7fbf-a8c2-477d-b66d-6c5d970d4c5f",
+    "appliedAtUtc": "2026-11-25T12:38:57.1202652Z",
+    "counts": {
+      "created": 3,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-9ee2abdb9b23486392fdbe03d933b721",
+    "imageId": "9ee2abdb9b23486392fdbe03d933b721",
+    "updatedAtUtc": "2026-11-25T12:40:00.431Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_on_the_observatory_level_of_Shanghai_Tower.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 240192
+  },
+  {
+    "step": "photo-import-ad90c4ff08c14bf993c03b4882bee344",
+    "imageId": "ad90c4ff08c14bf993c03b4882bee344",
+    "updatedAtUtc": "2026-11-25T12:40:27.414Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_Shanghai_Tower_Observation_Deck.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 181318
+  },
+  {
+    "step": "photo-import-a07ac9b3f3794a44b3b9f1b394fd8a3c",
+    "imageId": "a07ac9b3f3794a44b3b9f1b394fd8a3c",
+    "updatedAtUtc": "2026-11-25T12:40:50.929Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shanghai_Tower_Aussichtsplattform.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 107320
+  },
+  {
+    "step": "publish",
+    "operationId": "9d500834-4ce7-4e3f-94e4-c032eef0ee27",
+    "appliedAtUtc": "2026-11-25T12:41:47.2166657Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "afab7f484bc5450aa866e31acf75dd7c",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T12:43:23.5898912Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128805799424431"
+  }
+]
