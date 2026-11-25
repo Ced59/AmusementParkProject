@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "96f3fe50-d50a-43cb-9693-a0d810d5825e",
+    "appliedAtUtc": "2026-11-25T23:08:19.8549268Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "004b223e-40f4-4c20-b623-1d25ac6b2598",
+    "appliedAtUtc": "2026-11-25T23:09:07.4482446Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "10a9ceb5-a90e-4733-a060-e94a4763f866",
+    "appliedAtUtc": "2026-11-25T23:09:18.6699359Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "d3da78a9-aee1-40ca-a6f2-605f3f150f96",
+    "appliedAtUtc": "2026-11-25T23:09:30.2275971Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-8e77a8f4fd944733bfaa8e94d6a795d1",
+    "imageId": "8e77a8f4fd944733bfaa8e94d6a795d1",
+    "createdAtUtc": "2026-11-25T23:09:45.646Z",
+    "updatedAtUtc": "2026-11-25T23:09:49.177Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%C3%BCsseldorf,_Rheinturm_--_2025_--_2562.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-33617b823af846f9a6665627aaaec751",
+    "imageId": "33617b823af846f9a6665627aaaec751",
+    "createdAtUtc": "2026-11-25T23:09:54.066Z",
+    "updatedAtUtc": "2026-11-25T23:09:57.813Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%C3%BCsseldorf,_Rheinturm_--_2015_--_8120.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-ddcf566ca1c14949ad733a84fd5571c5",
+    "imageId": "ddcf566ca1c14949ad733a84fd5571c5",
+    "createdAtUtc": "2026-11-25T23:10:03.085Z",
+    "updatedAtUtc": "2026-11-25T23:10:06.627Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:NRW,_D%C3%BCsseldorf,_Rheinturm_-_view_to_Hafen.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "add3c8b3-8961-4b19-9df0-7f062084e244",
+    "appliedAtUtc": "2026-11-25T23:11:06.5160969Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "49a8a1ef6acf478491ccf931aee5a35d",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T23:12:04.0982681Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128862739424431"
+  }
+]
