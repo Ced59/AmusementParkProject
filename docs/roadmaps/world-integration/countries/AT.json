@@ -3018,14 +3018,14 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Trailcenter saisonnier : saison 2026 terminée le 1er novembre ; luge d’été annoncée définitivement fermée par l’exploitant.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la fiche Park masquée à intégrer pour le Trailcenter Wien ; marquer son parkItem Sommerrodelbahn comme définitivement fermé lors d’une vraie intégration de données. Ne pas publier la luge comme standalone active.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3041,13 +3041,18 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13008.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Hohe Wand Wiese — Trailcenter actuel et fermeture définitive de la luge",
+          "url": "https://www.hohewandwiese.com/",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": "AT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
             "name": "Sommerrodelbahn",
@@ -3055,12 +3060,12 @@
             "url": "https://rcdb.com/13008.htm",
             "family": "Mountain coaster",
             "sourceVenueName": "Hohe Wand Wiese",
-            "sourceLifecycleSignal": "-",
+            "sourceLifecycleSignal": "PermanentlyClosed",
             "sourceLocality": "Vienna , Vienna",
             "sourceOpenedYear": "2006"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’exploitant présente aujourd’hui le Trailcenter Wien et annonce explicitement la fermeture définitive de la Sommerrodelbahn ; l’ancien coaster est déjà un parkItem de la fiche Park masquée."
       }
     },
     {

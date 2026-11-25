@@ -2117,17 +2117,17 @@
       "entryId": "US-candidate-standalone-8e26b28ddf2c5e",
       "name": "Alpine Coaster Wiegand — Cool Runnings",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "L’exploitant Lost Mine présente le coaster en activité dans un lieu multi-activités.",
       "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
@@ -2137,17 +2137,27 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Alias ou référence constructeur de Lost Mine Mountain Coaster & Mini-Golf : conserver cette ligne, rapprocher le coaster comme parkItem du parc masqué et ne pas créer une nouvelle standalone.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2180",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Lost Mine — raison sociale Cool Runnings LLC",
+          "url": "https://lostmine.com/terms-and-conditions/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Lost Mine — coaster, mini-golf et gem mine",
+          "url": "https://lostmine.com/",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
             "name": "Cool Runnings",
@@ -2158,8 +2168,9 @@
             "referenceId": "location-id-2180"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Cool Runnings LLC est le nom juridique de Lost Mine Mountain Coaster & Mini-Golf ; le coaster est une activité du lieu avec mini-golf et gem mine. Les deux pistes ne désignent pas une standalone distincte."
+      },
+      "duplicateOf": "US-park-84b0a631-dd45-4d69-a903-e7d0570ca6d8"
     },
     {
       "entryId": "US-candidate-standalone-c0ef02f9420560",
@@ -14776,37 +14787,48 @@
       "entryId": "US-candidate-b45bcb832f0cd0",
       "name": "Cool Runnings Alpine Coaster",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Attractions",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
+      "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "L’exploitant Lost Mine présente le coaster en activité dans un lieu multi-activités.",
       "identityConfidence": "Piste secondaire seule",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Alias ou référence constructeur de Lost Mine Mountain Coaster & Mini-Golf : conserver cette ligne, rapprocher le coaster comme parkItem du parc masqué et ne pas créer une nouvelle standalone.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#United_States",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Lost Mine — raison sociale Cool Runnings LLC",
+          "url": "https://lostmine.com/terms-and-conditions/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Lost Mine — coaster, mini-golf et gem mine",
+          "url": "https://lostmine.com/",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Cool Runnings LLC est le nom juridique de Lost Mine Mountain Coaster & Mini-Golf ; le coaster est une activité du lieu avec mini-golf et gem mine. Les deux pistes ne désignent pas une standalone distincte."
+      },
+      "duplicateOf": "US-park-84b0a631-dd45-4d69-a903-e7d0570ca6d8"
     },
     {
       "entryId": "US-candidate-6edebd4ce9fee0",
@@ -38781,7 +38803,7 @@
       "entryId": "US-park-84b0a631-dd45-4d69-a903-e7d0570ca6d8",
       "name": "Lost Mine Mountain Coaster & Mini-Golf",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "84b0a631-dd45-4d69-a903-e7d0570ca6d8",
@@ -38798,7 +38820,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche Park masquée et ses activités distinctes : Lost Mine Mountain Coaster, mini-golf et gem mine. Conserver les alias Cool Runnings dans les lignes doublons ; ne pas créer de standalone séparée pour le coaster interne.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -38814,13 +38836,23 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/20887.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Lost Mine — raison sociale Cool Runnings LLC",
+          "url": "https://lostmine.com/terms-and-conditions/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Lost Mine — coaster, mini-golf et gem mine",
+          "url": "https://lostmine.com/",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
             "name": "Lost Mine Mountain Coaster",
@@ -38833,7 +38865,7 @@
             "sourceOpenedYear": "2023"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’exploitant vend un lieu multi-activités (coaster, mini-golf, gem mine) et ses conditions nomment Cool Runnings LLC comme société exploitante. Le coaster appartient à cette fiche Park masquée."
       }
     },
     {
