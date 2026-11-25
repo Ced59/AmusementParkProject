@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions JP : zéro résultat pour Sapporo TV Tower, さっぽろテレビ塔 et Sapporo television tower avant création ; aucune ligne homonyme dans le backlog JP.",
+  "decision": "Belvédère à billet propre dans une tour urbaine ; boutique et espace de restauration du bâtiment sont des services, pas des attractions à dédoubler.",
+  "officialPricing": "Tarifs officiels : adulte lycée et plus 1 200 JPY ; primaire/collège 600 JPY ; plus jeunes gratuits. Résidents de Sapporo 800 et 400 JPY avec justificatif. Passe annuel adulte 2 000 JPY. Quatre offres au guichet structurées ; le reste est explicité dans les notes.",
+  "officialHours": "Horaire ordinaire 09:00–22:00, dernière entrée 21:50. Site de l’exploitant et annonce du 14 novembre confirment la fermeture totale le 1er janvier 2027 et les heures normales les 30–31 décembre et 2 janvier. Les événements peuvent modifier les horaires.",
+  "accessibility": "Ascenseur vers le belvédère ; fauteuils prêtés sous réserve de disponibilité, mais aucune toilette accessible dans le bâtiment selon FAQ officielle. Condition d’accès spécifique publiée dans huit langues.",
+  "history": "Le profil officiel de l’exploitant donne une ouverture le 24 août 1957. La structure avait été achevée en 1956 ; le texte et le post initiaux ont été corrigés avant la clôture du backlog.",
+  "photos": "Trois photos exactes vérifiées visuellement : tour depuis le parc Ōdōri, illumination nocturne, panorama depuis le belvédère. Crédits et licences Commons vérifiés ; alt, légendes distinctes et crédits en huit langues.",
+  "sources": [
+    {
+      "label": "Sapporo TV Tower — prix et horaires officiels",
+      "url": "https://www.tv-tower.co.jp/pricetime.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sapporo TV Tower — FAQ, fauteuils et toilettes",
+      "url": "https://www.tv-tower.co.jp/faq.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sapporo TV Tower — accès et adresse",
+      "url": "https://www.tv-tower.co.jp/access.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sapporo TV Tower — annonce du Nouvel An",
+      "url": "https://www.tv-tower.co.jp/ch/news.html?n=235",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Visit Sapporo — belvédère et parc Ōdōri",
+      "url": "https://visit.sapporo.travel/discover/city/sapporo-tv-tower/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sapporo TV Tower — profil officiel, ouverture le 24 août 1957",
+      "url": "https://www.tv-tower.co.jp/ch/company.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Sapporo TV Tower at Odori Park 01.jpg (ノボホショコロトソ, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sapporo_TV_Tower_at_Odori_Park_01.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Sapporo TV Tower at night 20250725.jpg (掬茶, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sapporo_TV_Tower_at_night_20250725.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Sapporo-night from TV Tower2.JPG (Keith Blayney, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sapporo-night_from_TV_Tower2.JPG",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "La FAQ mentionne des variations d’horaire lors d’événements. Les tarifs résidents requièrent un justificatif. La disponibilité du prêt de fauteuils peut varier."
+}

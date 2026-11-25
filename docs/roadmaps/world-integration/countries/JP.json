@@ -18470,6 +18470,178 @@
         "score": 94,
         "publicationBlockers": []
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-sapporo-tv-tower-20261125",
+      "name": "Sapporo TV Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour d’observation à billet propre",
+      "locality": "Ōdōri Nishi 1-chōme, Chūō-ku, Sapporo",
+      "siteId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T20:18:23Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie officielle et horaire actif ; fermeture du 1er janvier 2027 publiée par l’exploitant.",
+      "identityConfidence": "Nom japonais et anglais, adresse, tarifs, histoire et accès recoupés avec sources officielles ; six recherches de doublon négatives ; trois photos exactes sourcées.",
+      "possibleMatches": [],
+      "aliases": [
+        "さっぽろテレビ塔",
+        "Sapporo television tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T20:16:33.951Z",
+      "integrationHistory": [
+        {
+          "eventId": "9b05ab3c-35e7-431e-bb79-67efc3555608",
+          "appliedAt": "2026-11-25T20:06:53.133Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#9b05ab3c-35e7-431e-bb79-67efc3555608",
+          "auditEvidence": null,
+          "summary": "Création masquée après six recherches de doublon ; adresse, identité et huit descriptions."
+        },
+        {
+          "eventId": "66169e1a-3d35-4ce2-8520-b2e589855cbb",
+          "appliedAt": "2026-11-25T20:07:24.032Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#66169e1a-3d35-4ce2-8520-b2e589855cbb",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs officiels et calendrier 09:00–22:00 avec fermeture du 1er janvier intégrés."
+        },
+        {
+          "eventId": "photo-7b1394128ddc4db0b59d0ba11be5109c",
+          "appliedAt": "2026-11-25T20:07:44.506Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#photo-7b1394128ddc4db0b59d0ba11be5109c",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée, puis légendée : ノボホショコロトソ (CC BY 4.0)."
+        },
+        {
+          "eventId": "photo-f13d1de2f8374d9a8fbcd83510f97e09",
+          "appliedAt": "2026-11-25T20:07:53.677Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#photo-f13d1de2f8374d9a8fbcd83510f97e09",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée, puis légendée : 掬茶 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-420ba6a37d0240dda65cdc06ed28ffa4",
+          "appliedAt": "2026-11-25T20:08:05.407Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#photo-420ba6a37d0240dda65cdc06ed28ffa4",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 importée, puis légendée : Keith Blayney (CC BY-SA 3.0)."
+        },
+        {
+          "eventId": "de78f03c-5524-4ad8-aacd-31fd8cbd3e9c",
+          "appliedAt": "2026-11-25T20:10:43.512Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#de78f03c-5524-4ad8-aacd-31fd8cbd3e9c",
+          "auditEvidence": null,
+          "summary": "Ouverture en 1957 sourcée et traduite."
+        },
+        {
+          "eventId": "50e52c94-6a85-45c9-98ab-6575191e8eac",
+          "appliedAt": "2026-11-25T20:11:21.022Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#50e52c94-6a85-45c9-98ab-6575191e8eac",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/audit.json",
+          "summary": "Prêt de fauteuil sous réserve de disponibilité et absence de toilettes accessibles publiés en huit langues."
+        },
+        {
+          "eventId": "258e31a8-8048-4a2e-9d6b-8ec92ae3535e",
+          "appliedAt": "2026-11-25T20:16:19.062Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#258e31a8-8048-4a2e-9d6b-8ec92ae3535e",
+          "auditEvidence": null,
+          "summary": "Texte des huit langues corrigé : ouverture au public en 1957, distincte de la construction en 1956."
+        },
+        {
+          "eventId": "dedf8193-6f98-42f0-98c7-b8032396db62",
+          "appliedAt": "2026-11-25T20:16:33.951Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/operations.json#dedf8193-6f98-42f0-98c7-b8032396db62",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sapporo-tv-tower-20261125/audit.json",
+          "summary": "Date d’ouverture vérifiée auprès de l’exploitant : 24 août 1957, intégrée à la chronologie."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier les changements d’horaires liés aux événements et les tarifs lors des prochains relevés, sans republier le même post Facebook.",
+      "sources": [
+        {
+          "label": "Sapporo TV Tower — prix et horaires officiels",
+          "url": "https://www.tv-tower.co.jp/pricetime.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sapporo TV Tower — FAQ, fauteuils et toilettes",
+          "url": "https://www.tv-tower.co.jp/faq.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sapporo TV Tower — accès et adresse",
+          "url": "https://www.tv-tower.co.jp/access.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sapporo TV Tower — annonce du Nouvel An",
+          "url": "https://www.tv-tower.co.jp/ch/news.html?n=235",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Visit Sapporo — belvédère et parc Ōdōri",
+          "url": "https://visit.sapporo.travel/discover/city/sapporo-tv-tower/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sapporo TV Tower — profil officiel, ouverture le 24 août 1957",
+          "url": "https://www.tv-tower.co.jp/ch/company.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Sapporo TV Tower at Odori Park 01.jpg (ノボホショコロトソ, CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sapporo_TV_Tower_at_Odori_Park_01.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Sapporo TV Tower at night 20250725.jpg (掬茶, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sapporo_TV_Tower_at_night_20250725.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Sapporo-night from TV Tower2.JPG (Keith Blayney, CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sapporo-night_from_TV_Tower2.JPG",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Belvédère à billet propre dans une tour urbaine ; boutique et restauration sont des services du même site."
+      }
     }
   ]
 }

@@ -1,0 +1,153 @@
+[
+  {
+    "step": "core",
+    "operationId": "9b05ab3c-35e7-431e-bb79-67efc3555608",
+    "appliedAtUtc": "2026-11-25T20:06:53.1334271Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "66169e1a-3d35-4ce2-8520-b2e589855cbb",
+    "appliedAtUtc": "2026-11-25T20:07:24.0329516Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-7b1394128ddc4db0b59d0ba11be5109c",
+    "imageId": "7b1394128ddc4db0b59d0ba11be5109c",
+    "createdAtUtc": "2026-11-25T20:07:44.506Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sapporo_TV_Tower_at_Odori_Park_01.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "metadataValidatedInFinalExport": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-f13d1de2f8374d9a8fbcd83510f97e09",
+    "imageId": "f13d1de2f8374d9a8fbcd83510f97e09",
+    "createdAtUtc": "2026-11-25T20:07:53.677Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sapporo_TV_Tower_at_night_20250725.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "metadataValidatedInFinalExport": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-420ba6a37d0240dda65cdc06ed28ffa4",
+    "imageId": "420ba6a37d0240dda65cdc06ed28ffa4",
+    "createdAtUtc": "2026-11-25T20:08:05.407Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sapporo-night_from_TV_Tower2.JPG",
+    "isCurrent": false,
+    "isPublished": true,
+    "metadataValidatedInFinalExport": true
+  },
+  {
+    "step": "history",
+    "operationId": "de78f03c-5524-4ad8-aacd-31fd8cbd3e9c",
+    "appliedAtUtc": "2026-11-25T20:10:43.5121681Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "50e52c94-6a85-45c9-98ab-6575191e8eac",
+    "appliedAtUtc": "2026-11-25T20:11:21.022717Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "f3ed05fe-7525-44db-8bad-f49acac8ab7a",
+    "appliedAtUtc": "2026-11-25T20:11:51.1211913Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook-replaced",
+    "publicationId": "abb5b3a7cf504e6193f6b1fa49d7a7ba",
+    "status": "Deleted",
+    "publishedAtUtc": "2026-11-25T20:13:29.802173Z",
+    "deletedAtUtc": "2026-11-25T20:17:06Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128850307424431",
+    "reason": "Rectification de la date de construction versus ouverture."
+  },
+  {
+    "step": "correction",
+    "operationId": "258e31a8-8048-4a2e-9d6b-8ec92ae3535e",
+    "appliedAtUtc": "2026-11-25T20:16:19.0620166Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history-correction",
+    "operationId": "dedf8193-6f98-42f0-98c7-b8032396db62",
+    "appliedAtUtc": "2026-11-25T20:16:33.9510066Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "9b8ead445f1a456f8fc3dfbf4cbc2c1c",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T20:17:35.6689079Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128850589424431"
+  }
+]
