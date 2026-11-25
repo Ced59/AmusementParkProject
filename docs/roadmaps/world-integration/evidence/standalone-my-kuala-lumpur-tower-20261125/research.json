@@ -1,0 +1,52 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions MY pour KL Tower, Kuala Lumpur Tower et Menara Kuala Lumpur : zéro résultat dans les six recherches avant création ; aucune entrée MY du backlog ne portait ces noms.",
+  "decision": "Tour panoramique à billetterie propre et accès public autonome ; Observation Deck, Sky Terrace et billet combiné sont les formules de la même attraction, pas trois fiches distinctes.",
+  "officialHours": "09:00–22:00 tous les jours, jours fériés compris selon la FAQ officielle ; la Sky Terrace est soumise à la météo. Navette gratuite sous réserve météo.",
+  "officialPricing": "Trois formules visibles à la billetterie officielle (Observation Deck, Sky Terrace, combo). Les prix dépendent du billet et de la date ; aucun montant fixe vérifié en accès public au moment de cette intégration. Les trois offres sont marquées Dynamic, sans montant inventé.",
+  "history": "La tour a ouvert au public en 1996 selon l’exploitant ; événement enregistré avec précision à l’année.",
+  "photos": "Trois images exactes examinées visuellement : deux vues extérieures prises en 2025, CC0 1.0, et une vue intérieure du belvédère en 2008, CC BY 2.0. Cette dernière montre un intérieur historique et ne garantit pas son aménagement actuel. Alt, légendes et crédits présents en huit langues.",
+  "sources": [
+    {
+      "label": "Kuala Lumpur Tower — site officiel",
+      "url": "https://kltower.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Kuala Lumpur Tower — FAQ horaires, météo, navette",
+      "url": "https://kltower.com/faq",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Kuala Lumpur Tower — billetterie officielle",
+      "url": "https://ticket.kltower.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Kuala Lumpur Tower — histoire",
+      "url": "https://kltower.com/our-story",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Kuala Lumpur Tower — adresse",
+      "url": "https://kltower.com/contact-us",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Kuala Lumpur Tower 20250822 (2).jpg (DvTor8303, CC0 1.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Tower_20250822_(2).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — KL Tower Observation Deck.jpg (Danilo Mistroni, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:KL_Tower_Observation_Deck.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Kuala Lumpur Tower 20250822 (1).jpg (DvTor8303, CC0 1.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Tower_20250822_(1).jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "La billetterie ne donne pas un prix fixe accessible sans choix de date ; les tarifs doivent être relevés lors d’un prochain contrôle. Les aménagements du belvédère ont pu évoluer depuis la photo de 2008."
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "step": "core",
+    "operationId": "eba0a2a4-3ca3-4bfd-9ad4-d5accec76f02",
+    "appliedAtUtc": "2026-11-25T19:27:31.3185652Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "78085135-8e9b-4a81-9d88-e8804fcb909f",
+    "appliedAtUtc": "2026-11-25T19:27:55.0858519Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-68a3d28467b04533880fbf1f82cf0e6c",
+    "imageId": "68a3d28467b04533880fbf1f82cf0e6c",
+    "createdAtUtc": "2026-11-25T19:28:44.932Z",
+    "updatedAtUtc": "2026-11-25T19:28:48.774Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Tower_20250822_(2).jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-e3d66caad67e493ab4a9e243ee3c8986",
+    "imageId": "e3d66caad67e493ab4a9e243ee3c8986",
+    "createdAtUtc": "2026-11-25T19:28:53.27Z",
+    "updatedAtUtc": "2026-11-25T19:28:56.622Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:KL_Tower_Observation_Deck.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-fa98a0142ab645fb9adb6ad3bb282a76",
+    "imageId": "fa98a0142ab645fb9adb6ad3bb282a76",
+    "createdAtUtc": "2026-11-25T19:29:02.967Z",
+    "updatedAtUtc": "2026-11-25T19:29:06.47Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Tower_20250822_(1).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-metadata-1",
+    "eventId": "photo-metadata-68a3d28467b04533880fbf1f82cf0e6c",
+    "imageId": "68a3d28467b04533880fbf1f82cf0e6c",
+    "updatedAtUtc": "2026-11-25T19:29:47.861Z"
+  },
+  {
+    "step": "photo-metadata-2",
+    "eventId": "photo-metadata-e3d66caad67e493ab4a9e243ee3c8986",
+    "imageId": "e3d66caad67e493ab4a9e243ee3c8986",
+    "updatedAtUtc": "2026-11-25T19:29:53.484Z"
+  },
+  {
+    "step": "photo-metadata-3",
+    "eventId": "photo-metadata-fa98a0142ab645fb9adb6ad3bb282a76",
+    "imageId": "fa98a0142ab645fb9adb6ad3bb282a76",
+    "updatedAtUtc": "2026-11-25T19:29:59.255Z"
+  },
+  {
+    "step": "history",
+    "operationId": "c7f07634-3f90-4e96-8fea-bbed63801ef7",
+    "appliedAtUtc": "2026-11-25T19:30:26.7213322Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "45e668ac-5cbb-4917-bba2-f9cf9023ac5a",
+    "appliedAtUtc": "2026-11-25T19:31:20.1447987Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "1df198cd6a7e4e548c5587cf0ee66313",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T19:32:06.6309323Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128847283424431"
+  },
+  {
+    "step": "pricing",
+    "operationId": "943da88f-073f-4f2d-ac0e-6555a66ec8c2",
+    "appliedAtUtc": "2026-11-25T19:33:19.2004777Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  }
+]
