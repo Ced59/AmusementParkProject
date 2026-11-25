@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions LT : Vilnius TV Tower, Vilniaus televizijos bokštas et TV bokštas, aucun résultat. Aucun homonyme dans le backlog LT.",
+  "decision": "Tour panoramique avec billetterie et horaires propres, hors parc de loisirs ; découverte nouvelle à créer comme StandaloneAttraction.",
+  "officialPricing": "Belvédère standard 18 €, réduit 9 € selon catégories et pièces précisées par le site, famille 45 € pour deux adultes et jusqu’à trois enfants. Moins de quatre ans et enfants handicapés de moins de 18 ans gratuits. Activités Edge Walk et 360°air distinctes, volontairement non mélangées au billet de base.",
+  "officialHours": "Billetterie tous les jours 11:00–21:00 ; dernier billet du belvédère 10 minutes avant fermeture. Bistro 11:00–22:00 non confondu avec les heures de la visite.",
+  "accessibility": "Source officielle explicite : les personnes ayant besoin d’un fauteuil roulant ne peuvent accéder à la plateforme panoramique et aux étages 67–68, faute de possibilité d’évacuation si les ascenseurs sont en panne. Accès actuel par galerie souterraine avec escaliers ; des solutions existent pour accéder à l’entrée mais n’annulent pas l’interdiction du belvédère.",
+  "history": "Tour mise en service le 31 janvier 1981, selon l’histoire officielle. Le site commémore les victimes des événements du 13 janvier 1991.",
+  "photos": "Trois photographies exactes inspectées : silhouette de la tour depuis Lazdynai en 2024, vue de la Neris depuis le belvédère en 2022, mémorial au pied de la tour en 2022. Métadonnées Commons, auteurs, dates et licence CC BY-SA 4.0 vérifiés.",
+  "sources": [
+    {
+      "label": "TV bokštas — tarifs et horaires officiels",
+      "url": "https://tvbokstas.lt/en/prices/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "TV bokštas — restrictions et conditions de visite",
+      "url": "https://tvbokstas.lt/en/important/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "TV bokštas — histoire officielle",
+      "url": "https://tvbokstas.lt/en/about-us/the-history-of-the-tv-tower/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikipedia — coordonnées de la tour de Vilnius",
+      "url": "https://en.wikipedia.org/wiki/Vilnius_TV_Tower",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Vilnius, Lazdynai, Televizijos bokštas.jpg (Terminator216, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Vilnius,_Lazdynai,_Televizijos_bok%C5%A1tas.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Views from Vilnius TV Tower (06.09.2022).03.jpg (Nenea hartia, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Views_from_Vilnius_TV_Tower_(06.09.2022).03.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Monument in front of the Vilnius TV tower.01.jpg (Nenea hartia, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Monument_in_front_of_the_Vilnius_TV_tower.01.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Tarifs et horaires susceptibles de changer. La galerie d’accès et les conditions des activités annexes doivent être recontrôlées avant une visite."
+}

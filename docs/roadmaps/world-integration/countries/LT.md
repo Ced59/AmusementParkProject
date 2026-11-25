@@ -17,7 +17,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 8 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 1 |
+| Intégration achevée | 2 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 5 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **5** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **5 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **8 candidats sans fiche**.
 
-Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **2 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **3 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -55,3 +55,4 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | LT-candidate-4926d758155066 | Vaikų Pasaulis | Elektrenai , Vilnius | Park | NotFound | Doublon conservé | Inconnue — non inventée | — | Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre LT-park-70b7a082-aac3-4f13-b32b-940d153bc2b9. Ne pas créer de doublon. Signal source : SBNO. Cible : LT-park-70b7a082-aac3-4f13-b32b-940d153bc2b9. [RCDB](https://rcdb.com/5645.htm) |
 | LT-park-70b7a082-aac3-4f13-b32b-940d153bc2b9 | Vaikų Pasaulis | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : SBNO. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/5645.htm) |
 | LT-candidate-1583534a6ab51a | Vichy Vandens Parkas | Vilnius | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Lithuania) |
+| LT-candidate-discovery-vilnius-tv-tower-20261125 | Vilnius TV Tower | Sausio 13-osios g. 10, Vilnius | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T22:31:37.493Z | — | Conserver cette ligne ; recontrôler les tarifs, horaires et la galerie d’entrée après travaux. Qualification standalone : AlreadyStandalone. Tour panoramique avec billetterie propre et accès public indépendant ; aucun parc parent. Signal source : Billets et horaires publiés par l’exploitant au 25 novembre 2026.. [TV bokštas — tarifs et horaires officiels](https://tvbokstas.lt/en/prices/) · [TV bokštas — restrictions et conditions de visite](https://tvbokstas.lt/en/important/) · [TV bokštas — histoire officielle](https://tvbokstas.lt/en/about-us/the-history-of-the-tv-tower/) · [Wikipedia — coordonnées de la tour de Vilnius](https://en.wikipedia.org/wiki/Vilnius_TV_Tower) · [Wikimedia Commons — Vilnius, Lazdynai, Televizijos bokštas.jpg (Terminator216, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Vilnius,_Lazdynai,_Televizijos_bok%C5%A1tas.jpg) · [Wikimedia Commons — Views from Vilnius TV Tower (06.09.2022).03.jpg (Nenea hartia, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Views_from_Vilnius_TV_Tower_(06.09.2022).03.jpg) · [Wikimedia Commons — Monument in front of the Vilnius TV tower.01.jpg (Nenea hartia, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Monument_in_front_of_the_Vilnius_TV_tower.01.jpg) |

@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "d38cc603-1600-4ad5-ae9c-476658c9ae68",
+    "appliedAtUtc": "2026-11-25T22:29:34.2190413Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "24c8a8e2-198f-48ff-9c11-ade4f88df8e4",
+    "appliedAtUtc": "2026-11-25T22:30:39.418418Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "e10ea6a0-e814-468e-a6ae-5f2bd770ae3d",
+    "appliedAtUtc": "2026-11-25T22:30:50.3430597Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "8841cceb-e4e2-4402-8076-85a89a9b1655",
+    "appliedAtUtc": "2026-11-25T22:31:02.0770447Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-9dedfef3caa3456d9e08515cb8e43e72",
+    "imageId": "9dedfef3caa3456d9e08515cb8e43e72",
+    "createdAtUtc": "2026-11-25T22:31:16.169Z",
+    "updatedAtUtc": "2026-11-25T22:31:19.904Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vilnius,_Lazdynai,_Televizijos_bok%C5%A1tas.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-0d04c21a42f04df6a0c494f4e334f746",
+    "imageId": "0d04c21a42f04df6a0c494f4e334f746",
+    "createdAtUtc": "2026-11-25T22:31:23.989Z",
+    "updatedAtUtc": "2026-11-25T22:31:29.001Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Views_from_Vilnius_TV_Tower_(06.09.2022).03.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-a9031ce533d04d46bd1c2a2cb1bc2d29",
+    "imageId": "a9031ce533d04d46bd1c2a2cb1bc2d29",
+    "createdAtUtc": "2026-11-25T22:31:33.673Z",
+    "updatedAtUtc": "2026-11-25T22:31:37.493Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monument_in_front_of_the_Vilnius_TV_tower.01.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "8829e593-0550-4a89-9bed-ac98a1019dbd",
+    "appliedAtUtc": "2026-11-25T22:32:20.9135721Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "66867bd4ccc94c43b04443607b2b7333",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T22:33:10.383995Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128860159424431"
+  }
+]
