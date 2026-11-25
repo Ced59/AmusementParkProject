@@ -1,0 +1,18 @@
+{
+  "apply": {
+    "operationId": "d72f4a0d-ff9d-46ca-825e-6fb8f68ca29e",
+    "appliedAtUtc": "2026-11-25T09:09:34.6740601Z",
+    "errors": [],
+    "warnings": []
+  },
+  "facebook": {
+    "id": "71a58012095447c9b02d2e473af834a9",
+    "network": "Facebook",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T09:12:25.8230174Z",
+    "externalPostId": "1285475681307050_122128777509424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128777509424431",
+    "failureCode": null,
+    "failureMessage": null
+  }
+}

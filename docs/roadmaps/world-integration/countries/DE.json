@@ -11659,21 +11659,32 @@
         "e0f15bcf-4670-461d-998b-224e7df2e98e"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-25T09:12:57.892Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche autonome déjà publiée ; ID et visibilité reconfirmés par SearchStandaloneAttractions, exploitant et parcours confirmés par les sources officielles.",
       "possibleMatches": [],
       "aliases": [
         "Hasenhorn Rodelbahn",
         "Hasenhorn Coaster Todtnau"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-25T09:09:34.674Z",
+      "integrationHistory": [
+        {
+          "eventId": "d72f4a0d-ff9d-46ca-825e-6fb8f68ca29e",
+          "appliedAt": "2026-11-25T09:09:34.674Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-hasenhorn-coaster-20261125/operations.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-hasenhorn-coaster-20261125/audit.json",
+          "summary": "Correction de la longueur de 2,7 à 2,9 km, ouverture 2004 sourcée ; trois photos exactes et huit langues contrôlées, Facebook publié. Calendrier futur absent de la source officielle ; score 91/100, lacune documentée."
+        }
+      ],
+      "nextAction": "Conserver la ligne et son historique ; revérifier le calendrier et les tarifs à la reprise annoncée, puis actualiser la fiche sans inventer de jours ouverts.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11709,6 +11720,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.hasenhorn-rodelbahn.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Hochschwarzwald — ouverture 2004 et piste de 2,9 km",
+          "url": "https://www.hochschwarzwald.de/attraktionen/das-hasenhorn-c4211f2bb4",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wiegand — référence constructeur et année de construction 2004",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -11736,7 +11757,26 @@
             "referenceId": "location-id-1024"
           }
         ],
-        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration d72f4a0d-ff9d-46ca-825e-6fb8f68ca29e ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/46a57823-75cd-4ff3-9fde-495ad0204b1b/hasenhorn-coaster",
+          "publishedAtUtc": null,
+          "verifiedAtUtc": "2026-11-25T09:12:57.892Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-hasenhorn-coaster-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "71a58012095447c9b02d2e473af834a9",
+          "network": "Facebook",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-25T09:12:25.8230174Z",
+          "externalPostId": "1285475681307050_122128777509424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128777509424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
       }
     },
     {

@@ -1,0 +1,54 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+  "countryCode": "DE",
+  "name": "Hasenhorn Coaster",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/46a57823-75cd-4ff3-9fde-495ad0204b1b/hasenhorn-coaster",
+  "lastDataIntegrationAtUtc": "2026-11-25T09:09:34.674Z",
+  "sitePublicationDate": "unknown — existing published fiche",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 86,
+    "earnedPoints": 78,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "attractions": 1,
+    "operatingAttractions": 1,
+    "descriptionsWithEightLanguages": 1,
+    "exactPhotosVisuallyVerified": 3,
+    "openingHistoryEvents": 1,
+    "accessConditions": 3,
+    "currentPricingOffers": 4,
+    "datedFutureOpeningHours": 0
+  },
+  "lengthCorrectionMeters": {
+    "from": 2700,
+    "to": 2900,
+    "source": "https://www.hasenhorn-rodelbahn.de/"
+  },
+  "openingYear": {
+    "year": 2004,
+    "source": "https://www.hochschwarzwald.de/attraktionen/das-hasenhorn-c4211f2bb4",
+    "manufacturerCorroboration": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316"
+  },
+  "remainingUncertainty": "L’exploitant indique le 25 novembre 2026 que la remontée et la luge sont fermées, avec une éventuelle réouverture durant les vacances de Noël selon la météo. Aucun calendrier futur exact n’est publié ; aucune date ou plage horaire future n’a été inventée. Les tarifs visibles sont ceux de l’été 2026 et doivent être revérifiés avant la reprise. Cette lacune explique le score de 91/100, en dessous du niveau Excellent visé.",
+  "facebookPublicationId": "71a58012095447c9b02d2e473af834a9"
+}
