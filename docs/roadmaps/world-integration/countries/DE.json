@@ -1307,18 +1307,18 @@
       "entryId": "DE-candidate-standalone-ff312e1d5aeb2d",
       "name": "Alpine Coaster Wiegand — Fort Fun",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "La page officielle classe Trapper SLIDER dans les attractions de FORT FUN et indique que les visiteurs y accèdent avec le billet du parc, sans supplément après le créneau Early SLIDER.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -1327,7 +1327,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer de standalone. Intégrer Trapper SLIDER comme attraction de la fiche Park FORT FUN Abenteuerland (DE-park-22a60ead-5eca-40a3-aec2-230004b9b1b7) lors de son travail éditorial ; conserver la référence constructeur et cette décision.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -1338,22 +1338,28 @@
           "label": "Opérateur référencé par la source",
           "url": "http://fortfun.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "FORT FUN Abenteuerland — attraction sur le site officiel",
+          "url": "https://fortfun.de/attraktion/trapper-slider",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Fort Fun",
+            "name": "Trapper SLIDER",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-1028",
             "family": "Alpine coaster",
-            "sourceVenueName": "Fort Fun",
-            "referenceId": "location-id-1028"
+            "sourceVenueName": "FORT FUN Abenteuerland",
+            "referenceId": "location-id-1028",
+            "parentBacklogEntryId": "DE-park-22a60ead-5eca-40a3-aec2-230004b9b1b7"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "La page officielle classe Trapper SLIDER dans les attractions de FORT FUN et indique que les visiteurs y accèdent avec le billet du parc, sans supplément après le créneau Early SLIDER."
       }
     },
     {
@@ -2208,18 +2214,18 @@
       "entryId": "DE-candidate-standalone-1bc573894a2723",
       "name": "Alpine Coaster Wiegand — Steinwasen",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "La liste officielle des attractions du Steinwasen Park contient explicitement Alpine Coaster ; la page individuelle est hébergée dans la rubrique des attractions du parc.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -2228,7 +2234,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer de standalone. Intégrer Alpine Coaster comme attraction de la fiche Park Steinwasen Park (DE-park-73d15af0-0cef-41df-816c-599bea49c169) lors de son travail éditorial ; conserver la référence constructeur et cette décision.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2239,22 +2245,28 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.steinwasen-park.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Steinwasen Park — attraction sur le site officiel",
+          "url": "https://www.steinwasen-park.de/en/steinwasen-attraktionen.html",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Steinwasen",
+            "name": "Alpine Coaster",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-1887",
             "family": "Alpine coaster",
-            "sourceVenueName": "Steinwasen",
-            "referenceId": "location-id-1887"
+            "sourceVenueName": "Steinwasen Park",
+            "referenceId": "location-id-1887",
+            "parentBacklogEntryId": "DE-park-73d15af0-0cef-41df-816c-599bea49c169"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "La liste officielle des attractions du Steinwasen Park contient explicitement Alpine Coaster ; la page individuelle est hébergée dans la rubrique des attractions du parc."
       }
     },
     {
@@ -15088,18 +15100,18 @@
       "entryId": "DE-candidate-standalone-e8c5030413eda7",
       "name": "Luge Wiegand — Altenberg",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Luge d’été",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "L’exploitant présente la luge comme l’une des attractions de l’Erlebnisberg Altenberg, avec d’autres activités estivales et hivernales ; une fiche Park masquée existe déjà pour ce domaine. Un billet propre de luge ne change pas ce rattachement.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -15108,7 +15120,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer de standalone. Intégrer Sommerrodelbahn Altenberg comme attraction de la fiche Park Erlebnisberg Altenberg (DE-park-c18c490e-f880-4837-9075-0ffc01cb365d) lors de son travail éditorial ; conserver la référence constructeur et cette décision.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -15119,22 +15131,28 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.erlebnisberg-altenberg.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Erlebnisberg Altenberg — attraction sur le site officiel",
+          "url": "https://www.erlebnisberg-altenberg.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Altenberg",
+            "name": "Sommerrodelbahn Altenberg",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1292",
             "family": "Luge d’été",
-            "sourceVenueName": "Altenberg",
-            "referenceId": "location-id-1292"
+            "sourceVenueName": "Erlebnisberg Altenberg",
+            "referenceId": "location-id-1292",
+            "parentBacklogEntryId": "DE-park-c18c490e-f880-4837-9075-0ffc01cb365d"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’exploitant présente la luge comme l’une des attractions de l’Erlebnisberg Altenberg, avec d’autres activités estivales et hivernales ; une fiche Park masquée existe déjà pour ce domaine. Un billet propre de luge ne change pas ce rattachement."
       }
     },
     {
