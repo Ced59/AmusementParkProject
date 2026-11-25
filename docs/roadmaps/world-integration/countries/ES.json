@@ -8055,6 +8055,149 @@
         "attractions": [],
         "rationale": "Téléphérique touristique à billet propre ; distinct du funiculaire et du Téléphérique du Port."
       }
+    },
+    {
+      "entryId": "ES-candidate-discovery-teleferic-del-port-20261125",
+      "name": "Telefèric del Port",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Torre Sant Sebastià, Passeig de Joan de Borbó s/n, Barcelone",
+      "siteId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T21:53:43Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Tarifs et horaires publiés par l’exploitant au 25 novembre 2026.",
+      "identityConfidence": "Nom, trajet, stations, tarifs et accès officiels ; six recherches sans doublon ; trois photos exactes sous licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleférico del Puerto",
+        "Transbordador Aeri del Port",
+        "Port Cable Car Barcelona"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T21:50:33.746Z",
+      "integrationHistory": [
+        {
+          "eventId": "e69dcdb3-aea0-46da-8fe0-a33f23817b22",
+          "appliedAt": "2026-11-25T21:47:25.812Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-teleferic-del-port-20261125/operations.json#e69dcdb3-aea0-46da-8fe0-a33f23817b22",
+          "auditEvidence": null,
+          "summary": "Création masquée après six recherches de doublon ; identité, station Barceloneta et huit descriptions."
+        },
+        {
+          "eventId": "5864f811-4546-478f-b672-d3c5be8b5095",
+          "appliedAt": "2026-11-25T21:48:33.140Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-teleferic-del-port-20261125/operations.json#5864f811-4546-478f-b672-d3c5be8b5095",
+          "auditEvidence": null,
+          "summary": "Deux tarifs officiels, horaires saisonniers et fermeture de Noël intégrés."
+        },
+        {
+          "eventId": "7db9072e-b80a-4d84-96fc-ff6bad3f282c",
+          "appliedAt": "2026-11-25T21:48:50.725Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-teleferic-del-port-20261125/operations.json#7db9072e-b80a-4d84-96fc-ff6bad3f282c",
+          "auditEvidence": null,
+          "summary": "Ouverture en 1931 et reprise du service en 1963 documentées et traduites."
+        },
+        {
+          "eventId": "3dc22174-ae67-44db-875e-14e054e5b996",
+          "appliedAt": "2026-11-25T21:49:05.137Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-teleferic-del-port-20261125/operations.json#3dc22174-ae67-44db-875e-14e054e5b996",
+          "auditEvidence": null,
+          "summary": "Accès en fauteuil limité à la tour Sant Sebastià intégré depuis la FAQ officielle."
+        },
+        {
+          "eventId": "photo-bc8f36c449b7484cb583f04c7099f9d3",
+          "appliedAt": "2026-11-25T21:50:14.520Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-teleferic-del-port-20261125/operations.json#photo-bc8f36c449b7484cb583f04c7099f9d3",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : CGE (CC BY 3.0)."
+        },
+        {
+          "eventId": "photo-451293a5615e4c20bd7f23807867ccc0",
+          "appliedAt": "2026-11-25T21:50:24.315Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-teleferic-del-port-20261125/operations.json#photo-451293a5615e4c20bd7f23807867ccc0",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Celsoazevedo (CC BY 4.0)."
+        },
+        {
+          "eventId": "photo-dca4d640f6a24b578f9136b5a4e395d6",
+          "appliedAt": "2026-11-25T21:50:33.746Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-teleferic-del-port-20261125/operations.json#photo-dca4d640f6a24b578f9136b5a4e395d6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-es-teleferic-del-port-20261125/audit.json",
+          "summary": "Photo exacte 3/3 importée : Jordiferrer (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier les horaires et tarifs 2027, résoudre le chevauchement du 25 octobre auprès de l’exploitant et faire supprimer par un administrateur les trois imports images inutilisés documentés dans audit.json.",
+      "sources": [
+        {
+          "label": "Telefèric del Port — tarifs et horaires",
+          "url": "https://www.telefericodebarcelona.com/horaris-i-preus/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Telefèric del Port — FAQ, stations et accessibilité",
+          "url": "https://www.telefericodebarcelona.com/preguntes/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Telefèric del Port — histoire de la liaison",
+          "url": "https://www.telefericodebarcelona.com/historia-i-detalls-tecnics/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikipedia — coordonnées de Torre Sant Sebastià",
+          "url": "https://en.wikipedia.org/wiki/Torre_Sant_Sebasti%C3%A0",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Telefèric del Port Barcelona.jpg (CGE, CC BY 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telefèric_del_Port_Barcelona.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Torre Jaime I (top), Telefèric del Port, Barcelona - September 2025.jpg (Celsoazevedo, CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Torre_Jaime_I_(top),_Telefèric_del_Port,_Barcelona_-_September_2025.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — 2017 Telefèric del port cabin 01.jpg (Jordiferrer, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:2017_Telefèric_del_port_cabin_01.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "ES",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Téléphérique touristique à billet propre ; distinct du funiculaire et du Téléphérique de Montjuïc."
+      }
     }
   ]
 }

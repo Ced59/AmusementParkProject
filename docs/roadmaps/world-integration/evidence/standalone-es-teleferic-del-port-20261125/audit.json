@@ -1,0 +1,81 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "2b962d25-7998-4cdb-9a0d-732d5bffae38",
+  "name": "Telefèric del Port",
+  "countryCode": "ES",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/2b962d25-7998-4cdb-9a0d-732d5bffae38/teleferic-del-port",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T21:53:43Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "f2af8332ce064434abc62ce460d9e3c1",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128856649424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T21:50:33.746Z",
+  "lastDataEventId": "photo-dca4d640f6a24b578f9136b5a4e395d6",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions ES pour Telefèric del Port, Teleférico del Puerto et Transbordador Aeri : zéro résultat dans six recherches ; aucun homonyme dans le backlog ES.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "bc8f36c449b7484cb583f04c7099f9d3",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telefèric_del_Port_Barcelona.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "CGE",
+      "license": "CC BY 3.0"
+    },
+    {
+      "id": "451293a5615e4c20bd7f23807867ccc0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torre_Jaime_I_(top),_Telefèric_del_Port,_Barcelona_-_September_2025.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Celsoazevedo",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "dca4d640f6a24b578f9136b5a4e395d6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_Telefèric_del_port_cabin_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Jordiferrer",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 2,
+  "descriptionLanguages": 8,
+  "historyEventCount": 2,
+  "accessConditionCount": 1,
+  "datedOpeningOverrideCount": 2,
+  "orphanPhotoImportsForAdminCleanup": [
+    "012937027f6d475ea3e878209f466cec",
+    "5460ef30c4c74300882501f086be8344",
+    "b57a0626507b468e95223463a7eee7e8"
+  ]
+}

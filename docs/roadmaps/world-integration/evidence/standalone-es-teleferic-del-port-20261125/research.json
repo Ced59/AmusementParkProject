@@ -1,0 +1,49 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions ES pour Telefèric del Port, Teleférico del Puerto et Transbordador Aeri : zéro résultat dans six recherches ; aucun homonyme dans le backlog ES.",
+  "decision": "Téléphérique historique touristique à billet propre entre Barceloneta et Miramar, distinct du Téléphérique de Montjuïc et du funiculaire. Torre Jaume I est traversée mais fermée à l’embarquement.",
+  "officialPricing": "Aller simple 12,50 € ; aller-retour 20 €. Achat en ligne ou au guichet. Aucun tarif enfant distinct affiché.",
+  "officialHours": "1 janvier–28 février 11:00–17:30 ; 1 mars–31 mai 10:30–19:00 ; 1 juin–11 septembre 10:30–20:00 ; 12 septembre–25 octobre 10:30–19:00 ; 26 octobre–31 décembre 11:00–17:30. Fermé le 25 décembre. La source inclut le 25 octobre dans deux périodes ; la règle est désambiguïsée avec fermeture à 19:00 ce jour-là. Horaires 2027 à reconfirmer.",
+  "accessibility": "La FAQ officielle indique que l’embarquement en fauteuil roulant se fait seulement à la tour Sant Sebastià (ascenseur et rampe). La station Miramar a des escaliers jusqu’au quai.",
+  "history": "Ouverture en 1931 ; reprise du service le 20 mai 1963 selon l’historique officiel.",
+  "photos": "Trois photographies exactes inspectées : cabine au-dessus du port en 2008, cabines près de la tour Jaume I en septembre 2025, cabine et passagers en 2017. Crédits et licences Commons vérifiés ; miniatures réduites, huit textes alternatifs et légendes distincts.",
+  "sources": [
+    {
+      "label": "Telefèric del Port — tarifs et horaires",
+      "url": "https://www.telefericodebarcelona.com/horaris-i-preus/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Telefèric del Port — FAQ, stations et accessibilité",
+      "url": "https://www.telefericodebarcelona.com/preguntes/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Telefèric del Port — histoire de la liaison",
+      "url": "https://www.telefericodebarcelona.com/historia-i-detalls-tecnics/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikipedia — coordonnées de Torre Sant Sebastià",
+      "url": "https://en.wikipedia.org/wiki/Torre_Sant_Sebasti%C3%A0",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Telefèric del Port Barcelona.jpg (CGE, CC BY 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Telefèric_del_Port_Barcelona.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Torre Jaime I (top), Telefèric del Port, Barcelona - September 2025.jpg (Celsoazevedo, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Torre_Jaime_I_(top),_Telefèric_del_Port,_Barcelona_-_September_2025.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — 2017 Telefèric del port cabin 01.jpg (Jordiferrer, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:2017_Telefèric_del_port_cabin_01.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Tarifs et horaires à revérifier, notamment en 2027. L’exploitant donne des horaires qui se chevauchent au 25 octobre.",
+  "technicalCleanup": "Trois imports photos ont été envoyés par erreur vers l’identifiant provisoire de l’aperçu avant de constater que l’identifiant de création différait. Ces images ne sont pas liées à la fiche publiée ; suppression administrative nécessaire pour libérer le stockage : 012937027f6d475ea3e878209f466cec, 5460ef30c4c74300882501f086be8344, b57a0626507b468e95223463a7eee7e8."
+}
