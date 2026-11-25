@@ -1,0 +1,47 @@
+{
+  "reviewedAt": "2026-11-25",
+  "scope": "Qualification documentaire de dossiers alpine coaster ; aucune mutation de données PDE et aucune date d’intégration créée.",
+  "decisions": [
+    {
+      "countryCode": "US",
+      "entryIds": [
+        "US-candidate-standalone-8e26b28ddf2c5e",
+        "US-candidate-b45bcb832f0cd0",
+        "US-park-84b0a631-dd45-4d69-a903-e7d0570ca6d8"
+      ],
+      "decision": "Cool Runnings LLC exploite Lost Mine, un parc multi-activités ; les deux pistes du coaster sont des alias ou références internes, non des créations standalone.",
+      "sources": [
+        {
+          "label": "Lost Mine — raison sociale Cool Runnings LLC",
+          "url": "https://lostmine.com/terms-and-conditions/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Lost Mine — coaster, mini-golf et gem mine",
+          "url": "https://lostmine.com/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wiegand — référence Cool Runnings LLC",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2180",
+          "accessedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "countryCode": "AT",
+      "entryIds": [
+        "AT-park-fb3ac30c-ed3e-4b04-9605-c48fa6d9b7df"
+      ],
+      "decision": "Trailcenter saisonnier, luge d’été annoncée définitivement fermée ; parkItem existant à corriger dans la fiche Park lors d’une intégration ultérieure.",
+      "sources": [
+        {
+          "label": "Hohe Wand Wiese — état actuel",
+          "url": "https://www.hohewandwiese.com/",
+          "accessedAt": "2026-11-25"
+        }
+      ]
+    }
+  ],
+  "notes": "Les entrées demeurent dans le backlog. Les dernières dates d’intégration restent inchangées car cette revue ne constitue pas un Apply."
+}
