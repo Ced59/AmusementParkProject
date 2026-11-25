@@ -1,0 +1,77 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "56f935fd-22b9-4f61-9d28-90722e512ef4",
+  "name": "Skyrail Rainforest Cableway",
+  "countryCode": "AU",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/56f935fd-22b9-4f61-9d28-90722e512ef4/skyrail-rainforest-cableway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T21:19:57Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "01bf6e7ea65a405ab3eb6038e042acd4",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128854321424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T21:17:16.245Z",
+  "lastDataEventId": "metadata-5c2d86ce708c4c258960424f8ba41875",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions AU pour Skyrail Rainforest Cableway, Skyrail et Kuranda Cableway : zéro résultat dans six recherches ; aucun homonyme dans le backlog AU.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "92e0b17e52494304b27b201e6fa4768b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyrail_Rainforest_Cableway_Gondola.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Sheila Thomson",
+      "license": "CC BY 2.0"
+    },
+    {
+      "id": "6886a683cb8f46ccb9872e39ee551124",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyrail,_Queensland_(483839)_(9440795415).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Robert Linsdell",
+      "license": "CC BY 2.0"
+    },
+    {
+      "id": "5c2d86ce708c4c258960424f8ba41875",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Looking_Down_From_Skyrail.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Happy Little Nomad",
+      "license": "CC BY-SA 2.0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "onlinePriceOfferCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "datedOpeningOverrideCount": 18
+}

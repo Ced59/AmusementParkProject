@@ -1,0 +1,135 @@
+[
+  {
+    "step": "core",
+    "operationId": "668f7706-bc05-4777-8472-eb11114a95e5",
+    "appliedAtUtc": "2026-11-25T21:13:05.4052024Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "3b069ebd-c61c-41be-83fa-6086e342779c",
+    "appliedAtUtc": "2026-11-25T21:13:26.6007046Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "f2455ce2-af0a-4f8b-a773-4413f4472ca4",
+    "appliedAtUtc": "2026-11-25T21:14:32.9180651Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "a5637447-9950-4b02-afa0-9c02e750af28",
+    "appliedAtUtc": "2026-11-25T21:14:43.9963181Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-92e0b17e52494304b27b201e6fa4768b",
+    "imageId": "92e0b17e52494304b27b201e6fa4768b",
+    "createdAtUtc": "2026-11-25T21:14:56.676Z",
+    "updatedAtUtc": "2026-11-25T21:15:00.513Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyrail_Rainforest_Cableway_Gondola.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-6886a683cb8f46ccb9872e39ee551124",
+    "imageId": "6886a683cb8f46ccb9872e39ee551124",
+    "createdAtUtc": "2026-11-25T21:15:05.24Z",
+    "updatedAtUtc": "2026-11-25T21:15:08.767Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyrail,_Queensland_(483839)_(9440795415).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-5c2d86ce708c4c258960424f8ba41875",
+    "imageId": "5c2d86ce708c4c258960424f8ba41875",
+    "createdAtUtc": "2026-11-25T21:15:14.046Z",
+    "updatedAtUtc": "2026-11-25T21:15:17.463Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Looking_Down_From_Skyrail.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-metadata-1",
+    "eventId": "metadata-92e0b17e52494304b27b201e6fa4768b",
+    "imageId": "92e0b17e52494304b27b201e6fa4768b",
+    "updatedAtUtc": "2026-11-25T21:17:05.039Z",
+    "captionLanguages": 8
+  },
+  {
+    "step": "photo-metadata-2",
+    "eventId": "metadata-6886a683cb8f46ccb9872e39ee551124",
+    "imageId": "6886a683cb8f46ccb9872e39ee551124",
+    "updatedAtUtc": "2026-11-25T21:17:10.562Z",
+    "captionLanguages": 8
+  },
+  {
+    "step": "photo-metadata-3",
+    "eventId": "metadata-5c2d86ce708c4c258960424f8ba41875",
+    "imageId": "5c2d86ce708c4c258960424f8ba41875",
+    "updatedAtUtc": "2026-11-25T21:17:16.245Z",
+    "captionLanguages": 8
+  },
+  {
+    "step": "publish",
+    "operationId": "4f438bcd-480a-4f08-b036-c7455e5e3e61",
+    "appliedAtUtc": "2026-11-25T21:17:50.7890735Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "01bf6e7ea65a405ab3eb6038e042acd4",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T21:18:55.0277423Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128854321424431"
+  }
+]
