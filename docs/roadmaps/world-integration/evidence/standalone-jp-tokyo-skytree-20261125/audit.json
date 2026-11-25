@@ -1,0 +1,88 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+  "name": "Tokyo Skytree",
+  "countryCode": "JP",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/2fbcefe2-76f9-41c0-be7b-bc3638f12f2e/tokyo-skytree",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T13:49:41Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "e558a84a99254d57839f220cc59d62e7",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128812351424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T13:46:33.843Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Skytree » : zéro homonyme avant création.",
+  "completeness": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 60,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "eb5ca476183f4822a39720ca59180378",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429525).jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "f8876ae3198a4bb0bb222a180e072242",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429280).jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "bb2c5900f9a8416da1fc192742e5a198",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Sky_Tree_tembo_deck_night_view.JPG",
+      "isPublished": true
+    }
+  ],
+  "sources": [
+    {
+      "label": "Tokyo Skytree — billets et tarifs",
+      "url": "https://www.tokyo-skytree.jp/ticket/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Tokyo Skytree — calendrier et dernières entrées",
+      "url": "https://www.tokyo-skytree.jp/open-hours/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Tokyo Skytree — accès",
+      "url": "https://www.tokyo-skytree.jp/access/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Tokyo Skytree — historique et date d’ouverture",
+      "url": "https://www.tokyo-skytree.jp/corporate/profile/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429525).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429280).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Sky_Tree_tembo_deck_night_view.JPG",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Billet propre aux deux observatoires ; Tembo Deck de base et Tembo Galleria en combo ou supplément. Calendrier officiel de 68 dates du 25 novembre 2026 au 31 janvier 2027 ; sept dates dérogatoires et deux créneaux le 1er janvier.",
+  "remainingUncertainty": "Horaires et prix variables selon la date ; le créneau du lever du soleil le 1er janvier peut nécessiter un billet spécial. Actualiser le calendrier après janvier 2027."
+}

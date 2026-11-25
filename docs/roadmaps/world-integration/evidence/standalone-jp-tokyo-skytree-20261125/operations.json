@@ -1,0 +1,103 @@
+[
+  {
+    "step": "core",
+    "operationId": "51d0f923-f429-4f83-9de0-a89994a8060a",
+    "appliedAtUtc": "2026-11-25T13:39:47.1566298Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "9066b685-e83d-4ed3-a548-78be572731e8",
+    "appliedAtUtc": "2026-11-25T13:41:18.0693904Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-eb5ca476183f4822a39720ca59180378",
+    "imageId": "eb5ca476183f4822a39720ca59180378",
+    "updatedAtUtc": "2026-11-25T13:42:22.82Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429525).jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 149700
+  },
+  {
+    "step": "photo-import-f8876ae3198a4bb0bb222a180e072242",
+    "imageId": "f8876ae3198a4bb0bb222a180e072242",
+    "updatedAtUtc": "2026-11-25T13:43:00.876Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429280).jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 501348
+  },
+  {
+    "step": "photo-import-bb2c5900f9a8416da1fc192742e5a198",
+    "imageId": "bb2c5900f9a8416da1fc192742e5a198",
+    "updatedAtUtc": "2026-11-25T13:43:23.156Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Sky_Tree_tembo_deck_night_view.JPG",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 316738
+  },
+  {
+    "step": "copy-correction",
+    "operationId": "d0e7890d-080f-4365-b0af-bc66a1a87b86",
+    "appliedAtUtc": "2026-11-25T13:45:39.7155964Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-metadata-update-eb5ca476183f4822a39720ca59180378-2026-11-25T13:46:33.843Z",
+    "imageId": "eb5ca476183f4822a39720ca59180378",
+    "updatedAtUtc": "2026-11-25T13:46:33.843Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429525).jpg",
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "258d4417-490c-4622-8421-2e5ed65fd17b",
+    "appliedAtUtc": "2026-11-25T13:47:34.8232995Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "e558a84a99254d57839f220cc59d62e7",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T13:48:32.9387051Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128812351424431"
+  }
+]
