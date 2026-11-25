@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions AM pour Wings of Tatev, Tatev Cable Car et Tatever : zéro résultat dans six recherches ; aucune ligne correspondante dans AM.",
+  "decision": "Téléphérique réversible Halidzor–secteur du monastère de Tatev à billetterie propre ; le monastère et les visites guidées sont distincts du transport.",
+  "officialPricing": "Tarifs opérateur mars–novembre : 6 500 AMD aller simple, 9 000 AMD aller-retour ; décembre–février : 4 000 et 5 500 AMD ; enfant jusqu’à 140 cm 1 000 AMD. Offres saisonnières explicites, prix au guichet disponibles. Vente et réservation en ligne actuellement suspendues pour raisons techniques selon le site officiel ; appeler ou acheter en station.",
+  "officialHours": "Mardi–dimanche et jours fériés. Décembre et 2 janvier–février : 10:00–18:00, première cabine 10:30, dernière 17:30 ; 1er janvier exclu par le calendrier officiel. Mars–avril et octobre–novembre : 10:00–18:00, dernière 17:45. Mai–septembre : 10:00–19:00, dernière 18:45. Lundi férié à confirmer ; interruption météo/technique possible.",
+  "accessibility": "Aucune information officielle suffisamment précise sur l’accès en fauteuil n’a été trouvée ; ne pas déclarer l’attraction accessible. Demander confirmation à l’exploitant avant le déplacement.",
+  "history": "Le site de l’exploitant indique l’ouverture le 16 octobre 2010 dans le cadre du programme Tatev Revival.",
+  "photos": "Trois photos exactes Commons inspectées : cabine en 2017, vue de la vallée depuis la ligne en 2016, câbles et monastère en 2016. Crédits et licences vérifiés ; miniatures réduites, huit alt et légendes distincts.",
+  "sources": [
+    {
+      "label": "Wings of Tatev — tarifs et heures officiels",
+      "url": "https://www.tatever.am/en/tickets-and-hours-of-operation",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wings of Tatev — réservation en ligne suspendue",
+      "url": "https://www.tatever.am/en/booking",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wings of Tatev — faits, ouverture et durée",
+      "url": "https://www.tatever.am/en/wings-facts-and-advice",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wings of Tatev — itinéraire",
+      "url": "https://www.tatever.am/en/wings-of-tatev-aerial-roadway",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wings of Tatev — coordonnées de contact",
+      "url": "https://www.tatever.am/en/contacts",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Wings of Tatev Cable Car (37202335960).jpg (David Stanley, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Wings_of_Tatev_Cable_Car_(37202335960).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — The Wings Of Tatev (37778475201).jpg (Clay Gilliland, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Wings_Of_Tatev_(37778475201).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — The Wings Of Tatev and Tatev Monastery (23925883178).jpg (Clay Gilliland, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Wings_Of_Tatev_and_Tatev_Monastery_(23925883178).jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Accessibilité non confirmée. La réservation en ligne peut être rétablie ; tarifs et heures à revérifier avant nouvelle intégration."
+}

@@ -1,0 +1,75 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "caa4671d-aeb9-4b3c-b13d-b52b096d0bc1",
+  "name": "Wings of Tatev",
+  "countryCode": "AM",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/caa4671d-aeb9-4b3c-b13d-b52b096d0bc1/wings-of-tatev",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T21:31:29Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "b1602a8e4011468aa56b404389055155",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128854969424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T21:29:09.994Z",
+  "lastDataEventId": "bcd5e529-3cbe-4ca4-9fe3-2ab14851ed23",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions AM pour Wings of Tatev, Tatev Cable Car et Tatever : zéro résultat dans six recherches ; aucune ligne correspondante dans AM.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 64,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "1f954017c6fa42b09803c5b334eaa5e9",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wings_of_Tatev_Cable_Car_(37202335960).jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "David Stanley",
+      "license": "CC BY 2.0"
+    },
+    {
+      "id": "47e7f0a0e2d849faa7184efd39e65a5f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Wings_Of_Tatev_(37778475201).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Clay Gilliland",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "id": "caa145d2ef2b48cfa44f09f8bc507627",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Wings_Of_Tatev_and_Tatev_Monastery_(23925883178).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Clay Gilliland",
+      "license": "CC BY-SA 2.0"
+    }
+  ],
+  "pricingOfferCount": 5,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "datedOpeningOverrideCount": 1
+}

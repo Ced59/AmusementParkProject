@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "30721cd8-255f-4561-8e41-61a60b1e1495",
+    "appliedAtUtc": "2026-11-25T21:26:27.4983194Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "00a3a720-c74a-4061-a420-df7e8d4cdd63",
+    "appliedAtUtc": "2026-11-25T21:26:46.8450512Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "2c9a3267-5824-426a-a26b-002ee70e87eb",
+    "appliedAtUtc": "2026-11-25T21:27:39.5350531Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-1f954017c6fa42b09803c5b334eaa5e9",
+    "imageId": "1f954017c6fa42b09803c5b334eaa5e9",
+    "createdAtUtc": "2026-11-25T21:27:51.458Z",
+    "updatedAtUtc": "2026-11-25T21:27:55.357Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wings_of_Tatev_Cable_Car_(37202335960).jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-47e7f0a0e2d849faa7184efd39e65a5f",
+    "imageId": "47e7f0a0e2d849faa7184efd39e65a5f",
+    "createdAtUtc": "2026-11-25T21:27:59.607Z",
+    "updatedAtUtc": "2026-11-25T21:28:03.099Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Wings_Of_Tatev_(37778475201).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-caa145d2ef2b48cfa44f09f8bc507627",
+    "imageId": "caa145d2ef2b48cfa44f09f8bc507627",
+    "createdAtUtc": "2026-11-25T21:28:08.42Z",
+    "updatedAtUtc": "2026-11-25T21:28:11.816Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Wings_Of_Tatev_and_Tatev_Monastery_(23925883178).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "desc-correction",
+    "operationId": "bcd5e529-3cbe-4ca4-9fe3-2ab14851ed23",
+    "appliedAtUtc": "2026-11-25T21:29:09.9947267Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "e5ca8a12-f7b0-485f-9d50-a0ed7dd1e838",
+    "appliedAtUtc": "2026-11-25T21:29:44.836354Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "b1602a8e4011468aa56b404389055155",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T21:30:29.9231244Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128854969424431"
+  }
+]
