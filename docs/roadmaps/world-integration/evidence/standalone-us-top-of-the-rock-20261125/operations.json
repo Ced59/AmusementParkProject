@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "9c882258-90f2-4d87-898d-00d93ff09897",
+    "appliedAtUtc": "2026-11-25T14:41:59.1378111Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "e5240e49-315e-4be5-9554-d24de23573e9",
+    "appliedAtUtc": "2026-11-25T14:42:40.4270861Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-9807d83a2948446caf6c598eb6006425",
+    "imageId": "9807d83a2948446caf6c598eb6006425",
+    "updatedAtUtc": "2026-11-25T14:43:13.428Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_of_the_Rock_(6335652580).jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 98488
+  },
+  {
+    "step": "photo-import-d62448437ceb4d96b2822e7ff458a73c",
+    "imageId": "d62448437ceb4d96b2822e7ff458a73c",
+    "updatedAtUtc": "2026-11-25T14:43:37.552Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Central_Park_%26_Beyond_(24077159163).jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 180651
+  },
+  {
+    "step": "photo-import-803fa907da114a4e9c0221b2deecfeeb",
+    "imageId": "803fa907da114a4e9c0221b2deecfeeb",
+    "updatedAtUtc": "2026-11-25T14:44:04.092Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_of_the_Rock_(6335599162).jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 65377
+  },
+  {
+    "step": "publish",
+    "operationId": "d19bdffd-37a8-4ee7-9dd2-bb7548f10792",
+    "appliedAtUtc": "2026-11-25T14:45:17.383103Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "c9131f16f79e4a62839ec044416e8e7c",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T14:46:20.7119619Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128820103424431"
+  }
+]

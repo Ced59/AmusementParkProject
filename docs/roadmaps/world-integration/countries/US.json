@@ -33,7 +33,8 @@
     "Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.",
     "Découverte du 25 novembre : One World Observatory vérifié et publié comme plateforme autonome avec prix dynamique, exception Thanksgiving et trois photos exactes.",
     "Découverte du 25 novembre : Reunion Tower GeO-Deck publié comme observatoire autonome, avec six horaires datés, tarifs variables et trois photos exactes.",
-    "Découverte du 25 novembre : Empire State Building Observatory publié avec deux formules, tarifs officiels de départ et trois photos exactes."
+    "Découverte du 25 novembre : Empire State Building Observatory publié avec deux formules, tarifs officiels de départ et trois photos exactes.",
+    "Découverte du 25 novembre : Top of the Rock Observation Deck publié avec tarif officiel, horaires et trois photos exactes."
   ],
   "entries": [
     {
@@ -67106,6 +67107,141 @@
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null
+    },
+    {
+      "entryId": "US-candidate-discovery-top-of-the-rock-20261125",
+      "name": "Top of the Rock Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme d’observation à billet propre",
+      "locality": "50 West 50th Street, New York, NY",
+      "siteId": "0efa7403-cfdb-4af9-8ddb-9a90bd4f058e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T14:46:30Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie, horaires et trois niveaux panoramiques actuels publiés par l’exploitant.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans homonyme ; accès et billet propres au belvédère.",
+      "possibleMatches": [],
+      "aliases": [
+        "Top of the Rock",
+        "Rockefeller Center Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T14:44:04.092Z",
+      "integrationHistory": [
+        {
+          "eventId": "9c882258-90f2-4d87-898d-00d93ff09897",
+          "appliedAt": "2026-11-25T14:41:59.137Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0efa7403-cfdb-4af9-8ddb-9a90bd4f058e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-top-of-the-rock-20261125/operations.json#9c882258-90f2-4d87-898d-00d93ff09897",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches PDE sans homonyme Park ou StandaloneAttraction ; accès et descriptions en huit langues."
+        },
+        {
+          "eventId": "e5240e49-315e-4be5-9554-d24de23573e9",
+          "appliedAt": "2026-11-25T14:42:40.427Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0efa7403-cfdb-4af9-8ddb-9a90bd4f058e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-top-of-the-rock-20261125/operations.json#e5240e49-315e-4be5-9554-d24de23573e9",
+          "auditEvidence": null,
+          "summary": "Billet officiel à prix dynamique, horaire daté et dernière admission intégrés."
+        },
+        {
+          "eventId": "photo-import-9807d83a2948446caf6c598eb6006425",
+          "appliedAt": "2026-11-25T14:43:13.428Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0efa7403-cfdb-4af9-8ddb-9a90bd4f058e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-top-of-the-rock-20261125/operations.json#photo-import-9807d83a2948446caf6c598eb6006425",
+          "auditEvidence": null,
+          "summary": "Galerie intérieure du niveau 67. Photo créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-d62448437ceb4d96b2822e7ff458a73c",
+          "appliedAt": "2026-11-25T14:43:37.552Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0efa7403-cfdb-4af9-8ddb-9a90bd4f058e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-top-of-the-rock-20261125/operations.json#photo-import-d62448437ceb4d96b2822e7ff458a73c",
+          "auditEvidence": null,
+          "summary": "Vue vers Central Park depuis le belvédère. Photo créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-803fa907da114a4e9c0221b2deecfeeb",
+          "appliedAt": "2026-11-25T14:44:04.092Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0efa7403-cfdb-4af9-8ddb-9a90bd4f058e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-top-of-the-rock-20261125/operations.json#photo-import-803fa907da114a4e9c0221b2deecfeeb",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-top-of-the-rock-20261125/audit.json",
+          "summary": "Terrasse extérieure du niveau 70 de nuit. Photo créditée et légendée dans huit langues. Audit projeté 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; surveiller les horaires spéciaux et les prix dynamiques avant les prochaines visites.",
+      "sources": [
+        {
+          "label": "Rockefeller Center — billetterie, tarifs, horaires, accès et niveaux",
+          "url": "https://www.rockefellercenter.com/tickets/top-of-the-rock-observation-deck/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — galerie du 67e étage",
+          "url": "https://commons.wikimedia.org/wiki/File:Top_of_the_Rock_(6335652580).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — vue vers Central Park",
+          "url": "https://commons.wikimedia.org/wiki/File:Central_Park_%26_Beyond_(24077159163).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — terrasse du 70e étage",
+          "url": "https://commons.wikimedia.org/wiki/File:Top_of_the_Rock_(6335599162).jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche d’observatoire à billet propre ; contrôle PDE et inspection de trois photographies exactes réutilisables.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "L’observatoire possède un accès et une billetterie distincts ; The Beam et SKYLIFT sont des options rattachées à la visite."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0efa7403-cfdb-4af9-8ddb-9a90bd4f058e/top-of-the-rock-observation-deck",
+          "publishedAtUtc": "2026-11-25T14:45:17.383103Z",
+          "verifiedAtUtc": "2026-11-25T14:46:30Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-top-of-the-rock-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "c9131f16f79e4a62839ec044416e8e7c",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0efa7403-cfdb-4af9-8ddb-9a90bd4f058e/top-of-the-rock-observation-deck?facebook-image=9807d83a2948446caf6c598eb6006425",
+          "publishedAtUtc": "2026-11-25T14:46:20.7119619Z",
+          "externalPostId": "1285475681307050_122128820103424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128820103424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-top-of-the-rock-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "US-candidate-bb18841d04a86a",
