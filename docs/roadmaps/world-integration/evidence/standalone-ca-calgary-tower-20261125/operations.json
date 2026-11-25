@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "851a042d-d4b2-4129-bc25-0522d71e16a9",
+    "appliedAtUtc": "2026-11-25T15:44:55.6906546Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "71a4f443-d076-4331-9eb2-abdd69fdf68a",
+    "appliedAtUtc": "2026-11-25T15:45:36.6059867Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-300a643db00a43a4b7ad3837450cd698",
+    "imageId": "300a643db00a43a4b7ad3837450cd698",
+    "updatedAtUtc": "2026-11-25T15:46:10.122Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_Calgary_Tower,_Calgary,_Alberta,_2025-07-14_01.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 156604
+  },
+  {
+    "step": "photo-import-b4bc44d2927c4f3b9aeda1a9b2d71198",
+    "imageId": "b4bc44d2927c4f3b9aeda1a9b2d71198",
+    "updatedAtUtc": "2026-11-25T15:46:23.029Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada_-glass%20floor-20June2010.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 173003
+  },
+  {
+    "step": "photo-import-a6d202da0938426fbd829a66f224cbd8",
+    "imageId": "a6d202da0938426fbd829a66f224cbd8",
+    "updatedAtUtc": "2026-11-25T15:46:36.701Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada,_2025-07-14_01.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 357678
+  },
+  {
+    "step": "publish",
+    "operationId": "e7522876-a4b2-415a-befe-ea048feab79d",
+    "appliedAtUtc": "2026-11-25T15:48:08.0082916Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "6b72e18e06aa451a9dfc25349ef51fd0",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T15:49:11.9565108Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128825551424431"
+  }
+]

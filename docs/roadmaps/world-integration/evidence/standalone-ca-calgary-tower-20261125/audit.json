@@ -1,0 +1,99 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "afc81424-2189-41df-a1a5-be2825020930",
+  "name": "Calgary Tower",
+  "countryCode": "CA",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/afc81424-2189-41df-a1a5-be2825020930/calgary-tower",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T15:48:30Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "6b72e18e06aa451a9dfc25349ef51fd0",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128825551424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T15:46:36.701Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Calgary Tower » en CA : zéro homonyme, y compris masqué ; backlog CA sans entrée correspondante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "300a643db00a43a4b7ad3837450cd698",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_Calgary_Tower,_Calgary,_Alberta,_2025-07-14_01.jpg",
+      "isPublished": true,
+      "author": "Chris Woodrich",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "b4bc44d2927c4f3b9aeda1a9b2d71198",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada_-glass%20floor-20June2010.jpg",
+      "isPublished": true,
+      "author": "Marilyn Peddle",
+      "license": "CC BY 2.0"
+    },
+    {
+      "imageId": "a6d202da0938426fbd829a66f224cbd8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada,_2025-07-14_01.jpg",
+      "isPublished": true,
+      "author": "Chris Woodrich",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Calgary Tower — tarif officiel et image des prix",
+      "url": "https://www.calgarytower.com/admission",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Calgary Tower — image officielle des prix",
+      "url": "https://static.wixstatic.com/media/29eefc_ea946080dbb24bd5b9e1284e3ea58cef~mv2.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Calgary Tower — horaires officiels",
+      "url": "https://www.calgarytower.com/hours",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Calgary Tower — adresse et accès",
+      "url": "https://www.calgarytower.com/location",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Calgary Attractions — fermeture de Noël",
+      "url": "https://calgaryattractions.com/attractions/calgary-tower/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — salle panoramique",
+      "url": "https://commons.wikimedia.org/wiki/File:Interior_of_Calgary_Tower,_Calgary,_Alberta,_2025-07-14_01.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — plancher vitré",
+      "url": "https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada_-glass%20floor-20June2010.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — tour",
+      "url": "https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada,_2025-07-14_01.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Tour d’observation à billet propre ; quatre catégories officielles avec tarifs de départ, horaires saisonniers d’hiver, trois photos exactes créditées.",
+  "remainingUncertainty": "Calendrier de juin à août non repris, faute d’horaire estival affiché sur la page actuelle de l’exploitant ; à vérifier avant juin 2027. Tarifs variables selon date et créneau, GST et frais en sus. Fermeture de Noël signalée par Calgary Attractions, à revalider sur le site officiel."
+}
