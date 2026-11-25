@@ -1,0 +1,65 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions KR pour « Namsan Cable Car » et « 남산케이블카 » : zéro résultat dans les quatre recherches avant création. Aucun Namsan Cable Car dans le backlog KR ; l’observatoire N Seoul Tower est une autre activité.",
+  "decision": "Téléphérique touristique autonome de Sopa-ro au mont Namsan avec billet propre, distinct du billet de l’observatoire N Seoul Tower.",
+  "officialPrices": {
+    "currency": "KRW",
+    "adultOneWay": 12000,
+    "adultReturn": 15000,
+    "childOneWay": 9000,
+    "childReturn": 11500,
+    "concessionOneWay": 9000,
+    "concessionReturn": 11500,
+    "onlineSale": false,
+    "childAge": "36 months to 12 years",
+    "adultAge": "13 years and above"
+  },
+  "officialHours": {
+    "daily": "10:00–23:00",
+    "lastTicketSale": "22:30",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-02-28",
+    "daysCovered": 96
+  },
+  "history": "Ouverture en 1962 selon l’exploitant ; événement publié avec précision à l’année.",
+  "accessibility": "Aucune affirmation non vérifiée sur l’accès en fauteuil roulant. Deux conditions publiées : billets sur place et suspension possible du service par météo.",
+  "photos": "Trois photos exactes vérifiées visuellement : cabines Namsan en 2007, 2011 et 2014, droits CC BY 2.0 ou CC BY-SA 3.0, auteurs, URL, réduction, alt, légendes distinctes et crédits en huit langues.",
+  "sources": [
+    {
+      "label": "Namsan Cable Car — opérateur, tarifs, horaires, adresse et vente sur place",
+      "url": "https://www.cablecar.co.kr/usage.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Namsan Cable Car — opérateur, histoire et ouverture en 1962",
+      "url": "https://www.cablecar.co.kr/index.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Visit Korea — trajet autonome et adresse du Namsan Cable Car",
+      "url": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?menuSn=351&vcontsId=96828",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — station basse du Namsan Cable Car",
+      "url": "https://www.openstreetmap.org/way/383097725",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine Namsan et tour, Jean & Nathalie, CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seoul_-_Namsan_Cable_Car.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine rouge au-dessus de Séoul, Andrew Bell, CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Namsan_Cable_Car-01.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine et tour, Korail2012, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%82%B0_%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4.JPG",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "L’exploitant annonce une ouverture en 1962 ; la fiche retient l’année seulement. Les billets sont vendus sur place ; tarifs et horaires peuvent évoluer. Le vent et la météo peuvent interrompre le service. Trois photos anciennes de 2007, 2011 et 2014 montrent l’installation mais pas nécessairement l’habillage actuel. Calendrier daté à prolonger après le 28 février 2027 ; vérifier l’état de service avant visite."
+}

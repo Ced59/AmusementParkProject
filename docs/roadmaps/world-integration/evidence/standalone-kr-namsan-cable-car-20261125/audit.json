@@ -1,0 +1,124 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+  "name": "Namsan Cable Car",
+  "countryCode": "KR",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/fc74c395-e211-41f8-bc0a-1bed25c36eb4/namsan-cable-car",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T19:05:15Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "98ba49f383434837b5f1f660a1233721",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128845003424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T19:01:59.227Z",
+  "lastDataEventId": "c04ad496-584b-4105-8097-ef3f673f7207",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions KR pour « Namsan Cable Car » et « 남산케이블카 » : zéro résultat dans les quatre recherches avant création. Aucun Namsan Cable Car dans le backlog KR ; l’observatoire N Seoul Tower est une autre activité.",
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "5dfc96e708eb44ecbabe532008ffbe59",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul_-_Namsan_Cable_Car.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY 2.0",
+      "author": "Jean & Nathalie"
+    },
+    {
+      "id": "b8934d0282514aff834b9a4bd57a262a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Namsan_Cable_Car-01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY 2.0",
+      "author": "Andrew Bell"
+    },
+    {
+      "id": "9a210a4861504da0afbd74d0342f4f0d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%82%B0_%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 3.0",
+      "author": "Korail2012"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Namsan Cable Car — opérateur, tarifs, horaires, adresse et vente sur place",
+      "url": "https://www.cablecar.co.kr/usage.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Namsan Cable Car — opérateur, histoire et ouverture en 1962",
+      "url": "https://www.cablecar.co.kr/index.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Visit Korea — trajet autonome et adresse du Namsan Cable Car",
+      "url": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?menuSn=351&vcontsId=96828",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — station basse du Namsan Cable Car",
+      "url": "https://www.openstreetmap.org/way/383097725",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine Namsan et tour, Jean & Nathalie, CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seoul_-_Namsan_Cable_Car.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine rouge au-dessus de Séoul, Andrew Bell, CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Namsan_Cable_Car-01.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine et tour, Korail2012, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%82%B0_%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4.JPG",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": {
+    "descriptions": 8,
+    "pricingOffers": 6,
+    "currency": "KRW",
+    "openingHoursRules": 1,
+    "openingHoursFirstDate": "2026-11-25",
+    "openingHoursLastDate": "2027-02-28",
+    "openingHoursDays": 96,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0,
+    "photographs": 3,
+    "historyEvents": 1,
+    "accessConditions": 2,
+    "facebook": "Published"
+  },
+  "remainingUncertainty": "L’exploitant annonce une ouverture en 1962 ; la fiche retient l’année seulement. Les billets sont vendus sur place ; tarifs et horaires peuvent évoluer. Le vent et la météo peuvent interrompre le service. Trois photos anciennes de 2007, 2011 et 2014 montrent l’installation mais pas nécessairement l’habillage actuel. Calendrier daté à prolonger après le 28 février 2027 ; vérifier l’état de service avant visite."
+}

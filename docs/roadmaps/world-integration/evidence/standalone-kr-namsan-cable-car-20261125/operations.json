@@ -1,0 +1,142 @@
+[
+  {
+    "step": "core",
+    "operationId": "2d7499e9-494b-408a-add2-1c42eb2206f2",
+    "appliedAtUtc": "2026-11-25T18:57:23.4292599Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "91d60372-b73e-4579-a72a-a26a4d76c3c2",
+    "appliedAtUtc": "2026-11-25T18:58:04.0757321Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "a962bf8d-9a01-4b1e-aabb-112019a15e20",
+    "appliedAtUtc": "2026-11-25T18:59:35.7985073Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "23340c10-392f-4750-a082-49516a8e3f74",
+    "appliedAtUtc": "2026-11-25T18:59:47.3993912Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "core-correction",
+    "operationId": "c04ad496-584b-4105-8097-ef3f673f7207",
+    "appliedAtUtc": "2026-11-25T19:01:59.2277674Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "849a6209-a08b-46c1-b4b0-2c906209ee52",
+    "appliedAtUtc": "2026-11-25T19:02:25.0103895Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-tower",
+    "eventId": "photo-5dfc96e708eb44ecbabe532008ffbe59",
+    "imageId": "5dfc96e708eb44ecbabe532008ffbe59",
+    "createdAtUtc": "2026-11-25T19:00:12.224Z",
+    "updatedAtUtc": "2026-11-25T19:00:18.347Z",
+    "id": "5dfc96e708eb44ecbabe532008ffbe59",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul_-_Namsan_Cable_Car.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY 2.0",
+    "author": "Jean & Nathalie"
+  },
+  {
+    "step": "photo-city",
+    "eventId": "photo-b8934d0282514aff834b9a4bd57a262a",
+    "imageId": "b8934d0282514aff834b9a4bd57a262a",
+    "createdAtUtc": "2026-11-25T19:00:28.575Z",
+    "updatedAtUtc": "2026-11-25T19:00:32.297Z",
+    "id": "b8934d0282514aff834b9a4bd57a262a",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Namsan_Cable_Car-01.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY 2.0",
+    "author": "Andrew Bell"
+  },
+  {
+    "step": "photo-winter",
+    "eventId": "photo-9a210a4861504da0afbd74d0342f4f0d",
+    "imageId": "9a210a4861504da0afbd74d0342f4f0d",
+    "createdAtUtc": "2026-11-25T19:00:39.4Z",
+    "updatedAtUtc": "2026-11-25T19:00:43.243Z",
+    "id": "9a210a4861504da0afbd74d0342f4f0d",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%82%B0_%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4.JPG",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 3.0",
+    "author": "Korail2012"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "98ba49f383434837b5f1f660a1233721",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T19:03:05.2014455Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128845003424431",
+    "selectedImageId": "5dfc96e708eb44ecbabe532008ffbe59"
+  }
+]
