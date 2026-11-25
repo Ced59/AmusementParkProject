@@ -1,0 +1,89 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "d84ae7cb-aced-4608-aad9-19d0c36fa512",
+  "name": "Sky View Observatory",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/d84ae7cb-aced-4608-aad9-19d0c36fa512/sky-view-observatory",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T15:04:00Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "cd52ed40f4894567b924cd86a1898812",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128821561424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T15:01:59.584Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Sky View Observatory » : zéro homonyme, y compris masqué ; backlog US sans entrée correspondante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "ef37e5b21b4447b0b5fcf958bf7d96f7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seattle_skyline_2021.jpg",
+      "isPublished": true,
+      "author": "GyozaDumpling",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "a031dd18468a4de99b043e2b900c11f7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seattle_Columbia_Pano2.jpg",
+      "isPublished": true,
+      "author": "Patrick Rodriguez",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "imageId": "ca2cba6e409b4f97a22ff300486dcbf4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seattle_Municipal_Tower_.jpg",
+      "isPublished": true,
+      "author": "Mkf272",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Sky View Observatory — trois formules et prix",
+      "url": "https://skyviewobservatory.com/tickets/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sky View Observatory — accès, calendrier et fermetures",
+      "url": "https://skyviewobservatory.com/location/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Sky View Observatory — visuel officiel des horaires octobre–février",
+      "url": "https://skyviewobservatory.com/wp-content/uploads/2026/04/SVO-Oct-Feb-2026-Rvsd-scaled.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama nord",
+      "url": "https://commons.wikimedia.org/wiki/File:Seattle_skyline_2021.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama au crépuscule",
+      "url": "https://commons.wikimedia.org/wiki/File:Seattle_Columbia_Pano2.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — vue sur Seattle Municipal Tower",
+      "url": "https://commons.wikimedia.org/wiki/File:Seattle_Municipal_Tower_.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Belvédère du 73e étage à billet propre ; trois formules, horaire saisonnier et trois vues exactes créditées.",
+  "remainingUncertainty": "Horaires sujets aux événements privés ; vérifier le calendrier officiel avant la visite. Les prix affichés sont à confirmer avant réservation."
+}
