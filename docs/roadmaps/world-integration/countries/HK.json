@@ -924,6 +924,148 @@
         "method": "Recherche mondiale des funiculaires à billet propre ; contrôle des doublons et inspection de trois photographies Commons exactes.",
         "foundAt": "2026-11-25"
       }
+    },
+    {
+      "entryId": "HK-candidate-discovery-sky-terrace-428-20261125",
+      "name": "Sky Terrace 428",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Terrasse panoramique à billet propre",
+      "locality": "The Peak Tower, 128 Peak Road, Hong Kong",
+      "siteId": "f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T12:20:29.358Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "L’exploitant vend un billet d’entrée à la plateforme et publie ses horaires actuels.",
+      "identityConfidence": "Recherche Park et StandaloneAttraction « Sky Terrace 428 » sans correspondance exacte avant création ; produit et accès distincts de Peak Tram.",
+      "possibleMatches": [],
+      "aliases": [
+        "The Peak Sky Terrace 428",
+        "凌霄閣摩天台428"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T12:17:25.204Z",
+      "integrationHistory": [
+        {
+          "eventId": "73c6c23d-9df3-446f-8f00-3dabbc5cd71f",
+          "appliedAt": "2026-11-25T12:14:44.398Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hk-sky-terrace-20261125/operations.json#73c6c23d-9df3-446f-8f00-3dabbc5cd71f",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée après contrôle des doublons ; identité et descriptions de visite en huit langues."
+        },
+        {
+          "eventId": "6a670656-d9c2-4600-beb0-2185f3016815",
+          "appliedAt": "2026-11-25T12:16:24.377Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hk-sky-terrace-20261125/operations.json#6a670656-d9c2-4600-beb0-2185f3016815",
+          "auditEvidence": null,
+          "summary": "Tarifs propres de la terrasse, horaires actuels et accès en fauteuil documenté par la fédération locale intégrés."
+        },
+        {
+          "eventId": "photo-import-14e88bb59d9c4617a28b3db572de17df",
+          "appliedAt": "2026-11-25T12:17:03.881Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hk-sky-terrace-20261125/operations.json#photo-import-14e88bb59d9c4617a28b3db572de17df",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la terrasse importée : LN9267, CC BY-SA 4.0 ; huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "photo-import-31fd10f3c8804a3d872c22610b58a787",
+          "appliedAt": "2026-11-25T12:17:25.204Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hk-sky-terrace-20261125/operations.json#photo-import-31fd10f3c8804a3d872c22610b58a787",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hk-sky-terrace-20261125/audit.json",
+          "summary": "Photo exacte de la terrasse importée : LN9267, CC BY-SA 4.0 ; huit textes alternatifs, légendes et crédits. Audit final 94/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus ; recontrôler tarifs, horaires et fermetures liées à la météo ou aux événements avant le 31 janvier 2027. Date d’ouverture exacte à établir seulement sur source fiable.",
+      "sources": [
+        {
+          "label": "Sky Terrace 428 — exploitant",
+          "url": "https://www.thepeak.com.hk/en/the-peak-experience/the-sky-terrace-428",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sky Terrace 428 — communiqué tarifaire",
+          "url": "https://www.thepeak.com.hk/sites/peak/files/2025-12/%5B%E6%96%B0%E8%81%9E%E7%A8%BF%5D%20%E5%B1%B1%E9%A0%82%E7%BA%9C%E8%BB%8A%E5%AE%A3%E5%B8%83%E7%A5%A8%E5%83%B9%E8%AA%BF%E6%95%B4.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Sky Terrace 428 — changement d’horaires 2026",
+          "url": "https://www.thepeak.com.hk/sites/peak/files/2026-04/%E5%87%8C%E9%9C%84%E9%96%A3%E6%91%A9%E5%A4%A9%E5%8F%B0428%20%E9%96%8B%E6%94%BE%E6%99%82%E9%96%93%E8%AA%BF%E6%95%B4_0.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "The Peak Tower — adresse",
+          "url": "https://www.thepeak.com.hk/en/node/20",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Fédération hongkongaise des jeunes handicapés — accès",
+          "url": "https://e-cgo.org.hk/travel/en/trip-detail?id=4",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:See_Hong_Kong_from_the_Peak_08-06-2021(3).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:See_Hong_Kong_from_the_Peak_08-06-2021(4).jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "HK",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Terrasse panoramique à admission propre dans The Peak Tower ; le billet du Peak Tram seul ne l’inclut pas. Deux photos exactes publiées."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d/sky-terrace-428",
+          "publishedAtUtc": "2026-11-25T12:18:41.672Z",
+          "verifiedAtUtc": "2026-11-25T12:20:29.358Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hk-sky-terrace-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "49549ea12279477ca978e10415b8620b",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d/sky-terrace-428?facebook-image=14e88bb59d9c4617a28b3db572de17df",
+          "publishedAtUtc": "2026-11-25T12:19:44.154604Z",
+          "externalPostId": "1285475681307050_122128802793424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128802793424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-hk-sky-terrace-20261125/audit.json",
+        "score": 94,
+        "publicationBlockers": []
+      },
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche des plateformes d’observation à billet propre ; contrôle des doublons et inspection de deux photographies Commons exactes.",
+        "foundAt": "2026-11-25"
+      }
     }
   ]
 }
