@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "48475d5e-ba08-4848-92f3-633c808f45c2",
+  "name": "Melbourne Skydeck",
+  "countryCode": "AU",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/48475d5e-ba08-4848-92f3-633c808f45c2/melbourne-skydeck",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T13:29:20Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "51d8991ccba5448ca8c979cac5978692",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128810881424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T13:28:10.557Z",
+  "presenceSearch": "PDE SearchParks « Melbourne Skydeck » et SearchStandaloneAttractions « Melbourne Skydeck » : aucune fiche existante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "f5760f19851f4135ad15cf8232cfac1c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_10.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "d484afd7cf8e4827b26e9ff297b422c4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_05.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "c89b9f6e9e47409eb947e34d1783ed3b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_03.jpg",
+      "isPublished": true
+    }
+  ],
+  "sources": [
+    {
+      "label": "Melbourne Skydeck — entrée générale et tarifs",
+      "url": "https://www.melbourneskydeck.com.au/general-admission/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Melbourne Skydeck — horaires, adresse et dates spéciales",
+      "url": "https://www.melbourneskydeck.com.au/about-us/#opening-hours",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_10.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_05.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_03.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Entrée générale du Skydeck au 88e étage ; The Edge et Voyager Theatre sont des options à distinguer.",
+  "remainingUncertainty": "Les tarifs publiés sont des prix de départ Early Bird soumis à réservation préalable. Horaires spéciaux à vérifier pour chaque date ; seule l’exception du 31 décembre est codée. Date historique d’ouverture non attribuée sans source primaire."
+}

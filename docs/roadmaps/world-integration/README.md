@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12379 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12380 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -17,7 +17,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1868 | 7553 |
-| Standalone | 287 | 1 | 114 |
+| Standalone | 288 | 1 | 114 |
 
 **Reprise standalone :** en plus des 114 candidates sans correspondance, **202 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **550 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **76 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
@@ -878,7 +878,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 
 | Pays / territoire | Publiés¹ | Masqués à intégrer | Masqués NotRelevant à réexaminer | Sans fiche : candidats parcs | Observations externes |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| [Australie](countries/AU.md) | 2 | 13 | 2 | 55 | 131 |
+| [Australie](countries/AU.md) | 2 | 13 | 2 | 55 | 132 |
 | [Fidji](countries/FJ.md) | 0 | 0 | 0 | 1 | 1 |
 | [Guam](countries/GU.md) | 0 | 0 | 0 | 4 | 4 |
 | [Île Norfolk](countries/NF.md) | 0 | 0 | 0 | 0 | 0 |
@@ -904,13 +904,13 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Tuvalu](countries/TV.md) | 0 | 0 | 0 | 0 | 0 |
 | [Vanuatu](countries/VU.md) | 0 | 0 | 0 | 0 | 0 |
 | [Wallis-et-Futuna](countries/WF.md) | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **2** | **14** | **2** | **89** | **174** |
+| **Total** | **2** | **14** | **2** | **89** | **175** |
 
 ### Attractions standalone et dossiers à trancher
 
 | Pays | Standalone publiées¹ | Standalone masquées | Sans fiche : candidates standalone | Sans fiche : type à décider | Rapprochements incertains² | Anciens parcs liés à une standalone |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| [Australie](countries/AU.md) | 2 | 0 | 1 | 0 | 11 | 0 |
+| [Australie](countries/AU.md) | 3 | 0 | 1 | 0 | 11 | 0 |
 | [Fidji](countries/FJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Guam](countries/GU.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Île Norfolk](countries/NF.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -936,11 +936,11 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Tuvalu](countries/TV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Vanuatu](countries/VU.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Wallis-et-Futuna](countries/WF.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **11** | **0** | **5** | **0** | **12** | **0** |
+| **Total** | **12** | **0** | **5** | **0** | **12** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **11**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **12**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
-- Australie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Australie : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Nouvelle-Zélande : 9 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 

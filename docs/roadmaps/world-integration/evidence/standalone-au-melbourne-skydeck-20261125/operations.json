@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "96fe3c09-fb0e-4c04-ba3c-282f1ea0e8e5",
+    "appliedAtUtc": "2026-11-25T13:25:08.9114214Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "9b3f7c54-fbe1-49f5-b5cd-5a5038035e59",
+    "appliedAtUtc": "2026-11-25T13:26:22.5189793Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-f5760f19851f4135ad15cf8232cfac1c",
+    "imageId": "f5760f19851f4135ad15cf8232cfac1c",
+    "updatedAtUtc": "2026-11-25T13:27:13.727Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_10.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 316635
+  },
+  {
+    "step": "photo-import-d484afd7cf8e4827b26e9ff297b422c4",
+    "imageId": "d484afd7cf8e4827b26e9ff297b422c4",
+    "updatedAtUtc": "2026-11-25T13:27:37.719Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_05.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 218998
+  },
+  {
+    "step": "photo-import-c89b9f6e9e47409eb947e34d1783ed3b",
+    "imageId": "c89b9f6e9e47409eb947e34d1783ed3b",
+    "updatedAtUtc": "2026-11-25T13:28:10.557Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_03.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 151623
+  },
+  {
+    "step": "publish",
+    "operationId": "d7aba197-2f14-49dc-a7d5-121abd323cdb",
+    "appliedAtUtc": "2026-11-25T13:29:03.3564035Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "51d8991ccba5448ca8c979cac5978692",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T13:30:17.6386607Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128810881424431"
+  }
+]
