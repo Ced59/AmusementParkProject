@@ -1,0 +1,75 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "36301f79-5698-4c81-b5c2-a3e48fbb90c8",
+  "name": "Mirador Torre Latino",
+  "countryCode": "MX",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/36301f79-5698-4c81-b5c2-a3e48fbb90c8/mirador-torre-latino",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T22:20:35Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "3399e082dd694915a57b049547c90e58",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128859079424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T22:18:33.587Z",
+  "lastDataEventId": "photo-48a18f84e8404b4fa5863e676bbcfcdc",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions MX pour Torre Latinoamericana, Mirador Torre Latino et Mirador Latinoamericana : zéro résultat dans six recherches ; aucun homonyme dans le backlog MX.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "fde0e703dd354132b955dfafcc6daa08",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_Torre_Latinoamericana_from_Alameda_Central_-_Mexico_2024.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "José Luiz",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "8239c3fcd3234a00b914e1c75e678721",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador_latinoamericana.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "AirLiner",
+      "license": "Public domain"
+    },
+    {
+      "id": "48a18f84e8404b4fa5863e676bbcfcdc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_de_la_Ciudad_de_México_desde_el_mirador_de_la_Torre_Latinoamericana.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Pillolino77",
+      "license": "CC0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}
