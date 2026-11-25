@@ -1,0 +1,73 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b935fa82-f374-47c2-8b69-fc4bd9973b91",
+  "name": "Mahanakhon SkyWalk",
+  "countryCode": "TH",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b935fa82-f374-47c2-8b69-fc4bd9973b91/mahanakhon-skywalk",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T13:08:50Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "2dfd315cf13e4aa48e56fa2f6292c9ec",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128809051424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T13:06:48.316Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Mahanakhon » : aucune fiche existante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "eedcd933ca9e498bb7ebff9cccb504bc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:King_Power_Mahanakhon_Rooftop_View_of_Bangkok.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "73394a0973304f7e936ead433038a159",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panorama_from_top_of_King_Power_Maha_Nakhon_Tower.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "abacdd9d12b746df90e28499f857feda",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dusit_Central_park_from_Mahanakhon_Skywalk.jpg",
+      "isPublished": true
+    }
+  ],
+  "sources": [
+    {
+      "label": "King Power Mahanakhon — SkyWalk, billets, horaires et accès",
+      "url": "https://kingpowermahanakhon.co.th/skywalk/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 1",
+      "url": "https://commons.wikimedia.org/wiki/File:King_Power_Mahanakhon_Rooftop_View_of_Bangkok.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Panorama_from_top_of_King_Power_Maha_Nakhon_Tower.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Dusit_Central_park_from_Mahanakhon_Skywalk.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Billet SkyWalk donnant accès aux niveaux panoramiques 74 et 78 ; SkyRides et I-Tilt sont d’autres expériences.",
+  "remainingUncertainty": "Le site officiel indique des prix jusqu’à 19 h mais un dernier accès à 23 h ; tarif des créneaux ultérieurs à vérifier à la réservation. Date d’ouverture de l’observatoire non attribuée sans preuve primaire."
+}

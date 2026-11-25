@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12377 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12378 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -17,7 +17,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1868 | 7553 |
-| Standalone | 285 | 1 | 114 |
+| Standalone | 286 | 1 | 114 |
 
 **Reprise standalone :** en plus des 114 candidates sans correspondance, **202 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **550 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **76 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
@@ -318,12 +318,12 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Tadjikistan](countries/TJ.md) | 0 | 0 | 0 | 5 | 8 |
 | [Taïwan](countries/TW.md) | 0 | 6 | 0 | 36 | 65 |
 | [Territoires palestiniens](countries/PS.md) | 0 | 1 | 0 | 12 | 13 |
-| [Thaïlande](countries/TH.md) | 0 | 3 | 0 | 134 | 161 |
+| [Thaïlande](countries/TH.md) | 0 | 3 | 0 | 134 | 162 |
 | [Timor oriental](countries/TL.md) | 0 | 0 | 0 | 0 | 0 |
 | [Turkménistan](countries/TM.md) | 0 | 0 | 0 | 11 | 12 |
 | [Viêt Nam](countries/VN.md) | 3 | 16 | 2 | 73 | 143 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 9 | 13 |
-| **Total** | **34** | **425** | **12** | **2898** | **4492** |
+| **Total** | **34** | **425** | **12** | **2898** | **4493** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -371,14 +371,14 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Tadjikistan](countries/TJ.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Taïwan](countries/TW.md) | 6 | 0 | 2 | 0 | 4 | 0 |
 | [Territoires palestiniens](countries/PS.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Thaïlande](countries/TH.md) | 0 | 0 | 0 | 2 | 4 | 0 |
+| [Thaïlande](countries/TH.md) | 1 | 0 | 0 | 2 | 4 | 0 |
 | [Timor oriental](countries/TL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Turkménistan](countries/TM.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Viêt Nam](countries/VN.md) | 1 | 0 | 3 | 1 | 21 | 0 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **58** | **0** | **51** | **4** | **689** | **0** |
+| **Total** | **59** | **0** | **51** | **4** | **689** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **57**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **58**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Cambodge : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Chine : 6 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -393,6 +393,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - R.A.S. chinoise de Macao : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Singapour : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Taïwan : 6 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Thaïlande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Viêt Nam : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 

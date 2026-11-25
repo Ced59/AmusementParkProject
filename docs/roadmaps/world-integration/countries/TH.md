@@ -10,6 +10,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 - Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
+- Découverte du 25 novembre : Mahanakhon SkyWalk vérifié et publié comme plateforme autonome avec trois photos exactes et annonce Facebook.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -17,18 +18,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 140 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **161**. Sources : Aerophile — références constructeur, AmusementForce, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **162**. Sources : Aerophile — références constructeur, AmusementForce, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **0 publiés**, **3 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **134 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **2 types à décider**, **4 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **2 types à décider**, **4 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **4 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -100,6 +101,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | TH-candidate-28f956220e8faf | Mae Fung | Chaiyaphum | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Thailand) |
 | TH-candidate-94c26fdf016d57 | Mae Fung Water Park | Thep Sathit , Chaiyaphum | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/18620.htm) |
 | TH-candidate-35562a7e58728f | Magic Land | Chatuchak , Bangkok | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5132.htm) |
+| TH-candidate-discovery-mahanakhon-skywalk-20261125 | Mahanakhon SkyWalk | 114 Narathiwas Ratchanakarin Road, Silom, Bangkok | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T13:06:48.316Z | — | Conserver la ligne et les preuves ; revérifier les créneaux après 19 h et les horaires avant le 31 janvier 2027. Ne pas confondre avec SkyRides ou I-Tilt. Qualification standalone : AlreadyStandalone. Le SkyWalk possède un billet propre pour les observatoires des niveaux 74 et 78 ; trois photos exactes publiées. Signal source : L’exploitant vend actuellement le billet SkyWalk et publie les heures et tarifs.. [King Power Mahanakhon — SkyWalk, billets, horaires et accès](https://kingpowermahanakhon.co.th/skywalk/) · [Wikimedia Commons — photo exacte 1](https://commons.wikimedia.org/wiki/File:King_Power_Mahanakhon_Rooftop_View_of_Bangkok.jpg) · [Wikimedia Commons — photo exacte 2](https://commons.wikimedia.org/wiki/File:Panorama_from_top_of_King_Power_Maha_Nakhon_Tower.jpg) · [Wikimedia Commons — photo exacte 3](https://commons.wikimedia.org/wiki/File:Dusit_Central_park_from_Mahanakhon_Skywalk.jpg) |
 | TH-candidate-6318063e7597e6 | MahaSamutr Hua Hin | Prachuap Khiri Khan | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Thailand) |
 | TH-candidate-83f24f6f5d55d2 | Mini Siam | Pattaya | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Thailand) |
 | TH-candidate-bc79b94a8fba79 | MJ Waterpark | Phetchabun | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Thailand) |

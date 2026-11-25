@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "7f458a81-87a2-4d17-90b7-70b544d65034",
+    "appliedAtUtc": "2026-11-25T13:03:15.8351814Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "90e175ee-2358-4d52-9515-da7509f3c476",
+    "appliedAtUtc": "2026-11-25T13:04:53.3906032Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-eedcd933ca9e498bb7ebff9cccb504bc",
+    "imageId": "eedcd933ca9e498bb7ebff9cccb504bc",
+    "updatedAtUtc": "2026-11-25T13:05:55.145Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:King_Power_Mahanakhon_Rooftop_View_of_Bangkok.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 243324
+  },
+  {
+    "step": "photo-import-73394a0973304f7e936ead433038a159",
+    "imageId": "73394a0973304f7e936ead433038a159",
+    "updatedAtUtc": "2026-11-25T13:06:25.252Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panorama_from_top_of_King_Power_Maha_Nakhon_Tower.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 122704
+  },
+  {
+    "step": "photo-import-abacdd9d12b746df90e28499f857feda",
+    "imageId": "abacdd9d12b746df90e28499f857feda",
+    "updatedAtUtc": "2026-11-25T13:06:48.316Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dusit_Central_park_from_Mahanakhon_Skywalk.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 277367
+  },
+  {
+    "step": "publish",
+    "operationId": "3a0278de-1eaf-4867-a550-06f219eb1417",
+    "appliedAtUtc": "2026-11-25T13:08:29.4658848Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "2dfd315cf13e4aa48e56fa2f6292c9ec",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T13:09:33.686843Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128809051424431"
+  }
+]
