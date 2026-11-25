@@ -77544,6 +77544,201 @@
         ],
         "rationale": "Glissade fixe exploitée avec billet à la descente indépendant du pass journée ; fiche autonome publiée, distincte du ZipRider et des autres activités du Mountain Adventure Park."
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-space-needle-20261125",
+      "name": "Space Needle",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique avec plancher vitré tournant",
+      "locality": "400 Broad St., Seattle, Washington",
+      "siteId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T10:28:07.274Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires actuels publiés par la Space Needle le 25 novembre 2026.",
+      "identityConfidence": "Aucune fiche Park ni StandaloneAttraction homonyme dans les recherches officielles ; billet autonome au Seattle Center et trois photos exactes.",
+      "possibleMatches": [],
+      "aliases": [
+        "Seattle Space Needle"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T10:23:44.498Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-45529925-ef95-4c1d-a340-5c9cabcd47af",
+          "appliedAt": "2026-11-25T10:17:14.166Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+          "evidence": "PARK_DATA_EDITOR:apply:45529925-ef95-4c1d-a340-5c9cabcd47af",
+          "auditEvidence": null,
+          "summary": "Identité, coordonnées, histoire dans la description et huit langues créées."
+        },
+        {
+          "eventId": "image-4ed2656db12741ecbb86151205b21596",
+          "appliedAt": "2026-11-25T10:18:17.878Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+          "evidence": "PARK_DATA_EDITOR:image:4ed2656db12741ecbb86151205b21596@2026-11-25T10:18:17.878Z",
+          "auditEvidence": null,
+          "summary": "Photo extérieure exacte de 2024 importée avec huit légendes et crédits : Another Believer, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-f31051adbc2f4e64873a7ee50f1f43c6",
+          "appliedAt": "2026-11-25T10:18:38.305Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+          "evidence": "PARK_DATA_EDITOR:image:f31051adbc2f4e64873a7ee50f1f43c6@2026-11-25T10:18:38.305Z",
+          "auditEvidence": null,
+          "summary": "Vue exacte du plancher vitré The Loupe importée : Ɱ, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-90bcf02d0b5a463db6c7c1a53459fc2f",
+          "appliedAt": "2026-11-25T10:18:57.909Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+          "evidence": "PARK_DATA_EDITOR:image:90bcf02d0b5a463db6c7c1a53459fc2f@2026-11-25T10:18:57.909Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la galerie panoramique importée : Steverelei, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-666a660a-719b-462c-bc06-5695462ff2ea",
+          "appliedAt": "2026-11-25T10:21:25.599Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+          "evidence": "PARK_DATA_EDITOR:apply:666a660a-719b-462c-bc06-5695462ff2ea",
+          "auditEvidence": null,
+          "summary": "Fourchette officielle du billet général et tarifs variables jeunes et seniors intégrés."
+        },
+        {
+          "eventId": "apply-d2951b0f-3c6c-4f3b-91d8-d61338a09bd1",
+          "appliedAt": "2026-11-25T10:21:54.894Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+          "evidence": "PARK_DATA_EDITOR:apply:d2951b0f-3c6c-4f3b-91d8-d61338a09bd1",
+          "auditEvidence": null,
+          "summary": "Sept dates officielles du 25 novembre au 1er décembre 2026 renseignées sans extrapolation."
+        },
+        {
+          "eventId": "apply-ba85d60d-faea-4467-8866-45a4e3344a29",
+          "appliedAt": "2026-11-25T10:22:28.957Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+          "evidence": "PARK_DATA_EDITOR:apply:ba85d60d-faea-4467-8866-45a4e3344a29",
+          "auditEvidence": null,
+          "summary": "Accès par ascenseur et limites du bâtiment historique documentés."
+        },
+        {
+          "eventId": "apply-33e68639-7d65-4025-80bf-627d27a7816e",
+          "appliedAt": "2026-11-25T10:23:44.498Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+          "evidence": "PARK_DATA_EDITOR:apply:33e68639-7d65-4025-80bf-627d27a7816e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-space-needle-20261125/audit.json",
+          "summary": "Ouverture de 1962 et rénovation vitrée de 2018 intégrées."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; revalider les horaires après le 1er décembre 2026 et les prix selon les dates de réservation.",
+      "sources": [
+        {
+          "label": "Space Needle — horaires et tarifs officiels",
+          "url": "https://www.spaceneedle.com/plan-your-visit",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Space Needle — billetterie officielle",
+          "url": "https://www.spaceneedle.com/tickets",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Space Needle — accessibilité",
+          "url": "https://www.spaceneedle.com/accessibility",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Space Needle — histoire officielle",
+          "url": "https://www.spaceneedle.com/history",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Space Needle — expérience de visite",
+          "url": "https://www.spaceneedle.com/experience",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Another Believer, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Space_Needle,_Seattle,_Washington,_2024.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Ɱ, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Interior_of_Space_Needle.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Steverelei, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Space_Needle_Remodel_Upper_Level.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Page publique vérifiée",
+          "url": "https://amusement-parks.fun/fr/attraction/b1ea5764-ba0e-4f3c-8fed-c079be77da67/space-needle",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors catalogue parmi les observatoires à billet propre ; sources officielles, médias libres et recherches de doublons PARK_DATA_EDITOR.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [
+          {
+            "name": "Space Needle",
+            "source": "Space Needle — site officiel",
+            "url": "https://www.spaceneedle.com/plan-your-visit",
+            "family": "Tour panoramique",
+            "sourceVenueName": "Space Needle",
+            "sourceLifecycleSignal": "Billets et horaires officiels actuels",
+            "sourceLocality": "Seattle, Washington",
+            "matchingMethod": "Billet autonome et recherches officielles sans doublon."
+          }
+        ],
+        "rationale": "Tour fixe à visite autonome au Seattle Center, sans parc d’attractions structuré parent ; fiche confirmée par les reçus PARK_DATA_EDITOR."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b1ea5764-ba0e-4f3c-8fed-c079be77da67/space-needle",
+          "publishedAtUtc": "2026-11-25T10:25:04.442Z",
+          "verifiedAtUtc": "2026-11-25T10:28:07.274Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-space-needle-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "e8834fffd0d14234b6070e5980db64ed",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b1ea5764-ba0e-4f3c-8fed-c079be77da67/space-needle?facebook-image=4ed2656db12741ecbb86151205b21596",
+          "publishedAtUtc": "2026-11-25T10:26:21.7391225Z",
+          "externalPostId": "1285475681307050_122128790499424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128790499424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      }
     }
   ]
 }
