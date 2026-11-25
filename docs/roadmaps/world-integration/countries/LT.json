@@ -916,6 +916,148 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "LT-candidate-discovery-vilnius-tv-tower-20261125",
+      "name": "Vilnius TV Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique à billet propre",
+      "locality": "Sausio 13-osios g. 10, Vilnius",
+      "siteId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T22:33:57Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billets et horaires publiés par l’exploitant au 25 novembre 2026.",
+      "identityConfidence": "Adresse, admission et horaires officiels ; recherches sans doublon ; trois photos exactes réutilisables.",
+      "possibleMatches": [],
+      "aliases": [
+        "Vilniaus televizijos bokštas",
+        "TV bokštas Vilnius"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T22:31:37.493Z",
+      "integrationHistory": [
+        {
+          "eventId": "d38cc603-1600-4ad5-ae9c-476658c9ae68",
+          "appliedAt": "2026-11-25T22:29:34.219Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lt-vilnius-tv-tower-20261125/operations.json#d38cc603-1600-4ad5-ae9c-476658c9ae68",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches de doublons ; identité, localisation et huit descriptions spécifiques."
+        },
+        {
+          "eventId": "24c8a8e2-198f-48ff-9c11-ade4f88df8e4",
+          "appliedAt": "2026-11-25T22:30:39.418Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lt-vilnius-tv-tower-20261125/operations.json#24c8a8e2-198f-48ff-9c11-ade4f88df8e4",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels du belvédère et horaires quotidiens intégrés."
+        },
+        {
+          "eventId": "e10ea6a0-e814-468e-a6ae-5f2bd770ae3d",
+          "appliedAt": "2026-11-25T22:30:50.343Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lt-vilnius-tv-tower-20261125/operations.json#e10ea6a0-e814-468e-a6ae-5f2bd770ae3d",
+          "auditEvidence": null,
+          "summary": "Mise en service de 1981 documentée et traduite."
+        },
+        {
+          "eventId": "8841cceb-e4e2-4402-8076-85a89a9b1655",
+          "appliedAt": "2026-11-25T22:31:02.077Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lt-vilnius-tv-tower-20261125/operations.json#8841cceb-e4e2-4402-8076-85a89a9b1655",
+          "auditEvidence": null,
+          "summary": "Restrictions officielles d’accès au belvédère pour les visiteurs ayant besoin d’un fauteuil roulant intégrées."
+        },
+        {
+          "eventId": "photo-9dedfef3caa3456d9e08515cb8e43e72",
+          "appliedAt": "2026-11-25T22:31:19.904Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lt-vilnius-tv-tower-20261125/operations.json#photo-9dedfef3caa3456d9e08515cb8e43e72",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Terminator216 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-0d04c21a42f04df6a0c494f4e334f746",
+          "appliedAt": "2026-11-25T22:31:29.001Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lt-vilnius-tv-tower-20261125/operations.json#photo-0d04c21a42f04df6a0c494f4e334f746",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Nenea hartia (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-a9031ce533d04d46bd1c2a2cb1bc2d29",
+          "appliedAt": "2026-11-25T22:31:37.493Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lt-vilnius-tv-tower-20261125/operations.json#photo-a9031ce533d04d46bd1c2a2cb1bc2d29",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-lt-vilnius-tv-tower-20261125/audit.json",
+          "summary": "Photo exacte 3/3 importée : Nenea hartia (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; recontrôler les tarifs, horaires et la galerie d’entrée après travaux.",
+      "sources": [
+        {
+          "label": "TV bokštas — tarifs et horaires officiels",
+          "url": "https://tvbokstas.lt/en/prices/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "TV bokštas — restrictions et conditions de visite",
+          "url": "https://tvbokstas.lt/en/important/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "TV bokštas — histoire officielle",
+          "url": "https://tvbokstas.lt/en/about-us/the-history-of-the-tv-tower/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikipedia — coordonnées de la tour de Vilnius",
+          "url": "https://en.wikipedia.org/wiki/Vilnius_TV_Tower",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Vilnius, Lazdynai, Televizijos bokštas.jpg (Terminator216, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Vilnius,_Lazdynai,_Televizijos_bok%C5%A1tas.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Views from Vilnius TV Tower (06.09.2022).03.jpg (Nenea hartia, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Views_from_Vilnius_TV_Tower_(06.09.2022).03.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Monument in front of the Vilnius TV tower.01.jpg (Nenea hartia, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Monument_in_front_of_the_Vilnius_TV_tower.01.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "LT",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Tour panoramique avec billetterie propre et accès public indépendant ; aucun parc parent."
+      }
     }
   ]
 }

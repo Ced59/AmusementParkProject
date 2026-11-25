@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "d0772264-6f21-4947-9ed4-834f36a6e286",
+  "name": "Vilnius TV Tower",
+  "countryCode": "LT",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/d0772264-6f21-4947-9ed4-834f36a6e286/vilnius-tv-tower",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T22:33:57Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "66867bd4ccc94c43b04443607b2b7333",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128860159424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T22:31:37.493Z",
+  "lastDataEventId": "photo-a9031ce533d04d46bd1c2a2cb1bc2d29",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions LT : Vilnius TV Tower, Vilniaus televizijos bokštas et TV bokštas, aucun résultat. Aucun homonyme dans le backlog LT.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "9dedfef3caa3456d9e08515cb8e43e72",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vilnius,_Lazdynai,_Televizijos_bok%C5%A1tas.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Terminator216",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2024-06-08"
+    },
+    {
+      "id": "0d04c21a42f04df6a0c494f4e334f746",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Views_from_Vilnius_TV_Tower_(06.09.2022).03.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Nenea hartia",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2022-09-06"
+    },
+    {
+      "id": "a9031ce533d04d46bd1c2a2cb1bc2d29",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monument_in_front_of_the_Vilnius_TV_tower.01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Nenea hartia",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2022-09-06"
+    }
+  ],
+  "pricingOfferCount": 3,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}
