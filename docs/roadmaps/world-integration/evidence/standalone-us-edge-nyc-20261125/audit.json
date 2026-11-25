@@ -1,0 +1,127 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0",
+  "name": "Edge NYC",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0/edge-nyc",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T17:56:39Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "eea9d3d5f5fd44bcaba1005a5d97f6dd",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128837323424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T17:52:56.901Z",
+  "lastDataEventId": "photo-94edc41e31f64f07a24c1890fa431882",
+  "presenceSearch": "Avant création, PDE SearchStandaloneAttractions pour « Edge » retournait SUMMIT One Vanderbilt, Skydeck Chicago et Skyviews Miami par correspondance textuelle, mais aucun Edge NYC ; « Hudson Yards » ne retournait aucune standalone. PDE SearchParks pour « Hudson Yards » : aucun résultat. Le backlog US ne contenait pas Edge NYC.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "c41ffc855b0448ecaa1a5f2ef79a993c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Edge_HY.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Hypnotoad78"
+    },
+    {
+      "id": "83e0a80ca8ea4ba799e083fbb8e14890",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Edge_NYC_observation_deck_at_30_Hudson_Yards.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 3.0",
+      "author": "Wikipettanko"
+    },
+    {
+      "id": "94edc41e31f64f07a24c1890fa431882",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Edge,_view_to_Hudson_River.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Gerda Arendt"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Edge NYC — prix de l’entrée générale et expérience incluse",
+      "url": "https://www.edgenyc.com/get-tickets/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Edge NYC — accès, horaires et dernière admission",
+      "url": "https://www.edgenyc.com/visit/getting-here/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Edge NYC — frais, gratuité des moins de 6 ans et tarif variable",
+      "url": "https://www.edgenyc.com/faqs/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Hudson Yards — emplacement et horaires généraux",
+      "url": "https://www.hudsonyardsnewyork.com/attractions/edge/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — point de vue The Edge",
+      "url": "https://www.openstreetmap.org/node/9765434817",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — terrasse avec visiteurs, Hypnotoad78, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Edge_HY.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — plateforme vue de l’extérieur, Wikipettanko, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Edge_NYC_observation_deck_at_30_Hudson_Yards.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Hudson depuis Edge, Gerda Arendt, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Edge,_view_to_Hudson_River.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": {
+    "descriptions": 8,
+    "pricingOffers": 1,
+    "currency": "USD",
+    "pricingMode": "Dynamic",
+    "openingHoursRules": 1,
+    "openingHoursOverrides": 1,
+    "openingHoursFirstDate": "2026-11-25",
+    "openingHoursLastDate": "2027-02-28",
+    "openingHoursDays": 96,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0,
+    "photographs": 3,
+    "facebook": "Published"
+  },
+  "remainingUncertainty": "Le prix de départ peut changer selon la date et le créneau, et les taxes s’ajoutent. Les horaires réguliers sont sujets à changement ; l’exception du 31 décembre est tirée du bandeau officiel et doit être revérifiée avant la visite. Prolonger le calendrier après le 28 février 2027."
+}

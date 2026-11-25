@@ -1,0 +1,66 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "Avant création, PDE SearchStandaloneAttractions pour « Edge » retournait SUMMIT One Vanderbilt, Skydeck Chicago et Skyviews Miami par correspondance textuelle, mais aucun Edge NYC ; « Hudson Yards » ne retournait aucune standalone. PDE SearchParks pour « Hudson Yards » : aucun résultat. Le backlog US ne contenait pas Edge NYC.",
+  "decision": "Edge est un observatoire autonome à billet propre au 100e étage de 30 Hudson Yards, avec parcours intérieur et plateforme extérieure ; il relève de StandaloneAttraction, distinct de Vessel et des autres lieux de Hudson Yards.",
+  "officialPrices": {
+    "currency": "USD",
+    "generalAdmissionFrom": 44,
+    "age5AndUnder": "Free",
+    "ticketRequiredAge6Plus": true,
+    "onlineProcessingFee": 2,
+    "taxes": "Additional",
+    "type": "Dynamic"
+  },
+  "officialHours": {
+    "daily": "09:00–22:00",
+    "lastEntry": "21:00",
+    "december31Override": "07:00–18:00, dernière entrée 17:00 selon bandeau officiel",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-02-28",
+    "daysCovered": 96
+  },
+  "photos": "Trois photos exactes inspectées visuellement : terrasse extérieure avec visiteurs, plateforme en porte-à-faux vue de la rue, vue sur l’Hudson depuis Edge. Fichiers Commons sous CC BY-SA 4.0 ou 3.0, avec auteur, licence, lien, mention de réduction, texte alternatif et légende dans les huit langues.",
+  "sources": [
+    {
+      "label": "Edge NYC — prix de l’entrée générale et expérience incluse",
+      "url": "https://www.edgenyc.com/get-tickets/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Edge NYC — accès, horaires et dernière admission",
+      "url": "https://www.edgenyc.com/visit/getting-here/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Edge NYC — frais, gratuité des moins de 6 ans et tarif variable",
+      "url": "https://www.edgenyc.com/faqs/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Hudson Yards — emplacement et horaires généraux",
+      "url": "https://www.hudsonyardsnewyork.com/attractions/edge/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — point de vue The Edge",
+      "url": "https://www.openstreetmap.org/node/9765434817",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — terrasse avec visiteurs, Hypnotoad78, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Edge_HY.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — plateforme vue de l’extérieur, Wikipettanko, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Edge_NYC_observation_deck_at_30_Hudson_Yards.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Hudson depuis Edge, Gerda Arendt, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Edge,_view_to_Hudson_River.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Le prix de départ peut changer selon la date et le créneau, et les taxes s’ajoutent. Les horaires réguliers sont sujets à changement ; l’exception du 31 décembre est tirée du bandeau officiel et doit être revérifiée avant la visite. Prolonger le calendrier après le 28 février 2027."
+}
