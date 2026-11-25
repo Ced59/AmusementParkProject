@@ -1,0 +1,381 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "6716776d-c60e-48a6-a2f0-f4109cc6034b",
+  "countryCode": "NZ",
+  "name": "Sky Tower",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/6716776d-c60e-48a6-a2f0-f4109cc6034b/sky-tower",
+  "lastDataIntegrationAtUtc": "2026-11-25T11:20:43.689Z",
+  "publicVerifiedAtUtc": "2026-11-25T11:24:18.000Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "descriptionsWithEightLanguages": 1,
+    "exactPublishedPhotos": 3,
+    "currentPricingOffers": 7,
+    "annualPassOffers": 3,
+    "boundedSeasonalHoursThrough": "2027-01-31",
+    "accessConditions": 1,
+    "visibleOpeningHistoryEvents": 1
+  },
+  "photoEvidence": [
+    {
+      "imageId": "7a9e82d4b87c4f89ad9381b4ee1a0205",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Tower_(Auckland)_(2).jpg",
+      "author": "Radosław Botev / Fundacja Nomos",
+      "license": "CC BY 3.0 PL",
+      "sizeInBytes": 179034,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La Sky Tower d’Auckland vue de près sous un ciel bleu"
+        },
+        {
+          "languageCode": "en",
+          "value": "Close view of Auckland Sky Tower against a blue sky"
+        },
+        {
+          "languageCode": "de",
+          "value": "Auckland Sky Tower aus der Nähe vor blauem Himmel"
+        },
+        {
+          "languageCode": "es",
+          "value": "Sky Tower de Auckland vista de cerca bajo un cielo azul"
+        },
+        {
+          "languageCode": "it",
+          "value": "Sky Tower di Auckland vista da vicino sotto il cielo azzurro"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Sky Tower in Auckland van dichtbij onder een blauwe lucht"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sky Tower w Auckland widziana z bliska na tle błękitnego nieba"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Sky Tower de Auckland vista de perto sob céu azul"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La tour et ses niveaux panoramiques au-dessus d’Auckland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The tower and its observation levels above Auckland."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Turm mit Aussichtsebenen über Auckland."
+        },
+        {
+          "languageCode": "es",
+          "value": "La torre y sus miradores sobre Auckland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La torre e i suoi belvedere sopra Auckland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De toren en de uitkijkniveaus boven Auckland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wieża i jej tarasy widokowe nad Auckland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A torre e os seus miradouros acima de Auckland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo : Radosław Botev / Fundacja Nomos, CC BY 3.0 PL (2026-07-28)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Radosław Botev / Fundacja Nomos, CC BY 3.0 PL (2026-07-28)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Radosław Botev / Fundacja Nomos, CC BY 3.0 PL (2026-07-28)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Radosław Botev / Fundacja Nomos, CC BY 3.0 PL (2026-07-28)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Radosław Botev / Fundacja Nomos, CC BY 3.0 PL (2026-07-28)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Radosław Botev / Fundacja Nomos, CC BY 3.0 PL (2026-07-28)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Radosław Botev / Fundacja Nomos, CC BY 3.0 PL (2026-07-28)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Radosław Botev / Fundacja Nomos, CC BY 3.0 PL (2026-07-28)."
+        }
+      ]
+    },
+    {
+      "imageId": "caa47ece13f940b78a460dce16cbdc2c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Tower_from_the_base,_Auckland,_New_Zealand.jpg",
+      "author": "Jonathan Harker",
+      "license": "CC0 1.0",
+      "sizeInBytes": 289361,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Sky Tower photographiée depuis son pied avec les plateformes au-dessus"
+        },
+        {
+          "languageCode": "en",
+          "value": "Sky Tower photographed from its base with the decks overhead"
+        },
+        {
+          "languageCode": "de",
+          "value": "Sky Tower von ihrem Fuß aus mit den Plattformen darüber"
+        },
+        {
+          "languageCode": "es",
+          "value": "Sky Tower fotografiada desde su base con los miradores encima"
+        },
+        {
+          "languageCode": "it",
+          "value": "Sky Tower fotografata dalla base con i belvedere in alto"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Sky Tower vanaf de voet met de uitkijkniveaus erboven"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sky Tower sfotografowana od podstawy z tarasami u góry"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Sky Tower fotografada da base com os miradouros acima"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Vue ascendante sur le fût de la tour."
+        },
+        {
+          "languageCode": "en",
+          "value": "Looking up the tower from street level."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick vom Straßenniveau auf den Turm."
+        },
+        {
+          "languageCode": "es",
+          "value": "Mirada hacia lo alto desde la calle."
+        },
+        {
+          "languageCode": "it",
+          "value": "La torre vista dal livello della strada."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De toren vanaf straatniveau omhoog gezien."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok na wieżę z poziomu ulicy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista da torre a partir do nível da rua."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo : Jonathan Harker, CC0 1.0 (2022-11-01)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Jonathan Harker, CC0 1.0 (2022-11-01)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Jonathan Harker, CC0 1.0 (2022-11-01)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Jonathan Harker, CC0 1.0 (2022-11-01)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Jonathan Harker, CC0 1.0 (2022-11-01)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Jonathan Harker, CC0 1.0 (2022-11-01)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Jonathan Harker, CC0 1.0 (2022-11-01)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Jonathan Harker, CC0 1.0 (2022-11-01)."
+        }
+      ]
+    },
+    {
+      "imageId": "4ed23fe715114a8f962aafb6c51c8f38",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_view_of_Auckland_from_the_Sky_Tower.jpg",
+      "author": "Civil10",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 310553,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue sur le centre d’Auckland et le port depuis Sky Tower"
+        },
+        {
+          "languageCode": "en",
+          "value": "View of central Auckland and the harbour from Sky Tower"
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick vom Sky Tower über Auckland und den Hafen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista del centro de Auckland y del puerto desde Sky Tower"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vista del centro di Auckland e del porto dalla Sky Tower"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Uitzicht vanaf Sky Tower over Auckland en de haven"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok z Sky Tower na centrum Auckland i port"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista do centro de Auckland e do porto a partir da Sky Tower"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le centre-ville, les quartiers voisins et l’eau depuis l’observatoire."
+        },
+        {
+          "languageCode": "en",
+          "value": "City blocks and harbour from the observation level."
+        },
+        {
+          "languageCode": "de",
+          "value": "Stadtviertel und Hafen von der Aussichtsebene aus."
+        },
+        {
+          "languageCode": "es",
+          "value": "Barrios y puerto desde el mirador."
+        },
+        {
+          "languageCode": "it",
+          "value": "Quartieri e porto dal belvedere."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Stadswijken en haven vanaf het uitkijkpunt."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dzielnice i port widziane z tarasu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Bairros e porto vistos do miradouro."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo : Civil10, CC BY-SA 4.0 (2025-03-11)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Civil10, CC BY-SA 4.0 (2025-03-11)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Civil10, CC BY-SA 4.0 (2025-03-11)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Civil10, CC BY-SA 4.0 (2025-03-11)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Civil10, CC BY-SA 4.0 (2025-03-11)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Civil10, CC BY-SA 4.0 (2025-03-11)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Civil10, CC BY-SA 4.0 (2025-03-11)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Civil10, CC BY-SA 4.0 (2025-03-11)."
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "operator": "https://skycityauckland.co.nz/sky-tower/",
+    "ticketing": "https://skytowerticketing.rezdy.com/152524/single-entry",
+    "openingDate": "https://skycityentertainmentgroup.com/media/wrlhxyyz/2022-annual-report-digital-version-read-online.pdf",
+    "accessibility": "https://www.aucklandnz.com/explore/sky-tower-skycity-auckland"
+  },
+  "ticketingDiscrepancy": "La page actuelle de SkyCity présente Sky Deck comme supplément de 2 NZD individuel ou 6 NZD famille ; la billetterie Rezdy et AucklandNZ, vues le même jour, le décrivent comme inclus. La fiche demande de vérifier le contenu au paiement.",
+  "remainingUncertainty": "Les horaires peuvent varier avec la météo ou les événements privés. Les règles datées s’arrêtent au 31 janvier 2027 ; contrôler la saison suivante avant échéance.",
+  "facebookPublicationId": "33aa342af8154663b4d09d914812cfe1",
+  "facebookStatus": "Published",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128797189424431"
+}
