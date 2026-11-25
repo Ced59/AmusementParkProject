@@ -1,0 +1,31 @@
+{
+  "reviewedAt": "2026-11-25",
+  "parentParkEntryId": "US-candidate-gunstock-adventure-park-20261125",
+  "candidateEntryIds": [
+    "US-candidate-a5e1bad7252f6e",
+    "US-candidate-standalone-82e1618d8e007f",
+    "US-candidate-standalone-ba20ad136f7b13"
+  ],
+  "decision": "InsidePark",
+  "reason": "Gunstock classe explicitement mountain coaster et zipline parmi les activités de son Adventure Park avec parcours accrobranche et télésiège. Un billet propre à chaque activité ne crée pas une identité de lieu indépendante.",
+  "officialSources": [
+    {
+      "label": "Gunstock Mountain Resort — Adventure Park, coaster, zipline, parcours accrobranche et télésiège",
+      "url": "https://www.gunstock.com/summer/adventure-park/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Gunstock Mountain Resort — Mountain Coaster",
+      "url": "https://www.gunstock.com/summer/mountain-coaster/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Gunstock Mountain Resort — Zipline Tour",
+      "url": "https://www.gunstock.com/summer/nh-zipline-tours/",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "photoSearch": "Recherche Commons des titres Gunstock Mountain Coaster, Gunstock alpine coaster et Gunstock mountain resort coaster : aucune photographie exacte.",
+  "productionMutation": false,
+  "lastDataIntegrationAtUnchanged": true
+}
