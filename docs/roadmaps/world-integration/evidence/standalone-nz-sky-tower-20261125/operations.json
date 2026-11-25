@@ -1,0 +1,93 @@
+[
+  {
+    "step": "core",
+    "operationId": "d61195d6-b5bc-4f4a-af28-2bf56d845046",
+    "appliedAtUtc": "2026-11-25T11:14:05.0635188Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "75a5c636-b602-4ae5-9d1d-41ced39db82f",
+    "appliedAtUtc": "2026-11-25T11:17:10.6277497Z",
+    "counts": {
+      "created": 3,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-7a9e82d4b87c4f89ad9381b4ee1a0205",
+    "imageId": "7a9e82d4b87c4f89ad9381b4ee1a0205",
+    "updatedAtUtc": "2026-11-25T11:18:10.818Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Tower_(Auckland)_(2).jpg",
+    "isPublished": true,
+    "sizeInBytes": 179034
+  },
+  {
+    "step": "photo-import-caa47ece13f940b78a460dce16cbdc2c",
+    "imageId": "caa47ece13f940b78a460dce16cbdc2c",
+    "updatedAtUtc": "2026-11-25T11:18:36.748Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Tower_from_the_base,_Auckland,_New_Zealand.jpg",
+    "isPublished": true,
+    "sizeInBytes": 289361
+  },
+  {
+    "step": "photo-import-4ed23fe715114a8f962aafb6c51c8f38",
+    "imageId": "4ed23fe715114a8f962aafb6c51c8f38",
+    "updatedAtUtc": "2026-11-25T11:19:17.803Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_view_of_Auckland_from_the_Sky_Tower.jpg",
+    "isPublished": true,
+    "sizeInBytes": 310553
+  },
+  {
+    "step": "opening-date",
+    "operationId": "a0576e48-4075-43d6-a14f-4565edb06996",
+    "appliedAtUtc": "2026-11-25T11:20:43.689882Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "6264acbb-96cf-45a9-ba53-076c6745cdcd",
+    "appliedAtUtc": "2026-11-25T11:22:01.2558611Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "33aa342af8154663b4d09d914812cfe1",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T11:23:04.2111431Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128797189424431"
+  }
+]
