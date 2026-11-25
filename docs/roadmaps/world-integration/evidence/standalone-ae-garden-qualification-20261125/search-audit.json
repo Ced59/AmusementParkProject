@@ -1,0 +1,33 @@
+{
+  "checkedAtUtc": "2026-11-25",
+  "searches": [
+    {
+      "kind": "StandaloneAttraction",
+      "query": "Garden in the Sky",
+      "totalItems": 0
+    },
+    {
+      "kind": "Park",
+      "query": "Garden in the Sky",
+      "totalItems": 0
+    },
+    {
+      "kind": "Park",
+      "query": "Expo City",
+      "totalItems": 0
+    }
+  ],
+  "photo": {
+    "sourceUrl": "https://www.flickr.com/photos/amanderson/51974563113/",
+    "author": "amanderson2",
+    "license": "CC BY 2.0",
+    "photographedAt": "2022-03-22",
+    "identityVisuallyChecked": true
+  },
+  "status": "Current operation uncertain; no ticket, schedule or publication inferred.",
+  "sourceConflict": [
+    "https://www.expocitydubai.com/en/things-to-do/attractions/",
+    "https://expocitydubai.com/en/things-to-do/events-and-workshops/move-connect-feel-by-lululemon/",
+    "https://www.visitdubai.com/en/places-to-visit/garden-in-the-sky"
+  ]
+}

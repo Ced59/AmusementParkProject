@@ -1,0 +1,72 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+  "countryCode": "AE",
+  "name": "Dubai Frame",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/8755affb-4234-4bac-8aa8-0c27091e7dc5/dubai-frame",
+  "lastDataIntegrationAtUtc": "2026-11-25T09:42:12.844Z",
+  "publicVerifiedAtUtc": "2026-11-25T09:46:08.951Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "attractions": 1,
+    "operatingAttractions": 1,
+    "descriptionsWithEightLanguages": 1,
+    "attractionsWithAtLeastOneExactPhoto": 1,
+    "publishedPhotos": 3,
+    "openingHistoryEvents": 1,
+    "accessConditions": 1,
+    "currentPricingOffers": 4,
+    "officialWeeklyHours": "08:00–21:00, seven days; Ramadan and holidays may vary",
+    "timeZoneId": "Asia/Dubai"
+  },
+  "photoIds": [
+    "0fdb9ea4a0f74be9aff9dd622fd41f20",
+    "9a22b2ac6609400fb442d796b6c36559",
+    "10ef18f012cd4e208fb618939c53b872"
+  ],
+  "photoLicenseEvidence": [
+    {
+      "sourceUrl": "https://www.pexels.com/photo/the-dubai-frame-4612430/",
+      "credit": "Photo : Denys Gromov, Pexels License (2020-06-10)."
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dubai_Frame_Glass_Floor-Dubai_UAE-Andres_Larin.jpg",
+      "credit": "Photo : Andres Larin, CC BY-SA 4.0 (2023-03-03)."
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Dubai_Frame_Observation_Deck_in_Dubai,_United_Arab_Emirates.jpg",
+      "credit": "Photo : Richard N Horne, CC BY-SA 4.0 (2023-04-02)."
+    }
+  ],
+  "sources": {
+    "operatorHoursAndPrices": "https://www.dubaiframe.ae/en/plan-your-visit",
+    "architectureAndExperience": "https://www.dm.gov.ae/projects/dubai-frame/",
+    "openingDate": "https://www.dubaiframe.ae/en/media-center/news/news-details?id=8",
+    "accessibility": "https://www.dubaiframe.ae/en/faq",
+    "geo": "https://belka.travel/en/places/dubai-frame/"
+  },
+  "remainingUncertainty": "Le site officiel publie des horaires hebdomadaires habituels, sans calendrier détaillé des exceptions Ramadan/jours fériés. Le modèle mécanique et le constructeur demandés par le score ObservationRide ne décrivent pas directement cette structure fixe ; aucun fabricant de manège n’a été inventé. Revérifier les exceptions d’horaires et les tarifs avant une prochaine mise à jour.",
+  "facebookPublicationId": "05f1624d164a4fb287447d0f00f547df"
+}

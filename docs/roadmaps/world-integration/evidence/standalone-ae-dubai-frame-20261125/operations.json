@@ -1,0 +1,79 @@
+[
+  {
+    "step": "core",
+    "operationId": "8f761936-40cb-41c2-8e5a-305cf54b72b4",
+    "appliedAtUtc": "2026-11-25T09:31:22.1138288Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "pricing",
+    "operationId": "f1363caf-b3e2-4785-9c79-1b3213512cfc",
+    "appliedAtUtc": "2026-11-25T09:34:35.8507246Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "hours",
+    "operationId": "b56804ee-b835-432c-9dbd-9db9f01b2c33",
+    "appliedAtUtc": "2026-11-25T09:35:06.7307042Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "copy-fix",
+    "operationId": "476c57de-48ce-4efc-86b0-64a87095ff95",
+    "appliedAtUtc": "2026-11-25T09:37:10.8803194Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "7ac3acb7-ce9e-45da-9408-d16a749ca097",
+    "appliedAtUtc": "2026-11-25T09:38:52.5330206Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "fc198cec-792e-4ddd-89ca-bff504bbe367",
+    "appliedAtUtc": "2026-11-25T09:39:42.9259088Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "pricing-full",
+    "operationId": "7107f79f-8459-4761-9e31-d00eb6043119",
+    "appliedAtUtc": "2026-11-25T09:41:19.7473115Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "c8728367-861d-44fe-9b55-6190bafb1462",
+    "appliedAtUtc": "2026-11-25T09:42:12.8445623Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-hero",
+    "imageId": "0fdb9ea4a0f74be9aff9dd622fd41f20",
+    "updatedAtUtc": "2026-11-25T09:32:42.787Z",
+    "isPublished": true,
+    "sourceUrl": "https://www.pexels.com/photo/the-dubai-frame-4612430/"
+  },
+  {
+    "step": "photo-import-deck",
+    "imageId": "10ef18f012cd4e208fb618939c53b872",
+    "updatedAtUtc": "2026-11-25T09:33:06.828Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Dubai_Frame_Observation_Deck_in_Dubai,_United_Arab_Emirates.jpg"
+  },
+  {
+    "step": "photo-import-glass",
+    "imageId": "9a22b2ac6609400fb442d796b6c36559",
+    "updatedAtUtc": "2026-11-25T09:33:29.914Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dubai_Frame_Glass_Floor-Dubai_UAE-Andres_Larin.jpg"
+  }
+]
