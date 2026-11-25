@@ -19,7 +19,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 66 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 4 |
+| Intégration achevée | 5 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -30,7 +30,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **4 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **64 candidats sans fiche**.
 
-Standalone : **4 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **5 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -73,6 +73,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | MY-candidate-82abaf2b7c844d | Kuala Krai mini zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Malaysia) |
 | MY-candidate-866bdd5c8bd47d | Kuala Lumpur Bird Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Malaysia) |
 | MY-candidate-23fbc74f68e10f | Kuala Lumpur Deer Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Malaysia) |
+| MY-candidate-discovery-kuala-lumpur-tower-20261125 | Kuala Lumpur Tower | 2 Jalan Punchak, Kuala Lumpur | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T19:33:19.200Z | — | Conserver cette ligne ; recontrôler les prix et la disponibilité de la Sky Terrace sans republier le même post Facebook. Qualification standalone : AlreadyStandalone. Tour d’observation à billets propres ; le belvédère et la terrasse sont des formules d’une même attraction autonome. Signal source : Tour et billetterie officielles actives au 25 novembre 2026 ; Sky Terrace soumise à la météo.. [Kuala Lumpur Tower — site officiel](https://kltower.com/) · [Kuala Lumpur Tower — FAQ horaires, météo, navette](https://kltower.com/faq) · [Kuala Lumpur Tower — billetterie officielle](https://ticket.kltower.com/) · [Kuala Lumpur Tower — histoire](https://kltower.com/our-story) · [Kuala Lumpur Tower — adresse](https://kltower.com/contact-us) · [Wikimedia Commons — Kuala Lumpur Tower 20250822 (2).jpg (DvTor8303, CC0 1.0)](https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Tower_20250822_(2).jpg) · [Wikimedia Commons — KL Tower Observation Deck.jpg (Danilo Mistroni, CC BY 2.0)](https://commons.wikimedia.org/wiki/File:KL_Tower_Observation_Deck.jpg) · [Wikimedia Commons — Kuala Lumpur Tower 20250822 (1).jpg (DvTor8303, CC0 1.0)](https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Tower_20250822_(1).jpg) |
 | MY-candidate-8edeb123443b30 | Langkawi Wildlife Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Malaysia) |
 | MY-park-42d9c92c-f399-46a6-8d13-e403b880a4cb | Legoland Malaysia | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/9575.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Malaysia) |
 | MY-candidate-602296eae4e428 | Legoland Water Park | Johor Bahru | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Malaysia) |

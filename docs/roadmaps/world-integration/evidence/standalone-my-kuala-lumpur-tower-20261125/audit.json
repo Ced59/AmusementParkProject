@@ -1,0 +1,75 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "ffef4ad6-f69e-4d44-b79e-cec5bcc7458a",
+  "name": "Kuala Lumpur Tower",
+  "countryCode": "MY",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ffef4ad6-f69e-4d44-b79e-cec5bcc7458a/kuala-lumpur-tower",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T19:35:23Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "1df198cd6a7e4e548c5587cf0ee66313",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128847283424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T19:33:19.200Z",
+  "lastDataEventId": "943da88f-073f-4f2d-ac0e-6555a66ec8c2",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions MY pour KL Tower, Kuala Lumpur Tower et Menara Kuala Lumpur : zéro résultat dans les six recherches avant création ; aucune entrée MY du backlog ne portait ces noms.",
+  "completeness": {
+    "completenessScore": 97,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 68,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "68a3d28467b04533880fbf1f82cf0e6c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Tower_20250822_(2).jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "DvTor8303",
+      "license": "CC0 1.0"
+    },
+    {
+      "id": "e3d66caad67e493ab4a9e243ee3c8986",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:KL_Tower_Observation_Deck.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Danilo Mistroni",
+      "license": "CC BY 2.0"
+    },
+    {
+      "id": "fa98a0142ab645fb9adb6ad3bb282a76",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Tower_20250822_(1).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "DvTor8303",
+      "license": "CC0 1.0"
+    }
+  ],
+  "pricingOfferCount": 3,
+  "openingHoursVerified": true,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1
+}
