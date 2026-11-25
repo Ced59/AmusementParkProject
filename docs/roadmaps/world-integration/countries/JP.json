@@ -17688,33 +17688,226 @@
     {
       "entryId": "JP-candidate-yokohama-air-cabin-20261124",
       "name": "Yokohama Air Cabin",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Téléphérique urbain touristique",
       "locality": "Sakuragichō – Unga Park, Naka-ku, Yokohama",
-      "siteId": null,
+      "siteId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-11-24",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T09:02:11.515Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Exploitant actif en 2026 : horaires et billets propres affichés, programmation datée du 9 octobre 2026 ; disponibilité quotidienne variable selon météo et maintenance.",
-      "identityConfidence": "Identité, exploitant et trajet confirmés par le site officiel ; aucune recherche PARK_DATA_EDITOR encore effectuée pour exclure une fiche cachée ou un alias.",
+      "identityConfidence": "Identité et absence de doublon vérifiées par recherches PARK_DATA_EDITOR du nom latin, de la variante japonaise et de Yokohama ; export du parc Yokohama Cosmoworld contrôlé sans Air Cabin. La fiche publiée porte cet ID unique.",
       "possibleMatches": [],
-      "aliases": ["YOKOHAMA AIR CABIN", "横浜エアキャビン", "ヨコハマ・エア・キャビン"],
+      "aliases": [
+        "YOKOHAMA AIR CABIN",
+        "横浜エアキャビン",
+        "ヨコハマ・エア・キャビン"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher Yokohama Air Cabin, 横浜エアキャビン, Sakuragichō et Unga Park dans Park et StandaloneAttraction via le client officiel avant création. Confirmer la modélisation touristique autonome malgré sa fonction de liaison urbaine. Vérifier le calendrier et les billets actuels, intégrer au moins une des trois photos exactes CC0 recensées, auditer la fiche puis publier le site et Facebook. La découverte du 24 novembre n’est pas une intégration de données.",
+      "lastDataIntegrationAt": "2026-11-25T08:59:23.140Z",
+      "integrationHistory": [
+        {
+          "eventId": "27642646-9e2b-46a5-9394-3d244ff1673c",
+          "appliedAt": "2026-11-25T08:30:22.074Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#27642646-9e2b-46a5-9394-3d244ff1673c",
+          "auditEvidence": null,
+          "summary": "Fiche autonome masquée créée après recherche des doublons ; identité, localisation, caractéristiques et descriptions en huit langues appliquées."
+        },
+        {
+          "eventId": "photo-import-3663ba4a0cf047e5a9e6734c5e74b90b",
+          "appliedAt": "2026-11-25T08:32:59.053Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#photo-import-3663ba4a0cf047e5a9e6734c5e74b90b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Yokohama Air Cabin au crépuscule importée avec crédit Syced, licence CC0 et métadonnées en huit langues ; média encore privé."
+        },
+        {
+          "eventId": "photo-import-d7412bad25d6408b89a77d6cac3ab9e0",
+          "appliedAt": "2026-11-25T08:33:43.664Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#photo-import-d7412bad25d6408b89a77d6cac3ab9e0",
+          "auditEvidence": null,
+          "summary": "Vue de jour exacte importée avec crédit Wadakuramon, licence CC0 et métadonnées en huit langues ; média encore privé."
+        },
+        {
+          "eventId": "photo-import-8b40f0d6ba4f4a85835bf8cb8eeb2ef9",
+          "appliedAt": "2026-11-25T08:34:25.029Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#photo-import-8b40f0d6ba4f4a85835bf8cb8eeb2ef9",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la cabine à quai importée avec crédit Syced, licence CC0 et métadonnées en huit langues ; média encore privé."
+        },
+        {
+          "eventId": "182fca34-23ec-46f5-9ec0-9b0bd1145214",
+          "appliedAt": "2026-11-25T08:36:43.742Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#182fca34-23ec-46f5-9ec0-9b0bd1145214",
+          "auditEvidence": null,
+          "summary": "Descriptions des huit langues révisées pour retirer les métriques techniques du récit public et satisfaire les règles éditoriales."
+        },
+        {
+          "eventId": "65567796-52ca-45fb-bc67-a8b90d4280a5",
+          "appliedAt": "2026-11-25T08:41:26.905Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#65567796-52ca-45fb-bc67-a8b90d4280a5",
+          "auditEvidence": null,
+          "summary": "Tarifs numériques actuels en JPY ajoutés pour adultes et enfants, aller simple et aller-retour, depuis le vendeur lié par l’exploitant ; vérifiés le 25 novembre 2026."
+        },
+        {
+          "eventId": "3d0e0815-985f-4337-944c-514ab99fedc1",
+          "appliedAt": "2026-11-25T08:45:02.004Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#3d0e0815-985f-4337-944c-514ab99fedc1",
+          "auditEvidence": null,
+          "summary": "Exploitant Senyo Kogyo créé avec descriptions en huit langues ; constructeur existant réutilisé sans mutation ; modèle produit officiel renseigné."
+        },
+        {
+          "eventId": "0fff07ea-1e66-4047-91de-bdd9772478a4",
+          "appliedAt": "2026-11-25T08:51:13.285Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#0fff07ea-1e66-4047-91de-bdd9772478a4",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès de l’exploitant, localisées en huit langues, et descriptions ajustées ; prévisualisation sans erreur ni avertissement."
+        },
+        {
+          "eventId": "e97bc0af-b056-4dbb-b473-3757e3ff1ab1",
+          "appliedAt": "2026-11-25T08:53:14.688Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#e97bc0af-b056-4dbb-b473-3757e3ff1ab1",
+          "auditEvidence": null,
+          "summary": "Chronologie sourcée : ouverture du 22 avril 2021, titres et résumés en huit langues."
+        },
+        {
+          "eventId": "ff9ab7bb-0370-48d3-885b-bff4af1cdf6c",
+          "appliedAt": "2026-11-25T08:55:12.075Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#ff9ab7bb-0370-48d3-885b-bff4af1cdf6c",
+          "auditEvidence": null,
+          "summary": "Horaires datés du 25 novembre au 31 décembre 2026 : 37 jours couverts sans lacune ni chevauchement, fermeture le 9 décembre ; fermetures connues de janvier 2027. Sources locales récentes recoupées ; planning officiel en image non lisible directement."
+        },
+        {
+          "eventId": "photo-publish-3663ba4a0cf047e5a9e6734c5e74b90b",
+          "appliedAt": "2026-11-25T08:57:23.134Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#photo-publish-3663ba4a0cf047e5a9e6734c5e74b90b",
+          "auditEvidence": null,
+          "summary": "Photo principale précise publiée, crédit CC0 et textes alternatifs huit langues conservés."
+        },
+        {
+          "eventId": "photo-publish-8b40f0d6ba4f4a85835bf8cb8eeb2ef9",
+          "appliedAt": "2026-11-25T08:57:49.444Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#photo-publish-8b40f0d6ba4f4a85835bf8cb8eeb2ef9",
+          "auditEvidence": null,
+          "summary": "Photo précise de la cabine à quai publiée, crédit CC0 et localisations conservés."
+        },
+        {
+          "eventId": "photo-publish-d7412bad25d6408b89a77d6cac3ab9e0",
+          "appliedAt": "2026-11-25T08:58:20.454Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#photo-publish-d7412bad25d6408b89a77d6cac3ab9e0",
+          "auditEvidence": null,
+          "summary": "Troisième photo précise publiée : cabines et quartier de Minato Mirai de jour, crédit CC0 conservé."
+        },
+        {
+          "eventId": "a80ada59-91c1-44dc-b8a9-d0ad7ac31668",
+          "appliedAt": "2026-11-25T08:59:23.140Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/operations.json#a80ada59-91c1-44dc-b8a9-d0ad7ac31668",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/audit.json",
+          "summary": "Fiche publiée et validée ; trois photos publiées, huit langues, prix, horaires datés, accès, exploitant et historique. Score réel 100/100 sans bloqueur ; page publique vérifiée dans les huit langues."
+        }
+      ],
+      "nextAction": "Conserver la ligne et tout son historique ; revérifier le planning officiel de janvier 2027 avant échéance et actualiser les horaires datés.",
       "sources": [
-        {"label": "Yokohama Air Cabin — exploitant, billets et état de service", "url": "https://yokohama-air-cabin.jp/en/", "accessedAt": "2026-11-24"},
-        {"label": "Yokohama Air Cabin — trajet, capacités et vocation touristique", "url": "https://yokohama-air-cabin.jp/en/about/", "accessedAt": "2026-11-24"},
-        {"label": "Yokohama Air Cabin — animation datée du 9 octobre 2026", "url": "https://yokohama-air-cabin.jp/2026100910971/", "accessedAt": "2026-11-24"},
-        {"label": "Office national du tourisme japonais — attraction de Yokohama", "url": "https://www.japan.travel/en/japans-local-treasures/yokohama-air-cabin/", "accessedAt": "2026-11-24"},
-        {"label": "Wikimedia Commons — cabines et gare, Syced, CC0 (2022)", "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin.jpg", "accessedAt": "2026-11-24"},
-        {"label": "Wikimedia Commons — gare et cabines, Syced, CC0 (2022)", "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_2.jpg", "accessedAt": "2026-11-24"},
-        {"label": "Wikimedia Commons — cabines en circulation, Wadakuramon, CC0 (2025)", "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_2025-11-23.jpg", "accessedAt": "2026-11-24"}
+        {
+          "label": "Yokohama Air Cabin — exploitant, billets et état de service",
+          "url": "https://yokohama-air-cabin.jp/en/",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Yokohama Air Cabin — trajet, capacités et vocation touristique",
+          "url": "https://yokohama-air-cabin.jp/en/about/",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Yokohama Air Cabin — animation datée du 9 octobre 2026",
+          "url": "https://yokohama-air-cabin.jp/2026100910971/",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Office national du tourisme japonais — attraction de Yokohama",
+          "url": "https://www.japan.travel/en/japans-local-treasures/yokohama-air-cabin/",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Wikimedia Commons — cabines et gare, Syced, CC0 (2022)",
+          "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin.jpg",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Wikimedia Commons — gare et cabines, Syced, CC0 (2022)",
+          "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_2.jpg",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Wikimedia Commons — cabines en circulation, Wadakuramon, CC0 (2025)",
+          "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_2025-11-23.jpg",
+          "accessedAt": "2026-11-24"
+        },
+        {
+          "label": "Yokohama Official Visitors Guide — ouverture le 22 avril 2021",
+          "url": "https://www.welcome.city.yokohama.jp/topics/tp_detail.php?lt=&tpid=T03547",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Billetterie numérique officielle — tarifs actuels",
+          "url": "https://ticket.at-yokohama.net/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Horaires 2026 recoupés — Torii Notes",
+          "url": "https://travelnotesjapan.com/en/minato-mirai-night-view-guide/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Horaires 2026 recoupés — This Is Yokohama",
+          "url": "https://thisisyokohama.com/2026/11/23/yokohama-air-cabin-tickets/",
+          "accessedAt": "2026-11-25"
+        }
       ],
       "discovery": {
         "batch": "2026-11-24-new-standalone-discovery",
@@ -17722,12 +17915,41 @@
         "foundAt": "2026-11-24"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-24",
         "attractions": [
-          {"name": "Yokohama Air Cabin", "source": "Senyo Kogyo — site officiel", "url": "https://yokohama-air-cabin.jp/en/about/", "family": "Téléphérique urbain panoramique", "sourceVenueName": "Yokohama Air Cabin", "sourceLifecycleSignal": "Billets propres et programmation 2026", "sourceLocality": "Sakuragichō – Unga Park, Yokohama", "matchingMethod": "Exploitant et billetterie autonomes ; recherche API de doublons encore requise"}
+          {
+            "name": "Yokohama Air Cabin",
+            "source": "Senyo Kogyo — site officiel",
+            "url": "https://yokohama-air-cabin.jp/en/about/",
+            "family": "Téléphérique urbain panoramique",
+            "sourceVenueName": "Yokohama Air Cabin",
+            "sourceLifecycleSignal": "Billets propres et programmation 2026",
+            "sourceLocality": "Sakuragichō – Unga Park, Yokohama",
+            "matchingMethod": "Exploitant et billetterie autonomes ; recherche API de doublons encore requise"
+          }
         ],
-        "rationale": "L’exploitant décrit une attraction touristique à billetterie propre reliant deux stations urbaines, en dehors de Yokohama Cosmo World ; la vente de billets combinés avec sa grande roue ne constitue pas un rattachement à ce parc."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration a80ada59-91c1-44dc-b8a9-d0ad7ac31668 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6a44e756-54ea-4e25-b2e8-020d23ec0f26/yokohama-air-cabin",
+          "publishedAtUtc": "2026-11-25T08:59:23.140Z",
+          "verifiedAtUtc": "2026-11-25T09:02:11.515Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-air-cabin-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "e8d6a206c82047918a0f985c3eda7501",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6a44e756-54ea-4e25-b2e8-020d23ec0f26/yokohama-air-cabin?facebook-image=3663ba4a0cf047e5a9e6734c5e74b90b",
+          "publishedAtUtc": "2026-11-25T09:01:20.0999747Z",
+          "externalPostId": "1285475681307050_122128776687424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128776687424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
       }
     }
   ]
