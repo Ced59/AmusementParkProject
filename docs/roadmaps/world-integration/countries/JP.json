@@ -17951,6 +17951,197 @@
           "failureMessage": null
         }
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-tokyo-tower-20261125",
+      "name": "Tokyo Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique à billet propre",
+      "locality": "4-2-8 Shibakoen, Minato-ku, Tokyo",
+      "siteId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T11:05:20.000Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie officielle et horaires en service le 25 novembre 2026 ; article de l’exploitant actualisé le 19 novembre 2026.",
+      "identityConfidence": "Aucune fiche Park ou StandaloneAttraction homonyme trouvée sous Tokyo Tower ou 東京タワー via le client officiel. Observatoires avec billet propre, trois photos exactes sourcées.",
+      "possibleMatches": [],
+      "aliases": [
+        "東京タワー",
+        "Tōkyō Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T11:00:13.848Z",
+      "integrationHistory": [
+        {
+          "eventId": "b84c64b7-eae2-49c7-a2cb-eb4de9d85ef1",
+          "appliedAt": "2026-11-25T10:52:01.077Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/operations.json#b84c64b7-eae2-49c7-a2cb-eb4de9d85ef1",
+          "auditEvidence": null,
+          "summary": "Tokyo Tower créée masquée après recherches officielles sans doublon, avec identité, localisation, statut et descriptions dans les huit langues."
+        },
+        {
+          "eventId": "22284b9f-2e70-4f16-bf56-1ca59267f66e",
+          "appliedAt": "2026-11-25T10:54:02.496Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/operations.json#22284b9f-2e70-4f16-bf56-1ca59267f66e",
+          "auditEvidence": null,
+          "summary": "Douze offres tarifaires officielles en JPY, heures hebdomadaires, accessibilité et événement historique intégrés en huit langues."
+        },
+        {
+          "eventId": "photo-import-48599298e5bf4439bd8b320406423212",
+          "appliedAt": "2026-11-25T10:55:27.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/operations.json#photo-import-48599298e5bf4439bd8b320406423212",
+          "auditEvidence": null,
+          "summary": "Photo de jour de la Tokyo Tower depuis Shiba Park, Qian2007, CC BY-SA 4.0. Métadonnées et crédits localisés en huit langues."
+        },
+        {
+          "eventId": "photo-import-019bb55b58f24e1998618e7bdf70be3e",
+          "appliedAt": "2026-11-25T10:55:56.614Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/operations.json#photo-import-019bb55b58f24e1998618e7bdf70be3e",
+          "auditEvidence": null,
+          "summary": "Photo nocturne de la Tokyo Tower, Immanuelle, CC BY 4.0. Métadonnées et crédits localisés en huit langues."
+        },
+        {
+          "eventId": "photo-import-83352173e03442338fc48997f023b4a8",
+          "appliedAt": "2026-11-25T10:56:19.738Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/operations.json#photo-import-83352173e03442338fc48997f023b4a8",
+          "auditEvidence": null,
+          "summary": "Vue nocturne exacte depuis la Tokyo Tower, Immanuelle, CC BY 4.0. Métadonnées et crédits localisés en huit langues."
+        },
+        {
+          "eventId": "779c49ab-9fc4-481d-998c-b723c77ead50",
+          "appliedAt": "2026-11-25T10:58:28.303Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/operations.json#779c49ab-9fc4-481d-998c-b723c77ead50",
+          "auditEvidence": null,
+          "summary": "Descriptions et chronologie réécrites pour répondre au contrôle éditorial des textes publics."
+        },
+        {
+          "eventId": "photo-metadata-48599298e5bf4439bd8b320406423212",
+          "appliedAt": "2026-11-25T10:58:47.222Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/operations.json#photo-metadata-48599298e5bf4439bd8b320406423212",
+          "auditEvidence": null,
+          "summary": "Légende de la photo principale corrigée et crédits complets conservés."
+        },
+        {
+          "eventId": "70b24603-707c-433f-a3fc-df6143dd14f3",
+          "appliedAt": "2026-11-25T11:00:13.848Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/operations.json#70b24603-707c-433f-a3fc-df6143dd14f3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/audit.json",
+          "summary": "Chronologie officielle finalisée dans les huit langues ; audit projeté 95/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver la ligne et tous les reçus ; revérifier régulièrement tarifs, créneaux du Top Deck Tour, horaires spéciaux et conditions météo. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Tokyo Tower — tarifs et horaires officiels",
+          "url": "https://en.tokyotower.co.jp/fee/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Tokyo Tower — article de billetterie actualisé le 19 novembre 2026",
+          "url": "https://ticket.tokyotower.co.jp/en/staff_column/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Tokyo Tower — accès",
+          "url": "https://en.tokyotower.co.jp/access/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Tokyo Tower — accessibilité",
+          "url": "https://en.tokyotower.co.jp/access/barrierfree/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Tokyo Tower — anniversaire et ouverture",
+          "url": "https://gallery.tokyotower.co.jp/65th_anniversary.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Tower_2024.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Tokyo_tower_at_night_2024.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Tokyo_Tower_2024.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors catalogue des observatoires à billet propre, vérification de l’exploitant, recherches officielles de doublons et photos Commons.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [
+          {
+            "name": "Tokyo Tower",
+            "source": "Tokyo Tower — site officiel",
+            "url": "https://en.tokyotower.co.jp/fee/",
+            "family": "Tour panoramique",
+            "sourceVenueName": "Tokyo Tower",
+            "sourceLifecycleSignal": "Billets et horaires actuels",
+            "sourceLocality": "Minato-ku, Tokyo",
+            "matchingMethod": "Billet autonome et recherches officielles sans doublon."
+          }
+        ],
+        "rationale": "Observatoires visitables avec billetterie indépendante de tout parc, identité confirmée par le client officiel."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/37e2047f-bf43-46d3-be0e-72da8bf20c19/tokyo-tower",
+          "publishedAtUtc": "2026-11-25T11:01:23.018Z",
+          "verifiedAtUtc": "2026-11-25T11:05:20.000Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-tower-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "1cdcac5acb0949da827ba268543be9a0",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/37e2047f-bf43-46d3-be0e-72da8bf20c19/tokyo-tower?facebook-image=48599298e5bf4439bd8b320406423212",
+          "publishedAtUtc": "2026-11-25T11:03:18.9306569Z",
+          "externalPostId": "1285475681307050_122128795257424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128795257424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      }
     }
   ]
 }

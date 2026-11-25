@@ -1,0 +1,115 @@
+[
+  {
+    "step": "core",
+    "operationId": "b84c64b7-eae2-49c7-a2cb-eb4de9d85ef1",
+    "appliedAtUtc": "2026-11-25T10:52:01.0778322Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "22284b9f-2e70-4f16-bf56-1ca59267f66e",
+    "appliedAtUtc": "2026-11-25T10:54:02.4962641Z",
+    "counts": {
+      "created": 3,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-48599298e5bf4439bd8b320406423212",
+    "imageId": "48599298e5bf4439bd8b320406423212",
+    "updatedAtUtc": "2026-11-25T10:55:27.382Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Tower_2024.jpg",
+    "isPublished": true,
+    "sizeInBytes": 156152
+  },
+  {
+    "step": "photo-import-019bb55b58f24e1998618e7bdf70be3e",
+    "imageId": "019bb55b58f24e1998618e7bdf70be3e",
+    "updatedAtUtc": "2026-11-25T10:55:56.614Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_tower_at_night_2024.jpg",
+    "isPublished": true,
+    "sizeInBytes": 291064
+  },
+  {
+    "step": "photo-import-83352173e03442338fc48997f023b4a8",
+    "imageId": "83352173e03442338fc48997f023b4a8",
+    "updatedAtUtc": "2026-11-25T10:56:19.738Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_Tokyo_Tower_2024.jpg",
+    "isPublished": true,
+    "sizeInBytes": 370690
+  },
+  {
+    "step": "text-repair",
+    "operationId": "779c49ab-9fc4-481d-998c-b723c77ead50",
+    "appliedAtUtc": "2026-11-25T10:58:28.3031646Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-metadata-48599298e5bf4439bd8b320406423212",
+    "imageId": "48599298e5bf4439bd8b320406423212",
+    "updatedAtUtc": "2026-11-25T10:58:47.222Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Tower_2024.jpg",
+    "isPublished": true
+  },
+  {
+    "step": "history-repair",
+    "operationId": "70b24603-707c-433f-a3fc-df6143dd14f3",
+    "appliedAtUtc": "2026-11-25T11:00:13.8487864Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "cf6961d9-d268-452f-a151-3dc8c8fb72bf",
+    "appliedAtUtc": "2026-11-25T11:01:23.0184085Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "1cdcac5acb0949da827ba268543be9a0",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T11:03:18.9306569Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128795257424431"
+  }
+]
