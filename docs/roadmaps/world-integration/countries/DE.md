@@ -10,17 +10,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 177 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 - Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
+- Qualification du 25 novembre : d’Rodelbahn St. Englmar est un Park multi-activités masqué. Bayerwald-Coaster est un parkItem ; les références Wiegand ne créent aucune standalone, et Rodel- und Freizeitparadies est l’ancien nom du même parc.
 
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 130 |
-| À qualifier | 484 |
+| À qualifier | 482 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 34 |
 | Publié, date inconnue | 37 |
 | Hors périmètre enregistré | 89 |
-| Doublon conservé | 29 |
+| Doublon conservé | 31 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **1057**. Sources : Aerophile — références constructeur, AmusementForce, Brogent — projet constructeur, EAZA, Freizeitpark App, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
@@ -28,9 +29,9 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **36 publiés**, **130 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **355 candidats sans fiche**.
 
-Standalone : **35 publiées**, **0 masquées**, **11 candidates sans fiche**. Autres dossiers : **46 types à décider**, **66 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+Standalone : **35 publiées**, **0 masquées**, **10 candidates sans fiche**. Autres dossiers : **46 types à décider**, **65 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
 
-Revue standalone : **26 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **58 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **16 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **25 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **57 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **17 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
