@@ -10533,11 +10533,11 @@
       "siteId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-28T22:08:28.000Z",
+      "presenceObservedAt": "2026-11-25T10:44:48.427Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating — billetterie et FAQ officielles actives en octobre 2026 ; horaires du jour affichés sur le site de l’exploitant.",
+      "sourceLifecycleSignal": "Exploitation et 35 dates d’ouverture confirmées par le calendrier officiel consulté le 25 novembre 2026.",
       "identityConfidence": "Grande roue à billet propre sur le front de mer de National Harbor ; recherches officielles Park et Standalone sur Capital Wheel et National Harbor sans fiche correspondante.",
       "possibleMatches": [],
       "aliases": [
@@ -10545,7 +10545,7 @@
         "National Harbor Capital Wheel"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-28T22:04:12.811Z",
+      "lastDataIntegrationAt": "2026-11-25T10:40:49.685Z",
       "integrationHistory": [
         {
           "eventId": "apply-82bb3c86-acbb-4b3c-adc5-5522f59fff31",
@@ -10606,9 +10606,29 @@
           "evidence": "PARK_DATA_EDITOR:image:dcb789168b1a44a5a7d1f7e304ae61dc",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-capital-wheel-20261028/capital-wheel-audit.json",
           "summary": "Photographie propre de The Capital Wheel #5 importée avec auteur, licence et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-ba0d1f8b-cdae-4ef8-a469-af6ad73eee22",
+          "appliedAt": "2026-11-25T10:40:16.010Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:apply:ba0d1f8b-cdae-4ef8-a469-af6ad73eee22",
+          "auditEvidence": null,
+          "summary": "Six offres mises à jour avec prix en ligne et au guichet actuels, taxes et conditions officielles."
+        },
+        {
+          "eventId": "apply-a15b4175-6901-4d80-a5d3-6080043a52c8",
+          "appliedAt": "2026-11-25T10:40:49.685Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:apply:a15b4175-6901-4d80-a5d3-6080043a52c8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-capital-wheel-refresh-20261125/audit.json",
+          "summary": "Calendrier officiel complet des 35 dates publiées du 25 novembre au 31 décembre 2026 intégré."
         }
       ],
-      "nextAction": "Conserver la fiche et les reçus. Renseigner les horaires seulement après vérification du calendrier hebdomadaire de l’exploitant ; recontrôler les tarifs et rechercher une photographie spécifique du jour d’ouverture. Ne pas republier le post Facebook.",
+      "nextAction": "Conserver la ligne et le post Facebook existant ; revalider les tarifs et le calendrier après le 31 décembre 2026. Le 26 novembre et le 25 décembre n’ont pas de créneau publié : vérifier sans présumer une fermeture.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
@@ -10659,6 +10679,21 @@
           "label": "Wikimedia Commons — photographie The Capital Wheel #5",
           "url": "https://commons.wikimedia.org/wiki/File:The_Capital_Wheel_at_National_Harbor.jpg",
           "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "The Capital Wheel — FAQ officielle, six tarifs et conditions",
+          "url": "https://thecapitalwheel.com/faq/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "The Capital Wheel — calendrier officiel des heures de la roue",
+          "url": "https://thecapitalwheel.com/upcoming-events/category/cap-wheel-hours/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "The Capital Wheel — événements officiels JSON, 35 dates au 31 décembre 2026",
+          "url": "https://thecapitalwheel.com/wp-json/tribe/events/v1/events/?categories=cap-wheel-hours&start_date=2026-11-25&end_date=2027-12-31&per_page=50&page=1",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
@@ -10684,7 +10719,7 @@
           "status": "Published",
           "url": "https://amusement-parks.fun/fr/attraction/b0335449-d1b1-43b0-a39f-fed9b33742ff/the-capital-wheel",
           "publishedAtUtc": "2026-10-28T22:06:50.039Z",
-          "verifiedAtUtc": "2026-10-28T22:08:28.000Z",
+          "verifiedAtUtc": "2026-11-25T10:44:48.427Z",
           "evidence": "PARK_DATA_EDITOR:apply:b112c191-c248-41f3-865f-d81ce9eb4f7e"
         },
         "facebook": {
