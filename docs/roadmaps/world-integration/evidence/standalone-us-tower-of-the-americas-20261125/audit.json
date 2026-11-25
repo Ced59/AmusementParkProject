@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "a9ddf403-0e7a-4de1-8ad1-6155c60e748c",
+  "name": "Tower of the Americas",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/a9ddf403-0e7a-4de1-8ad1-6155c60e748c/tower-of-the-americas",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T23:27:29Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "de4cea2bf380433183287591d3424a86",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128864167424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T23:24:46.694Z",
+  "lastDataEventId": "photo-metadata-0b895d6bf0f7411bbae188f82ee3e4a6",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US sur Tower of the Americas, Tower of Americas et HemisFair Tower : aucun homonyme. Aucun homonyme dans le backlog US.",
+  "completeness": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "3a75aa6d5dad4847a23c2a3d178ba892",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tower_of_Americas_2019.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Bypassers",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2019-07-10"
+    },
+    {
+      "id": "9f94d38467b84413b33f8b6b2b94c158",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:TOTA_observation_deck.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "زرشک",
+      "license": "CC BY-SA 3.0",
+      "photographedOn": "2008"
+    },
+    {
+      "id": "0b895d6bf0f7411bbae188f82ee3e4a6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Entrance_to_Tower_of_the_Americas_IMG_4576.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Billy Hathorn",
+      "license": "CC BY 3.0",
+      "photographedOn": "2014-11-29"
+    }
+  ],
+  "pricingOfferCount": 3,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 0
+}
