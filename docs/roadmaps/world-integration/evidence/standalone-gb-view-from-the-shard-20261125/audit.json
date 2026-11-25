@@ -1,0 +1,94 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "7e72a226-877d-41ff-aeb2-d299f794ca7e",
+  "name": "The View from The Shard",
+  "countryCode": "GB",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/7e72a226-877d-41ff-aeb2-d299f794ca7e/the-view-from-the-shard",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T15:29:00Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "3e5e1cc426cb417b964f0d5ef1792bd0",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128823979424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T15:28:02.265Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions pour « The View from The Shard » et « Shard » en GB : zéro homonyme, y compris masqué ; backlog GB sans entrée correspondante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "1fb2225afd914b5297b15da8b0fd7491",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_View_from_The_Shard,_Shard_London_Bridge,_UK_-_20130630-01.jpg",
+      "isPublished": true,
+      "author": "Smuconlaw",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "787a268239cf48839b076e7bede3e334",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_the_Shard_London_Bridge,_UK_-_20130630-01.jpg",
+      "isPublished": true,
+      "author": "Smuconlaw",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "d133e1e535ed470e92fe6d651e3922c0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Inside_The_Shard,_London_SE1_-_geograph.org.uk_-_3933184.jpg",
+      "isPublished": true,
+      "author": "Christine Matthews",
+      "license": "CC BY-SA 2.0"
+    }
+  ],
+  "sources": [
+    {
+      "label": "The View from The Shard — tarifs officiels",
+      "url": "https://www.theviewfromtheshard.com/ticket-types/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "The View from The Shard — calendrier officiel",
+      "url": "https://www.theviewfromtheshard.com/opening-times/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "The View from The Shard — visite et accès",
+      "url": "https://www.theviewfromtheshard.com/plan-your-visit/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "The View from The Shard — FAQ et conditions",
+      "url": "https://www.theviewfromtheshard.com/frequently-asked-questions/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — galerie du belvédère",
+      "url": "https://commons.wikimedia.org/wiki/File:The_View_from_The_Shard,_Shard_London_Bridge,_UK_-_20130630-01.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama Tamise",
+      "url": "https://commons.wikimedia.org/wiki/File:View_from_the_Shard_London_Bridge,_UK_-_20130630-01.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — intérieur de nuit",
+      "url": "https://commons.wikimedia.org/wiki/File:Inside_The_Shard,_London_SE1_-_geograph.org.uk_-_3933184.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Belvédère à billet propre avec accès sur Joiner Street ; deux tarifs officiels, 12 règles saisonnières et 17 exceptions jusqu’en février 2027, trois photos exactes créditées.",
+  "remainingUncertainty": "Horaires susceptibles de changer avec les événements ; prix de départ variables selon date et créneau, confirmer avant réservation."
+}

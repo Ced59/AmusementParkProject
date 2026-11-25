@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "e992343f-80f2-464e-8f30-3b187a3680f5",
+    "appliedAtUtc": "2026-11-25T15:26:20.1005895Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "1b25dddb-a159-42b3-b8ef-17d88f4a3fe6",
+    "appliedAtUtc": "2026-11-25T15:27:01.5243952Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-1fb2225afd914b5297b15da8b0fd7491",
+    "imageId": "1fb2225afd914b5297b15da8b0fd7491",
+    "updatedAtUtc": "2026-11-25T15:27:36.848Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_View_from_The_Shard,_Shard_London_Bridge,_UK_-_20130630-01.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 90866
+  },
+  {
+    "step": "photo-import-787a268239cf48839b076e7bede3e334",
+    "imageId": "787a268239cf48839b076e7bede3e334",
+    "updatedAtUtc": "2026-11-25T15:27:49.496Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_the_Shard_London_Bridge,_UK_-_20130630-01.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 176755
+  },
+  {
+    "step": "photo-import-d133e1e535ed470e92fe6d651e3922c0",
+    "imageId": "d133e1e535ed470e92fe6d651e3922c0",
+    "updatedAtUtc": "2026-11-25T15:28:02.265Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Inside_The_Shard,_London_SE1_-_geograph.org.uk_-_3933184.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 147652
+  },
+  {
+    "step": "publish",
+    "operationId": "888122d6-c2b1-4ba9-bd97-9471f6837804",
+    "appliedAtUtc": "2026-11-25T15:28:48.9569073Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "3e5e1cc426cb417b964f0d5ef1792bd0",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T15:29:32.9559625Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128823979424431"
+  }
+]
