@@ -1,0 +1,66 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions MY pour « Awana SkyWay », « Genting Highlands Premium Outlets Cable Car » et « Genting SkyWay » : zéro résultat dans les six recherches. Aucun Awana SkyWay dans le backlog MY avant création. La recherche inclut le nom actuel et l’ancien nom afin de distinguer cette ligne de Genting Gohtong Jaya Cable Car.",
+  "decision": "Ligne Awana SkyWay/Genting Highlands Premium Outlets Cable Car avec billets distincts du parc Genting SkyWorlds ; station Sky Sentral, halte Chin Swee et terminus Genting Highlands. Ne pas confondre avec Genting SkyWay, désormais Genting Gohtong Jaya Cable Car, autre ligne.",
+  "officialPrices": {
+    "currency": "MYR",
+    "standardOneWay": 11,
+    "standardReturn": 19,
+    "expressOneWay": 17,
+    "expressReturn": 32,
+    "glassFloorOneWayGate": 32,
+    "glassFloorOneWayOnline": 29,
+    "glassFloorReturnGate": 54,
+    "glassFloorReturnOnline": 48,
+    "glassOnlineRequiresDayBefore": true,
+    "under90cm": "Free"
+  },
+  "officialHours": {
+    "daily": "07:00–23:00",
+    "lastBoarding": "Not stated",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-02-28",
+    "daysCovered": 96
+  },
+  "history": "Nouvelle installation mise en service en décembre 2016 selon le rapport annuel de Genting Malaysia.",
+  "accessibility": "Fauteuils et poussettes dans les cabines standard ; uniquement poussettes dans celles à plancher vitré. Jeunes de 16 ans ou moins accompagnés et surveillés.",
+  "photos": "Trois photos de la ligne inspectées visuellement : cabine en forêt 2017, vue de la ligne 2022, station 2019 ; auteurs et CC BY-SA 4.0, URL, mention de réduction, alt et légende distincts dans huit langues.",
+  "sources": [
+    {
+      "label": "Resorts World Genting — Awana SkyWay, tarifs, horaires, arrêt Chin Swee, accessibilité",
+      "url": "https://rwgenting.com/en/getting-here/cable-car.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Resorts World Genting — changement de nom en Genting Highlands Premium Outlets Cable Car",
+      "url": "https://www.rwgenting.com/en/blog/two-cable-car-routes-now-open-genting-gohtong-jaya-cable-car-genting-highlands-premium-outlets-cable-car.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Genting Malaysia — rapport annuel 2016, mise en service en décembre",
+      "url": "https://www.gentingmalaysia.com/wp-content/uploads/2017/04/GENM2016.pdf",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — emprise Sky Sentral",
+      "url": "https://www.openstreetmap.org/way/1214119419",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabines Awana, Chongkian, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Awana_Skyway.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine Awana, Micolash, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Awana_Skyway_Gondola_lift.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — zone d’embarquement Awana, Jonashtand, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:201906_Awana_Skyway_01.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les horaires officiels 07:00–23:00 peuvent être modifiés pour maintenance ; aucun dernier embarquement distinct n’est publié. Les tarifs de la cabine à plancher vitré en ligne exigent un achat au moins la veille. Photos de 2017, 2019 et 2022 : elles montrent bien la ligne mais pas nécessairement sa décoration actuelle. Calendrier daté à prolonger après le 28 février 2027."
+}

@@ -1,0 +1,124 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+  "name": "Awana SkyWay",
+  "countryCode": "MY",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/bb62c0eb-03cc-4340-b527-4575f1dd4763/awana-skyway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T18:37:31Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "18393fd5e2644bbca696b39161f1c713",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128841925424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T18:34:40.440Z",
+  "lastDataEventId": "7632b708-17c2-4d70-bc34-a760f8794059",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions MY pour « Awana SkyWay », « Genting Highlands Premium Outlets Cable Car » et « Genting SkyWay » : zéro résultat dans les six recherches. Aucun Awana SkyWay dans le backlog MY avant création. La recherche inclut le nom actuel et l’ancien nom afin de distinguer cette ligne de Genting Gohtong Jaya Cable Car.",
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "13825756a6174fbb94b88754188444e5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Awana_Skyway_Gondola_lift.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Micolash"
+    },
+    {
+      "id": "a9a6a277df294117afb2a1bf05ddd5f9",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Awana_Skyway.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Chongkian"
+    },
+    {
+      "id": "ae74fe97fdc54584be54cc33f8e3a08c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:201906_Awana_Skyway_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Jonashtand"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Resorts World Genting — Awana SkyWay, tarifs, horaires, arrêt Chin Swee, accessibilité",
+      "url": "https://rwgenting.com/en/getting-here/cable-car.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Resorts World Genting — changement de nom en Genting Highlands Premium Outlets Cable Car",
+      "url": "https://www.rwgenting.com/en/blog/two-cable-car-routes-now-open-genting-gohtong-jaya-cable-car-genting-highlands-premium-outlets-cable-car.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Genting Malaysia — rapport annuel 2016, mise en service en décembre",
+      "url": "https://www.gentingmalaysia.com/wp-content/uploads/2017/04/GENM2016.pdf",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — emprise Sky Sentral",
+      "url": "https://www.openstreetmap.org/way/1214119419",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabines Awana, Chongkian, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Awana_Skyway.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine Awana, Micolash, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Awana_Skyway_Gondola_lift.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — zone d’embarquement Awana, Jonashtand, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:201906_Awana_Skyway_01.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": {
+    "descriptions": 8,
+    "pricingOffers": 6,
+    "currency": "MYR",
+    "openingHoursRules": 1,
+    "openingHoursFirstDate": "2026-11-25",
+    "openingHoursLastDate": "2027-02-28",
+    "openingHoursDays": 96,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0,
+    "photographs": 3,
+    "historyEvents": 1,
+    "accessConditions": 2,
+    "facebook": "Published"
+  },
+  "remainingUncertainty": "Les horaires officiels 07:00–23:00 peuvent être modifiés pour maintenance ; aucun dernier embarquement distinct n’est publié. Les tarifs de la cabine à plancher vitré en ligne exigent un achat au moins la veille. Photos de 2017, 2019 et 2022 : elles montrent bien la ligne mais pas nécessairement sa décoration actuelle. Calendrier daté à prolonger après le 28 février 2027."
+}

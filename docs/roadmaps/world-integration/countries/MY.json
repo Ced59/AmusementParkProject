@@ -23,7 +23,8 @@
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
-    "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
+    "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Awana SkyWay : ligne autonome créée et publiée le 25 novembre 2026 avec six tarifs officiels, deux règles d’accès, histoire, trois photos libres exactes, huit descriptions et publication Facebook. Maintenance et prolongation des horaires suivies dans le backlog permanent."
   ],
   "entries": [
     {
@@ -2741,6 +2742,172 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "MY-candidate-discovery-awana-skyway-20261125",
+      "name": "Awana SkyWay",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Télécabine panoramique à billet propre",
+      "locality": "Sky Sentral, Genting Highlands, Pahang",
+      "siteId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T18:37:31Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires officiels actifs au 25 novembre 2026 ; fermetures de maintenance possibles.",
+      "identityConfidence": "Billet autonome, ligne et alias vérifiés auprès de l’exploitant ; tarifs, horaires, accès, historique, coordonnées et trois photos exactes sourcés.",
+      "possibleMatches": [],
+      "aliases": [
+        "Genting Highlands Premium Outlets Cable Car",
+        "Genting Highlands Cable Car from Sky Sentral",
+        "Awana Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T18:34:40.440Z",
+      "integrationHistory": [
+        {
+          "eventId": "92961f7b-6633-458f-9aa2-35f51bbd1520",
+          "appliedAt": "2026-11-25T18:32:37.605Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/operations.json#92961f7b-6633-458f-9aa2-35f51bbd1520",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche de doublons, localisation, identité et huit descriptions."
+        },
+        {
+          "eventId": "e3957905-78ed-491a-8360-764239803f02",
+          "appliedAt": "2026-11-25T18:33:08.350Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/operations.json#e3957905-78ed-491a-8360-764239803f02",
+          "auditEvidence": null,
+          "summary": "Six tarifs officiels en MYR et horaires quotidiens datés intégrés."
+        },
+        {
+          "eventId": "photo-13825756a6174fbb94b88754188444e5",
+          "appliedAt": "2026-11-25T18:33:26.582Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/operations.json#photo-13825756a6174fbb94b88754188444e5",
+          "auditEvidence": null,
+          "summary": "Cabine Awana au-dessus de la forêt, photo exacte avec huit alt, légendes et crédits."
+        },
+        {
+          "eventId": "photo-a9a6a277df294117afb2a1bf05ddd5f9",
+          "appliedAt": "2026-11-25T18:33:40.120Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/operations.json#photo-a9a6a277df294117afb2a1bf05ddd5f9",
+          "auditEvidence": null,
+          "summary": "Vue de la ligne et de ses cabines, photo exacte et créditée."
+        },
+        {
+          "eventId": "photo-ae74fe97fdc54584be54cc33f8e3a08c",
+          "appliedAt": "2026-11-25T18:33:53.243Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/operations.json#photo-ae74fe97fdc54584be54cc33f8e3a08c",
+          "auditEvidence": null,
+          "summary": "Zone d’embarquement, troisième photo exacte et créditée."
+        },
+        {
+          "eventId": "fdb73243-12de-48b5-82d6-825531b7d98a",
+          "appliedAt": "2026-11-25T18:34:25.179Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/operations.json#fdb73243-12de-48b5-82d6-825531b7d98a",
+          "auditEvidence": null,
+          "summary": "Deux conditions d’accès officielles : fauteuils selon la cabine et accompagnement des jeunes."
+        },
+        {
+          "eventId": "7632b708-17c2-4d70-bc34-a760f8794059",
+          "appliedAt": "2026-11-25T18:34:40.440Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb62c0eb-03cc-4340-b527-4575f1dd4763",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/operations.json#7632b708-17c2-4d70-bc34-a760f8794059",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/audit.json",
+          "summary": "Événement historique de décembre 2016 visible ; audit final 95/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier maintenance, tarifs et dernière admission sur le site officiel, puis prolonger les horaires après le 28 février 2027.",
+      "sources": [
+        {
+          "label": "Resorts World Genting — Awana SkyWay, tarifs, horaires, arrêt Chin Swee, accessibilité",
+          "url": "https://rwgenting.com/en/getting-here/cable-car.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Resorts World Genting — changement de nom en Genting Highlands Premium Outlets Cable Car",
+          "url": "https://www.rwgenting.com/en/blog/two-cable-car-routes-now-open-genting-gohtong-jaya-cable-car-genting-highlands-premium-outlets-cable-car.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Genting Malaysia — rapport annuel 2016, mise en service en décembre",
+          "url": "https://www.gentingmalaysia.com/wp-content/uploads/2017/04/GENM2016.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "OpenStreetMap — emprise Sky Sentral",
+          "url": "https://www.openstreetmap.org/way/1214119419",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabines Awana, Chongkian, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Awana_Skyway.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabine Awana, Micolash, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Awana_Skyway_Gondola_lift.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — zone d’embarquement Awana, Jonashtand, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:201906_Awana_Skyway_01.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors inventaire de la ligne à billet propre ; six recherches PDE sur noms et alias, sources exploitant, rapport annuel et trois photos Commons.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Le téléphérique vend un billet propre et fonctionne comme ligne d’accès distincte du billet du parc Genting SkyWorlds et de l’autre ligne Genting Gohtong Jaya."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/bb62c0eb-03cc-4340-b527-4575f1dd4763/awana-skyway",
+          "publishedAtUtc": "2026-11-25T18:35:31.5255871Z",
+          "verifiedAtUtc": "2026-11-25T18:37:31Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-awana-skyway-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "18393fd5e2644bbca696b39161f1c713",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/bb62c0eb-03cc-4340-b527-4575f1dd4763/awana-skyway?facebook-image=13825756a6174fbb94b88754188444e5",
+          "publishedAtUtc": "2026-11-25T18:35:52.3470288Z",
+          "externalPostId": "1285475681307050_122128841925424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128841925424431",
+          "failureCode": null,
+          "failureMessage": null,
+          "network": "Facebook"
+        }
+      }
     }
   ]
 }
