@@ -18,7 +18,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 482 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 34 |
+| Intégration achevée | 35 |
 | Publié, date inconnue | 37 |
 | Hors périmètre enregistré | 89 |
 | Doublon conservé | 31 |
@@ -29,7 +29,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **36 publiés**, **130 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **355 candidats sans fiche**.
 
-Standalone : **35 publiées**, **0 masquées**, **10 candidates sans fiche**. Autres dossiers : **46 types à décider**, **65 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+Standalone : **36 publiées**, **0 masquées**, **10 candidates sans fiche**. Autres dossiers : **46 types à décider**, **65 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
 
 Revue standalone : **25 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **57 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **17 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -42,4 +42,4 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 - [Page 1 — lignes 1 à 250](DE/001.md)
 - [Page 2 — lignes 251 à 500](DE/002.md)
 - [Page 3 — lignes 501 à 750](DE/003.md)
-- [Page 4 — lignes 751 à 803](DE/004.md)
+- [Page 4 — lignes 751 à 804](DE/004.md)
