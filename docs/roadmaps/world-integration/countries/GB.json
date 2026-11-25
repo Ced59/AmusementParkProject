@@ -30,7 +30,8 @@
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 18 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
-    "Contrôle supplémentaire alpine coasters : 1 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
+    "Contrôle supplémentaire alpine coasters : 1 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.",
+    "Découverte du 25 novembre : The View from The Shard publié avec tarifs officiels, calendrier à exceptions et trois photos exactes créditées."
   ],
   "entries": [
     {
@@ -13271,6 +13272,156 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "GB-candidate-discovery-view-from-the-shard-20261125",
+      "name": "The View from The Shard",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère panoramique à billet propre",
+      "locality": "Joiner Street, London SE1 9QU",
+      "siteId": "7e72a226-877d-41ff-aeb2-d299f794ca7e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T15:29:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et calendrier actuels publiés par l’exploitant.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans homonyme ; accès et billet spécifiques au belvédère, distincts des autres usages du bâtiment.",
+      "possibleMatches": [],
+      "aliases": [
+        "View from The Shard",
+        "The Shard viewing gallery"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T15:28:02.265Z",
+      "integrationHistory": [
+        {
+          "eventId": "e992343f-80f2-464e-8f30-3b187a3680f5",
+          "appliedAt": "2026-11-25T15:26:20.100Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e72a226-877d-41ff-aeb2-d299f794ca7e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-view-from-the-shard-20261125/operations.json#e992343f-80f2-464e-8f30-3b187a3680f5",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches PDE « The View from The Shard » et « Shard » sans homonyme ; accès et descriptions en huit langues."
+        },
+        {
+          "eventId": "1b25dddb-a159-42b3-b8ef-17d88f4a3fe6",
+          "appliedAt": "2026-11-25T15:27:01.524Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e72a226-877d-41ff-aeb2-d299f794ca7e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-view-from-the-shard-20261125/operations.json#1b25dddb-a159-42b3-b8ef-17d88f4a3fe6",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels à partir de GBP 28 pour les adultes et GBP 10 pour les enfants ; calendrier daté jusqu’en février 2027 avec exceptions."
+        },
+        {
+          "eventId": "photo-import-1fb2225afd914b5297b15da8b0fd7491",
+          "appliedAt": "2026-11-25T15:27:36.848Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e72a226-877d-41ff-aeb2-d299f794ca7e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-view-from-the-shard-20261125/operations.json#photo-import-1fb2225afd914b5297b15da8b0fd7491",
+          "auditEvidence": null,
+          "summary": "Galerie vitrée du belvédère. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-787a268239cf48839b076e7bede3e334",
+          "appliedAt": "2026-11-25T15:27:49.496Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e72a226-877d-41ff-aeb2-d299f794ca7e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-view-from-the-shard-20261125/operations.json#photo-import-787a268239cf48839b076e7bede3e334",
+          "auditEvidence": null,
+          "summary": "Panorama sur la Tamise depuis la galerie. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-d133e1e535ed470e92fe6d651e3922c0",
+          "appliedAt": "2026-11-25T15:28:02.265Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e72a226-877d-41ff-aeb2-d299f794ca7e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-view-from-the-shard-20261125/operations.json#photo-import-d133e1e535ed470e92fe6d651e3922c0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-view-from-the-shard-20261125/audit.json",
+          "summary": "Visiteurs face au panorama nocturne. Photo exacte, créditée et légendée dans huit langues. Audit projeté 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; recontrôler les exceptions d’événements et actualiser le calendrier après février 2027.",
+      "sources": [
+        {
+          "label": "The View from The Shard — tarifs officiels",
+          "url": "https://www.theviewfromtheshard.com/ticket-types/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "The View from The Shard — calendrier officiel",
+          "url": "https://www.theviewfromtheshard.com/opening-times/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "The View from The Shard — visite et accès",
+          "url": "https://www.theviewfromtheshard.com/plan-your-visit/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "The View from The Shard — FAQ et conditions",
+          "url": "https://www.theviewfromtheshard.com/frequently-asked-questions/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — galerie du belvédère",
+          "url": "https://commons.wikimedia.org/wiki/File:The_View_from_The_Shard,_Shard_London_Bridge,_UK_-_20130630-01.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama Tamise",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_the_Shard_London_Bridge,_UK_-_20130630-01.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur de nuit",
+          "url": "https://commons.wikimedia.org/wiki/File:Inside_The_Shard,_London_SE1_-_geograph.org.uk_-_3933184.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche de belvédère à billet propre ; contrôle PDE et inspection de trois photographies exactes réutilisables.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "La galerie possède une entrée sur Joiner Street, un billet et un calendrier propres au sein du Shard."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7e72a226-877d-41ff-aeb2-d299f794ca7e/the-view-from-the-shard",
+          "publishedAtUtc": "2026-11-25T15:28:48.9569073Z",
+          "verifiedAtUtc": "2026-11-25T15:29:00Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-view-from-the-shard-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "3e5e1cc426cb417b964f0d5ef1792bd0",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7e72a226-877d-41ff-aeb2-d299f794ca7e/the-view-from-the-shard?facebook-image=1fb2225afd914b5297b15da8b0fd7491",
+          "publishedAtUtc": "2026-11-25T15:29:32.9559625Z",
+          "externalPostId": "1285475681307050_122128823979424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128823979424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-view-from-the-shard-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "GB-candidate-ddd0d59ac49b2f",
