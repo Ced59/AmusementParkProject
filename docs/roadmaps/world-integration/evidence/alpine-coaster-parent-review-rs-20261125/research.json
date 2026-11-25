@@ -1,0 +1,51 @@
+{
+  "reviewedAt": "2026-11-25",
+  "decision": "Deux références Wiegand serbes correspondent à des bobs sur rails situés dans des centres de loisirs multi-activités déjà représentés par une fiche Park masquée. Les qualifier comme attractions de ces parcs, conserver les références, et ne créer aucune standalone supplémentaire. Cette revue documentaire ne constitue pas une intégration de données en production.",
+  "cases": [
+    {
+      "candidateEntryId": "RS-candidate-standalone-5d733920bcf554",
+      "parentParkEntryId": "RS-park-16b23920-8e88-4681-9418-ee0789625f01",
+      "parentParkSiteId": "16b23920-8e88-4681-9418-ee0789625f01",
+      "parkItemName": "Bob na Šinama — Kopaonik",
+      "decision": "InsidePark",
+      "reason": "Le tarif officiel 2026 classe le bob, le tubing et la tyrolienne sous « Zabavni park » au sein du centre Kopaonik ; la piste est une attraction du centre, à traiter comme parkItem.",
+      "sources": [
+        {
+          "label": "Source officielle ou tourisme local — classement de la piste dans le centre",
+          "url": "https://www.skijalistasrbije.rs/sites/default/files/attachments/cenovnik_sr_kopaonik_2026.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Source complémentaire — offre de loisirs du centre",
+          "url": "https://www.skijalistasrbije.rs/en/node/908",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "productionMutation": false,
+      "lastDataIntegrationAtUnchanged": true
+    },
+    {
+      "candidateEntryId": "RS-candidate-standalone-93f5e309d74f14",
+      "parentParkEntryId": "RS-park-225d083f-a05b-4e15-a87d-720612f2c0d9",
+      "parentParkSiteId": "225d083f-a05b-4e15-a87d-720612f2c0d9",
+      "parkItemName": "Bob na Šinama — Tornik",
+      "decision": "InsidePark",
+      "reason": "L’office du tourisme place le bob parmi les activités du Ski centar Tornik avec tyrolienne, tubing, mini-golf et parc aventure ; le tarif officiel confirme l’exploitation dans ce centre. La piste est un parkItem.",
+      "sources": [
+        {
+          "label": "Source officielle ou tourisme local — classement de la piste dans le centre",
+          "url": "https://www.zlatibor.org.rs/sr/sta-raditi/aktivni-odmor/tornik-letnji-sadrzaji/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Source complémentaire — offre de loisirs du centre",
+          "url": "https://www.skijalistasrbije.rs/sites/default/files/attachments/cenovnik_sr_tornik_2026.pdf",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "productionMutation": false,
+      "lastDataIntegrationAtUnchanged": true
+    }
+  ],
+  "photoSearch": "Wikimedia Commons : recherches exactes Kopaonik/Tornik avec Bob na šinama, bob na sinama, alpine coaster et mountain coaster sans photographie de ces pistes identifiée. Ne pas utiliser une photo générique du domaine comme photo du bob. Rechercher une photo licenciée ou une autorisation avant de publier ces parkItems."
+}
