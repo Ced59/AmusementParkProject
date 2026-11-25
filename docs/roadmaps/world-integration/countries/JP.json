@@ -24,7 +24,8 @@
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 39 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 4 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
-    "Découverte du 25 novembre : Tokyo Skytree vérifiée et publiée comme tour d’observation autonome ; calendrier officiel daté, trois photos exactes et annonce Facebook publiés."
+    "Découverte du 25 novembre : Tokyo Skytree vérifiée et publiée comme tour d’observation autonome ; calendrier officiel daté, trois photos exactes et annonce Facebook publiés.",
+    "Découverte du 25 novembre : SHIBUYA SKY publié avec tarifs selon le créneau, horaires, trois photos exactes créditées et annonce Facebook."
   ],
   "entries": [
     {
@@ -379,6 +380,160 @@
         "score": 91,
         "publicationBlockers": [],
         "gapCount": 1
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-shibuya-sky-20261125",
+      "name": "SHIBUYA SKY",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère urbain à billet propre",
+      "locality": "2-24-12 Shibuya, Tokyo",
+      "siteId": "e4fd94f6-7bbb-433a-be43-f1ca44821bc3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T16:26:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site officiel actif, horaires et billetterie pour les créneaux de visite.",
+      "identityConfidence": "Recherches PDE sans homonyme ; entrée, parcours et billetterie propres au belvédère au sein de Shibuya Scramble Square.",
+      "possibleMatches": [],
+      "aliases": [
+        "Shibuya Sky Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T16:25:12.797Z",
+      "integrationHistory": [
+        {
+          "eventId": "4bbe3770-3b98-4890-bbc9-b0b352a0af91",
+          "appliedAt": "2026-11-25T16:23:43.603Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4fd94f6-7bbb-433a-be43-f1ca44821bc3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shibuya-sky-20261125/operations.json#4bbe3770-3b98-4890-bbc9-b0b352a0af91",
+          "auditEvidence": null,
+          "summary": "Création masquée de SHIBUYA SKY après recherches PDE sans homonyme ; identité, accès, géolocalisation et huit descriptions."
+        },
+        {
+          "eventId": "8ab88215-3fa3-48d3-ace0-52aa6b344e58",
+          "appliedAt": "2026-11-25T16:24:16.348Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4fd94f6-7bbb-433a-be43-f1ca44821bc3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shibuya-sky-20261125/operations.json#8ab88215-3fa3-48d3-ace0-52aa6b344e58",
+          "auditEvidence": null,
+          "summary": "Tarifs d’entrée adultes en ligne avant et après 15 h, tarifs enfant et guichet signalés, horaires et dernière entrée officiels jusqu’au 31 décembre 2026."
+        },
+        {
+          "eventId": "photo-import-86e157419b4f4dfda4f574f5fa856ea7",
+          "appliedAt": "2026-11-25T16:24:45.196Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4fd94f6-7bbb-433a-be43-f1ca44821bc3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shibuya-sky-20261125/operations.json#photo-import-86e157419b4f4dfda4f574f5fa856ea7",
+          "auditEvidence": null,
+          "summary": "Panneau THE ROOF et visiteurs sur la terrasse. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-18f5bf129fa043c8bb1f81a8153cd7d7",
+          "appliedAt": "2026-11-25T16:24:58.690Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4fd94f6-7bbb-433a-be43-f1ca44821bc3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shibuya-sky-20261125/operations.json#photo-import-18f5bf129fa043c8bb1f81a8153cd7d7",
+          "auditEvidence": null,
+          "summary": "Terrasse extérieure avec garde-corps vitré et panorama. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-9c3507dda2234e54a1eb777a58a4eef4",
+          "appliedAt": "2026-11-25T16:25:12.797Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4fd94f6-7bbb-433a-be43-f1ca44821bc3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shibuya-sky-20261125/operations.json#photo-import-9c3507dda2234e54a1eb777a58a4eef4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shibuya-sky-20261125/audit.json",
+          "summary": "Visiteurs regardant Tokyo depuis le belvédère. Photo exacte, créditée et légendée dans huit langues. Audit projeté 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; recontrôler la grille tarifaire dans le parcours de réservation actif, les conditions de vente par résidence et les horaires après le 31 décembre 2026.",
+      "sources": [
+        {
+          "label": "SHIBUYA SKY — site officiel et zones de visite",
+          "url": "https://www.shibuya-scramble-square.com/sky/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Shibuya Scramble Square — horaires et adresse en anglais",
+          "url": "https://www.shibuya-scramble-square.com/en/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SHIBUYA SKY — page officielle des billets",
+          "url": "https://www.shibuya-scramble-square.com/sky/ticket/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SHIBUYA SKY — tarifs officiels révisés en 2025",
+          "url": "https://www.shibuya-scramble-square.com/assets/pdf/about/20250409scsq.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SHIBUYA SKY — accès et guichet",
+          "url": "https://www.shibuya-scramble-square.com/sky/access/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — terrasse THE ROOF",
+          "url": "https://commons.wikimedia.org/wiki/File:Shibuya_Sky_Observation_Deck_(53415730632).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — terrasse panoramique",
+          "url": "https://commons.wikimedia.org/wiki/File:Shibuya_Scramble_Square_SHIBUYA_SKY_(53331300464).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — visiteurs sur le toit",
+          "url": "https://commons.wikimedia.org/wiki/File:Taking_In_the_View,_Shibuya_Sky_Observation_Deck_(53416648301).jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche du belvédère à billet autonome, contrôle PDE des homonymes et inspection de trois photos libres exactes.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "SHIBUYA SKY vend son entrée datée et dispose d’un parcours distinct des boutiques et bureaux de l’immeuble."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e4fd94f6-7bbb-433a-be43-f1ca44821bc3/shibuya-sky",
+          "publishedAtUtc": "2026-11-25T16:25:59.5844374Z",
+          "verifiedAtUtc": "2026-11-25T16:26:00Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shibuya-sky-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "34d2c90f2e5e4fde9dd3da9a2ef2ed5c",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e4fd94f6-7bbb-433a-be43-f1ca44821bc3/shibuya-sky?facebook-image=86e157419b4f4dfda4f574f5fa856ea7",
+          "publishedAtUtc": "2026-11-25T16:26:54.6393629Z",
+          "externalPostId": "1285475681307050_122128828755424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128828755424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shibuya-sky-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
       }
     },
     {
