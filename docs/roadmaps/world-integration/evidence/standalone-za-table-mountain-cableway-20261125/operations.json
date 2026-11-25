@@ -1,0 +1,97 @@
+[
+  {
+    "step": "core",
+    "operationId": "65f403e0-6480-426e-a8b9-d70eaf980c38",
+    "appliedAtUtc": "2026-11-25T18:05:33.0495154Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "pricing-hours",
+    "eventId": "pricing-hours-20261125T180713",
+    "appliedAtUtc": "2026-11-25T18:07:13.9168631Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "previewOperationId": "a9e3aa65-d6e8-46f2-8da6-ff06c99c43d5",
+    "receiptNote": "Apply receipt header overwritten by CLI redirect; timestamp and counts retained from output, final graph exported and checked."
+  },
+  {
+    "step": "site-publish",
+    "operationId": "aa715a55-d877-45dc-94b1-aca32bb24b7d",
+    "appliedAtUtc": "2026-11-25T18:09:45.7372602Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-current",
+    "eventId": "photo-68169c13b02e41a8b29c676a56148e8e",
+    "imageId": "68169c13b02e41a8b29c676a56148e8e",
+    "createdAtUtc": "2026-11-25T18:08:15.131Z",
+    "updatedAtUtc": "2026-11-25T18:08:18.973Z",
+    "id": "68169c13b02e41a8b29c676a56148e8e",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cableway_up_Table_Mountain.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "LizaLotter"
+  },
+  {
+    "step": "photo-gallery",
+    "eventId": "photo-63ecaa078d9043ffaeb1016e4b0f8284",
+    "imageId": "63ecaa078d9043ffaeb1016e4b0f8284",
+    "createdAtUtc": "2026-11-25T18:08:29.672Z",
+    "updatedAtUtc": "2026-11-25T18:08:33.05Z",
+    "id": "63ecaa078d9043ffaeb1016e4b0f8284",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Table_Mountain_Cable_Car.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 3.0",
+    "author": "ZS1TP"
+  },
+  {
+    "step": "photo-gallery",
+    "eventId": "photo-aa7e9a0bdc5a49a6aba684a8d619ca63",
+    "imageId": "aa7e9a0bdc5a49a6aba684a8d619ca63",
+    "createdAtUtc": "2026-11-25T18:08:43.366Z",
+    "updatedAtUtc": "2026-11-25T18:08:47.018Z",
+    "id": "aa7e9a0bdc5a49a6aba684a8d619ca63",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Table_Mountain_cableway,_upper_station.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Ossewa"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "621a56dc7373449ea49358c11d310e86",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T18:10:01.5629281Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128838967424431",
+    "selectedImageId": "68169c13b02e41a8b29c676a56148e8e"
+  }
+]

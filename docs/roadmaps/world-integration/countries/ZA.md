@@ -9,6 +9,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
+- Table Mountain Aerial Cableway : téléphérique autonome créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. La météo et la divergence du 1er février dans les horaires officiels sont suivies dans le backlog permanent.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -16,7 +17,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 34 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 3 |
+| Intégration achevée | 4 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 2 |
 | Doublon conservé | 0 |
@@ -27,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **14 masqués à intégrer**, **4 masqués NotRelevant à réexaminer**, **31 candidats sans fiche**.
 
-Standalone : **3 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **4 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -75,6 +76,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | ZA-candidate-b393ecb5cd3aec | SAAMBR (South African Association for Marine Biological Research) / uShaka Sea World | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.seaworld.org.za) |
 | ZA-candidate-ddfc20ddf6668d | Splash Waterworld | Durban, South Africa | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/splash-waterworld-durban-south-africa) |
 | ZA-candidate-0aec0189977a6a | Sun City Aqua Park | Pilanesberg | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Africa#South_Africa) |
+| ZA-candidate-discovery-table-mountain-cableway-20261125 | Table Mountain Aerial Cableway | Tafelberg Road, Cape Town, Western Cape | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T18:08:47.018Z | — | Conserver la ligne et les preuves ; recontrôler le 1er février 2027, les suspensions météo, et prolonger les horaires après le 30 avril 2027 sur le site officiel. Qualification standalone : AlreadyStandalone. Le téléphérique possède son propre billet et son propre exploitant ; l’accès au parc national et ses sentiers sont distincts. Signal source : Billetterie et horaires officiels actifs au 25 novembre 2026 ; fonctionnement soumis aux conditions météorologiques.. [Table Mountain Aerial Cableway — tarifs officiels 2026–2027](https://www.tablemountain.net/plan-your-visit/buy-tickets) · [Table Mountain Aerial Cableway — horaires saisonniers et météo](https://www.tablemountain.net/plan-your-visit/operating-hours/) · [Table Mountain Aerial Cableway — accès à la station inférieure](https://www.tablemountain.net/plan-your-visit/getting-here) · [Table Mountain Aerial Cableway — historique et ouverture en 1929](https://www.tablemountain.net/about-us/) · [Table Mountain Aerial Cableway — accès des personnes à mobilité réduite](https://www.tablemountain.net/plan-your-visit/wheelchair-access-and-mobility-scooters) · [OpenStreetMap — station inférieure du téléphérique](https://www.openstreetmap.org/way/28198399) · [Wikimedia Commons — cabine devant la montagne, LizaLotter, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Cableway_up_Table_Mountain.jpg) · [Wikimedia Commons — cabine, ZS1TP, CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Table_Mountain_Cable_Car.jpg) · [Wikimedia Commons — station supérieure, Ossewa, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Table_Mountain_cableway,_upper_station.jpg) |
 | ZA-candidate-c0437c989b6239 | Two Oceans Aquarium | Cape Town | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#South_Africa) · [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](https://www.aquarium.co.za/) |
 | ZA-candidate-8e87e2600ab26a | Umgeni River Bird Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#South_Africa) |
 | ZA-park-08bf7966-1e47-431b-96fe-ccb17866acfd | Unknown South African Showman | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |

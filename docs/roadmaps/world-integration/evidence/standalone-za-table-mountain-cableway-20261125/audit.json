@@ -1,0 +1,132 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "ddd061bc-28b4-495f-9fb7-c715a0a52d32",
+  "name": "Table Mountain Aerial Cableway",
+  "countryCode": "ZA",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ddd061bc-28b4-495f-9fb7-c715a0a52d32/table-mountain-aerial-cableway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T18:12:32Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "621a56dc7373449ea49358c11d310e86",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128838967424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T18:08:47.018Z",
+  "lastDataEventId": "photo-aa7e9a0bdc5a49a6aba684a8d619ca63",
+  "presenceSearch": "PDE SearchStandaloneAttractions « Table Mountain » en ZA ne retournait que Cape Wheel par correspondance textuelle ; « Cableway » ne retournait aucun résultat. SearchParks « Table Mountain » ne trouvait aucun parc ZA correspondant ; le backlog ZA ne contenait pas ce téléphérique.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 68,
+    "earnedPoints": 62,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "68169c13b02e41a8b29c676a56148e8e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cableway_up_Table_Mountain.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "LizaLotter"
+    },
+    {
+      "id": "63ecaa078d9043ffaeb1016e4b0f8284",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Table_Mountain_Cable_Car.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 3.0",
+      "author": "ZS1TP"
+    },
+    {
+      "id": "aa7e9a0bdc5a49a6aba684a8d619ca63",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Table_Mountain_cableway,_upper_station.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Ossewa"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Table Mountain Aerial Cableway — tarifs officiels 2026–2027",
+      "url": "https://www.tablemountain.net/plan-your-visit/buy-tickets",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Table Mountain Aerial Cableway — horaires saisonniers et météo",
+      "url": "https://www.tablemountain.net/plan-your-visit/operating-hours/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Table Mountain Aerial Cableway — accès à la station inférieure",
+      "url": "https://www.tablemountain.net/plan-your-visit/getting-here",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Table Mountain Aerial Cableway — historique et ouverture en 1929",
+      "url": "https://www.tablemountain.net/about-us/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Table Mountain Aerial Cableway — accès des personnes à mobilité réduite",
+      "url": "https://www.tablemountain.net/plan-your-visit/wheelchair-access-and-mobility-scooters",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — station inférieure du téléphérique",
+      "url": "https://www.openstreetmap.org/way/28198399",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine devant la montagne, LizaLotter, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Cableway_up_Table_Mountain.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine, ZS1TP, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Table_Mountain_Cable_Car.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — station supérieure, Ossewa, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Table_Mountain_cableway,_upper_station.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": {
+    "descriptions": 8,
+    "pricingOffers": 4,
+    "currency": "ZAR",
+    "openingHoursRules": 4,
+    "openingHoursFirstDate": "2026-11-25",
+    "openingHoursLastDate": "2027-04-30",
+    "openingHoursDays": 157,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0,
+    "photographs": 3,
+    "facebook": "Published"
+  },
+  "remainingUncertainty": "Exploitation suspendue lors de vents forts ou de mauvaise météo. La page officielle annonce en titre le 1er février–30 avril, mais la ligne du tableau commence le 2 février ; le 1er février 2027 a été rattaché au créneau annoncé dans le titre et doit être revérifié. Calendrier daté à prolonger après le 30 avril 2027 ; tarifs valables jusqu’au 30 juin 2027."
+}

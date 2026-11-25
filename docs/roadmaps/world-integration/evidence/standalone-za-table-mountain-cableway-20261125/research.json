@@ -1,0 +1,77 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchStandaloneAttractions « Table Mountain » en ZA ne retournait que Cape Wheel par correspondance textuelle ; « Cableway » ne retournait aucun résultat. SearchParks « Table Mountain » ne trouvait aucun parc ZA correspondant ; le backlog ZA ne contenait pas ce téléphérique.",
+  "decision": "Téléphérique autonome à billet propre de la Table Mountain Aerial Cableway Company, distinct du parc national et de ses autres activités ; catégorie standalone TransportRide, sous-type téléphérique à cabine Rotair.",
+  "officialPrices": {
+    "currency": "ZAR",
+    "validFrom": "2026-07-01",
+    "validTo": "2027-06-30",
+    "adultReturnOnline": 475,
+    "adultReturnGate": 530,
+    "childAge4To17ReturnOnline": 230,
+    "childReturnGate": 270,
+    "adultOneWayOnline": 300,
+    "adultOneWayGate": 330,
+    "childOneWayOnline": 165,
+    "childOneWayGate": 180
+  },
+  "officialHours": {
+    "november": "07:30–20:00, dernière montée 19:00",
+    "decemberJanuary": "07:30–21:00, dernière montée 20:00",
+    "februaryMarch": "07:30–20:00, dernière montée 19:00",
+    "april": "07:30–19:30, dernière montée 18:30",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-04-30",
+    "daysCovered": 157,
+    "weatherDependent": true
+  },
+  "photos": "Trois photos exactes inspectées visuellement : cabine devant la montagne, cabine en gros plan et station supérieure. Licences Commons CC BY-SA 3.0/4.0, auteurs, URL, réduction, alt et légende en huit langues.",
+  "sources": [
+    {
+      "label": "Table Mountain Aerial Cableway — tarifs officiels 2026–2027",
+      "url": "https://www.tablemountain.net/plan-your-visit/buy-tickets",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Table Mountain Aerial Cableway — horaires saisonniers et météo",
+      "url": "https://www.tablemountain.net/plan-your-visit/operating-hours/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Table Mountain Aerial Cableway — accès à la station inférieure",
+      "url": "https://www.tablemountain.net/plan-your-visit/getting-here",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Table Mountain Aerial Cableway — historique et ouverture en 1929",
+      "url": "https://www.tablemountain.net/about-us/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Table Mountain Aerial Cableway — accès des personnes à mobilité réduite",
+      "url": "https://www.tablemountain.net/plan-your-visit/wheelchair-access-and-mobility-scooters",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — station inférieure du téléphérique",
+      "url": "https://www.openstreetmap.org/way/28198399",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine devant la montagne, LizaLotter, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Cableway_up_Table_Mountain.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine, ZS1TP, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Table_Mountain_Cable_Car.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — station supérieure, Ossewa, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Table_Mountain_cableway,_upper_station.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Exploitation suspendue lors de vents forts ou de mauvaise météo. La page officielle annonce en titre le 1er février–30 avril, mais la ligne du tableau commence le 2 février ; le 1er février 2027 a été rattaché au créneau annoncé dans le titre et doit être revérifié. Calendrier daté à prolonger après le 30 avril 2027 ; tarifs valables jusqu’au 30 juin 2027."
+}
