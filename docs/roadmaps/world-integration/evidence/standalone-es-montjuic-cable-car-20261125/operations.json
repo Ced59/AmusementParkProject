@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "b4f77cd0-8754-4c69-9012-8d61b7e216aa",
+    "appliedAtUtc": "2026-11-25T21:36:41.1466502Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "a18cab8f-8d6a-4e0e-867e-e8deaea6424e",
+    "appliedAtUtc": "2026-11-25T21:37:04.0755746Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "84608e64-8adf-4978-8fb6-61393218dbd0",
+    "appliedAtUtc": "2026-11-25T21:38:06.9234703Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "ab0df96b-9158-442a-b330-57e634bbc948",
+    "appliedAtUtc": "2026-11-25T21:38:18.0717231Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-a4776f13f77b46eb9dd22dd5b8a1a64c",
+    "imageId": "a4776f13f77b46eb9dd22dd5b8a1a64c",
+    "createdAtUtc": "2026-11-25T21:38:31.61Z",
+    "updatedAtUtc": "2026-11-25T21:38:35.194Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:329_Telefèric_de_Montjuïc,_cabina_entrant_a_l'estació_inferior_(Barcelona).jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-26e7f35acf534946a1ebbfc80d0f915f",
+    "imageId": "26e7f35acf534946a1ebbfc80d0f915f",
+    "createdAtUtc": "2026-11-25T21:38:39.349Z",
+    "updatedAtUtc": "2026-11-25T21:38:42.753Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Montjuïc_Cable_Car_BCN_04_2016_7101.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-3b3b62507dc0415480476579124893b5",
+    "imageId": "3b3b62507dc0415480476579124893b5",
+    "createdAtUtc": "2026-11-25T21:38:47.473Z",
+    "updatedAtUtc": "2026-11-25T21:38:50.966Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teleferique_de_Montjuic,_barcelone_2018.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "ffd1a943-781e-4d16-8e12-58627c792a76",
+    "appliedAtUtc": "2026-11-25T21:39:23.5251131Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "08d428909945431cbb55cf618d07c281",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T21:40:12.7119262Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128855557424431"
+  }
+]

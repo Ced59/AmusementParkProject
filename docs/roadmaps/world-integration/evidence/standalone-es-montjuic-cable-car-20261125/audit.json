@@ -1,0 +1,77 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "806384d6-fa8d-4752-8432-30eed57166eb",
+  "name": "Montjuïc Cable Car",
+  "countryCode": "ES",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/806384d6-fa8d-4752-8432-30eed57166eb/montjuic-cable-car",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T21:41:06Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "08d428909945431cbb55cf618d07c281",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128855557424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T21:38:50.966Z",
+  "lastDataEventId": "photo-3b3b62507dc0415480476579124893b5",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions ES pour Montjuïc Cable Car, Telefèric de Montjuïc et Teleférico de Montjuïc : zéro résultat dans six recherches ; aucun homonyme dans le backlog ES.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "a4776f13f77b46eb9dd22dd5b8a1a64c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:329_Telefèric_de_Montjuïc,_cabina_entrant_a_l'estació_inferior_(Barcelona).jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Enric",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "26e7f35acf534946a1ebbfc80d0f915f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Montjuïc_Cable_Car_BCN_04_2016_7101.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Mariordo (Mario Roberto Durán Ortiz)",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "3b3b62507dc0415480476579124893b5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teleferique_de_Montjuic,_barcelone_2018.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Zeineb Ghorbel",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "onlinePriceOfferCount": 2,
+  "descriptionLanguages": 8,
+  "historyEventCount": 2,
+  "accessConditionCount": 1,
+  "datedOpeningOverrideCount": 4
+}
