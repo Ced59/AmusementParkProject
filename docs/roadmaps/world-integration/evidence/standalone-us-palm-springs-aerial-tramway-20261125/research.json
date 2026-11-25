@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Palm Springs Aerial Tramway, Palm Springs Tramway et Mount San Jacinto Aerial Tramway : zéro résultat dans six recherches ; aucun homonyme dans le backlog US.",
+  "decision": "Téléphérique à billetterie propre de Valley Station à Mountain Station ; restaurants, musée et sentiers du sommet sont des activités additionnelles, non un parc à confondre avec le transport.",
+  "officialPricing": "Le site officiel publie les prix en ligne aller-retour : adulte 36,95 USD, 3–10 ans 20,95 USD, 65 ans et plus 33,95 USD, frais de traitement de 2 USD inclus. Trois offres `onlinePrice` ; aucun prix au guichet supposé. Moins de 2 ans gratuit avec carte d’embarquement ; tarif de 2 ans non spécifié et donc non inventé.",
+  "officialHours": "Hiver du 5 octobre 2026 au 27 mai 2027 : première montée 10:00 en semaine, 08:00 le week-end/jours fériés ; dernière montée 20:00, dernière descente 21:30. Été du 28 mai au 6 septembre 2027 : vendredi/samedi dernière montée 21:00, dernière descente 22:30. Thanksgiving 26–29 novembre et vacances 19 décembre–3 janvier : première montée 08:00, exceptions datées.",
+  "accessibility": "Le site officiel précise que Valley Station, Mountain Station et les cabines sont accessibles en fauteuil ; aucune assertion sur les sentiers.",
+  "history": "Premier trajet inaugural le 12 septembre 1963 ; cette date ne prouve pas le premier jour d’ouverture au public. Le texte de date d’ouverture est donc limité à 1963. Cabines rotatives actuelles en service depuis 2000 selon l’exploitant.",
+  "photos": "Trois photos exactes inspectées : cabine montant près de Valley Station en 2023, cabine en croisement dans Chino Canyon en 2015, panorama depuis la station haute en 2013. Crédits et licences Commons vérifiés, miniatures réduites ; alt et légendes distincts en huit langues.",
+  "sources": [
+    {
+      "label": "Palm Springs Aerial Tramway — billets et horaires",
+      "url": "https://pstramway.com/tickets/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Palm Springs Aerial Tramway — calendrier 2026–2027",
+      "url": "https://pstramway.com/about-us/hours/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Palm Springs Aerial Tramway — ouverture et cabines rotatives",
+      "url": "https://pstramway.com/about-us/history/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Palm Springs Aerial Tramway — horaires de Thanksgiving 2026",
+      "url": "https://pstramway.com/wp-content/uploads/2026/11/2026.11.11-Thanksgiving-Holiday-Weekend-at-the-Tramway.pdf",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Californie — coordonnées de Valley Station",
+      "url": "https://www.waterboards.ca.gov/coloradoriver/board_decisions/adopted_orders/orders/2021/2021_0013pstramway_valleystation_wdr.pdf",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Aerial Tramway Car 7.jpg (Gillfoto, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Aerial_Tramway_Car_7.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Palm Springs Aerial Tram, CA 4-15 (24022767713).jpg (Don Graham, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Palm_Springs_Aerial_Tram,_CA_4-15_(24022767713).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — USA CA PalmSprings AerialTram 001 2013.jpg (Der-wuppertaler, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:USA_CA_PalmSprings_AerialTram_001_2013.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Prix au guichet non détaillé sur la page citée ; tarif des enfants de 2 ans à confirmer. Horaires et accès peuvent changer avec la météo."
+}
