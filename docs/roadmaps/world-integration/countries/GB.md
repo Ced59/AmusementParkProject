@@ -12,6 +12,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 - Contrôle supplémentaire alpine coasters : 1 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.
 - Découverte du 25 novembre : The View from The Shard publié avec tarifs officiels, calendrier à exceptions et trois photos exactes créditées.
+- Découverte du 25 novembre : Sky Garden publié avec réservation gratuite, fermetures officielles et trois photos exactes créditées.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -19,7 +20,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 287 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 12 |
+| Intégration achevée | 13 |
 | Publié, date inconnue | 9 |
 | Hors périmètre enregistré | 27 |
 | Doublon conservé | 1 |
@@ -30,7 +31,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **9 publiés**, **90 masqués à intégrer**, **26 masqués NotRelevant à réexaminer**, **253 candidats sans fiche**.
 
-Standalone : **12 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **6 types à décider**, **27 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **13 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **6 types à décider**, **27 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **15 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -41,4 +42,4 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent dans le JSON national.
 
 - [Page 1 — lignes 1 à 250](GB/001.md)
-- [Page 2 — lignes 251 à 426](GB/002.md)
+- [Page 2 — lignes 251 à 427](GB/002.md)
