@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 507,
+  "sourceObservationCount": 508,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "JAZA",
@@ -23,7 +23,8 @@
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 39 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
-    "Recherche externe dédiée aux absences : 4 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
+    "Recherche externe dédiée aux absences : 4 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Découverte du 25 novembre : Tokyo Skytree vérifiée et publiée comme tour d’observation autonome ; calendrier officiel daté, trois photos exactes et annonce Facebook publiés."
   ],
   "entries": [
     {
@@ -18141,6 +18142,178 @@
           "failureCode": null,
           "failureMessage": null
         }
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-tokyo-skytree-20261125",
+      "name": "Tokyo Skytree",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour d’observation à billet propre",
+      "locality": "1-1-2 Oshiage, Sumida-ku, Tokyo",
+      "siteId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T13:49:41Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "L’exploitant publie un calendrier jusqu’au 31 janvier 2027 et une billetterie active.",
+      "identityConfidence": "Aucune fiche homonyme Park ni StandaloneAttraction via PDE ; deux plateformes et billetterie de la tour, distinctes de l’aquarium voisin.",
+      "possibleMatches": [],
+      "aliases": [
+        "東京スカイツリー",
+        "Tokyo Sky Tree",
+        "Tembo Deck",
+        "Tembo Galleria"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T13:46:33.843Z",
+      "integrationHistory": [
+        {
+          "eventId": "51d0f923-f429-4f83-9de0-a89994a8060a",
+          "appliedAt": "2026-11-25T13:39:47.156Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/operations.json#51d0f923-f429-4f83-9de0-a89994a8060a",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche des homonymes Park et StandaloneAttraction ; ouverture officielle, adresse et descriptions en huit langues."
+        },
+        {
+          "eventId": "9066b685-e83d-4ed3-a548-78be572731e8",
+          "appliedAt": "2026-11-25T13:41:18.069Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/operations.json#9066b685-e83d-4ed3-a548-78be572731e8",
+          "auditEvidence": null,
+          "summary": "Tarifs de départ officiels et calendrier daté du 25 novembre au 31 janvier, avec sept exceptions, intégrés."
+        },
+        {
+          "eventId": "photo-import-eb5ca476183f4822a39720ca59180378",
+          "appliedAt": "2026-11-25T13:42:22.820Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/operations.json#photo-import-eb5ca476183f4822a39720ca59180378",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’intérieur du Tembo Deck : Dick Thomas Johnson, CC BY 2.0."
+        },
+        {
+          "eventId": "photo-import-f8876ae3198a4bb0bb222a180e072242",
+          "appliedAt": "2026-11-25T13:43:00.876Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/operations.json#photo-import-f8876ae3198a4bb0bb222a180e072242",
+          "auditEvidence": null,
+          "summary": "Photo exacte du panorama sur Tokyo et le Fuji : Dick Thomas Johnson, CC BY 2.0."
+        },
+        {
+          "eventId": "photo-import-bb2c5900f9a8416da1fc192742e5a198",
+          "appliedAt": "2026-11-25T13:43:23.156Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/operations.json#photo-import-bb2c5900f9a8416da1fc192742e5a198",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la Sumida de nuit depuis le Tembo Deck : Toshinori baba, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "d0e7890d-080f-4365-b0af-bc66a1a87b86",
+          "appliedAt": "2026-11-25T13:45:39.715Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/operations.json#d0e7890d-080f-4365-b0af-bc66a1a87b86",
+          "auditEvidence": null,
+          "summary": "Textes en huit langues corrigés après audit : niveaux des observatoires exprimés sans mesure brute interdite."
+        },
+        {
+          "eventId": "photo-metadata-update-eb5ca476183f4822a39720ca59180378-2026-11-25T13:46:33.843Z",
+          "appliedAt": "2026-11-25T13:46:33.843Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2fbcefe2-76f9-41c0-be7b-bc3638f12f2e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/operations.json#photo-metadata-update-eb5ca476183f4822a39720ca59180378-2026-11-25T13:46:33.843Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/audit.json",
+          "summary": "Légendes localisées de la photo intérieure corrigées et publiées ; audit final 94/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver ligne, reçus, trois photos et publication Facebook ; actualiser prix de départ et horaires officiels après janvier 2027. Contrôler le billet spécial du lever du soleil du 1er janvier.",
+      "sources": [
+        {
+          "label": "Tokyo Skytree — billets et tarifs",
+          "url": "https://www.tokyo-skytree.jp/ticket/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Tokyo Skytree — calendrier et dernières entrées",
+          "url": "https://www.tokyo-skytree.jp/open-hours/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Tokyo Skytree — accès",
+          "url": "https://www.tokyo-skytree.jp/access/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Tokyo Skytree — historique et date d’ouverture",
+          "url": "https://www.tokyo-skytree.jp/corporate/profile/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429525).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_Tembo_Deck_(53081429280).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Sky_Tree_tembo_deck_night_view.JPG",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche de tour à billets propres ; contrôle PDE, calendrier officiel JSON-LD et trois photos exactes sous licence.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Deux observatoires à billet propre d’une tour autonome ; aucune fiche Park du même lieu, l’aquarium voisin est séparé."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/2fbcefe2-76f9-41c0-be7b-bc3638f12f2e/tokyo-skytree",
+          "publishedAtUtc": "2026-11-25T13:47:34.8232995Z",
+          "verifiedAtUtc": "2026-11-25T13:49:41Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "e558a84a99254d57839f220cc59d62e7",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/2fbcefe2-76f9-41c0-be7b-bc3638f12f2e/tokyo-skytree?facebook-image=eb5ca476183f4822a39720ca59180378",
+          "publishedAtUtc": "2026-11-25T13:48:32.9387051Z",
+          "externalPostId": "1285475681307050_122128812351424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128812351424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-skytree-20261125/audit.json",
+        "score": 94,
+        "publicationBlockers": []
       }
     }
   ]
