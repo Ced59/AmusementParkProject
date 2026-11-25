@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "c19724cd-09f6-4d7a-a1ae-c14e216bd6ae",
+    "appliedAtUtc": "2026-11-25T20:39:16.0722598Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "e0690a8f-2fbd-41d4-9904-e0c6ae5190fb",
+    "appliedAtUtc": "2026-11-25T20:39:53.0557757Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "6329aeb1-4e1b-4698-bfc9-b0866469a860",
+    "appliedAtUtc": "2026-11-25T20:40:39.6385472Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "c8b09d53-424e-4e95-ba76-9f8995f6b3d1",
+    "appliedAtUtc": "2026-11-25T20:40:55.4788303Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-be646387416f47759de622894f9d0cfb",
+    "imageId": "be646387416f47759de622894f9d0cfb",
+    "createdAtUtc": "2026-11-25T20:41:09.832Z",
+    "updatedAtUtc": "2026-11-25T20:41:13.584Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sydney_Tower_Eye_—_8_January_2025.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-6f073ceda2cf4504a2f3a5b5898c616d",
+    "imageId": "6f073ceda2cf4504a2f3a5b5898c616d",
+    "createdAtUtc": "2026-11-25T20:41:18.15Z",
+    "updatedAtUtc": "2026-11-25T20:41:21.518Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sydney_Tower_Eye_interior_201708.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-1097f6b439e74fdf8d4cc11eae6cb024",
+    "imageId": "1097f6b439e74fdf8d4cc11eae6cb024",
+    "createdAtUtc": "2026-11-25T20:41:26.841Z",
+    "updatedAtUtc": "2026-11-25T20:41:30.243Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:SydneyCBDfromTower.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "18e597ac-b57c-4340-815d-972f65bbf5a2",
+    "appliedAtUtc": "2026-11-25T20:42:04.1425087Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "52310d19619e44ce8ab382881f28ab03",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T20:42:52.7275941Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128852227424431"
+  }
+]

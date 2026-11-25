@@ -1,0 +1,79 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "44c456d2-c939-4e1d-bc53-355ac0469f27",
+  "name": "Sydney Tower Eye",
+  "countryCode": "AU",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/44c456d2-c939-4e1d-bc53-355ac0469f27/sydney-tower-eye",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T20:44:43Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "52310d19619e44ce8ab382881f28ab03",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128852227424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T20:41:30.243Z",
+  "lastDataEventId": "photo-1097f6b439e74fdf8d4cc11eae6cb024",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions AU pour Sydney Tower Eye, Sydney Tower, Centrepoint Tower et Sydney Skytower : zéro résultat dans les huit recherches. Aucun homonyme dans le backlog AU.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "be646387416f47759de622894f9d0cfb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sydney_Tower_Eye_—_8_January_2025.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Daniel William Wilson",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "6f073ceda2cf4504a2f3a5b5898c616d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sydney_Tower_Eye_interior_201708.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Wpcpey",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "1097f6b439e74fdf8d4cc11eae6cb024",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SydneyCBDfromTower.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "MDRX",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "datedOpeningOverrides": [
+    "2026-11-26",
+    "2026-11-27"
+  ]
+}
