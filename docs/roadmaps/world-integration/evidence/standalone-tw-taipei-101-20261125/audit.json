@@ -1,0 +1,379 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+  "countryCode": "TW",
+  "name": "Taipei 101 Observatory",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/48b7679a-d84c-4a26-9f08-5a1101405c6b/taipei-101-observatory",
+  "lastDataIntegrationAtUtc": "2026-11-25T11:42:07.195Z",
+  "publicVerifiedAtUtc": "2026-11-25T11:44:29.789Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "descriptionsWithEightLanguages": 1,
+    "exactPublishedPhotos": 3,
+    "currentPricingOffers": 4,
+    "boundedHoursThrough": "2027-01-17",
+    "accessConditions": 1,
+    "visibleOpeningHistoryEvents": 1
+  },
+  "photoEvidence": [
+    {
+      "imageId": "20590f244a4f468dbf6abddc43a14c43",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taipei_101_from_Xiangshan_20250905.jpg",
+      "author": "Sinsyuan",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 287597,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La tour Taipei 101 au-dessus de la ville au crépuscule"
+        },
+        {
+          "languageCode": "en",
+          "value": "Taipei 101 tower above the city at dusk"
+        },
+        {
+          "languageCode": "de",
+          "value": "Taipei 101 über der Stadt in der Abenddämmerung"
+        },
+        {
+          "languageCode": "es",
+          "value": "Torre Taipei 101 sobre la ciudad al atardecer"
+        },
+        {
+          "languageCode": "it",
+          "value": "Taipei 101 sopra la città al tramonto"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Taipei 101 boven de stad bij zonsondergang"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wieżowiec Taipei 101 nad miastem o zmierzchu"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Torre Taipei 101 sobre a cidade ao entardecer"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La silhouette de Taipei 101 et son observatoire au sommet."
+        },
+        {
+          "languageCode": "en",
+          "value": "Taipei 101’s silhouette with its observation floors near the top."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Silhouette von Taipei 101 mit den Aussichtsetagen nahe der Spitze."
+        },
+        {
+          "languageCode": "es",
+          "value": "La silueta de Taipei 101 con los miradores cerca de la cima."
+        },
+        {
+          "languageCode": "it",
+          "value": "La sagoma di Taipei 101 con i belvedere in alto."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het silhouet van Taipei 101 met de uitkijkverdiepingen bovenin."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sylwetka Taipei 101 z tarasami widokowymi blisko szczytu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A silhueta de Taipei 101 com os miradouros perto do topo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: Sinsyuan, CC BY-SA 4.0 (2025-09-05)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Sinsyuan, CC BY-SA 4.0 (2025-09-05)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Sinsyuan, CC BY-SA 4.0 (2025-09-05)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Sinsyuan, CC BY-SA 4.0 (2025-09-05)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Sinsyuan, CC BY-SA 4.0 (2025-09-05)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Sinsyuan, CC BY-SA 4.0 (2025-09-05)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Sinsyuan, CC BY-SA 4.0 (2025-09-05)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Sinsyuan, CC BY-SA 4.0 (2025-09-05)."
+        }
+      ]
+    },
+    {
+      "imageId": "ee3cc297c4c74dc39af40c2b5e13ae33",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mass_damper_of_Taipei_101_20240411.jpg",
+      "author": "Chaplain iMonk",
+      "license": "CC BY 2.0",
+      "sizeInBytes": 123444,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "L’amortisseur géant doré de Taipei 101 vu depuis l’observatoire"
+        },
+        {
+          "languageCode": "en",
+          "value": "Giant gold tuned mass damper seen from Taipei 101 Observatory"
+        },
+        {
+          "languageCode": "de",
+          "value": "Goldener Schwingungsdämpfer im Observatorium von Taipei 101"
+        },
+        {
+          "languageCode": "es",
+          "value": "Gran amortiguador dorado visto desde el observatorio Taipei 101"
+        },
+        {
+          "languageCode": "it",
+          "value": "Grande smorzatore dorato visto dall’osservatorio Taipei 101"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Grote gouden massademper gezien vanuit Taipei 101 Observatory"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wielki złoty tłumik drgań widoczny w obserwatorium Taipei 101"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Grande amortecedor dourado visto no observatório Taipei 101"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La sphère de l’amortisseur, visible pendant la visite."
+        },
+        {
+          "languageCode": "en",
+          "value": "The damper sphere, visible during the observatory visit."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Dämpferkugel, die beim Besuch zu sehen ist."
+        },
+        {
+          "languageCode": "es",
+          "value": "La esfera del amortiguador, visible durante la visita."
+        },
+        {
+          "languageCode": "it",
+          "value": "La sfera dello smorzatore, visibile durante la visita."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De bol van de massademper tijdens het bezoek."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kula tłumika drgań dostępna do oglądania podczas wizyty."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A esfera do amortecedor, visível durante a visita."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: Chaplain iMonk, CC BY 2.0 (2024-04-11)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Chaplain iMonk, CC BY 2.0 (2024-04-11)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Chaplain iMonk, CC BY 2.0 (2024-04-11)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Chaplain iMonk, CC BY 2.0 (2024-04-11)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Chaplain iMonk, CC BY 2.0 (2024-04-11)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Chaplain iMonk, CC BY 2.0 (2024-04-11)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Chaplain iMonk, CC BY 2.0 (2024-04-11)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Chaplain iMonk, CC BY 2.0 (2024-04-11)."
+        }
+      ]
+    },
+    {
+      "imageId": "74a5893557b44984a8c2c6916b86edd2",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:20231107_View_from_Taipei_101_Observatory.jpg",
+      "author": "Robin Kaljouw",
+      "license": "CC BY 2.0",
+      "sizeInBytes": 501117,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue panoramique sur Taipei depuis l’observatoire Taipei 101"
+        },
+        {
+          "languageCode": "en",
+          "value": "Panoramic view across Taipei from Taipei 101 Observatory"
+        },
+        {
+          "languageCode": "de",
+          "value": "Panoramablick über Taipeh vom Observatorium Taipei 101"
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista panorámica de Taipéi desde el observatorio Taipei 101"
+        },
+        {
+          "languageCode": "it",
+          "value": "Panorama di Taipei dall’osservatorio Taipei 101"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Panoramisch uitzicht op Taipei vanaf Taipei 101 Observatory"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Panorama Tajpej z tarasu widokowego Taipei 101"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista panorâmica sobre Taipé a partir do observatório Taipei 101"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La ville vue depuis les fenêtres du 89e étage."
+        },
+        {
+          "languageCode": "en",
+          "value": "The city seen through the 89th-floor windows."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick durch die Fenster des 89. Stocks auf die Stadt."
+        },
+        {
+          "languageCode": "es",
+          "value": "La ciudad vista desde las ventanas de la planta 89."
+        },
+        {
+          "languageCode": "it",
+          "value": "La città dalle finestre dell’89º piano."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De stad vanuit de ramen op verdieping 89."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Miasto z okien na 89. piętrze."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A cidade vista das janelas do 89.º piso."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: Robin Kaljouw, CC BY 2.0 (2023-11-07)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Robin Kaljouw, CC BY 2.0 (2023-11-07)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Robin Kaljouw, CC BY 2.0 (2023-11-07)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Robin Kaljouw, CC BY 2.0 (2023-11-07)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Robin Kaljouw, CC BY 2.0 (2023-11-07)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Robin Kaljouw, CC BY 2.0 (2023-11-07)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Robin Kaljouw, CC BY 2.0 (2023-11-07)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Robin Kaljouw, CC BY 2.0 (2023-11-07)."
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "operator": "https://www.taipei-101.com.tw/en/observatory/",
+    "pricing": "https://www.taipei-101.com.tw/en/observatory/ticket",
+    "accessibility": "https://www.taipei-101.com.tw/tw/observatory/moreservice/content/500acaba-cb0e-4030-9ac1-73435e0b131b",
+    "openingDate": "https://ws.taipei-101.com.tw/upload/charity/20251201/6a0177d611824e95bc988536fa32e7ae/6a0177d611824e95bc988536fa32e7ae.pdf"
+  },
+  "remainingUncertainty": "Le 91e étage est soumis à la météo et aux modalités du billet. Recontrôler les horaires avant le 18 janvier 2027 ; Skyline460 dispose d’un billet distinct et reste à qualifier comme fiche autonome.",
+  "facebookPublicationId": "0b1294e78f294725bb42904a5b14e3f8",
+  "facebookStatus": "Published",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128799019424431"
+}
