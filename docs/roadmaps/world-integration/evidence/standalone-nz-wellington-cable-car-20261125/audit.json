@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+  "name": "Wellington Cable Car",
+  "countryCode": "NZ",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/750687bf-2283-4d17-af26-0afd52b2b6b4/wellington-cable-car",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T20:55:15Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "54d140cc8219414691150b221fd959fd",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128852899424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T20:52:49.991Z",
+  "lastDataEventId": "photo-2e87b481f14c4c459bc9671eba7c018d",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions NZ pour Wellington Cable Car, Kelburn Cable Car, Wellington Funicular et Te Whanganui-a-Tara Cable Car : zéro résultat dans huit recherches ; aucun homonyme dans le backlog NZ.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "dc8e791d512447c693159abf1f988fa8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wellington_Cable_Car_(20240206a)_(53532605708).jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Takeshi Aida",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "id": "6a784603df51486688af0137d4e235b6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Inside_the_Wellington_Cable_Car.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Panamitsu",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "2e87b481f14c4c459bc9671eba7c018d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Car_1_Wellington_Cable_Car,_2013_(01).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Bahnfrend",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 7,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "datedOpeningOverrideCount": 12
+}

@@ -2433,6 +2433,153 @@
           "failureMessage": null
         }
       }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-wellington-cable-car-20261125",
+      "name": "Wellington Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Funiculaire touristique à billet propre",
+      "locality": "280 Lambton Quay, Cable Car Lane, Wellington",
+      "siteId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T20:55:15Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie active et bandeau de service ouvert le 26 novembre 2026, heure locale ; interruption temporaire la veille.",
+      "identityConfidence": "Nom, terminus, tarifs, horaires et accès officiels ; huit recherches sans doublon ; trois photos exactes avec licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Kelburn Cable Car",
+        "Wellington Funicular"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T20:52:49.991Z",
+      "integrationHistory": [
+        {
+          "eventId": "0cb28be3-3186-4d66-aff1-99a53270734a",
+          "appliedAt": "2026-11-25T20:50:29.395Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/operations.json#0cb28be3-3186-4d66-aff1-99a53270734a",
+          "auditEvidence": null,
+          "summary": "Création masquée après huit recherches de doublon ; identité, deux terminus et huit descriptions."
+        },
+        {
+          "eventId": "1a918f8d-0f32-4030-8a4b-5f581605bf87",
+          "appliedAt": "2026-11-25T20:50:51.841Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/operations.json#1a918f8d-0f32-4030-8a4b-5f581605bf87",
+          "auditEvidence": null,
+          "summary": "Sept tarifs officiels, horaires ordinaires et douze exceptions de fin d’année intégrés."
+        },
+        {
+          "eventId": "81c54088-0e01-47b4-9e64-202f54ed340b",
+          "appliedAt": "2026-11-25T20:51:40.180Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/operations.json#81c54088-0e01-47b4-9e64-202f54ed340b",
+          "auditEvidence": null,
+          "summary": "Ouverture au public le 22 février 1902 documentée et traduite."
+        },
+        {
+          "eventId": "0bec75c5-bfb1-4ceb-9a2b-51c65136418a",
+          "appliedAt": "2026-11-25T20:51:55.106Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/operations.json#0bec75c5-bfb1-4ceb-9a2b-51c65136418a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/audit.json",
+          "summary": "Accès en fauteuil aux terminus et recommandation de la voiture 2 à Talavera intégrés."
+        },
+        {
+          "eventId": "photo-dc8e791d512447c693159abf1f988fa8",
+          "appliedAt": "2026-11-25T20:52:31.706Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/operations.json#photo-dc8e791d512447c693159abf1f988fa8",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Takeshi Aida (CC BY-SA 2.0)."
+        },
+        {
+          "eventId": "photo-6a784603df51486688af0137d4e235b6",
+          "appliedAt": "2026-11-25T20:52:39.886Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/operations.json#photo-6a784603df51486688af0137d4e235b6",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Panamitsu (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-2e87b481f14c4c459bc9671eba7c018d",
+          "appliedAt": "2026-11-25T20:52:49.991Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "750687bf-2283-4d17-af26-0afd52b2b6b4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/operations.json#photo-2e87b481f14c4c459bc9671eba7c018d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-wellington-cable-car-20261125/audit.json",
+          "summary": "Photo exacte 3/3 importée : Bahnfrend (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; contrôler le bandeau de service avant tout message de disponibilité, et mettre à jour tarifs, horaires et futures périodes de maintenance sans republier le même post Facebook.",
+      "sources": [
+        {
+          "label": "Wellington Cable Car — tarifs et horaires ordinaires",
+          "url": "https://www.wellingtoncablecar.co.nz/timetable-fares",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wellington Cable Car — calendrier spécial 2026–2027",
+          "url": "https://www.wellingtoncablecar.co.nz/sites/default/files/2026-11/WCC%20Summer%20timetable%202026_2027.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wellington Cable Car — accessibilité et adresse",
+          "url": "https://www.wellingtoncablecar.co.nz/accessibility",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wellington Cable Car — histoire et ouverture",
+          "url": "https://www.wellingtoncablecar.co.nz/about-cable-car",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wellington Cable Car — état du service",
+          "url": "https://www.wellingtoncablecar.co.nz/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Wellington Cable Car (20240206a) (53532605708).jpg (Takeshi Aida, CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Wellington_Cable_Car_(20240206a)_(53532605708).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Inside the Wellington Cable Car.jpg (Panamitsu, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Inside_the_Wellington_Cable_Car.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Car 1 Wellington Cable Car, 2013 (01).jpg (Bahnfrend, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Car_1_Wellington_Cable_Car,_2013_(01).jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Funiculaire à billet visiteur et terminus propres ; les activités près de Kelburn se visitent séparément."
+      }
     }
   ]
 }
