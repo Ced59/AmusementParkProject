@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "1fff83c6-0e9e-4f65-96c2-8a190d6ea0e6",
+  "name": "Fløibanen",
+  "countryCode": "NO",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/1fff83c6-0e9e-4f65-96c2-8a190d6ea0e6/floibanen",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T23:48:04Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "2b6b1e554f78448c9ce9ae242822d6b1",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128865127424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T23:45:19.553Z",
+  "lastDataEventId": "photo-037eff266eb141aa946693857a865425",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions NO sur Fløibanen, Floibanen et Mount Fløyen funicular : zéro résultat ; aucun homonyme dans le backlog norvégien.",
+  "completeness": {
+    "completenessScore": 97,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 72,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "16cefbea7144440fb8a748089d5f1072",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_05.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Ad Meskens",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2024-07-21"
+    },
+    {
+      "id": "6c1f709399394a09be957a8abf8492bb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_08.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Ad Meskens",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2024-07-21"
+    },
+    {
+      "id": "037eff266eb141aa946693857a865425",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_06.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Ad Meskens",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2024-07-21"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}
