@@ -1,0 +1,75 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05",
+  "name": "Sapporo TV Tower",
+  "countryCode": "JP",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/bd270dd1-5cc5-4f4c-85a0-de0bdd92cd05/sapporo-tv-tower",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T20:18:23Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "9b8ead445f1a456f8fc3dfbf4cbc2c1c",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128850589424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T20:16:33.951Z",
+  "lastDataEventId": "dedf8193-6f98-42f0-98c7-b8032396db62",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions JP : zéro résultat pour Sapporo TV Tower, さっぽろテレビ塔 et Sapporo television tower avant création ; aucune ligne homonyme dans le backlog JP.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "7b1394128ddc4db0b59d0ba11be5109c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sapporo_TV_Tower_at_Odori_Park_01.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "ノボホショコロトソ",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "f13d1de2f8374d9a8fbcd83510f97e09",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sapporo_TV_Tower_at_night_20250725.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "420ba6a37d0240dda65cdc06ed28ffa4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sapporo-night_from_TV_Tower2.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Keith Blayney",
+      "license": "CC BY-SA 3.0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}
