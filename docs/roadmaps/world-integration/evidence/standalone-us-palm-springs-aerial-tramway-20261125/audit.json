@@ -1,0 +1,77 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+  "name": "Palm Springs Aerial Tramway",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/601ef057-2f27-48a4-bfab-a7d6aff0d0dc/palm-springs-aerial-tramway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T21:05:57Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "ee7c8f7c424c49e2b20247a844410e91",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128853343424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T21:04:34.301Z",
+  "lastDataEventId": "bcc06368-14e7-42b4-921a-90654a5893b6",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Palm Springs Aerial Tramway, Palm Springs Tramway et Mount San Jacinto Aerial Tramway : zéro résultat dans six recherches ; aucun homonyme dans le backlog US.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "a4b164c30d384473af323f5ff546477b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerial_Tramway_Car_7.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Gillfoto",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "06628c8230e44340bd9cbcd30970111c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palm_Springs_Aerial_Tram,_CA_4-15_(24022767713).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Don Graham",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "id": "897db4970bab44d4a31f82f120f80259",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:USA_CA_PalmSprings_AerialTram_001_2013.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Der-wuppertaler",
+      "license": "CC BY-SA 3.0"
+    }
+  ],
+  "pricingOfferCount": 3,
+  "onlinePriceOfferCount": 3,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "datedOpeningOverrideCount": 20
+}

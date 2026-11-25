@@ -79009,6 +79009,173 @@
           "network": "Facebook"
         }
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-palm-springs-aerial-tramway-20261125",
+      "name": "Palm Springs Aerial Tramway",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique touristique à billet propre",
+      "locality": "1 Tram Way, Palm Springs, Californie",
+      "siteId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T21:05:57Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie active et horaires hiver/été publiés par l’exploitant au 25 novembre 2026.",
+      "identityConfidence": "Nom, adresse, tarifs, horaires et accès officiels ; six recherches sans doublon ; trois photos exactes avec licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Palm Springs Tramway",
+        "Mount San Jacinto Aerial Tramway"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T21:04:34.301Z",
+      "integrationHistory": [
+        {
+          "eventId": "f43bc35a-c765-4c19-93a7-be3c2fcf71a9",
+          "appliedAt": "2026-11-25T20:59:08.966Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#f43bc35a-c765-4c19-93a7-be3c2fcf71a9",
+          "auditEvidence": null,
+          "summary": "Création masquée après six recherches de doublon ; identité, adresse et huit descriptions."
+        },
+        {
+          "eventId": "e1378f6d-c25f-499b-bf8e-3465dbe1a035",
+          "appliedAt": "2026-11-25T20:59:51.860Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#e1378f6d-c25f-499b-bf8e-3465dbe1a035",
+          "auditEvidence": null,
+          "summary": "Trois tarifs en ligne officiels, horaires hiver/été et exceptions de fêtes intégrés."
+        },
+        {
+          "eventId": "8b57c4ad-9b4d-4fa8-9269-5944ddfc017e",
+          "appliedAt": "2026-11-25T21:00:20.633Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#8b57c4ad-9b4d-4fa8-9269-5944ddfc017e",
+          "auditEvidence": null,
+          "summary": "Date d’ouverture limitée à 1963, distincte du trajet inaugural daté."
+        },
+        {
+          "eventId": "35a3cb10-a187-45b4-9325-3b9ac18cb64b",
+          "appliedAt": "2026-11-25T21:01:02.832Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#35a3cb10-a187-45b4-9325-3b9ac18cb64b",
+          "auditEvidence": null,
+          "summary": "Trajet inaugural de 1963 documenté et traduit."
+        },
+        {
+          "eventId": "b87413ba-dade-42e3-89be-77b8d5ef281f",
+          "appliedAt": "2026-11-25T21:01:19.217Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#b87413ba-dade-42e3-89be-77b8d5ef281f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/audit.json",
+          "summary": "Accessibilité des deux stations et des cabines intégrée."
+        },
+        {
+          "eventId": "photo-a4b164c30d384473af323f5ff546477b",
+          "appliedAt": "2026-11-25T21:01:43.146Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#photo-a4b164c30d384473af323f5ff546477b",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Gillfoto (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-06628c8230e44340bd9cbcd30970111c",
+          "appliedAt": "2026-11-25T21:01:52.224Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#photo-06628c8230e44340bd9cbcd30970111c",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Don Graham (CC BY-SA 2.0)."
+        },
+        {
+          "eventId": "photo-897db4970bab44d4a31f82f120f80259",
+          "appliedAt": "2026-11-25T21:02:02.440Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#photo-897db4970bab44d4a31f82f120f80259",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/audit.json",
+          "summary": "Photo exacte 3/3 importée : Der-wuppertaler (CC BY-SA 3.0)."
+        },
+        {
+          "eventId": "bcc06368-14e7-42b4-921a-90654a5893b6",
+          "appliedAt": "2026-11-25T21:04:34.301Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "601ef057-2f27-48a4-bfab-a7d6aff0d0dc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/operations.json#bcc06368-14e7-42b4-921a-90654a5893b6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-palm-springs-aerial-tramway-20261125/audit.json",
+          "summary": "Les trois prix officiels ont été placés dans le canal en ligne ; aucun prix au guichet inventé."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier les tarifs au guichet, celui des enfants de 2 ans et les changements météo/horaire lors des prochains relevés, sans republier le même post Facebook.",
+      "sources": [
+        {
+          "label": "Palm Springs Aerial Tramway — billets et horaires",
+          "url": "https://pstramway.com/tickets/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Palm Springs Aerial Tramway — calendrier 2026–2027",
+          "url": "https://pstramway.com/about-us/hours/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Palm Springs Aerial Tramway — ouverture et cabines rotatives",
+          "url": "https://pstramway.com/about-us/history/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Palm Springs Aerial Tramway — horaires de Thanksgiving 2026",
+          "url": "https://pstramway.com/wp-content/uploads/2026/11/2026.11.11-Thanksgiving-Holiday-Weekend-at-the-Tramway.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Californie — coordonnées de Valley Station",
+          "url": "https://www.waterboards.ca.gov/coloradoriver/board_decisions/adopted_orders/orders/2021/2021_0013pstramway_valleystation_wdr.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Aerial Tramway Car 7.jpg (Gillfoto, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Aerial_Tramway_Car_7.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Palm Springs Aerial Tram, CA 4-15 (24022767713).jpg (Don Graham, CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Palm_Springs_Aerial_Tram,_CA_4-15_(24022767713).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — USA CA PalmSprings AerialTram 001 2013.jpg (Der-wuppertaler, CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:USA_CA_PalmSprings_AerialTram_001_2013.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Téléphérique à billet propre et stations propres ; la restauration et les sentiers du sommet sont distincts du trajet."
+      }
     }
   ]
 }

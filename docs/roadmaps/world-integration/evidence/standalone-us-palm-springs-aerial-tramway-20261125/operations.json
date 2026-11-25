@@ -1,0 +1,144 @@
+[
+  {
+    "step": "core",
+    "operationId": "f43bc35a-c765-4c19-93a7-be3c2fcf71a9",
+    "appliedAtUtc": "2026-11-25T20:59:08.9660348Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "e1378f6d-c25f-499b-bf8e-3465dbe1a035",
+    "appliedAtUtc": "2026-11-25T20:59:51.8605601Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "date-correction",
+    "operationId": "8b57c4ad-9b4d-4fa8-9269-5944ddfc017e",
+    "appliedAtUtc": "2026-11-25T21:00:20.6334216Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "35a3cb10-a187-45b4-9325-3b9ac18cb64b",
+    "appliedAtUtc": "2026-11-25T21:01:02.8322485Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "b87413ba-dade-42e3-89be-77b8d5ef281f",
+    "appliedAtUtc": "2026-11-25T21:01:19.2179302Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-a4b164c30d384473af323f5ff546477b",
+    "imageId": "a4b164c30d384473af323f5ff546477b",
+    "createdAtUtc": "2026-11-25T21:01:38.889Z",
+    "updatedAtUtc": "2026-11-25T21:01:43.146Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerial_Tramway_Car_7.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-06628c8230e44340bd9cbcd30970111c",
+    "imageId": "06628c8230e44340bd9cbcd30970111c",
+    "createdAtUtc": "2026-11-25T21:01:48.688Z",
+    "updatedAtUtc": "2026-11-25T21:01:52.224Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palm_Springs_Aerial_Tram,_CA_4-15_(24022767713).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-897db4970bab44d4a31f82f120f80259",
+    "imageId": "897db4970bab44d4a31f82f120f80259",
+    "createdAtUtc": "2026-11-25T21:01:58.891Z",
+    "updatedAtUtc": "2026-11-25T21:02:02.44Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:USA_CA_PalmSprings_AerialTram_001_2013.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "b4dad200-e4f5-4753-bd14-cee271dd1231",
+    "appliedAtUtc": "2026-11-25T21:02:30.9164108Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "ee7c8f7c424c49e2b20247a844410e91",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T21:03:31.6180925Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128853343424431"
+  },
+  {
+    "step": "pricing-channel-correction",
+    "operationId": "bcc06368-14e7-42b4-921a-90654a5893b6",
+    "appliedAtUtc": "2026-11-25T21:04:34.3012344Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  }
+]
