@@ -25,7 +25,8 @@
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 12 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
-    "Recherche externe dédiée aux absences : 5 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
+    "Recherche externe dédiée aux absences : 5 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "SEOUL SKY : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres, huit descriptions et publication Facebook. Date de dernière intégration de données conservée dans l’historique."
   ],
   "entries": [
     {
@@ -4490,6 +4491,151 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "KR-candidate-discovery-seoul-sky-20261125",
+      "name": "SEOUL SKY",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère urbain à billet propre",
+      "locality": "Lotte World Tower, 300 Olympic-ro, Séoul",
+      "siteId": "a1d56dc1-bdc6-4159-8fc4-cb698f9df110",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T16:52:36Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et calendrier officiels actifs au 25 novembre 2026.",
+      "identityConfidence": "Aucune fiche homonyme trouvée dans PDE ; observatoire à billet propre dans la Lotte World Tower, distinct du parc de loisirs Lotte World Adventure.",
+      "possibleMatches": [],
+      "aliases": [
+        "Seoul Sky Observatory",
+        "Lotte World Tower Observatory"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T16:58:06.625Z",
+      "integrationHistory": [
+        {
+          "eventId": "18d519c3-f4fd-4559-9c57-96cd44f35377",
+          "appliedAt": "2026-11-25T16:42:48.889Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1d56dc1-bdc6-4159-8fc4-cb698f9df110",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/operations.json#18d519c3-f4fd-4559-9c57-96cd44f35377",
+          "auditEvidence": null,
+          "summary": "Création masquée de SEOUL SKY avec identité, localisation et descriptions dans les huit langues, après recherche sans doublon."
+        },
+        {
+          "eventId": "d19fb808-7a2d-4aad-bc38-0d28d8dfda79",
+          "appliedAt": "2026-11-25T16:43:55.039Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1d56dc1-bdc6-4159-8fc4-cb698f9df110",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/operations.json#d19fb808-7a2d-4aad-bc38-0d28d8dfda79",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels et calendrier daté jusqu’au 31 décembre 2026, avec les horaires spéciaux de décembre."
+        },
+        {
+          "eventId": "fb76dd27-e4f3-48b0-9fb5-7eb562abd5a0",
+          "appliedAt": "2026-11-25T16:48:05.195Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1d56dc1-bdc6-4159-8fc4-cb698f9df110",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/operations.json#fb76dd27-e4f3-48b0-9fb5-7eb562abd5a0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/audit.json",
+          "summary": "Huit descriptions finales revues ; trois photos libres exactes publiées avec crédits et légendes localisées. Audit de publication 91/100, sans blocage."
+        },
+        {
+          "eventId": "be66d700-3192-4c49-bc94-b9c85e0d0d0a",
+          "appliedAt": "2026-11-25T16:58:06.625Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1d56dc1-bdc6-4159-8fc4-cb698f9df110",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/operations.json#be66d700-3192-4c49-bc94-b9c85e0d0d0a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/audit.json",
+          "summary": "Calendrier officiel complété avec le 1er janvier 2027 : 10 h à 22 h, dernière entrée à 21 h. Audit final sur 38 jours, sans lacune ni chevauchement."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revérifier les promotions et prolonger les horaires après le 1er janvier 2027 d’après le calendrier officiel.",
+      "sources": [
+        {
+          "label": "SEOUL SKY — site et accès de l’exploitant",
+          "url": "https://seoulsky.lotteworld.com/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SEOUL SKY — tarifs de l’exploitant",
+          "url": "https://seoulsky.lotteworld.com/price/info/ticket",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SEOUL SKY — horaires officiels par date",
+          "url": "https://seoulsky.lotteworld.com/guide/hours",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "SEOUL SKY — Sky Bridge et fermeture hivernale",
+          "url": "https://seoulsky.lotteworld.com/enjoy/skyBridge",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "VisitKorea — observatoire et horaires",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=65854",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Visit Seoul — accès et type de lieu",
+          "url": "https://english.visitseoul.net/jamsilarea/SeoulSky/ENPowtoyc",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — plancher de verre",
+          "url": "https://commons.wikimedia.org/wiki/File:Glass_floor_of_Lotte_World_Tower.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama Lotte World et lac Seokchon",
+          "url": "https://commons.wikimedia.org/wiki/File:Lotte_World_seen_from_Lotte_World_Tower.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama du fleuve Han",
+          "url": "https://commons.wikimedia.org/wiki/File:Han_River_seen_from_Lotte_World_Tower.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche du belvédère à entrée autonome, contrôle PDE des homonymes, API horaire officielle et inspection de trois photos exactes sous licence libre.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "SEOUL SKY vend son propre billet pour l’observatoire de Lotte World Tower ; Lotte World Adventure est un parc de loisirs différent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a1d56dc1-bdc6-4159-8fc4-cb698f9df110/seoul-sky",
+          "publishedAtUtc": "2026-11-25T16:48:55.5589391Z",
+          "verifiedAtUtc": "2026-11-25T16:52:36Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "83ecdaf433534272bef7ca7a4093bf48",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a1d56dc1-bdc6-4159-8fc4-cb698f9df110/seoul-sky?facebook-image=6d8b55d4596049dfa32f9cec1c6ab580",
+          "publishedAtUtc": "2026-11-25T16:50:03.3523228Z",
+          "externalPostId": "1285475681307050_122128830477424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128830477424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      }
     }
   ]
 }

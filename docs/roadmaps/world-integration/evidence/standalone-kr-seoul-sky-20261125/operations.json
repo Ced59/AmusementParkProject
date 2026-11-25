@@ -1,0 +1,115 @@
+[
+  {
+    "step": "core",
+    "operationId": "18d519c3-f4fd-4559-9c57-96cd44f35377",
+    "appliedAtUtc": "2026-11-25T16:42:48.8899246Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "d19fb808-7a2d-4aad-bc38-0d28d8dfda79",
+    "appliedAtUtc": "2026-11-25T16:43:55.03992Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "copyfix",
+    "operationId": "fb76dd27-e4f3-48b0-9fb5-7eb562abd5a0",
+    "appliedAtUtc": "2026-11-25T16:48:05.1950412Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "ce120e64-c284-4d97-85fd-6d74b8d44cd8",
+    "appliedAtUtc": "2026-11-25T16:48:55.5589391Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-current",
+    "imageId": "6d8b55d4596049dfa32f9cec1c6ab580",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Glass_floor_of_Lotte_World_Tower.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Tristan Surtel"
+  },
+  {
+    "step": "photo-gallery",
+    "imageId": "54759371f51c435d990ff0bc4f7ddd79",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Han_River_seen_from_Lotte_World_Tower.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Tristan Surtel"
+  },
+  {
+    "step": "photo-gallery",
+    "imageId": "c9db4af5bfb5408f9ad870edef5bcb98",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lotte_World_seen_from_Lotte_World_Tower.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Tristan Surtel"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "83ecdaf433534272bef7ca7a4093bf48",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T16:50:03.3523228Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128830477424431",
+    "previewImageId": "6d8b55d4596049dfa32f9cec1c6ab580"
+  },
+  {
+    "step": "hours-correction",
+    "operationId": "be66d700-3192-4c49-bc94-b9c85e0d0d0a",
+    "appliedAtUtc": "2026-11-25T16:58:06.6250019Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  }
+]

@@ -1,0 +1,110 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks « Seoul Sky » KR : 0 ; SearchStandaloneAttractions « Seoul Sky » KR : 0. SearchParks « Lotte World » révèle le parc de loisirs distinct ; SearchStandaloneAttractions « Lotte World Tower » KR : 0. Aucun homonyme de l’observatoire.",
+  "officialPriceLocale": {
+    "TICKETPRICE.TICKET.CONTENT5": "33,000 KRW",
+    "TICKETPRICE.TICKET.CONTENT8": "29,000 KRW",
+    "TICKETPRICE.TICKET.CONTENT20": "62,000 KRW"
+  },
+  "officialHoursApi": "https://seoulsky.lotteworld.com/api/usage-guide/service/closed-list",
+  "officialHoursSamples": {
+    "2026-11-25": {
+      "bgntm": "1030",
+      "bgnTmFmt": "10:30",
+      "endTm": "2200",
+      "endTmFmt": "22:00",
+      "operYn": "Y"
+    },
+    "2026-11-27": {
+      "bgntm": "1030",
+      "bgnTmFmt": "10:30",
+      "endTm": "2300",
+      "endTmFmt": "23:00",
+      "operYn": "Y"
+    },
+    "2026-11-28": {
+      "bgntm": "1030",
+      "bgnTmFmt": "10:30",
+      "endTm": "2300",
+      "endTmFmt": "23:00",
+      "operYn": "Y"
+    },
+    "2026-12-24": {
+      "bgntm": "1030",
+      "bgnTmFmt": "10:30",
+      "endTm": "2359",
+      "endTmFmt": "23:59",
+      "operYn": "Y"
+    },
+    "2026-12-25": {
+      "bgntm": "1030",
+      "bgnTmFmt": "10:30",
+      "endTm": "2359",
+      "endTmFmt": "23:59",
+      "operYn": "Y"
+    },
+    "2026-12-31": {
+      "bgntm": "1030",
+      "bgnTmFmt": "10:30",
+      "endTm": "2359",
+      "endTmFmt": "23:59",
+      "operYn": "Y"
+    },
+    "2027-01-01": {
+      "bgntm": "1000",
+      "bgnTmFmt": "10:00",
+      "endTm": "2200",
+      "endTmFmt": "22:00",
+      "operYn": "Y"
+    }
+  },
+  "photos": "Trois fichiers Wikimedia Commons de Tristan Surtel (CC BY-SA 4.0), inspectés visuellement : plancher vitré, vue de Lotte World et du lac Seokchon, panorama du fleuve Han. Miniatures réduites sans recadrage.",
+  "sources": [
+    {
+      "label": "SEOUL SKY — site et accès de l’exploitant",
+      "url": "https://seoulsky.lotteworld.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SEOUL SKY — tarifs de l’exploitant",
+      "url": "https://seoulsky.lotteworld.com/price/info/ticket",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SEOUL SKY — horaires officiels par date",
+      "url": "https://seoulsky.lotteworld.com/guide/hours",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SEOUL SKY — Sky Bridge et fermeture hivernale",
+      "url": "https://seoulsky.lotteworld.com/enjoy/skyBridge",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "VisitKorea — observatoire et horaires",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=65854",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Visit Seoul — accès et type de lieu",
+      "url": "https://english.visitseoul.net/jamsilarea/SeoulSky/ENPowtoyc",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — plancher de verre",
+      "url": "https://commons.wikimedia.org/wiki/File:Glass_floor_of_Lotte_World_Tower.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama Lotte World et lac Seokchon",
+      "url": "https://commons.wikimedia.org/wiki/File:Lotte_World_seen_from_Lotte_World_Tower.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama du fleuve Han",
+      "url": "https://commons.wikimedia.org/wiki/File:Han_River_seen_from_Lotte_World_Tower.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Le calendrier daté intègre tous les jours vérifiés et consignés jusqu’au 1er janvier 2027 ; vérifier les jours suivants avant toute prolongation. L’ancien contenu de certaines pages d’avantages affiche encore les prix précédents ; les tarifs retenus proviennent de la version anglaise actuelle du site officiel."
+}
