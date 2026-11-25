@@ -31,7 +31,8 @@
     "Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 17 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
     "Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.",
-    "Découverte du 25 novembre : One World Observatory vérifié et publié comme plateforme autonome avec prix dynamique, exception Thanksgiving et trois photos exactes."
+    "Découverte du 25 novembre : One World Observatory vérifié et publié comme plateforme autonome avec prix dynamique, exception Thanksgiving et trois photos exactes.",
+    "Découverte du 25 novembre : Reunion Tower GeO-Deck publié comme observatoire autonome, avec six horaires datés, tarifs variables et trois photos exactes."
   ],
   "entries": [
     {
@@ -51873,6 +51874,186 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "US-candidate-discovery-reunion-tower-geo-deck-20261125",
+      "name": "Reunion Tower GeO-Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme d’observation à billet propre",
+      "locality": "300 Reunion Blvd E, Dallas, TX 75207",
+      "siteId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T14:17:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires actuels publiés par l’exploitant.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans homonyme ; accès au GeO-Deck à billet distinct du restaurant.",
+      "possibleMatches": [],
+      "aliases": [
+        "Reunion Tower Observation Deck",
+        "GeO-Deck Dallas"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T14:14:21.013Z",
+      "integrationHistory": [
+        {
+          "eventId": "8df6dc0a-29c5-4acd-ae03-1e721640277b",
+          "appliedAt": "2026-11-25T14:09:58.342Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/operations.json#8df6dc0a-29c5-4acd-ae03-1e721640277b",
+          "auditEvidence": null,
+          "summary": "Création masquée après contrôle des homonymes ; localisation et descriptions en huit langues."
+        },
+        {
+          "eventId": "58ef63d0-bd61-455d-a427-e68b8e492a4e",
+          "appliedAt": "2026-11-25T14:10:46.392Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/operations.json#58ef63d0-bd61-455d-a427-e68b8e492a4e",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels par tranche, horaires datés du 25 au 30 novembre 2026 et dernières admissions intégrés."
+        },
+        {
+          "eventId": "photo-import-3af762afa1494b48b1f9ec8f8d3f4f03",
+          "appliedAt": "2026-11-25T14:11:23.140Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/operations.json#photo-import-3af762afa1494b48b1f9ec8f8d3f4f03",
+          "auditEvidence": null,
+          "summary": "Photo de la tour et du GeO-Deck à son sommet : Texas Lane, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-import-4d1258104556445eb97b1c37b4affb0a",
+          "appliedAt": "2026-11-25T14:11:48.355Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/operations.json#photo-import-4d1258104556445eb97b1c37b4affb0a",
+          "auditEvidence": null,
+          "summary": "Photo de l’intérieur du GeO-Deck : Michael Barera, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-import-9cd840d841284ab58b6326b4fc8864f0",
+          "appliedAt": "2026-11-25T14:12:14.105Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/operations.json#photo-import-9cd840d841284ab58b6326b4fc8864f0",
+          "auditEvidence": null,
+          "summary": "Photo du panorama de Dallas depuis le GeO-Deck : Michael Barera, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-metadata-3af762afa1494b48b1f9ec8f8d3f4f03",
+          "appliedAt": "2026-11-25T14:14:00.605Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/operations.json#photo-metadata-3af762afa1494b48b1f9ec8f8d3f4f03",
+          "auditEvidence": null,
+          "summary": "Légendes photographiques distinctes des textes alternatifs intégrées dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-4d1258104556445eb97b1c37b4affb0a",
+          "appliedAt": "2026-11-25T14:14:10.131Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/operations.json#photo-metadata-4d1258104556445eb97b1c37b4affb0a",
+          "auditEvidence": null,
+          "summary": "Légendes photographiques distinctes des textes alternatifs intégrées dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-9cd840d841284ab58b6326b4fc8864f0",
+          "appliedAt": "2026-11-25T14:14:21.013Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/operations.json#photo-metadata-9cd840d841284ab58b6326b4fc8864f0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/audit.json",
+          "summary": "Légendes photographiques distinctes des textes alternatifs intégrées dans les huit langues. Audit projeté 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revérifier les prix dynamiques et le calendrier après le 30 novembre 2026.",
+      "sources": [
+        {
+          "label": "Reunion Tower — billetterie, tarifs et dernière admission",
+          "url": "https://reuniontower.com/plan-your-visit/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Reunion Tower — horaires datés et expérience",
+          "url": "https://reuniontower.com/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Reunion Tower — FAQ, saisonnalité et accès séparé du restaurant",
+          "url": "https://reuniontower.com/faq/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Reunion Tower — adresse officielle",
+          "url": "https://reuniontower.com/contact/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — tour et belvédère",
+          "url": "https://commons.wikimedia.org/wiki/File:Reunion_Tower,_Dallas,_Texas.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur du belvédère",
+          "url": "https://commons.wikimedia.org/wiki/File:View_of_GeO-Deck_of_Reunion_Tower_August_2015_25.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — vue depuis le belvédère",
+          "url": "https://commons.wikimedia.org/wiki/File:View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche d’observatoire à billet propre ; contrôle PDE et inspection de trois photos sous licence libre.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Le GeO-Deck dispose d’une billetterie et d’un accès propres, séparés du restaurant Crown Block."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/bf49b311-7260-4282-9141-5c762b48e3ac/reunion-tower-geo-deck",
+          "publishedAtUtc": "2026-11-25T14:15:31.9141634Z",
+          "verifiedAtUtc": "2026-11-25T14:17:00Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "e10332d68db746a4a0d7357af9e1f1af",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/bf49b311-7260-4282-9141-5c762b48e3ac/reunion-tower-geo-deck?facebook-image=3af762afa1494b48b1f9ec8f8d3f4f03",
+          "publishedAtUtc": "2026-11-25T14:16:44.9715308Z",
+          "externalPostId": "1285475681307050_122128814835424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128814835424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-reunion-tower-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "US-candidate-2e7df0fd3e73fd",
