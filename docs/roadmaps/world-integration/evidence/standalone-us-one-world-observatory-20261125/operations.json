@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "5e7fb896-7e9b-4353-b73d-6b74ccc57ad4",
+    "appliedAtUtc": "2026-11-25T13:15:05.3538124Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "a2a61e34-52f7-4d63-860d-6201b1f9d307",
+    "appliedAtUtc": "2026-11-25T13:16:25.6930192Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-c87f332a4b0341e9aea880223e9b7538",
+    "imageId": "c87f332a4b0341e9aea880223e9b7538",
+    "updatedAtUtc": "2026-11-25T13:17:16.618Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panorama_of_Midtown_Manhattan_from_the_One_World_Observatory,_New_York_City.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 209711
+  },
+  {
+    "step": "photo-import-d09ef375fe124d7fa4f384da91b057cd",
+    "imageId": "d09ef375fe124d7fa4f384da91b057cd",
+    "updatedAtUtc": "2026-11-25T13:17:44.809Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_the_One_World_Observatory_with_visitors_backlit_against_the_windows,_New_York_City.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 120225
+  },
+  {
+    "step": "photo-import-bf322e92fcd84d8e95b4fd97471cca82",
+    "imageId": "bf322e92fcd84d8e95b4fd97471cca82",
+    "updatedAtUtc": "2026-11-25T13:18:11.058Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:One_World_Observatory_entrance.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 115303
+  },
+  {
+    "step": "publish",
+    "operationId": "fb1a2078-deee-4283-a9f1-a5c68ee66582",
+    "appliedAtUtc": "2026-11-25T13:19:05.0493831Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "87c5b7ded36647c287311d413ac5bb42",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T13:20:01.247785Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128809867424431"
+  }
+]
