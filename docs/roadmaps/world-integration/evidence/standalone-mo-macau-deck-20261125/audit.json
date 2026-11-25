@@ -1,0 +1,270 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b6e4c97e-9503-4391-8bbf-aca654e5d2b4",
+  "countryCode": "MO",
+  "name": "Macau Tower Observation Deck",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b6e4c97e-9503-4391-8bbf-aca654e5d2b4/macau-tower-observation-deck",
+  "lastDataIntegrationAtUtc": "2026-11-25T12:28:47.152Z",
+  "publicVerifiedAtUtc": "2026-11-25T12:31:48.872Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "descriptionsWithEightLanguages": 1,
+    "exactPublishedPhotos": 2,
+    "currentPricingOffers": 3,
+    "boundedHoursThrough": "2027-01-31",
+    "accessConditions": 1,
+    "visibleOpeningHistoryEvents": 1
+  },
+  "photoEvidence": [
+    {
+      "imageId": "f113beb8830141aabc637c33ba5d0ef2",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Level_58_observation_deck_16-03-2023(1).jpg",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 233359,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le salon d’observation vitré de Macau Tower au niveau 58"
+        },
+        {
+          "languageCode": "en",
+          "value": "Glazed Level 58 observation lounge inside Macau Tower"
+        },
+        {
+          "languageCode": "de",
+          "value": "Verglaste Aussichtslounge im Macau Tower auf Ebene 58"
+        },
+        {
+          "languageCode": "es",
+          "value": "Sala panorámica acristalada del nivel 58 de Macau Tower"
+        },
+        {
+          "languageCode": "it",
+          "value": "Sala panoramica vetrata al livello 58 di Macau Tower"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Glazen uitkijkzaal op niveau 58 van Macau Tower"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przeszklony salon widokowy na poziomie 58 Macau Tower"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Salão de observação envidraçado no piso 58 da Torre de Macau"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le salon d’observation et ses baies vitrées en 2023."
+        },
+        {
+          "languageCode": "en",
+          "value": "The observation lounge and its broad windows in 2023."
+        },
+        {
+          "languageCode": "de",
+          "value": "Aussichtslounge mit großen Fenstern im Jahr 2023."
+        },
+        {
+          "languageCode": "es",
+          "value": "Sala panorámica y sus grandes ventanales en 2023."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sala panoramica e ampie vetrate nel 2023."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Uitkijkzaal met grote ramen in 2023."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Salon widokowy z dużymi oknami w 2023 r."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Salão panorâmico com grandes janelas em 2023."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        }
+      ]
+    },
+    {
+      "imageId": "456bbbc9292c4f268f219a43bcf82cb4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Level_58_observation_deck_16-03-2023(2).jpg",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 253524,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Baies panoramiques courbes du niveau 58 de Macau Tower"
+        },
+        {
+          "languageCode": "en",
+          "value": "Curved panorama windows on Macau Tower Level 58"
+        },
+        {
+          "languageCode": "de",
+          "value": "Gebogene Panoramafenster auf Ebene 58 im Macau Tower"
+        },
+        {
+          "languageCode": "es",
+          "value": "Ventanales panorámicos curvos del nivel 58 de Macau Tower"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vetrate panoramiche curve al livello 58 di Macau Tower"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Gebogen panoramavensters op niveau 58 van Macau Tower"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zakrzywione okna panoramiczne na poziomie 58 Macau Tower"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Janelas panorâmicas curvas no piso 58 da Torre de Macau"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "L’espace intérieur regarde vers la ville et les eaux autour de Macao."
+        },
+        {
+          "languageCode": "en",
+          "value": "The indoor deck looks towards the city and surrounding water."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Innenbereich blickt auf Stadt und Wasser."
+        },
+        {
+          "languageCode": "es",
+          "value": "La sala interior mira hacia la ciudad y el agua."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’interno guarda verso la città e l’acqua."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De binnenruimte kijkt uit over de stad en het water."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wnętrze wychodzi na miasto i wodę."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O interior olha para a cidade e a água."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: LN9267, CC BY-SA 4.0 (2023-03-16)."
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "operator": "https://www.macautower.com.mo/en/entertainment/observation-deck/",
+    "address": "https://www.macautower.com.mo/en/contact-us/",
+    "history": "https://yearbook.gcs.gov.mo/yearbook_pdf/2026/myb2026ePA01CH13.pdf",
+    "operatorOverview": "https://www.macautower.com.mo/en/tower-overview/"
+  },
+  "remainingUncertainty": "L’exploitant peut prolonger ou modifier les horaires pour des événements. Règles bornées au 31 janvier 2027. Le tarif standard vérifié sur la page officielle en novembre 2026 reste à recontrôler avant la prochaine saison.",
+  "facebookPublicationId": "15879be0577f497ab37a0527b0918b2e",
+  "facebookStatus": "Published",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128804047424431"
+}
