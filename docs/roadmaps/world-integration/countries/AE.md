@@ -10,6 +10,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 4 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 - Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
+- Découverte du 25 novembre : At the Top Burj Khalifa vérifié et publié comme plateforme autonome Silver des niveaux 124–125, avec trois photos exactes et annonce Facebook.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -17,18 +18,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 64 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 4 |
+| Intégration achevée | 5 |
 | Publié, date inconnue | 4 |
 | Hors périmètre enregistré | 4 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **117**. Sources : AZA, Aerophile — références constructeur, AmusementForce, Découverte complémentaire — site officiel, EAZA, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **118**. Sources : AZA, Aerophile — références constructeur, AmusementForce, Découverte complémentaire — site officiel, EAZA, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **4 publiés**, **25 masqués à intégrer**, **3 masqués NotRelevant à réexaminer**, **53 candidats sans fiche**.
 
-Standalone : **4 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **9 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **5 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **9 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **4 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -51,6 +52,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | AE-candidate-ce3f7725914ed1 | Aquaventure Waterpark | Emirate of Dubai | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#United_Arab_Emirates) |
 | AE-candidate-7066d933bfa745 | Aquaventure Waterpark at Atlantis the Palm | Dubai, United Arab Emirates | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/aquaventure-waterpark-atlantis-the-palm-dubai-uae) |
 | AE-candidate-8ab88c07d42e43 | Arabia's Wildlife Centre | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [EAZA](https://www.eaza.net/membership/) |
+| AE-candidate-discovery-at-the-top-burj-khalifa-20261125 | At the Top, Burj Khalifa | Dubai Mall Lower Ground Floor, Downtown Dubai | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T12:51:55.719Z | — | Conserver la ligne et les preuves ; vérifier le prix de chaque créneau et les horaires avant le 31 janvier 2027. SKY et The Lounge restent des offres séparées. Qualification standalone : AlreadyStandalone. L’accès aux niveaux 124 et 125 se réserve avec un billet propre Silver ; trois photos exactes publiées. Signal source : La billetterie officielle vend le billet Silver pour les niveaux 124 et 125 et publie les horaires actuels.. [At the Top — billet Silver, prix, horaires et accès](https://ticket.atthetop.ae/experiences/at-the-top-burj-khalifa/) · [Billetterie officielle At the Top](https://ticket.atthetop.ae/) · [Bayut — reportage contemporain sur l’ouverture, archive](https://web.archive.org/web/20100105155448/http://www.bayut.com/Property_News/uae_property_news/burj_dubai_observation_deck_opens_t-650.html) · [Wikimedia Commons — photo exacte 1](https://commons.wikimedia.org/wiki/File:At_the_Top,_Burj_Khalifa,_Dubai_(7997570791).jpg) · [Wikimedia Commons — photo exacte 2](https://commons.wikimedia.org/wiki/File:Dubai-_At_The_Top_Burj_Khalifa_-_140515-2193-jikatu_(15100351735).jpg) · [Wikimedia Commons — photo exacte 3](https://commons.wikimedia.org/wiki/File:At_The_Top_Burj_Khalifa_Dubai_(157940823).jpeg) |
 | AE-candidate-579315fb25a901 | Atlantis | Dubai | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AZA](https://www.aza.org/current-accreditation-list) |
 | AE-candidate-29c90100941460 | Atlantis, Dubai | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](https://www.atlantis.com/dubai) |
 | AE-candidate-3576783c9bd96f | Baniyas Children's Park | Abu Dhabi , Abu Dhabi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/6396.htm) |

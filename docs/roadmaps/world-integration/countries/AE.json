@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 117,
+  "sourceObservationCount": 118,
   "sourceFamilies": [
     "AZA",
     "Aerophile — références constructeur",
@@ -28,7 +28,8 @@
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 4 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
-    "Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création."
+    "Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
+    "Découverte du 25 novembre : At the Top Burj Khalifa vérifié et publié comme plateforme autonome Silver des niveaux 124–125, avec trois photos exactes et annonce Facebook."
   ],
   "entries": [
     {
@@ -4444,6 +4445,151 @@
         "score": 95,
         "publicationBlockers": [],
         "gapCount": 2
+      }
+    },
+    {
+      "entryId": "AE-candidate-discovery-at-the-top-burj-khalifa-20261125",
+      "name": "At the Top, Burj Khalifa",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme d’observation à billet propre",
+      "locality": "Dubai Mall Lower Ground Floor, Downtown Dubai",
+      "siteId": "e71305af-08de-4316-a492-70fc3ecc35d1",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T12:53:15Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "La billetterie officielle vend le billet Silver pour les niveaux 124 et 125 et publie les horaires actuels.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans homonyme ; billet autonome Silver, distinct des produits SKY et The Lounge.",
+      "possibleMatches": [],
+      "aliases": [
+        "At the Top Burj Khalifa",
+        "Burj Khalifa observation deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T12:51:55.719Z",
+      "integrationHistory": [
+        {
+          "eventId": "550df8b6-8b12-4ca0-906e-4981b5e084ba",
+          "appliedAt": "2026-11-25T12:49:02.240Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e71305af-08de-4316-a492-70fc3ecc35d1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/operations.json#550df8b6-8b12-4ca0-906e-4981b5e084ba",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée après contrôle des doublons ; identité, localisation et descriptions en huit langues."
+        },
+        {
+          "eventId": "262b07cf-3f7e-4611-b784-2a5a4dc2c179",
+          "appliedAt": "2026-11-25T12:50:04.754Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e71305af-08de-4316-a492-70fc3ecc35d1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/operations.json#262b07cf-3f7e-4611-b784-2a5a4dc2c179",
+          "auditEvidence": null,
+          "summary": "Billet Silver officiel, horaires de la billetterie, accès par Dubai Mall et ouverture historique intégrés."
+        },
+        {
+          "eventId": "photo-import-1c5776be61384ab092a62dcb00113817",
+          "appliedAt": "2026-11-25T12:51:12.140Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e71305af-08de-4316-a492-70fc3ecc35d1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/operations.json#photo-import-1c5776be61384ab092a62dcb00113817",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la terrasse At the Top : Fabio Achilli, CC BY 2.0, crédits multilingues."
+        },
+        {
+          "eventId": "photo-import-e1a0773924454166b8042be61045c848",
+          "appliedAt": "2026-11-25T12:51:34.226Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e71305af-08de-4316-a492-70fc3ecc35d1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/operations.json#photo-import-e1a0773924454166b8042be61045c848",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la Dubai Fountain vue depuis At the Top : Jimmy Baikovicius, CC BY-SA 2.0."
+        },
+        {
+          "eventId": "photo-import-e21558bd1bdf4116aa49c01186547dda",
+          "appliedAt": "2026-11-25T12:51:55.719Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e71305af-08de-4316-a492-70fc3ecc35d1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/operations.json#photo-import-e21558bd1bdf4116aa49c01186547dda",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/audit.json",
+          "summary": "Photo exacte du télescope interactif de l’observatoire : Ravi Kumar, CC BY 3.0. Audit 97/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; vérifier le prix de chaque créneau et les horaires avant le 31 janvier 2027. SKY et The Lounge restent des offres séparées.",
+      "sources": [
+        {
+          "label": "At the Top — billet Silver, prix, horaires et accès",
+          "url": "https://ticket.atthetop.ae/experiences/at-the-top-burj-khalifa/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Billetterie officielle At the Top",
+          "url": "https://ticket.atthetop.ae/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Bayut — reportage contemporain sur l’ouverture, archive",
+          "url": "https://web.archive.org/web/20100105155448/http://www.bayut.com/Property_News/uae_property_news/burj_dubai_observation_deck_opens_t-650.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:At_the_Top,_Burj_Khalifa,_Dubai_(7997570791).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Dubai-_At_The_Top_Burj_Khalifa_-_140515-2193-jikatu_(15100351735).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:At_The_Top_Burj_Khalifa_Dubai_(157940823).jpeg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche de plateformes à billet propre ; contrôle des doublons PDE et inspection de trois photos exactes libres.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "L’accès aux niveaux 124 et 125 se réserve avec un billet propre Silver ; trois photos exactes publiées."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e71305af-08de-4316-a492-70fc3ecc35d1/at-the-top-burj-khalifa",
+          "publishedAtUtc": "2026-11-25T12:52:57.6479047Z",
+          "verifiedAtUtc": "2026-11-25T12:53:15Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "976e77e7c2084342a0534f4c4b3fa0fd",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e71305af-08de-4316-a492-70fc3ecc35d1/at-the-top-burj-khalifa?facebook-image=1c5776be61384ab092a62dcb00113817",
+          "publishedAtUtc": "2026-11-25T12:53:53.220241Z",
+          "externalPostId": "1285475681307050_122128806801424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128806801424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/audit.json",
+        "score": 97,
+        "publicationBlockers": []
       }
     }
   ]
