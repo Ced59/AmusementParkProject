@@ -27,7 +27,8 @@
     "Revue standalone du 22 octobre : 12 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 5 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
     "SEOUL SKY : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres, huit descriptions et publication Facebook. Date de dernière intégration de données conservée dans l’historique.",
-    "N SEOUL TOWER : observatoire à billet propre créé et publié le 25 novembre 2026 avec trois photos, huit descriptions et publication Facebook. Fermeture de l’observatoire annoncée pour janvier à mars 2027 ; suivi requis de la réouverture."
+    "N SEOUL TOWER : observatoire à billet propre créé et publié le 25 novembre 2026 avec trois photos, huit descriptions et publication Facebook. Fermeture de l’observatoire annoncée pour janvier à mars 2027 ; suivi requis de la réouverture.",
+    "Namsan Cable Car : téléphérique autonome créé et publié le 25 novembre 2026 avec six tarifs sur place, horaires, deux conditions, ouverture 1962, trois photos libres exactes, huit descriptions et publication Facebook. Météo et prolongation des horaires suivies dans le backlog permanent."
   ],
   "entries": [
     {
@@ -4773,6 +4774,182 @@
           "publishedAtUtc": "2026-11-25T17:11:36.8465556Z",
           "externalPostId": "1285475681307050_122128832919424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128832919424431",
+          "failureCode": null,
+          "failureMessage": null,
+          "network": "Facebook"
+        }
+      }
+    },
+    {
+      "entryId": "KR-candidate-discovery-namsan-cable-car-20261125",
+      "name": "Namsan Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "83 Sopa-ro, Jung-gu, Séoul",
+      "siteId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T19:05:15Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires officiels actifs au 25 novembre 2026 ; suspensions météo possibles.",
+      "identityConfidence": "Billet autonome et station vérifiés auprès de l’exploitant ; tarifs, horaires, règles, histoire, coordonnées et trois photos exactes sourcés.",
+      "possibleMatches": [],
+      "aliases": [
+        "남산케이블카",
+        "Namsan Cablecar",
+        "Seoul Namsan Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T19:01:59.227Z",
+      "integrationHistory": [
+        {
+          "eventId": "2d7499e9-494b-408a-add2-1c42eb2206f2",
+          "appliedAt": "2026-11-25T18:57:23.429Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/operations.json#2d7499e9-494b-408a-add2-1c42eb2206f2",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche de doublons, localisation et huit descriptions."
+        },
+        {
+          "eventId": "91d60372-b73e-4579-a72a-a26a4d76c3c2",
+          "appliedAt": "2026-11-25T18:58:04.075Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/operations.json#91d60372-b73e-4579-a72a-a26a4d76c3c2",
+          "auditEvidence": null,
+          "summary": "Six tarifs en KRW, vente sur place et horaires datés intégrés."
+        },
+        {
+          "eventId": "a962bf8d-9a01-4b1e-aabb-112019a15e20",
+          "appliedAt": "2026-11-25T18:59:35.798Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/operations.json#a962bf8d-9a01-4b1e-aabb-112019a15e20",
+          "auditEvidence": null,
+          "summary": "Deux conditions officielles sur la vente sur place et la météo."
+        },
+        {
+          "eventId": "23340c10-392f-4750-a082-49516a8e3f74",
+          "appliedAt": "2026-11-25T18:59:47.399Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/operations.json#23340c10-392f-4750-a082-49516a8e3f74",
+          "auditEvidence": null,
+          "summary": "Ouverture en 1962 documentée avec précision à l’année."
+        },
+        {
+          "eventId": "photo-5dfc96e708eb44ecbabe532008ffbe59",
+          "appliedAt": "2026-11-25T19:00:18.347Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/operations.json#photo-5dfc96e708eb44ecbabe532008ffbe59",
+          "auditEvidence": null,
+          "summary": "Cabine avec N Seoul Tower, photo exacte créditée avec huit alt et légendes."
+        },
+        {
+          "eventId": "photo-b8934d0282514aff834b9a4bd57a262a",
+          "appliedAt": "2026-11-25T19:00:32.297Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/operations.json#photo-b8934d0282514aff834b9a4bd57a262a",
+          "auditEvidence": null,
+          "summary": "Cabine au-dessus de Séoul, deuxième photo exacte et créditée."
+        },
+        {
+          "eventId": "photo-9a210a4861504da0afbd74d0342f4f0d",
+          "appliedAt": "2026-11-25T19:00:43.243Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/operations.json#photo-9a210a4861504da0afbd74d0342f4f0d",
+          "auditEvidence": null,
+          "summary": "Cabine et tour dans la brume, troisième photo exacte et créditée."
+        },
+        {
+          "eventId": "c04ad496-584b-4105-8097-ef3f673f7207",
+          "appliedAt": "2026-11-25T19:01:59.227Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fc74c395-e211-41f8-bc0a-1bed25c36eb4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/operations.json#c04ad496-584b-4105-8097-ef3f673f7207",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/audit.json",
+          "summary": "Descriptions corrigées après audit, suppression des mesures techniques dans les textes publics."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier le service météo, les tarifs vendus sur place et prolonger les horaires après le 28 février 2027.",
+      "sources": [
+        {
+          "label": "Namsan Cable Car — opérateur, tarifs, horaires, adresse et vente sur place",
+          "url": "https://www.cablecar.co.kr/usage.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Namsan Cable Car — opérateur, histoire et ouverture en 1962",
+          "url": "https://www.cablecar.co.kr/index.html",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Visit Korea — trajet autonome et adresse du Namsan Cable Car",
+          "url": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?menuSn=351&vcontsId=96828",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "OpenStreetMap — station basse du Namsan Cable Car",
+          "url": "https://www.openstreetmap.org/way/383097725",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabine Namsan et tour, Jean & Nathalie, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Seoul_-_Namsan_Cable_Car.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabine rouge au-dessus de Séoul, Andrew Bell, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Namsan_Cable_Car-01.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabine et tour, Korail2012, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:%EB%82%A8%EC%82%B0_%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4.JPG",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors inventaire du téléphérique à billet propre ; quatre recherches PDE en anglais et coréen, exploitant, guide touristique, OSM et trois photos Commons.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Téléphérique à billetterie propre distinct de l’observatoire N Seoul Tower ; aucune fiche de parc parent nécessaire."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/fc74c395-e211-41f8-bc0a-1bed25c36eb4/namsan-cable-car",
+          "publishedAtUtc": "2026-11-25T19:02:25.0103895Z",
+          "verifiedAtUtc": "2026-11-25T19:05:15Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-namsan-cable-car-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "98ba49f383434837b5f1f660a1233721",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/fc74c395-e211-41f8-bc0a-1bed25c36eb4/namsan-cable-car?facebook-image=5dfc96e708eb44ecbabe532008ffbe59",
+          "publishedAtUtc": "2026-11-25T19:03:05.2014455Z",
+          "externalPostId": "1285475681307050_122128845003424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128845003424431",
           "failureCode": null,
           "failureMessage": null,
           "network": "Facebook"
