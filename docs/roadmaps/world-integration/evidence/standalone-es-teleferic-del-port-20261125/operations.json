@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "e69dcdb3-aea0-46da-8fe0-a33f23817b22",
+    "appliedAtUtc": "2026-11-25T21:47:25.8120323Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "5864f811-4546-478f-b672-d3c5be8b5095",
+    "appliedAtUtc": "2026-11-25T21:48:33.1409306Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "7db9072e-b80a-4d84-96fc-ff6bad3f282c",
+    "appliedAtUtc": "2026-11-25T21:48:50.7253921Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "3dc22174-ae67-44db-875e-14e054e5b996",
+    "appliedAtUtc": "2026-11-25T21:49:05.1371911Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-bc8f36c449b7484cb583f04c7099f9d3",
+    "imageId": "bc8f36c449b7484cb583f04c7099f9d3",
+    "createdAtUtc": "2026-11-25T21:50:10.804Z",
+    "updatedAtUtc": "2026-11-25T21:50:14.52Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telefèric_del_Port_Barcelona.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-451293a5615e4c20bd7f23807867ccc0",
+    "imageId": "451293a5615e4c20bd7f23807867ccc0",
+    "createdAtUtc": "2026-11-25T21:50:20.231Z",
+    "updatedAtUtc": "2026-11-25T21:50:24.315Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torre_Jaime_I_(top),_Telefèric_del_Port,_Barcelona_-_September_2025.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-dca4d640f6a24b578f9136b5a4e395d6",
+    "imageId": "dca4d640f6a24b578f9136b5a4e395d6",
+    "createdAtUtc": "2026-11-25T21:50:30.383Z",
+    "updatedAtUtc": "2026-11-25T21:50:33.746Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_Telefèric_del_port_cabin_01.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "bb7c0efc-3dd3-4446-88ac-086bc85efd81",
+    "appliedAtUtc": "2026-11-25T21:51:37.1312392Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "f2af8332ce064434abc62ce460d9e3c1",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T21:52:40.1882097Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128856649424431"
+  }
+]
