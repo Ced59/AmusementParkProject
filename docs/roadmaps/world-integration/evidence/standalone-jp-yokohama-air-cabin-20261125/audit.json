@@ -1,0 +1,64 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "6a44e756-54ea-4e25-b2e8-020d23ec0f26",
+  "countryCode": "JP",
+  "name": "Yokohama Air Cabin",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/6a44e756-54ea-4e25-b2e8-020d23ec0f26/yokohama-air-cabin",
+  "lastDataIntegrationAtUtc": "2026-11-25T08:59:23.140Z",
+  "publicVerifiedAtUtc": "2026-11-25T09:02:11.515Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 86,
+    "earnedPoints": 86,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "attractions": 1,
+    "operatingAttractions": 1,
+    "descriptionsWithEightLanguages": 1,
+    "attractionsWithAtLeastOneExactPhoto": 1,
+    "publishedPhotos": 3,
+    "openingHistoryEvents": 1,
+    "accessConditions": 1,
+    "currentPricingOffers": 4,
+    "openingHoursDaysCoveredFrom20261125To20261231": 37,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0,
+    "knownClosureOverrides": 15
+  },
+  "photoIds": [
+    "3663ba4a0cf047e5a9e6734c5e74b90b",
+    "8b40f0d6ba4f4a85835bf8cb8eeb2ef9",
+    "d7412bad25d6408b89a77d6cac3ab9e0"
+  ],
+  "sources": {
+    "operator": "https://yokohama-air-cabin.jp/en/",
+    "routeAndSpecs": "https://yokohama-air-cabin.jp/en/about/",
+    "openingDate": "https://www.welcome.city.yokohama.jp/topics/tp_detail.php?lt=&tpid=T03547",
+    "currentTickets": "https://ticket.at-yokohama.net/",
+    "hoursCorroboration": [
+      "https://travelnotesjapan.com/en/minato-mirai-night-view-guide/",
+      "https://thisisyokohama.com/2026/11/23/yokohama-air-cabin-tickets/"
+    ],
+    "officialSchedule": "https://yokohama-air-cabin.jp/20260819413/"
+  },
+  "remainingUncertainty": "Le planning officiel en image ne répondait pas directement depuis cet environnement. Les horaires datés jusqu’au 31 décembre 2026 et les fermetures connues de janvier 2027 ont été recoupés avec deux publications récentes. Les heures des autres jours de janvier ne sont pas établies ; revérifier avant expiration.",
+  "facebookPublicationId": "e8d6a206c82047918a0f985c3eda7501"
+}

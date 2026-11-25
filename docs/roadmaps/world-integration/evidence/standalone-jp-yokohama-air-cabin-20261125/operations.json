@@ -1,0 +1,100 @@
+[
+  {
+    "step": "core",
+    "operationId": "27642646-9e2b-46a5-9394-3d244ff1673c",
+    "appliedAtUtc": "2026-11-25T08:30:22.0744312Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "copy",
+    "operationId": "182fca34-23ec-46f5-9ec0-9b0bd1145214",
+    "appliedAtUtc": "2026-11-25T08:36:43.7425351Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "pricing",
+    "operationId": "65567796-52ca-45fb-bc67-a8b90d4280a5",
+    "appliedAtUtc": "2026-11-25T08:41:26.905066Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "references",
+    "operationId": "3d0e0815-985f-4337-944c-514ab99fedc1",
+    "appliedAtUtc": "2026-11-25T08:45:02.0047171Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "0fff07ea-1e66-4047-91de-bdd9772478a4",
+    "appliedAtUtc": "2026-11-25T08:51:13.2858128Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "e97bc0af-b056-4dbb-b473-3757e3ff1ab1",
+    "appliedAtUtc": "2026-11-25T08:53:14.6882752Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "hours",
+    "operationId": "ff9ab7bb-0370-48d3-885b-bff4af1cdf6c",
+    "appliedAtUtc": "2026-11-25T08:55:12.0757071Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "a80ada59-91c1-44dc-b8a9-d0ad7ac31668",
+    "appliedAtUtc": "2026-11-25T08:59:23.1407831Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-hero",
+    "imageId": "3663ba4a0cf047e5a9e6734c5e74b90b",
+    "updatedAtUtc": "2026-11-25T08:32:59.053Z",
+    "isPublished": false,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin.jpg"
+  },
+  {
+    "step": "photo-import-day",
+    "imageId": "d7412bad25d6408b89a77d6cac3ab9e0",
+    "updatedAtUtc": "2026-11-25T08:33:43.664Z",
+    "isPublished": false,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_2025-11-23.jpg"
+  },
+  {
+    "step": "photo-import-boarding",
+    "imageId": "8b40f0d6ba4f4a85835bf8cb8eeb2ef9",
+    "updatedAtUtc": "2026-11-25T08:34:25.029Z",
+    "isPublished": false,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_3.jpg"
+  },
+  {
+    "step": "photo-publish-hero",
+    "imageId": "3663ba4a0cf047e5a9e6734c5e74b90b",
+    "updatedAtUtc": "2026-11-25T08:57:23.134Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin.jpg"
+  },
+  {
+    "step": "photo-publish-day",
+    "imageId": "d7412bad25d6408b89a77d6cac3ab9e0",
+    "updatedAtUtc": "2026-11-25T08:58:20.454Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_2025-11-23.jpg"
+  },
+  {
+    "step": "photo-publish-boarding",
+    "imageId": "8b40f0d6ba4f4a85835bf8cb8eeb2ef9",
+    "updatedAtUtc": "2026-11-25T08:57:49.444Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yokohama_Air_Cabin_3.jpg"
+  }
+]
