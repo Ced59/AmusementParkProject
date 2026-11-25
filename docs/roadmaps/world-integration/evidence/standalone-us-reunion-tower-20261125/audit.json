@@ -1,0 +1,94 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "bf49b311-7260-4282-9141-5c762b48e3ac",
+  "name": "Reunion Tower GeO-Deck",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/bf49b311-7260-4282-9141-5c762b48e3ac/reunion-tower-geo-deck",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T14:17:00Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "e10332d68db746a4a0d7357af9e1f1af",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128814835424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T14:14:21.013Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Reunion Tower » : zéro homonyme avant création ; backlog US sans GeO-Deck.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "3af762afa1494b48b1f9ec8f8d3f4f03",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Reunion_Tower,_Dallas,_Texas.jpg",
+      "isPublished": true,
+      "author": "Texas Lane",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "4d1258104556445eb97b1c37b4affb0a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_GeO-Deck_of_Reunion_Tower_August_2015_25.jpg",
+      "isPublished": true,
+      "author": "Michael Barera",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "9cd840d841284ab58b6326b4fc8864f0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg",
+      "isPublished": true,
+      "author": "Michael Barera",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Reunion Tower — billetterie, tarifs et dernière admission",
+      "url": "https://reuniontower.com/plan-your-visit/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Reunion Tower — horaires datés et expérience",
+      "url": "https://reuniontower.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Reunion Tower — FAQ, saisonnalité et accès séparé du restaurant",
+      "url": "https://reuniontower.com/faq/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Reunion Tower — adresse officielle",
+      "url": "https://reuniontower.com/contact/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — tour et belvédère",
+      "url": "https://commons.wikimedia.org/wiki/File:Reunion_Tower,_Dallas,_Texas.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — intérieur du belvédère",
+      "url": "https://commons.wikimedia.org/wiki/File:View_of_GeO-Deck_of_Reunion_Tower_August_2015_25.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — vue depuis le belvédère",
+      "url": "https://commons.wikimedia.org/wiki/File:View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Belvédère à billet propre, terrasse intérieure et extérieure, prix variables par tranche et six horaires datés ; trois photos exactes.",
+  "remainingUncertainty": "Horaires annoncés seulement jusqu’au 30 novembre : consulter le calendrier officiel ensuite ; les prix dépendent du créneau et les événements peuvent modifier les heures."
+}

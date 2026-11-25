@@ -12,6 +12,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Recherche externe dédiée aux absences : 17 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 - Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.
 - Découverte du 25 novembre : One World Observatory vérifié et publié comme plateforme autonome avec prix dynamique, exception Thanksgiving et trois photos exactes.
+- Découverte du 25 novembre : Reunion Tower GeO-Deck publié comme observatoire autonome, avec six horaires datés, tarifs variables et trois photos exactes.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -19,7 +20,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 1725 |
 | En cours | 0 |
 | Bloqué | 2 |
-| Intégration achevée | 45 |
+| Intégration achevée | 46 |
 | Publié, date inconnue | 38 |
 | Hors périmètre enregistré | 17 |
 | Doublon conservé | 7 |
@@ -30,7 +31,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **38 publiés**, **229 masqués à intégrer**, **21 masqués NotRelevant à réexaminer**, **1526 candidats sans fiche**.
 
-Standalone : **45 publiées**, **0 masquées**, **25 candidates sans fiche**. Autres dossiers : **2 types à décider**, **168 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **46 publiées**, **0 masquées**, **25 candidates sans fiche**. Autres dossiers : **2 types à décider**, **168 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **21 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **59 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **10 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -48,4 +49,4 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 - [Page 6 — lignes 1251 à 1500](US/006.md)
 - [Page 7 — lignes 1501 à 1750](US/007.md)
 - [Page 8 — lignes 1751 à 2000](US/008.md)
-- [Page 9 — lignes 2001 à 2063](US/009.md)
+- [Page 9 — lignes 2001 à 2064](US/009.md)
