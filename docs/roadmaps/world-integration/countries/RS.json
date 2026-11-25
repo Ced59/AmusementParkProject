@@ -28,18 +28,18 @@
       "entryId": "RS-candidate-standalone-5d733920bcf554",
       "name": "Alpine Coaster Wiegand — Kopaonik",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Bob sur rails identifié dans un centre de loisirs multi-activités déjà présent comme Park masqué ; sources de l’exploitant et du tourisme local.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -48,46 +48,57 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer de standalone. Intégrer Bob na Šinama — Kopaonik comme parkItem de Ski Centar Kopaonik (RS-park-16b23920-8e88-4681-9418-ee0789625f01) lors de l’intégration éditoriale du parc ; trouver une photo exacte réutilisable du bob avant publication. Conserver la référence constructeur.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=233#location-id-1086",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source officielle ou tourisme local — classement de la piste dans le centre",
+          "url": "https://www.skijalistasrbije.rs/sites/default/files/attachments/cenovnik_sr_kopaonik_2026.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Source complémentaire — offre de loisirs du centre",
+          "url": "https://www.skijalistasrbije.rs/en/node/908",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Kopaonik",
+            "name": "Bob na Šinama — Kopaonik",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=233#location-id-1086",
             "family": "Alpine coaster",
             "sourceVenueName": "Kopaonik",
-            "referenceId": "location-id-1086"
+            "referenceId": "location-id-1086",
+            "parentBacklogEntryId": "RS-park-16b23920-8e88-4681-9418-ee0789625f01"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Le tarif officiel 2026 classe le bob, le tubing et la tyrolienne sous « Zabavni park » au sein du centre Kopaonik ; la piste est une attraction du centre, à traiter comme parkItem."
       }
     },
     {
       "entryId": "RS-candidate-standalone-93f5e309d74f14",
       "name": "Alpine Coaster Wiegand — Zlatibor-Tornik",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Bob sur rails identifié dans un centre de loisirs multi-activités déjà présent comme Park masqué ; sources de l’exploitant et du tourisme local.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -96,28 +107,39 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer de standalone. Intégrer Bob na Šinama — Tornik comme parkItem de Ski Centar Tornik (RS-park-225d083f-a05b-4e15-a87d-720612f2c0d9) lors de l’intégration éditoriale du parc ; trouver une photo exacte réutilisable du bob avant publication. Conserver la référence constructeur.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=233#location-id-1895",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source officielle ou tourisme local — classement de la piste dans le centre",
+          "url": "https://www.zlatibor.org.rs/sr/sta-raditi/aktivni-odmor/tornik-letnji-sadrzaji/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Source complémentaire — offre de loisirs du centre",
+          "url": "https://www.skijalistasrbije.rs/sites/default/files/attachments/cenovnik_sr_tornik_2026.pdf",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Zlatibor-Tornik",
+            "name": "Bob na Šinama — Tornik",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=233#location-id-1895",
             "family": "Alpine coaster",
             "sourceVenueName": "Zlatibor-Tornik",
-            "referenceId": "location-id-1895"
+            "referenceId": "location-id-1895",
+            "parentBacklogEntryId": "RS-park-225d083f-a05b-4e15-a87d-720612f2c0d9"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’office du tourisme place le bob parmi les activités du Ski centar Tornik avec tyrolienne, tubing, mini-golf et parc aventure ; le tarif officiel confirme l’exploitation dans ce centre. La piste est un parkItem."
       }
     },
     {
@@ -834,7 +856,7 @@
       "entryId": "RS-park-16b23920-8e88-4681-9418-ee0789625f01",
       "name": "Ski Centar Kopaonik",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "16b23920-8e88-4681-9418-ee0789625f01",
@@ -845,13 +867,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Centre de loisirs avec plusieurs activités officielles ; le bob sur rails est une attraction interne, pas la seule identité du site.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer éditorialement Ski Centar Kopaonik comme Park, puis Bob na Šinama — Kopaonik comme parkItem avec sources, horaires, tarifs, descriptions et photographie exacte. Ne pas migrer la fiche Park vers une standalone portant le nom du centre.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -867,6 +889,16 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14820.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source officielle ou tourisme local — classement de la piste dans le centre",
+          "url": "https://www.skijalistasrbije.rs/sites/default/files/attachments/cenovnik_sr_kopaonik_2026.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Source complémentaire — offre de loisirs du centre",
+          "url": "https://www.skijalistasrbije.rs/en/node/908",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": null,
@@ -883,21 +915,22 @@
         ]
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Bob na Šinama",
+            "name": "Bob na Šinama — Kopaonik",
             "source": "RCDB — Mountain Coaster",
             "url": "https://rcdb.com/14820.htm",
             "family": "Mountain coaster",
             "sourceVenueName": "Ski Centar Kopaonik",
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Brzeće , Rasina",
-            "sourceOpenedYear": "2013"
+            "sourceOpenedYear": "2013",
+            "parentBacklogEntryId": "RS-park-16b23920-8e88-4681-9418-ee0789625f01"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le tarif officiel 2026 classe le bob, le tubing et la tyrolienne sous « Zabavni park » au sein du centre Kopaonik ; la piste est une attraction du centre, à traiter comme parkItem."
       }
     },
     {
@@ -935,7 +968,7 @@
       "entryId": "RS-park-225d083f-a05b-4e15-a87d-720612f2c0d9",
       "name": "Ski Centar Tornik",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "225d083f-a05b-4e15-a87d-720612f2c0d9",
@@ -946,13 +979,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Centre de loisirs avec plusieurs activités officielles ; le bob sur rails est une attraction interne, pas la seule identité du site.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer éditorialement Ski Centar Tornik comme Park, puis Bob na Šinama — Tornik comme parkItem avec sources, horaires, tarifs, descriptions et photographie exacte. Ne pas migrer la fiche Park vers une standalone portant le nom du centre.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -968,6 +1001,16 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14822.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Source officielle ou tourisme local — classement de la piste dans le centre",
+          "url": "https://www.zlatibor.org.rs/sr/sta-raditi/aktivni-odmor/tornik-letnji-sadrzaji/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Source complémentaire — offre de loisirs du centre",
+          "url": "https://www.skijalistasrbije.rs/sites/default/files/attachments/cenovnik_sr_tornik_2026.pdf",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": null,
@@ -984,21 +1027,22 @@
         ]
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Bob na Šinama",
+            "name": "Bob na Šinama — Tornik",
             "source": "RCDB — Mountain Coaster",
             "url": "https://rcdb.com/14822.htm",
             "family": "Mountain coaster",
             "sourceVenueName": "Ski Centar Tornik",
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Jablanica , Zlatibor",
-            "sourceOpenedYear": "2014"
+            "sourceOpenedYear": "2014",
+            "parentBacklogEntryId": "RS-park-225d083f-a05b-4e15-a87d-720612f2c0d9"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’office du tourisme place le bob parmi les activités du Ski centar Tornik avec tyrolienne, tubing, mini-golf et parc aventure ; le tarif officiel confirme l’exploitation dans ce centre. La piste est un parkItem."
       }
     },
     {
