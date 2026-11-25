@@ -1,0 +1,75 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "719cc6ad-f1e4-4cf7-a355-8b5480a5bf84",
+  "name": "Kuchu Teien Observatory",
+  "countryCode": "JP",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/719cc6ad-f1e4-4cf7-a355-8b5480a5bf84/kuchu-teien-observatory",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T20:31:33Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "a6dc11a12f8b4bf5b46d7911dcf03fae",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128851129424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T20:28:05.062Z",
+  "lastDataEventId": "d425b48a-361e-482a-93cc-ffeac4532e13",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions JP : aucun résultat pour Kuchu Teien Observatory, Umeda Sky Building, Floating Garden Observatory et 空中庭園展望台 ; aucun homonyme dans le backlog JP.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "f07c3571d9f842318ed72ca2e7353949",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Umeda_Sky_Building_20260305.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "KishujiRapid",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "66a1939797ab4c84977f8e0984316194",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osaka_Umeda_Sky_Building_Aussichtsplattform_1.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Zairon",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "c3db4264e3b64a65a4f9bcd09f1a832e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Night_view_from_Umeda_Sky_Building_(west_side)_20250830.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}

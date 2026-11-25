@@ -944,9 +944,9 @@
     },
     {
       "entryId": "IT-candidate-standalone-f4dd3336e0196b",
-      "name": "Alpine Coaster Wiegand — Caldirola",
+      "name": "Bob su rotaia Caldirola",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
@@ -956,30 +956,38 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Ouverture historique du bob le 22 août 2009 ; fonctionnement actuel à recontrôler.",
+      "identityConfidence": "Le site municipal place le bob sur rails et les pistes downhill dans le même Bob & Downhill Park Val Curone, au Villaggio La Gioia à Caldirola. La page date l’ouverture du bob au 22 août 2009 sans établir sa disponibilité actuelle.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "IT-park-54b0aa7a-4c48-445f-80e8-c74af30a53cc"
+      ],
       "aliases": [
-        "Caldirola"
+        "Caldirola",
+        "Alpine Coaster Wiegand — Caldirola"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver le dossier comme renvoi vers le parc masqué IT-park-54b0aa7a-4c48-445f-80e8-c74af30a53cc ; vérifier le fonctionnement actuel du bob et l’intégrer comme ParkItem lors de la vraie intégration éditoriale du parc.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=297#location-id-1062",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Comune di Fabbrica Curone — Bob & Downhill Park Val Curone",
+          "url": "https://www.comune.fabbricacurone.al.it/it-it/vivere-il-comune/sport/bob-downhill-park-val-curone-27066-1-50446f25966fae15c4ef68e60ac014e7",
+          "accessedAt": "2026-11-25"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
-            "name": "Caldirola",
+            "name": "Bob su rotaia Caldirola",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=297#location-id-1062",
             "family": "Alpine coaster",
@@ -987,7 +995,7 @@
             "referenceId": "location-id-1062"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Le site municipal place le bob sur rails et les pistes downhill dans le même Bob & Downhill Park Val Curone, au Villaggio La Gioia à Caldirola. La page date l’ouverture du bob au 22 août 2009 sans établir sa disponibilité actuelle."
       }
     },
     {
@@ -2687,14 +2695,14 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Ouverture historique du bob le 22 août 2009 ; fonctionnement actuel à recontrôler.",
+      "identityConfidence": "Le site municipal place le bob sur rails et les pistes downhill dans le même Bob & Downhill Park Val Curone, au Villaggio La Gioia à Caldirola. La page date l’ouverture du bob au 22 août 2009 sans établir sa disponibilité actuelle.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche Park masquée avec le bob sur rails et l’activité downhill. Vérifier le fonctionnement actuel du bob avant de publier le ParkItem ; ne pas migrer automatiquement la fiche Park en standalone.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2710,13 +2718,18 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13229.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Comune di Fabbrica Curone — Bob & Downhill Park Val Curone",
+          "url": "https://www.comune.fabbricacurone.al.it/it-it/vivere-il-comune/sport/bob-downhill-park-val-curone-27066-1-50446f25966fae15c4ef68e60ac014e7",
+          "accessedAt": "2026-11-25"
         }
       ],
       "countryCodeAtInventory": "IT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-25",
         "attractions": [
           {
             "name": "Bob",
@@ -2729,7 +2742,7 @@
             "sourceOpenedYear": "2009"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Le site municipal place le bob sur rails et les pistes downhill dans le même Bob & Downhill Park Val Curone, au Villaggio La Gioia à Caldirola. La page date l’ouverture du bob au 22 août 2009 sans établir sa disponibilité actuelle."
       }
     },
     {

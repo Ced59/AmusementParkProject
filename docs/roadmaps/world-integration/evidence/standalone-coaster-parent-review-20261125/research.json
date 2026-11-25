@@ -1,0 +1,46 @@
+{
+  "reviewedAt": "2026-11-25",
+  "scope": "Qualification de trois pistes de coaster apparues comme possibles standalone",
+  "decisions": [
+    {
+      "countryCode": "IT",
+      "candidateEntryId": "IT-candidate-standalone-f4dd3336e0196b",
+      "parentEntryId": "IT-park-54b0aa7a-4c48-445f-80e8-c74af30a53cc",
+      "finding": "Le site municipal place le bob sur rails et les pistes downhill dans le même Bob & Downhill Park Val Curone, au Villaggio La Gioia à Caldirola. La page date l’ouverture du bob au 22 août 2009 sans établir sa disponibilité actuelle.",
+      "lifecycleCaveat": "Ouverture historique du bob le 22 août 2009 ; fonctionnement actuel à recontrôler.",
+      "source": {
+        "label": "Comune di Fabbrica Curone — Bob & Downhill Park Val Curone",
+        "url": "https://www.comune.fabbricacurone.al.it/it-it/vivere-il-comune/sport/bob-downhill-park-val-curone-27066-1-50446f25966fae15c4ef68e60ac014e7",
+        "accessedAt": "2026-11-25"
+      },
+      "decision": "Coaster ou activité interne au parc ; aucune création standalone et aucune intégration de données PDE enregistrée."
+    },
+    {
+      "countryCode": "LV",
+      "candidateEntryId": "LV-candidate-standalone-3189752d034966",
+      "parentEntryId": "LV-park-7a718fce-9537-4166-a200-cd4b6d13ea9a",
+      "finding": "La Ville de Ventspils annonce la Rodeļu trase dans le Piedzīvojumu parks avec zone d’attractions, parcours de cordes, wakepark, paintball et laser tag. Une annonce de fin de saison limite ensuite certaines activités aux groupes sur réservation.",
+      "lifecycleCaveat": "Présence de la piste annoncée pour la saison 2026 ; conditions saisonnières à vérifier.",
+      "source": {
+        "label": "Ventspils / OC Ventspils — saison 2026 du Piedzīvojumu parks",
+        "url": "https://www.ventspils.lv/jaunumi/izklaide/piedzivojumu-parks-uzsaks-vasaras-sezonu/",
+        "accessedAt": "2026-11-25"
+      },
+      "decision": "Coaster ou activité interne au parc ; aucune création standalone et aucune intégration de données PDE enregistrée."
+    },
+    {
+      "countryCode": "ME",
+      "candidateEntryId": null,
+      "parentEntryId": "ME-park-e82ce40d-f7b9-41cc-bbde-128ecce04308",
+      "finding": "Le site de l’exploitant présente le Kotor Cable Car comme un complexe réunissant télécabine, Alpine Coaster, Falcon Fly, Aerobar et aire de jeux. La page annonce une fermeture jusqu’au printemps 2027.",
+      "lifecycleCaveat": "Complexe fermé jusqu’au printemps 2027 selon l’exploitant.",
+      "source": {
+        "label": "Kotor Cable Car — Adventures, complex and Alpine Coaster",
+        "url": "https://www.kotorcablecar.me/experience/adventures",
+        "accessedAt": "2026-11-25"
+      },
+      "decision": "Coaster ou activité interne au parc ; aucune création standalone et aucune intégration de données PDE enregistrée."
+    }
+  ],
+  "backlogRule": "Les entrées et fiches Park masquées restent dans le backlog ; lastDataIntegrationAt reste inchangé car aucune donnée de site n’a été intégrée."
+}
