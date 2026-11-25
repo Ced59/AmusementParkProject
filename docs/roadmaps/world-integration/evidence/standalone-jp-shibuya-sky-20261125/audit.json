@@ -1,0 +1,102 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "e4fd94f6-7bbb-433a-be43-f1ca44821bc3",
+  "name": "SHIBUYA SKY",
+  "countryCode": "JP",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/e4fd94f6-7bbb-433a-be43-f1ca44821bc3/shibuya-sky",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T16:26:00Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "34d2c90f2e5e4fde9dd3da9a2ef2ed5c",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128828755424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T16:25:12.797Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions sous Shibuya Sky et Shibuya Scramble Square : zéro homonyme, même masqué. Backlog JP sans entrée du belvédère.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "86e157419b4f4dfda4f574f5fa856ea7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shibuya_Sky_Observation_Deck_(53415730632).jpg",
+      "isPublished": true,
+      "author": "Stephen Kelly",
+      "license": "CC BY 2.0",
+      "subject": "Panneau THE ROOF et visiteurs sur la terrasse."
+    },
+    {
+      "imageId": "18f5bf129fa043c8bb1f81a8153cd7d7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shibuya_Scramble_Square_SHIBUYA_SKY_(53331300464).jpg",
+      "isPublished": true,
+      "author": "Dick Thomas Johnson",
+      "license": "CC BY 2.0",
+      "subject": "Terrasse extérieure avec garde-corps vitré et panorama."
+    },
+    {
+      "imageId": "9c3507dda2234e54a1eb777a58a4eef4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taking_In_the_View,_Shibuya_Sky_Observation_Deck_(53416648301).jpg",
+      "isPublished": true,
+      "author": "Stephen Kelly",
+      "license": "CC BY 2.0",
+      "subject": "Visiteurs regardant Tokyo depuis le belvédère."
+    }
+  ],
+  "sources": [
+    {
+      "label": "SHIBUYA SKY — site officiel et zones de visite",
+      "url": "https://www.shibuya-scramble-square.com/sky/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Shibuya Scramble Square — horaires et adresse en anglais",
+      "url": "https://www.shibuya-scramble-square.com/en/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SHIBUYA SKY — page officielle des billets",
+      "url": "https://www.shibuya-scramble-square.com/sky/ticket/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SHIBUYA SKY — tarifs officiels révisés en 2025",
+      "url": "https://www.shibuya-scramble-square.com/assets/pdf/about/20250409scsq.pdf",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SHIBUYA SKY — accès et guichet",
+      "url": "https://www.shibuya-scramble-square.com/sky/access/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — terrasse THE ROOF",
+      "url": "https://commons.wikimedia.org/wiki/File:Shibuya_Sky_Observation_Deck_(53415730632).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — terrasse panoramique",
+      "url": "https://commons.wikimedia.org/wiki/File:Shibuya_Scramble_Square_SHIBUYA_SKY_(53331300464).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — visiteurs sur le toit",
+      "url": "https://commons.wikimedia.org/wiki/File:Taking_In_the_View,_Shibuya_Sky_Observation_Deck_(53416648301).jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Belvédère à billet propre dans un immeuble commercial, avec terrasse extérieure et galerie intérieure, tarifs adultes selon le créneau, horaires et trois photographies exactes sous licence libre.",
+  "remainingUncertainty": "La page officielle des billets est actuellement servie comme application JavaScript et sa grille tarifaire n’est pas récupérable dans la réponse HTML directe ; les montants proviennent de son index récent et de la grille officielle publiée en 2025. Recontrôler le prix dans la billetterie active et les modalités d’achat selon la résidence avant le prochain cycle. Le 1er janvier 2027 comporte une offre matinale spécifique ; aucun horaire ordinaire futur extrapolé."
+}
