@@ -1,0 +1,61 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions en SG pour « Singapore Cable Car », « Mount Faber » et « Sentosa Cable Car » : zéro correspondance dans les six recherches ; aucun dossier homonyme dans le backlog SG avant création.",
+  "decision": "Réseau de téléphériques à billet propre de Mount Faber Leisure, deux lignes et six stations, autonome des attractions de Sentosa ; une fiche standalone TransportRide pour le produit commercial Singapore Cable Car et son SkyPass commun.",
+  "officialPrices": {
+    "currency": "SGD",
+    "adultSkyPassRegular": 35,
+    "childAge4To12SkyPassRegular": 25,
+    "adultOnlineKeychainBundle": 32.9,
+    "childOnlineKeychainBundle": 23.5,
+    "type": "Promotion actuelle susceptible de changer"
+  },
+  "officialHours": {
+    "daily": "08:45–22:00",
+    "lastBoarding": "21:30",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-02-28",
+    "daysCovered": 96
+  },
+  "history": "Premier trajet en 1974, date exacte non affirmée.",
+  "accessibility": "Fauteuils manuels admis, fauteuils motorisés interdits en cabine ; ascenseurs en station.",
+  "photos": "Trois photos du téléphérique inspectées visuellement ; les deux premières datent de 2026, la troisième de 2024 avec décoration temporaire. CC BY-SA 4.0, auteur, lien, réduction, alt et légende distincts dans les huit langues.",
+  "sources": [
+    {
+      "label": "Mount Faber Leisure — réseau, billets SkyPass, tarifs, heures, stations",
+      "url": "https://mountfaberleisure.com/attraction/singapore-cable-car/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Mount Faber Leisure — FAQ, fauteuils manuels, ascenseurs, sécurité",
+      "url": "https://mountfaberleisure.com/faq/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Mount Faber Leisure — premiers trajets en 1974",
+      "url": "https://mountfaberleisure.com/about-us/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — emprise Faber Peak, point d’accueil approximatif",
+      "url": "https://www.openstreetmap.org/way/184389542",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabines et port depuis Mount Faber, kallerna, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Singapore_cable_car_Mount_Faber_1.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine rapprochée, kallerna, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Singapore_cable_car_Mount_Faber_2.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine décorée photographiée en 2024, LN9267, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Singapore_Cable_Car_No.27_(Mount_Faber_Line)_04-12-2024.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les promotions en ligne, les thèmes des cabines et les interruptions pour entretien changent : contrôler l’exploitant avant visite. La troisième photo illustre la décoration de 2024 et sa légende le précise. Le point cartographique correspond à l’emprise Faber Peak du bâtiment de départ, pas à une mesure du quai d’embarquement. Prolonger les horaires datés après le 28 février 2027."
+}
