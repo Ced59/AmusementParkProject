@@ -1,0 +1,302 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+  "countryCode": "US",
+  "name": "The Capital Wheel",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b0335449-d1b1-43b0-a39f-fed9b33742ff/the-capital-wheel",
+  "lastDataIntegrationAtUtc": "2026-11-25T10:40:49.685Z",
+  "publicVerifiedAtUtc": "2026-11-25T10:44:48.427Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completenessBefore": {
+    "completenessScore": 89,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 62,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "completeness": {
+    "completenessScore": 97,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 68,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "attractions": 1,
+    "operatingAttractions": 1,
+    "descriptionsWithEightLanguages": 1,
+    "attractionsWithAtLeastOneExactPhoto": 1,
+    "publishedPhotos": 3,
+    "currentPricingOffers": 6,
+    "officialCalendarStart": "2026-11-25",
+    "officialCalendarEnd": "2026-12-31",
+    "officialCalendarConfirmedDays": 35,
+    "datesWithoutPublishedWheelHours": [
+      "2026-11-26",
+      "2026-12-25"
+    ],
+    "uncoveredPublishedDates": [],
+    "calendarOverlaps": [],
+    "timeZoneId": "America/New_York"
+  },
+  "officialDailyHours": [
+    {
+      "date": "2026-11-25",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-13/"
+    },
+    {
+      "date": "2026-11-27",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-12/2026-11-27/"
+    },
+    {
+      "date": "2026-11-28",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-11-28/"
+    },
+    {
+      "date": "2026-11-29",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-11-29/"
+    },
+    {
+      "date": "2026-11-30",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-11-30/"
+    },
+    {
+      "date": "2026-12-01",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-01/"
+    },
+    {
+      "date": "2026-12-02",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-02/"
+    },
+    {
+      "date": "2026-12-03",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-03/"
+    },
+    {
+      "date": "2026-12-04",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-12/2026-12-04/"
+    },
+    {
+      "date": "2026-12-05",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-12-05/"
+    },
+    {
+      "date": "2026-12-06",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-12-06/"
+    },
+    {
+      "date": "2026-12-07",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-07/"
+    },
+    {
+      "date": "2026-12-08",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-08/"
+    },
+    {
+      "date": "2026-12-09",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-09/"
+    },
+    {
+      "date": "2026-12-10",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-10/"
+    },
+    {
+      "date": "2026-12-11",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-12/2026-12-11/"
+    },
+    {
+      "date": "2026-12-12",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-12-12/"
+    },
+    {
+      "date": "2026-12-13",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-12-13/"
+    },
+    {
+      "date": "2026-12-14",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-14/"
+    },
+    {
+      "date": "2026-12-15",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-15/"
+    },
+    {
+      "date": "2026-12-16",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-16/"
+    },
+    {
+      "date": "2026-12-17",
+      "opensAt": "12:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel/2026-12-17/"
+    },
+    {
+      "date": "2026-12-18",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-12/2026-12-18/"
+    },
+    {
+      "date": "2026-12-19",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-12-19/"
+    },
+    {
+      "date": "2026-12-20",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-12-20/"
+    },
+    {
+      "date": "2026-12-21",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-14/2026-12-21/"
+    },
+    {
+      "date": "2026-12-22",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-14/2026-12-22/"
+    },
+    {
+      "date": "2026-12-23",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-14/2026-12-23/"
+    },
+    {
+      "date": "2026-12-24",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-14/2026-12-24/"
+    },
+    {
+      "date": "2026-12-26",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-12-26/"
+    },
+    {
+      "date": "2026-12-27",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-10/2026-12-27/"
+    },
+    {
+      "date": "2026-12-28",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-15/2026-12-28/"
+    },
+    {
+      "date": "2026-12-29",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-15/2026-12-29/"
+    },
+    {
+      "date": "2026-12-30",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-15/2026-12-30/"
+    },
+    {
+      "date": "2026-12-31",
+      "opensAt": "10:00",
+      "closesAt": "22:00",
+      "officialEventUrl": "https://thecapitalwheel.com/future-events/the-capital-wheel-15/2026-12-31/"
+    }
+  ],
+  "photoIds": [
+    "a70362d25e014aba9c0e395bdc197227",
+    "dcb789168b1a44a5a7d1f7e304ae61dc",
+    "5efaf5fdcf51469cb25278c2e80ecc85"
+  ],
+  "photoCheck": "Three existing published Commons photos were visually checked on 2026-11-25 and each depicts The Capital Wheel itself.",
+  "sources": [
+    {
+      "label": "The Capital Wheel — FAQ officielle, six tarifs et conditions",
+      "url": "https://thecapitalwheel.com/faq/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "The Capital Wheel — calendrier officiel des heures de la roue",
+      "url": "https://thecapitalwheel.com/upcoming-events/category/cap-wheel-hours/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "The Capital Wheel — événements officiels JSON, 35 dates au 31 décembre 2026",
+      "url": "https://thecapitalwheel.com/wp-json/tribe/events/v1/events/?categories=cap-wheel-hours&start_date=2026-11-25&end_date=2027-12-31&per_page=50&page=1",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "remainingUncertainty": "No Wheel Hours event is published for 26 November or 25 December 2026, so opening on those days remains unknown. Future hours beyond 31 December have not been published. Prices may change.",
+  "facebookExistingPublication": {
+    "id": "f72cc14144e942b8b4cc1b4b69701d64",
+    "status": "Published",
+    "publishedAtUtc": "2026-10-28T22:07:54.143Z",
+    "externalPostId": "1285475681307050_122125096389424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125096389424431",
+    "evidence": "PARK_DATA_EDITOR:facebook:f72cc14144e942b8b4cc1b4b69701d64"
+  }
+}

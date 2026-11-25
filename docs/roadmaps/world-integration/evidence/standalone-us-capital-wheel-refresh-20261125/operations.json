@@ -1,0 +1,24 @@
+[
+  {
+    "step": "pricing-refresh",
+    "operationId": "ba0d1f8b-cdae-4ef8-a469-af6ad73eee22",
+    "appliedAtUtc": "2026-11-25T10:40:16.0103338Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "hours-refresh",
+    "operationId": "a15b4175-6901-4d80-a5d3-6080043a52c8",
+    "appliedAtUtc": "2026-11-25T10:40:49.6853563Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "editorial-validation-only",
+    "operationId": "cfe34195-7d5e-46ee-a09b-029afda063a7",
+    "appliedAtUtc": "2026-11-25T10:42:31.1528075Z",
+    "errors": [],
+    "warnings": [],
+    "countsAsDataIntegration": false
+  }
+]
