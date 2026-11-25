@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12404 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12405 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -17,7 +17,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1868 | 7553 |
-| Standalone | 312 | 1 | 112 |
+| Standalone | 313 | 1 | 112 |
 
 **Reprise standalone :** en plus des 112 candidates sans correspondance, **199 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **548 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **79 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
@@ -137,11 +137,11 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Suède](countries/SE.md) | 2 | 0 | 0 | 3 | 6 | 0 |
 | [Suisse](countries/CH.md) | 5 | 0 | 0 | 0 | 12 | 0 |
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Tchéquie](countries/CZ.md) | 5 | 0 | 0 | 0 | 11 | 0 |
+| [Tchéquie](countries/CZ.md) | 6 | 0 | 0 | 0 | 11 | 0 |
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **150** | **1** | **26** | **64** | **266** | **18** |
+| **Total** | **151** | **1** | **26** | **64** | **266** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **127**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **128**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Allemagne : 34 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Autriche : 14 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -163,7 +163,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - Slovaquie : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Suède : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Suisse : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- Tchéquie : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Tchéquie : 6 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |

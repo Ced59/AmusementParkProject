@@ -17,7 +17,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 57 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 5 |
+| Intégration achevée | 6 |
 | Publié, date inconnue | 1 |
 | Hors périmètre enregistré | 48 |
 | Doublon conservé | 1 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **1 publiés**, **21 masqués à intégrer**, **48 masqués NotRelevant à réexaminer**, **46 candidats sans fiche**.
 
-Standalone : **5 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **6 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **11 pistes dans des fiches Park masquées**, **1 dans des fiches Park publiées**, **8 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -138,6 +138,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CZ-candidate-0c1410066f241b | Olomouc Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](https://www.zoo-olomouc.cz/) |
 | CZ-candidate-4f6a0a80a60b87 | Ostrava Zoological Garden and Botanical Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.zoo-ostrava.cz) |
 | CZ-park-0cf560c7-1401-4c59-9f55-ccd55766e1de | Park Mirakulum | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/23465.htm) |
+| CZ-candidate-discovery-petrin-tower-20261125 | Petřín Tower | Petřínské sady 633, Prague | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T19:46:45.910Z | — | Conserver cette ligne ; recontrôler les horaires du 1er janvier 2027 et les tarifs saisonniers sans republier le même post Facebook. Qualification standalone : AlreadyStandalone. Tour d’observation à billetterie distincte ; labyrinthe de miroirs et funiculaire voisins, hors de cette identité. Signal source : Prague City Tourism affiche les billets et horaires au 25 novembre 2026.. [Prague City Tourism — Petřín Tower, tarifs, horaires et accessibilité](https://prague.eu/en/objevujte/petrin-tower-petrinska-rozhledna/) · [Wikimedia Commons — Petrin Tower at dusk.jpg (Fringio, CC BY-SA 3.0)](https://commons.wikimedia.org/wiki/File:Petrin_Tower_at_dusk.jpg) · [Wikimedia Commons — Petřín tower interior.jpg (Tiia Monto, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Petřín_tower_interior.jpg) · [Wikimedia Commons — Petrin tower in autumn 2015.jpg (Lucie Svorcova, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Petrin_tower_in_autumn_2015.jpg) |
 | CZ-candidate-f7cc0df16203ce | Prague Lunapark | Prague | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#Czech_Republic) |
 | CZ-candidate-8c0181d62c9b2a | Prague Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.zoopraha.cz) |
 | CZ-candidate-e4f585313c1e79 | Rajské ostrovy | Děčín | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Czech_Republic) |

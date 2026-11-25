@@ -1,0 +1,42 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions CZ pour Petřín Tower, Petrin Tower, Petřín Lookout Tower et Petřínská rozhledna : zéro résultat dans les huit recherches avant création ; aucune fiche correspondante dans le backlog CZ.",
+  "decision": "Tour panoramique avec billetterie autonome sur la colline de Petřín ; le labyrinthe de miroirs et le funiculaire sont des équipements voisins, pas des éléments de cette fiche.",
+  "officialPricing": {
+    "currency": "CZK",
+    "basic": 250,
+    "reduced": 170,
+    "youth16To26": 200,
+    "familyTwoAdultsUpToFourChildren": 500,
+    "underSix": "Free",
+    "liftExtra": "150 adults / ages 6–26; 50 for 65+; exceptions for disability-card holders",
+    "earlyBird": "50% first hour except December 25 and January 1"
+  },
+  "officialHours": "10:00–18:00 daily October–December 2026, except 24 December 10:00–15:00, 25 December 11:00–18:00, 26 December 10:00–19:00, 31 December 10:00–16:00. The official page displays January 1 with year 2026, not extrapolated to 2027.",
+  "accessibility": "299 steps to the upper viewpoint. The lift carries wheelchair users only to the lower platform; the upper platform lacks wheelchair manoeuvring space. Under-15 visitors require an accompanying adult.",
+  "history": "Built for the 1891 Jubilee Exhibition; publication event recorded with year precision.",
+  "photos": "Three exact Commons photos visually inspected: exterior at dusk in 2013, entrance interior in 2014, tower among autumn trees in 2015. CC BY-SA 3.0/4.0; author, source, license and reduction noted. Eight localized alt texts, captions and credits.",
+  "sources": [
+    {
+      "label": "Prague City Tourism — Petřín Tower, tarifs, horaires et accessibilité",
+      "url": "https://prague.eu/en/objevujte/petrin-tower-petrinska-rozhledna/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Petrin Tower at dusk.jpg (Fringio, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Petrin_Tower_at_dusk.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Petřín tower interior.jpg (Tiia Monto, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Petřín_tower_interior.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Petrin tower in autumn 2015.jpg (Lucie Svorcova, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Petrin_tower_in_autumn_2015.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Photographs reflect earlier years; the entrance fittings may have changed. Check the operator for January 1, 2027 hours."
+}
