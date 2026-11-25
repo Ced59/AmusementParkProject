@@ -33,7 +33,8 @@
     "Revue standalone du 22 octobre : 22 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
     "Contrôle supplémentaire alpine coasters : 3 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.",
-    "Découverte du 25 novembre : Vancouver Lookout publié avec horaires, billet à tarif dynamique et trois photographies exactes créditées."
+    "Découverte du 25 novembre : Vancouver Lookout publié avec horaires, billet à tarif dynamique et trois photographies exactes créditées.",
+    "Découverte du 25 novembre : Calgary Tower publié avec quatre tarifs officiels, horaires saisonniers et trois photographies exactes créditées."
   ],
   "entries": [
     {
@@ -585,6 +586,160 @@
       ],
       "countryCodeAtInventory": "CA",
       "countryResolution": null
+    },
+    {
+      "entryId": "CA-candidate-discovery-calgary-tower-20261125",
+      "name": "Calgary Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour d’observation à billet propre",
+      "locality": "101 9 Avenue SW, Calgary, Alberta",
+      "siteId": "afc81424-2189-41df-a1a5-be2825020930",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T15:48:30Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et calendrier saisonnier actuels publiés par l’exploitant.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans homonyme ; billet et salle panoramique propres à la tour.",
+      "possibleMatches": [],
+      "aliases": [
+        "Calgary Tower Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T15:46:36.701Z",
+      "integrationHistory": [
+        {
+          "eventId": "851a042d-d4b2-4129-bc25-0522d71e16a9",
+          "appliedAt": "2026-11-25T15:44:55.690Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "afc81424-2189-41df-a1a5-be2825020930",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-tower-20261125/operations.json#851a042d-d4b2-4129-bc25-0522d71e16a9",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches PDE Park et StandaloneAttraction sans homonyme ; accès et huit descriptions."
+        },
+        {
+          "eventId": "71a4f443-d076-4331-9eb2-abdd69fdf68a",
+          "appliedAt": "2026-11-25T15:45:36.605Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "afc81424-2189-41df-a1a5-be2825020930",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-tower-20261125/operations.json#71a4f443-d076-4331-9eb2-abdd69fdf68a",
+          "auditEvidence": null,
+          "summary": "Quatre catégories tarifaires officielles, taxes et frais de réservation signalés ; calendrier septembre–mai et horaires de Noël intégrés."
+        },
+        {
+          "eventId": "photo-import-300a643db00a43a4b7ad3837450cd698",
+          "appliedAt": "2026-11-25T15:46:10.122Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "afc81424-2189-41df-a1a5-be2825020930",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-tower-20261125/operations.json#photo-import-300a643db00a43a4b7ad3837450cd698",
+          "auditEvidence": null,
+          "summary": "Salle panoramique actuelle du belvédère. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-b4bc44d2927c4f3b9aeda1a9b2d71198",
+          "appliedAt": "2026-11-25T15:46:23.029Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "afc81424-2189-41df-a1a5-be2825020930",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-tower-20261125/operations.json#photo-import-b4bc44d2927c4f3b9aeda1a9b2d71198",
+          "auditEvidence": null,
+          "summary": "Visiteurs sur le plancher vitré. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-a6d202da0938426fbd829a66f224cbd8",
+          "appliedAt": "2026-11-25T15:46:36.701Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "afc81424-2189-41df-a1a5-be2825020930",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-tower-20261125/operations.json#photo-import-a6d202da0938426fbd829a66f224cbd8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-tower-20261125/audit.json",
+          "summary": "Tour vue depuis une rue du centre-ville. Photo exacte, créditée et légendée dans huit langues. Audit projeté 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; actualiser le calendrier avant juin 2027 et vérifier les prix variables, taxes et exceptions de jours fériés.",
+      "sources": [
+        {
+          "label": "Calgary Tower — tarif officiel et image des prix",
+          "url": "https://www.calgarytower.com/admission",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Calgary Tower — image officielle des prix",
+          "url": "https://static.wixstatic.com/media/29eefc_ea946080dbb24bd5b9e1284e3ea58cef~mv2.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Calgary Tower — horaires officiels",
+          "url": "https://www.calgarytower.com/hours",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Calgary Tower — adresse et accès",
+          "url": "https://www.calgarytower.com/location",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Calgary Attractions — fermeture de Noël",
+          "url": "https://calgaryattractions.com/attractions/calgary-tower/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — salle panoramique",
+          "url": "https://commons.wikimedia.org/wiki/File:Interior_of_Calgary_Tower,_Calgary,_Alberta,_2025-07-14_01.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — plancher vitré",
+          "url": "https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada_-glass%20floor-20June2010.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — tour",
+          "url": "https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada,_2025-07-14_01.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche de tour d’observation à billet propre ; contrôle PDE et inspection de trois photographies exactes réutilisables.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "La tour vend une entrée propre au belvédère avec horaires et plancher vitré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/afc81424-2189-41df-a1a5-be2825020930/calgary-tower",
+          "publishedAtUtc": "2026-11-25T15:48:08.0082916Z",
+          "verifiedAtUtc": "2026-11-25T15:48:30Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-tower-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "6b72e18e06aa451a9dfc25349ef51fd0",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/afc81424-2189-41df-a1a5-be2825020930/calgary-tower?facebook-image=300a643db00a43a4b7ad3837450cd698",
+          "publishedAtUtc": "2026-11-25T15:49:11.9565108Z",
+          "externalPostId": "1285475681307050_122128825551424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128825551424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-calgary-tower-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "CA-candidate-04c12de5cd97e9",

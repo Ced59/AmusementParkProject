@@ -12,6 +12,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 - Contrôle supplémentaire alpine coasters : 3 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.
 - Découverte du 25 novembre : Vancouver Lookout publié avec horaires, billet à tarif dynamique et trois photographies exactes créditées.
+- Découverte du 25 novembre : Calgary Tower publié avec quatre tarifs officiels, horaires saisonniers et trois photographies exactes créditées.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -19,7 +20,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 95 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 14 |
+| Intégration achevée | 15 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 2 |
 | Doublon conservé | 0 |
@@ -30,7 +31,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **25 masqués à intégrer**, **2 masqués NotRelevant à réexaminer**, **84 candidats sans fiche**.
 
-Standalone : **14 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **15 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **5 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **7 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -52,6 +53,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CA-candidate-b5a76428a8a058 | Boblo Island | Amherstburg , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/4715.htm) |
 | CA-candidate-0faf5efb1abdf2 | Burlington Amusement Park | Kensington , Prince Edward Island | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/4687.htm) |
 | CA-park-0b346d4e-02c3-416b-9f8b-e8a240c0a34c | Calaway Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/4608.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada) |
+| CA-candidate-discovery-calgary-tower-20261125 | Calgary Tower | 101 9 Avenue SW, Calgary, Alberta | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T15:46:36.701Z | — | Conserver la ligne et les preuves ; actualiser le calendrier avant juin 2027 et vérifier les prix variables, taxes et exceptions de jours fériés. Qualification standalone : AlreadyStandalone. La tour vend une entrée propre au belvédère avec horaires et plancher vitré. Signal source : Billetterie et calendrier saisonnier actuels publiés par l’exploitant.. [Calgary Tower — tarif officiel et image des prix](https://www.calgarytower.com/admission) · [Calgary Tower — image officielle des prix](https://static.wixstatic.com/media/29eefc_ea946080dbb24bd5b9e1284e3ea58cef~mv2.jpg) · [Calgary Tower — horaires officiels](https://www.calgarytower.com/hours) · [Calgary Tower — adresse et accès](https://www.calgarytower.com/location) · [Calgary Attractions — fermeture de Noël](https://calgaryattractions.com/attractions/calgary-tower/) · [Wikimedia Commons — salle panoramique](https://commons.wikimedia.org/wiki/File:Interior_of_Calgary_Tower,_Calgary,_Alberta,_2025-07-14_01.jpg) · [Wikimedia Commons — plancher vitré](https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada_-glass%20floor-20June2010.jpg) · [Wikimedia Commons — tour](https://commons.wikimedia.org/wiki/File:Calgary_Tower,_Calgary,_Alberta,_Canada,_2025-07-14_01.jpg) |
 | CA-candidate-04c12de5cd97e9 | Calypso Park | Limoges | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Canada) |
 | CA-candidate-82669fbcc1d27a | Calypso Theme Waterpark | Limoges, Ontario, Canada | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/calypso-theme-waterpark-limoges-ontario-canada) |
 | CA-candidate-4b5edf478ced05 | Camp Fortune | Chelsea , Québec | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Installations référencées : Mountain Pipe Coaster ; Mountain Coaster — Camp Fortune. Signal source : Operating. [RCDB](https://rcdb.com/19374.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Canada) · [RCDB — Mountain Coaster](https://rcdb.com/19375.htm) · [Sunkid — archive de projets](https://www.sunkidworld.com/en/projects/detail/sunkid-new-mountain-coaster-in-canada/) |
