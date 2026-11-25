@@ -11,6 +11,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Revue standalone du 22 octobre : 22 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 - Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 - Contrôle supplémentaire alpine coasters : 3 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.
+- Découverte du 25 novembre : Vancouver Lookout publié avec horaires, billet à tarif dynamique et trois photographies exactes créditées.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -18,7 +19,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 95 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 13 |
+| Intégration achevée | 14 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 2 |
 | Doublon conservé | 0 |
@@ -29,7 +30,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **25 masqués à intégrer**, **2 masqués NotRelevant à réexaminer**, **84 candidats sans fiche**.
 
-Standalone : **13 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **14 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **5 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **7 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -156,6 +157,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CA-park-1ba6422d-87d9-4e2d-94ad-4e3349c001e5 | Upper Clements Theme Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/4569.htm) |
 | CA-candidate-583ea53f7dc4b6 | Valcartier Vacation Village in Québec City | Québec, Canada, Québec City, Québec, Canada | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/valcartier-vacation-village-quebec-city-canada) |
 | CA-candidate-bdb1cd198057da | Vancouver Aquarium | Vancouver | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.vanaqua.org) · [AZA](https://www.aza.org/current-accreditation-list) |
+| CA-candidate-discovery-vancouver-lookout-20261125 | Vancouver Lookout | 555 West Hastings Street, Vancouver, British Columbia | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T15:16:54.531Z | — | Conserver la ligne et les preuves ; vérifier les changements d’horaires et intégrer un prix chiffré seulement lorsqu’il est confirmé par la billetterie officielle. Qualification standalone : AlreadyStandalone. Le belvédère dispose de sa propre billetterie et de ses propres horaires dans le Harbour Centre. Signal source : Billetterie, visite et calendrier actuels de l’exploitant.. [Vancouver Lookout — accueil et horaires actuels](https://vancouverlookout.com/) · [Vancouver Lookout — préparer sa visite](https://vancouverlookout.com/know-before-you-go) · [Wikimedia Commons — salle du belvédère](https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Interior_2018.jpg) · [Wikimedia Commons — accueil](https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Lobby_2018.jpg) · [Wikimedia Commons — tour](https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_(43815013895).jpg) |
 | CA-park-bfa8880e-5d7d-4aa0-8fe5-551a0270478f | West Coast Amusements | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | CA-candidate-0dd05ccb62a004 | Western Fair | London , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/4698.htm) |
 | CA-candidate-a8bba438f177d8 | Wet'n'Wild Toronto | Brampton | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Canada) |
