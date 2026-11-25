@@ -1,0 +1,64 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions HR pour « Dubrovnik Cable Car » et « Mount Srd Cable Car » : zéro résultat dans les quatre recherches avant création. Aucun Dubrovnik Cable Car dans le backlog HR.",
+  "decision": "Téléphérique panoramique autonome à billet propre, de la vieille ville de Dubrovnik au mont Srđ ; distinct des autres activités du sommet.",
+  "officialPrices": {
+    "currency": "EUR",
+    "adultOneWay": 17,
+    "adultReturn": 30,
+    "childOneWay": 5,
+    "childReturn": 8,
+    "childAge": "4 to 12 years",
+    "underFour": "Free; age-four boundary unclear",
+    "onlineTransactionFee": 2
+  },
+  "officialHours": {
+    "november": "09:00–17:00",
+    "lastUphillDeparture": "16:30",
+    "decemberToFebruary": "Closed",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-02-28",
+    "daysCovered": 96
+  },
+  "history": "Installation construite en 1969 selon l’exploitant ; événement publié avec précision à l’année.",
+  "accessibility": "Les deux stations sont accessibles en fauteuil roulant ; rampe en bas, ascenseur en haut. La météo peut arrêter la ligne ; animaux interdits dans les cabines.",
+  "photos": "Trois photos exactes de 2019 vérifiées visuellement : station basse, cabine à quai et station haute. Z thomas, CC BY-SA 4.0, URL, réduction, alt, légendes distinctes et crédits en huit langues.",
+  "sources": [
+    {
+      "label": "Dubrovnik Cable Car — opérateur, tarifs et calendrier saisonnier",
+      "url": "https://www.dubrovnikcablecar.com/timetable-and-prices/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Dubrovnik Cable Car — FAQ officielle, adresse, accessibilité, météo et animaux",
+      "url": "https://www.dubrovnikcablecar.com/contact/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Dubrovnik Cable Car — histoire de l’installation de 1969",
+      "url": "https://www.dubrovnikcablecar.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "OpenStreetMap — billetterie et station basse près de la porte Ploče",
+      "url": "https://www.openstreetmap.org/node/10051019557",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — station basse, Z thomas, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_2.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — cabine à quai, Z thomas, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_3.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — station haute, Z thomas, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_4.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Le site officiel indique novembre ouvert et décembre à février fermés ; les heures d’avril 2027 ne sont pas reconduites sans nouvelle vérification. Les départs peuvent être interrompus par vent ou orage. La grille officielle juxtapose « enfant de 4 à 12 ans » et « jusqu’à 4 ans gratuit » : le cas exact de l’anniversaire des 4 ans est à clarifier. Achat en ligne possible avec frais de transaction de 2 €. Trois photos de 2019 montrent la ligne à cette date."
+}

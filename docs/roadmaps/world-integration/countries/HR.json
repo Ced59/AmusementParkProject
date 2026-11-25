@@ -19,7 +19,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Dubrovnik Cable Car : ligne autonome créée et publiée le 25 novembre 2026 avec quatre tarifs, calendrier saisonnier, trois règles d’accès, histoire, trois photos libres exactes, huit descriptions et publication Facebook. Saison 2027, météo et limite d’âge suivies dans le backlog permanent."
   ],
   "entries": [
     {
@@ -1044,6 +1045,173 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "HR-candidate-discovery-dubrovnik-cable-car-20261125",
+      "name": "Dubrovnik Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Petra Krešimira IV 10a, Dubrovnik",
+      "siteId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T19:17:03Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie officielle et calendrier publiés au 25 novembre 2026 ; fermé décembre à février, météo variable.",
+      "identityConfidence": "Ligne et station vérifiées auprès de l’exploitant ; tarifs, calendrier saisonnier, règles, histoire, coordonnées et trois photos exactes sourcés.",
+      "possibleMatches": [],
+      "aliases": [
+        "Cableway Srđ",
+        "Dubrovnik Cableway",
+        "Žičara Srđ",
+        "Mount Srđ Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T19:13:04.085Z",
+      "integrationHistory": [
+        {
+          "eventId": "4fa78516-64d7-43d9-86e4-4cd4a966922c",
+          "appliedAt": "2026-11-25T19:10:14.951Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/operations.json#4fa78516-64d7-43d9-86e4-4cd4a966922c",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche de doublons, localisation et huit descriptions."
+        },
+        {
+          "eventId": "397ed4ad-97c1-4ebe-82fe-c1c8bd4a84de",
+          "appliedAt": "2026-11-25T19:10:41.878Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/operations.json#397ed4ad-97c1-4ebe-82fe-c1c8bd4a84de",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs en euros et calendrier novembre ouvert puis hiver fermé intégrés."
+        },
+        {
+          "eventId": "bfd0bed0-12fa-450d-83c8-374499fc3339",
+          "appliedAt": "2026-11-25T19:12:03.514Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/operations.json#bfd0bed0-12fa-450d-83c8-374499fc3339",
+          "auditEvidence": null,
+          "summary": "Trois règles officielles : fauteuils, météo et animaux."
+        },
+        {
+          "eventId": "55232124-db24-4111-9983-ad73cfd2f630",
+          "appliedAt": "2026-11-25T19:12:15.832Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/operations.json#55232124-db24-4111-9983-ad73cfd2f630",
+          "auditEvidence": null,
+          "summary": "Installation de 1969 documentée avec précision à l’année."
+        },
+        {
+          "eventId": "photo-013da5b9ae7e43d4bf45a4e712d1238e",
+          "appliedAt": "2026-11-25T19:12:40.767Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/operations.json#photo-013da5b9ae7e43d4bf45a4e712d1238e",
+          "auditEvidence": null,
+          "summary": "Station basse avec cabine, photo exacte créditée avec huit alt et légendes."
+        },
+        {
+          "eventId": "photo-80bc988f170543f4afee8abe7adb0e05",
+          "appliedAt": "2026-11-25T19:12:53.349Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/operations.json#photo-80bc988f170543f4afee8abe7adb0e05",
+          "auditEvidence": null,
+          "summary": "Cabine à quai, deuxième photo exacte et créditée."
+        },
+        {
+          "eventId": "photo-887f04ab9e89423582edb458ba134c37",
+          "appliedAt": "2026-11-25T19:13:04.085Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e3f86469-452a-42e2-bfb8-5cddba1c0669",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/operations.json#photo-887f04ab9e89423582edb458ba134c37",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/audit.json",
+          "summary": "Station haute avec cabine, troisième photo exacte et créditée."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier météo et la limite d’âge de 4 ans, puis actualiser le calendrier à l’ouverture de la saison 2027.",
+      "sources": [
+        {
+          "label": "Dubrovnik Cable Car — opérateur, tarifs et calendrier saisonnier",
+          "url": "https://www.dubrovnikcablecar.com/timetable-and-prices/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Dubrovnik Cable Car — FAQ officielle, adresse, accessibilité, météo et animaux",
+          "url": "https://www.dubrovnikcablecar.com/contact/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Dubrovnik Cable Car — histoire de l’installation de 1969",
+          "url": "https://www.dubrovnikcablecar.com/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "OpenStreetMap — billetterie et station basse près de la porte Ploče",
+          "url": "https://www.openstreetmap.org/node/10051019557",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — station basse, Z thomas, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_2.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabine à quai, Z thomas, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_3.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — station haute, Z thomas, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_4.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors inventaire du téléphérique à billet propre ; quatre recherches PDE sur noms et alias, opérateur, OSM et trois photos Commons.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Téléphérique à billetterie propre, distinct du restaurant, du musée et des autres activités du mont Srđ."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e3f86469-452a-42e2-bfb8-5cddba1c0669/dubrovnik-cable-car",
+          "publishedAtUtc": "2026-11-25T19:13:37.0643089Z",
+          "verifiedAtUtc": "2026-11-25T19:17:03Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-hr-dubrovnik-cable-car-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "7ad3cf9e280b4050898ca29f205f3119",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e3f86469-452a-42e2-bfb8-5cddba1c0669/dubrovnik-cable-car?facebook-image=013da5b9ae7e43d4bf45a4e712d1238e",
+          "publishedAtUtc": "2026-11-25T19:14:15.2435254Z",
+          "externalPostId": "1285475681307050_122128845915424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128845915424431",
+          "failureCode": null,
+          "failureMessage": null,
+          "network": "Facebook"
+        }
+      }
     }
   ]
 }

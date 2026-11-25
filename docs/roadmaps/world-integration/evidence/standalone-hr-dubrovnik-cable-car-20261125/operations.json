@@ -1,0 +1,127 @@
+[
+  {
+    "step": "core",
+    "operationId": "4fa78516-64d7-43d9-86e4-4cd4a966922c",
+    "appliedAtUtc": "2026-11-25T19:10:14.9517846Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "397ed4ad-97c1-4ebe-82fe-c1c8bd4a84de",
+    "appliedAtUtc": "2026-11-25T19:10:41.8789746Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "bfd0bed0-12fa-450d-83c8-374499fc3339",
+    "appliedAtUtc": "2026-11-25T19:12:03.5145029Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "55232124-db24-4111-9983-ad73cfd2f630",
+    "appliedAtUtc": "2026-11-25T19:12:15.8321981Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "3a213707-edc8-4493-9adc-df1f99ef4dba",
+    "appliedAtUtc": "2026-11-25T19:13:37.0643089Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-lower",
+    "eventId": "photo-013da5b9ae7e43d4bf45a4e712d1238e",
+    "imageId": "013da5b9ae7e43d4bf45a4e712d1238e",
+    "createdAtUtc": "2026-11-25T19:12:36.431Z",
+    "updatedAtUtc": "2026-11-25T19:12:40.767Z",
+    "id": "013da5b9ae7e43d4bf45a4e712d1238e",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_2.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Z thomas"
+  },
+  {
+    "step": "photo-cabin",
+    "eventId": "photo-80bc988f170543f4afee8abe7adb0e05",
+    "imageId": "80bc988f170543f4afee8abe7adb0e05",
+    "createdAtUtc": "2026-11-25T19:12:49.894Z",
+    "updatedAtUtc": "2026-11-25T19:12:53.349Z",
+    "id": "80bc988f170543f4afee8abe7adb0e05",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_3.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Z thomas"
+  },
+  {
+    "step": "photo-summit",
+    "eventId": "photo-887f04ab9e89423582edb458ba134c37",
+    "imageId": "887f04ab9e89423582edb458ba134c37",
+    "createdAtUtc": "2026-11-25T19:13:00.333Z",
+    "updatedAtUtc": "2026-11-25T19:13:04.085Z",
+    "id": "887f04ab9e89423582edb458ba134c37",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seilbahn_Dubrovnik_2019-08-25_4.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Z thomas"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "7ad3cf9e280b4050898ca29f205f3119",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T19:14:15.2435254Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128845915424431",
+    "selectedImageId": "013da5b9ae7e43d4bf45a4e712d1238e"
+  }
+]
