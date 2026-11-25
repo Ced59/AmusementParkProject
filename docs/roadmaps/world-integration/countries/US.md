@@ -16,6 +16,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Découverte du 25 novembre : Empire State Building Observatory publié avec deux formules, tarifs officiels de départ et trois photos exactes.
 - Découverte du 25 novembre : Top of the Rock Observation Deck publié avec tarif officiel, horaires et trois photos exactes.
 - Découverte du 25 novembre : Sky View Observatory publié avec trois formules, calendrier officiel et trois vues exactes créditées.
+- Skydeck Chicago : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Tarifs dynamiques et horaires d’hiver suivis dans le backlog permanent.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -23,7 +24,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 1723 |
 | En cours | 0 |
 | Bloqué | 2 |
-| Intégration achevée | 49 |
+| Intégration achevée | 50 |
 | Publié, date inconnue | 38 |
 | Hors périmètre enregistré | 17 |
 | Doublon conservé | 9 |
@@ -34,7 +35,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **38 publiés**, **229 masqués à intégrer**, **21 masqués NotRelevant à réexaminer**, **1526 candidats sans fiche**.
 
-Standalone : **49 publiées**, **0 masquées**, **24 candidates sans fiche**. Autres dossiers : **2 types à décider**, **167 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **50 publiées**, **0 masquées**, **24 candidates sans fiche**. Autres dossiers : **2 types à décider**, **167 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **20 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **58 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **11 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -52,4 +53,4 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 - [Page 6 — lignes 1251 à 1500](US/006.md)
 - [Page 7 — lignes 1501 à 1750](US/007.md)
 - [Page 8 — lignes 1751 à 2000](US/008.md)
-- [Page 9 — lignes 2001 à 2067](US/009.md)
+- [Page 9 — lignes 2001 à 2068](US/009.md)
