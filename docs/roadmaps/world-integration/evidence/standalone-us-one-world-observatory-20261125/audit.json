@@ -1,0 +1,83 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "024f3221-3e20-4348-8452-b4f03d71a3e7",
+  "name": "One World Observatory",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/024f3221-3e20-4348-8452-b4f03d71a3e7/one-world-observatory",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T13:19:20Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "87c5b7ded36647c287311d413ac5bb42",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128809867424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T13:18:11.058Z",
+  "presenceSearch": "PDE SearchParks « One World » et SearchStandaloneAttractions « One World Observatory » : aucune fiche existante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "c87f332a4b0341e9aea880223e9b7538",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panorama_of_Midtown_Manhattan_from_the_One_World_Observatory,_New_York_City.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "d09ef375fe124d7fa4f384da91b057cd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_the_One_World_Observatory_with_visitors_backlit_against_the_windows,_New_York_City.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "bf322e92fcd84d8e95b4fd97471cca82",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:One_World_Observatory_entrance.jpg",
+      "isPublished": true
+    }
+  ],
+  "sources": [
+    {
+      "label": "One World Observatory — expérience officielle",
+      "url": "https://www.oneworldobservatory.com/experience/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "One World Observatory — tarifs officiels",
+      "url": "https://www.oneworldobservatory.com/buy-tickets/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "One World Observatory — horaires et adresse",
+      "url": "https://www.oneworldobservatory.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Panorama_of_Midtown_Manhattan_from_the_One_World_Observatory,_New_York_City.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Interior_of_the_One_World_Observatory_with_visitors_backlit_against_the_windows,_New_York_City.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 3",
+      "url": "https://commons.wikimedia.org/wiki/File:One_World_Observatory_entrance.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Entrée autonome de l’observatoire ; billet Standard à prix dynamique, options Combination, All-Inclusive et VIP séparées.",
+  "remainingUncertainty": "Le prix de 44 USD est un minimum, auquel s’ajoutent frais de traitement et taxes. Les horaires évoluent selon la saison et les jours fériés ; vérifier la date réservée. Date historique d’ouverture non attribuée sans source primaire."
+}

@@ -11,6 +11,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 - Recherche externe dédiée aux absences : 17 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
 - Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.
+- Découverte du 25 novembre : One World Observatory vérifié et publié comme plateforme autonome avec prix dynamique, exception Thanksgiving et trois photos exactes.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -18,18 +19,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 1725 |
 | En cours | 0 |
 | Bloqué | 2 |
-| Intégration achevée | 44 |
+| Intégration achevée | 45 |
 | Publié, date inconnue | 38 |
 | Hors périmètre enregistré | 17 |
 | Doublon conservé | 7 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **2621**. Sources : ADG — Project Book, AZA, Aerophile — références constructeur, Brogent — projet constructeur, Découverte complémentaire — site officiel, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte), ZipRider — référence constructeur.
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **2622**. Sources : ADG — Project Book, AZA, Aerophile — références constructeur, Brogent — projet constructeur, Découverte complémentaire — site officiel, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte), ZipRider — référence constructeur.
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **38 publiés**, **229 masqués à intégrer**, **21 masqués NotRelevant à réexaminer**, **1526 candidats sans fiche**.
 
-Standalone : **44 publiées**, **0 masquées**, **25 candidates sans fiche**. Autres dossiers : **2 types à décider**, **168 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **45 publiées**, **0 masquées**, **25 candidates sans fiche**. Autres dossiers : **2 types à décider**, **168 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **21 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **59 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **10 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -47,4 +48,4 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 - [Page 6 — lignes 1251 à 1500](US/006.md)
 - [Page 7 — lignes 1501 à 1750](US/007.md)
 - [Page 8 — lignes 1751 à 2000](US/008.md)
-- [Page 9 — lignes 2001 à 2062](US/009.md)
+- [Page 9 — lignes 2001 à 2063](US/009.md)

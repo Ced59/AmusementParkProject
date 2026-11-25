@@ -6,7 +6,7 @@
   "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
   "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 2621,
+  "sourceObservationCount": 2622,
   "sourceFamilies": [
     "ADG — Project Book",
     "AZA",
@@ -30,7 +30,8 @@
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 130 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 17 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
-    "Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
+    "Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.",
+    "Découverte du 25 novembre : One World Observatory vérifié et publié comme plateforme autonome avec prix dynamique, exception Thanksgiving et trois photos exactes."
   ],
   "entries": [
     {
@@ -77773,6 +77774,151 @@
           "failureCode": null,
           "failureMessage": null
         }
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-one-world-observatory-20261125",
+      "name": "One World Observatory",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme d’observation à billet propre",
+      "locality": "117 West Street, New York, NY 10007",
+      "siteId": "024f3221-3e20-4348-8452-b4f03d71a3e7",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T13:19:20Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie, heures et expérience actuelle publiées par l’exploitant.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans fiche ; observatoire à billet propre, distinct de la tour comme bâtiment.",
+      "possibleMatches": [],
+      "aliases": [
+        "One World Trade Center Observatory",
+        "Freedom Tower Observatory"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T13:18:11.058Z",
+      "integrationHistory": [
+        {
+          "eventId": "5e7fb896-7e9b-4353-b73d-6b74ccc57ad4",
+          "appliedAt": "2026-11-25T13:15:05.353Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "024f3221-3e20-4348-8452-b4f03d71a3e7",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/operations.json#5e7fb896-7e9b-4353-b73d-6b74ccc57ad4",
+          "auditEvidence": null,
+          "summary": "Création masquée après contrôle des doublons ; identité, localisation et descriptions en huit langues."
+        },
+        {
+          "eventId": "a2a61e34-52f7-4d63-860d-6201b1f9d307",
+          "appliedAt": "2026-11-25T13:16:25.693Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "024f3221-3e20-4348-8452-b4f03d71a3e7",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/operations.json#a2a61e34-52f7-4d63-860d-6201b1f9d307",
+          "auditEvidence": null,
+          "summary": "Tarif de départ dynamique, horaires saisonniers et exception Thanksgiving 2026 intégrés."
+        },
+        {
+          "eventId": "photo-import-c87f332a4b0341e9aea880223e9b7538",
+          "appliedAt": "2026-11-25T13:17:16.618Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "024f3221-3e20-4348-8452-b4f03d71a3e7",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/operations.json#photo-import-c87f332a4b0341e9aea880223e9b7538",
+          "auditEvidence": null,
+          "summary": "Photo exacte du panorama Midtown depuis l’observatoire : Christian David, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-import-d09ef375fe124d7fa4f384da91b057cd",
+          "appliedAt": "2026-11-25T13:17:44.809Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "024f3221-3e20-4348-8452-b4f03d71a3e7",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/operations.json#photo-import-d09ef375fe124d7fa4f384da91b057cd",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’intérieur de One World Observatory : Christian David, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-import-bf322e92fcd84d8e95b4fd97471cca82",
+          "appliedAt": "2026-11-25T13:18:11.058Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "024f3221-3e20-4348-8452-b4f03d71a3e7",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/operations.json#photo-import-bf322e92fcd84d8e95b4fd97471cca82",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/audit.json",
+          "summary": "Photo exacte de l’entrée de l’observatoire : Kai Brinker, CC BY-SA 2.0. Audit 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revérifier les prix dynamiques et les horaires après le 31 janvier 2027, notamment les jours fériés.",
+      "sources": [
+        {
+          "label": "One World Observatory — expérience officielle",
+          "url": "https://www.oneworldobservatory.com/experience/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "One World Observatory — tarifs officiels",
+          "url": "https://www.oneworldobservatory.com/buy-tickets/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "One World Observatory — horaires et adresse",
+          "url": "https://www.oneworldobservatory.com/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Panorama_of_Midtown_Manhattan_from_the_One_World_Observatory,_New_York_City.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Interior_of_the_One_World_Observatory_with_visitors_backlit_against_the_windows,_New_York_City.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:One_World_Observatory_entrance.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche d’observatoires à billet propre ; contrôle PDE et inspection de trois photographies exactes libres.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "L’observatoire possède sa propre billetterie et un accès dédié ; trois photos exactes publiées."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/024f3221-3e20-4348-8452-b4f03d71a3e7/one-world-observatory",
+          "publishedAtUtc": "2026-11-25T13:19:05.0493831Z",
+          "verifiedAtUtc": "2026-11-25T13:19:20Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "87c5b7ded36647c287311d413ac5bb42",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/024f3221-3e20-4348-8452-b4f03d71a3e7/one-world-observatory?facebook-image=c87f332a4b0341e9aea880223e9b7538",
+          "publishedAtUtc": "2026-11-25T13:20:01.247785Z",
+          "externalPostId": "1285475681307050_122128809867424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128809867424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
       }
     }
   ]
