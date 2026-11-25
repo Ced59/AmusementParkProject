@@ -28,8 +28,8 @@
   "facebookStatus": "Published",
   "facebookPublicationId": "83ecdaf433534272bef7ca7a4093bf48",
   "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128830477424431",
-  "lastDataIntegrationAtUtc": "2026-11-25T16:48:05.195Z",
-  "lastDataOperationId": "fb76dd27-e4f3-48b0-9fb5-7eb562abd5a0",
+  "lastDataIntegrationAtUtc": "2026-11-25T16:58:06.625Z",
+  "lastDataOperationId": "be66d700-3192-4c49-bc94-b9c85e0d0d0a",
   "presenceSearch": "PDE SearchParks « Seoul Sky » KR : 0 ; SearchStandaloneAttractions « Seoul Sky » KR : 0. SearchParks « Lotte World » révèle le parc de loisirs distinct ; SearchStandaloneAttractions « Lotte World Tower » KR : 0. Aucun homonyme de l’observatoire.",
   "completeness": {
     "completenessScore": 91,
@@ -117,11 +117,14 @@
     "descriptions": 8,
     "pricingOffers": 2,
     "currency": "KRW",
-    "openingHoursRules": 7,
+    "openingHoursRules": 8,
     "openingHoursFirstDate": "2026-11-25",
-    "openingHoursLastDate": "2026-12-31",
+    "openingHoursLastDate": "2027-01-01",
     "photographs": 3,
-    "facebook": "Published"
+    "facebook": "Published",
+    "openingHoursDays": 38,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0
   },
-  "remainingUncertainty": "Vérifier les prix promotionnels et prolonger le calendrier après le 31 décembre 2026 selon les données officielles. Le Sky Bridge est un produit distinct fermé du 30 novembre 2026 au 28 février 2027 et n’est pas compté dans la visite standard."
+  "remainingUncertainty": "Vérifier les prix promotionnels et prolonger le calendrier après le 1er janvier 2027 selon les données officielles. Le Sky Bridge est un produit distinct fermé du 30 novembre 2026 au 28 février 2027 et n’est pas compté dans la visite standard."
 }

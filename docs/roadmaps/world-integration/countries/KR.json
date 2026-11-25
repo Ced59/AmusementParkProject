@@ -4514,7 +4514,7 @@
         "Lotte World Tower Observatory"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-25T16:48:05.195Z",
+      "lastDataIntegrationAt": "2026-11-25T16:58:06.625Z",
       "integrationHistory": [
         {
           "eventId": "18d519c3-f4fd-4559-9c57-96cd44f35377",
@@ -4545,9 +4545,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/operations.json#fb76dd27-e4f3-48b0-9fb5-7eb562abd5a0",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/audit.json",
           "summary": "Huit descriptions finales revues ; trois photos libres exactes publiées avec crédits et légendes localisées. Audit de publication 91/100, sans blocage."
+        },
+        {
+          "eventId": "be66d700-3192-4c49-bc94-b9c85e0d0d0a",
+          "appliedAt": "2026-11-25T16:58:06.625Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1d56dc1-bdc6-4159-8fc4-cb698f9df110",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/operations.json#be66d700-3192-4c49-bc94-b9c85e0d0d0a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-seoul-sky-20261125/audit.json",
+          "summary": "Calendrier officiel complété avec le 1er janvier 2027 : 10 h à 22 h, dernière entrée à 21 h. Audit final sur 38 jours, sans lacune ni chevauchement."
         }
       ],
-      "nextAction": "Conserver la ligne et les preuves ; revérifier les promotions et prolonger les horaires au-delà du 31 décembre 2026 d’après le calendrier officiel.",
+      "nextAction": "Conserver la ligne et les preuves ; revérifier les promotions et prolonger les horaires après le 1er janvier 2027 d’après le calendrier officiel.",
       "sources": [
         {
           "label": "SEOUL SKY — site et accès de l’exploitant",

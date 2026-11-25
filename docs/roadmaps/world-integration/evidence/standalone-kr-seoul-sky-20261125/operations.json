@@ -96,5 +96,20 @@
     "publishedAtUtc": "2026-11-25T16:50:03.3523228Z",
     "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128830477424431",
     "previewImageId": "6d8b55d4596049dfa32f9cec1c6ab580"
+  },
+  {
+    "step": "hours-correction",
+    "operationId": "be66d700-3192-4c49-bc94-b9c85e0d0d0a",
+    "appliedAtUtc": "2026-11-25T16:58:06.6250019Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
   }
 ]
