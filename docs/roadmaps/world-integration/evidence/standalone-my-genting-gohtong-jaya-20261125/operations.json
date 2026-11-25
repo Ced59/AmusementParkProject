@@ -1,0 +1,127 @@
+[
+  {
+    "step": "core",
+    "operationId": "406a14aa-998b-4458-84d1-516c4953c75f",
+    "appliedAtUtc": "2026-11-25T18:43:29.8200364Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "db7a1030-6ba1-4813-9d3a-deaa9ba1dc37",
+    "appliedAtUtc": "2026-11-25T18:45:15.7470589Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "31318075-7d86-43f8-a7f6-d3ff50c5c30b",
+    "appliedAtUtc": "2026-11-25T18:45:34.3100252Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "4ac27d9b-2156-47c5-bd48-ef419396669f",
+    "appliedAtUtc": "2026-11-25T18:46:22.4006468Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "3735a626-597e-4425-a94a-9e0fff534e6c",
+    "appliedAtUtc": "2026-11-25T18:48:15.9306939Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-forest",
+    "eventId": "photo-9be404d4bd5b4adaa05bd22c87396774",
+    "imageId": "9be404d4bd5b4adaa05bd22c87396774",
+    "createdAtUtc": "2026-11-25T18:46:48.839Z",
+    "updatedAtUtc": "2026-11-25T18:46:52.699Z",
+    "id": "9be404d4bd5b4adaa05bd22c87396774",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Genting_Skyway_(31640153062).jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 2.0",
+    "author": "Marufish"
+  },
+  {
+    "step": "photo-ridge",
+    "eventId": "photo-e3bef7e79bc6495b85e2ca34031d7923",
+    "imageId": "e3bef7e79bc6495b85e2ca34031d7923",
+    "createdAtUtc": "2026-11-25T18:46:57.99Z",
+    "updatedAtUtc": "2026-11-25T18:47:01.526Z",
+    "id": "e3bef7e79bc6495b85e2ca34031d7923",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Genting_Skyway_(30977558813).jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 2.0",
+    "author": "Marufish"
+  },
+  {
+    "step": "photo-station",
+    "eventId": "photo-518edb8ece80426bb8e2851933d30aaa",
+    "imageId": "518edb8ece80426bb8e2851933d30aaa",
+    "createdAtUtc": "2026-11-25T18:47:07.909Z",
+    "updatedAtUtc": "2026-11-25T18:47:11.305Z",
+    "id": "518edb8ece80426bb8e2851933d30aaa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arrival_of_cable_Car_into_Genting_Resort.JPG",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "Public domain",
+    "author": "Rudolph.A.furtado"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "f248a4d68bcd4305936232efc8197e3d",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T18:49:34.601227Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128843617424431",
+    "selectedImageId": "9be404d4bd5b4adaa05bd22c87396774"
+  }
+]
