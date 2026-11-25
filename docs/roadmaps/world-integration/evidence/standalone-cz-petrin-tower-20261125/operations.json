@@ -1,0 +1,159 @@
+[
+  {
+    "step": "core",
+    "operationId": "afdfcb27-29e5-4e3f-a3d3-3fdccdaa1a91",
+    "appliedAtUtc": "2026-11-25T19:41:11.3120446Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "b11b8392-f1ea-4db1-b00f-36877762462b",
+    "appliedAtUtc": "2026-11-25T19:41:38.774362Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "836748d1-6100-4cb7-9d08-70195546ac62",
+    "appliedAtUtc": "2026-11-25T19:42:13.9669951Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-6e55b90d6c7d44a1a8c61369e07c69a0",
+    "imageId": "6e55b90d6c7d44a1a8c61369e07c69a0",
+    "createdAtUtc": "2026-11-25T19:42:52.33Z",
+    "updatedAtUtc": "2026-11-25T19:42:55.917Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Petrin_Tower_at_dusk.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-75e02b93742e408da9048e9cb0ac0d59",
+    "imageId": "75e02b93742e408da9048e9cb0ac0d59",
+    "createdAtUtc": "2026-11-25T19:43:00.739Z",
+    "updatedAtUtc": "2026-11-25T19:43:04.382Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Petřín_tower_interior.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-408e076d86ef40fcb298acb75be66bcb",
+    "imageId": "408e076d86ef40fcb298acb75be66bcb",
+    "createdAtUtc": "2026-11-25T19:43:08.559Z",
+    "updatedAtUtc": "2026-11-25T19:43:11.906Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Petrin_tower_in_autumn_2015.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "access",
+    "operationId": "77d00b9c-0028-44be-a55a-0feae9fec694",
+    "appliedAtUtc": "2026-11-25T19:43:25.6015184Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history-revised",
+    "operationId": "6258729a-821d-4827-a2dd-387bf7539d90",
+    "appliedAtUtc": "2026-11-25T19:44:14.4457786Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "core-revised",
+    "operationId": "5044de4c-48df-4a93-8660-a85c78822e8b",
+    "appliedAtUtc": "2026-11-25T19:46:21.1489668Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access-revised",
+    "operationId": "f5cde77a-8ad5-408b-a588-258bcb81208e",
+    "appliedAtUtc": "2026-11-25T19:46:45.9100667Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "acc8053c-7b39-4306-921a-5f3892f53574",
+    "appliedAtUtc": "2026-11-25T19:47:21.9827669Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "e152f5ffb04449c2b81d07761532823c",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T19:48:04.2666879Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128848489424431"
+  }
+]

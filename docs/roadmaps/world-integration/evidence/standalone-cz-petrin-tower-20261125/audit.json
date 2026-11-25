@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "5172ed12-f98d-490d-a8a6-b1aaddd63c98",
+  "name": "Petřín Tower",
+  "countryCode": "CZ",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/5172ed12-f98d-490d-a8a6-b1aaddd63c98/petrin-tower",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T19:49:08Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "e152f5ffb04449c2b81d07761532823c",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128848489424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T19:46:45.910Z",
+  "lastDataEventId": "f5cde77a-8ad5-408b-a588-258bcb81208e",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions CZ pour Petřín Tower, Petrin Tower, Petřín Lookout Tower et Petřínská rozhledna : zéro résultat dans les huit recherches avant création ; aucune fiche correspondante dans le backlog CZ.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "6e55b90d6c7d44a1a8c61369e07c69a0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Petrin_Tower_at_dusk.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Fringio",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "id": "75e02b93742e408da9048e9cb0ac0d59",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Petřín_tower_interior.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Tiia Monto",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "408e076d86ef40fcb298acb75be66bcb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Petrin_tower_in_autumn_2015.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Lucie Svorcova",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "openingHoursExceptionCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 2
+}
