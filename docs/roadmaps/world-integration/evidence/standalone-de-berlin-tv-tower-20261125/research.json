@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions DE pour Berlin TV Tower, Berliner Fernsehturm, Fernsehturm Berlin et Fernsehturm am Alexanderplatz : zéro résultat dans les huit recherches avant création ; aucune entrée équivalente dans le backlog DE.",
+  "decision": "Belvédère panoramique du Fernsehturm à billetterie propre ; les bundles avec boisson, VR ou restaurant sont des offres du même site et non des fiches distinctes.",
+  "officialPricing": "La billetterie officielle présente un billet Standard à partir de 20 € et View & Drink à partir de 31 € en ligne. Prix variables selon date/disponibilité ; minimums modélisés en Dynamic, aucun tarif fixe inventé. La VR est incluse seulement si disponible.",
+  "officialHours": "FAQ officielle : novembre à février, 10:00–23:00. Le pied de page des bundles affiche 09:00–23:00 sans saison ; la grille explicite de la FAQ a été retenue pour l’hiver. Vérifier la date et les exceptions avant visite.",
+  "accessibility": "L’exploitant interdit l’accès aux utilisateurs de fauteuil roulant et aux personnes qui ne peuvent marcher sans aide ou aide à la marche, en raison de l’impossibilité de garantir l’évacuation.",
+  "history": "Le Fernsehturm a ouvert en 1969 selon l’exploitant ; événement publié avec précision à l’année.",
+  "photos": "Trois photos exactes vérifiées visuellement : tour illuminée au-dessus de la ville, reflet dans une façade, vue depuis une place. Matthias Süßen (CC BY-SA 4.0) et Aagnverglaser (CC BY 4.0). Alt, légendes et crédits en huit langues, miniatures réduites.",
+  "sources": [
+    {
+      "label": "Berlin TV Tower — observation deck",
+      "url": "https://tv-turm.de/en/observation-deck/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Berlin TV Tower — tickets and bundles",
+      "url": "https://tv-turm.de/en/tickets-and-bundles/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Berlin TV Tower — FAQ winter hours",
+      "url": "https://tv-turm.de/en/faqs/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Berlin TV Tower — limited accessibility and 1969 opening",
+      "url": "https://tv-turm.de/en/limited-accessibilty/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Berliner Fernsehturm-2026-09-msu--8567.jpg (Matthias Süßen, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Berliner_Fernsehturm-2026-09-msu--8567.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Berliner Fernsehturm-2026-03-msu-8356.jpg (Matthias Süßen, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Berliner_Fernsehturm-2026-03-msu-8356.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Berliner Fernsehturm (2025).jpg (Aagnverglaser, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Berliner_Fernsehturm_(2025).jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les horaires hivernaux de la FAQ et le pied de page général diffèrent ; confirmer au jour de la visite. Les prix sont des minima affichés en ligne, pas des montants garantis."
+}

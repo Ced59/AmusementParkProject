@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "a099b07e-4193-4f8c-9bc1-df42b76bc23d",
+    "appliedAtUtc": "2026-11-25T19:53:22.5186918Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "161281a4-f228-4c94-bf0d-5085c8b964c4",
+    "appliedAtUtc": "2026-11-25T19:53:53.587421Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-00ce3b38083d47c6bc6e16095ff1cb1d",
+    "imageId": "00ce3b38083d47c6bc6e16095ff1cb1d",
+    "createdAtUtc": "2026-11-25T19:54:30.704Z",
+    "updatedAtUtc": "2026-11-25T19:54:34.396Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berliner_Fernsehturm-2026-09-msu--8567.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-a0b1a435107440ffad1cad3a04db9b07",
+    "imageId": "a0b1a435107440ffad1cad3a04db9b07",
+    "createdAtUtc": "2026-11-25T19:54:40.252Z",
+    "updatedAtUtc": "2026-11-25T19:54:43.716Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berliner_Fernsehturm-2026-03-msu-8356.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-40b0c6e244b34226b14eccf16e9cc15a",
+    "imageId": "40b0c6e244b34226b14eccf16e9cc15a",
+    "createdAtUtc": "2026-11-25T19:54:58.413Z",
+    "updatedAtUtc": "2026-11-25T19:55:02.056Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berliner_Fernsehturm_(2025).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "history",
+    "operationId": "17ab5721-e37c-47a2-9075-56c40dfc0e60",
+    "appliedAtUtc": "2026-11-25T19:55:07.2908015Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "d969eca2-ac70-47a0-af03-29fc79181af3",
+    "appliedAtUtc": "2026-11-25T19:55:40.4021962Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "7a9040a7-d3d3-4844-88d8-9247a3cff4c7",
+    "appliedAtUtc": "2026-11-25T19:56:44.706216Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "0318c813438546ae8066825eb7b43069",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T19:57:31.7180126Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128849005424431"
+  }
+]
