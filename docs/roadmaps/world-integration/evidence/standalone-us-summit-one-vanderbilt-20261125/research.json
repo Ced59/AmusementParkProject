@@ -1,0 +1,64 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "Avant création, PDE SearchStandaloneAttractions pour « SUMMIT » et « Vanderbilt » : aucun résultat ; PDE SearchParks pour « Vanderbilt » : aucun résultat. SearchParks pour « SUMMIT » renvoyait trois parcs sans rapport (Anakeesta, Bad Kleinkirchheimer Bergbahnen, Erlebnispark Teichland) via le texte descriptif, aucun homonyme. Le backlog US ne contenait pas SUMMIT One Vanderbilt.",
+  "decision": "Observatoire autonome payant dans une tour de bureaux ; les salles immersives, Levitation et la terrasse forment une expérience à billet propre, pertinente comme StandaloneAttraction. Ascent est un supplément du lieu, pas une fiche indépendante.",
+  "officialPrices": {
+    "currency": "USD",
+    "adultAge13PlusFrom": 39,
+    "youthAge6To12": "Variable, vérifier au panier",
+    "age5AndUnder": "Free with adult",
+    "onlineProcessingFeePerOrder": 3,
+    "ascent": "Extra ticket"
+  },
+  "officialHours": {
+    "daily": "08:00–00:00 le lendemain",
+    "lastEntry": "22:30",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-02-28",
+    "daysCovered": 96
+  },
+  "photos": "Trois photos exactes inspectées visuellement : sommet de l’observatoire et ascenseur Ascent vus de l’extérieur, salle aux miroirs, vue sur Bryant Park depuis SUMMIT. Chaque photo vient de Wikimedia Commons sous CC BY-SA 4.0 avec auteur, licence, lien, mention de réduction, texte alternatif et légende dans les huit langues.",
+  "sources": [
+    {
+      "label": "SUMMIT — horaires, accès et présentation officiels",
+      "url": "https://summitov.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SUMMIT — parcours, Levitation, terrasse et Ascent",
+      "url": "https://summitov.com/visit/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SUMMIT — billets et prix variables",
+      "url": "https://summitov.com/tickets/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SUMMIT — accessibilité officielle",
+      "url": "https://summitov.com/accessibility/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SUMMIT — conditions des billets et enfants de 5 ans et moins",
+      "url": "https://summitov.com/ticketterms/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — sommet et Ascent, SUMMIT One Vanderbilt, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:SUMMIT_One_Vanderbilt.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — intérieur aux miroirs, Corsario CL, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Summit_One_Vanderbilt.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — vue sur Bryant Park, MemeGod27, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Bryant_Park_from_One_Vanderbilt.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Le prix de départ affiché sur le site peut changer selon la date et le créneau ; le tarif enfant n’est pas publié de façon stable. Les horaires datés jusqu’au 28 février 2027 devront être revérifiés et prolongés."
+}
