@@ -26,7 +26,8 @@
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 1 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 3 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
-    "Découverte du 25 novembre : SkyPark Observation Deck publié avec tarifs et horaires officiels, trois photos exactes créditées et annonce Facebook."
+    "Découverte du 25 novembre : SkyPark Observation Deck publié avec tarifs et horaires officiels, trois photos exactes créditées et annonce Facebook.",
+    "Singapore Cable Car : réseau de téléphériques autonome créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions, événement historique, règle d’accès et publication Facebook. Promotions et maintenances sont à réviser dans le backlog permanent."
   ],
   "entries": [
     {
@@ -2157,6 +2158,223 @@
         "score": 78,
         "publicationBlockers": [],
         "gapCount": 2
+      }
+    },
+    {
+      "entryId": "SG-candidate-discovery-singapore-cable-car-20261125",
+      "name": "Singapore Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Réseau de téléphériques panoramiques à billet propre",
+      "locality": "Mount Faber / HarbourFront / Sentosa, Singapore",
+      "siteId": "e8e2c926-559d-4eab-9877-678c72743b70",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T18:28:10Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie SkyPass et horaires officiels actifs au 25 novembre 2026 ; maintenance ponctuelle possible.",
+      "identityConfidence": "Exploitant, billet propre, six stations, prix, horaires, conditions d’accès et historique vérifiés ; trois photos exactes sous licence ; zéro doublon PDE.",
+      "possibleMatches": [],
+      "aliases": [
+        "Mount Faber Cable Car",
+        "Sentosa Cable Car",
+        "Singapore Cable Car Sky Network",
+        "Cable Car SkyPass"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T18:25:08.157Z",
+      "integrationHistory": [
+        {
+          "eventId": "3c54f5d4-4f5f-4258-8a06-1265e0fb2d6f",
+          "appliedAt": "2026-11-25T18:18:53.583Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#3c54f5d4-4f5f-4258-8a06-1265e0fb2d6f",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche de doublons, identité et huit descriptions éditoriales."
+        },
+        {
+          "eventId": "586aa13e-c93a-4dcd-b824-6bf3145f9cb0",
+          "appliedAt": "2026-11-25T18:19:24.612Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#586aa13e-c93a-4dcd-b824-6bf3145f9cb0",
+          "auditEvidence": null,
+          "summary": "Billets SkyPass, tarifs réguliers et promotion en ligne, horaires quotidiens datés intégrés."
+        },
+        {
+          "eventId": "photo-83f7cd73d6484165bf7847a12685d83e",
+          "appliedAt": "2026-11-25T18:19:42.710Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#photo-83f7cd73d6484165bf7847a12685d83e",
+          "auditEvidence": null,
+          "summary": "Vue générale du téléphérique depuis Mount Faber publiée avec crédits localisés."
+        },
+        {
+          "eventId": "photo-ff056401170140248d558f98682d2616",
+          "appliedAt": "2026-11-25T18:19:55.731Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#photo-ff056401170140248d558f98682d2616",
+          "auditEvidence": null,
+          "summary": "Vue rapprochée des cabines publiée avec crédits localisés."
+        },
+        {
+          "eventId": "photo-e7c4d18f365c4ef78dd1818bdb2d3aaa",
+          "appliedAt": "2026-11-25T18:20:09.031Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#photo-e7c4d18f365c4ef78dd1818bdb2d3aaa",
+          "auditEvidence": null,
+          "summary": "Cabine décorée photographiée en 2024 publiée avec sa date clairement indiquée."
+        },
+        {
+          "eventId": "photo-update-83f7cd73d6484165bf7847a12685d83e",
+          "appliedAt": "2026-11-25T18:21:26.729Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#photo-update-83f7cd73d6484165bf7847a12685d83e",
+          "auditEvidence": null,
+          "summary": "Légende différenciée du texte alternatif dans les huit langues ; audit éditorial sans répétition."
+        },
+        {
+          "eventId": "photo-update-ff056401170140248d558f98682d2616",
+          "appliedAt": "2026-11-25T18:21:32.671Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#photo-update-ff056401170140248d558f98682d2616",
+          "auditEvidence": null,
+          "summary": "Légende différenciée du texte alternatif dans les huit langues ; audit éditorial sans répétition."
+        },
+        {
+          "eventId": "photo-update-e7c4d18f365c4ef78dd1818bdb2d3aaa",
+          "appliedAt": "2026-11-25T18:21:38.424Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#photo-update-e7c4d18f365c4ef78dd1818bdb2d3aaa",
+          "auditEvidence": null,
+          "summary": "Légende différenciée du texte alternatif dans les huit langues ; audit éditorial sans répétition."
+        },
+        {
+          "eventId": "a5510b0d-23be-4c45-9da3-9fe1ac08da34",
+          "appliedAt": "2026-11-25T18:23:15.896Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#a5510b0d-23be-4c45-9da3-9fe1ac08da34",
+          "auditEvidence": null,
+          "summary": "Position d’accueil Faber Peak et année d’ouverture 1974 sans inventer de jour précis."
+        },
+        {
+          "eventId": "b0208ffd-45d1-4a3d-9578-154239661e5f",
+          "appliedAt": "2026-11-25T18:24:11.439Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#b0208ffd-45d1-4a3d-9578-154239661e5f",
+          "auditEvidence": null,
+          "summary": "Règle d’accès : fauteuil manuel admis, fauteuil motorisé interdit, source exploitant."
+        },
+        {
+          "eventId": "b603bcd5-ca81-481a-b4ae-38b284a44df5",
+          "appliedAt": "2026-11-25T18:24:37.484Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#b603bcd5-ca81-481a-b4ae-38b284a44df5",
+          "auditEvidence": null,
+          "summary": "Événement historique 1974 créé avec précision annuelle."
+        },
+        {
+          "eventId": "e454d4c8-8171-4fff-9f5e-0f36557ae04c",
+          "appliedAt": "2026-11-25T18:25:08.157Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e8e2c926-559d-4eab-9877-678c72743b70",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/operations.json#e454d4c8-8171-4fff-9f5e-0f36557ae04c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/audit.json",
+          "summary": "Événement historique rendu visible ; audit final 95/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; revoir promotions et éventuelles maintenances, puis prolonger les horaires après le 28 février 2027 auprès de l’exploitant.",
+      "sources": [
+        {
+          "label": "Mount Faber Leisure — réseau, billets SkyPass, tarifs, heures, stations",
+          "url": "https://mountfaberleisure.com/attraction/singapore-cable-car/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Mount Faber Leisure — FAQ, fauteuils manuels, ascenseurs, sécurité",
+          "url": "https://mountfaberleisure.com/faq/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Mount Faber Leisure — premiers trajets en 1974",
+          "url": "https://mountfaberleisure.com/about-us/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "OpenStreetMap — emprise Faber Peak, point d’accueil approximatif",
+          "url": "https://www.openstreetmap.org/way/184389542",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabines et port depuis Mount Faber, kallerna, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Singapore_cable_car_Mount_Faber_1.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabine rapprochée, kallerna, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Singapore_cable_car_Mount_Faber_2.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — cabine décorée photographiée en 2024, LN9267, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Singapore_Cable_Car_No.27_(Mount_Faber_Line)_04-12-2024.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors inventaire du réseau à billet propre ; six recherches PDE, sources de l’exploitant et trois photos Commons vérifiées.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Le réseau de deux lignes vend son propre SkyPass et relie plusieurs sites ; il ne dépend pas d’un billet des attractions de Sentosa."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e8e2c926-559d-4eab-9877-678c72743b70/singapore-cable-car",
+          "publishedAtUtc": "2026-11-25T18:25:32.9903842Z",
+          "verifiedAtUtc": "2026-11-25T18:28:10Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-singapore-cable-car-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "77ae7dc5acd44a94beac105f1dcd7c03",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e8e2c926-559d-4eab-9877-678c72743b70/singapore-cable-car?facebook-image=83f7cd73d6484165bf7847a12685d83e",
+          "publishedAtUtc": "2026-11-25T18:26:00.1419281Z",
+          "externalPostId": "1285475681307050_122128840683424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128840683424431",
+          "failureCode": null,
+          "failureMessage": null,
+          "network": "Facebook"
+        }
       }
     }
   ]

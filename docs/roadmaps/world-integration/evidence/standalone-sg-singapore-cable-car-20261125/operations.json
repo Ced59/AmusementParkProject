@@ -1,0 +1,184 @@
+[
+  {
+    "step": "core",
+    "operationId": "3c54f5d4-4f5f-4258-8a06-1265e0fb2d6f",
+    "appliedAtUtc": "2026-11-25T18:18:53.5836815Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "586aa13e-c93a-4dcd-b824-6bf3145f9cb0",
+    "appliedAtUtc": "2026-11-25T18:19:24.6128347Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "details",
+    "operationId": "a5510b0d-23be-4c45-9da3-9fe1ac08da34",
+    "appliedAtUtc": "2026-11-25T18:23:15.8962955Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "b0208ffd-45d1-4a3d-9578-154239661e5f",
+    "appliedAtUtc": "2026-11-25T18:24:11.4395211Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "b603bcd5-ca81-481a-b4ae-38b284a44df5",
+    "appliedAtUtc": "2026-11-25T18:24:37.4844868Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history-visible",
+    "operationId": "e454d4c8-8171-4fff-9f5e-0f36557ae04c",
+    "appliedAtUtc": "2026-11-25T18:25:08.1577853Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "ccbb1c3b-2a92-4ac7-9ae7-d28fed15aea1",
+    "appliedAtUtc": "2026-11-25T18:25:32.9903842Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-panorama",
+    "eventId": "photo-83f7cd73d6484165bf7847a12685d83e",
+    "imageId": "83f7cd73d6484165bf7847a12685d83e",
+    "createdAtUtc": "2026-11-25T18:19:39.325Z",
+    "updatedAtUtc": "2026-11-25T18:19:42.71Z",
+    "id": "83f7cd73d6484165bf7847a12685d83e",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_cable_car_Mount_Faber_1.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "kallerna",
+    "dateCaveat": null
+  },
+  {
+    "step": "photo-metadata-panorama",
+    "eventId": "photo-update-83f7cd73d6484165bf7847a12685d83e",
+    "imageId": "83f7cd73d6484165bf7847a12685d83e",
+    "updatedAtUtc": "2026-11-25T18:21:26.729Z",
+    "languages": 8,
+    "altAndCaptionDistinct": true
+  },
+  {
+    "step": "photo-import-close",
+    "eventId": "photo-ff056401170140248d558f98682d2616",
+    "imageId": "ff056401170140248d558f98682d2616",
+    "createdAtUtc": "2026-11-25T18:19:52.38Z",
+    "updatedAtUtc": "2026-11-25T18:19:55.731Z",
+    "id": "ff056401170140248d558f98682d2616",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_cable_car_Mount_Faber_2.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "kallerna",
+    "dateCaveat": null
+  },
+  {
+    "step": "photo-metadata-close",
+    "eventId": "photo-update-ff056401170140248d558f98682d2616",
+    "imageId": "ff056401170140248d558f98682d2616",
+    "updatedAtUtc": "2026-11-25T18:21:32.671Z",
+    "languages": 8,
+    "altAndCaptionDistinct": true
+  },
+  {
+    "step": "photo-import-historic",
+    "eventId": "photo-e7c4d18f365c4ef78dd1818bdb2d3aaa",
+    "imageId": "e7c4d18f365c4ef78dd1818bdb2d3aaa",
+    "createdAtUtc": "2026-11-25T18:20:05.543Z",
+    "updatedAtUtc": "2026-11-25T18:20:09.031Z",
+    "id": "e7c4d18f365c4ef78dd1818bdb2d3aaa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Cable_Car_No.27_(Mount_Faber_Line)_04-12-2024.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "LN9267",
+    "dateCaveat": "Décoration de 2024"
+  },
+  {
+    "step": "photo-metadata-historic",
+    "eventId": "photo-update-e7c4d18f365c4ef78dd1818bdb2d3aaa",
+    "imageId": "e7c4d18f365c4ef78dd1818bdb2d3aaa",
+    "updatedAtUtc": "2026-11-25T18:21:38.424Z",
+    "languages": 8,
+    "altAndCaptionDistinct": true
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "77ae7dc5acd44a94beac105f1dcd7c03",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T18:26:00.1419281Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128840683424431",
+    "selectedImageId": "83f7cd73d6484165bf7847a12685d83e"
+  }
+]
