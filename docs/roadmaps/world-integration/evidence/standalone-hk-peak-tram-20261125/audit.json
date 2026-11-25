@@ -1,0 +1,382 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "992b82f5-d27a-4480-86a6-c4d1fda644be",
+  "countryCode": "HK",
+  "name": "Peak Tram",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/992b82f5-d27a-4480-86a6-c4d1fda644be/peak-tram",
+  "lastDataIntegrationAtUtc": "2026-11-25T12:08:19.682Z",
+  "publicVerifiedAtUtc": "2026-11-25T12:11:12.233Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "descriptionsWithEightLanguages": 1,
+    "exactPublishedPhotos": 3,
+    "currentPricingOffers": 4,
+    "boundedHoursThrough": "2027-01-31",
+    "accessConditions": 1,
+    "visibleHistoryEvents": 2
+  },
+  "photoEvidence": [
+    {
+      "imageId": "ac00ae5c64e74885839ce34e01711448",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peak_Tram(Green_light)_22-04-2026(1).jpg",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 257374,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une voiture verte du Peak Tram sur la pente de Hong Kong"
+        },
+        {
+          "languageCode": "en",
+          "value": "A green Peak Tram car climbing a Hong Kong hillside"
+        },
+        {
+          "languageCode": "de",
+          "value": "Grüner Peak-Tram-Wagen auf einem Hang in Hongkong"
+        },
+        {
+          "languageCode": "es",
+          "value": "Coche verde del Peak Tram en una ladera de Hong Kong"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vettura verde del Peak Tram su un pendio di Hong Kong"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Groene Peak Tram op een helling in Hongkong"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielony wagon Peak Tram na zboczu Hongkongu"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Carruagem verde do Peak Tram numa encosta de Hong Kong"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une rame de sixième génération près de MacDonnell Road en 2026."
+        },
+        {
+          "languageCode": "en",
+          "value": "A sixth-generation car near MacDonnell Road in 2026."
+        },
+        {
+          "languageCode": "de",
+          "value": "Wagen der sechsten Generation nahe MacDonnell Road 2026."
+        },
+        {
+          "languageCode": "es",
+          "value": "Coche de sexta generación cerca de MacDonnell Road en 2026."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vettura di sesta generazione presso MacDonnell Road nel 2026."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Zesde generatie bij MacDonnell Road in 2026."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wagon szóstej generacji przy MacDonnell Road w 2026 r."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Carruagem de sexta geração perto de MacDonnell Road em 2026."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        }
+      ]
+    },
+    {
+      "imageId": "9b05cf8cb99944e98e34b1c6fee0b32d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peak_Tram(White_light)_22-04-2026(2).jpg",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 305922,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une voiture du Peak Tram vue au-dessus de la voie"
+        },
+        {
+          "languageCode": "en",
+          "value": "Peak Tram car seen from above its steep track"
+        },
+        {
+          "languageCode": "de",
+          "value": "Peak-Tram-Wagen von oben über der steilen Strecke"
+        },
+        {
+          "languageCode": "es",
+          "value": "Coche del Peak Tram visto desde arriba"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vettura del Peak Tram vista dall’alto"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Peak Tram van boven boven het steile spoor"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wagon Peak Tram widziany z góry nad stromym torem"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Carruagem do Peak Tram vista de cima"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le toit vitré d’une voiture sur la pente de Victoria Peak."
+        },
+        {
+          "languageCode": "en",
+          "value": "The glazed roof of a car on the Victoria Peak slope."
+        },
+        {
+          "languageCode": "de",
+          "value": "Glasdach eines Wagens am Victoria Peak."
+        },
+        {
+          "languageCode": "es",
+          "value": "Techo acristalado de un coche en Victoria Peak."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tetto vetrato di una vettura sul Victoria Peak."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Glazen dak van een tram op Victoria Peak."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przeszklony dach wagonu na Victoria Peak."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Teto envidraçado de uma carruagem em Victoria Peak."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: LN9267, CC BY-SA 4.0 (2026-04-22)."
+        }
+      ]
+    },
+    {
+      "imageId": "b07f5c7a4fe54c5b8f39eb55b90c4fd9",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peak_Tram_Central_Terminus_202610.jpg",
+      "author": "Owennson",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 280061,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Entrée du terminus Central du Peak Tram à Garden Road"
+        },
+        {
+          "languageCode": "en",
+          "value": "Entrance to the Peak Tram Central terminus at Garden Road"
+        },
+        {
+          "languageCode": "de",
+          "value": "Eingang zur Peak-Tram-Talstation an der Garden Road"
+        },
+        {
+          "languageCode": "es",
+          "value": "Entrada al terminal Central del Peak Tram en Garden Road"
+        },
+        {
+          "languageCode": "it",
+          "value": "Ingresso al capolinea Central del Peak Tram a Garden Road"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ingang van het Peak Tram eindpunt aan Garden Road"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wejście do dolnej stacji Peak Tram przy Garden Road"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Entrada do terminal Central do Peak Tram em Garden Road"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La gare inférieure, photographiée en octobre 2026."
+        },
+        {
+          "languageCode": "en",
+          "value": "The lower terminus, photographed in October 2026."
+        },
+        {
+          "languageCode": "de",
+          "value": "Talstation, fotografiert im Oktober 2026."
+        },
+        {
+          "languageCode": "es",
+          "value": "Estación inferior fotografiada en octubre de 2026."
+        },
+        {
+          "languageCode": "it",
+          "value": "Stazione a valle fotografata nell’ottobre 2026."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Dalstation gefotografeerd in oktober 2026."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dolna stacja sfotografowana w październiku 2026 r."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Estação inferior fotografada em outubro de 2026."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: Owennson, CC BY-SA 4.0 (2026-10-07)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Owennson, CC BY-SA 4.0 (2026-10-07)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Owennson, CC BY-SA 4.0 (2026-10-07)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Owennson, CC BY-SA 4.0 (2026-10-07)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Owennson, CC BY-SA 4.0 (2026-10-07)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Owennson, CC BY-SA 4.0 (2026-10-07)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Owennson, CC BY-SA 4.0 (2026-10-07)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Owennson, CC BY-SA 4.0 (2026-10-07)."
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "operator": "https://www.thepeak.com.hk/en/the-peak-experience/the-peak-tram",
+    "fares": "https://www.thepeak.com.hk/sites/peak/files/2025-12/%5B%E6%96%B0%E8%81%9E%E7%A8%BF%5D%20%E5%B1%B1%E9%A0%82%E7%BA%9C%E8%BB%8A%E5%AE%A3%E5%B8%83%E7%A5%A8%E5%83%B9%E8%AA%BF%E6%95%B4.pdf",
+    "faresConfirm": "https://partnernet.hktb.com/japan/jp/industry_news/local_updates/index.html?id=8941",
+    "location": "https://www.thepeak.com.hk/en/getting-to-the-peak/location",
+    "accessibility": "https://www.thepeak.com.hk/en/faq",
+    "history": "https://www.thepeak.com.hk/en/heritage/history-of-the-peak-tram",
+    "newGeneration": "https://www.thepeak.com.hk/sites/peak/files/2022-08/Announce%20Launch%20Date%20of%206th%20generation%20Peak%20Tram_ENG_FINAL.pdf"
+  },
+  "remainingUncertainty": "L’opérateur peut modifier le service pour météo ou maintenance. Horaires bornés au 31 janvier 2027. Sky Terrace 428 est une offre distincte.",
+  "facebookPublicationId": "77409580531b44e9a8dfe3e4af60e483",
+  "facebookStatus": "Published",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128801347424431"
+}
