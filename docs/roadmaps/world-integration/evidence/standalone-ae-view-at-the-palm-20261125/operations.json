@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "5b9c6720-12ab-4249-a60a-6b30ac224e2e",
+    "appliedAtUtc": "2026-11-25T13:54:30.7346187Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "341c9c2b-3579-4604-b5bd-5a62a07d0730",
+    "appliedAtUtc": "2026-11-25T13:56:01.017336Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-8b1de0279c6a44eba695311783248a58",
+    "imageId": "8b1de0279c6a44eba695311783248a58",
+    "updatedAtUtc": "2026-11-25T13:56:52.511Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai_-_53384610338.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 171785
+  },
+  {
+    "step": "photo-import-fe2fe1d20ebd4b46a9222312538de86d",
+    "imageId": "fe2fe1d20ebd4b46a9222312538de86d",
+    "updatedAtUtc": "2026-11-25T13:57:15.437Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 246446
+  },
+  {
+    "step": "photo-import-f792342c5f01460dba45693d7e0bcc22",
+    "imageId": "f792342c5f01460dba45693d7e0bcc22",
+    "updatedAtUtc": "2026-11-25T13:57:37.253Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai_-_53384610423.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 170681
+  },
+  {
+    "step": "publish",
+    "operationId": "ed91985d-0d20-457e-ad1b-4a394361ed3c",
+    "appliedAtUtc": "2026-11-25T13:58:52.3081495Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "c910fa4b3cc744f8886736548a9c09c6",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T13:59:48.6362039Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128813515424431"
+  }
+]

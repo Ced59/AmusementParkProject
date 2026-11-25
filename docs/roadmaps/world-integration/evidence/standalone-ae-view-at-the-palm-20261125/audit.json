@@ -1,0 +1,88 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "83da08c2-4ee0-4457-bc02-f5cbaf6a976b",
+  "name": "The View at The Palm",
+  "countryCode": "AE",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/83da08c2-4ee0-4457-bc02-f5cbaf6a976b/the-view-at-the-palm",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T14:00:48Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "c910fa4b3cc744f8886736548a9c09c6",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128813515424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T13:57:37.253Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « The View at The Palm » : zéro homonyme avant création. Contrôle « Palm » effectué.",
+  "completeness": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 60,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "8b1de0279c6a44eba695311783248a58",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai_-_53384610338.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "fe2fe1d20ebd4b46a9222312538de86d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "f792342c5f01460dba45693d7e0bcc22",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai_-_53384610423.jpg",
+      "isPublished": true
+    }
+  ],
+  "sources": [
+    {
+      "label": "The View at The Palm — accueil, tarifs et horaires",
+      "url": "https://www.theviewpalm.ae/en",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "The View at The Palm — parcours de visite",
+      "url": "https://www.theviewpalm.ae/en/about-the-view",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "The View at The Palm — accès",
+      "url": "https://www.theviewpalm.ae/en/contact-us",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Dubai Media Office — ouverture 7 avril 2021",
+      "url": "https://mediaoffice.ae/en/news/2021/april/05-04/the-view-at-the-palm-to-open-on-7-april-2021",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 1",
+      "url": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai_-_53384610338.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 2",
+      "url": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte 3",
+      "url": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai_-_53384610423.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Billet autonome de la plateforme au niveau 52. Standard avec exposition et terrasse ; Next Level avec accès supérieur et priorité séparés. Trois photos exactes, dont la terrasse elle-même.",
+  "remainingUncertainty": "Prix de départ variables selon date et heure. La page d’accueil annonce 09:00–19:00 ; certaines pages d’offre affichent d’autres horaires, donc vérifier la réservation à la date choisie. Dernière entrée non spécifiée par l’exploitant."
+}
