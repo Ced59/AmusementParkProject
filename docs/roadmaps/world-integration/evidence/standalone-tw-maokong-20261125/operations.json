@@ -1,0 +1,86 @@
+[
+  {
+    "step": "core",
+    "operationId": "749d4ec0-6a8f-42c7-8545-d4bcac699b63",
+    "appliedAtUtc": "2026-11-25T11:49:14.2355975Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "f4be920d-f4f2-49ac-9e91-da0f9b596914",
+    "appliedAtUtc": "2026-11-25T11:50:45.1723597Z",
+    "counts": {
+      "created": 3,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-ace0960be4a24e1d8d810895ceb8a5a6",
+    "imageId": "ace0960be4a24e1d8d810895ceb8a5a6",
+    "updatedAtUtc": "2026-11-25T11:51:30.363Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maokong_Gondola_Cable_Car.jpg",
+    "isPublished": true,
+    "sizeInBytes": 295004
+  },
+  {
+    "step": "photo-import-01a2aad810404bef8be2cdf00f35e8ac",
+    "imageId": "01a2aad810404bef8be2cdf00f35e8ac",
+    "updatedAtUtc": "2026-11-25T11:51:52.397Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2025.07.26_Taipei_Zoo_Station_(Maokong_Gondola).jpg",
+    "isPublished": true,
+    "sizeInBytes": 279134
+  },
+  {
+    "step": "photo-import-f68deeaecb9943158b785331afef8ec5",
+    "imageId": "f68deeaecb9943158b785331afef8ec5",
+    "updatedAtUtc": "2026-11-25T11:52:15.68Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2025.07.26_Angle_Station_2_(Maokong_Gondola).jpg",
+    "isPublished": true,
+    "sizeInBytes": 207227
+  },
+  {
+    "step": "photo-metadata-ace0960be4a24e1d8d810895ceb8a5a6",
+    "imageId": "ace0960be4a24e1d8d810895ceb8a5a6",
+    "updatedAtUtc": "2026-11-25T11:52:37.887Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maokong_Gondola_Cable_Car.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "c1b8099c-4566-4f74-9f8a-23f70a765aeb",
+    "appliedAtUtc": "2026-11-25T11:53:41.6932053Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "537cb69e5b1d4e4288aefc5bf32b5890",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T11:54:54.568076Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128799907424431"
+  }
+]

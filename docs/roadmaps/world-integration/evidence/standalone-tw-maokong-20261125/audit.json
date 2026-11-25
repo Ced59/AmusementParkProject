@@ -1,0 +1,381 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "0b88021a-421e-45db-99a6-d0d51e18f335",
+  "countryCode": "TW",
+  "name": "Maokong Gondola",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/0b88021a-421e-45db-99a6-d0d51e18f335/maokong-gondola",
+  "lastDataIntegrationAtUtc": "2026-11-25T11:52:37.887Z",
+  "publicVerifiedAtUtc": "2026-11-25T11:55:54.608Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "descriptionsWithEightLanguages": 1,
+    "exactPublishedPhotos": 3,
+    "currentPricingOffers": 6,
+    "boundedHoursThrough": "2027-01-31",
+    "accessConditions": 1,
+    "visibleOpeningHistoryEvents": 1
+  },
+  "photoEvidence": [
+    {
+      "imageId": "ace0960be4a24e1d8d810895ceb8a5a6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maokong_Gondola_Cable_Car.jpg",
+      "author": "Exec8",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 295004,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une cabine du téléphérique de Maokong au-dessus des arbres"
+        },
+        {
+          "languageCode": "en",
+          "value": "Maokong Gondola cabin above the trees"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kabine der Maokong Gondola über den Bäumen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Cabina de Maokong Gondola sobre los árboles"
+        },
+        {
+          "languageCode": "it",
+          "value": "Cabina della Maokong Gondola sopra gli alberi"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Maokong Gondola-cabine boven de bomen"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kabina Maokong Gondola nad drzewami"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cabina da Maokong Gondola sobre as árvores"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une cabine sur le parcours entre Taipei Zoo et Maokong."
+        },
+        {
+          "languageCode": "en",
+          "value": "A cabin on the route between Taipei Zoo and Maokong."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kabine auf der Strecke zwischen Taipei Zoo und Maokong."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cabina entre Taipei Zoo y Maokong."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cabina lungo il percorso tra Taipei Zoo e Maokong."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een cabine tussen Taipei Zoo en Maokong."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kabina na trasie między Taipei Zoo a Maokong."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cabina no percurso entre Taipei Zoo e Maokong."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: Exec8, CC BY-SA 4.0 (2018-08-10)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Exec8, CC BY-SA 4.0 (2018-08-10)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Exec8, CC BY-SA 4.0 (2018-08-10)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Exec8, CC BY-SA 4.0 (2018-08-10)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Exec8, CC BY-SA 4.0 (2018-08-10)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Exec8, CC BY-SA 4.0 (2018-08-10)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Exec8, CC BY-SA 4.0 (2018-08-10)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Exec8, CC BY-SA 4.0 (2018-08-10)."
+        }
+      ]
+    },
+    {
+      "imageId": "01a2aad810404bef8be2cdf00f35e8ac",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2025.07.26_Taipei_Zoo_Station_(Maokong_Gondola).jpg",
+      "author": "人人生來平等",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 279134,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La station Taipei Zoo de Maokong Gondola en 2025"
+        },
+        {
+          "languageCode": "en",
+          "value": "Taipei Zoo Station of Maokong Gondola in 2025"
+        },
+        {
+          "languageCode": "de",
+          "value": "Station Taipei Zoo der Maokong Gondola im Jahr 2025"
+        },
+        {
+          "languageCode": "es",
+          "value": "Estación Taipei Zoo de Maokong Gondola en 2025"
+        },
+        {
+          "languageCode": "it",
+          "value": "Stazione Taipei Zoo della Maokong Gondola nel 2025"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Station Taipei Zoo van Maokong Gondola in 2025"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stacja Taipei Zoo kolejki Maokong Gondola w 2025 roku"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Estação Taipei Zoo da Maokong Gondola em 2025"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La station de départ près du terminus du métro Wenhu."
+        },
+        {
+          "languageCode": "en",
+          "value": "The lower terminal near the Wenhu metro line."
+        },
+        {
+          "languageCode": "de",
+          "value": "Talstation nahe der Wenhu-Metro."
+        },
+        {
+          "languageCode": "es",
+          "value": "La estación inferior junto al metro Wenhu."
+        },
+        {
+          "languageCode": "it",
+          "value": "La stazione inferiore vicino alla metro Wenhu."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het dalstation bij de Wenhu-metro."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dolna stacja niedaleko metra Wenhu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A estação inferior perto do metro Wenhu."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        }
+      ]
+    },
+    {
+      "imageId": "f68deeaecb9943158b785331afef8ec5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2025.07.26_Angle_Station_2_(Maokong_Gondola).jpg",
+      "author": "人人生來平等",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 207227,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Cabines de Maokong Gondola traversant la station d’angle"
+        },
+        {
+          "languageCode": "en",
+          "value": "Maokong Gondola cabins passing through an angle station"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kabinen der Maokong Gondola an einer Winkelstation"
+        },
+        {
+          "languageCode": "es",
+          "value": "Cabinas de Maokong Gondola en una estación de cambio de dirección"
+        },
+        {
+          "languageCode": "it",
+          "value": "Cabine della Maokong Gondola in una stazione di rinvio"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Maokong Gondola-cabines bij een tussenstation"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kabiny Maokong Gondola na stacji zmiany kierunku"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cabinas da Maokong Gondola numa estação de mudança de direção"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les cabines poursuivent leur trajet à travers la station technique."
+        },
+        {
+          "languageCode": "en",
+          "value": "Cabins continue through a technical turning station."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Kabinen fahren durch eine technische Umlenkstation."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las cabinas atraviesan una estación técnica."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le cabine attraversano una stazione tecnica."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De cabines passeren een technisch tussenstation."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kabiny przejeżdżają przez stację techniczną."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As cabinas atravessam uma estação técnica."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: 人人生來平等, CC BY-SA 4.0 (2025-07-26)."
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "operator": "https://english.gondola.taipei/",
+    "pricing": "https://english.gondola.taipei/cp.aspx?n=19884A72DB5E7A1D",
+    "hours": "https://english.gondola.taipei/cp.aspx?n=0FC5FEA256DB1B77",
+    "accessibility": "https://english.gondola.taipei/cp.aspx?n=F4CBC91B8CAA0BA9",
+    "history": "https://english.gondola.taipei/cp.aspx?n=4E09E3957444B66C"
+  },
+  "hoursSourceDiscrepancy": "Page horaires actuelle de l’exploitant, revue le 29 octobre 2026 : semaine 09:00–21:00 et jours fériés 09:00–22:00, avec exceptions des premiers et troisièmes lundis d’octobre à mars. Une FAQ municipale plus ancienne indique d’autres heures le week-end. La fiche privilégie la page opérationnelle récente.",
+  "remainingUncertainty": "Jours fériés, météo et maintenance peuvent modifier le service. Les règles sont bornées au 31 janvier 2027 ; contrôler les nouvelles annonces avant cette date.",
+  "facebookPublicationId": "537cb69e5b1d4e4288aefc5bf32b5890",
+  "facebookStatus": "Published",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128799907424431"
+}

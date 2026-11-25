@@ -2607,6 +2607,182 @@
           "failureMessage": null
         }
       }
+    },
+    {
+      "entryId": "TW-candidate-discovery-maokong-gondola-20261125",
+      "name": "Maokong Gondola",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "No. 8, Section 2, Xinguang Road, Wenshan, Taipei 116",
+      "siteId": "0b88021a-421e-45db-99a6-d0d51e18f335",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T11:55:54.608Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "L’exploitant publie billets, horaires et règles de service pour la ligne Maokong Gondola.",
+      "identityConfidence": "Recherches officielles Park et StandaloneAttraction « Maokong » sans doublon ; la télécabine vend ses propres trajets simples et pass journée, indépendamment du zoo.",
+      "possibleMatches": [],
+      "aliases": [
+        "貓空纜車",
+        "Taipei Maokong Gondola"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T11:52:37.887Z",
+      "integrationHistory": [
+        {
+          "eventId": "749d4ec0-6a8f-42c7-8545-d4bcac699b63",
+          "appliedAt": "2026-11-25T11:49:14.235Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0b88021a-421e-45db-99a6-d0d51e18f335",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-maokong-20261125/operations.json#749d4ec0-6a8f-42c7-8545-d4bcac699b63",
+          "auditEvidence": null,
+          "summary": "Téléphérique créé masqué après recherches de doublons Park et StandaloneAttraction ; position de la gare Taipei Zoo et descriptions en huit langues."
+        },
+        {
+          "eventId": "f4be920d-f4f2-49ac-9e91-da0f9b596914",
+          "appliedAt": "2026-11-25T11:50:45.172Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0b88021a-421e-45db-99a6-d0d51e18f335",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-maokong-20261125/operations.json#f4be920d-f4f2-49ac-9e91-da0f9b596914",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels en TWD, horaires datés avec exceptions de lundi, accessibilité et historique intégrés."
+        },
+        {
+          "eventId": "photo-import-ace0960be4a24e1d8d810895ceb8a5a6",
+          "appliedAt": "2026-11-25T11:51:30.363Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0b88021a-421e-45db-99a6-d0d51e18f335",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-maokong-20261125/operations.json#photo-import-ace0960be4a24e1d8d810895ceb8a5a6",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Maokong Gondola importée : Exec8, CC BY-SA 4.0 ; huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "photo-import-01a2aad810404bef8be2cdf00f35e8ac",
+          "appliedAt": "2026-11-25T11:51:52.397Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0b88021a-421e-45db-99a6-d0d51e18f335",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-maokong-20261125/operations.json#photo-import-01a2aad810404bef8be2cdf00f35e8ac",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Maokong Gondola importée : 人人生來平等, CC BY-SA 4.0 ; huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "photo-import-f68deeaecb9943158b785331afef8ec5",
+          "appliedAt": "2026-11-25T11:52:15.680Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0b88021a-421e-45db-99a6-d0d51e18f335",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-maokong-20261125/operations.json#photo-import-f68deeaecb9943158b785331afef8ec5",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Maokong Gondola importée : 人人生來平等, CC BY-SA 4.0 ; huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "photo-metadata-ace0960be4a24e1d8d810895ceb8a5a6",
+          "appliedAt": "2026-11-25T11:52:37.887Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0b88021a-421e-45db-99a6-d0d51e18f335",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-maokong-20261125/operations.json#photo-metadata-ace0960be4a24e1d8d810895ceb8a5a6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-maokong-20261125/audit.json",
+          "summary": "Photo de la cabine définie comme image principale ; audit final 95/100 sans blocage et trois photos exactes publiées."
+        }
+      ],
+      "nextAction": "Conserver la ligne et ses reçus ; recontrôler horaires, jours fériés et interruptions météo avant le 31 janvier 2027. Suivre la divergence entre la page récente de l’exploitant et l’ancienne FAQ municipale. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Maokong Gondola — exploitant",
+          "url": "https://english.gondola.taipei/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Maokong Gondola — tarifs",
+          "url": "https://english.gondola.taipei/cp.aspx?n=19884A72DB5E7A1D",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Maokong Gondola — horaires actuels",
+          "url": "https://english.gondola.taipei/cp.aspx?n=0FC5FEA256DB1B77",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Maokong Gondola — accessibilité",
+          "url": "https://english.gondola.taipei/cp.aspx?n=F4CBC91B8CAA0BA9",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Maokong Gondola — chronologie officielle",
+          "url": "https://english.gondola.taipei/cp.aspx?n=4E09E3957444B66C",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Taipei Travel — accès et stations",
+          "url": "https://www.travel.taipei/en/attraction/details/714",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Maokong_Gondola_Cable_Car.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:2025.07.26_Taipei_Zoo_Station_(Maokong_Gondola).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:2025.07.26_Angle_Station_2_(Maokong_Gondola).jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche mondiale des transports panoramiques à billet propre ; contrôle des doublons et inspection de trois photographies Commons exactes.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [
+          {
+            "name": "Maokong Gondola",
+            "source": "Maokong Gondola — exploitant",
+            "url": "https://english.gondola.taipei/",
+            "family": "Télécabine panoramique",
+            "sourceVenueName": "Maokong Gondola",
+            "sourceLifecycleSignal": "Billets et horaires actuels",
+            "sourceLocality": "Wenshan, Taipei",
+            "matchingMethod": "Billets propres au téléphérique, indépendants de Taipei Zoo."
+          }
+        ],
+        "rationale": "La télécabine est une ligne touristique à billetterie propre avec quatre stations ; elle n’est pas une attraction interne au zoo."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0b88021a-421e-45db-99a6-d0d51e18f335/maokong-gondola",
+          "publishedAtUtc": "2026-11-25T11:53:41.693Z",
+          "verifiedAtUtc": "2026-11-25T11:55:54.608Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-maokong-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "537cb69e5b1d4e4288aefc5bf32b5890",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0b88021a-421e-45db-99a6-d0d51e18f335/maokong-gondola?facebook-image=ace0960be4a24e1d8d810895ceb8a5a6",
+          "publishedAtUtc": "2026-11-25T11:54:54.568076Z",
+          "externalPostId": "1285475681307050_122128799907424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128799907424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      }
     }
   ]
 }
