@@ -1,0 +1,88 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "35a5ef04-9a7a-46db-a869-892b595b94f8",
+  "name": "Top of Shanghai Observatory",
+  "countryCode": "CN",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/35a5ef04-9a7a-46db-a869-892b595b94f8/top-of-shanghai-observatory",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T12:43:40Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "afab7f484bc5450aa866e31acf75dd7c",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128805799424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T12:40:50.929Z",
+  "presenceSearch": "PDE SearchParks « Shanghai Tower », SearchStandaloneAttractions « Shanghai Tower » et « Top of Shanghai » : aucune fiche existante.",
+  "completeness": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "9ee2abdb9b23486392fdbe03d933b721",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_on_the_observatory_level_of_Shanghai_Tower.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "ad90c4ff08c14bf993c03b4882bee344",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_Shanghai_Tower_Observation_Deck.jpg",
+      "isPublished": true
+    },
+    {
+      "imageId": "a07ac9b3f3794a44b3b9f1b394fd8a3c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shanghai_Tower_Aussichtsplattform.jpg",
+      "isPublished": true
+    }
+  ],
+  "sources": [
+    {
+      "label": "Shanghai Tower — observatoire officiel",
+      "url": "https://en.shanghaitower.com/shagnhai.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Office du tourisme de Shanghai — horaires et adresse",
+      "url": "https://www.meet-in-shanghai.net/en/tourist-attraction/top-of-shanghai-observatory-914985/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Ville de Shanghai — tarifs normaux de mai 2026",
+      "url": "https://english.shanghai.gov.cn/en-FestivalsCelebrations/20260515/ee03e0a7bc6e4d87acc0a1cbe5d8ca49.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Shanghai Tower — ouverture officielle",
+      "url": "https://en.shanghaitower.com/news_1/7.html",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo 119F",
+      "url": "https://commons.wikimedia.org/wiki/File:View_on_the_observatory_level_of_Shanghai_Tower.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama",
+      "url": "https://commons.wikimedia.org/wiki/File:View_from_Shanghai_Tower_Observation_Deck.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo 118F",
+      "url": "https://commons.wikimedia.org/wiki/File:Shanghai_Tower_Aussichtsplattform.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Entrée autonome de l’observatoire ; SKY632 et autres expériences non incluses dans le billet standard.",
+  "remainingUncertainty": "Les prix normaux proviennent de la publication municipale de mai 2026 et sont susceptibles de changer ; la page indique que le tarif du guichet le jour de la visite fait foi. Horaires à confirmer pour chaque date."
+}
