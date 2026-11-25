@@ -1,0 +1,69 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions AU pour Skyrail Rainforest Cableway, Skyrail et Kuranda Cableway : zéro résultat dans six recherches ; aucun homonyme dans le backlog AU.",
+  "decision": "Téléphérique touristique autonome entre Smithfield et Kuranda, avec billet propre, terminaux et exploitation dédiée. Les promenades aux stations ne changent pas la nature du site.",
+  "currentOperation": "L’exploitant affiche « Skyrail Open – Normal Operations ». La ligne complète fonctionne depuis le 4 novembre 2026 ; les nouvelles cabines couvrent Smithfield–Red Peak et les anciennes Red Peak–Kuranda. Stage 3 de juillet à novembre 2027 modifiera le parcours : à revoir avant cette période.",
+  "officialPricing": "Réservation en ligne sans transfert : 74 AUD adulte et 37 AUD enfant 4–14 ans en aller simple ; 111 et 55,50 AUD aller-retour. Tarifs placés dans onlinePrice ; aucun tarif guichet inventé. Enfants 0–3 ans gratuits mais billet bébé requis.",
+  "officialHours": "Premier départ de Smithfield à 08:45, dernier aller simple ou aller-retour à 14:00 ; dernier aller simple de Kuranda à 15:15 et dernier embarquement pour aller-retour à 12:00. Ces limites de départ ne sont pas une heure de fermeture ; elles restent donc en texte sans fausse règle horaire. Fermetures datées : 2, 8, 9, 25 décembre 2026 et 18–31 mai 2027.",
+  "accessibility": "Le personnel peut ralentir ou arrêter la cabine pour embarquement assisté. La plupart des fauteuils standards sont acceptés sous limites de dimensions et de poids ; contacter l’exploitant. Le transfert en bus n’accepte pas les fauteuils sans arrangement spécifique.",
+  "history": "Ouverture au public le 31 août 1995, selon l’exploitant.",
+  "photos": "Trois photos exactes inspectées, 2007/2012/2007, montrant anciennes cabines et vue depuis Skyrail. Chaque légende indique le caractère historique ; aucune photo n’est présentée comme montrant les cabines neuves de 2026. Crédits, licences Commons, miniatures réduites et huit alt/légendes distincts.",
+  "sources": [
+    {
+      "label": "Skyrail — itinéraire, adresse, départs et réservation",
+      "url": "https://skyrail.com.au/plan/your-visit/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skyrail — prix des billets",
+      "url": "https://skyrail.com.au/plan/skyrail-rainforest-cableway/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skyrail — travaux et fonctionnement actuel",
+      "url": "https://skyrail.com.au/upgrade/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skyrail — fermetures programmées 2026–2027",
+      "url": "https://skyrail.com.au/visitor-information/notices/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skyrail — FAQ et âge enfant",
+      "url": "https://skyrail.com.au/visitor-information/faqs/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skyrail — accessibilité",
+      "url": "https://skyrail.com.au/visitor-information/accessibility/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skyrail — construction et ouverture",
+      "url": "https://skyrail.com.au/blog/skyrail-rainforest-cableway-construction/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skyrail — plan d’accès et coordonnées du terminal",
+      "url": "https://www.athertontablelands.com.au/wp-content/uploads/2018/06/Skyrail.pdf",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Skyrail Rainforest Cableway Gondola.jpg (Sheila Thomson, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Skyrail_Rainforest_Cableway_Gondola.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Skyrail, Queensland (483839) (9440795415).jpg (Robert Linsdell, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Skyrail,_Queensland_(483839)_(9440795415).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Looking Down From Skyrail.jpg (Happy Little Nomad, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Looking_Down_From_Skyrail.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les opérations et tarifs peuvent changer pendant les travaux. Recontrôler les horaires de départ, les fermetures et l’étape 2027 avant nouvelle intégration."
+}
