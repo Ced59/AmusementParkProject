@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "bf264d42-ff85-4f61-bf9c-2e49d8726a2e",
+    "appliedAtUtc": "2026-11-25T11:33:29.2099507Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "80232799-4ab0-4da0-a788-d8a45d23dbd8",
+    "appliedAtUtc": "2026-11-25T11:35:23.2148958Z",
+    "counts": {
+      "created": 3,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-20590f244a4f468dbf6abddc43a14c43",
+    "imageId": "20590f244a4f468dbf6abddc43a14c43",
+    "updatedAtUtc": "2026-11-25T11:36:25.338Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taipei_101_from_Xiangshan_20250905.jpg",
+    "isPublished": true,
+    "sizeInBytes": 287597
+  },
+  {
+    "step": "photo-import-ee3cc297c4c74dc39af40c2b5e13ae33",
+    "imageId": "ee3cc297c4c74dc39af40c2b5e13ae33",
+    "updatedAtUtc": "2026-11-25T11:36:49.518Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mass_damper_of_Taipei_101_20240411.jpg",
+    "isPublished": true,
+    "sizeInBytes": 123444
+  },
+  {
+    "step": "photo-import-74a5893557b44984a8c2c6916b86edd2",
+    "imageId": "74a5893557b44984a8c2c6916b86edd2",
+    "updatedAtUtc": "2026-11-25T11:37:15.226Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20231107_View_from_Taipei_101_Observatory.jpg",
+    "isPublished": true,
+    "sizeInBytes": 501117
+  },
+  {
+    "step": "text-fix",
+    "operationId": "3b5dd0cd-4c50-41ef-a090-b34f013e5092",
+    "appliedAtUtc": "2026-11-25T11:39:02.4442673Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "opening",
+    "operationId": "2cbb1ada-8fcc-4b3f-ad34-5191117b1fe8",
+    "appliedAtUtc": "2026-11-25T11:39:55.4270954Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-metadata-20590f244a4f468dbf6abddc43a14c43",
+    "imageId": "20590f244a4f468dbf6abddc43a14c43",
+    "updatedAtUtc": "2026-11-25T11:42:07.195Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taipei_101_from_Xiangshan_20250905.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "c3436417-51ed-4511-9fcd-731f58cbfd59",
+    "appliedAtUtc": "2026-11-25T11:40:42.7598695Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "0b1294e78f294725bb42904a5b14e3f8",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T11:43:17.2061243Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128799019424431"
+  }
+]

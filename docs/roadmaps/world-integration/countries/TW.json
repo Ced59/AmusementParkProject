@@ -2421,6 +2421,192 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "TW-candidate-discovery-taipei-101-observatory-20261125",
+      "name": "Taipei 101 Observatory",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique à billet propre",
+      "locality": "No. 7, Section 5, Xinyi Road, Taipei 110",
+      "siteId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T11:44:29.789Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "L’exploitant affiche la billetterie et les horaires actuels de l’observatoire.",
+      "identityConfidence": "Recherches PDE Park et StandaloneAttraction « Taipei 101 » et « 101 » sans doublon ; billet indépendant de l’observatoire, distinct du circuit guidé Skyline460.",
+      "possibleMatches": [],
+      "aliases": [
+        "Taipei 101 Observation Deck",
+        "台北101觀景台"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T11:42:07.195Z",
+      "integrationHistory": [
+        {
+          "eventId": "bf264d42-ff85-4f61-bf9c-2e49d8726a2e",
+          "appliedAt": "2026-11-25T11:33:29.209Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/operations.json#bf264d42-ff85-4f61-bf9c-2e49d8726a2e",
+          "auditEvidence": null,
+          "summary": "Observatoire créé masqué après recherche des doublons Park et StandaloneAttraction ; identité, localisation et descriptions en huit langues."
+        },
+        {
+          "eventId": "80232799-4ab0-4da0-a788-d8a45d23dbd8",
+          "appliedAt": "2026-11-25T11:35:23.214Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/operations.json#80232799-4ab0-4da0-a788-d8a45d23dbd8",
+          "auditEvidence": null,
+          "summary": "Billets officiels en TWD, horaires datés, accessibilité de l’observatoire et événement historique intégrés."
+        },
+        {
+          "eventId": "photo-import-20590f244a4f468dbf6abddc43a14c43",
+          "appliedAt": "2026-11-25T11:36:25.338Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/operations.json#photo-import-20590f244a4f468dbf6abddc43a14c43",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Taipei 101 ou de la visite importée : Sinsyuan, CC BY-SA 4.0 ; huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "photo-import-ee3cc297c4c74dc39af40c2b5e13ae33",
+          "appliedAt": "2026-11-25T11:36:49.518Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/operations.json#photo-import-ee3cc297c4c74dc39af40c2b5e13ae33",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Taipei 101 ou de la visite importée : Chaplain iMonk, CC BY 2.0 ; huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "photo-import-74a5893557b44984a8c2c6916b86edd2",
+          "appliedAt": "2026-11-25T11:37:15.226Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/operations.json#photo-import-74a5893557b44984a8c2c6916b86edd2",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Taipei 101 ou de la visite importée : Robin Kaljouw, CC BY 2.0 ; huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "3b5dd0cd-4c50-41ef-a090-b34f013e5092",
+          "appliedAt": "2026-11-25T11:39:02.444Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/operations.json#3b5dd0cd-4c50-41ef-a090-b34f013e5092",
+          "auditEvidence": null,
+          "summary": "Descriptions des huit langues réécrites pour éliminer une mesure technique brute interdite dans le texte public."
+        },
+        {
+          "eventId": "2cbb1ada-8fcc-4b3f-ad34-5191117b1fe8",
+          "appliedAt": "2026-11-25T11:39:55.427Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/operations.json#2cbb1ada-8fcc-4b3f-ad34-5191117b1fe8",
+          "auditEvidence": null,
+          "summary": "Date d’ouverture officielle de l’observatoire intégrée : 1er mars 2005, d’après le rapport de l’exploitant."
+        },
+        {
+          "eventId": "photo-metadata-20590f244a4f468dbf6abddc43a14c43",
+          "appliedAt": "2026-11-25T11:42:07.195Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48b7679a-d84c-4a26-9f08-5a1101405c6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/operations.json#photo-metadata-20590f244a4f468dbf6abddc43a14c43",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/audit.json",
+          "summary": "Photo de la tour définie comme image principale ; audit final 95/100 sans blocage et trois photos exactes publiées."
+        }
+      ],
+      "nextAction": "Conserver la ligne et ses reçus ; revoir les horaires avant le 18 janvier 2027 et l’accès du 91e étage selon la météo. Qualifier Skyline460 séparément sans dupliquer l’observatoire. Ne pas republier Facebook pour une simple mise à jour.",
+      "sources": [
+        {
+          "label": "TAIPEI 101 — observatoire, horaires et entrée",
+          "url": "https://www.taipei-101.com.tw/en/observatory/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "TAIPEI 101 — billets et conditions",
+          "url": "https://www.taipei-101.com.tw/en/observatory/ticket",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "TAIPEI 101 — aide et accessibilité",
+          "url": "https://www.taipei-101.com.tw/tw/observatory/moreservice/content/500acaba-cb0e-4030-9ac1-73435e0b131b",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "TAIPEI 101 — rapport d’entreprise, ouverture officielle du belvédère",
+          "url": "https://ws.taipei-101.com.tw/upload/charity/20251201/6a0177d611824e95bc988536fa32e7ae/6a0177d611824e95bc988536fa32e7ae.pdf",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Taipei_101_from_Xiangshan_20250905.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Mass_damper_of_Taipei_101_20240411.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:20231107_View_from_Taipei_101_Observatory.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche mondiale d’observatoires à billet propre ; rapprochement avec le catalogue officiel et vérification des photos Commons.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [
+          {
+            "name": "Taipei 101 Observatory",
+            "source": "TAIPEI 101 — site officiel",
+            "url": "https://www.taipei-101.com.tw/en/observatory/ticket",
+            "family": "Observatoire panoramique",
+            "sourceVenueName": "Taipei 101",
+            "sourceLifecycleSignal": "Billets et horaires actuels",
+            "sourceLocality": "Xinyi, Taipei",
+            "matchingMethod": "Billet propre aux 88e et 89e étages, distinct de Skyline460."
+          }
+        ],
+        "rationale": "L’observatoire se visite avec son propre billet ; le complexe commercial et Skyline460 ont des offres distinctes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/48b7679a-d84c-4a26-9f08-5a1101405c6b/taipei-101-observatory",
+          "publishedAtUtc": "2026-11-25T11:40:42.759Z",
+          "verifiedAtUtc": "2026-11-25T11:44:29.789Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-taipei-101-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "0b1294e78f294725bb42904a5b14e3f8",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/48b7679a-d84c-4a26-9f08-5a1101405c6b/taipei-101-observatory?facebook-image=20590f244a4f468dbf6abddc43a14c43",
+          "publishedAtUtc": "2026-11-25T11:43:17.2061243Z",
+          "externalPostId": "1285475681307050_122128799019424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128799019424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      }
     }
   ]
 }
