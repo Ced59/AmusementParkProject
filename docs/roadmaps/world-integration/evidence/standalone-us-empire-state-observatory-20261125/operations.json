@@ -1,0 +1,81 @@
+[
+  {
+    "step": "core",
+    "operationId": "ff70b30b-1965-4985-8da8-024d80a7553f",
+    "appliedAtUtc": "2026-11-25T14:27:21.2595938Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "8d8308e4-eeb0-4345-816d-1a08d4007207",
+    "appliedAtUtc": "2026-11-25T14:28:04.4751811Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-60e4a20aa7d04531a6234a54e27bbdf4",
+    "imageId": "60e4a20aa7d04531a6234a54e27bbdf4",
+    "updatedAtUtc": "2026-11-25T14:28:33.525Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_86th_floor.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 216743
+  },
+  {
+    "step": "photo-import-84877d24a8824f8dbbba59dff2a8ea7b",
+    "imageId": "84877d24a8824f8dbbba59dff2a8ea7b",
+    "updatedAtUtc": "2026-11-25T14:29:04.296Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_observation_deck_at_Empire_State_Building.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 162900
+  },
+  {
+    "step": "photo-import-abd0b82cf56846c687d68a8a8296a5b7",
+    "imageId": "abd0b82cf56846c687d68a8a8296a5b7",
+    "updatedAtUtc": "2026-11-25T14:29:31.852Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_August_2021.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 150640
+  },
+  {
+    "step": "publish",
+    "operationId": "b5e15b41-f627-49d3-9b46-6d11aeceed13",
+    "appliedAtUtc": "2026-11-25T14:30:30.7554554Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "1804a8e383204194a46a597604166345",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T14:31:29.3940135Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128817457424431"
+  }
+]

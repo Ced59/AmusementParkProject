@@ -1,0 +1,89 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "f53935aa-14fd-4f5c-8f87-82e71cdd357a",
+  "name": "Empire State Building Observatory",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/f53935aa-14fd-4f5c-8f87-82e71cdd357a/empire-state-building-observatory",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T14:31:37Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "1804a8e383204194a46a597604166345",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128817457424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T14:29:31.852Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Empire State » : zéro homonyme, y compris masqué ; backlog US sans entrée correspondante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "60e4a20aa7d04531a6234a54e27bbdf4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_86th_floor.jpg",
+      "isPublished": true,
+      "author": "James Petts",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "imageId": "84877d24a8824f8dbbba59dff2a8ea7b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_observation_deck_at_Empire_State_Building.jpg",
+      "isPublished": true,
+      "author": "Doorknob747",
+      "license": "CC0"
+    },
+    {
+      "imageId": "abd0b82cf56846c687d68a8a8296a5b7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_August_2021.jpg",
+      "isPublished": true,
+      "author": "Kidfly182",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Empire State Building — billetterie et prix",
+      "url": "https://www.esbnyc.com/buy-tickets",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Empire State Building — horaires et accès",
+      "url": "https://www.esbnyc.com/visit/hours-of-operation",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Empire State Building — différences entre belvédères et règles de réservation",
+      "url": "https://www.esbnyc.com/visit/faq",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — salle du belvédère",
+      "url": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_86th_floor.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama nocturne",
+      "url": "https://commons.wikimedia.org/wiki/File:View_from_observation_deck_at_Empire_State_Building.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — tour extérieure",
+      "url": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_August_2021.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Belvédère à billet propre : musée et niveau 86 avec option 102, prix de départ et trois photos exactes.",
+  "remainingUncertainty": "Horaires saisonniers ; seule la plage publiée pour le 25 novembre 2026 est modélisée. Les prix varient selon date et billet : revérifier à la réservation."
+}

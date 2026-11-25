@@ -32,7 +32,8 @@
     "Recherche externe dédiée aux absences : 17 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
     "Contrôle supplémentaire alpine coasters : 9 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.",
     "Découverte du 25 novembre : One World Observatory vérifié et publié comme plateforme autonome avec prix dynamique, exception Thanksgiving et trois photos exactes.",
-    "Découverte du 25 novembre : Reunion Tower GeO-Deck publié comme observatoire autonome, avec six horaires datés, tarifs variables et trois photos exactes."
+    "Découverte du 25 novembre : Reunion Tower GeO-Deck publié comme observatoire autonome, avec six horaires datés, tarifs variables et trois photos exactes.",
+    "Découverte du 25 novembre : Empire State Building Observatory publié avec deux formules, tarifs officiels de départ et trois photos exactes."
   ],
   "entries": [
     {
@@ -2867,6 +2868,151 @@
           }
         ],
         "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-empire-state-observatory-20261125",
+      "name": "Empire State Building Observatory",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme d’observation à billet propre",
+      "locality": "20 West 34th Street, New York, NY",
+      "siteId": "f53935aa-14fd-4f5c-8f87-82e71cdd357a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T14:31:37Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie, expérience et horaires actuels publiés par l’exploitant.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans fiche homonyme ; billetterie de l’observatoire distincte du bâtiment.",
+      "possibleMatches": [],
+      "aliases": [
+        "Empire State Building Observation Deck",
+        "Empire State Building 86th Floor Observatory"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T14:29:31.852Z",
+      "integrationHistory": [
+        {
+          "eventId": "ff70b30b-1965-4985-8da8-024d80a7553f",
+          "appliedAt": "2026-11-25T14:27:21.259Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f53935aa-14fd-4f5c-8f87-82e71cdd357a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-empire-state-observatory-20261125/operations.json#ff70b30b-1965-4985-8da8-024d80a7553f",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche PDE de tous les homonymes ; identité, accès et descriptions en huit langues."
+        },
+        {
+          "eventId": "8d8308e4-eeb0-4345-816d-1a08d4007207",
+          "appliedAt": "2026-11-25T14:28:04.475Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f53935aa-14fd-4f5c-8f87-82e71cdd357a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-empire-state-observatory-20261125/operations.json#8d8308e4-eeb0-4345-816d-1a08d4007207",
+          "auditEvidence": null,
+          "summary": "Prix officiels de départ des niveaux 86 et 102, horaire daté et conditions de visite intégrés."
+        },
+        {
+          "eventId": "photo-import-60e4a20aa7d04531a6234a54e27bbdf4",
+          "appliedAt": "2026-11-25T14:28:33.525Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f53935aa-14fd-4f5c-8f87-82e71cdd357a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-empire-state-observatory-20261125/operations.json#photo-import-60e4a20aa7d04531a6234a54e27bbdf4",
+          "auditEvidence": null,
+          "summary": "Salle du belvédère du niveau 86. Photo créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-84877d24a8824f8dbbba59dff2a8ea7b",
+          "appliedAt": "2026-11-25T14:29:04.296Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f53935aa-14fd-4f5c-8f87-82e71cdd357a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-empire-state-observatory-20261125/operations.json#photo-import-84877d24a8824f8dbbba59dff2a8ea7b",
+          "auditEvidence": null,
+          "summary": "Vue de nuit depuis le belvédère. Photo créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-abd0b82cf56846c687d68a8a8296a5b7",
+          "appliedAt": "2026-11-25T14:29:31.852Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f53935aa-14fd-4f5c-8f87-82e71cdd357a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-empire-state-observatory-20261125/operations.json#photo-import-abd0b82cf56846c687d68a8a8296a5b7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-empire-state-observatory-20261125/audit.json",
+          "summary": "Vue extérieure de la tour. Photo créditée et légendée dans huit langues. Audit projeté 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; compléter le calendrier daté et revérifier les prix dynamiques avant les prochains jours de visite.",
+      "sources": [
+        {
+          "label": "Empire State Building — billetterie et prix",
+          "url": "https://www.esbnyc.com/buy-tickets",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Empire State Building — horaires et accès",
+          "url": "https://www.esbnyc.com/visit/hours-of-operation",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Empire State Building — différences entre belvédères et règles de réservation",
+          "url": "https://www.esbnyc.com/visit/faq",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — salle du belvédère",
+          "url": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_86th_floor.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama nocturne",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_observation_deck_at_Empire_State_Building.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — tour extérieure",
+          "url": "https://commons.wikimedia.org/wiki/File:Empire_State_Building_August_2021.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche d’observatoire à billet propre ; contrôle PDE et inspection de trois photographies réutilisables exactes.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "L’observatoire possède son propre accès, sa billetterie et deux formules de visite ; ce n’est pas un parkItem."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f53935aa-14fd-4f5c-8f87-82e71cdd357a/empire-state-building-observatory",
+          "publishedAtUtc": "2026-11-25T14:30:30.7554554Z",
+          "verifiedAtUtc": "2026-11-25T14:31:37Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-empire-state-observatory-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "1804a8e383204194a46a597604166345",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f53935aa-14fd-4f5c-8f87-82e71cdd357a/empire-state-building-observatory?facebook-image=60e4a20aa7d04531a6234a54e27bbdf4",
+          "publishedAtUtc": "2026-11-25T14:31:29.3940135Z",
+          "externalPostId": "1285475681307050_122128817457424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128817457424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-empire-state-observatory-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
       }
     },
     {
