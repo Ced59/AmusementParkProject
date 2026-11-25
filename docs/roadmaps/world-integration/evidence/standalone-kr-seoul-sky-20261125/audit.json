@@ -1,0 +1,127 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "a1d56dc1-bdc6-4159-8fc4-cb698f9df110",
+  "name": "SEOUL SKY",
+  "countryCode": "KR",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/a1d56dc1-bdc6-4159-8fc4-cb698f9df110/seoul-sky",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T16:52:36Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "83ecdaf433534272bef7ca7a4093bf48",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128830477424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T16:48:05.195Z",
+  "lastDataOperationId": "fb76dd27-e4f3-48b0-9fb5-7eb562abd5a0",
+  "presenceSearch": "PDE SearchParks « Seoul Sky » KR : 0 ; SearchStandaloneAttractions « Seoul Sky » KR : 0. SearchParks « Lotte World » révèle le parc de loisirs distinct ; SearchStandaloneAttractions « Lotte World Tower » KR : 0. Aucun homonyme de l’observatoire.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "6d8b55d4596049dfa32f9cec1c6ab580",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Glass_floor_of_Lotte_World_Tower.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Tristan Surtel"
+    },
+    {
+      "id": "54759371f51c435d990ff0bc4f7ddd79",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Han_River_seen_from_Lotte_World_Tower.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Tristan Surtel"
+    },
+    {
+      "id": "c9db4af5bfb5408f9ad870edef5bcb98",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lotte_World_seen_from_Lotte_World_Tower.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Tristan Surtel"
+    }
+  ],
+  "sources": [
+    {
+      "label": "SEOUL SKY — site et accès de l’exploitant",
+      "url": "https://seoulsky.lotteworld.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SEOUL SKY — tarifs de l’exploitant",
+      "url": "https://seoulsky.lotteworld.com/price/info/ticket",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SEOUL SKY — horaires officiels par date",
+      "url": "https://seoulsky.lotteworld.com/guide/hours",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "SEOUL SKY — Sky Bridge et fermeture hivernale",
+      "url": "https://seoulsky.lotteworld.com/enjoy/skyBridge",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "VisitKorea — observatoire et horaires",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=65854",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Visit Seoul — accès et type de lieu",
+      "url": "https://english.visitseoul.net/jamsilarea/SeoulSky/ENPowtoyc",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — plancher de verre",
+      "url": "https://commons.wikimedia.org/wiki/File:Glass_floor_of_Lotte_World_Tower.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama Lotte World et lac Seokchon",
+      "url": "https://commons.wikimedia.org/wiki/File:Lotte_World_seen_from_Lotte_World_Tower.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama du fleuve Han",
+      "url": "https://commons.wikimedia.org/wiki/File:Han_River_seen_from_Lotte_World_Tower.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": {
+    "descriptions": 8,
+    "pricingOffers": 2,
+    "currency": "KRW",
+    "openingHoursRules": 7,
+    "openingHoursFirstDate": "2026-11-25",
+    "openingHoursLastDate": "2026-12-31",
+    "photographs": 3,
+    "facebook": "Published"
+  },
+  "remainingUncertainty": "Vérifier les prix promotionnels et prolonger le calendrier après le 31 décembre 2026 selon les données officielles. Le Sky Bridge est un produit distinct fermé du 30 novembre 2026 au 28 février 2027 et n’est pas compté dans la visite standard."
+}
