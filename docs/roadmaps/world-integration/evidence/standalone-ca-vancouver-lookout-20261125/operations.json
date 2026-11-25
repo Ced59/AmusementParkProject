@@ -1,0 +1,111 @@
+[
+  {
+    "step": "core",
+    "operationId": "1c41cb45-cf1a-4e61-8840-f69ef21fff5e",
+    "appliedAtUtc": "2026-11-25T15:11:12.7170022Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "37380be5-fd57-4973-9574-3658c2f816c0",
+    "appliedAtUtc": "2026-11-25T15:13:14.7269973Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-5a8a39d7c95d4b068f0c4cbd7efca976",
+    "imageId": "5a8a39d7c95d4b068f0c4cbd7efca976",
+    "updatedAtUtc": "2026-11-25T15:13:52.818Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Interior_2018.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 122231
+  },
+  {
+    "step": "photo-import-5222a021c667447f8b1def90323289d8",
+    "imageId": "5222a021c667447f8b1def90323289d8",
+    "updatedAtUtc": "2026-11-25T15:14:21.1Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Lobby_2018.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 144744
+  },
+  {
+    "step": "photo-import-191d54d160754ae09be2ea7347543934",
+    "imageId": "191d54d160754ae09be2ea7347543934",
+    "updatedAtUtc": "2026-11-25T15:14:34.495Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_(43815013895).jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 61147
+  },
+  {
+    "step": "pricing-rewrite",
+    "operationId": "7e84daa5-4aeb-4c16-bcdd-e0d1bdcafe99",
+    "appliedAtUtc": "2026-11-25T15:15:44.9331251Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "description-rewrite",
+    "operationId": "ccad202c-e853-4051-aa09-8ded67265c36",
+    "appliedAtUtc": "2026-11-25T15:16:54.5318092Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "37817876-6980-423c-bb70-53587f5eb8e8",
+    "appliedAtUtc": "2026-11-25T15:17:37.664578Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "315bb8e1e29241ac85b2a0b9c98c450d",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T15:18:30.9949085Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128822905424431"
+  }
+]

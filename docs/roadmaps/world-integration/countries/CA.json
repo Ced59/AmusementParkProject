@@ -32,7 +32,8 @@
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 22 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
-    "Contrôle supplémentaire alpine coasters : 3 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations."
+    "Contrôle supplémentaire alpine coasters : 3 références ADG, archives Sunkid ou exploitant rapprochées de dossiers déjà présents. Ne pas les compter comme de nouvelles créations.",
+    "Découverte du 25 novembre : Vancouver Lookout publié avec horaires, billet à tarif dynamique et trois photographies exactes créditées."
   ],
   "entries": [
     {
@@ -5348,6 +5349,165 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CA-candidate-discovery-vancouver-lookout-20261125",
+      "name": "Vancouver Lookout",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère panoramique à billet propre",
+      "locality": "555 West Hastings Street, Vancouver, British Columbia",
+      "siteId": "d1139e33-9522-42a6-9640-73128adf752d",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T15:18:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie, visite et calendrier actuels de l’exploitant.",
+      "identityConfidence": "PDE sans homonyme ; entrée et billet propres au belvédère du Harbour Centre.",
+      "possibleMatches": [],
+      "aliases": [
+        "Harbour Centre Vancouver Lookout"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T15:16:54.531Z",
+      "integrationHistory": [
+        {
+          "eventId": "1c41cb45-cf1a-4e61-8840-f69ef21fff5e",
+          "appliedAt": "2026-11-25T15:11:12.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d1139e33-9522-42a6-9640-73128adf752d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/operations.json#1c41cb45-cf1a-4e61-8840-f69ef21fff5e",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée après recherche PDE sans homonyme et intégration de huit descriptions, accès et géolocalisation."
+        },
+        {
+          "eventId": "37380be5-fd57-4973-9574-3658c2f816c0",
+          "appliedAt": "2026-11-25T15:13:14.726Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d1139e33-9522-42a6-9640-73128adf752d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/operations.json#37380be5-fd57-4973-9574-3658c2f816c0",
+          "auditEvidence": null,
+          "summary": "Calendrier actuel, dérogations de décembre et billet à tarif dynamique intégrés ; aucun montant officiel chiffré confirmé."
+        },
+        {
+          "eventId": "photo-import-5a8a39d7c95d4b068f0c4cbd7efca976",
+          "appliedAt": "2026-11-25T15:13:52.818Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d1139e33-9522-42a6-9640-73128adf752d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/operations.json#photo-import-5a8a39d7c95d4b068f0c4cbd7efca976",
+          "auditEvidence": null,
+          "summary": "Salle vitrée du belvédère. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-5222a021c667447f8b1def90323289d8",
+          "appliedAt": "2026-11-25T15:14:21.100Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d1139e33-9522-42a6-9640-73128adf752d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/operations.json#photo-import-5222a021c667447f8b1def90323289d8",
+          "auditEvidence": null,
+          "summary": "Accueil et billetterie du Vancouver Lookout. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "photo-import-191d54d160754ae09be2ea7347543934",
+          "appliedAt": "2026-11-25T15:14:34.495Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d1139e33-9522-42a6-9640-73128adf752d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/operations.json#photo-import-191d54d160754ae09be2ea7347543934",
+          "auditEvidence": null,
+          "summary": "Tour du Vancouver Lookout vue depuis la ville. Photo exacte, créditée et légendée dans huit langues."
+        },
+        {
+          "eventId": "7e84daa5-4aeb-4c16-bcdd-e0d1bdcafe99",
+          "appliedAt": "2026-11-25T15:15:44.933Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d1139e33-9522-42a6-9640-73128adf752d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/operations.json#7e84daa5-4aeb-4c16-bcdd-e0d1bdcafe99",
+          "auditEvidence": null,
+          "summary": "Réécriture des notes tarifaires pour le visiteur ; montant officiel du jour laissé dynamique."
+        },
+        {
+          "eventId": "ccad202c-e853-4051-aa09-8ded67265c36",
+          "appliedAt": "2026-11-25T15:16:54.531Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d1139e33-9522-42a6-9640-73128adf752d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/operations.json#ccad202c-e853-4051-aa09-8ded67265c36",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/audit.json",
+          "summary": "Réécriture des huit descriptions pour supprimer une mesure brute bloquante ; contrôle éditorial ensuite réussi. Audit projeté à 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; vérifier les changements d’horaires et intégrer un prix chiffré seulement lorsqu’il est confirmé par la billetterie officielle.",
+      "sources": [
+        {
+          "label": "Vancouver Lookout — accueil et horaires actuels",
+          "url": "https://vancouverlookout.com/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Vancouver Lookout — préparer sa visite",
+          "url": "https://vancouverlookout.com/know-before-you-go",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — salle du belvédère",
+          "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Interior_2018.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — accueil",
+          "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Lobby_2018.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — tour",
+          "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_(43815013895).jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche d’observatoire à billet propre ; contrôle PDE et inspection de trois photographies exactes réutilisables.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Le belvédère dispose de sa propre billetterie et de ses propres horaires dans le Harbour Centre."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d1139e33-9522-42a6-9640-73128adf752d/vancouver-lookout",
+          "publishedAtUtc": "2026-11-25T15:17:37.664578Z",
+          "verifiedAtUtc": "2026-11-25T15:18:00Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "315bb8e1e29241ac85b2a0b9c98c450d",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d1139e33-9522-42a6-9640-73128adf752d/vancouver-lookout?facebook-image=5a8a39d7c95d4b068f0c4cbd7efca976",
+          "publishedAtUtc": "2026-11-25T15:18:30.9949085Z",
+          "externalPostId": "1285475681307050_122128822905424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128822905424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-vancouver-lookout-20261125/audit.json",
+        "score": 91,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "CA-park-bfa8880e-5d7d-4aa0-8fe5-551a0270478f",

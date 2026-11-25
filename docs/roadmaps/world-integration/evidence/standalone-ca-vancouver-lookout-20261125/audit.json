@@ -1,0 +1,85 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "d1139e33-9522-42a6-9640-73128adf752d",
+  "name": "Vancouver Lookout",
+  "countryCode": "CA",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/d1139e33-9522-42a6-9640-73128adf752d/vancouver-lookout",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T15:18:00Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "315bb8e1e29241ac85b2a0b9c98c450d",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128822905424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T15:16:54.531Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Vancouver Lookout » et SearchParks « Harbour Centre » : zéro homonyme, y compris masqué ; backlog CA sans entrée correspondante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "initialPublicationBlocker": "public-text.forbidden-editorial-language, éliminé après réécriture des notes tarifaires puis des descriptions contenant 30 minutes.",
+  "photoEvidence": [
+    {
+      "imageId": "5a8a39d7c95d4b068f0c4cbd7efca976",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Interior_2018.jpg",
+      "isPublished": true,
+      "author": "Wpcpey",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "5222a021c667447f8b1def90323289d8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Lobby_2018.jpg",
+      "isPublished": true,
+      "author": "Wpcpey",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "imageId": "191d54d160754ae09be2ea7347543934",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_(43815013895).jpg",
+      "isPublished": true,
+      "author": "dronepicr",
+      "license": "CC BY 2.0"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Vancouver Lookout — accueil et horaires actuels",
+      "url": "https://vancouverlookout.com/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Vancouver Lookout — préparer sa visite",
+      "url": "https://vancouverlookout.com/know-before-you-go",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — salle du belvédère",
+      "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Interior_2018.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — accueil",
+      "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_Lobby_2018.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — tour",
+      "url": "https://commons.wikimedia.org/wiki/File:Vancouver_Lookout_(43815013895).jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Belvédère indépendant au Harbour Centre ; billet, horaires, accès et trois photos exactes sous licence avec crédits.",
+  "remainingUncertainty": "Aucun montant officiel chiffré vérifiable dans la billetterie publique JavaScript : tarif laissé dynamique. Horaires et exceptions à reconfirmer auprès de l’exploitant avant la visite."
+}
