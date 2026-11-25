@@ -77566,7 +77566,7 @@
         "Seattle Space Needle"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-25T10:25:04.442Z",
+      "lastDataIntegrationAt": "2026-11-25T10:23:44.498Z",
       "integrationHistory": [
         {
           "eventId": "apply-45529925-ef95-4c1d-a340-5c9cabcd47af",
@@ -77641,22 +77641,12 @@
         {
           "eventId": "apply-33e68639-7d65-4025-80bf-627d27a7816e",
           "appliedAt": "2026-11-25T10:23:44.498Z",
-          "outcome": "partial",
-          "entityKind": "StandaloneAttraction",
-          "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
-          "evidence": "PARK_DATA_EDITOR:apply:33e68639-7d65-4025-80bf-627d27a7816e",
-          "auditEvidence": null,
-          "summary": "Ouverture de 1962 et rénovation vitrée de 2018 intégrées."
-        },
-        {
-          "eventId": "apply-3389d0cb-b31c-462c-a20c-02903c92f6b1",
-          "appliedAt": "2026-11-25T10:25:04.442Z",
           "outcome": "completed",
           "entityKind": "StandaloneAttraction",
           "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
-          "evidence": "PARK_DATA_EDITOR:apply:3389d0cb-b31c-462c-a20c-02903c92f6b1",
+          "evidence": "PARK_DATA_EDITOR:apply:33e68639-7d65-4025-80bf-627d27a7816e",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-space-needle-20261125/audit.json",
-          "summary": "Fiche et événements historiques publiés après audit sans blocage."
+          "summary": "Ouverture de 1962 et rénovation vitrée de 2018 intégrées."
         }
       ],
       "nextAction": "Conserver la ligne ; revalider les horaires après le 1er décembre 2026 et les prix selon les dates de réservation.",
