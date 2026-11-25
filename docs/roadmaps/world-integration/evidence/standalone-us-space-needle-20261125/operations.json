@@ -1,0 +1,65 @@
+[
+  {
+    "step": "core",
+    "operationId": "45529925-ef95-4c1d-a340-5c9cabcd47af",
+    "appliedAtUtc": "2026-11-25T10:17:14.1665962Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-exterior",
+    "imageId": "4ed2656db12741ecbb86151205b21596",
+    "updatedAtUtc": "2026-11-25T10:18:17.878Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Space_Needle,_Seattle,_Washington,_2024.jpg"
+  },
+  {
+    "step": "photo-import-glass",
+    "imageId": "f31051adbc2f4e64873a7ee50f1f43c6",
+    "updatedAtUtc": "2026-11-25T10:18:38.305Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_Space_Needle.jpg"
+  },
+  {
+    "step": "photo-import-deck",
+    "imageId": "90bcf02d0b5a463db6c7c1a53459fc2f",
+    "updatedAtUtc": "2026-11-25T10:18:57.909Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Space_Needle_Remodel_Upper_Level.jpg"
+  },
+  {
+    "step": "pricing",
+    "operationId": "666a660a-719b-462c-bc06-5695462ff2ea",
+    "appliedAtUtc": "2026-11-25T10:21:25.5996573Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "openingHours",
+    "operationId": "d2951b0f-3c6c-4f3b-91d8-d61338a09bd1",
+    "appliedAtUtc": "2026-11-25T10:21:54.8940943Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "ba85d60d-faea-4467-8866-45a4e3344a29",
+    "appliedAtUtc": "2026-11-25T10:22:28.9579079Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "33e68639-7d65-4025-80bf-627d27a7816e",
+    "appliedAtUtc": "2026-11-25T10:23:44.498211Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "3389d0cb-b31c-462c-a20c-02903c92f6b1",
+    "appliedAtUtc": "2026-11-25T10:25:04.4420452Z",
+    "errors": [],
+    "warnings": []
+  }
+]

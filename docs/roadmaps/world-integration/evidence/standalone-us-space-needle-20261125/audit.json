@@ -1,0 +1,126 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b1ea5764-ba0e-4f3c-8fed-c079be77da67",
+  "countryCode": "US",
+  "name": "Space Needle",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b1ea5764-ba0e-4f3c-8fed-c079be77da67/space-needle",
+  "lastDataIntegrationAtUtc": "2026-11-25T10:25:04.442Z",
+  "publicVerifiedAtUtc": "2026-11-25T10:28:07.274Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "attractions": 1,
+    "operatingAttractions": 1,
+    "descriptionsWithEightLanguages": 1,
+    "attractionsWithAtLeastOneExactPhoto": 1,
+    "publishedPhotos": 3,
+    "openingHistoryEvents": 1,
+    "renovationHistoryEvents": 1,
+    "accessConditions": 1,
+    "currentPricingOffers": 3,
+    "officialCalendarStart": "2026-11-25",
+    "officialCalendarEnd": "2026-12-01",
+    "officialCalendarDays": 7,
+    "uncoveredPublishedDates": [],
+    "calendarOverlaps": [],
+    "timeZoneId": "America/Los_Angeles"
+  },
+  "photoIds": [
+    "4ed2656db12741ecbb86151205b21596",
+    "f31051adbc2f4e64873a7ee50f1f43c6",
+    "90bcf02d0b5a463db6c7c1a53459fc2f"
+  ],
+  "photoLicenseEvidence": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Space_Needle,_Seattle,_Washington,_2024.jpg",
+      "author": "Another Believer",
+      "license": "CC BY-SA 4.0",
+      "photoDate": "2024",
+      "visuallyCheckedExactAttraction": true
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_Space_Needle.jpg",
+      "author": "Ɱ",
+      "license": "CC BY-SA 4.0",
+      "photoDate": "2019-08-25",
+      "visuallyCheckedExactAttraction": true
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Space_Needle_Remodel_Upper_Level.jpg",
+      "author": "Steverelei",
+      "license": "CC BY-SA 4.0",
+      "photoDate": "2018-11-27",
+      "visuallyCheckedExactAttraction": true
+    }
+  ],
+  "sources": [
+    {
+      "label": "Space Needle — horaires et tarifs officiels",
+      "url": "https://www.spaceneedle.com/plan-your-visit",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Space Needle — billetterie officielle",
+      "url": "https://www.spaceneedle.com/tickets",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Space Needle — accessibilité",
+      "url": "https://www.spaceneedle.com/accessibility",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Space Needle — histoire officielle",
+      "url": "https://www.spaceneedle.com/history",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Space Needle — expérience de visite",
+      "url": "https://www.spaceneedle.com/experience",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, Another Believer, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Space_Needle,_Seattle,_Washington,_2024.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, Ɱ, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Interior_of_Space_Needle.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, Steverelei, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Space_Needle_Remodel_Upper_Level.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Page publique vérifiée",
+      "url": "https://amusement-parks.fun/fr/attraction/b1ea5764-ba0e-4f3c-8fed-c079be77da67/space-needle",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "remainingUncertainty": "The operator displayed only seven upcoming opening dates at integration time. Future dates require revalidation; youth and senior price amounts appear only in booking.",
+  "facebookPublicationId": "e8834fffd0d14234b6070e5980db64ed"
+}
