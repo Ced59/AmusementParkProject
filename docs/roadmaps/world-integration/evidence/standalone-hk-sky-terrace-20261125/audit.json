@@ -1,0 +1,271 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d",
+  "countryCode": "HK",
+  "name": "Sky Terrace 428",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/f98b1510-a0ee-46f3-98fc-eb1e9b0e3f3d/sky-terrace-428",
+  "lastDataIntegrationAtUtc": "2026-11-25T12:17:25.204Z",
+  "publicVerifiedAtUtc": "2026-11-25T12:20:29.358Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 68,
+    "earnedPoints": 64,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "descriptionsWithEightLanguages": 1,
+    "exactPublishedPhotos": 2,
+    "currentPricingOffers": 2,
+    "boundedHoursThrough": "2027-01-31",
+    "accessConditions": 1
+  },
+  "photoEvidence": [
+    {
+      "imageId": "14e88bb59d9c4617a28b3db572de17df",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:See_Hong_Kong_from_the_Peak_08-06-2021(3).jpg",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 159602,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs au bord de Sky Terrace 428 face au panorama de Hong Kong"
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors on Sky Terrace 428 overlooking Hong Kong"
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher auf Sky Terrace 428 mit Blick auf Hongkong"
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes en Sky Terrace 428 ante Hong Kong"
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori su Sky Terrace 428 con vista su Hong Kong"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers op Sky Terrace 428 met uitzicht over Hongkong"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Goście na Sky Terrace 428 oglądają panoramę Hongkongu"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes no Sky Terrace 428 perante Hong Kong"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La terrasse vitrée et son panorama vers le port."
+        },
+        {
+          "languageCode": "en",
+          "value": "The glass-sided deck and its view towards the harbour."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die verglaste Terrasse mit Blick zum Hafen."
+        },
+        {
+          "languageCode": "es",
+          "value": "La terraza acristalada con vistas hacia el puerto."
+        },
+        {
+          "languageCode": "it",
+          "value": "La terrazza vetrata con vista sul porto."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het glazen terras met uitzicht richting de haven."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przeszklony taras z widokiem na port."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O terraço envidraçado com vista para o porto."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        }
+      ]
+    },
+    {
+      "imageId": "31fd10f3c8804a3d872c22610b58a787",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:See_Hong_Kong_from_the_Peak_08-06-2021(4).jpg",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "sizeInBytes": 152413,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue sur Victoria Harbour depuis Sky Terrace 428"
+        },
+        {
+          "languageCode": "en",
+          "value": "Victoria Harbour as seen from Sky Terrace 428"
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick von Sky Terrace 428 auf Victoria Harbour"
+        },
+        {
+          "languageCode": "es",
+          "value": "Victoria Harbour visto desde Sky Terrace 428"
+        },
+        {
+          "languageCode": "it",
+          "value": "Victoria Harbour visto da Sky Terrace 428"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Victoria Harbour vanaf Sky Terrace 428"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok na Victoria Harbour z Sky Terrace 428"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Victoria Harbour visto do Sky Terrace 428"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le port et les tours de Central depuis le bord de la plateforme."
+        },
+        {
+          "languageCode": "en",
+          "value": "The harbour and Central towers from the deck edge."
+        },
+        {
+          "languageCode": "de",
+          "value": "Hafen und Hochhäuser von Central vom Terrassenrand."
+        },
+        {
+          "languageCode": "es",
+          "value": "Puerto y rascacielos de Central desde la terraza."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il porto e le torri di Central dal bordo della terrazza."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De haven en torens van Central vanaf het terras."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Port i wieżowce Central widziane z tarasu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O porto e as torres de Central vistos do terraço."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: LN9267, CC BY-SA 4.0 (2021-06-08)."
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "operator": "https://www.thepeak.com.hk/en/the-peak-experience/the-sky-terrace-428",
+    "fares": "https://www.thepeak.com.hk/sites/peak/files/2025-12/%5B%E6%96%B0%E8%81%9E%E7%A8%BF%5D%20%E5%B1%B1%E9%A0%82%E7%BA%9C%E8%BB%8A%E5%AE%A3%E5%B8%83%E7%A5%A8%E5%83%B9%E8%AA%BF%E6%95%B4.pdf",
+    "hoursChange": "https://www.thepeak.com.hk/sites/peak/files/2026-04/%E5%87%8C%E9%9C%84%E9%96%A3%E6%91%A9%E5%A4%A9%E5%8F%B0428%20%E9%96%8B%E6%94%BE%E6%99%82%E9%96%93%E8%AA%BF%E6%95%B4_0.pdf",
+    "address": "https://www.thepeak.com.hk/en/node/20",
+    "accessibility": "https://e-cgo.org.hk/travel/en/trip-detail?id=4"
+  },
+  "hoursSourceDiscrepancy": "La page actuelle et le communiqué d’avril 2026 indiquent 08:30–22:00 tous les jours ; d’anciennes conditions de vente affichent encore une distinction semaine/week-end. La fiche suit la page actuelle de l’exploitant.",
+  "remainingUncertainty": "Météo et événements spéciaux peuvent fermer temporairement la terrasse. Vérifier les annonces avant le 31 janvier 2027. Aucune date précise d’ouverture historique confirmée.",
+  "facebookPublicationId": "49549ea12279477ca978e10415b8620b",
+  "facebookStatus": "Published",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128802793424431"
+}

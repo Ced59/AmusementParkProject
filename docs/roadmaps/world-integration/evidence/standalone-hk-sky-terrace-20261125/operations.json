@@ -1,0 +1,72 @@
+[
+  {
+    "step": "core",
+    "operationId": "73c6c23d-9df3-446f-8f00-3dabbc5cd71f",
+    "appliedAtUtc": "2026-11-25T12:14:44.3986832Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "6a670656-d9c2-4600-beb0-2185f3016815",
+    "appliedAtUtc": "2026-11-25T12:16:24.3770325Z",
+    "counts": {
+      "created": 2,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-14e88bb59d9c4617a28b3db572de17df",
+    "imageId": "14e88bb59d9c4617a28b3db572de17df",
+    "updatedAtUtc": "2026-11-25T12:17:03.881Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:See_Hong_Kong_from_the_Peak_08-06-2021(3).jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 159602
+  },
+  {
+    "step": "photo-import-31fd10f3c8804a3d872c22610b58a787",
+    "imageId": "31fd10f3c8804a3d872c22610b58a787",
+    "updatedAtUtc": "2026-11-25T12:17:25.204Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:See_Hong_Kong_from_the_Peak_08-06-2021(4).jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 152413
+  },
+  {
+    "step": "publish",
+    "operationId": "0f3d67bf-d435-4161-930e-d3066043251d",
+    "appliedAtUtc": "2026-11-25T12:18:41.6726465Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "49549ea12279477ca978e10415b8620b",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T12:19:44.154604Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128802793424431"
+  }
+]
