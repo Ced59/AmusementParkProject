@@ -1,0 +1,96 @@
+[
+  {
+    "step": "core",
+    "operationId": "51ae7db5-56fc-45db-8e30-000dadbd9163",
+    "appliedAtUtc": "2026-11-25T12:03:14.3259211Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "5c39fbe2-4356-4b80-9e68-f7930222917b",
+    "appliedAtUtc": "2026-11-25T12:05:10.5412382Z",
+    "counts": {
+      "created": 4,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "core-correction",
+    "operationId": "707d9f15-7e84-4bb4-aa5c-c361d95f2474",
+    "appliedAtUtc": "2026-11-25T12:08:19.6829394Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-ac00ae5c64e74885839ce34e01711448",
+    "imageId": "ac00ae5c64e74885839ce34e01711448",
+    "updatedAtUtc": "2026-11-25T12:06:01.026Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peak_Tram(Green_light)_22-04-2026(1).jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "sizeInBytes": 257374
+  },
+  {
+    "step": "photo-import-9b05cf8cb99944e98e34b1c6fee0b32d",
+    "imageId": "9b05cf8cb99944e98e34b1c6fee0b32d",
+    "updatedAtUtc": "2026-11-25T12:06:38.359Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peak_Tram(White_light)_22-04-2026(2).jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 305922
+  },
+  {
+    "step": "photo-import-b07f5c7a4fe54c5b8f39eb55b90c4fd9",
+    "imageId": "b07f5c7a4fe54c5b8f39eb55b90c4fd9",
+    "updatedAtUtc": "2026-11-25T12:07:04.108Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peak_Tram_Central_Terminus_202610.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "sizeInBytes": 280061
+  },
+  {
+    "step": "publish",
+    "operationId": "d549b8b9-d8b4-4a10-8fe0-42604c0c928d",
+    "appliedAtUtc": "2026-11-25T12:09:06.7620203Z",
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "77409580531b44e9a8dfe3e4af60e483",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T12:10:17.1122967Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128801347424431"
+  }
+]
