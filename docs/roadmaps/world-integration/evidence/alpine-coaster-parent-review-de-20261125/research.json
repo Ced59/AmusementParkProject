@@ -1,0 +1,43 @@
+{
+  "reviewedAt": "2026-11-25",
+  "scope": "Trois références de luge alpine en Allemagne, rapprochées de leurs parcs parents déjà inventoriés.",
+  "method": "Site officiel de chaque exploitant et rapprochement avec les fiches Park du backlog. Pas de modification de production ni de date d’intégration inventée.",
+  "decisions": [
+    {
+      "entryId": "DE-candidate-standalone-ff312e1d5aeb2d",
+      "name": "Alpine Coaster Wiegand — Fort Fun",
+      "ride": "Trapper SLIDER",
+      "parentPark": "FORT FUN Abenteuerland",
+      "parentBacklogEntryId": "DE-park-22a60ead-5eca-40a3-aec2-230004b9b1b7",
+      "classification": "InsidePark",
+      "decision": "La page officielle classe Trapper SLIDER dans les attractions de FORT FUN et indique que les visiteurs y accèdent avec le billet du parc, sans supplément après le créneau Early SLIDER.",
+      "officialSource": "https://fortfun.de/attraktion/trapper-slider",
+      "dataIntegrationPerformed": false,
+      "lastDataIntegrationAt": null
+    },
+    {
+      "entryId": "DE-candidate-standalone-1bc573894a2723",
+      "name": "Alpine Coaster Wiegand — Steinwasen",
+      "ride": "Alpine Coaster",
+      "parentPark": "Steinwasen Park",
+      "parentBacklogEntryId": "DE-park-73d15af0-0cef-41df-816c-599bea49c169",
+      "classification": "InsidePark",
+      "decision": "La liste officielle des attractions du Steinwasen Park contient explicitement Alpine Coaster ; la page individuelle est hébergée dans la rubrique des attractions du parc.",
+      "officialSource": "https://www.steinwasen-park.de/en/steinwasen-attraktionen.html",
+      "dataIntegrationPerformed": false,
+      "lastDataIntegrationAt": null
+    },
+    {
+      "entryId": "DE-candidate-standalone-e8c5030413eda7",
+      "name": "Luge Wiegand — Altenberg",
+      "ride": "Sommerrodelbahn Altenberg",
+      "parentPark": "Erlebnisberg Altenberg",
+      "parentBacklogEntryId": "DE-park-c18c490e-f880-4837-9075-0ffc01cb365d",
+      "classification": "InsidePark",
+      "decision": "L’exploitant présente la luge comme l’une des attractions de l’Erlebnisberg Altenberg, avec d’autres activités estivales et hivernales ; une fiche Park masquée existe déjà pour ce domaine. Un billet propre de luge ne change pas ce rattachement.",
+      "officialSource": "https://www.erlebnisberg-altenberg.de/sommersaison/sommerrodelbahn/",
+      "dataIntegrationPerformed": false,
+      "lastDataIntegrationAt": null
+    }
+  ]
+}
