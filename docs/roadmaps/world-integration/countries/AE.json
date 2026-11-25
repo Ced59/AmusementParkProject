@@ -1698,19 +1698,19 @@
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-11-25",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Le guide officiel Visit Dubai 2026 mentionne encore la tour, mais elle est absente de la liste actuelle des attractions d’Expo City Dubai ; exploitation et horaires à confirmer.",
-      "identityConfidence": "Tour Intamin identifiée à Jubilee Park, Expo City Dubai ; identité dans le site et exploitation actuelle à confirmer",
+      "identityConfidence": "Tour Intamin identifiée à Jubilee Park, Expo City Dubai ; recherches officielles Park et StandaloneAttraction sous Garden in the Sky, ainsi que Park sous Expo City : aucun homonyme trouvé le 25 novembre 2026. Statut d’exploitation actuel non confirmé.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Vérifier directement la reprise des tours et une billetterie actuelle auprès d’Expo City Dubai ; aucune date, horaire ou tarif actuel n’est confirmé. Rechercher Garden in the Sky, Jubilee Park et Expo City dans Park et StandaloneAttraction via le client officiel avant toute création. Photo exacte de la tour disponible sous CC BY 2.0 (amanderson2, prise le 22 mars 2022) ; la dater comme vue d’archive. Ne pas publier ni annoncer une ouverture sans confirmation.",
+      "nextAction": "Obtenir directement auprès d’Expo City Dubai une confirmation de la reprise des tours et de la billetterie actuelle ; le catalogue d’attractions en ligne omet la tour malgré des mentions récentes. Ne pas créer une fiche publique, attribuer des horaires ou publier sur Facebook avant confirmation. Une photo exacte CC BY 2.0 d’amanderson2 est disponible et vérifiée. Recherche officielle de doublons terminée le 25 novembre 2026 (preuve : evidence/standalone-ae-garden-qualification-20261125/search-audit.json).",
       "sources": [
         {
           "label": "Intamin — référence constructeur",
@@ -4213,6 +4213,238 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "AE-candidate-discovery-dubai-frame-20261125",
+      "name": "Dubai Frame",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Passerelle panoramique et observatoire à billet propre",
+      "locality": "Zabeel Park, Gate 4, Dubai",
+      "siteId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T09:46:08.951Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation confirmée par le site officiel : billetterie et horaires publiés le 25 novembre 2026.",
+      "identityConfidence": "Recherches officielles Park et StandaloneAttraction sous Dubai Frame et Zabeel : aucun doublon. Billet indépendant du parc Zabeel ; trois photos vérifiées montrent l’attraction exacte.",
+      "possibleMatches": [],
+      "aliases": [
+        "Berwaz Dubai",
+        "برواز دبي"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T09:42:12.844Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-8f761936-40cb-41c2-8e5a-305cf54b72b4",
+          "appliedAt": "2026-11-25T09:31:22.113Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:apply:8f761936-40cb-41c2-8e5a-305cf54b72b4",
+          "auditEvidence": null,
+          "summary": "Création de Dubai Frame avec identité, localisation, huit descriptions et caractéristiques sourcées."
+        },
+        {
+          "eventId": "image-0fdb9ea4a0f74be9aff9dd622fd41f20",
+          "appliedAt": "2026-11-25T09:32:42.787Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:image:0fdb9ea4a0f74be9aff9dd622fd41f20",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la structure par Denys Gromov, Pexels License, publiée."
+        },
+        {
+          "eventId": "image-10ef18f012cd4e208fb618939c53b872",
+          "appliedAt": "2026-11-25T09:33:06.828Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:image:10ef18f012cd4e208fb618939c53b872",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la passerelle par Richard N Horne, CC BY-SA 4.0, publiée."
+        },
+        {
+          "eventId": "image-9a22b2ac6609400fb442d796b6c36559",
+          "appliedAt": "2026-11-25T09:33:29.914Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:image:9a22b2ac6609400fb442d796b6c36559",
+          "auditEvidence": null,
+          "summary": "Photo exacte du plancher vitré par Andres Larin, CC BY-SA 4.0, publiée."
+        },
+        {
+          "eventId": "apply-f1363caf-b3e2-4785-9c79-1b3213512cfc",
+          "appliedAt": "2026-11-25T09:34:35.850Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:apply:f1363caf-b3e2-4785-9c79-1b3213512cfc",
+          "auditEvidence": null,
+          "summary": "Tarifs adulte et enfant du site officiel, devise AED et libellés dans les huit langues."
+        },
+        {
+          "eventId": "apply-b56804ee-b835-432c-9dbd-9db9f01b2c33",
+          "appliedAt": "2026-11-25T09:35:06.730Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:apply:b56804ee-b835-432c-9dbd-9db9f01b2c33",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires officiels et fuseau Asia/Dubai intégrés."
+        },
+        {
+          "eventId": "apply-476c57de-48ce-4efc-86b0-64a87095ff95",
+          "appliedAt": "2026-11-25T09:37:10.880Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:apply:476c57de-48ce-4efc-86b0-64a87095ff95",
+          "auditEvidence": null,
+          "summary": "Descriptions éditoriales relues et corrigées dans les huit langues."
+        },
+        {
+          "eventId": "apply-7ac3acb7-ce9e-45da-9408-d16a749ca097",
+          "appliedAt": "2026-11-25T09:38:52.533Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:apply:7ac3acb7-ce9e-45da-9408-d16a749ca097",
+          "auditEvidence": null,
+          "summary": "Règle officielle d’accompagnement des enfants ajoutée dans les huit langues."
+        },
+        {
+          "eventId": "apply-fc198cec-792e-4ddd-89ca-bff504bbe367",
+          "appliedAt": "2026-11-25T09:39:42.925Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:apply:fc198cec-792e-4ddd-89ca-bff504bbe367",
+          "auditEvidence": null,
+          "summary": "Événement sourcé de l’ouverture de 2018 ajouté à la frise."
+        },
+        {
+          "eventId": "apply-7107f79f-8459-4761-9e31-d00eb6043119",
+          "appliedAt": "2026-11-25T09:41:19.747Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:apply:7107f79f-8459-4761-9e31-d00eb6043119",
+          "auditEvidence": null,
+          "summary": "Tarifs gratuits pour les moins de trois ans et les personnes handicapées avec deux accompagnants ajoutés."
+        },
+        {
+          "eventId": "apply-c8728367-861d-44fe-9b55-6190bafb1462",
+          "appliedAt": "2026-11-25T09:42:12.844Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8755affb-4234-4bac-8aa8-0c27091e7dc5",
+          "evidence": "PARK_DATA_EDITOR:apply:c8728367-861d-44fe-9b55-6190bafb1462",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ae-dubai-frame-20261125/audit.json",
+          "summary": "Fiche et frise validées et publiées ; audit final 95/100 sans bloqueur, huit langues et trois photos exactes."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
+      "sources": [
+        {
+          "label": "Dubai Frame — horaires, tarifs, règles et entrée",
+          "url": "https://www.dubaiframe.ae/en/plan-your-visit",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Dubai Frame — galerie, passerelle et histoire",
+          "url": "https://www.dubaiframe.ae/en/about-us",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Dubai Frame — annonce officielle de l’ouverture",
+          "url": "https://www.dubaiframe.ae/en/media-center/news/news-details?id=8",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Dubai Municipality — projet Dubai Frame",
+          "url": "https://www.dm.gov.ae/projects/dubai-frame/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Pexels — photo exacte de la structure, Denys Gromov, Pexels License",
+          "url": "https://www.pexels.com/photo/the-dubai-frame-4612430/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Pexels — licence de réutilisation",
+          "url": "https://www.pexels.com/license/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — passerelle, Richard N Horne, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Dubai_Frame_Observation_Deck_in_Dubai,_United_Arab_Emirates.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — sol vitré, Andres Larin, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Dubai_Frame_Glass_Floor-Dubai_UAE-Andres_Larin.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Page publique vérifiée",
+          "url": "https://amusement-parks.fun/fr/attraction/8755affb-4234-4bac-8aa8-0c27091e7dc5/dubai-frame",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors catalogue parmi les observatoires à billet propre ; sources officielles, médias libres et recherche de doublons par le client PARK_DATA_EDITOR.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [
+          {
+            "name": "Dubai Frame",
+            "source": "Dubai Frame — site officiel",
+            "url": "https://www.dubaiframe.ae/en/plan-your-visit",
+            "family": "Passerelle panoramique vitrée",
+            "sourceVenueName": "Dubai Frame",
+            "sourceLifecycleSignal": "Billets et horaires officiels actuels",
+            "sourceLocality": "Zabeel Park, Dubai",
+            "matchingMethod": "Billet et entrée dédiés ; aucun Park ou standalone homonyme dans les recherches officielles."
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration apply-c8728367-861d-44fe-9b55-6190bafb1462 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/8755affb-4234-4bac-8aa8-0c27091e7dc5/dubai-frame",
+          "publishedAtUtc": "2026-11-25T09:42:12.844Z",
+          "verifiedAtUtc": "2026-11-25T09:46:08.951Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-dubai-frame-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "05f1624d164a4fb287447d0f00f547df",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/8755affb-4234-4bac-8aa8-0c27091e7dc5/dubai-frame?facebook-image=0fdb9ea4a0f74be9aff9dd622fd41f20",
+          "publishedAtUtc": "2026-11-25T09:44:01.8559336Z",
+          "externalPostId": "1285475681307050_122128785873424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128785873424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-dubai-frame-20261125/audit.json",
+        "score": 95,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }
