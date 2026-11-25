@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions RS sur Avala Tower et Avalski toranj ; variante Avalski Toranj en standalone : zéro résultat. Aucun homonyme dans le backlog RS.",
+  "decision": "Tour d’observation à billetterie et horaires propres. Les activités au pied de la tour sont annexes au complexe ; le belvédère peut être représenté comme StandaloneAttraction.",
+  "officialPricing": "Billets à la caisse au pied de la tour : adulte 400 RSD, réduit 200 RSD pour élèves, étudiants et retraités ; spécial 1 RSD pour enfants de moins de sept ans, personnes ayant des besoins particuliers et leurs accompagnants, et guides agréés avec carte.",
+  "officialHours": "09:00–18:00 du 1er novembre au 31 mars ; 09:00–20:00 du 1er avril au 31 octobre selon le site officiel. Fort vent : fermeture temporaire possible.",
+  "accessibility": "La FAQ officielle décrit le complexe, l’accès, les ascenseurs et le belvédère comme accessibles aux personnes handicapées et aux familles avec poussette. Parking gratuit et billetterie au pied de la tour.",
+  "history": "Première tour inaugurée le 14 mai 1965 ; détruite lors des bombardements du 29 avril 1999 ; tour reconstruite rouverte en 2010 selon l’histoire officielle.",
+  "photos": "Trois photos exactes inspectées : tour actuelle photographiée depuis son parvis en 2025, passerelle d’entrée en 2018, vue depuis le belvédère en 2018. Métadonnées Commons, auteurs, dates et licences vérifiés.",
+  "sources": [
+    {
+      "label": "Avalski toranj — tarifs et horaires saisonniers officiels",
+      "url": "https://avalskitoranj.rs/cenovnik/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Avalski toranj — histoire officielle",
+      "url": "https://avalskitoranj.rs/o-tornju/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Avalski toranj — adresse, accessibilité et FAQ officielle",
+      "url": "https://avalskitoranj.rs/kontakt/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikipedia — coordonnées de la tour d’Avala",
+      "url": "https://en.wikipedia.org/wiki/Avala_Tower",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Avala TV Tower in 2025.jpg (Андрей Романенко, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Avala_TV_Tower_in_2025.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Avalski-toranj 09.jpg (Miomir Magdevski, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Avalski-toranj_09.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Beograd pogled sa Avalskog tornja.jpg (Miomir Magdevski, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Beograd_pogled_sa_Avalskog_tornja.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Tarifs et horaires susceptibles de changer ; la météo peut provoquer une fermeture ponctuelle. Le site officiel est en serbe ; les informations de billetterie et d’accès ont été vérifiées dans cette version."
+}

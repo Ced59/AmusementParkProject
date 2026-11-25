@@ -1,0 +1,114 @@
+[
+  {
+    "step": "core",
+    "operationId": "f51ef621-ad55-43e9-8b9f-3ddde0e49421",
+    "appliedAtUtc": "2026-11-25T22:51:25.2441146Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "67c5b160-5a96-4169-a9f2-94b23b44e6e1",
+    "appliedAtUtc": "2026-11-25T22:52:30.2099378Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "4c7aa8e7-2589-48dc-952e-ceea3f6f67a2",
+    "appliedAtUtc": "2026-11-25T22:52:41.6491704Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "3f34bd17-beae-4aff-93e3-65a8f4eee689",
+    "appliedAtUtc": "2026-11-25T22:52:52.8485855Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-bc24e56b9d6a42b5a9735adb6c8a7e1b",
+    "imageId": "bc24e56b9d6a42b5a9735adb6c8a7e1b",
+    "createdAtUtc": "2026-11-25T22:53:03.213Z",
+    "updatedAtUtc": "2026-11-25T22:53:06.982Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Avala_TV_Tower_in_2025.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-a1526c4ce84d4399b7229ea0b2499136",
+    "imageId": "a1526c4ce84d4399b7229ea0b2499136",
+    "createdAtUtc": "2026-11-25T22:53:11.614Z",
+    "updatedAtUtc": "2026-11-25T22:53:14.96Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Avalski-toranj_09.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-b99d3a1b822e4db2a09c3d8fbe26b4bd",
+    "imageId": "b99d3a1b822e4db2a09c3d8fbe26b4bd",
+    "createdAtUtc": "2026-11-25T22:53:18.773Z",
+    "updatedAtUtc": "2026-11-25T22:53:22.094Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beograd_pogled_sa_Avalskog_tornja.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "590b9047-c09c-40b2-b448-c5e76677daaf",
+    "appliedAtUtc": "2026-11-25T22:53:55.4633556Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "73cc4deddea34e5da3fcfdbfcf1f487a",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T22:54:45.3393151Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128861449424431"
+  }
+]

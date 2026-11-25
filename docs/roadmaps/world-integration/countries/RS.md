@@ -17,7 +17,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 23 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 1 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 3 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **3** fiches du site sans code pays au rele
 
 Parcs : **1 publiés**, **4 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **19 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **4 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **4 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **2 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **3 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -49,6 +49,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | RS-candidate-2f26b2d4010087 | Aqua Park S Klub | Jakovo | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Serbia) |
 | RS-candidate-e501a2439c9f2b | Aqua Park Sand City | Banatski Karlovac | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Serbia) |
 | RS-candidate-57e03afdc67821 | Aqua Park Ub | Ub | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Serbia) |
+| RS-candidate-discovery-avala-tower-20261125 | Avala Tower | Avalski put bb, 11223 Beli Potok, Beograd | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T22:53:22.094Z | — | Conserver cette ligne ; vérifier périodiquement tarifs, horaires saisonniers et fermetures dues à la météo. Qualification standalone : AlreadyStandalone. Belvédère de la tour avec billet, horaires et entrée propres ; les activités voisines ne constituent pas un parc parent. Signal source : Billets et horaires saisonniers publiés par l’exploitant au 25 novembre 2026.. [Avalski toranj — tarifs et horaires saisonniers officiels](https://avalskitoranj.rs/cenovnik/) · [Avalski toranj — histoire officielle](https://avalskitoranj.rs/o-tornju/) · [Avalski toranj — adresse, accessibilité et FAQ officielle](https://avalskitoranj.rs/kontakt/) · [Wikipedia — coordonnées de la tour d’Avala](https://en.wikipedia.org/wiki/Avala_Tower) · [Wikimedia Commons — Avala TV Tower in 2025.jpg (Андрей Романенко, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Avala_TV_Tower_in_2025.jpg) · [Wikimedia Commons — Avalski-toranj 09.jpg (Miomir Magdevski, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Avalski-toranj_09.jpg) · [Wikimedia Commons — Beograd pogled sa Avalskog tornja.jpg (Miomir Magdevski, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Beograd_pogled_sa_Avalskog_tornja.jpg) |
 | RS-candidate-63e0748d560e3a | Babylon Park | Belgrade | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Correspondance possible : Babylon Park (f5b2705d-4b67-4948-95aa-acfd2b2cfb6f). [RCDB](https://rcdb.com/20021.htm) |
 | RS-candidate-cc62deff0cf4ef | Belgrade Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [EAZA](https://www.eaza.net/membership/) · [Site officiel référencé](https://www.beozoovrt.rs) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Serbia) |
 | RS-park-59f14dde-17a0-484b-bf8b-87f27208b6d3 | Beogradski Luna Park | Beograd | Park | Published | Publié, date inconnue | Inconnue — non inventée | — | Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/7831.htm) · [Site officiel enregistré (à revérifier)](https://beogradskilunapark.rs/) |

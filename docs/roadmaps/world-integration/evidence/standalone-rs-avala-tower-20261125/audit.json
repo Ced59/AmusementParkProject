@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "711f9c63-dda0-4574-8789-9963600c59fe",
+  "name": "Avala Tower",
+  "countryCode": "RS",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/711f9c63-dda0-4574-8789-9963600c59fe/avala-tower",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T22:55:28Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "73cc4deddea34e5da3fcfdbfcf1f487a",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128861449424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T22:53:22.094Z",
+  "lastDataEventId": "photo-b99d3a1b822e4db2a09c3d8fbe26b4bd",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions RS sur Avala Tower et Avalski toranj ; variante Avalski Toranj en standalone : zéro résultat. Aucun homonyme dans le backlog RS.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "bc24e56b9d6a42b5a9735adb6c8a7e1b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Avala_TV_Tower_in_2025.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Андрей Романенко",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2025-08-23"
+    },
+    {
+      "id": "a1526c4ce84d4399b7229ea0b2499136",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Avalski-toranj_09.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Miomir Magdevski",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2018-10-27"
+    },
+    {
+      "id": "b99d3a1b822e4db2a09c3d8fbe26b4bd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beograd_pogled_sa_Avalskog_tornja.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Miomir Magdevski",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2018-10-27"
+    }
+  ],
+  "pricingOfferCount": 3,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}

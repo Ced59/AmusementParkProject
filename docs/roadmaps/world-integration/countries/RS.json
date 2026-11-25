@@ -1126,6 +1126,148 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "RS-candidate-discovery-avala-tower-20261125",
+      "name": "Avala Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique à billet propre",
+      "locality": "Avalski put bb, 11223 Beli Potok, Beograd",
+      "siteId": "711f9c63-dda0-4574-8789-9963600c59fe",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T22:55:28Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billets et horaires saisonniers publiés par l’exploitant au 25 novembre 2026.",
+      "identityConfidence": "Adresse, admission, horaires et accessibilité officiels ; recherches sans doublon ; trois photos exactes sous licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Avalski toranj",
+        "Avala TV Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T22:53:22.094Z",
+      "integrationHistory": [
+        {
+          "eventId": "f51ef621-ad55-43e9-8b9f-3ddde0e49421",
+          "appliedAt": "2026-11-25T22:51:25.244Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "711f9c63-dda0-4574-8789-9963600c59fe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-rs-avala-tower-20261125/operations.json#f51ef621-ad55-43e9-8b9f-3ddde0e49421",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches de doublons ; identité, adresse, localisation et huit descriptions."
+        },
+        {
+          "eventId": "67c5b160-5a96-4169-a9f2-94b23b44e6e1",
+          "appliedAt": "2026-11-25T22:52:30.209Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "711f9c63-dda0-4574-8789-9963600c59fe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-rs-avala-tower-20261125/operations.json#67c5b160-5a96-4169-a9f2-94b23b44e6e1",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels à la caisse et horaires saisonniers intégrés."
+        },
+        {
+          "eventId": "4c7aa8e7-2589-48dc-952e-ceea3f6f67a2",
+          "appliedAt": "2026-11-25T22:52:41.649Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "711f9c63-dda0-4574-8789-9963600c59fe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-rs-avala-tower-20261125/operations.json#4c7aa8e7-2589-48dc-952e-ceea3f6f67a2",
+          "auditEvidence": null,
+          "summary": "Réouverture de la tour reconstruite en 2010 documentée et traduite."
+        },
+        {
+          "eventId": "3f34bd17-beae-4aff-93e3-65a8f4eee689",
+          "appliedAt": "2026-11-25T22:52:52.848Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "711f9c63-dda0-4574-8789-9963600c59fe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-rs-avala-tower-20261125/operations.json#3f34bd17-beae-4aff-93e3-65a8f4eee689",
+          "auditEvidence": null,
+          "summary": "Accès adapté aux personnes handicapées documenté sur la FAQ officielle."
+        },
+        {
+          "eventId": "photo-bc24e56b9d6a42b5a9735adb6c8a7e1b",
+          "appliedAt": "2026-11-25T22:53:06.982Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "711f9c63-dda0-4574-8789-9963600c59fe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-rs-avala-tower-20261125/operations.json#photo-bc24e56b9d6a42b5a9735adb6c8a7e1b",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Андрей Романенко (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-a1526c4ce84d4399b7229ea0b2499136",
+          "appliedAt": "2026-11-25T22:53:14.960Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "711f9c63-dda0-4574-8789-9963600c59fe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-rs-avala-tower-20261125/operations.json#photo-a1526c4ce84d4399b7229ea0b2499136",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Miomir Magdevski (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-b99d3a1b822e4db2a09c3d8fbe26b4bd",
+          "appliedAt": "2026-11-25T22:53:22.094Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "711f9c63-dda0-4574-8789-9963600c59fe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-rs-avala-tower-20261125/operations.json#photo-b99d3a1b822e4db2a09c3d8fbe26b4bd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-rs-avala-tower-20261125/audit.json",
+          "summary": "Photo exacte 3/3 importée : Miomir Magdevski (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier périodiquement tarifs, horaires saisonniers et fermetures dues à la météo.",
+      "sources": [
+        {
+          "label": "Avalski toranj — tarifs et horaires saisonniers officiels",
+          "url": "https://avalskitoranj.rs/cenovnik/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Avalski toranj — histoire officielle",
+          "url": "https://avalskitoranj.rs/o-tornju/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Avalski toranj — adresse, accessibilité et FAQ officielle",
+          "url": "https://avalskitoranj.rs/kontakt/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikipedia — coordonnées de la tour d’Avala",
+          "url": "https://en.wikipedia.org/wiki/Avala_Tower",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Avala TV Tower in 2025.jpg (Андрей Романенко, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Avala_TV_Tower_in_2025.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Avalski-toranj 09.jpg (Miomir Magdevski, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Avalski-toranj_09.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Beograd pogled sa Avalskog tornja.jpg (Miomir Magdevski, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Beograd_pogled_sa_Avalskog_tornja.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "RS",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Belvédère de la tour avec billet, horaires et entrée propres ; les activités voisines ne constituent pas un parc parent."
+      }
     }
   ]
 }
