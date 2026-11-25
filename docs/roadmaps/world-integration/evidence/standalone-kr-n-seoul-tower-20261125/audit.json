@@ -1,0 +1,128 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f",
+  "name": "N SEOUL TOWER",
+  "countryCode": "KR",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f/n-seoul-tower",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T17:14:46Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "2caab6ac18814d8ba25740889802cf2b",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128832919424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T17:09:47.471Z",
+  "lastDataOperationId": "b108c35d-fc12-4297-a935-84eccd5665a7",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions pour « N Seoul Tower », « Namsan » et « Seoul Tower » en Corée du Sud : aucun homonyme. SEOUL SKY est un autre observatoire à Jamsil. L’observatoire de Namsan vend un billet propre et ne dépend pas d’un parc intégré.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "bd849150d4364cc7a6a56b2c67700a55",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_2.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Kallerna"
+    },
+    {
+      "id": "b0b185207663470fb6f111d0f44ee0d7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_1.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 4.0",
+      "author": "Kallerna"
+    },
+    {
+      "id": "0d3dc28516d94021ba4e675eee0ddd11",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_(6).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "license": "CC BY-SA 2.0",
+      "author": "Josh Hallett"
+    }
+  ],
+  "sources": [
+    {
+      "label": "N SEOUL TOWER — observatoire officiel",
+      "url": "https://www.nseoultower.co.kr/eng/visit/observatory.asp",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "N SEOUL TOWER — tarifs officiels",
+      "url": "https://www.nseoultower.co.kr/eng/visit/use2.asp",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "N SEOUL TOWER — horaires et dernière entrée",
+      "url": "https://www.nseoultower.co.kr/eng/visit/use.asp",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "N SEOUL TOWER — annonce de fermeture de janvier à mars 2027",
+      "url": "https://www.nseoultower.co.kr/eng/images/main/observatory_closed.png",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "N SEOUL TOWER — accès officiel",
+      "url": "https://www.nseoultower.co.kr/eng/visit/traffic.asp",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — intérieur de l’observatoire, Josh Hallett, CC BY-SA 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_(6).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama nord, Kallerna, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_1.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama sud, Kallerna, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_2.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": {
+    "descriptions": 8,
+    "pricingOffers": 2,
+    "currency": "KRW",
+    "weeklyHoursRules": 2,
+    "datedHoursRules": 3,
+    "holidayOverrides": 1,
+    "openingHoursFirstDate": "2026-11-25",
+    "openingHoursLastDate": "2027-03-31",
+    "openingHoursDays": 127,
+    "openingHoursGaps": 0,
+    "openingHoursOverlaps": 0,
+    "plannedClosedDays": 90,
+    "photographs": 3,
+    "facebook": "Published"
+  },
+  "remainingUncertainty": "Les horaires habituels peuvent varier selon la météo et des décisions de l’exploitant. La date précise de réouverture après mars 2027 n’est pas annoncée ; la grille hebdomadaire devra être revalidée avant utilisation après la fermeture."
+}
