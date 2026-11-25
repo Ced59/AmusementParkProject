@@ -1,0 +1,375 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "37e2047f-bf43-46d3-be0e-72da8bf20c19",
+  "countryCode": "JP",
+  "name": "Tokyo Tower",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/37e2047f-bf43-46d3-be0e-72da8bf20c19/tokyo-tower",
+  "lastDataIntegrationAtUtc": "2026-11-25T11:00:13.848Z",
+  "publicVerifiedAtUtc": "2026-11-25T11:05:20.000Z",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "presenceSearch": {
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "descriptionsWithEightLanguages": 1,
+    "exactPublishedPhotos": 3,
+    "currentPricingOffers": 12,
+    "regularHoursDaysPerWeek": 7,
+    "accessConditions": 1,
+    "visibleOpeningHistoryEvents": 1
+  },
+  "photoEvidence": [
+    {
+      "imageId": "48599298e5bf4439bd8b320406423212",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Tower_2024.jpg",
+      "sizeInBytes": 156152,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo : Qian2007, CC BY-SA 4.0 (2024-02-08)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Qian2007, CC BY-SA 4.0 (2024-02-08)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Qian2007, CC BY-SA 4.0 (2024-02-08)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Qian2007, CC BY-SA 4.0 (2024-02-08)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Qian2007, CC BY-SA 4.0 (2024-02-08)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Qian2007, CC BY-SA 4.0 (2024-02-08)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Qian2007, CC BY-SA 4.0 (2024-02-08)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Qian2007, CC BY-SA 4.0 (2024-02-08)."
+        }
+      ],
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La Tokyo Tower rouge et blanche vue depuis le parc Shiba sous un ciel bleu"
+        },
+        {
+          "languageCode": "en",
+          "value": "Red-and-white Tokyo Tower seen from Shiba Park under a blue sky"
+        },
+        {
+          "languageCode": "de",
+          "value": "Rot-weißer Tokyo Tower vom Shiba-Park vor blauem Himmel"
+        },
+        {
+          "languageCode": "es",
+          "value": "Tokyo Tower roja y blanca desde el parque Shiba bajo un cielo azul"
+        },
+        {
+          "languageCode": "it",
+          "value": "Tokyo Tower rossa e bianca vista dal parco Shiba sotto il cielo azzurro"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rood-witte Tokyo Tower gezien vanuit Shiba Park onder een blauwe lucht"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwono-biała Tokyo Tower widziana z parku Shiba pod błękitnym niebem"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Tokyo Tower vermelha e branca vista do parque Shiba sob céu azul"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La tour de trois cent trente-trois mètres se dresse au-dessus de Shiba Park."
+        },
+        {
+          "languageCode": "en",
+          "value": "The three hundred and thirty-three-metre tower rises above Shiba Park."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der dreihundertdreiunddreißig Meter hohe Turm erhebt sich über dem Shiba-Park."
+        },
+        {
+          "languageCode": "es",
+          "value": "La torre de trescientos treinta y tres metros se alza sobre el parque Shiba."
+        },
+        {
+          "languageCode": "it",
+          "value": "La torre di trecentotrentatré metri si alza sopra il parco Shiba."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De driehonderddrieëndertig meter hoge toren steekt boven Shiba Park uit."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wieża o wysokości trzystu trzydziestu trzech metrów wznosi się nad parkiem Shiba."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A torre de trezentos e trinta e três metros ergue-se acima do parque Shiba."
+        }
+      ]
+    },
+    {
+      "imageId": "019bb55b58f24e1998618e7bdf70be3e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_tower_at_night_2024.jpg",
+      "sizeInBytes": 291064,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo : Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Immanuelle, CC BY 4.0 (2024-06-09)."
+        }
+      ],
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La Tokyo Tower illuminée de nuit depuis une rue de Tokyo"
+        },
+        {
+          "languageCode": "en",
+          "value": "Tokyo Tower illuminated at night from a city street"
+        },
+        {
+          "languageCode": "de",
+          "value": "Beleuchteter Tokyo Tower bei Nacht von einer Straße aus"
+        },
+        {
+          "languageCode": "es",
+          "value": "Tokyo Tower iluminada de noche vista desde una calle"
+        },
+        {
+          "languageCode": "it",
+          "value": "Tokyo Tower illuminata di notte vista da una strada"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Verlichte Tokyo Tower in de avond vanaf een straat"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Podświetlona Tokyo Tower nocą widziana z ulicy"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Tokyo Tower iluminada à noite vista de uma rua"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La silhouette lumineuse de la tour dans le quartier de Minato."
+        },
+        {
+          "languageCode": "en",
+          "value": "The illuminated tower in Tokyo’s Minato district."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der beleuchtete Turm im Tokios Stadtbezirk Minato."
+        },
+        {
+          "languageCode": "es",
+          "value": "La torre iluminada en el distrito de Minato de Tokio."
+        },
+        {
+          "languageCode": "it",
+          "value": "La torre illuminata nel quartiere Minato di Tokyo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De verlichte toren in de wijk Minato in Tokio."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Podświetlona wieża w dzielnicy Minato w Tokio."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A torre iluminada no bairro de Minato, em Tóquio."
+        }
+      ]
+    },
+    {
+      "imageId": "83352173e03442338fc48997f023b4a8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_Tokyo_Tower_2024.jpg",
+      "sizeInBytes": 370690,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photo : Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photo: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "es",
+          "value": "Foto: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "it",
+          "value": "Foto: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęcie: Immanuelle, CC BY 4.0 (2024-06-09)."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Immanuelle, CC BY 4.0 (2024-06-09)."
+        }
+      ],
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue de nuit sur les rues de Tokyo depuis l’observatoire de la Tokyo Tower"
+        },
+        {
+          "languageCode": "en",
+          "value": "Night view over Tokyo streets from the Tokyo Tower observation deck"
+        },
+        {
+          "languageCode": "de",
+          "value": "Nächtlicher Blick vom Tokyo Tower auf Tokios Straßen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista nocturna de las calles de Tokio desde Tokyo Tower"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vista notturna delle strade di Tokyo dall’osservatorio della Tokyo Tower"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Nachtelijk uitzicht over de straten van Tokio vanaf Tokyo Tower"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Nocny widok na ulice Tokio z tarasu Tokyo Tower"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista noturna das ruas de Tóquio a partir da Tokyo Tower"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Panorama nocturne sur Tokyo depuis la tour."
+        },
+        {
+          "languageCode": "en",
+          "value": "Tokyo at night from inside the tower."
+        },
+        {
+          "languageCode": "de",
+          "value": "Nächtliches Tokio vom Turm aus gesehen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Tokio de noche desde la torre."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tokyo di notte vista dalla torre."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tokio bij nacht vanuit de toren."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Tokio nocą widziane z wieży."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Tóquio à noite vista da torre."
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "operator": "https://en.tokyotower.co.jp/",
+    "feesAndHours": "https://en.tokyotower.co.jp/fee/",
+    "staffPricingUpdate": "https://ticket.tokyotower.co.jp/en/staff_column/",
+    "access": "https://en.tokyotower.co.jp/access/",
+    "accessibility": "https://en.tokyotower.co.jp/access/barrierfree/",
+    "openingHistory": "https://gallery.tokyotower.co.jp/65th_anniversary.html"
+  },
+  "facebookPublicationId": "1cdcac5acb0949da827ba268543be9a0",
+  "facebookStatus": "Published",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128795257424431",
+  "remainingUncertainty": "Les horaires réguliers peuvent varier lors d’événements, de météo défavorable ou de restrictions de fréquentation ; vérifier les créneaux du Top Deck Tour et du Diamond Tour sur la billetterie officielle."
+}
