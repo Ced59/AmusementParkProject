@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions DE sur Rheinturm, Rheinturm Düsseldorf, Rhine Tower Düsseldorf et Düsseldorf TV Tower : zéro homonyme. Aucun homonyme dans le backlog DE.",
+  "decision": "Belvédère panoramique M168 dans une tour autonome, avec billetterie, horaires, adresse et conditions d’accès propres. Le restaurant QOMO et le bar M168 sont des services associés, sans parc parent.",
+  "officialPricing": "M168 : adulte 12,50 €, enfant 6–13 ans 8 €, adolescent 14–17 ans 9 €, senior 65 ans et plus et visiteur handicapé 9 €, famille 30 € (deux adultes et trois enfants maximum), moins de six ans gratuit. Avant midi ou à partir de 20 h : 8 €. Paiement par carte.",
+  "officialHours": "Belvédère M168 10:00–00:00 chaque jour. Exceptions affichées au 25 novembre 2026 : 19 décembre fermeture à 17:00 ; 24 et 31 décembre fermés. Horaires du restaurant QOMO distincts.",
+  "accessibility": "Le site officiel autorise les personnes en fauteuil roulant aux niveaux panoramiques avec une personne accompagnante. Poussettes au rez-de-chaussée.",
+  "history": "Construction entre 1979 et 1982 selon l’exploitant ; événement de fin de construction en 1982 sans supposer une date d’ouverture précise.",
+  "photos": "Trois photographies exactes inspectées : vue extérieure de 2025, détail des niveaux vitrés de 2015, vue du MedienHafen depuis la tour en 2008. Auteurs, dates et licences Commons vérifiés.",
+  "sources": [
+    {
+      "label": "Rheinturm — site officiel, histoire, adresse et horaires du M168",
+      "url": "https://www.rheinturm.de/en",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Rheinturm — billetterie et tarifs officiels",
+      "url": "https://www.rheinturm.de/en/tickets",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Rheinturm — consignes de sécurité et accès en fauteuil",
+      "url": "https://www.rheinturm.de/en/safety",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikipedia — coordonnées géographiques du Rheinturm",
+      "url": "https://en.wikipedia.org/wiki/Rheinturm",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Düsseldorf, Rheinturm -- 2025 -- 2562.jpg (Dietmar Rabich, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:D%C3%BCsseldorf,_Rheinturm_--_2025_--_2562.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Düsseldorf, Rheinturm -- 2015 -- 8120.jpg (Dietmar Rabich, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:D%C3%BCsseldorf,_Rheinturm_--_2015_--_8120.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — NRW, Düsseldorf, Rheinturm - view to Hafen.jpg (Островский Александр, Киев, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:NRW,_D%C3%BCsseldorf,_Rheinturm_-_view_to_Hafen.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Tarifs, horaires et fermetures de fêtes peuvent changer. Les coordonnées ont été recoupées avec l’adresse officielle ; les dates des photos sont historiques et ne décrivent pas l’état actuel des alentours."
+}

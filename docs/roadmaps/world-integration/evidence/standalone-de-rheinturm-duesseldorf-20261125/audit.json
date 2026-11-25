@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "6691efc8-0bad-41c3-9b13-e9b3562a3940",
+  "name": "Rheinturm Düsseldorf",
+  "countryCode": "DE",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/6691efc8-0bad-41c3-9b13-e9b3562a3940/rheinturm-duesseldorf",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-25T23:13:27Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "49a8a1ef6acf478491ccf931aee5a35d",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128862739424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T23:10:06.627Z",
+  "lastDataEventId": "photo-ddcf566ca1c14949ad733a84fd5571c5",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions DE sur Rheinturm, Rheinturm Düsseldorf, Rhine Tower Düsseldorf et Düsseldorf TV Tower : zéro homonyme. Aucun homonyme dans le backlog DE.",
+  "completeness": {
+    "completenessScore": 97,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 72,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "8e77a8f4fd944733bfaa8e94d6a795d1",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%C3%BCsseldorf,_Rheinturm_--_2025_--_2562.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Dietmar Rabich",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2025-04-11"
+    },
+    {
+      "id": "33617b823af846f9a6665627aaaec751",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%C3%BCsseldorf,_Rheinturm_--_2015_--_8120.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Dietmar Rabich",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2015-08-15"
+    },
+    {
+      "id": "ddcf566ca1c14949ad733a84fd5571c5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:NRW,_D%C3%BCsseldorf,_Rheinturm_-_view_to_Hafen.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Островский Александр, Киев",
+      "license": "CC BY-SA 3.0",
+      "photographedOn": "2008-06-29"
+    }
+  ],
+  "pricingOfferCount": 5,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}
