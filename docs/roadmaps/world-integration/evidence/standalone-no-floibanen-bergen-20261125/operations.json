@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "c4d25dbc-8fb7-4676-985a-4b0f78cf8845",
+    "appliedAtUtc": "2026-11-25T23:41:56.0432873Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "aa619505-a57e-4980-815b-a43efaaff596",
+    "appliedAtUtc": "2026-11-25T23:42:32.8142233Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "6995f01f-ce6a-4b40-acc9-13cbe5cf2f9c",
+    "appliedAtUtc": "2026-11-25T23:43:31.9894133Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "a29b5528-cbf9-483a-b7c3-4a9dbfd06a77",
+    "appliedAtUtc": "2026-11-25T23:43:56.2472002Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-16cefbea7144440fb8a748089d5f1072",
+    "imageId": "16cefbea7144440fb8a748089d5f1072",
+    "createdAtUtc": "2026-11-25T23:44:34.561Z",
+    "updatedAtUtc": "2026-11-25T23:44:39.011Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_05.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-6c1f709399394a09be957a8abf8492bb",
+    "imageId": "6c1f709399394a09be957a8abf8492bb",
+    "createdAtUtc": "2026-11-25T23:44:58.533Z",
+    "updatedAtUtc": "2026-11-25T23:45:02.217Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_08.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-037eff266eb141aa946693857a865425",
+    "imageId": "037eff266eb141aa946693857a865425",
+    "createdAtUtc": "2026-11-25T23:45:16.216Z",
+    "updatedAtUtc": "2026-11-25T23:45:19.553Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_06.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "fc59d523-1c36-4d54-ba67-a5ea24752e0a",
+    "appliedAtUtc": "2026-11-25T23:46:03.5673008Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "2b6b1e554f78448c9ce9ae242822d6b1",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T23:46:59.1547343Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128865127424431"
+  }
+]

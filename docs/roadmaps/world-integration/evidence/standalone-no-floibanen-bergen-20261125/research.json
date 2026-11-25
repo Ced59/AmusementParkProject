@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions NO sur Fløibanen, Floibanen et Mount Fløyen funicular : zéro résultat ; aucun homonyme dans le backlog norvégien.",
+  "decision": "Funiculaire à billetterie, horaires, stations et accès propres ; les activités du mont Fløyen ne sont pas un parc parent fermé nécessitant un ParkItem.",
+  "officialPricing": "Tarifs d’hiver octobre–mars pour trajet centre–Fløyen : retour adulte 145 NOK, enfant 4–15 ans 70 NOK, senior 67+ 100 NOK ; simple 80/45/50 NOK. Enfants de moins de quatre ans gratuits avec un adulte. Les tarifs estivaux diffèrent.",
+  "officialHours": "FAQ : en semaine 07:30–00:00, week-end et jours fériés 08:00–00:00, dernier départ à minuit. Le widget dynamique affichait 07:30–23:00 le 25 novembre : écart signalé dans les notes, horaires à vérifier en direct.",
+  "accessibility": "Stations inférieure, supérieure et intermédiaires accessibles ; compartiment supérieur réservé aux fauteuils et poussettes, jusqu’à trois emplacements selon taille. Ascenseur et portillon large à la station basse.",
+  "history": "Ouverture officielle le 15 janvier 1918 ; cinquième génération des voitures en service depuis le 1er avril 2022, selon l’exploitant.",
+  "photos": "Trois photos exactes de 2024 montrant la voiture rouge Rødhette, la bleue Blåmann et la voie avec vue sur Bergen. Auteur Ad Meskens, CC BY-SA 4.0.",
+  "sources": [
+    {
+      "label": "Fløibanen — présentation officielle du funiculaire",
+      "url": "https://www.floyen.no/en/floibanen/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Fløibanen — tarifs et billets saisonniers officiels",
+      "url": "https://www.floyen.no/en/floibanen/prices-and-ticket-types/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Fløibanen — horaires et départs",
+      "url": "https://www.floyen.no/en/floibanen/opening-hours/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Fløibanen — accès en fauteuil et avec poussette",
+      "url": "https://www.floyen.no/en/floibanen/accessibility",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Fløibanen — histoire officielle, 1918 et nouveau matériel 2022",
+      "url": "https://www.floyen.no/en/floibanen/history",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Bucket List Norway — coordonnées de la station basse",
+      "url": "https://bucketlistnorway.com/item/floibanen/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Bergen Fløibanen 05.jpg (Ad Meskens, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_05.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Bergen Fløibanen 08.jpg (Ad Meskens, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_08.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Bergen Fløibanen 06.jpg (Ad Meskens, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Bergen_Fl%C3%B8ibanen_06.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Horaires dynamiques et FAQ contradictoires sur la fermeture du jour ; départs à confirmer auprès de l’opérateur. Prix structurés d’hiver uniquement, à réactualiser avant avril 2027."
+}
