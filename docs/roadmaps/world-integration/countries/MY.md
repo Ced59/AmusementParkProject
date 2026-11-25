@@ -10,6 +10,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 2 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 - Recherche externe dédiée aux absences : 1 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
+- Awana SkyWay : ligne autonome créée et publiée le 25 novembre 2026 avec six tarifs officiels, deux règles d’accès, histoire, trois photos libres exactes, huit descriptions et publication Facebook. Maintenance et prolongation des horaires suivies dans le backlog permanent.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -17,7 +18,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 66 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 2 |
+| Intégration achevée | 3 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -28,7 +29,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **4 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **64 candidats sans fiche**.
 
-Standalone : **2 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **3 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -41,6 +42,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | MY-candidate-4ef499fe3b0eab | A'Famosa Water Theme Park | Melaka, Malacca, Malaysia | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/a-famosa-water-theme-park-melaka-malacca-malaysia) |
 | MY-candidate-05f79f4fcdc796 | Aquaria KLCC | Kuala Lumpur | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Malaysia) |
 | MY-candidate-9bd9d51e8c7485 | Austin Heights Water & Adventure Park | Johor Bahru, Johor, Malaysia | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/austin-heights-water-adventure-park-johor-bahru-malaysia) |
+| MY-candidate-discovery-awana-skyway-20261125 | Awana SkyWay | Sky Sentral, Genting Highlands, Pahang | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T18:34:40.440Z | — | Conserver cette ligne ; vérifier maintenance, tarifs et dernière admission sur le site officiel, puis prolonger les horaires après le 28 février 2027. Qualification standalone : AlreadyStandalone. Le téléphérique vend un billet propre et fonctionne comme ligne d’accès distincte du billet du parc Genting SkyWorlds et de l’autre ligne Genting Gohtong Jaya. Signal source : Billetterie et horaires officiels actifs au 25 novembre 2026 ; fermetures de maintenance possibles.. [Resorts World Genting — Awana SkyWay, tarifs, horaires, arrêt Chin Swee, accessibilité](https://rwgenting.com/en/getting-here/cable-car.html) · [Resorts World Genting — changement de nom en Genting Highlands Premium Outlets Cable Car](https://www.rwgenting.com/en/blog/two-cable-car-routes-now-open-genting-gohtong-jaya-cable-car-genting-highlands-premium-outlets-cable-car.html) · [Genting Malaysia — rapport annuel 2016, mise en service en décembre](https://www.gentingmalaysia.com/wp-content/uploads/2017/04/GENM2016.pdf) · [OpenStreetMap — emprise Sky Sentral](https://www.openstreetmap.org/way/1214119419) · [Wikimedia Commons — cabines Awana, Chongkian, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Awana_Skyway.jpg) · [Wikimedia Commons — cabine Awana, Micolash, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Awana_Skyway_Gondola_lift.jpg) · [Wikimedia Commons — zone d’embarquement Awana, Jonashtand, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:201906_Awana_Skyway_01.jpg) |
 | MY-candidate-92d344481783b6 | Bandar Darulaman Water Theme Park | Jitra | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Malaysia) |
 | MY-candidate-f94dc2730b80d0 | Bayou Lagoon Park Resort | Malacca City , Malacca | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/17481.htm) |
 | MY-candidate-f353ef7e364b91 | Berjaya Hills Resort | Bukit Tinggi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Malaysia) |

@@ -1,0 +1,127 @@
+[
+  {
+    "step": "core",
+    "operationId": "92961f7b-6633-458f-9aa2-35f51bbd1520",
+    "appliedAtUtc": "2026-11-25T18:32:37.605987Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "e3957905-78ed-491a-8360-764239803f02",
+    "appliedAtUtc": "2026-11-25T18:33:08.3503448Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "fdb73243-12de-48b5-82d6-825531b7d98a",
+    "appliedAtUtc": "2026-11-25T18:34:25.1796255Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "7632b708-17c2-4d70-bc34-a760f8794059",
+    "appliedAtUtc": "2026-11-25T18:34:40.4408244Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "0e5248de-bbd3-47ce-80b5-e1896fd07fa9",
+    "appliedAtUtc": "2026-11-25T18:35:31.5255871Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-cabin",
+    "eventId": "photo-13825756a6174fbb94b88754188444e5",
+    "imageId": "13825756a6174fbb94b88754188444e5",
+    "createdAtUtc": "2026-11-25T18:33:22.988Z",
+    "updatedAtUtc": "2026-11-25T18:33:26.582Z",
+    "id": "13825756a6174fbb94b88754188444e5",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Awana_Skyway_Gondola_lift.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Micolash"
+  },
+  {
+    "step": "photo-overview",
+    "eventId": "photo-a9a6a277df294117afb2a1bf05ddd5f9",
+    "imageId": "a9a6a277df294117afb2a1bf05ddd5f9",
+    "createdAtUtc": "2026-11-25T18:33:36.652Z",
+    "updatedAtUtc": "2026-11-25T18:33:40.12Z",
+    "id": "a9a6a277df294117afb2a1bf05ddd5f9",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Awana_Skyway.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Chongkian"
+  },
+  {
+    "step": "photo-station",
+    "eventId": "photo-ae74fe97fdc54584be54cc33f8e3a08c",
+    "imageId": "ae74fe97fdc54584be54cc33f8e3a08c",
+    "createdAtUtc": "2026-11-25T18:33:49.889Z",
+    "updatedAtUtc": "2026-11-25T18:33:53.243Z",
+    "id": "ae74fe97fdc54584be54cc33f8e3a08c",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:201906_Awana_Skyway_01.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Jonashtand"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "18393fd5e2644bbca696b39161f1c713",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T18:35:52.3470288Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128841925424431",
+    "selectedImageId": "13825756a6174fbb94b88754188444e5"
+  }
+]
