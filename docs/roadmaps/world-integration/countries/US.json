@@ -37,7 +37,8 @@
     "Découverte du 25 novembre : Top of the Rock Observation Deck publié avec tarif officiel, horaires et trois photos exactes.",
     "Découverte du 25 novembre : Sky View Observatory publié avec trois formules, calendrier officiel et trois vues exactes créditées.",
     "Skydeck Chicago : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Tarifs dynamiques et horaires d’hiver suivis dans le backlog permanent.",
-    "SUMMIT One Vanderbilt : observatoire immersif new-yorkais créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Prix variables et horaires datés suivis dans le backlog permanent."
+    "SUMMIT One Vanderbilt : observatoire immersif new-yorkais créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Prix variables et horaires datés suivis dans le backlog permanent.",
+    "Edge NYC : observatoire immersif new-yorkais créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Prix variables et horaires datés suivis dans le backlog permanent."
   ],
   "entries": [
     {
@@ -78851,6 +78852,158 @@
           "publishedAtUtc": "2026-11-25T17:41:17.8694043Z",
           "externalPostId": "1285475681307050_122128835601424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128835601424431",
+          "failureCode": null,
+          "failureMessage": null,
+          "network": "Facebook"
+        }
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-edge-nyc-20261125",
+      "name": "Edge NYC",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère urbain à billet propre",
+      "locality": "30 Hudson Yards, New York, New York",
+      "siteId": "95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T17:56:39Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires officiels actifs au 25 novembre 2026.",
+      "identityConfidence": "Aucun homonyme dans PDE ; billet propre à Edge dans 30 Hudson Yards.",
+      "possibleMatches": [],
+      "aliases": [
+        "The Edge",
+        "Edge at Hudson Yards",
+        "Edge observation deck",
+        "30 Hudson Yards Edge"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T17:52:56.901Z",
+      "integrationHistory": [
+        {
+          "eventId": "05898ae2-391f-45e1-b5fd-b81bc0cfb8ce",
+          "appliedAt": "2026-11-25T17:51:23.047Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-edge-nyc-20261125/operations.json#05898ae2-391f-45e1-b5fd-b81bc0cfb8ce",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche de doublons, identité et huit descriptions éditoriales."
+        },
+        {
+          "eventId": "9dca770c-a1d4-4d0f-9cf3-dd8b0e7ab839",
+          "appliedAt": "2026-11-25T17:51:56.560Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-edge-nyc-20261125/operations.json#9dca770c-a1d4-4d0f-9cf3-dd8b0e7ab839",
+          "auditEvidence": null,
+          "summary": "Prix variable officiel et calendrier quotidien daté intégrés."
+        },
+        {
+          "eventId": "photo-c41ffc855b0448ecaa1a5f2ef79a993c",
+          "appliedAt": "2026-11-25T17:52:29.404Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-edge-nyc-20261125/operations.json#photo-c41ffc855b0448ecaa1a5f2ef79a993c",
+          "auditEvidence": null,
+          "summary": "Photo de la terrasse extérieure avec visiteurs publiée avec métadonnées localisées."
+        },
+        {
+          "eventId": "photo-83e0a80ca8ea4ba799e083fbb8e14890",
+          "appliedAt": "2026-11-25T17:52:43.338Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-edge-nyc-20261125/operations.json#photo-83e0a80ca8ea4ba799e083fbb8e14890",
+          "auditEvidence": null,
+          "summary": "Photo de la plateforme en porte-à-faux publiée avec métadonnées localisées."
+        },
+        {
+          "eventId": "photo-94edc41e31f64f07a24c1890fa431882",
+          "appliedAt": "2026-11-25T17:52:56.901Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-edge-nyc-20261125/operations.json#photo-94edc41e31f64f07a24c1890fa431882",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-edge-nyc-20261125/audit.json",
+          "summary": "Vue sur l’Hudson depuis Edge publiée ; trois images exactes et audit final 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revérifier les prix variables et prolonger les horaires après le 28 février 2027 sur le site officiel.",
+      "sources": [
+        {
+          "label": "Edge NYC — prix de l’entrée générale et expérience incluse",
+          "url": "https://www.edgenyc.com/get-tickets/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Edge NYC — accès, horaires et dernière admission",
+          "url": "https://www.edgenyc.com/visit/getting-here/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Edge NYC — frais, gratuité des moins de 6 ans et tarif variable",
+          "url": "https://www.edgenyc.com/faqs/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Hudson Yards — emplacement et horaires généraux",
+          "url": "https://www.hudsonyardsnewyork.com/attractions/edge/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "OpenStreetMap — point de vue The Edge",
+          "url": "https://www.openstreetmap.org/node/9765434817",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — terrasse avec visiteurs, Hypnotoad78, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Edge_HY.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — plateforme vue de l’extérieur, Wikipettanko, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Edge_NYC_observation_deck_at_30_Hudson_Yards.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Hudson depuis Edge, Gerda Arendt, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Edge,_view_to_Hudson_River.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors inventaire de l’observatoire à billet propre ; comparaison PDE des alias, source exploitant et trois photos Commons exactes et libres.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Edge vend un billet autonome pour son parcours intérieur et sa terrasse panoramique au 100e étage de 30 Hudson Yards ; les autres lieux de Hudson Yards ont leurs propres accès."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0/edge-nyc",
+          "publishedAtUtc": "2026-11-25T17:54:05.0691232Z",
+          "verifiedAtUtc": "2026-11-25T17:56:39Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-edge-nyc-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "eea9d3d5f5fd44bcaba1005a5d97f6dd",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/95b3bd8a-b4ee-4d3a-955b-49b30d1f0bd0/edge-nyc?facebook-image=c41ffc855b0448ecaa1a5f2ef79a993c",
+          "publishedAtUtc": "2026-11-25T17:54:55.1910126Z",
+          "externalPostId": "1285475681307050_122128837323424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128837323424431",
           "failureCode": null,
           "failureMessage": null,
           "network": "Facebook"

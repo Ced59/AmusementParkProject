@@ -1,0 +1,97 @@
+[
+  {
+    "step": "core",
+    "operationId": "05898ae2-391f-45e1-b5fd-b81bc0cfb8ce",
+    "appliedAtUtc": "2026-11-25T17:51:23.0475549Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "9dca770c-a1d4-4d0f-9cf3-dd8b0e7ab839",
+    "appliedAtUtc": "2026-11-25T17:51:56.560063Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "283c69aa-2873-4052-b39b-5f83b0ecd8bb",
+    "appliedAtUtc": "2026-11-25T17:54:05.0691232Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-current",
+    "eventId": "photo-c41ffc855b0448ecaa1a5f2ef79a993c",
+    "imageId": "c41ffc855b0448ecaa1a5f2ef79a993c",
+    "createdAtUtc": "2026-11-25T17:52:25.781Z",
+    "updatedAtUtc": "2026-11-25T17:52:29.404Z",
+    "id": "c41ffc855b0448ecaa1a5f2ef79a993c",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Edge_HY.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Hypnotoad78"
+  },
+  {
+    "step": "photo-gallery",
+    "eventId": "photo-83e0a80ca8ea4ba799e083fbb8e14890",
+    "imageId": "83e0a80ca8ea4ba799e083fbb8e14890",
+    "createdAtUtc": "2026-11-25T17:52:39.957Z",
+    "updatedAtUtc": "2026-11-25T17:52:43.338Z",
+    "id": "83e0a80ca8ea4ba799e083fbb8e14890",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Edge_NYC_observation_deck_at_30_Hudson_Yards.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 3.0",
+    "author": "Wikipettanko"
+  },
+  {
+    "step": "photo-gallery",
+    "eventId": "photo-94edc41e31f64f07a24c1890fa431882",
+    "imageId": "94edc41e31f64f07a24c1890fa431882",
+    "createdAtUtc": "2026-11-25T17:52:53.563Z",
+    "updatedAtUtc": "2026-11-25T17:52:56.901Z",
+    "id": "94edc41e31f64f07a24c1890fa431882",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Edge,_view_to_Hudson_River.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Gerda Arendt"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "eea9d3d5f5fd44bcaba1005a5d97f6dd",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T17:54:55.1910126Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128837323424431",
+    "selectedImageId": "c41ffc855b0448ecaa1a5f2ef79a993c"
+  }
+]
