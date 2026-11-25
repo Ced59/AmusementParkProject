@@ -1,0 +1,79 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "0efa7403-cfdb-4af9-8ddb-9a90bd4f058e",
+  "name": "Top of the Rock Observation Deck",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/0efa7403-cfdb-4af9-8ddb-9a90bd4f058e/top-of-the-rock-observation-deck",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusAllLocales": 200,
+  "publicVerifiedAtUtc": "2026-11-25T14:46:30Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "c9131f16f79e4a62839ec044416e8e7c",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128820103424431",
+  "lastDataIntegrationAtUtc": "2026-11-25T14:44:04.092Z",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions « Top of the Rock » : zéro homonyme, y compris masqué ; backlog US sans entrée correspondante.",
+  "completeness": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "imageId": "9807d83a2948446caf6c598eb6006425",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_of_the_Rock_(6335652580).jpg",
+      "isPublished": true,
+      "author": "InSapphoWeTrust",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "imageId": "d62448437ceb4d96b2822e7ff458a73c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Central_Park_%26_Beyond_(24077159163).jpg",
+      "isPublished": true,
+      "author": "Phil Dolby",
+      "license": "CC BY 2.0"
+    },
+    {
+      "imageId": "803fa907da114a4e9c0221b2deecfeeb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_of_the_Rock_(6335599162).jpg",
+      "isPublished": true,
+      "author": "InSapphoWeTrust",
+      "license": "CC BY-SA 2.0"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Rockefeller Center — billetterie, tarifs, horaires, accès et niveaux",
+      "url": "https://www.rockefellercenter.com/tickets/top-of-the-rock-observation-deck/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — galerie du 67e étage",
+      "url": "https://commons.wikimedia.org/wiki/File:Top_of_the_Rock_(6335652580).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — vue vers Central Park",
+      "url": "https://commons.wikimedia.org/wiki/File:Central_Park_%26_Beyond_(24077159163).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — terrasse du 70e étage",
+      "url": "https://commons.wikimedia.org/wiki/File:Top_of_the_Rock_(6335599162).jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "coverage": "Billet propre pour trois niveaux panoramiques ; prix de départ, adresse, horaire et trois photos exactes.",
+  "remainingUncertainty": "Tarifs dynamiques et heures spéciales possibles ; revérifier le calendrier avant la visite. The Beam et SKYLIFT sont des options, non incluses dans le billet de base."
+}
