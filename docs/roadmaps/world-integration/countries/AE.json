@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 118,
+  "sourceObservationCount": 119,
   "sourceFamilies": [
     "AZA",
     "Aerophile — références constructeur",
@@ -29,7 +29,8 @@
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 4 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 6 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
-    "Découverte du 25 novembre : At the Top Burj Khalifa vérifié et publié comme plateforme autonome Silver des niveaux 124–125, avec trois photos exactes et annonce Facebook."
+    "Découverte du 25 novembre : At the Top Burj Khalifa vérifié et publié comme plateforme autonome Silver des niveaux 124–125, avec trois photos exactes et annonce Facebook.",
+    "Découverte du 25 novembre : The View at The Palm vérifié et publié comme observatoire autonome ; quatre offres tarifaires dynamiques, trois photos exactes et annonce Facebook publiés."
   ],
   "entries": [
     {
@@ -4589,6 +4590,157 @@
       "lastEditorialAudit": {
         "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-burj-at-the-top-20261125/audit.json",
         "score": 97,
+        "publicationBlockers": []
+      }
+    },
+    {
+      "entryId": "AE-candidate-discovery-view-at-the-palm-20261125",
+      "name": "The View at The Palm",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Plateforme d’observation à billet propre",
+      "locality": "The Palm Tower, Palm Jumeirah Mall, Dubai",
+      "siteId": "83da08c2-4ee0-4457-bc02-f5cbaf6a976b",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T14:00:48Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires quotidiens actifs sur le site opérateur le 25 novembre 2026.",
+      "identityConfidence": "PDE Park et StandaloneAttraction sans homonyme ; billetterie propre de la plateforme, distincte des autres lieux sur Palm Jumeirah.",
+      "possibleMatches": [],
+      "aliases": [
+        "The View Palm Jumeirah",
+        "The View Palm",
+        "The Palm Tower observation deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T13:57:37.253Z",
+      "integrationHistory": [
+        {
+          "eventId": "5b9c6720-12ab-4249-a60a-6b30ac224e2e",
+          "appliedAt": "2026-11-25T13:54:30.734Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "83da08c2-4ee0-4457-bc02-f5cbaf6a976b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-view-at-the-palm-20261125/operations.json#5b9c6720-12ab-4249-a60a-6b30ac224e2e",
+          "auditEvidence": null,
+          "summary": "Création masquée après contrôle des homonymes ; ouverture historique, adresse et descriptions en huit langues."
+        },
+        {
+          "eventId": "341c9c2b-3579-4604-b5bd-5a62a07d0730",
+          "appliedAt": "2026-11-25T13:56:01.017Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "83da08c2-4ee0-4457-bc02-f5cbaf6a976b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-view-at-the-palm-20261125/operations.json#341c9c2b-3579-4604-b5bd-5a62a07d0730",
+          "auditEvidence": null,
+          "summary": "Billets Standard et The Next Level avec prix de départ dynamiques et horaires quotidiens officiels intégrés."
+        },
+        {
+          "eventId": "photo-import-8b1de0279c6a44eba695311783248a58",
+          "appliedAt": "2026-11-25T13:56:52.511Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "83da08c2-4ee0-4457-bc02-f5cbaf6a976b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-view-at-the-palm-20261125/operations.json#photo-import-8b1de0279c6a44eba695311783248a58",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la terrasse de l’observatoire avec visiteurs : dconvertini, CC BY-SA 2.0."
+        },
+        {
+          "eventId": "photo-import-fe2fe1d20ebd4b46a9222312538de86d",
+          "appliedAt": "2026-11-25T13:57:15.437Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "83da08c2-4ee0-4457-bc02-f5cbaf6a976b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-view-at-the-palm-20261125/operations.json#photo-import-fe2fe1d20ebd4b46a9222312538de86d",
+          "auditEvidence": null,
+          "summary": "Photo exacte du Palm et d’Atlantis depuis The View : dconvertini, CC BY-SA 2.0."
+        },
+        {
+          "eventId": "photo-import-f792342c5f01460dba45693d7e0bcc22",
+          "appliedAt": "2026-11-25T13:57:37.253Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "83da08c2-4ee0-4457-bc02-f5cbaf6a976b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-view-at-the-palm-20261125/operations.json#photo-import-f792342c5f01460dba45693d7e0bcc22",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ae-view-at-the-palm-20261125/audit.json",
+          "summary": "Photo exacte des branches et de la marina depuis The View : dconvertini, CC BY-SA 2.0. Audit final 94/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver ligne, reçus, trois photos et publication Facebook ; revoir les horaires par date et les prix de départ régulièrement, en distinguant Standard et The Next Level.",
+      "sources": [
+        {
+          "label": "The View at The Palm — accueil, tarifs et horaires",
+          "url": "https://www.theviewpalm.ae/en",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "The View at The Palm — parcours de visite",
+          "url": "https://www.theviewpalm.ae/en/about-the-view",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "The View at The Palm — accès",
+          "url": "https://www.theviewpalm.ae/en/contact-us",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Dubai Media Office — ouverture 7 avril 2021",
+          "url": "https://mediaoffice.ae/en/news/2021/april/05-04/the-view-at-the-palm-to-open-on-7-april-2021",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai_-_53384610338.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:The_View_at_the_Palm,_Dubai_-_53384610423.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche d’observatoire à billet propre ; contrôle PDE et inspection de trois photos exactes libres.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Plateforme d’observation à billetterie propre dans The Palm Tower, indépendante des autres sites de Palm Jumeirah."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/83da08c2-4ee0-4457-bc02-f5cbaf6a976b/the-view-at-the-palm",
+          "publishedAtUtc": "2026-11-25T13:58:52.3081495Z",
+          "verifiedAtUtc": "2026-11-25T14:00:48Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-view-at-the-palm-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "c910fa4b3cc744f8886736548a9c09c6",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/83da08c2-4ee0-4457-bc02-f5cbaf6a976b/the-view-at-the-palm?facebook-image=8b1de0279c6a44eba695311783248a58",
+          "publishedAtUtc": "2026-11-25T13:59:48.6362039Z",
+          "externalPostId": "1285475681307050_122128813515424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128813515424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ae-view-at-the-palm-20261125/audit.json",
+        "score": 94,
         "publicationBlockers": []
       }
     }
