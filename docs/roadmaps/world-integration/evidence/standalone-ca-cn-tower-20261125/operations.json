@@ -1,0 +1,72 @@
+[
+  {
+    "step": "core",
+    "operationId": "7ad8c029-3086-4138-8a12-c927467ead89",
+    "appliedAtUtc": "2026-11-25T09:57:36.8004454Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-import-day",
+    "imageId": "fbee1190581943afbfafd041f9897506",
+    "updatedAtUtc": "2026-11-25T09:58:43.971Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CN_Tower_2025.jpg"
+  },
+  {
+    "step": "photo-import-top",
+    "imageId": "5ee97262784d48a6b6aba65ee3045d71",
+    "updatedAtUtc": "2026-11-25T09:59:11.121Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CN_Tower_The_Top_Toronto_Canada_2025-09-07_17-12-36_1.jpg"
+  },
+  {
+    "step": "photo-import-night",
+    "imageId": "bb22e3bb22b34091abfc4c331e0735a6",
+    "updatedAtUtc": "2026-11-25T09:59:33.926Z",
+    "isPublished": true,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CN_Tower_at_night,_Toronto,_Ontario,_2026-06-27_02.jpg"
+  },
+  {
+    "step": "pricing",
+    "operationId": "9e9751b8-83f1-4d8a-90da-fe9c03d73367",
+    "appliedAtUtc": "2026-11-25T10:01:21.9588808Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "openingHours",
+    "operationId": "bb7b13e9-1c84-4f12-8ee9-edfdf78bcd02",
+    "appliedAtUtc": "2026-11-25T10:01:51.3183438Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "access",
+    "operationId": "15893dab-1eca-44b2-ad97-1f84225111d2",
+    "appliedAtUtc": "2026-11-25T10:03:04.6676996Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "history",
+    "operationId": "ba655fe3-af30-4547-bdb4-fc15c1711fe4",
+    "appliedAtUtc": "2026-11-25T10:03:32.4892566Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "e5de7a1c-22c9-42cd-bad9-649d38c34a14",
+    "appliedAtUtc": "2026-11-25T10:04:47.8196037Z",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "pricing-notes",
+    "operationId": "755841a0-7352-4e17-bf40-7842036af746",
+    "appliedAtUtc": "2026-11-25T10:08:43.6513602Z",
+    "errors": [],
+    "warnings": []
+  }
+]

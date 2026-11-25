@@ -6827,6 +6827,222 @@
       },
       "countryCodeAtInventory": "CA",
       "countryResolution": null
+    },
+    {
+      "entryId": "CA-candidate-discovery-cn-tower-20261125",
+      "name": "CN Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique à billet propre",
+      "locality": "290 Bremner Blvd., Toronto, Ontario",
+      "siteId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T10:10:00.266Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires actuels publiés par la CN Tower le 25 novembre 2026.",
+      "identityConfidence": "Aucune fiche Park ou StandaloneAttraction homonyme sous CN Tower, Tour CN ou Canada National Tower dans les recherches officielles ; billet autonome et trois photos exactes.",
+      "possibleMatches": [],
+      "aliases": [
+        "Tour CN",
+        "Canada’s National Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T10:08:43.651Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7ad8c029-3086-4138-8a12-c927467ead89",
+          "appliedAt": "2026-11-25T09:57:36.800Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:apply:7ad8c029-3086-4138-8a12-c927467ead89",
+          "auditEvidence": null,
+          "summary": "Identité, localisation et descriptions en huit langues créées."
+        },
+        {
+          "eventId": "image-fbee1190581943afbfafd041f9897506",
+          "appliedAt": "2026-11-25T09:58:43.971Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:image:fbee1190581943afbfafd041f9897506@2026-11-25T09:58:43.971Z",
+          "auditEvidence": null,
+          "summary": "Photo extérieure exacte importée avec huit légendes et crédits : Zzz114514, CC0."
+        },
+        {
+          "eventId": "image-5ee97262784d48a6b6aba65ee3045d71",
+          "appliedAt": "2026-11-25T09:59:11.121Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:image:5ee97262784d48a6b6aba65ee3045d71@2026-11-25T09:59:11.121Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de The Top importée : G. Edward Johnson, CC BY 4.0."
+        },
+        {
+          "eventId": "image-bb22e3bb22b34091abfc4c331e0735a6",
+          "appliedAt": "2026-11-25T09:59:33.926Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:image:bb22e3bb22b34091abfc4c331e0735a6@2026-11-25T09:59:33.926Z",
+          "auditEvidence": null,
+          "summary": "Photo nocturne exacte importée : Chris Woodrich, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-9e9751b8-83f1-4d8a-90da-fe9c03d73367",
+          "appliedAt": "2026-11-25T10:01:21.958Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:apply:9e9751b8-83f1-4d8a-90da-fe9c03d73367",
+          "auditEvidence": null,
+          "summary": "Huit tarifs officiels : billet général et The Top, quatre catégories d’âge."
+        },
+        {
+          "eventId": "apply-bb7b13e9-1c84-4f12-8ee9-edfdf78bcd02",
+          "appliedAt": "2026-11-25T10:01:51.318Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:apply:bb7b13e9-1c84-4f12-8ee9-edfdf78bcd02",
+          "auditEvidence": null,
+          "summary": "Horaires quotidiens avec fuseau et fermetures partielles signalées."
+        },
+        {
+          "eventId": "apply-15893dab-1eca-44b2-ad97-1f84225111d2",
+          "appliedAt": "2026-11-25T10:03:04.667Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:apply:15893dab-1eca-44b2-ad97-1f84225111d2",
+          "auditEvidence": null,
+          "summary": "Accès fauteuil et limite du niveau supérieur de The Top renseignés."
+        },
+        {
+          "eventId": "apply-ba655fe3-af30-4547-bdb4-fc15c1711fe4",
+          "appliedAt": "2026-11-25T10:03:32.489Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:apply:ba655fe3-af30-4547-bdb4-fc15c1711fe4",
+          "auditEvidence": null,
+          "summary": "Ouverture publique du 26 juin 1976 ajoutée à la frise."
+        },
+        {
+          "eventId": "apply-e5de7a1c-22c9-42cd-bad9-649d38c34a14",
+          "appliedAt": "2026-11-25T10:04:47.819Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:apply:e5de7a1c-22c9-42cd-bad9-649d38c34a14",
+          "auditEvidence": null,
+          "summary": "Fiche et événement historique rendus visibles après audit sans blocage."
+        },
+        {
+          "eventId": "apply-755841a0-7352-4e17-bf40-7842036af746",
+          "appliedAt": "2026-11-25T10:08:43.651Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3dddad46-f258-41c7-b528-57c18da6fdb4",
+          "evidence": "PARK_DATA_EDITOR:apply:755841a0-7352-4e17-bf40-7842036af746",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-cn-tower-20261125/audit.json",
+          "summary": "Conditions tarifaires et gratuité des moins de trois ans précisées en huit langues."
+        }
+      ],
+      "nextAction": "Conserver la ligne et réactualiser tarifs, horaires et fermetures partielles selon les annonces officielles.",
+      "sources": [
+        {
+          "label": "CN Tower — billets et prix officiels",
+          "url": "https://www.cntower.ca/plan-your-visit/tickets-and-hours/tickets",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "CN Tower — horaires officiels",
+          "url": "https://www.cntower.ca/plan-your-visit/tickets-and-hours/hours",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "CN Tower — fermetures partielles annoncées",
+          "url": "https://www.cntower.ca/upcomingclosures",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "CN Tower — accessibilité",
+          "url": "https://www.cntower.ca/plan-your-visit/accessibility",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "CN Tower — histoire officielle",
+          "url": "https://www.cntower.ca/history",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Zzz114514, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:CN_Tower_2025.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, G. Edward Johnson, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:CN_Tower_The_Top_Toronto_Canada_2025-09-07_17-12-36_1.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Chris Woodrich, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:CN_Tower_at_night,_Toronto,_Ontario,_2026-06-27_02.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Page publique vérifiée",
+          "url": "https://amusement-parks.fun/fr/attraction/3dddad46-f258-41c7-b528-57c18da6fdb4/cn-tower",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors catalogue parmi les observatoires à billet propre ; sources officielles, médias libres et recherches de doublons PARK_DATA_EDITOR.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [
+          {
+            "name": "CN Tower",
+            "source": "CN Tower — site officiel",
+            "url": "https://www.cntower.ca/plan-your-visit/tickets-and-hours/tickets",
+            "family": "Tour panoramique",
+            "sourceVenueName": "CN Tower",
+            "sourceLifecycleSignal": "Billets et horaires officiels actuels",
+            "sourceLocality": "Toronto, Ontario",
+            "matchingMethod": "Billet autonome et recherches officielles sans doublon."
+          }
+        ],
+        "rationale": "Attraction autonome fixe et visitable, distincte des autres lieux voisins, confirmée par les reçus PARK_DATA_EDITOR."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3dddad46-f258-41c7-b528-57c18da6fdb4/cn-tower",
+          "publishedAtUtc": "2026-11-25T10:04:47.819Z",
+          "verifiedAtUtc": "2026-11-25T10:10:00.266Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-cn-tower-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "0f59824932d14c188b33ab7c6f0e4149",
+          "network": "Facebook",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3dddad46-f258-41c7-b528-57c18da6fdb4/cn-tower?facebook-image=fbee1190581943afbfafd041f9897506",
+          "publishedAtUtc": "2026-11-25T10:06:26.5414381Z",
+          "externalPostId": "1285475681307050_122128788879424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128788879424431",
+          "failureCode": null,
+          "failureMessage": null
+        }
+      }
     }
   ]
 }
