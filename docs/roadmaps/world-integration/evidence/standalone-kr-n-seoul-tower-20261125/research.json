@@ -1,0 +1,63 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions pour « N Seoul Tower », « Namsan » et « Seoul Tower » en Corée du Sud : aucun homonyme. SEOUL SKY est un autre observatoire à Jamsil. L’observatoire de Namsan vend un billet propre et ne dépend pas d’un parc intégré.",
+  "decision": "Observatoire permanent à entrée autonome : fiche standalone pertinente et identité distincte de SEOUL SKY.",
+  "officialPrices": {
+    "adultFromAge13Krw": 29000,
+    "childAge3To12AndSeniorFrom65Krw": 23000,
+    "infantUnder36Months": "Un enfant gratuit par accompagnateur."
+  },
+  "officialOpeningHours": {
+    "weekday": "10:00–22:30",
+    "weekendAndHoliday": "10:00–23:00",
+    "lastAdmission": "30 minutes avant la fermeture",
+    "calendarFrom": "2026-11-25",
+    "calendarTo": "2027-03-31",
+    "holidayOverride": "2026-12-25, 10:00–23:00",
+    "plannedClosure": "Observatoire fermé de janvier à mars 2027 selon une image officielle datée 2027 ; état ultérieur à revérifier."
+  },
+  "photos": "Trois photos de l’intérieur et des panoramas réellement vus depuis N SEOUL TOWER, inspectées visuellement. Aucune photo extérieure de la tour utilisée ; provenance, auteur et licence indiqués dans les huit langues.",
+  "sources": [
+    {
+      "label": "N SEOUL TOWER — observatoire officiel",
+      "url": "https://www.nseoultower.co.kr/eng/visit/observatory.asp",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "N SEOUL TOWER — tarifs officiels",
+      "url": "https://www.nseoultower.co.kr/eng/visit/use2.asp",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "N SEOUL TOWER — horaires et dernière entrée",
+      "url": "https://www.nseoultower.co.kr/eng/visit/use.asp",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "N SEOUL TOWER — annonce de fermeture de janvier à mars 2027",
+      "url": "https://www.nseoultower.co.kr/eng/images/main/observatory_closed.png",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "N SEOUL TOWER — accès officiel",
+      "url": "https://www.nseoultower.co.kr/eng/visit/traffic.asp",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — intérieur de l’observatoire, Josh Hallett, CC BY-SA 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_(6).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama nord, Kallerna, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_1.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama sud, Kallerna, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_2.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les horaires habituels peuvent varier selon la météo et des décisions de l’exploitant. La date précise de réouverture après mars 2027 n’est pas annoncée ; la grille hebdomadaire devra être revalidée avant utilisation après la fermeture."
+}

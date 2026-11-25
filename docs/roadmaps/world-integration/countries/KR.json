@@ -26,7 +26,8 @@
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
     "Revue standalone du 22 octobre : 12 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
     "Recherche externe dédiée aux absences : 5 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.",
-    "SEOUL SKY : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres, huit descriptions et publication Facebook. Date de dernière intégration de données conservée dans l’historique."
+    "SEOUL SKY : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres, huit descriptions et publication Facebook. Date de dernière intégration de données conservée dans l’historique.",
+    "N SEOUL TOWER : observatoire à billet propre créé et publié le 25 novembre 2026 avec trois photos, huit descriptions et publication Facebook. Fermeture de l’observatoire annoncée pour janvier à mars 2027 ; suivi requis de la réouverture."
   ],
   "entries": [
     {
@@ -4634,6 +4635,147 @@
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128830477424431",
           "failureCode": null,
           "failureMessage": null
+        }
+      }
+    },
+    {
+      "entryId": "KR-candidate-discovery-n-seoul-tower-20261125",
+      "name": "N SEOUL TOWER",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire urbain à billet propre",
+      "locality": "105 Namsangongwon-gil, Yongsan-gu, Séoul",
+      "siteId": "1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T17:14:46Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires officiels actifs au 25 novembre 2026 ; fermeture de l’observatoire annoncée pour janvier à mars 2027.",
+      "identityConfidence": "Aucun homonyme dans PDE ; observatoire avec billetterie propre à Namsan, distinct de SEOUL SKY à Jamsil.",
+      "possibleMatches": [],
+      "aliases": [
+        "N Seoul Tower Observatory",
+        "Namsan Seoul Tower",
+        "Namsan Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T17:09:47.471Z",
+      "integrationHistory": [
+        {
+          "eventId": "13822fce-c975-4202-a3ae-c6bdc7d7d903",
+          "appliedAt": "2026-11-25T17:02:50.177Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-n-seoul-tower-20261125/operations.json#13822fce-c975-4202-a3ae-c6bdc7d7d903",
+          "auditEvidence": null,
+          "summary": "Création masquée de N SEOUL TOWER avec localisation, identité et descriptions dans huit langues après recherche des doublons."
+        },
+        {
+          "eventId": "4056e2de-1b37-44cb-b21a-bf121a7dbd1d",
+          "appliedAt": "2026-11-25T17:03:44.123Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-n-seoul-tower-20261125/operations.json#4056e2de-1b37-44cb-b21a-bf121a7dbd1d",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels, horaires hebdomadaires et fermeture annoncée pour janvier à mars 2027 intégrés."
+        },
+        {
+          "eventId": "photo-b0b185207663470fb6f111d0f44ee0d7",
+          "appliedAt": "2026-11-25T17:07:35.716Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-n-seoul-tower-20261125/operations.json#photo-b0b185207663470fb6f111d0f44ee0d7",
+          "auditEvidence": null,
+          "summary": "Troisième photo exacte importée avec crédits, légendes et textes alternatifs dans huit langues ; trois photos publiées sont vérifiées à l’export."
+        },
+        {
+          "eventId": "b108c35d-fc12-4297-a935-84eccd5665a7",
+          "appliedAt": "2026-11-25T17:09:47.471Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-n-seoul-tower-20261125/operations.json#b108c35d-fc12-4297-a935-84eccd5665a7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-n-seoul-tower-20261125/audit.json",
+          "summary": "Calendrier daté du 25 novembre 2026 au 31 mars 2027, avec jour férié et fermeture annoncée. Trois photos exactes, audit final 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; vérifier la fermeture puis la date réelle de réouverture après mars 2027 auprès de l’exploitant, et réactualiser tarifs et horaires.",
+      "sources": [
+        {
+          "label": "N SEOUL TOWER — observatoire officiel",
+          "url": "https://www.nseoultower.co.kr/eng/visit/observatory.asp",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "N SEOUL TOWER — tarifs officiels",
+          "url": "https://www.nseoultower.co.kr/eng/visit/use2.asp",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "N SEOUL TOWER — horaires et dernière entrée",
+          "url": "https://www.nseoultower.co.kr/eng/visit/use.asp",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "N SEOUL TOWER — annonce de fermeture de janvier à mars 2027",
+          "url": "https://www.nseoultower.co.kr/eng/images/main/observatory_closed.png",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "N SEOUL TOWER — accès officiel",
+          "url": "https://www.nseoultower.co.kr/eng/visit/traffic.asp",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur de l’observatoire, Josh Hallett, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_(6).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama nord, Kallerna, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_1.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama sud, Kallerna, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_2.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors backlog de l’observatoire à entrée autonome ; contrôle PDE des homonymes, sources exploitant et trois photos exactes sous licence libre.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Observatoire permanent à billet propre sur Namsan ; aucune fiche de parc parent ni doublon SEOUL SKY."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f/n-seoul-tower",
+          "publishedAtUtc": "2026-11-25T17:10:36.9840996Z",
+          "verifiedAtUtc": "2026-11-25T17:14:46Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-n-seoul-tower-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "2caab6ac18814d8ba25740889802cf2b",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1bfcc3e8-7a40-41f8-91a4-0e9693e73b3f/n-seoul-tower?facebook-image=bd849150d4364cc7a6a56b2c67700a55",
+          "publishedAtUtc": "2026-11-25T17:11:36.8465556Z",
+          "externalPostId": "1285475681307050_122128832919424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128832919424431",
+          "failureCode": null,
+          "failureMessage": null,
+          "network": "Facebook"
         }
       }
     }

@@ -1,0 +1,105 @@
+[
+  {
+    "step": "core",
+    "operationId": "13822fce-c975-4202-a3ae-c6bdc7d7d903",
+    "appliedAtUtc": "2026-11-25T17:02:50.1776778Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "4056e2de-1b37-44cb-b21a-bf121a7dbd1d",
+    "appliedAtUtc": "2026-11-25T17:03:44.1233089Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "hours-correction",
+    "operationId": "b108c35d-fc12-4297-a935-84eccd5665a7",
+    "appliedAtUtc": "2026-11-25T17:09:47.4719025Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "e534cdce-35cd-48ca-8eb3-5afd80682d37",
+    "appliedAtUtc": "2026-11-25T17:10:36.9840996Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-current",
+    "imageId": "bd849150d4364cc7a6a56b2c67700a55",
+    "id": "bd849150d4364cc7a6a56b2c67700a55",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_2.jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Kallerna"
+  },
+  {
+    "step": "photo-gallery",
+    "imageId": "b0b185207663470fb6f111d0f44ee0d7",
+    "id": "b0b185207663470fb6f111d0f44ee0d7",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_1.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Kallerna",
+    "updatedAtUtc": "2026-11-25T17:07:35.716Z",
+    "eventId": "photo-b0b185207663470fb6f111d0f44ee0d7"
+  },
+  {
+    "step": "photo-gallery",
+    "imageId": "0d3dc28516d94021ba4e675eee0ddd11",
+    "id": "0d3dc28516d94021ba4e675eee0ddd11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_(6).jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 2.0",
+    "author": "Josh Hallett"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "2caab6ac18814d8ba25740889802cf2b",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T17:11:36.8465556Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128832919424431",
+    "selectedImageId": "bd849150d4364cc7a6a56b2c67700a55"
+  }
+]
