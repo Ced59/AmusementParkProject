@@ -35,7 +35,8 @@
     "Découverte du 25 novembre : Reunion Tower GeO-Deck publié comme observatoire autonome, avec six horaires datés, tarifs variables et trois photos exactes.",
     "Découverte du 25 novembre : Empire State Building Observatory publié avec deux formules, tarifs officiels de départ et trois photos exactes.",
     "Découverte du 25 novembre : Top of the Rock Observation Deck publié avec tarif officiel, horaires et trois photos exactes.",
-    "Découverte du 25 novembre : Sky View Observatory publié avec trois formules, calendrier officiel et trois vues exactes créditées."
+    "Découverte du 25 novembre : Sky View Observatory publié avec trois formules, calendrier officiel et trois vues exactes créditées.",
+    "Skydeck Chicago : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Tarifs dynamiques et horaires d’hiver suivis dans le backlog permanent."
   ],
   "entries": [
     {
@@ -78560,6 +78561,148 @@
         "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-one-world-observatory-20261125/audit.json",
         "score": 91,
         "publicationBlockers": []
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-skydeck-chicago-20261125",
+      "name": "Skydeck Chicago",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère urbain à billet propre",
+      "locality": "Willis Tower, 233 S. Wacker Dr., Chicago, Illinois",
+      "siteId": "436b1bba-637c-4f46-b05f-e4ac1209f321",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-25T17:28:29Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires officiels actifs au 25 novembre 2026.",
+      "identityConfidence": "Aucune fiche homonyme Park ou StandaloneAttraction dans PDE ; billet propre pour le musée, l’observatoire et The Ledge de la Willis Tower.",
+      "possibleMatches": [],
+      "aliases": [
+        "Willis Tower Skydeck",
+        "Skydeck at Willis Tower",
+        "Sears Tower Skydeck",
+        "The Ledge"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-25T17:25:02.826Z",
+      "integrationHistory": [
+        {
+          "eventId": "6f708c7c-761a-4c22-ade6-5a215673da67",
+          "appliedAt": "2026-11-25T17:23:27.665Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "436b1bba-637c-4f46-b05f-e4ac1209f321",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skydeck-chicago-20261125/operations.json#6f708c7c-761a-4c22-ade6-5a215673da67",
+          "auditEvidence": null,
+          "summary": "Création masquée de Skydeck Chicago avec identité, adresse et descriptions éditoriales dans huit langues, après recherches sans doublon."
+        },
+        {
+          "eventId": "0066d331-52b8-4c82-aa2a-c3ae530957bd",
+          "appliedAt": "2026-11-25T17:24:02.228Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "436b1bba-637c-4f46-b05f-e4ac1209f321",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skydeck-chicago-20261125/operations.json#0066d331-52b8-4c82-aa2a-c3ae530957bd",
+          "auditEvidence": null,
+          "summary": "Tarifs dynamiques officiels et calendrier d’hiver avec exceptions de Thanksgiving intégrés."
+        },
+        {
+          "eventId": "photo-4059086e5d094fb2aaa49fd4c9838bb3",
+          "appliedAt": "2026-11-25T17:24:37.023Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "436b1bba-637c-4f46-b05f-e4ac1209f321",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skydeck-chicago-20261125/operations.json#photo-4059086e5d094fb2aaa49fd4c9838bb3",
+          "auditEvidence": null,
+          "summary": "Photo exacte de The Ledge importée avec textes alternatifs, légendes et crédits dans huit langues."
+        },
+        {
+          "eventId": "photo-5e59075766e44471b552a9b891734978",
+          "appliedAt": "2026-11-25T17:24:50.394Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "436b1bba-637c-4f46-b05f-e4ac1209f321",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skydeck-chicago-20261125/operations.json#photo-5e59075766e44471b552a9b891734978",
+          "auditEvidence": null,
+          "summary": "Panorama exact depuis l’observatoire importé avec métadonnées localisées."
+        },
+        {
+          "eventId": "photo-7610cbb66e13414299b3b1227116636b",
+          "appliedAt": "2026-11-25T17:25:02.826Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "436b1bba-637c-4f46-b05f-e4ac1209f321",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skydeck-chicago-20261125/operations.json#photo-7610cbb66e13414299b3b1227116636b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-skydeck-chicago-20261125/audit.json",
+          "summary": "Troisième photo exacte importée : quatre balcons vitrés. Trois médias publiés et audit final 91/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves ; revérifier les prix dynamiques et les horaires après le 28 février 2027 selon le site officiel.",
+      "sources": [
+        {
+          "label": "Skydeck Chicago — horaires, exceptions de Thanksgiving, tarifs et adresse",
+          "url": "https://theskydeck.com/plan-a-visit/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Skydeck Chicago — billetterie officielle et entrée horodatée",
+          "url": "https://tickets.theskydeck.com/ticketSale/grid",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Skydeck Chicago — The Ledge et expérience de visite",
+          "url": "https://theskydeck.com/plan-a-visit/the-ledge/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — balcon The Ledge, Josué Goge, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Skydeck_at_Willis_Tower_(8318376311).jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — balcons vus de l’extérieur, Kennybozzle, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Willis_Tower_-_Skydeck.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — panorama depuis Skydeck, Zakarie Faibis, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Skydeck_Chicago_Willis_Tower_01.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors inventaire de l’observatoire à billet propre ; comparaison PDE des alias, source exploitant et trois photos Commons exactes et libres.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-25",
+        "attractions": [],
+        "rationale": "Skydeck vend un billet distinct pour le musée, l’observatoire et The Ledge dans une tour de bureaux ; ce lieu n’est pas un parkItem d’un parc de loisirs."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/436b1bba-637c-4f46-b05f-e4ac1209f321/skydeck-chicago",
+          "publishedAtUtc": "2026-11-25T17:25:57.8338044Z",
+          "verifiedAtUtc": "2026-11-25T17:28:29Z",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skydeck-chicago-20261125/audit.json"
+        },
+        "facebook": {
+          "id": "02725cb0221349118fcc9746b43fc244",
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/436b1bba-637c-4f46-b05f-e4ac1209f321/skydeck-chicago?facebook-image=4059086e5d094fb2aaa49fd4c9838bb3",
+          "publishedAtUtc": "2026-11-25T17:26:59.0993599Z",
+          "externalPostId": "1285475681307050_122128834533424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128834533424431",
+          "failureCode": null,
+          "failureMessage": null,
+          "network": "Facebook"
+        }
       }
     }
   ]

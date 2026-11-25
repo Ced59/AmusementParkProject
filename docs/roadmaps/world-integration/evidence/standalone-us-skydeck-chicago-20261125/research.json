@@ -1,0 +1,56 @@
+{
+  "reviewedAt": "2026-11-25",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions pour « Skydeck », « Willis » et « Sears » : aucun homonyme. Le relevé US ne contenait pas non plus Skydeck Chicago. Observatoire à billet propre dans une tour de bureaux, distinct des autres belvédères de Chicago.",
+  "decision": "Skydeck Chicago est une attraction standalone pertinente : accès autonome au musée, à l’observatoire et à The Ledge avec billet dédié.",
+  "officialPrices": {
+    "currency": "USD",
+    "adultAge12PlusFrom": 32,
+    "youthAge3To11From": 22,
+    "under3": "Free",
+    "type": "Dynamic; le prix final dépend du créneau."
+  },
+  "officialHours": {
+    "winterFrom": "2026-10-01",
+    "winterTo": "2027-02-28",
+    "SundayToFriday": "09:00–20:00",
+    "Saturday": "09:00–21:00",
+    "Thanksgiving2026": "27–28 novembre 09:00–22:00 ; 26 et 29 novembre horaires ordinaires",
+    "lastEntry": "30 minutes avant la fermeture",
+    "datedCalendarFrom": "2026-11-25",
+    "datedCalendarTo": "2027-02-28"
+  },
+  "photos": "Trois photos exactes inspectées visuellement : The Ledge avec visiteurs, quatre balcons vitrés vus de l’extérieur, vue urbaine depuis l’observatoire. Fichiers Commons libres ; auteur, licence, lien et indication de réduction dans huit langues.",
+  "sources": [
+    {
+      "label": "Skydeck Chicago — horaires, exceptions de Thanksgiving, tarifs et adresse",
+      "url": "https://theskydeck.com/plan-a-visit/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skydeck Chicago — billetterie officielle et entrée horodatée",
+      "url": "https://tickets.theskydeck.com/ticketSale/grid",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Skydeck Chicago — The Ledge et expérience de visite",
+      "url": "https://theskydeck.com/plan-a-visit/the-ledge/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — balcon The Ledge, Josué Goge, CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Skydeck_at_Willis_Tower_(8318376311).jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — balcons vus de l’extérieur, Kennybozzle, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Willis_Tower_-_Skydeck.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — panorama depuis Skydeck, Zakarie Faibis, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Skydeck_Chicago_Willis_Tower_01.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Les tarifs et créneaux varient selon la date et la disponibilité. Les horaires au-delà du 28 février 2027 ne sont pas extrapolés ; revérifier le calendrier de la saison suivante."
+}

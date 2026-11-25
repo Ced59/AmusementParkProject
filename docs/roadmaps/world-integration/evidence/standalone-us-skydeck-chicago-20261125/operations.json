@@ -1,0 +1,97 @@
+[
+  {
+    "step": "core",
+    "operationId": "6f708c7c-761a-4c22-ade6-5a215673da67",
+    "appliedAtUtc": "2026-11-25T17:23:27.6657393Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "extras",
+    "operationId": "0066d331-52b8-4c82-aa2a-c3ae530957bd",
+    "appliedAtUtc": "2026-11-25T17:24:02.2288772Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "publish",
+    "operationId": "fe41a61d-7a62-4085-8b33-c52ac88c694b",
+    "appliedAtUtc": "2026-11-25T17:25:57.8338044Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "step": "photo-current",
+    "eventId": "photo-4059086e5d094fb2aaa49fd4c9838bb3",
+    "imageId": "4059086e5d094fb2aaa49fd4c9838bb3",
+    "createdAtUtc": "2026-11-25T17:24:33.37Z",
+    "updatedAtUtc": "2026-11-25T17:24:37.023Z",
+    "id": "4059086e5d094fb2aaa49fd4c9838bb3",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skydeck_at_Willis_Tower_(8318376311).jpg",
+    "isCurrent": true,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY 2.0",
+    "author": "Josué Goge"
+  },
+  {
+    "step": "photo-gallery",
+    "eventId": "photo-5e59075766e44471b552a9b891734978",
+    "imageId": "5e59075766e44471b552a9b891734978",
+    "createdAtUtc": "2026-11-25T17:24:47.012Z",
+    "updatedAtUtc": "2026-11-25T17:24:50.394Z",
+    "id": "5e59075766e44471b552a9b891734978",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skydeck_Chicago_Willis_Tower_01.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 4.0",
+    "author": "Zakarie Faibis"
+  },
+  {
+    "step": "photo-gallery",
+    "eventId": "photo-7610cbb66e13414299b3b1227116636b",
+    "imageId": "7610cbb66e13414299b3b1227116636b",
+    "createdAtUtc": "2026-11-25T17:24:59.362Z",
+    "updatedAtUtc": "2026-11-25T17:25:02.826Z",
+    "id": "7610cbb66e13414299b3b1227116636b",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Willis_Tower_-_Skydeck.jpg",
+    "isCurrent": false,
+    "isPublished": true,
+    "languages": 8,
+    "license": "CC BY-SA 3.0",
+    "author": "Kennybozzle"
+  },
+  {
+    "step": "facebook-publish",
+    "publicationId": "02725cb0221349118fcc9746b43fc244",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-25T17:26:59.0993599Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128834533424431",
+    "selectedImageId": "4059086e5d094fb2aaa49fd4c9838bb3"
+  }
+]
