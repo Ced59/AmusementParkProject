@@ -10,6 +10,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 - Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.
 - Revue standalone du 22 octobre : 17 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.
 - Recherche externe dédiée aux absences : 2 observations d’opérateurs et d’Aerophile, y compris références historiques. Comparer avec les fiches masquées ; qualifier le cycle de vie avant création.
+- Découverte du 25 novembre : Melbourne Skydeck vérifié et publié comme plateforme autonome avec tarifs de départ dynamiques, exception du Nouvel An et trois photos exactes.
 
 | État éditorial | Nombre |
 | --- | ---: |
@@ -17,18 +18,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 67 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 2 |
+| Intégration achevée | 3 |
 | Publié, date inconnue | 2 |
 | Hors périmètre enregistré | 2 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **131**. Sources : Aerophile — références constructeur, AmusementForce, Brogent — projet constructeur, Découverte complémentaire — site officiel, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **132**. Sources : Aerophile — références constructeur, AmusementForce, Brogent — projet constructeur, Découverte complémentaire — site officiel, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **2 publiés**, **13 masqués à intégrer**, **2 masqués NotRelevant à réexaminer**, **55 candidats sans fiche**.
 
-Standalone : **2 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **3 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **11 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **2 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -77,6 +78,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | AU-candidate-56c87eb34aefa9 | Magic Mountain | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Oceania#Australia) |
 | AU-candidate-56d7c226d09ce4 | Manly Waterworks | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Oceania#Australia) |
 | AU-candidate-99af5bce1e5263 | Melbourne Showgrounds | Ascot Vale , Victoria | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/4980.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Oceania#Australia) |
+| AU-candidate-discovery-melbourne-skydeck-20261125 | Melbourne Skydeck | Riverside Quay, Southbank, Melbourne | StandaloneAttraction | Published | Intégration achevée | 2026-11-25T13:28:10.557Z | — | Conserver la ligne et les preuves ; revoir les tarifs Early Bird et horaires spéciaux avant le 4 avril 2027. Vérifier séparément les options The Edge et Voyager Theatre. Qualification standalone : AlreadyStandalone. Le Skydeck possède une billetterie propre ; trois photos exactes, dont une de l’intérieur, sont publiées. Signal source : L’exploitant vend l’entrée générale et publie les horaires jusqu’au 4 avril 2027.. [Melbourne Skydeck — entrée générale et tarifs](https://www.melbourneskydeck.com.au/general-admission/) · [Melbourne Skydeck — horaires, adresse et dates spéciales](https://www.melbourneskydeck.com.au/about-us/#opening-hours) · [Wikimedia Commons — photo exacte 1](https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_10.jpg) · [Wikimedia Commons — photo exacte 2](https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_05.jpg) · [Wikimedia Commons — photo exacte 3](https://commons.wikimedia.org/wiki/File:Melbourne_Skydeck_(View_from_Eureka_Tower)_03.jpg) |
 | AU-candidate-c31ae95c751f0b | Melbourne Star | Docklands , Melbourne | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
 | AU-candidate-f4e7ae3300dcbe | Melbourne Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.zoo.org.au) |
 | AU-park-efb71970-ed71-4723-8899-114bef7d1735 | Merimbula's Magic Mountain | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/4939.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Oceania#Australia) |
