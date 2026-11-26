@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "f814ea61-0d0c-480c-9b78-d8a411fbec7e",
+  "name": "Miyajima Ropeway",
+  "countryCode": "JP",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/f814ea61-0d0c-480c-9b78-d8a411fbec7e/miyajima-ropeway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T03:57:29Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "e7a4070840c146f0ab058175c19214c7",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128881333424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T03:53:56.104Z",
+  "lastDataEventId": "photo-metadata-043073f431134f8d9845ce9a98f9a9bb",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks avec Miyajima : aucun résultat avant création ; aucun nom correspondant dans JP.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "06f70c05e0f646aa909819ed6db99fa7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway,_Momijidani_Line_001.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Naokijp",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "b8f63554dadb4b8d8ea90f16c12b8b8c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway,_Shishiiwa_Line_004.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Naokijp",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "043073f431134f8d9845ce9a98f9a9bb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway.gondola.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "ブルーノ・プラス",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 4,
+  "openingRules": 1,
+  "sitePublicationReceipt": "f3e79d04-da70-466c-9878-15342269a8fd",
+  "note": "La republication et Facebook sont enregistrés séparément des dates de données."
+}

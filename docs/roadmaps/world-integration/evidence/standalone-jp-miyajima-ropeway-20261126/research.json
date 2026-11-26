@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks avec Miyajima : aucun résultat avant création ; aucun nom correspondant dans JP.json.",
+  "decision": "Billet propre pour les deux tronçons Momijidani–Kayatani–Shishiiwa, exploités comme un seul téléphérique touristique, avec tarif et horaires propres. Le parc public Momijidani est le point de départ, pas une fiche Park du site.",
+  "history": "Mise en service le 1er avril 1959 selon la chronologie de l’association touristique de Miyajima.",
+  "service": "Au 26 novembre 2026, service normal annoncé ; montées 09:00–16:00, dernière descente 16:30. Réservation préalable indiquée pour les 28 et 29 novembre. Vent, orages et maintenance peuvent suspendre le service.",
+  "pricing": "Tarif ordinaire aller retour 2 000 JPY adulte, 1 000 JPY enfant de primaire ; simple 1 100/550 JPY. Réductions de groupe, senior ou handicap séparées du tarif ordinaire.",
+  "accessibility": "L’exploitant interdit les animaux sauf chiens guides ou d’assistance ; poussettes et fauteuils roulants ne peuvent pas monter dans la ligne à cabines circulantes.",
+  "photos": "Trois images exactes, deux de Naokijp et une de ブルーノ・プラス, toutes CC BY-SA 4.0. Les trois photos montrent les cabines ou lignes de Miyajima et comportent crédits, légendes et textes alternatifs dans huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — état du service et réservations",
+      "url": "https://miyajima-ropeway.info/english/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — horaires, tarifs et caractéristiques des deux tronçons",
+      "url": "https://miyajima-ropeway.info/english/fare/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — accès et navette",
+      "url": "https://miyajima-ropeway.info/english/access/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Association touristique de Miyajima — chronologie, ouverture 1959",
+      "url": "https://www.miyajima.or.jp/english/history/chronology.html",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Géolocalisation de la gare de Momijidani",
+      "url": "https://stamp.funakiya.com/miyajima-ropeway.html",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Miyajima Ropeway, Momijidani Line 001.jpg (Naokijp, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway,_Momijidani_Line_001.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Miyajima Ropeway, Shishiiwa Line 004.jpg (Naokijp, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway,_Shishiiwa_Line_004.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Miyajima Ropeway.gondola.jpg (ブルーノ・プラス, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway.gondola.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Le service réel dépend du vent et des orages ; vérifier le statut en direct. La photo de 2022 est datée comme telle. Les horaires futurs au-delà du relevé doivent être recontrôlés."
+}
