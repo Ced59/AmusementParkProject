@@ -18957,6 +18957,168 @@
         "attractions": [],
         "rationale": "Transport touristique avec billet, parcours et exploitant autonomes."
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-shinhotaka-ropeway-20261126",
+      "name": "Shinhotaka Ropeway",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "Shinhotaka Onsen–Nabedaira Kogen–Shirakabadaira–Nishihotakaguchi, Takayama, Gifu",
+      "siteId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T03:25:47Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation toute l’année, sous réserve du temps, avec fermeture complète pour maintenance du 24 au 27 novembre 2026.",
+      "identityConfidence": "Exploitant, billets, histoire et accès vérifiés ; trois photos exactes sous licence ; recherche sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Shin-Hotaka Ropeway",
+        "新穂高ロープウェイ"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T03:24:10.964Z",
+      "integrationHistory": [
+        {
+          "eventId": "d81a732d-1c77-4de8-b6a8-2f3eccdc8202",
+          "appliedAt": "2026-11-26T03:20:05.027Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/operations.json#d81a732d-1c77-4de8-b6a8-2f3eccdc8202",
+          "auditEvidence": null,
+          "summary": "Création masquée, huit descriptions et date d’ouverture 1970."
+        },
+        {
+          "eventId": "photo-89208373dd4549d48fefd83a0a068ebe",
+          "appliedAt": "2026-11-26T03:21:20.829Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/operations.json#photo-89208373dd4549d48fefd83a0a068ebe",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Alpsdake (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-223aa0dcb0a843fb80929121eb87a07a",
+          "appliedAt": "2026-11-26T03:21:33.530Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/operations.json#photo-223aa0dcb0a843fb80929121eb87a07a",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Seiya Ishibashi (CC BY 2.0)."
+        },
+        {
+          "eventId": "photo-401471f043ad457391c6f8e42439a68f",
+          "appliedAt": "2026-11-26T03:21:46.645Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/operations.json#photo-401471f043ad457391c6f8e42439a68f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 importée : Alpsdake (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "1983b332-df36-470a-ab1b-43c7c8cc5031",
+          "appliedAt": "2026-11-26T03:22:12.220Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/operations.json#1983b332-df36-470a-ab1b-43c7c8cc5031",
+          "auditEvidence": null,
+          "summary": "Ouverture le 15 juillet 1970 documentée."
+        },
+        {
+          "eventId": "94a4b01d-8d0b-4932-8fa3-5ab1c6ff2332",
+          "appliedAt": "2026-11-26T03:22:34.034Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/operations.json#94a4b01d-8d0b-4932-8fa3-5ab1c6ff2332",
+          "auditEvidence": null,
+          "summary": "Accessibilité par rampes, ascenseurs et monte-escaliers documentée."
+        },
+        {
+          "eventId": "5023b42c-0a98-4f1c-b02f-00c8a3654638",
+          "appliedAt": "2026-11-26T03:22:56.961Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/operations.json#5023b42c-0a98-4f1c-b02f-00c8a3654638",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels, horaires saisonniers et fermeture 24–27 novembre documentés."
+        },
+        {
+          "eventId": "9b7bc3ab-8d95-4c06-aefb-3c77bd425cc7",
+          "appliedAt": "2026-11-26T03:24:10.964Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/operations.json#9b7bc3ab-8d95-4c06-aefb-3c77bd425cc7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-shinhotaka-ropeway-20261126/audit.json",
+          "summary": "Huit descriptions corrigées après contrôle éditorial."
+        }
+      ],
+      "nextAction": "Conserver cette entrée et vérifier dès le 28 novembre 2026 la reprise du service après maintenance ; ajouter chaque intégration de données datée sans effacer l’historique.",
+      "sources": [
+        {
+          "label": "Exploitant — présentation et avis de maintenance 24–27 novembre 2026",
+          "url": "https://shinhotaka-ropeway.jp/en/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — tarif individuel des deux lignes",
+          "url": "https://shinhotaka-ropeway.jp/en/price/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — brochure horaire, saisons et dernier départ",
+          "url": "https://shinhotaka-ropeway.jp/pdf/pamphlet/en.pdf",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — accessibilité en fauteuil",
+          "url": "https://shinhotaka-ropeway.jp/en/faq/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — ouverture 15 juillet 1970",
+          "url": "https://shinhotaka-ropeway.jp/history/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "MapFan — coordonnées de la gare basse",
+          "url": "https://mapfan.com/spots/SCH,J,SC4",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Shinhotaka Ropeway and Mount Kasa.jpg (Alpsdake, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Shinhotaka_Ropeway_and_Mount_Kasa.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Shin-Hotaka Onsen Station, Shinhotaka Ropeway - Sep 5, 2024.jpg (Seiya Ishibashi, CC BY 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Shin-Hotaka_Onsen_Station,_Shinhotaka_Ropeway_-_Sep_5,_2024.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Shinhotaka Ropeway (2018-06-22).jpg (Alpsdake, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Shinhotaka_Ropeway_(2018-06-22).jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Deux tronçons formant une expérience touristique autonome avec billet commun et exploitant propre."
+      }
     }
   ]
 }

@@ -1,0 +1,59 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Shinhotaka Ropeway et Shin-Hotaka Ropeway : aucun résultat ; aucun homonyme dans JP.json.",
+  "decision": "Deux téléphériques touristiques reliés, billet autonome et terrasse panoramique ; une seule fiche pour le parcours complet.",
+  "history": "Ouverture officielle le 15 juillet 1970 selon la chronologie japonaise de l’exploitant.",
+  "service": "Première montée 08:30 et dernière montée 16:00 en saison verte, 09:00 et 15:30 en hiver ; dernière descente 16:45 ou 16:15. Août et fins de semaine/jours fériés d’octobre : première montée 08:00.",
+  "maintenance": "Fermeture intégrale programmée du 24 au 27 novembre 2026 ; exception fermée dans les horaires structurés, ligne habituellement exploitée. Statut et avis à revérifier le 28 novembre avant de retirer la fermeture passée.",
+  "pricing": "Billet combiné deux lignes adulte 3 800 JPY aller retour ou 2 400 JPY simple ; enfant primaire 1 900 ou 1 200 JPY ; bagages de plus de 6 kg en supplément.",
+  "accessibility": "Rampes, ascenseurs et monte-escaliers selon le trajet ; fauteuil de prêt à deux gares ; contact pour fauteuil hors gabarit.",
+  "photos": "Trois photos exactes, dont une gare en 2024 et deux cabines historiques étiquetées avant la rénovation de 2020, licences et textes en huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — présentation et avis de maintenance 24–27 novembre 2026",
+      "url": "https://shinhotaka-ropeway.jp/en/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — tarif individuel des deux lignes",
+      "url": "https://shinhotaka-ropeway.jp/en/price/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — brochure horaire, saisons et dernier départ",
+      "url": "https://shinhotaka-ropeway.jp/pdf/pamphlet/en.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — accessibilité en fauteuil",
+      "url": "https://shinhotaka-ropeway.jp/en/faq/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — ouverture 15 juillet 1970",
+      "url": "https://shinhotaka-ropeway.jp/history/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "MapFan — coordonnées de la gare basse",
+      "url": "https://mapfan.com/spots/SCH,J,SC4",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Shinhotaka Ropeway and Mount Kasa.jpg (Alpsdake, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Shinhotaka_Ropeway_and_Mount_Kasa.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Shin-Hotaka Onsen Station, Shinhotaka Ropeway - Sep 5, 2024.jpg (Seiya Ishibashi, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Shin-Hotaka_Onsen_Station,_Shinhotaka_Ropeway_-_Sep_5,_2024.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Shinhotaka Ropeway (2018-06-22).jpg (Alpsdake, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Shinhotaka_Ropeway_(2018-06-22).jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "La météo peut interrompre le service ; heures du site officiel en images vérifiées avec brochure officielle. Les photos de cabines sont historiques, pas une représentation du matériel actuel."
+}

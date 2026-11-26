@@ -1,0 +1,131 @@
+[
+  {
+    "step": "core",
+    "operationId": "d81a732d-1c77-4de8-b6a8-2f3eccdc8202",
+    "appliedAtUtc": "2026-11-26T03:20:05.0275435Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-89208373dd4549d48fefd83a0a068ebe",
+    "imageId": "89208373dd4549d48fefd83a0a068ebe",
+    "createdAtUtc": "2026-11-26T03:21:17.371Z",
+    "updatedAtUtc": "2026-11-26T03:21:20.829Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shinhotaka_Ropeway_and_Mount_Kasa.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-223aa0dcb0a843fb80929121eb87a07a",
+    "imageId": "223aa0dcb0a843fb80929121eb87a07a",
+    "createdAtUtc": "2026-11-26T03:21:30.121Z",
+    "updatedAtUtc": "2026-11-26T03:21:33.53Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shin-Hotaka_Onsen_Station,_Shinhotaka_Ropeway_-_Sep_5,_2024.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-401471f043ad457391c6f8e42439a68f",
+    "imageId": "401471f043ad457391c6f8e42439a68f",
+    "createdAtUtc": "2026-11-26T03:21:43.306Z",
+    "updatedAtUtc": "2026-11-26T03:21:46.645Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shinhotaka_Ropeway_(2018-06-22).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "history",
+    "operationId": "1983b332-df36-470a-ab1b-43c7c8cc5031",
+    "appliedAtUtc": "2026-11-26T03:22:12.220063Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "94a4b01d-8d0b-4932-8fa3-5ab1c6ff2332",
+    "appliedAtUtc": "2026-11-26T03:22:34.0349219Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "5023b42c-0a98-4f1c-b02f-00c8a3654638",
+    "appliedAtUtc": "2026-11-26T03:22:56.9619157Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "description",
+    "operationId": "9b7bc3ab-8d95-4c06-aefb-3c77bd425cc7",
+    "appliedAtUtc": "2026-11-26T03:24:10.9644453Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "53850715-3b3b-4d1f-8f47-3766c7739d64",
+    "appliedAtUtc": "2026-11-26T03:24:41.7038654Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "935760e8ed5c4ba6acc1cb01822c2fc6",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T03:25:39.9011008Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128879437424431"
+  }
+]
