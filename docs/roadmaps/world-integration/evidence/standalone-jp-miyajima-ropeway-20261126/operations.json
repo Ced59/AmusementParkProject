@@ -1,0 +1,146 @@
+[
+  {
+    "step": "core",
+    "operationId": "79702b78-cc18-4d22-85c9-af51ed6a6632",
+    "appliedAtUtc": "2026-11-26T03:46:54.8248744Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "f31d1117-622c-4db8-8ff3-12b16f5b1a65",
+    "appliedAtUtc": "2026-11-26T03:48:36.0270957Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "ae2aee80-4a92-43c5-a951-b2d70736df8c",
+    "appliedAtUtc": "2026-11-26T03:48:58.4459109Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "e4b1fc29-b758-4235-a4b8-46b1cc401d68",
+    "appliedAtUtc": "2026-11-26T03:49:20.5579705Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-06f70c05e0f646aa909819ed6db99fa7",
+    "imageId": "06f70c05e0f646aa909819ed6db99fa7",
+    "createdAtUtc": "2026-11-26T03:49:57.208Z",
+    "updatedAtUtc": "2026-11-26T03:50:00.844Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway,_Momijidani_Line_001.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-b8f63554dadb4b8d8ea90f16c12b8b8c",
+    "imageId": "b8f63554dadb4b8d8ea90f16c12b8b8c",
+    "createdAtUtc": "2026-11-26T03:50:11.963Z",
+    "updatedAtUtc": "2026-11-26T03:50:15.287Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway,_Shishiiwa_Line_004.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-043073f431134f8d9845ce9a98f9a9bb",
+    "imageId": "043073f431134f8d9845ce9a98f9a9bb",
+    "createdAtUtc": "2026-11-26T03:50:25.342Z",
+    "updatedAtUtc": "2026-11-26T03:50:28.856Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miyajima_Ropeway.gondola.jpg"
+  },
+  {
+    "step": "editorial",
+    "operationId": "d92b7135-8f05-4531-beb5-daf5a63398d9",
+    "appliedAtUtc": "2026-11-26T03:53:23.3800519Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-metadata",
+    "eventId": "photo-metadata-06f70c05e0f646aa909819ed6db99fa7",
+    "imageId": "06f70c05e0f646aa909819ed6db99fa7",
+    "updatedAtUtc": "2026-11-26T03:53:34.526Z",
+    "languages": 8
+  },
+  {
+    "step": "photo-2-metadata",
+    "eventId": "photo-metadata-b8f63554dadb4b8d8ea90f16c12b8b8c",
+    "imageId": "b8f63554dadb4b8d8ea90f16c12b8b8c",
+    "updatedAtUtc": "2026-11-26T03:53:45.341Z",
+    "languages": 8
+  },
+  {
+    "step": "photo-3-metadata",
+    "eventId": "photo-metadata-043073f431134f8d9845ce9a98f9a9bb",
+    "imageId": "043073f431134f8d9845ce9a98f9a9bb",
+    "updatedAtUtc": "2026-11-26T03:53:56.104Z",
+    "languages": 8
+  },
+  {
+    "step": "publish",
+    "operationId": "f3e79d04-da70-466c-9878-15342269a8fd",
+    "appliedAtUtc": "2026-11-26T03:54:33.4379408Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "e7a4070840c146f0ab058175c19214c7",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T03:55:22.3165177Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128881333424431"
+  }
+]
