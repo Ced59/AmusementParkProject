@@ -1,0 +1,110 @@
+[
+  {
+    "step": "core",
+    "operationId": "01dc8d2a-3b28-41eb-9110-0457c0d6d11d",
+    "appliedAtUtc": "2026-11-26T07:09:24.8029579Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-57316f319c854223962bae4a5b5fad8d",
+    "imageId": "57316f319c854223962bae4a5b5fad8d",
+    "createdAtUtc": "2026-11-26T07:11:01.906Z",
+    "updatedAtUtc": "2026-11-26T07:11:06.623Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-de3e1a3c3f66485ab5eb20860177521b",
+    "imageId": "de3e1a3c3f66485ab5eb20860177521b",
+    "createdAtUtc": "2026-11-26T07:11:32.162Z",
+    "updatedAtUtc": "2026-11-26T07:11:36.959Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-dbcf75c03af84eeea86061fc4e0e9fdc",
+    "imageId": "dbcf75c03af84eeea86061fc4e0e9fdc",
+    "createdAtUtc": "2026-11-26T07:12:07.706Z",
+    "updatedAtUtc": "2026-11-26T07:12:11.341Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:M%C3%BClenen_Niesenbahn_02.JPG"
+  },
+  {
+    "step": "visitors",
+    "operationId": "36389805-e8cf-42d7-bf94-d7537f5554d9",
+    "appliedAtUtc": "2026-11-26T07:14:04.5643899Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "context",
+    "operationId": "dd96ef4b-4b8f-4719-9f0c-b2bf912214a0",
+    "appliedAtUtc": "2026-11-26T07:14:40.9847656Z",
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "textfix",
+    "operationId": "e84a49c2-088f-4aeb-be98-56087536a26e",
+    "appliedAtUtc": "2026-11-26T07:16:37.8847117Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "site-publication",
+    "operationId": "686366fb-0203-4bda-bf2b-bacc1260b3fa",
+    "appliedAtUtc": "2026-11-26T07:17:29.5727484Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "649cefc36b654e92b7f88c7784fb1cb1",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T07:18:45.6686732Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128896813424431"
+  }
+]

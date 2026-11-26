@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "Recherches PDE Park et Standalone Attraction sur Niesen : aucun résultat. Aucune ligne Niesenbahn ou Mülenen dans le backlog suisse préexistant.",
+  "classification": "Funiculaire autonome à deux tronçons Mülenen–Schwandegg–Niesen Kulm ; quatre voitures et billetterie propre. Le terminus supérieur donne accès au panorama de la montagne.",
+  "facts": "L’exploitant date l’ouverture du 15 juillet 1910, précise une longueur totale de 3 499 m et une durée de 30 min. Adresse de la gare basse : Heustrichstrasse 12, 3711 Mülenen ; coordonnées du nœud OSM 46.6394204, 7.6902147.",
+  "pricing": "La grille officielle encore libellée saison 2026 indiquait notamment 64 CHF adulte aller-retour complet et 40 CHF aller simple. La saison 2026 est terminée ; ces montants ne sont pas présentés comme tarifs 2027 dans la fiche.",
+  "hours": "L’exploitant annonce la pause hivernale du 9 novembre 2026 au 23 avril 2027. Une règle de fermeture couvre seulement la période encore future au 26 novembre. La saison suivante commence le 24 avril 2027 selon la page, mais aucun horaire quotidien 2027 n’est présumé.",
+  "access": "La page officielle décrit rampes, ascenseurs, limite de un ou deux fauteuils par voiture et transfert obligatoire depuis un fauteuil électrique vers un fauteuil non électrique. Prévenir le personnel avant la visite et venir accompagné.",
+  "photos": "Trois photos exactes publiées : deux vues de la rame sur le pont de la Kander près de Mülenen (Frank Nowotny, date de prise de vue inconnue) et une vue du pont sans rame en 2015 (Paebi), toutes CC BY-SA 4.0. Sources, crédits, licences, huit textes alternatifs et huit légendes conservés.",
+  "sources": [
+    {
+      "label": "Niesenbahn — présentation et histoire officielles",
+      "url": "https://www.niesen.ch/en/niesenbahn/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Niesenbahn — données techniques et ouverture",
+      "url": "https://www.niesen.ch/en/niesenbahn/technology/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Niesenbahn — horaires et pause hivernale",
+      "url": "https://www.niesen.ch/en/niesenbahn/timetable/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Niesenbahn — tarifs saison 2026, archive de vérification",
+      "url": "https://www.niesen.ch/en/niesenbahn/prices/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Niesenbahn — accessibilité et fauteuils",
+      "url": "https://www.niesen.ch/en/niesenbahn/accessible/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — gare basse de Mülenen",
+      "url": "https://www.openstreetmap.org/node/6033854226",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:M%C3%BClenen_Niesenbahn_02.JPG",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "nextReview": "Vérifier la grille tarifaire, le calendrier 2027 et le matériel réellement en service ; noter toute actualisation de données sans supprimer l’entrée."
+}

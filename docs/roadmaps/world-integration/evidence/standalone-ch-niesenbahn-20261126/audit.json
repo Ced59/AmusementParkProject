@@ -1,0 +1,175 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "a68b47d8-41e3-40b3-8f37-c6a12fda1518",
+  "name": "Niesenbahn",
+  "countryCode": "CH",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/a68b47d8-41e3-40b3-8f37-c6a12fda1518/niesenbahn",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T07:20:10Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "649cefc36b654e92b7f88c7784fb1cb1",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128896813424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T07:16:37.884Z",
+  "lastDataEventId": "e84a49c2-088f-4aeb-be98-56087536a26e",
+  "completeness": {
+    "completenessScore": 85,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "57316f319c854223962bae4a5b5fad8d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Schweiz.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "de3e1a3c3f66485ab5eb20860177521b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Frank Nowotny · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Niesenbahn_Standseilbahn.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "dbcf75c03af84eeea86061fc4e0e9fdc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:M%C3%BClenen_Niesenbahn_02.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Paebi · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Mülenen_Niesenbahn_02.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Paebi · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Mülenen_Niesenbahn_02.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Paebi · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Mülenen_Niesenbahn_02.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Paebi · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Mülenen_Niesenbahn_02.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Paebi · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Mülenen_Niesenbahn_02.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Paebi · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Mülenen_Niesenbahn_02.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Paebi · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Mülenen_Niesenbahn_02.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Paebi · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Mülenen_Niesenbahn_02.JPG · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "openingRules": 1,
+  "sitePublicationReceipt": "686366fb-0203-4bda-bf2b-bacc1260b3fa",
+  "note": "Pause hivernale 2026–2027 explicitement bornée. Tarifs 2026 archivés en recherche seulement. La publication du site et Facebook ne modifient pas la date de dernière intégration de données."
+}
