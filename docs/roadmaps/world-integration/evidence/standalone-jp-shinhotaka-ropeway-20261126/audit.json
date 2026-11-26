@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "63c6d8d1-ae68-4810-9ef1-5477e307acac",
+  "name": "Shinhotaka Ropeway",
+  "countryCode": "JP",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/63c6d8d1-ae68-4810-9ef1-5477e307acac/shinhotaka-ropeway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T03:25:47Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "935760e8ed5c4ba6acc1cb01822c2fc6",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128879437424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T03:24:10.964Z",
+  "lastDataEventId": "9b7bc3ab-8d95-4c06-aefb-3c77bd425cc7",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Shinhotaka Ropeway et Shin-Hotaka Ropeway : aucun résultat ; aucun homonyme dans JP.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "89208373dd4549d48fefd83a0a068ebe",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shinhotaka_Ropeway_and_Mount_Kasa.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Alpsdake",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "223aa0dcb0a843fb80929121eb87a07a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shin-Hotaka_Onsen_Station,_Shinhotaka_Ropeway_-_Sep_5,_2024.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Seiya Ishibashi",
+      "license": "CC BY 2.0"
+    },
+    {
+      "id": "401471f043ad457391c6f8e42439a68f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shinhotaka_Ropeway_(2018-06-22).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Alpsdake",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 4,
+  "openingRules": 5
+}
