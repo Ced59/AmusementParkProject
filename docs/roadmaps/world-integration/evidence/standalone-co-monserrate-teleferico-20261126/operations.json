@@ -1,0 +1,95 @@
+[
+  {
+    "step": "core",
+    "operationId": "8e5ae56f-6daf-4e40-ad76-6c5fbf77452b",
+    "appliedAtUtc": "2026-11-26T06:22:54.7064011Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-6a4fe32398ca47cfbdf179ade4701100",
+    "imageId": "6a4fe32398ca47cfbdf179ade4701100",
+    "createdAtUtc": "2026-11-26T06:24:32.652Z",
+    "updatedAtUtc": "2026-11-26T06:24:36.395Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-7e9ee9c7100f4cc6821f6ae98f743f2e",
+    "imageId": "7e9ee9c7100f4cc6821f6ae98f743f2e",
+    "createdAtUtc": "2026-11-26T06:25:07.532Z",
+    "updatedAtUtc": "2026-11-26T06:25:11.817Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-135be67565f347678beea495bde8a25a",
+    "imageId": "135be67565f347678beea495bde8a25a",
+    "createdAtUtc": "2026-11-26T06:25:32.607Z",
+    "updatedAtUtc": "2026-11-26T06:25:36.026Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg"
+  },
+  {
+    "step": "visitors",
+    "operationId": "dbfe7ac8-9402-4288-9352-4976c27fd7ff",
+    "appliedAtUtc": "2026-11-26T06:26:42.4589502Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "context",
+    "operationId": "dcc702ef-af4e-4f15-b7ef-5c6f45f3e036",
+    "appliedAtUtc": "2026-11-26T06:27:38.5699105Z",
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "site-publication",
+    "operationId": "e5ce47f9-73bd-4b03-bef8-495fc598f123",
+    "appliedAtUtc": "2026-11-26T06:28:23.8107283Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "9a2f1805f7ef483f8ba8cfec26904a28",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T06:29:20.7542807Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128893597424431"
+  }
+]
