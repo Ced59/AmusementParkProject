@@ -16649,6 +16649,148 @@
           "accessedAt": "2026-11-15"
         }
       ]
+    },
+    {
+      "entryId": "GB-candidate-discovery-east-hill-lift-hastings-20261126",
+      "name": "East Hill Lift",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Funiculaire historique à billet propre",
+      "locality": "Rock-a-Nore Road, Hastings, TN34 3EG",
+      "siteId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T00:54:43Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Ouvert les samedis et dimanches jusqu’au 28 février 2027 selon le calendrier municipal.",
+      "identityConfidence": "Mairie exploitante : identité, billets, horaires, accès, histoire ; trois photos exactes sous licence ; recherche sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "East Hill Cliff Railway",
+        "Hastings East Hill Lift"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T00:52:09.856Z",
+      "integrationHistory": [
+        {
+          "eventId": "86fceac8-2758-443d-8428-0c3ba41a683f",
+          "appliedAt": "2026-11-26T00:48:17.720Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/operations.json#86fceac8-2758-443d-8428-0c3ba41a683f",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche sans doublon ; identité, adresse et huit descriptions."
+        },
+        {
+          "eventId": "f18cfe24-f3df-482b-890c-fc91a3fe6870",
+          "appliedAt": "2026-11-26T00:48:41.896Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/operations.json#f18cfe24-f3df-482b-890c-fc91a3fe6870",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels et horaires de week-end hiver 2026–2027 intégrés."
+        },
+        {
+          "eventId": "55d17a0c-8545-4dd9-be9f-87aa8aefc6f2",
+          "appliedAt": "2026-11-26T00:49:29.199Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/operations.json#55d17a0c-8545-4dd9-be9f-87aa8aefc6f2",
+          "auditEvidence": null,
+          "summary": "Ouverture en août 1902 documentée avec précision mensuelle."
+        },
+        {
+          "eventId": "68dc838f-4012-4e03-999c-3e7aad9d65e9",
+          "appliedAt": "2026-11-26T00:49:53.773Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/operations.json#68dc838f-4012-4e03-999c-3e7aad9d65e9",
+          "auditEvidence": null,
+          "summary": "Accès sans marche et limites pour scooters documentés dans huit langues."
+        },
+        {
+          "eventId": "photo-486676c121f947afbfe73fbb11ac65bb",
+          "appliedAt": "2026-11-26T00:50:14.819Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/operations.json#photo-486676c121f947afbfe73fbb11ac65bb",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Poliphilo (CC0)."
+        },
+        {
+          "eventId": "photo-755d14ead88e43ce8c509bcb8e7b3dde",
+          "appliedAt": "2026-11-26T00:50:27.674Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/operations.json#photo-755d14ead88e43ce8c509bcb8e7b3dde",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : pam fray (CC BY-SA 2.0)."
+        },
+        {
+          "eventId": "photo-6e04823c236a420295e88a5ff627befc",
+          "appliedAt": "2026-11-26T00:50:41.706Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/operations.json#photo-6e04823c236a420295e88a5ff627befc",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 importée : Les Chatfield (CC BY 2.0)."
+        },
+        {
+          "eventId": "455dc764-e993-424a-88d5-4786d17cf6ae",
+          "appliedAt": "2026-11-26T00:52:09.856Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "73ae74b8-49e5-41a4-826f-80fb1bd3e170",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/operations.json#455dc764-e993-424a-88d5-4786d17cf6ae",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-east-hill-lift-hastings-20261126/audit.json",
+          "summary": "Correction de la formulation historique portugaise après audit, sans changer la date."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Recontrôler les tarifs et publier le calendrier à partir du 1er mars 2027 lorsque la mairie le précisera.",
+      "sources": [
+        {
+          "label": "Hastings Borough Council — East Hill Lift, horaires 2026–2027, prix, accès et ouverture en août 1902",
+          "url": "https://www.hastings.gov.uk/coastlinebeaches/cliff-railways/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "The WRENN Report — bâtiment classé, coordonnées et adresse de la station basse",
+          "url": "https://www.thewrennreport.co.uk/building/E60000238-b7f2da64-1796-4b5a-8d90-acf0b71db19c/east-hill-lift",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — East Hill Lift, Hastings.JPG (Poliphilo, CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:East_Hill_Lift,_Hastings.JPG",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — East Hill Lift, Hastings - geograph.org.uk - 3072214.jpg (pam fray, CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:East_Hill_Lift,_Hastings_-_geograph.org.uk_-_3072214.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Hastings East Hill Lift railway (10).jpg (Les Chatfield, CC BY 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Hastings_East_Hill_Lift_railway_(10).jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Funiculaire autonome avec billetterie et horaire propres, sans parc parent."
+      }
     }
   ]
 }
