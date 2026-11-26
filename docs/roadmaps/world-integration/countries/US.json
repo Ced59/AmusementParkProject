@@ -80030,6 +80030,158 @@
         "attractions": [],
         "rationale": "Téléphérique autonome à billets, stations et horaire propres, hors parc parent."
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-portland-aerial-tram-20261126",
+      "name": "Portland Aerial Tram",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique urbain panoramique à tarif propre",
+      "locality": "3303 South Bond Avenue, Portland, OR 97239",
+      "siteId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T01:46:43Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation régulière avec fermetures datées affichées.",
+      "identityConfidence": "Gares, horaires, tarifs, accès et histoire vérifiés chez l’exploitant et la ville ; trois photos exactes licenciées ; recherche sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "OHSU Tram",
+        "Portland Tram"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T01:44:32.192Z",
+      "integrationHistory": [
+        {
+          "eventId": "e8e4bfce-2ee9-466f-9b70-352f547a9ca0",
+          "appliedAt": "2026-11-26T01:41:58.827Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-portland-aerial-tram-20261126/operations.json#e8e4bfce-2ee9-466f-9b70-352f547a9ca0",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche sans doublon ; identité, station et huit descriptions."
+        },
+        {
+          "eventId": "d5da074f-0113-4b79-a672-0d94571c98af",
+          "appliedAt": "2026-11-26T01:42:24.696Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-portland-aerial-tram-20261126/operations.json#d5da074f-0113-4b79-a672-0d94571c98af",
+          "auditEvidence": null,
+          "summary": "Tarifs, horaires et fermetures officielles intégrés."
+        },
+        {
+          "eventId": "193207c9-984e-4e3e-8e39-d13c4c1672b3",
+          "appliedAt": "2026-11-26T01:43:10.071Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-portland-aerial-tram-20261126/operations.json#193207c9-984e-4e3e-8e39-d13c4c1672b3",
+          "auditEvidence": null,
+          "summary": "Ouverture du 27 janvier 2007 documentée."
+        },
+        {
+          "eventId": "6cee94d5-5eb1-4f1e-a022-7d8d49dfeb62",
+          "appliedAt": "2026-11-26T01:43:32.435Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-portland-aerial-tram-20261126/operations.json#6cee94d5-5eb1-4f1e-a022-7d8d49dfeb62",
+          "auditEvidence": null,
+          "summary": "Accès des fauteuils et autres aides à la mobilité documenté dans huit langues."
+        },
+        {
+          "eventId": "photo-da2bac4f96c34cfab811846ce8cf06f6",
+          "appliedAt": "2026-11-26T01:44:04.459Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-portland-aerial-tram-20261126/operations.json#photo-da2bac4f96c34cfab811846ce8cf06f6",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : atul666 (CC BY-SA 2.0)."
+        },
+        {
+          "eventId": "photo-b242886eacea46a68f85696aa6c936ea",
+          "appliedAt": "2026-11-26T01:44:18.815Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-portland-aerial-tram-20261126/operations.json#photo-b242886eacea46a68f85696aa6c936ea",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Doug Kerr (CC BY-SA 2.0)."
+        },
+        {
+          "eventId": "photo-67ffc99e9a6048b1ac52464baefc1d20",
+          "appliedAt": "2026-11-26T01:44:32.192Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-portland-aerial-tram-20261126/operations.json#photo-67ffc99e9a6048b1ac52464baefc1d20",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-portland-aerial-tram-20261126/audit.json",
+          "summary": "Photo exacte 3/3 importée : Steve Morgan (CC BY-SA 3.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Recontrôler les fermetures de maintenance et corriger le code postal si l’exploitant met à jour son adresse.",
+      "sources": [
+        {
+          "label": "Portland Aerial Tram — tarifs officiels",
+          "url": "https://www.gobytram.com/fare",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Portland Aerial Tram — horaires et fermetures 2026–2027",
+          "url": "https://www.gobytram.com/hours",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Portland Aerial Tram — accès fauteuil",
+          "url": "https://www.gobytram.com/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Portland Aerial Tram — station basse et adresse",
+          "url": "https://www.gobytram.com/directions/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Ville de Portland — propriété et ouverture du 27 janvier 2007",
+          "url": "https://www.portland.gov/transportation/portland-aerial-tram",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap via Nominatim — station South Waterfront, coordonnées et code postal",
+          "url": "https://www.openstreetmap.org/way/75733977",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Portland Aerial Tram in the Snow.jpg (atul666, CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Portland_Aerial_Tram_in_the_Snow.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Portland Aerial Tram - Portland, Oregon (14430118458).jpg (Doug Kerr, CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Portland_Aerial_Tram_-_Portland,_Oregon_(14430118458).jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Gibbs Street Ped Bridge with Portland Aerial Tram cabin above.jpg (Steve Morgan, CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gibbs_Street_Ped_Bridge_with_Portland_Aerial_Tram_cabin_above.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Téléphérique indépendant avec tarif spécifique et horaire public, hors parc parent."
+      }
     }
   ]
 }
