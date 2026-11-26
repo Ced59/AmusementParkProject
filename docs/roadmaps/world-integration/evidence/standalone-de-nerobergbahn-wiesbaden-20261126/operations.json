@@ -1,0 +1,131 @@
+[
+  {
+    "step": "core",
+    "operationId": "d0d7e5c9-4a3e-4bac-9789-7fd93905aa16",
+    "appliedAtUtc": "2026-11-26T00:11:08.9997804Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "lifecycle",
+    "operationId": "0cf99ae5-1eb0-4bf2-ba4a-b71ef864d68f",
+    "appliedAtUtc": "2026-11-26T00:11:52.3919255Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "f04b2331-6d02-4aba-9409-07f35f9641c0",
+    "appliedAtUtc": "2026-11-26T00:12:14.2351693Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "c7ba71cd-5044-49e5-aded-2c9126a6e43d",
+    "appliedAtUtc": "2026-11-26T00:13:04.102862Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "ca778ea5-e346-493b-81e9-e57516139f28",
+    "appliedAtUtc": "2026-11-26T00:13:26.0223489Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-3ba193662a594b169ba988eeebd91f4f",
+    "imageId": "3ba193662a594b169ba988eeebd91f4f",
+    "createdAtUtc": "2026-11-26T00:13:46.924Z",
+    "updatedAtUtc": "2026-11-26T00:13:50.795Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nerobergbahn_2014_5.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-2076fe0cda4c4478aea82d7b9fd09903",
+    "imageId": "2076fe0cda4c4478aea82d7b9fd09903",
+    "createdAtUtc": "2026-11-26T00:14:02.352Z",
+    "updatedAtUtc": "2026-11-26T00:14:05.998Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Doors_of_the_Nerobergbahn_funicular_railway_in_Wiesbaden,_Hesse,_Germany_2026-06-05.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-6eb995c4b89f4126b0d01d472f5b7d0b",
+    "imageId": "6eb995c4b89f4126b0d01d472f5b7d0b",
+    "createdAtUtc": "2026-11-26T00:14:18.349Z",
+    "updatedAtUtc": "2026-11-26T00:14:21.726Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nerobergbahn_2014_13.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "38dce667-0da6-4b4e-973d-440857c534b5",
+    "appliedAtUtc": "2026-11-26T00:15:13.2342854Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "d79b70b94a014eb58471d8e1c6093208",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T00:15:59.8648392Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128867125424431"
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions DE sur Nerobergbahn, Neroberg et Neroberg Railway : zéro résultat ; aucun homonyme dans le backlog DE.",
+  "decision": "Funiculaire historique autonome à gares, horaires et billetterie propres, hors parc parent. L’exploitant confirme que les titres RMV et Deutschlandticket ne sont pas valables.",
+  "lifecycle": "En pause hivernale depuis novembre 2026 ; reprise annoncée par ESWE Verkehr et Visit Wiesbaden pour le 26 mars 2027. Le champ lifecycle reste Operating car l’éditeur refuse tarifs et horaires structurés sous TemporarilyClosed ; une règle de fermeture du 26 novembre au 25 mars, le texte public et les notes reflètent la situation actuelle.",
+  "officialPricing": "Tarifs de la dernière saison, affichés par ESWE au 26 novembre 2026 : retour adulte 6 €, enfant 6–14 ans 3,50 €, famille 2 adultes et jusqu’à 3 enfants propres 13 € ; simple 4/2,50 €. La page de l’office de tourisme affiche encore 5/3 € : prix de l’exploitant privilégiés, à recontrôler avant 2027.",
+  "officialHours": "Fermeture hivernale jusqu’au 25 mars 2027 inclus ; reprise annoncée le 26 mars. Ensuite chaque jour 09:00–19:00, départs environ tous les quarts d’heure. Règle ouverte limitée au 30 septembre 2027 car aucune fin de saison 2027 confirmée.",
+  "accessibility": "Fauteuils non motorisés possibles sur la grande plateforme extérieure ; fauteuils électriques exclus à cause du poids ; chemins du Neroberg pavés, selon FAQ officielle.",
+  "history": "La FAQ de l’exploitant date l’ouverture du 25 septembre 1888.",
+  "photos": "Trois photos exactes sous licence CC BY-SA 4.0 : voiture sur le viaduc, porte et plateforme du wagon photographiées en juin 2026, bâtiment de station. Les deux fichiers Geolina163 portent « 2014 » dans le nom mais des métadonnées « 2024 » ; aucun millésime de prise de vue n’est affirmé dans les textes publics.",
+  "sources": [
+    {
+      "label": "ESWE Verkehr — Nerobergbahn, pause hivernale et reprise annoncée le 26 mars 2027, tarifs",
+      "url": "https://www.eswe-verkehr.de/en/nerobergbahn.html",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "ESWE Verkehr — FAQ, ouverture 25 septembre 1888, fauteuils et adresse",
+      "url": "https://www.eswe-verkehr.de/en/faq.html",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Visit Wiesbaden — station basse et reprise 2027",
+      "url": "https://tourismus.wiesbaden.de/en/entdecken/sehenswertes/nerobergbahn",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap via Mapcarta — coordonnées station basse",
+      "url": "https://mapcarta.com/N8630144616",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Nerobergbahn 2014 5.jpg (Geolina163, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Nerobergbahn_2014_5.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Doors of the Nerobergbahn funicular railway in Wiesbaden, Hesse, Germany 2026-06-05.jpg (Nakonana, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Doors_of_the_Nerobergbahn_funicular_railway_in_Wiesbaden,_Hesse,_Germany_2026-06-05.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Nerobergbahn 2014 13.jpg (Geolina163, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Nerobergbahn_2014_13.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Tarifs de 2026 non garantis pour 2027 ; saison 2027 après septembre non annoncée. Revoir prix, calendrier et statut lifecycle dès la reprise. Le prix de la page municipale est plus ancien et diverge de celui d’ESWE."
+}

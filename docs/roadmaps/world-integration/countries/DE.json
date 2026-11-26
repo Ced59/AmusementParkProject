@@ -35361,6 +35361,158 @@
         "attractions": [],
         "rationale": "Belvédère M168 doté de son propre billet, de ses horaires et d’une entrée indépendante ; aucun parc parent."
       }
+    },
+    {
+      "entryId": "DE-candidate-discovery-nerobergbahn-wiesbaden-20261126",
+      "name": "Nerobergbahn",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Funiculaire historique à billet propre",
+      "locality": "Wilhelminenstraße 51, 65193 Wiesbaden",
+      "siteId": "02737113-c512-40bc-831e-a026caece346",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T00:17:08Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Pause hivernale depuis novembre 2026 ; réouverture annoncée le 26 mars 2027 par l’exploitant.",
+      "identityConfidence": "Gare basse, tarifs propres, horaires, accessibilité et histoire officiels ; photos exactes sous licence ; recherche sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Neroberg Railway",
+        "Neroberg funicular"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T00:14:21.726Z",
+      "integrationHistory": [
+        {
+          "eventId": "d0d7e5c9-4a3e-4bac-9789-7fd93905aa16",
+          "appliedAt": "2026-11-26T00:11:08.999Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02737113-c512-40bc-831e-a026caece346",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/operations.json#d0d7e5c9-4a3e-4bac-9789-7fd93905aa16",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches sans doublon ; identité, adresse, huit descriptions et fermeture hivernale."
+        },
+        {
+          "eventId": "0cf99ae5-1eb0-4bf2-ba4a-b71ef864d68f",
+          "appliedAt": "2026-11-26T00:11:52.391Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02737113-c512-40bc-831e-a026caece346",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/operations.json#0cf99ae5-1eb0-4bf2-ba4a-b71ef864d68f",
+          "auditEvidence": null,
+          "summary": "Classement saisonnier Operating pour permettre tarifs et calendrier ; période de fermeture explicite."
+        },
+        {
+          "eventId": "f04b2331-6d02-4aba-9409-07f35f9641c0",
+          "appliedAt": "2026-11-26T00:12:14.235Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02737113-c512-40bc-831e-a026caece346",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/operations.json#f04b2331-6d02-4aba-9409-07f35f9641c0",
+          "auditEvidence": null,
+          "summary": "Cinq tarifs de l’exploitant et calendrier hiver 2026–printemps 2027 intégrés."
+        },
+        {
+          "eventId": "c7ba71cd-5044-49e5-aded-2c9126a6e43d",
+          "appliedAt": "2026-11-26T00:13:04.102Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02737113-c512-40bc-831e-a026caece346",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/operations.json#c7ba71cd-5044-49e5-aded-2c9126a6e43d",
+          "auditEvidence": null,
+          "summary": "Ouverture du 25 septembre 1888 documentée."
+        },
+        {
+          "eventId": "ca778ea5-e346-493b-81e9-e57516139f28",
+          "appliedAt": "2026-11-26T00:13:26.022Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02737113-c512-40bc-831e-a026caece346",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/operations.json#ca778ea5-e346-493b-81e9-e57516139f28",
+          "auditEvidence": null,
+          "summary": "Accès limité aux fauteuils non motorisés documenté dans huit langues."
+        },
+        {
+          "eventId": "photo-3ba193662a594b169ba988eeebd91f4f",
+          "appliedAt": "2026-11-26T00:13:50.795Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02737113-c512-40bc-831e-a026caece346",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/operations.json#photo-3ba193662a594b169ba988eeebd91f4f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Geolina163 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-2076fe0cda4c4478aea82d7b9fd09903",
+          "appliedAt": "2026-11-26T00:14:05.998Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02737113-c512-40bc-831e-a026caece346",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/operations.json#photo-2076fe0cda4c4478aea82d7b9fd09903",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Nakonana (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-6eb995c4b89f4126b0d01d472f5b7d0b",
+          "appliedAt": "2026-11-26T00:14:21.726Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02737113-c512-40bc-831e-a026caece346",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/operations.json#photo-6eb995c4b89f4126b0d01d472f5b7d0b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-nerobergbahn-wiesbaden-20261126/audit.json",
+          "summary": "Photo exacte 3/3 importée : Geolina163 (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Recontrôler les tarifs, l’ouverture et le statut le 26 mars 2027 ; demander la date de fin de saison 2027 avant extension du calendrier structuré.",
+      "sources": [
+        {
+          "label": "ESWE Verkehr — Nerobergbahn, pause hivernale et reprise annoncée le 26 mars 2027, tarifs",
+          "url": "https://www.eswe-verkehr.de/en/nerobergbahn.html",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "ESWE Verkehr — FAQ, ouverture 25 septembre 1888, fauteuils et adresse",
+          "url": "https://www.eswe-verkehr.de/en/faq.html",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Visit Wiesbaden — station basse et reprise 2027",
+          "url": "https://tourismus.wiesbaden.de/en/entdecken/sehenswertes/nerobergbahn",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — coordonnées station basse",
+          "url": "https://mapcarta.com/N8630144616",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Nerobergbahn 2014 5.jpg (Geolina163, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Nerobergbahn_2014_5.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Doors of the Nerobergbahn funicular railway in Wiesbaden, Hesse, Germany 2026-06-05.jpg (Nakonana, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Doors_of_the_Nerobergbahn_funicular_railway_in_Wiesbaden,_Hesse,_Germany_2026-06-05.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Nerobergbahn 2014 13.jpg (Geolina163, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Nerobergbahn_2014_13.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "DE",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Funiculaire autonome avec billetterie, gares et calendrier propres, sans parc parent."
+      }
     }
   ]
 }
