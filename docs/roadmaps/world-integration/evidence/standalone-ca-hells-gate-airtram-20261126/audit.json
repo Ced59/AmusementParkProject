@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "7d237a3d-77f2-44ee-8618-c06ee91e14f6",
+  "name": "Hell's Gate Airtram",
+  "countryCode": "CA",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/7d237a3d-77f2-44ee-8618-c06ee91e14f6/hells-gate-airtram",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T02:20:25Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "02a394691d514ed081cfa654dc527c93",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128875063424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T02:18:59.239Z",
+  "lastDataEventId": "f7a363a8-eac7-4a9e-bd0b-0cfb156e76e7",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Hell's Gate Airtram et Hells Gate Airtram : zéro résultat ; aucun homonyme dans CA.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 56,
+    "earnedPoints": 56,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "de87ef761cf94a2ea9995f1465c40726",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hell%27s_Gate_Airtram_(51561179511).jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "David Stanley",
+      "license": "CC BY 2.0"
+    },
+    {
+      "id": "b22b85bb8ac04ece9413942ba75a6e80",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hell%27s_Gate_Airtram_and_Suspension_Bridge_-_panoramio.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Weixi Zeng",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "id": "7968c15cc05a422ca9c09e0debf79b3a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:BostonBarBC_HellsGateAirtram.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Shannon LaBelle",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingFieldBlockedByTemporaryClosure": true,
+  "openingHoursFieldBlockedByTemporaryClosure": true,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}
