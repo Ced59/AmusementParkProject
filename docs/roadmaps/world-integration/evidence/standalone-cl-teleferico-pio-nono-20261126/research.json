@@ -1,0 +1,59 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions « Teleférico » avec CountryCode CL : zéro résultat ; pas de ligne Pío Nono dans CL.json avant création.",
+  "decision": "Ligne de téléphérique touristique à billet aller-retour propre, distincte de la ligne Pedro de Valdivia et des attractions du Parque Metropolitano.",
+  "history": "L’exploitant annonce l’ouverture au public le 24 mars 2026. Une inauguration antérieure ne représente pas la date d’ouverture commerciale.",
+  "route": "La ligne relie Zoológico à Manuel Foster ; le site officiel donne cinq à sept minutes pour le parcours. Le site énumère aussi Chile Nativo parmi les stations mais sa page de lancement en énumère deux : ne pas affirmer un arrêt intermédiaire exploité sans clarification.",
+  "service": "Le site officiel affiche actuellement mardi à dimanche, 10:00–19:45, et la FAQ précise une fermeture à 18:45 en hiver. Aucune date fiable des saisons n’est fournie : horaires conservés dans le texte avec lien officiel, sans règle annuelle inventée.",
+  "pricing": "La page officielle indique « Desde $1.150 » pour l’aller-retour Pío Nono, tandis que le tarif dépend de l’âge et du jour. Ce prix d’appel ne détermine pas un billet adulte exact : aucune offre chiffrée structurée ajoutée sans tableau complet vérifiable.",
+  "accessibility": "La FAQ officielle confirme l’ascenseur et l’embarquement en fauteuil roulant depuis Zoológico ; elle indique huit personnes maximum par cabine sur cette ligne.",
+  "photos": "Quatre photos exactes de la ligne en service et de ses deux stations ; auteurs et licence CC BY-SA 4.0 consignés pour chaque image, avec huit alt et huit légendes.",
+  "sources": [
+    {
+      "label": "Exploitant — ligne Pío Nono et stations",
+      "url": "https://telefericosantiago.cl/linea-pio-nono/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — ouverture publique du 24 mars 2026",
+      "url": "https://telefericosantiago.cl/sin-categoria/gran-apertura-linea-pio-nono-de-teleferico/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — tarifs indicatifs et types de billets",
+      "url": "https://telefericosantiago.cl/choose-your-ticket/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — FAQ, horaires saisonniers et accessibilité",
+      "url": "https://telefericosantiago.cl/questions/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikipédia — coordonnées de la station Zoológico",
+      "url": "https://es.wikipedia.org/wiki/Zool%C3%B3gico_(estaci%C3%B3n)",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Teleférico Pío Nono 01.jpg (Sfs90, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_P%C3%ADo_Nono_01.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Exterior de Estación Zoológico del Teleférico Pío Nono.jpg (TomasVial, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Exterior_de_Estaci%C3%B3n_Zool%C3%B3gico_del_Telef%C3%A9rico_P%C3%ADo_Nono.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Estación Manuel Foster Plaza México del Teleférico Pío Nono.jpg (TomasVial, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Manuel_Foster_Plaza_M%C3%A9xico_del_Telef%C3%A9rico_P%C3%ADo_Nono.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Teleférico Pío Nono 06.jpg (Sfs90, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_P%C3%ADo_Nono_06.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Confirmer les dates de passage été/hiver et la grille adulte/enfant par jour avant de créer des règles horaires et offres de prix structurées. Clarifier le statut de la station Chile Nativo."
+}
