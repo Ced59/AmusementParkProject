@@ -1,0 +1,133 @@
+[
+  {
+    "step": "core",
+    "operationId": "86fceac8-2758-443d-8428-0c3ba41a683f",
+    "appliedAtUtc": "2026-11-26T00:48:17.7205519Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "f18cfe24-f3df-482b-890c-fc91a3fe6870",
+    "appliedAtUtc": "2026-11-26T00:48:41.896239Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "55d17a0c-8545-4dd9-be9f-87aa8aefc6f2",
+    "appliedAtUtc": "2026-11-26T00:49:29.1994956Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "68dc838f-4012-4e03-999c-3e7aad9d65e9",
+    "appliedAtUtc": "2026-11-26T00:49:53.7732532Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-486676c121f947afbfe73fbb11ac65bb",
+    "imageId": "486676c121f947afbfe73fbb11ac65bb",
+    "createdAtUtc": "2026-11-26T00:50:11.194Z",
+    "updatedAtUtc": "2026-11-26T00:50:14.819Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:East_Hill_Lift,_Hastings.JPG",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-755d14ead88e43ce8c509bcb8e7b3dde",
+    "imageId": "755d14ead88e43ce8c509bcb8e7b3dde",
+    "createdAtUtc": "2026-11-26T00:50:24.129Z",
+    "updatedAtUtc": "2026-11-26T00:50:27.674Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:East_Hill_Lift,_Hastings_-_geograph.org.uk_-_3072214.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-6e04823c236a420295e88a5ff627befc",
+    "imageId": "6e04823c236a420295e88a5ff627befc",
+    "createdAtUtc": "2026-11-26T00:50:38.376Z",
+    "updatedAtUtc": "2026-11-26T00:50:41.706Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hastings_East_Hill_Lift_railway_(10).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "historyfix",
+    "operationId": "455dc764-e993-424a-88d5-4786d17cf6ae",
+    "appliedAtUtc": "2026-11-26T00:52:09.8561265Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "4f24398f-402d-4a0f-864b-ed638eead463",
+    "appliedAtUtc": "2026-11-26T00:52:37.0989484Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "5ea62ec60ac14f94b887f1c159f47282",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T00:53:20.8999646Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128869807424431"
+  }
+]

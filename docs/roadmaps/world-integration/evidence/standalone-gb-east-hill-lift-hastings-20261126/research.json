@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions GB pour East Hill Lift, East Hill Cliff Railway et Hastings Cliff Railway : zéro résultat ; aucun homonyme dans GB.json.",
+  "decision": "Funiculaire historique autonome de Rock-a-Nore Road à Hastings Country Park, avec billet et horaire propres, distinct du West Hill Lift.",
+  "officialPricing": "Hastings Borough Council : retours adulte 5,50 £, enfant/étudiant/réduit 4 £, famille jusqu’à 2 adultes et 3 enfants 17,80 £ ; paiement uniquement par carte. Abonnements hebdomadaires et de saison disponibles, conditions sur le site municipal.",
+  "officialHours": "La mairie donne du 1er novembre 2026 au 28 février 2027 une ouverture le samedi et le dimanche seulement, 11:00–16:00. Règles structurées fermées lundi–vendredi, ouvertes samedi–dimanche. Le calendrier au-delà du 28 février 2027 n’est pas encore publié sur la page vérifiée et n’est pas inventé.",
+  "accessibility": "La mairie indique accès sans marche et espace pour fauteuil roulant ou poussette ; les grands scooters de mobilité ne conviennent pas.",
+  "history": "La mairie donne une ouverture en août 1902, sans jour exact ; événement historique de précision Month.",
+  "photos": "Trois photos exactes et créditées : voiture et station vues de la falaise, voiture au sommet, voiture historique indiquée comme vue d’archive. Wikimedia Commons CC0, CC BY-SA 2.0 et CC BY 2.0.",
+  "sources": [
+    {
+      "label": "Hastings Borough Council — East Hill Lift, horaires 2026–2027, prix, accès et ouverture en août 1902",
+      "url": "https://www.hastings.gov.uk/coastlinebeaches/cliff-railways/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "The WRENN Report — bâtiment classé, coordonnées et adresse de la station basse",
+      "url": "https://www.thewrennreport.co.uk/building/E60000238-b7f2da64-1796-4b5a-8d90-acf0b71db19c/east-hill-lift",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — East Hill Lift, Hastings.JPG (Poliphilo, CC0)",
+      "url": "https://commons.wikimedia.org/wiki/File:East_Hill_Lift,_Hastings.JPG",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — East Hill Lift, Hastings - geograph.org.uk - 3072214.jpg (pam fray, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:East_Hill_Lift,_Hastings_-_geograph.org.uk_-_3072214.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hastings East Hill Lift railway (10).jpg (Les Chatfield, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hastings_East_Hill_Lift_railway_(10).jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "La page officielle ne publie pas encore le calendrier après février 2027. Une photo de voiture est historique et étiquetée comme telle ; la configuration actuelle peut différer. L’audit final est à 97/100 sans bloqueur, sans inventer un jour d’ouverture inconnu."
+}
