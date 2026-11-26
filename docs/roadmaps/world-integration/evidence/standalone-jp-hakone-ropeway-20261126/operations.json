@@ -1,0 +1,137 @@
+[
+  {
+    "step": "core",
+    "operationId": "bc3bad3b-3b1d-4399-b22b-31671f5d470a",
+    "appliedAtUtc": "2026-11-26T03:07:42.2775972Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-82a5b51146ef4a5fbe4b8f9e96998710",
+    "imageId": "82a5b51146ef4a5fbe4b8f9e96998710",
+    "createdAtUtc": "2026-11-26T03:07:57.389Z",
+    "updatedAtUtc": "2026-11-26T03:08:01.462Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_-_Hakone,_Kanagawa,_Japan_-_DSC07952.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-f6c02d6fd0b44876b238c036d12e808f",
+    "imageId": "f6c02d6fd0b44876b238c036d12e808f",
+    "createdAtUtc": "2026-11-26T03:08:12.114Z",
+    "updatedAtUtc": "2026-11-26T03:08:15.533Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_1.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-b4fc8f13d4a6466cbdef8d3c65fcb932",
+    "imageId": "b4fc8f13d4a6466cbdef8d3c65fcb932",
+    "createdAtUtc": "2026-11-26T03:08:25.453Z",
+    "updatedAtUtc": "2026-11-26T03:08:28.793Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_and_G%C5%8Dra.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "history",
+    "operationId": "594361d8-006b-40ac-894b-c25f72447ff9",
+    "appliedAtUtc": "2026-11-26T03:09:16.8714722Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "b96c8ec5-770d-4cce-b99a-1a17568f906f",
+    "appliedAtUtc": "2026-11-26T03:09:38.4782457Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "c224d9f1-c284-4f9f-ae3b-74ca614ca7b1",
+    "appliedAtUtc": "2026-11-26T03:10:00.7742453Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-metadata-1",
+    "eventId": "photo-metadata-82a5b51146ef4a5fbe4b8f9e96998710",
+    "imageId": "82a5b51146ef4a5fbe4b8f9e96998710",
+    "updatedAtUtc": "2026-11-26T03:12:08.936Z",
+    "summary": "Légende distincte du texte alternatif, huit langues."
+  },
+  {
+    "step": "photo-metadata-2",
+    "eventId": "photo-metadata-f6c02d6fd0b44876b238c036d12e808f",
+    "imageId": "f6c02d6fd0b44876b238c036d12e808f",
+    "updatedAtUtc": "2026-11-26T03:12:19.996Z",
+    "summary": "Légende distincte du texte alternatif, huit langues."
+  },
+  {
+    "step": "photo-metadata-3",
+    "eventId": "photo-metadata-b4fc8f13d4a6466cbdef8d3c65fcb932",
+    "imageId": "b4fc8f13d4a6466cbdef8d3c65fcb932",
+    "updatedAtUtc": "2026-11-26T03:12:30.855Z",
+    "summary": "Légende distincte du texte alternatif, huit langues."
+  },
+  {
+    "step": "publish",
+    "operationId": "43e64b2f-932e-419d-91a1-cd658ead8b0b",
+    "appliedAtUtc": "2026-11-26T03:13:05.9842919Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "6725ad44b8974a8c9730dab4ed36b289",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T03:13:45.1436479Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128878351424431"
+  }
+]
