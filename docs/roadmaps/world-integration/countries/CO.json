@@ -1728,6 +1728,143 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CO-candidate-discovery-teleferico-monserrate-20261126",
+      "name": "Teleférico de Monserrate",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique touristique",
+      "locality": "Paseo Bolívar, Bogotá",
+      "siteId": "1f251a75-812e-4906-a334-ec55c36bf2d0",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T06:30:59Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Service et billetterie opérés par Teleférico a Monserrate SA ; mode disponible selon l’exploitation.",
+      "identityConfidence": "Station, inauguration, billetterie commune et trois photos exactes vérifiées ; aucun doublon trouvé via PDE.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleférico a Monserrate",
+        "Monserrate Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T06:27:38.569Z",
+      "integrationHistory": [
+        {
+          "eventId": "8e5ae56f-6daf-4e40-ad76-6c5fbf77452b",
+          "appliedAt": "2026-11-26T06:22:54.706Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1f251a75-812e-4906-a334-ec55c36bf2d0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-teleferico-20261126/operations.json#8e5ae56f-6daf-4e40-ad76-6c5fbf77452b",
+          "auditEvidence": null,
+          "summary": "Création de la standalone, huit descriptions, localisation, statut et date d’ouverture vérifiée."
+        },
+        {
+          "eventId": "photo-6a4fe32398ca47cfbdf179ade4701100",
+          "appliedAt": "2026-11-26T06:24:36.395Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1f251a75-812e-4906-a334-ec55c36bf2d0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-teleferico-20261126/operations.json#photo-6a4fe32398ca47cfbdf179ade4701100",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 du téléphérique importée avec crédit, licence et huit localisations."
+        },
+        {
+          "eventId": "photo-7e9ee9c7100f4cc6821f6ae98f743f2e",
+          "appliedAt": "2026-11-26T06:25:11.817Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1f251a75-812e-4906-a334-ec55c36bf2d0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-teleferico-20261126/operations.json#photo-7e9ee9c7100f4cc6821f6ae98f743f2e",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 du téléphérique importée avec crédit, licence et huit localisations."
+        },
+        {
+          "eventId": "photo-135be67565f347678beea495bde8a25a",
+          "appliedAt": "2026-11-26T06:25:36.026Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1f251a75-812e-4906-a334-ec55c36bf2d0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-teleferico-20261126/operations.json#photo-135be67565f347678beea495bde8a25a",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 du téléphérique importée avec crédit, licence et huit localisations."
+        },
+        {
+          "eventId": "dbfe7ac8-9402-4288-9352-4976c27fd7ff",
+          "appliedAt": "2026-11-26T06:26:42.458Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1f251a75-812e-4906-a334-ec55c36bf2d0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-teleferico-20261126/operations.json#dbfe7ac8-9402-4288-9352-4976c27fd7ff",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels communs au téléphérique et au funiculaire, avec condition de disponibilité du mode."
+        },
+        {
+          "eventId": "dcc702ef-af4e-4f15-b7ef-5c6f45f3e036",
+          "appliedAt": "2026-11-26T06:27:38.569Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1f251a75-812e-4906-a334-ec55c36bf2d0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-teleferico-20261126/operations.json#dcc702ef-af4e-4f15-b7ef-5c6f45f3e036",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-teleferico-20261126/audit.json",
+          "summary": "Ouverture historique de 1955 et condition d’accessibilité officielle en huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier les heures propres au téléphérique et la dernière sortie, puis revoir les tarifs et la disponibilité du mode. Ajouter un événement réel à chaque nouvelle intégration de données.",
+      "sources": [
+        {
+          "label": "Cerro de Monserrate — tarifs et horaires officiels",
+          "url": "https://monserrate.co/es/horarios-y-tarifas/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Cerro de Monserrate — histoire du téléphérique",
+          "url": "https://monserrate.co/es/sobre-monserrate/history/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Cerro de Monserrate — accès et services",
+          "url": "https://monserrate.co/es/preparar-visita/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Teleférico a Monserrate SA — station principale",
+          "url": "https://monserrate.co/phpapp/TelefericoMonserrate/index.php",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — station inférieure du téléphérique",
+          "url": "https://www.openstreetmap.org/node/12536828937",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "CO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Le téléphérique est une ligne distincte du funiculaire historique, bien que l’exploitant propose une billetterie et une fenêtre d’ouverture communes."
+      }
     }
   ]
 }

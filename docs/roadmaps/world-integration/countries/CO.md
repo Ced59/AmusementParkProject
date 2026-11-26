@@ -15,7 +15,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 52 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -26,7 +26,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **3 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **52 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -87,5 +87,6 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CO-candidate-911ca0ffbdd406 | Santa Fe Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia) |
 | CO-candidate-c4d1f61c255df6 | Santacruz Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Colombia) |
 | CO-candidate-d1200477826f66 | Takurika Recreational Center | Cartagena | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Colombia) |
+| CO-candidate-discovery-teleferico-monserrate-20261126 | Teleférico de Monserrate | Paseo Bolívar, Bogotá | StandaloneAttraction | Published | Intégration achevée | 2026-11-26T06:27:38.569Z | — | Conserver cette ligne ; vérifier les heures propres au téléphérique et la dernière sortie, puis revoir les tarifs et la disponibilité du mode. Ajouter un événement réel à chaque nouvelle intégration de données. Qualification standalone : AlreadyStandalone. Le téléphérique est une ligne distincte du funiculaire historique, bien que l’exploitant propose une billetterie et une fenêtre d’ouverture communes. Signal source : Service et billetterie opérés par Teleférico a Monserrate SA ; mode disponible selon l’exploitation.. [Cerro de Monserrate — tarifs et horaires officiels](https://monserrate.co/es/horarios-y-tarifas/) · [Cerro de Monserrate — histoire du téléphérique](https://monserrate.co/es/sobre-monserrate/history/) · [Cerro de Monserrate — accès et services](https://monserrate.co/es/preparar-visita/) · [Teleférico a Monserrate SA — station principale](https://monserrate.co/phpapp/TelefericoMonserrate/index.php) · [OpenStreetMap — station inférieure du téléphérique](https://www.openstreetmap.org/node/12536828937) · [Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés](https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg) · [Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés](https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg) · [Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés](https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG) |
 | CO-candidate-2464e6f2e52c1f | Tesoro Encantado | Medellín , Antioquia | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/19851.htm) |
 | CO-candidate-95d2637e8d56b1 | Zoológico de Cali | Valle del Cauca | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AZA](https://www.aza.org/current-accreditation-list) |

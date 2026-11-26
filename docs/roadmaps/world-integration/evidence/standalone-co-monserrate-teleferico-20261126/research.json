@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "Recherche officielle PDE : aucune standalone ni fiche Park Monserrate en Colombie ; le backlog CO ne contient aucune entrée correspondant au téléphérique. Le funiculaire du même site est une autre installation, avec tracé, véhicules et histoire propres.",
+  "classification": "Téléphérique touristique à billetterie partagée avec le funiculaire, desservant le sanctuaire de Monserrate ; attraction autonome distincte du funiculaire, de la basilique et des restaurants.",
+  "facts": "L’exploitant date l’inauguration du téléphérique du 27 septembre 1955. Station inférieure Carrera 2 Este No. 21-48 Paseo Bolívar ; point cartographique OSM 4.60287, -74.06089.",
+  "pricing": "Grille de l’exploitant en COP, commune au funiculaire et au téléphérique : aller-retour 35 000 et aller simple 21 000 du lundi au samedi et jours fériés ; aller-retour dimanche 21 000. Le moyen réellement proposé doit être vérifié à la réservation.",
+  "hours": "La page officielle annonce 6 h 30–22 h du lundi au samedi, 5 h 30–17 h le dimanche, 6 h 30–17 h les jours fériés pour « funicular y/o teleférico ». Elle ne garantit pas que le téléphérique circule durant tous ces créneaux. Aucune règle horaire propre au téléphérique saisie ; la page publique explique le caractère conditionnel du mode. La page institutionnelle donne aussi une dernière sortie 21 h 45, en désaccord avec la mention « hora de cierre » de la grille générale.",
+  "access": "L’exploitant annonce des accès adaptés pour le téléphérique et le funiculaire ; poussettes pliées à l’embarquement. Les cheminements au sommet sont raides et irréguliers.",
+  "photos": "Trois photos montrant exactement les cabines du téléphérique : vue 2023 de Fabricio Cardenas, CC BY-SA 4.0, retenue comme image principale ; vues historiques 2013 de Karolynaroca et 2012 de Javadumper, CC BY-SA 3.0. Crédit, source, huit textes alternatifs et légendes pour chacune.",
+  "sources": [
+    {
+      "label": "Cerro de Monserrate — tarifs et horaires officiels",
+      "url": "https://monserrate.co/es/horarios-y-tarifas/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Cerro de Monserrate — histoire du téléphérique",
+      "url": "https://monserrate.co/es/sobre-monserrate/history/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Cerro de Monserrate — accès et services",
+      "url": "https://monserrate.co/es/preparar-visita/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Teleférico a Monserrate SA — station principale",
+      "url": "https://monserrate.co/phpapp/TelefericoMonserrate/index.php",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station inférieure du téléphérique",
+      "url": "https://www.openstreetmap.org/node/12536828937",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — téléphérique de Monserrate, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "nextReview": "Obtenir auprès de l’exploitant les heures propres au téléphérique, la dernière sortie exacte et les variations du mode en service ; revérifier tarifs et disponibilités. Les photos anciennes restent explicitement datées."
+}

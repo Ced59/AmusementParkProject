@@ -1,0 +1,176 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "1f251a75-812e-4906-a334-ec55c36bf2d0",
+  "name": "Teleférico de Monserrate",
+  "countryCode": "CO",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/1f251a75-812e-4906-a334-ec55c36bf2d0/teleferico-de-monserrate",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T06:30:59Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "9a2f1805f7ef483f8ba8cfec26904a28",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128893597424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T06:27:38.569Z",
+  "lastDataEventId": "dcc702ef-af4e-4f15-b7ef-5c6f45f3e036",
+  "completeness": {
+    "completenessScore": 87,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 68,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "6a4fe32398ca47cfbdf179ade4701100",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Fabricio Cardenas, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Fabricio Cardenas, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fabricio Cardenas, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fabricio Cardenas, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fabricio Cardenas, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Fabricio Cardenas, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fabricio Cardenas, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fabricio Cardenas, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:20230220_-_Bogot%C3%A1_-_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "7e9ee9c7100f4cc6821f6ae98f743f2e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Karolynaroca, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Karolynaroca, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Karolynaroca, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Karolynaroca, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Karolynaroca, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Karolynaroca, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Karolynaroca, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Karolynaroca, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Monserrate.JPG · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "135be67565f347678beea495bde8a25a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Javadumper, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Javadumper, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Javadumper, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Javadumper, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Javadumper, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Javadumper, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Javadumper, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Javadumper, CC BY-SA 3.0 · https://creativecommons.org/licenses/by-sa/3.0/ · https://commons.wikimedia.org/wiki/File:Teleferico_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 3,
+  "openingRules": 0,
+  "sitePublicationReceipt": "e5ce47f9-73bd-4b03-bef8-495fc598f123",
+  "note": "La source horaire couvre le funiculaire et/ou le téléphérique, sans certifier le mode actif. Aucun horaire propre au téléphérique inventé ; ce manque explique une partie du score. Publication et Facebook exclus de la date de dernière intégration de données."
+}
