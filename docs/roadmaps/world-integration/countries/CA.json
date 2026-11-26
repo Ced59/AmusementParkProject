@@ -7509,6 +7509,157 @@
         "attractions": [],
         "rationale": "Tour panoramique touristique avec billet d’entrée au belvédère propre."
       }
+    },
+    {
+      "entryId": "CA-candidate-discovery-sea-to-sky-gondola-20261126",
+      "name": "Sea to Sky Gondola",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Télécabine panoramique",
+      "locality": "36800 Highway 99, Squamish, BC V8B 0B6",
+      "siteId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T02:08:35Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation annuelle avec fermeture de maintenance en novembre 2026 et calendrier 2027 officiel.",
+      "identityConfidence": "Site et adresse de l’exploitant, grille tarifaire, calendrier 2027, accessibilité et ouverture vérifiés ; trois photos exactes licenciées ; recherche sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sea-to-Sky Gondola"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T02:06:56.768Z",
+      "integrationHistory": [
+        {
+          "eventId": "b2e5fab1-fe94-46c3-85c9-c60990d6a487",
+          "appliedAt": "2026-11-26T02:03:54.356Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-sea-to-sky-gondola-20261126/operations.json#b2e5fab1-fe94-46c3-85c9-c60990d6a487",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche sans doublon ; station basse et descriptions dans huit langues."
+        },
+        {
+          "eventId": "a4ccde5e-5000-45e8-96f4-1d132c69fbe3",
+          "appliedAt": "2026-11-26T02:04:20.531Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-sea-to-sky-gondola-20261126/operations.json#a4ccde5e-5000-45e8-96f4-1d132c69fbe3",
+          "auditEvidence": null,
+          "summary": "Tarifs CAD dynamiques, horaires saisonniers et fermetures officielles 2026–2027."
+        },
+        {
+          "eventId": "1e0f475b-c8c1-4129-8f4d-b347ed921454",
+          "appliedAt": "2026-11-26T02:05:00.726Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-sea-to-sky-gondola-20261126/operations.json#1e0f475b-c8c1-4129-8f4d-b347ed921454",
+          "auditEvidence": null,
+          "summary": "Ouverture du 16 mai 2014 documentée."
+        },
+        {
+          "eventId": "c2cf6c37-4b56-403f-84d5-a6577e71ef33",
+          "appliedAt": "2026-11-26T02:05:23.644Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-sea-to-sky-gondola-20261126/operations.json#c2cf6c37-4b56-403f-84d5-a6577e71ef33",
+          "auditEvidence": null,
+          "summary": "Accessibilité des cabines, bâtiments et terrasse documentée."
+        },
+        {
+          "eventId": "photo-3f5caef8ac5041dbbe06a522c4b88783",
+          "appliedAt": "2026-11-26T02:06:29.010Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-sea-to-sky-gondola-20261126/operations.json#photo-3f5caef8ac5041dbbe06a522c4b88783",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Wildfireupdateman (CC0)."
+        },
+        {
+          "eventId": "photo-05984b011b7346429670a2edd9d4a1b5",
+          "appliedAt": "2026-11-26T02:06:43.116Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-sea-to-sky-gondola-20261126/operations.json#photo-05984b011b7346429670a2edd9d4a1b5",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : DarkNight0917 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-8b3919b3b63644ddb39cf3d2400b7401",
+          "appliedAt": "2026-11-26T02:06:56.768Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-sea-to-sky-gondola-20261126/operations.json#photo-8b3919b3b63644ddb39cf3d2400b7401",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-sea-to-sky-gondola-20261126/audit.json",
+          "summary": "Photo exacte 3/3 importée : Keely Hill (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; recontrôler les prix dynamiques, la météo et les heures saisonnières avant de nouvelles mises à jour.",
+      "sources": [
+        {
+          "label": "Exploitant — horaires et tarifs 2026",
+          "url": "https://www.seatoskygondola.com/hours-and-prices/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — calendrier détaillé 2027",
+          "url": "https://www.seatoskygondola.com/site/assets/files/18822/2027_hours_of_operation_tt.pdf",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — accessibilité",
+          "url": "https://www.seatoskygondola.com/accessibility/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — ouverture le 16 mai 2014",
+          "url": "https://www.seatoskygondola.com/blog/gondola-set-opening/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — adresse",
+          "url": "https://www.seatoskygondola.com/contact-us/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — station basse, coordonnées",
+          "url": "https://www.openstreetmap.org/node/2916812983",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — SeatoSkyGondolaCar.jpg (Wildfireupdateman, CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:SeatoSkyGondolaCar.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Sea to Sky Gondola 02.jpg (DarkNight0917, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sea_to_Sky_Gondola_02.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Sea to Sky Gondola (2018) from Sky Pilot Mountain (cropped).jpg (Keely Hill, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sea_to_Sky_Gondola_(2018)_from_Sky_Pilot_Mountain_(cropped).jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "CA",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Télécabine autonome avec billet public, destination et stations propres, hors parc parent."
+      }
     }
   ]
 }

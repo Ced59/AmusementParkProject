@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "b2e5fab1-fe94-46c3-85c9-c60990d6a487",
+    "appliedAtUtc": "2026-11-26T02:03:54.356954Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "a4ccde5e-5000-45e8-96f4-1d132c69fbe3",
+    "appliedAtUtc": "2026-11-26T02:04:20.5315683Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "1e0f475b-c8c1-4129-8f4d-b347ed921454",
+    "appliedAtUtc": "2026-11-26T02:05:00.7260889Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "c2cf6c37-4b56-403f-84d5-a6577e71ef33",
+    "appliedAtUtc": "2026-11-26T02:05:23.6449857Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-3f5caef8ac5041dbbe06a522c4b88783",
+    "imageId": "3f5caef8ac5041dbbe06a522c4b88783",
+    "createdAtUtc": "2026-11-26T02:06:24.999Z",
+    "updatedAtUtc": "2026-11-26T02:06:29.01Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:SeatoSkyGondolaCar.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-05984b011b7346429670a2edd9d4a1b5",
+    "imageId": "05984b011b7346429670a2edd9d4a1b5",
+    "createdAtUtc": "2026-11-26T02:06:39.671Z",
+    "updatedAtUtc": "2026-11-26T02:06:43.116Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sea_to_Sky_Gondola_02.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-8b3919b3b63644ddb39cf3d2400b7401",
+    "imageId": "8b3919b3b63644ddb39cf3d2400b7401",
+    "createdAtUtc": "2026-11-26T02:06:53.33Z",
+    "updatedAtUtc": "2026-11-26T02:06:56.768Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sea_to_Sky_Gondola_(2018)_from_Sky_Pilot_Mountain_(cropped).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "2dffceb1-4eb6-44ff-89cc-378307a88dec",
+    "appliedAtUtc": "2026-11-26T02:07:27.85349Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "0bd8eeb3ebec45e48841cd238f556c97",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T02:08:30.2771924Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128874331424431"
+  }
+]

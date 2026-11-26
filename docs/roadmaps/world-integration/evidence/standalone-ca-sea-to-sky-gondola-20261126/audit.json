@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf",
+  "name": "Sea to Sky Gondola",
+  "countryCode": "CA",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/c1f2ee9d-7ebb-41c5-9332-4ccdbe41e9bf/sea-to-sky-gondola",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T02:08:35Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "0bd8eeb3ebec45e48841cd238f556c97",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128874331424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T02:06:56.768Z",
+  "lastDataEventId": "photo-8b3919b3b63644ddb39cf3d2400b7401",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions pour Sea to Sky et Sea-to-Sky : zéro résultat ; aucun homonyme dans CA.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "3f5caef8ac5041dbbe06a522c4b88783",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SeatoSkyGondolaCar.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Wildfireupdateman",
+      "license": "CC0"
+    },
+    {
+      "id": "05984b011b7346429670a2edd9d4a1b5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sea_to_Sky_Gondola_02.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "DarkNight0917",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "8b3919b3b63644ddb39cf3d2400b7401",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sea_to_Sky_Gondola_(2018)_from_Sky_Pilot_Mountain_(cropped).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Keely Hill",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 6,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "closedDateCount": 27
+}

@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions pour Sea to Sky et Sea-to-Sky : zéro résultat ; aucun homonyme dans CA.json.",
+  "decision": "Télécabine panoramique de Squamish à billetterie propre, stations et destination au sommet, avec accès public indépendant ; classement standalone hors parc parent.",
+  "officialPricing": "Tarifs CAD au guichet et dès en ligne : adulte 81,95/73,95 ; senior 76,95/68,95 ; jeune 51,95/43,95 ; enfant 37,95/29,95 ; famille 191,95/165,95 ; descente seule 25/19 ; enfants cinq ans et moins gratuits. Les prix en ligne sont dynamiques.",
+  "officialHours": "Fermé du 16 au 26 novembre 2026. Du 27 novembre au 31 décembre : 09:00–18:00, dernière montée 17:00 ; 24 et 25 décembre dernière montée 15:00 et descente 16:00. Calendrier saisonnier 2027 du PDF officiel, fermetures 1–5 mars et 15–25 novembre ; les horaires de fin désignent la dernière descente, dernière montée une heure plus tôt.",
+  "accessibility": "Cabines ralentissables pour fauteuils et poussettes. Basecamp, Summit Lodge et terrasse accessibles ; neige au sommet susceptible de limiter la terrasse. Tous les sentiers ne le sont pas.",
+  "history": "Première ouverture publique le 16 mai 2014 à 11 h, selon le site de l’exploitant.",
+  "photos": "Trois photos exactes de la cabine, de la ligne et du sommet, CC0 ou CC BY-SA 4.0, créditées et documentées dans huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — horaires et tarifs 2026",
+      "url": "https://www.seatoskygondola.com/hours-and-prices/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — calendrier détaillé 2027",
+      "url": "https://www.seatoskygondola.com/site/assets/files/18822/2027_hours_of_operation_tt.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — accessibilité",
+      "url": "https://www.seatoskygondola.com/accessibility/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — ouverture le 16 mai 2014",
+      "url": "https://www.seatoskygondola.com/blog/gondola-set-opening/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — adresse",
+      "url": "https://www.seatoskygondola.com/contact-us/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station basse, coordonnées",
+      "url": "https://www.openstreetmap.org/node/2916812983",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — SeatoSkyGondolaCar.jpg (Wildfireupdateman, CC0)",
+      "url": "https://commons.wikimedia.org/wiki/File:SeatoSkyGondolaCar.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Sea to Sky Gondola 02.jpg (DarkNight0917, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sea_to_Sky_Gondola_02.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Sea to Sky Gondola (2018) from Sky Pilot Mountain (cropped).jpg (Keely Hill, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sea_to_Sky_Gondola_(2018)_from_Sky_Pilot_Mountain_(cropped).jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Le calendrier 2027 et les prix « dès » peuvent changer. La page publique dit maintenance dès le 16 novembre 2026, alors que le toolkit revendeurs mentionne le 15 ; la page visiteur est retenue. Vérifier quotidiennement météo et service."
+}
