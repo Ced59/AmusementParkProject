@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "Recherche PDE Park et Standalone Attraction : aucune fiche Harderbahn préexistante. Nouvelle découverte suisse ajoutée au backlog.",
+  "classification": "Funiculaire autonome Interlaken–Harder Kulm, distinct des autres trains et remontées de la région Jungfrau.",
+  "facts": "L’histoire de Harderbahn AG donne une ouverture à la mi-mai 1908, sans jour précis. Station inférieure : Talstation Harderbahn, 3800 Interlaken ; coordonnées OSM 46.691031, 7.865411. Durée annoncée : environ 10 min.",
+  "pricing": "L’exploitant annonce des billets à partir de 19 CHF, tarif dynamique. Aucun prix fixe créé dans les offres de la fiche ; vérifier le prix au moment de réserver.",
+  "hours": "Au 26 novembre 2026, horaires officiels confirmés pour le 26–29 novembre : première montée 09:10, dernière montée 17:10, dernière descente 18:10. Fin de saison 2026 après le 29 novembre ; aucune heure 2027 supposée. Le créneau structuré va de 09:10 à 18:10 et la note précise les derniers départs.",
+  "access": "Suisse Tourisme classe l’accès comme adapté ; modalités individuelles à confirmer auprès de l’exploitant.",
+  "photos": "Trois vues exactes de la Harderbahn, visuellement contrôlées : deux vues de la rame en 2024 et une vue de la ligne en 2017, toutes sous CC BY-SA 4.0. Chacune possède source, crédit, licence, huit textes alternatifs et huit légendes.",
+  "sources": [
+    {
+      "label": "Jungfrau Railways — Harder Kulm, billetterie et présentation officielle",
+      "url": "https://www.jungfrau.ch/en-gb/harder-kulm/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Jungfrau Railways — operating info, saison et heures vérifiées",
+      "url": "https://www.jungfrau.ch/en-gb/live/operating-info/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Jungfrau Railways — histoire de Harderbahn AG",
+      "url": "https://www.jungfrau.ch/en-gb/corporate/jungfrau-railways/jungfraubahn-holding-ag/harderbahn-ag/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Switzerland Tourism — accessibilité Harder Kulm",
+      "url": "https://www.myswitzerland.com/en-ch/experiences/harder-kulm/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — gare inférieure de la Harderbahn",
+      "url": "https://www.openstreetmap.org/node/2389277111",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "nextReview": "Contrôler la prochaine saison publiée, les horaires, le tarif du jour et les modalités d’accessibilité ; ajouter un événement de données daté à chaque mise à jour."
+}

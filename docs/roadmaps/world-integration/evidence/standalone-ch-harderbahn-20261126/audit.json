@@ -1,0 +1,175 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b94dcbac-6056-4771-907f-67607e1ec978",
+  "name": "Harderbahn",
+  "countryCode": "CH",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b94dcbac-6056-4771-907f-67607e1ec978/harderbahn",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T07:01:13Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "dfc8a499bece4147a35fe55fdb3ee007",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128895475424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T06:57:06.988Z",
+  "lastDataEventId": "0e26ebb4-fe13-41d9-90c2-59d72a76b7f1",
+  "completeness": {
+    "completenessScore": 85,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "908882ed131d4f7283733cdf52ddbf42",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "b8f13ba7c752486faf3c7b08a7d244d3",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Rectilinium, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "0e88763f2d88487cbdd31f2be9e15f7e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Rosser1954, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Rosser1954, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rosser1954, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Rosser1954, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Rosser1954, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rosser1954, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rosser1954, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Rosser1954, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "openingRules": 2,
+  "sitePublicationReceipt": "5e166c1e-92e5-4710-8741-fdaaf5909599",
+  "note": "Billets dès 19 CHF sans prix fixe. Saison 2027 non encore publiée. Publication du site et Facebook exclues de la date de dernière intégration de données."
+}

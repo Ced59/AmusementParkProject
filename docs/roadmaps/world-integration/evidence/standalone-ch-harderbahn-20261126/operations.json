@@ -1,0 +1,95 @@
+[
+  {
+    "step": "core",
+    "operationId": "b17bbc59-94fb-41b5-873b-686b563ab0cf",
+    "appliedAtUtc": "2026-11-26T06:50:42.051045Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-908882ed131d4f7283733cdf52ddbf42",
+    "imageId": "908882ed131d4f7283733cdf52ddbf42",
+    "createdAtUtc": "2026-11-26T06:51:26.725Z",
+    "updatedAtUtc": "2026-11-26T06:51:30.964Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-b8f13ba7c752486faf3c7b08a7d244d3",
+    "imageId": "b8f13ba7c752486faf3c7b08a7d244d3",
+    "createdAtUtc": "2026-11-26T06:51:54.393Z",
+    "updatedAtUtc": "2026-11-26T06:51:58.057Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CH_BE_Harderbahn_Interlaken_2024_b.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-0e88763f2d88487cbdd31f2be9e15f7e",
+    "imageId": "0e88763f2d88487cbdd31f2be9e15f7e",
+    "createdAtUtc": "2026-11-26T06:52:56.197Z",
+    "updatedAtUtc": "2026-11-26T06:53:00.052Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Harderbahn_funicular_at_Interlaken,_Swizerland.jpg"
+  },
+  {
+    "step": "visitors",
+    "operationId": "67952cfc-e787-46c7-9abb-d983c299bbef",
+    "appliedAtUtc": "2026-11-26T06:54:03.7661414Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "context",
+    "operationId": "0e26ebb4-fe13-41d9-90c2-59d72a76b7f1",
+    "appliedAtUtc": "2026-11-26T06:57:06.988362Z",
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "site-publication",
+    "operationId": "5e166c1e-92e5-4710-8741-fdaaf5909599",
+    "appliedAtUtc": "2026-11-26T06:58:09.0232723Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "dfc8a499bece4147a35fe55fdb3ee007",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T06:58:59.7095664Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128895475424431"
+  }
+]
