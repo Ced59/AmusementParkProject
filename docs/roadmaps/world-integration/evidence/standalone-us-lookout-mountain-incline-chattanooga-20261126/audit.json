@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "41468be9-e565-4b93-aeaa-9bcadac80e6b",
+  "name": "Lookout Mountain Incline Railway",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/41468be9-e565-4b93-aeaa-9bcadac80e6b/lookout-mountain-incline-railway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T01:04:40Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "7dab276c9b964c519631742434d95567",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128870293424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T01:02:07.379Z",
+  "lastDataEventId": "photo-1adbb56858a241c98a3ca789e0393de6",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Incline Railway, Lookout Mountain Incline Railway et Chattanooga Incline Railway : zéro résultat ; aucun homonyme dans US.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "42d47f86975e44d2abb0edf2bf0b62bc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lookout_Mountain_Incline_Railway_near_top.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Dclemens1971",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "9c444f93884c49ecb8a450e922975363",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lookout_Mountain_Incline_Railway,_above_Chattanooga.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "The old perfesser",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "id": "1adbb56858a241c98a3ca789e0393de6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lookout-Mountain-Incline.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Hein.Mück",
+      "license": "CC BY-SA 3.0"
+    }
+  ],
+  "pricingOfferCount": 2,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "closedDateCount": 4
+}

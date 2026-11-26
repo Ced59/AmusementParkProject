@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Incline Railway, Lookout Mountain Incline Railway et Chattanooga Incline Railway : zéro résultat ; aucun homonyme dans US.json.",
+  "decision": "Funiculaire historique autonome avec gares, billet et horaire propres, exploité pour monter au Lookout Mountain. Il ne relève pas d’un parc parent.",
+  "officialPricing": "La page officielle Take a Ride montre adulte/senior 24,99 $, enfant 3–12 ans 12,99 $, moins de 3 ans gratuit accompagné. Elle donne aussi tarif senior hivernal sous conditions, groupe dès 20 personnes et abonnement annuel. La FAQ conserve un ancien montant adulte de 20 $ ; la page de réservation récente a été retenue.",
+  "officialHours": "La FAQ officielle donne chaque jour 10:00–18:00, dernier départ quarante minutes avant fermeture, et fermeture de Thanksgiving et Noël. Le calendrier structuré va jusqu’au 31 décembre 2027 avec les dates de ces jours fériés fermées. La page contact conserve un ancien horaire estival indiqué valable jusqu’au 31 octobre ; recontrôler les variations saisonnières.",
+  "accessibility": "La FAQ et la page de billets de l’exploitant confirment l’accès des fauteuils manuels et électriques dans les voitures actuelles.",
+  "history": "L’histoire officielle distingue la première ligne de 1887 de la seconde ligne actuelle, ouverte le 16 novembre 1895.",
+  "photos": "Trois photos exactes et créditées : voiture actuelle photographiée en mars 2026 (CC BY 4.0), puis deux vues historiques de 2012 et 2005 explicitement marquées comme archives (CC BY-SA 3.0).",
+  "sources": [
+    {
+      "label": "Incline Railway — page officielle de réservation et tarifs récents",
+      "url": "https://ridetheincline.com/take-a-ride/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Incline Railway — FAQ, horaires et accès en fauteuil",
+      "url": "https://ridetheincline.com/faq/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Incline Railway — ouverture du 16 novembre 1895",
+      "url": "https://ridetheincline.com/history/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Incline Railway — adresse de la station basse",
+      "url": "https://ridetheincline.com/contact-us/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap via Nominatim — 3917 St. Elmo Avenue, coordonnées station basse",
+      "url": "https://www.openstreetmap.org/search?query=3917%20St%20Elmo%20Avenue%20Chattanooga%20TN",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Lookout Mountain Incline Railway near top.jpg (Dclemens1971, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Lookout_Mountain_Incline_Railway_near_top.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Lookout Mountain Incline Railway, above Chattanooga.jpg (The old perfesser, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Lookout_Mountain_Incline_Railway,_above_Chattanooga.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Lookout-Mountain-Incline.JPG (Hein.Mück, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Lookout-Mountain-Incline.JPG",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "FAQ tarifaire à 20 $ contradictoire avec la page de réservation à 24,99 $. La page officielle de contact conserve un horaire estival ancien alors que la FAQ et le pied de page donnent 10:00–18:00. Vérifier calendrier et prix avant déplacement ; ne pas présenter les anciens wagons comme actuels."
+}

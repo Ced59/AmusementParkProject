@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "a2362d3e-f8ae-48bf-9fc0-c4c387f4098b",
+    "appliedAtUtc": "2026-11-26T00:59:42.9898046Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "38181f4c-1b1b-4ac1-a129-ddfc4401cae2",
+    "appliedAtUtc": "2026-11-26T01:00:10.4337497Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "4e838b34-ba0c-4441-865e-f304624e9519",
+    "appliedAtUtc": "2026-11-26T01:00:53.4409097Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "05a7a710-96c3-435c-ba3f-8384fd4ed208",
+    "appliedAtUtc": "2026-11-26T01:01:17.3196023Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-42d47f86975e44d2abb0edf2bf0b62bc",
+    "imageId": "42d47f86975e44d2abb0edf2bf0b62bc",
+    "createdAtUtc": "2026-11-26T01:01:32.285Z",
+    "updatedAtUtc": "2026-11-26T01:01:36.054Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lookout_Mountain_Incline_Railway_near_top.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-9c444f93884c49ecb8a450e922975363",
+    "imageId": "9c444f93884c49ecb8a450e922975363",
+    "createdAtUtc": "2026-11-26T01:01:50.778Z",
+    "updatedAtUtc": "2026-11-26T01:01:54.167Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lookout_Mountain_Incline_Railway,_above_Chattanooga.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-1adbb56858a241c98a3ca789e0393de6",
+    "imageId": "1adbb56858a241c98a3ca789e0393de6",
+    "createdAtUtc": "2026-11-26T01:02:03.991Z",
+    "updatedAtUtc": "2026-11-26T01:02:07.379Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lookout-Mountain-Incline.JPG",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "2a342322-fb95-46aa-94e1-9345a3e059e8",
+    "appliedAtUtc": "2026-11-26T01:03:00.2096397Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "7dab276c9b964c519631742434d95567",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T01:03:42.0460729Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128870293424431"
+  }
+]
