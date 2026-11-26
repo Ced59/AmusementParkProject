@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions « Christchurch Gondola » avec CountryCode NZ : aucun résultat ; aucune entrée Christchurch Gondola dans NZ.json avant création.",
+  "decision": "Téléphérique panoramique avec billet propre et station inférieure à Heathcote. Les autres activités de Christchurch Attractions (tram, bateau) et le Discovery Ride du sommet ne constituent pas la même ligne.",
+  "history": "FAQ officielle : ouverture le 24 novembre 1992.",
+  "service": "Horaires officiels par période : 10–17 h octobre–novembre et mars–avril ; 9–17 h du 1er au 24 décembre et en février ; 9–18 h du 26 décembre au 31 janvier ; 10–16 h mai–septembre ; fermeture le 25 décembre. Dernière descente 60 min après la fermeture de la montée. Règles datées du 26 novembre 2026 au 30 septembre 2027.",
+  "pricing": "Six tarifs NZD vérifiés : aller-retour adulte 45, enfant 5–15 ans 22, famille (2 adultes et jusqu’à 3 enfants) 123 ; aller simple adulte 25, enfant 12, famille 62. La page annonce aussi les nourrissons gratuits. L’aller simple se vend aux stations. Navette urbaine distincte.",
+  "accessibility": "Fauteuils manuels de largeur maximale 600 mm dans la cabine, aide à l’embarquement et ascenseur au sommet. Discovery Ride et navette non accessibles en fauteuil roulant selon l’exploitant.",
+  "photos": "Quatre images exactes de la cabine, de la station, du câble et de la vue depuis la ligne ; chaque auteur, licence, source, huit textes alternatifs et huit légendes consignés.",
+  "sources": [
+    {
+      "label": "Christchurch Attractions — tarifs, horaires, trajet et accès",
+      "url": "https://www.christchurchattractions.nz/christchurch-gondola/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Christchurch Attractions — FAQ, ouverture de 1992, tarifs aller simple et fauteuils",
+      "url": "https://www.christchurchattractions.nz/frequently-asked-questions/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Christchurch Attractions — réservation officielle",
+      "url": "https://christchurchattractions.rezdy.com/219842/christchurch-gondola",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Christchurch Attractions — lien cartographique vers la station inférieure",
+      "url": "https://www.google.com/maps/place/Christchurch+Gondola/@-43.5849403,172.7075123,15z/data=!4m5!3m4!1s0x0:0x6a5bb175a9206bdb!8m2!3d-43.5849403!4d172.7075123",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Christchurch Gondola Cabin.jpg (TanyaHyde, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Christchurch_Gondola_Cabin.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Christchurch Gondola.jpg (eGuide Travel, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Christchurch_Gondola.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Sunset, Christchurch Gondola.jpg (Maksym Kozlenko, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sunset,_Christchurch_Gondola.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:View from Christchurch Gondola.jpg (Zshameel, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:View_from_Christchurch_Gondola.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Recontrôler tarifs et calendrier 2027–2028 avant de prolonger les règles horaires au-delà du 30 septembre 2027. Les tarifs aller-retour ne sont pas attribués au canal en ligne sans vérification du panier."
+}
