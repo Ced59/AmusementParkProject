@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "f2d3fdc1-8968-442d-92a1-74d15847f74b",
+    "appliedAtUtc": "2026-11-26T01:20:40.6880004Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "831d065e-5ab6-4fae-8d39-fcb6eba81be4",
+    "appliedAtUtc": "2026-11-26T01:21:04.6365416Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "f79a2c7a-31b6-4fe3-8167-76a1737445d1",
+    "appliedAtUtc": "2026-11-26T01:21:51.5506213Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "9ab7ae34-5b0b-4468-94b0-53dae25b7901",
+    "appliedAtUtc": "2026-11-26T01:22:14.011692Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-1be89a26c7124f7f99e5fb5e066685fa",
+    "imageId": "1be89a26c7124f7f99e5fb5e066685fa",
+    "createdAtUtc": "2026-11-26T01:22:44.317Z",
+    "updatedAtUtc": "2026-11-26T01:22:48.565Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monongahela_Incline_car,_2024-12-15.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-0f87e102e9884d74a063a693daac90b4",
+    "imageId": "0f87e102e9884d74a063a693daac90b4",
+    "createdAtUtc": "2026-11-26T01:22:58.929Z",
+    "updatedAtUtc": "2026-11-26T01:23:02.298Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monongahela_Incline,_2024-12-15.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-d758a1ebac584fb4bc889f6e91591f3d",
+    "imageId": "d758a1ebac584fb4bc889f6e91591f3d",
+    "createdAtUtc": "2026-11-26T01:23:12.257Z",
+    "updatedAtUtc": "2026-11-26T01:23:15.647Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monongahela_Incline_upper_station,_Mount_Washington,_2025-02-24-1.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "45e6e42c-e6c6-44e8-9352-198fb8b9fb58",
+    "appliedAtUtc": "2026-11-26T01:23:47.2496013Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "a1e6b3dcb30f400db3625259b305b90d",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T01:24:30.7875929Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128871301424431"
+  }
+]
