@@ -1,0 +1,43 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Jasper SkyTram et Jasper Tramway : zéro résultat ; aucun homonyme dans CA.json.",
+  "decision": "Téléphérique de visite autonome sur Whistlers Mountain, billet et station propres. Saison 2026 achevée, saison 2027 annoncée du 21 mai au 11 octobre. Statut Operating avec calendrier saisonnier, sans prétendre à une circulation en novembre.",
+  "hours": "21 mai–11 octobre 2027, tous les jours 09:30–19:00, dernière descente dix minutes avant fermeture. En novembre 2026, saison terminée.",
+  "pricing": "Réservations 2027 annoncées « coming soon » ; aucun montant 2027 publié. Offre dynamique sans montant chiffré, note et lien officiels ; les billets exigent une réservation à l’avance pour emprunter la navette incluse.",
+  "accessibility": "Téléphérique et points de vue près de la station haute accessibles en fauteuil ; second étage du Summit Café et sentier du sommet non accessibles. Parking fermé en 2027 pour travaux, navette gratuite depuis Jasper incluse.",
+  "history": "Ouverture pendant l’été 1964 selon Pursuit, sans jour exact.",
+  "photos": "Trois photos exactes des cabines et du paysage, CC0/CC BY 2.0, crédit et textes alternatifs en huit langues.",
+  "sources": [
+    {
+      "label": "Pursuit — calendrier 2027, billets, navette et accessibilité",
+      "url": "https://www.pursuit.com/experiences/jasper-skytram/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Pursuit — ouverture été 1964",
+      "url": "https://prod.banffjaspercollection.com/attractions/jasper-skytram/stories/what-to-know-about-the-jasper-skytram/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station basse",
+      "url": "https://www.openstreetmap.org/way/548847074",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Gondola ski lift (Unsplash).jpg (Redd Angelo, CC0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Gondola_ski_lift_(Unsplash).jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Jasper Tramway from above 2012.jpg (ucniss, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Jasper_Tramway_from_above_2012.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Jasper Tramway from below 2009.jpg (Phil Whitehouse, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Jasper_Tramway_from_below_2009.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "La billetterie 2027 et les tarifs ne sont pas encore publiés ; vérifier leur ouverture et les horaires avant la saison."
+}
