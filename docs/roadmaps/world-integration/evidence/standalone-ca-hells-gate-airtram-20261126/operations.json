@@ -1,0 +1,146 @@
+[
+  {
+    "step": "core",
+    "operationId": "26ce69ad-df55-4c02-aa8b-a74179b6e587",
+    "appliedAtUtc": "2026-11-26T02:13:18.7609143Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "description",
+    "operationId": "d00daae8-85b1-4354-8a54-ede90b79ff5b",
+    "appliedAtUtc": "2026-11-26T02:15:23.6117781Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "11610b03-771c-4b82-90eb-ba5de60abaed",
+    "appliedAtUtc": "2026-11-26T02:15:47.9697405Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "14486fec-aeac-49a5-a003-96b4cfa5ba92",
+    "appliedAtUtc": "2026-11-26T02:16:09.8367969Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-de87ef761cf94a2ea9995f1465c40726",
+    "imageId": "de87ef761cf94a2ea9995f1465c40726",
+    "createdAtUtc": "2026-11-26T02:16:22.573Z",
+    "updatedAtUtc": "2026-11-26T02:16:26.485Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hell%27s_Gate_Airtram_(51561179511).jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-b22b85bb8ac04ece9413942ba75a6e80",
+    "imageId": "b22b85bb8ac04ece9413942ba75a6e80",
+    "createdAtUtc": "2026-11-26T02:16:38.534Z",
+    "updatedAtUtc": "2026-11-26T02:16:41.949Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hell%27s_Gate_Airtram_and_Suspension_Bridge_-_panoramio.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-7968c15cc05a422ca9c09e0debf79b3a",
+    "imageId": "7968c15cc05a422ca9c09e0debf79b3a",
+    "createdAtUtc": "2026-11-26T02:16:51.751Z",
+    "updatedAtUtc": "2026-11-26T02:16:55.214Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BostonBarBC_HellsGateAirtram.JPG",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "correction",
+    "operationId": "b129c0f3-9304-4dec-8121-977e7ee0e4fa",
+    "appliedAtUtc": "2026-11-26T02:18:13.2324716Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "finaltext",
+    "operationId": "f7a363a8-eac7-4a9e-bd0b-0cfb156e76e7",
+    "appliedAtUtc": "2026-11-26T02:18:59.2393692Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "aef61873-e94e-40a3-af0e-875f6c1cabae",
+    "appliedAtUtc": "2026-11-26T02:19:29.2452629Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "02a394691d514ed081cfa654dc527c93",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T02:20:13.5986652Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128875063424431"
+  }
+]

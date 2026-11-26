@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Hell's Gate Airtram et Hells Gate Airtram : zéro résultat ; aucun homonyme dans CA.json.",
+  "decision": "Téléphérique panoramique indépendant sur le Fraser Canyon avec propre billetterie, stationnement et pont suspendu. Le site est temporairement fermé après une panne électrique liée aux incendies de 2026, avec réouverture prévue le 1 mai 2027 ; statut TemporarilyClosed conservé.",
+  "officialPricing": "Tarifs 2027 annoncés, CAD hors GST : adulte 18+ 36,99 $, senior 65+ ou étudiant 18+ avec justificatif 34,99 $, jeune 6–17 ans 32,99 $, enfants cinq ans et moins gratuits. Billet aller retour et pont inclus. Ancienne page billetterie contradictoire sur âges ; page 2027 prioritaire.",
+  "officialHours": "Fermé depuis fin août 2026 pour panne électrique après incendie. Réouverture annoncée le 1 mai 2027 ; tous les jours jusqu’au 11 octobre. 10:00–16:00 en mai-juin et septembre-octobre ; 10:00–17:00 du 1 juillet au 6 septembre ; dernier retour quinze minutes avant fermeture.",
+  "accessibility": "Exploitant : téléphérique, pont suspendu et site accessibles en fauteuil, places de stationnement adaptées près du bâtiment principal.",
+  "history": "Construction débutée en 1970 selon l’exploitant ; ouverture en 1971 selon le guide touristique régional. Jour exact discuté entre sources secondaires, précision année retenue.",
+  "photos": "Trois photos exactes du téléphérique, du pont et des installations, CC BY 2.0 ou CC BY-SA 3.0/4.0, créditées et documentées dans huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — réouverture, saison, tarifs et accès 2027",
+      "url": "https://www.hellsgateairtram.com/plan-your-visit/hours/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — accessibilité et stationnement",
+      "url": "https://www.hellsgateairtram.com/plan-your-visit/faq/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — histoire et construction",
+      "url": "https://www.hellsgateairtram.com/about/hells-gate-history/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Hope Cascades & Canyons — ouverture en 1971",
+      "url": "https://tourismhcc.ca/wp-content/uploads/2024/10/2024-Tourism-Guide.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station d’accès route 1",
+      "url": "https://www.openstreetmap.org/way/30689315",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hell's Gate Airtram (51561179511).jpg (David Stanley, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hell%27s_Gate_Airtram_(51561179511).jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hell's Gate Airtram and Suspension Bridge - panoramio.jpg (Weixi Zeng, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hell%27s_Gate_Airtram_and_Suspension_Bridge_-_panoramio.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — BostonBarBC HellsGateAirtram.JPG (Shannon LaBelle, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:BostonBarBC_HellsGateAirtram.JPG",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Les horaires et tarifs 2027 sont annoncés mais la réouverture n’a pas encore eu lieu. Le backend interdit actuellement tarifs et horaires structurés pour une attraction TemporarilyClosed ; ces données figurent dans les descriptions publiques en huit langues et doivent être saisies en champs structurés après confirmation de réouverture. La page billetterie historique diverge des âges de la page 2027."
+}
