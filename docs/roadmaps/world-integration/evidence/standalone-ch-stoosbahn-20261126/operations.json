@@ -1,0 +1,95 @@
+[
+  {
+    "step": "core",
+    "operationId": "80b388a4-ea27-4868-a67f-bcd9444e14e1",
+    "appliedAtUtc": "2026-11-26T07:26:32.4533803Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-188e429b4e05423e836f550ae41f4d70",
+    "imageId": "188e429b4e05423e836f550ae41f4d70",
+    "createdAtUtc": "2026-11-26T07:27:35.795Z",
+    "updatedAtUtc": "2026-11-26T07:27:39.261Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-b39479e5bc05469884b3edb01bb4ce88",
+    "imageId": "b39479e5bc05469884b3edb01bb4ce88",
+    "createdAtUtc": "2026-11-26T07:27:56.342Z",
+    "updatedAtUtc": "2026-11-26T07:27:59.76Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-6412c8fd203b4e9ba8a9567a7ef63eb4",
+    "imageId": "6412c8fd203b4e9ba8a9567a7ef63eb4",
+    "createdAtUtc": "2026-11-26T07:28:17.846Z",
+    "updatedAtUtc": "2026-11-26T07:28:21.346Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg"
+  },
+  {
+    "step": "visitors",
+    "operationId": "149119a6-f128-471d-885f-034d875bf195",
+    "appliedAtUtc": "2026-11-26T07:30:08.1175254Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "context",
+    "operationId": "4e0df04e-f536-46d2-8e6a-7f54b311664f",
+    "appliedAtUtc": "2026-11-26T07:30:43.2795854Z",
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "site-publication",
+    "operationId": "f7be07c1-66a1-457b-81ed-67cfb1c4b4ef",
+    "appliedAtUtc": "2026-11-26T07:31:40.5724047Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "fd4840677a6f450d85b423854e21118e",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T07:32:40.128835Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128897743424431"
+  }
+]
