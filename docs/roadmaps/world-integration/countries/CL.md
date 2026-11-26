@@ -16,7 +16,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 23 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -27,7 +27,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **3 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **21 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -60,4 +60,5 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CL-candidate-6cb155c8c6ad4f | Ripaluna Parque Temático | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Chile) |
 | CL-candidate-f60a7a5f3494be | Sendero Mágico Parque Mitológico | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Chile) |
 | CL-candidate-3afaa2cc69eb04 | Serena Aventura | La Serena , Coquimbo | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/19893.htm) |
+| CL-candidate-discovery-sky-costanera-20261126 | Sky Costanera | Gran Torre Costanera, Providencia, Santiago | StandaloneAttraction | Published | Intégration achevée | 2026-11-26T04:54:25.290Z | — | Conserver cette entrée ; clarifier la règle de gratuité pour les enfants de quatre ans, puis recontrôler tarifs et horaires fériés. Ajouter un événement daté à chaque nouvelle intégration. Qualification standalone : AlreadyStandalone. Billet, horaires et accès propres au mirador ; les commerces du centre Cenco Costanera ne font pas partie du produit. Signal source : Mirador actif avec horaires, billetterie et prix publics sur le site de l’exploitant.. [Exploitant — tarifs, créneaux et horaires](https://skycostanera.cl/es/tarifas-y-horarios) · [Exploitant — accessibilité et achat](https://www.skycostanera.cl/es/preguntas-frecuentes) · [Exploitant — publication éducative et date d’ouverture](https://www.skycostanera.cl/sites/sky/files/2022-11/AULA_CIELO%20ABIERTO_.pdf) · [OpenStreetMap — point du mirador](https://www.openstreetmap.org/node/5627461421) · [OpenStreetMap — adresse de Cenco Costanera](https://www.openstreetmap.org/way/159707319) · [Wikimedia Commons — File:Sky Costanera 20260815.jpg (Rjcastillo, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Sky_Costanera_20260815.jpg) · [Wikimedia Commons — File:Acceso Sky Costanera.jpg (Warko, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Acceso_Sky_Costanera.jpg) · [Wikimedia Commons — File:Vista al atardecer desde Sky Costanera.jpg (PerasNevadas, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Vista_al_atardecer_desde_Sky_Costanera.jpg) · [Wikimedia Commons — File:Sky Costanera - Providencia.jpg (Corsario CL, CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:Sky_Costanera_-_Providencia.jpg) |
 | CL-candidate-c4b5fabe546a7c | Zoológico Nacional, Parque Metropolitano de Santiago | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.parquemet.cl/zoologico-nacional/) |

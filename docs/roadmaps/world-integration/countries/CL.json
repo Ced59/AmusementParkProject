@@ -881,6 +881,178 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CL-candidate-discovery-sky-costanera-20261126",
+      "name": "Sky Costanera",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Mirador panoramique",
+      "locality": "Gran Torre Costanera, Providencia, Santiago",
+      "siteId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T04:55:33Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Mirador actif avec horaires, billetterie et prix publics sur le site de l’exploitant.",
+      "identityConfidence": "Nom, accès, date d’ouverture, tarifs, adresse et quatre photos exactes vérifiés ; aucun doublon détecté.",
+      "possibleMatches": [],
+      "aliases": [
+        "Mirador Sky Costanera",
+        "Gran Torre Costanera Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T04:54:25.290Z",
+      "integrationHistory": [
+        {
+          "eventId": "c0ad46fe-fbb8-4ee2-97d4-abb412d910ef",
+          "appliedAt": "2026-11-26T04:48:20.019Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#c0ad46fe-fbb8-4ee2-97d4-abb412d910ef",
+          "auditEvidence": null,
+          "summary": "Création brouillon avec huit descriptions, localisation et date d’ouverture officielle."
+        },
+        {
+          "eventId": "4fff0490-14b2-41d8-b162-b2ec23063c0a",
+          "appliedAt": "2026-11-26T04:49:59.261Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#4fff0490-14b2-41d8-b162-b2ec23063c0a",
+          "auditEvidence": null,
+          "summary": "Horaires et quatre tarifs vérifiables, avec réserve explicite sur la gratuité à quatre ans."
+        },
+        {
+          "eventId": "73399af2-a977-486e-a35f-a73486ecab60",
+          "appliedAt": "2026-11-26T04:50:15.714Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#73399af2-a977-486e-a35f-a73486ecab60",
+          "auditEvidence": null,
+          "summary": "Aménagements pour les visiteurs à mobilité réduite intégrés depuis la FAQ officielle."
+        },
+        {
+          "eventId": "1a546913-47f2-4e46-9e8f-93f0595100fe",
+          "appliedAt": "2026-11-26T04:50:28.857Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#1a546913-47f2-4e46-9e8f-93f0595100fe",
+          "auditEvidence": null,
+          "summary": "Ouverture du 11 août 2015 sourcée et documentée."
+        },
+        {
+          "eventId": "photo-db40379356a54eee8b4e0c408de5dd58",
+          "appliedAt": "2026-11-26T04:51:23.234Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#photo-db40379356a54eee8b4e0c408de5dd58",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/4 importée : Rjcastillo (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-90094a60806c44a99b5f3a21336fc6bd",
+          "appliedAt": "2026-11-26T04:51:36.729Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#photo-90094a60806c44a99b5f3a21336fc6bd",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/4 importée : Warko (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-a2654529bece47989142896f9dca7ab3",
+          "appliedAt": "2026-11-26T04:51:50.918Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#photo-a2654529bece47989142896f9dca7ab3",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/4 importée : PerasNevadas (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-8d3b5c47523547038427f5648f198fd0",
+          "appliedAt": "2026-11-26T04:52:04.150Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#photo-8d3b5c47523547038427f5648f198fd0",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4/4 importée : Corsario CL (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "b62b7201-8bbc-4a4e-b36f-53a349ecd487",
+          "appliedAt": "2026-11-26T04:54:25.290Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/operations.json#b62b7201-8bbc-4a4e-b36f-53a349ecd487",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cl-sky-costanera-20261126/audit.json",
+          "summary": "Dernière montée à 21:00 ajoutée à la règle horaire, sans modifier les tarifs."
+        }
+      ],
+      "nextAction": "Conserver cette entrée ; clarifier la règle de gratuité pour les enfants de quatre ans, puis recontrôler tarifs et horaires fériés. Ajouter un événement daté à chaque nouvelle intégration.",
+      "sources": [
+        {
+          "label": "Exploitant — tarifs, créneaux et horaires",
+          "url": "https://skycostanera.cl/es/tarifas-y-horarios",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — accessibilité et achat",
+          "url": "https://www.skycostanera.cl/es/preguntas-frecuentes",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — publication éducative et date d’ouverture",
+          "url": "https://www.skycostanera.cl/sites/sky/files/2022-11/AULA_CIELO%20ABIERTO_.pdf",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — point du mirador",
+          "url": "https://www.openstreetmap.org/node/5627461421",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — adresse de Cenco Costanera",
+          "url": "https://www.openstreetmap.org/way/159707319",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Sky Costanera 20260815.jpg (Rjcastillo, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sky_Costanera_20260815.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Acceso Sky Costanera.jpg (Warko, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Acceso_Sky_Costanera.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Vista al atardecer desde Sky Costanera.jpg (PerasNevadas, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Vista_al_atardecer_desde_Sky_Costanera.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Sky Costanera - Providencia.jpg (Corsario CL, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sky_Costanera_-_Providencia.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "CL",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Billet, horaires et accès propres au mirador ; les commerces du centre Cenco Costanera ne font pas partie du produit."
+      }
     }
   ]
 }

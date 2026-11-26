@@ -1,0 +1,92 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "ec98780f-a3c6-481b-b4d4-c3d903e371a1",
+  "name": "Sky Costanera",
+  "countryCode": "CL",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ec98780f-a3c6-481b-b4d4-c3d903e371a1/sky-costanera",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T04:55:33Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "df2e8571306a4ebf8b3815d6692e6cd7",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128885779424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T04:54:25.290Z",
+  "lastDataEventId": "b62b7201-8bbc-4a4e-b36f-53a349ecd487",
+  "presenceSearch": "PDE SearchStandaloneAttractions « Sky Costanera » et SearchParks « Costanera » : aucun résultat avant création ; aucun homonyme dans CL.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "db40379356a54eee8b4e0c408de5dd58",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Costanera_20260815.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Rjcastillo",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "90094a60806c44a99b5f3a21336fc6bd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acceso_Sky_Costanera.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Warko",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "a2654529bece47989142896f9dca7ab3",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_al_atardecer_desde_Sky_Costanera.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "PerasNevadas",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "8d3b5c47523547038427f5648f198fd0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Costanera_-_Providencia.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Corsario CL",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 4,
+  "openingRules": 1,
+  "lastAdmissionAt": "21:00",
+  "sitePublicationReceipt": "4f9c2b24-67a4-413c-bfd5-fdd068e9f95e",
+  "note": "La publication et Facebook restent séparés de la dernière modification de données. La règle tarifaire pour un enfant de quatre ans reste à clarifier."
+}
