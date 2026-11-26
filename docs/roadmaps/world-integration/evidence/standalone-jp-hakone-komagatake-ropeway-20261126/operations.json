@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "f3511905-17a7-4b71-bb9e-6c986dead509",
+    "appliedAtUtc": "2026-11-26T03:31:53.041514Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-5ee943133d9945049f4bc6a964c89066",
+    "imageId": "5ee943133d9945049f4bc6a964c89066",
+    "createdAtUtc": "2026-11-26T03:32:53.3Z",
+    "updatedAtUtc": "2026-11-26T03:32:57.056Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_06.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-bf0b8a0fc3ba4f2582051f6144d10105",
+    "imageId": "bf0b8a0fc3ba4f2582051f6144d10105",
+    "createdAtUtc": "2026-11-26T03:33:07.097Z",
+    "updatedAtUtc": "2026-11-26T03:33:10.503Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_10.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-54101382a70c4a11a97e40c2f2e30629",
+    "imageId": "54101382a70c4a11a97e40c2f2e30629",
+    "createdAtUtc": "2026-11-26T03:33:20.191Z",
+    "updatedAtUtc": "2026-11-26T03:33:23.561Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_01.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "history",
+    "operationId": "47e35942-8156-453e-94b2-51866c990e0e",
+    "appliedAtUtc": "2026-11-26T03:33:53.5597291Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "fe3cb6b6-152c-4942-917f-9e70abde8af8",
+    "appliedAtUtc": "2026-11-26T03:34:15.6202458Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "488c21fb-b8fc-492e-985b-06e7f52566ce",
+    "appliedAtUtc": "2026-11-26T03:34:37.8667431Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "56378408-f4a4-4992-b06d-47716dd15462",
+    "appliedAtUtc": "2026-11-26T03:35:09.6907604Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "f12d132f2c0f4c52b90144106ab3a798",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T03:35:48.5516912Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128879911424431"
+  }
+]

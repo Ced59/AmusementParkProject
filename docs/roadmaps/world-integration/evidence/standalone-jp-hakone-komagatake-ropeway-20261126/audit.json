@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "f6d63f9d-8cfb-42f2-a3d1-113c9988042d",
+  "name": "Hakone Komagatake Ropeway",
+  "countryCode": "JP",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/f6d63f9d-8cfb-42f2-a3d1-113c9988042d/hakone-komagatake-ropeway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T03:35:55Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "f12d132f2c0f4c52b90144106ab3a798",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128879911424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T03:34:37.866Z",
+  "lastDataEventId": "488c21fb-b8fc-492e-985b-06e7f52566ce",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Hakone Komagatake Ropeway et Komagatake Ropeway : aucun résultat ; aucun homonyme dans JP.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "5ee943133d9945049f4bc6a964c89066",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_06.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Nesnad",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "bf0b8a0fc3ba4f2582051f6144d10105",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_10.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Nesnad",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "54101382a70c4a11a97e40c2f2e30629",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Nesnad",
+      "license": "CC BY 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 4,
+  "openingRules": 1
+}

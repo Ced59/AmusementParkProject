@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Hakone Komagatake Ropeway et Komagatake Ropeway : aucun résultat ; aucun homonyme dans JP.json.",
+  "decision": "Téléphérique touristique avec billet propre entre Hakone-en et un sommet extérieur au complexe, distinct du Hakone Ropeway Sounzan–Togendai. Le complexe Hakone-en propose plusieurs services mais n’a pas de fiche Park existante au moment de la recherche.",
+  "history": "Ouverture le 27 avril 1963 selon le communiqué officiel Seibu Prince.",
+  "service": "Premier départ montant 09:00, dernier montant 16:30, dernière descente 16:50 ; intervalle normal 20 minutes ; météo peut suspendre.",
+  "pricing": "Tarif ordinaire actuel sur la page japonaise : adulte 2 200 JPY retour, 1 300 JPY simple ; enfant primaire 1 100 JPY retour, 650 JPY simple. La page anglaise affiche encore 1 800/900 JPY, tarifs désormais réservés aux membres et clients éligibles.",
+  "accessibility": "La page de l’exploitant ne détaille pas le parcours en fauteuil de la gare au belvédère ; contacter l’exploitant avant réservation. Ne pas extrapoler les conditions du Hakone Ropeway voisin.",
+  "photos": "Trois photos exactes prises en 2025 de la cabine et de la gare, sous CC BY 4.0 avec crédits et légendes distinctes en huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — ligne, horaires actuels et tarifs ordinaires",
+      "url": "https://www.princehotels.co.jp/amuse/hakone-en/ropeway/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — communiqué ouverture 27 avril 1963",
+      "url": "https://www.princehotels.co.jp/amuse/hakone-en/pdf/news2411_01.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — description anglaise et contraste tarifaire historique",
+      "url": "https://www.princehotels.co.jp/amuse/hakone-en/language/english.html",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Parcs nationaux du Japon — parcours depuis Hakone-en",
+      "url": "https://www.japan.travel/national-parks/parks/fuji-hakone-izu/see-and-do/hakone-komagatake-ropeway/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — gare Hakone-en",
+      "url": "https://www.openstreetmap.org/way/835181991",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hakone Komagatake Ropeway 2025 July 6 various 06.jpg (Nesnad, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_06.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hakone Komagatake Ropeway 2025 July 6 various 10.jpg (Nesnad, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_10.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hakone Komagatake Ropeway 2025 July 6 various 01.jpg (Nesnad, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hakone_Komagatake_Ropeway_2025_July_6_various_01.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Horaires soumis au vent et aux orages ; accès PMR non confirmé par l’exploitant. La page anglaise du complexe présente un ancien tarif, écart explicitement documenté."
+}
