@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions DE pour Standseilbahn Dresden, Dresden Funicular Railway, Bergbahn Dresden et Standseilbahn Loschwitz : zéro résultat ; aucun homonyme dans DE.json.",
+  "decision": "Funiculaire historique autonome Körnerplatz–Weißer Hirsch, distinct de la Schwebebahn voisine ; gares, billet et calendrier propres.",
+  "officialPricing": "DVB affiche depuis le 1er avril 2025 les billets simples adulte/réduit/famille à 5/3/12 €, retours à 7/4/17 €. Réduit notamment pour élèves jusqu’au 15e anniversaire. Famille : 2 adultes et 4 élèves maximum. Retour le même jour possible par l’autre Bergbahn. Deutschlandticket et titre urbain simple non valables.",
+  "officialHours": "DVB : fermée pour révision du 16 au 27 novembre 2026 ; hiver jusqu’au 26 mars 2027, semaine 06:30–20:30 et week-end/jours fériés 09:00–20:30 ; été dès le 27 mars, semaine 06:30–21:30 et week-end/jours fériés 09:00–21:30. Autres révisions du 8 au 19 mars et du 15 au 26 novembre 2027. Règles ouvertes arrêtées au 31 octobre faute d’horaire ultérieur annoncé. Exceptions pour six jours fériés de Saxe dans cette période.",
+  "accessibility": "Accès partiel selon DVB : porte de 77 cm, écart de 8 cm à la station haute, seuil de 0–10 cm à la station basse ; jusqu’à deux fauteuils par voiture et par sens, assistance du personnel possible.",
+  "history": "La chronologie officielle DVB date la mise en service du 26 octobre 1895.",
+  "photos": "Trois photos exactes et créditées : voiture en station, voiture sur le viaduc, façade de la station haute. Sources Wikimedia Commons CC BY-SA 4.0 et CC BY 4.0 ; miniatures redimensionnées sans autre modification.",
+  "sources": [
+    {
+      "label": "DVB — Standseilbahn, révisions et accessibilité",
+      "url": "https://www.dvb.de/de-de/entdecken/bergbahnen/standseilbahn/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "DVB — horaires 2026–2027, prix et conditions de billetterie",
+      "url": "https://www.dvb.de/de-de/entdecken/bergbahnen/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "DVB — jalon officiel de mise en service du 26 octobre 1895",
+      "url": "https://www.dvb.de/de-de/die-dvb/geschichte/meilensteine-der-dresdner-nahverkehrsgeschichte",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Bergbahnen.org — coordonnées de la station basse",
+      "url": "https://www.bergbahnen.org/de/datenbank/seilbahn/4944/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — 20250226.Standseilbahn Dresden.-024.jpg (Bybbisch94, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:20250226.Standseilbahn_Dresden.-024.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — DD-Standseilbahn-4.jpg (SchiDD, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:DD-Standseilbahn-4.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — 20240826.Standseilbahn Loschwitz in Dresden, Bergstation.-011.jpg (Bybbisch94, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:20240826.Standseilbahn_Loschwitz_in_Dresden,_Bergstation.-011.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Tarifs affichés depuis 2025 à recontrôler. Les règles ouvertes n’inventent pas les horaires après octobre 2027 ; la révision de novembre 2027 reste documentée."
+}
