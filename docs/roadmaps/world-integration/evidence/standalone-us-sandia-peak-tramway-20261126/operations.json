@@ -1,0 +1,131 @@
+[
+  {
+    "step": "core",
+    "operationId": "f9c23809-937c-4de1-98c7-04b05cc8103e",
+    "appliedAtUtc": "2026-11-26T01:32:08.1797495Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "49b6e844-d0ab-4953-b4dc-69ebda18cb10",
+    "appliedAtUtc": "2026-11-26T01:32:32.1447018Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "subtype",
+    "operationId": "a442c6ae-8912-4c89-b79e-773a83af4840",
+    "appliedAtUtc": "2026-11-26T01:33:18.6962644Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "a8dd4a38-60c7-4f35-b02d-c559c0878aad",
+    "appliedAtUtc": "2026-11-26T01:34:02.0902196Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "b5282453-a2c9-4b8d-b887-37e881b53ab5",
+    "appliedAtUtc": "2026-11-26T01:34:24.7829708Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-5b1dafb623e247a0b2cfe83a3f15bab9",
+    "imageId": "5b1dafb623e247a0b2cfe83a3f15bab9",
+    "createdAtUtc": "2026-11-26T01:34:38.771Z",
+    "updatedAtUtc": "2026-11-26T01:34:42.536Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sandia_Peak,_New_Mexico,_USA_2024_1.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-2ceb04d12f60446dae490248dce14c6e",
+    "imageId": "2ceb04d12f60446dae490248dce14c6e",
+    "createdAtUtc": "2026-11-26T01:34:52.591Z",
+    "updatedAtUtc": "2026-11-26T01:34:55.936Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sandia-Peak-Tramway-tower-two.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-6235ce176d844553bffbb36ddbee8dc2",
+    "imageId": "6235ce176d844553bffbb36ddbee8dc2",
+    "createdAtUtc": "2026-11-26T01:35:07.99Z",
+    "updatedAtUtc": "2026-11-26T01:35:11.663Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sandia_Peak_Tramway_Car_by_Anna_Cummings_Photography_cropped.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "33e61c69-00dd-4853-85e8-daf05bef0558",
+    "appliedAtUtc": "2026-11-26T01:35:57.0465367Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "7c47d832e9004d1ca16bc7d14c97f3ca",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T01:36:40.9107543Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128871775424431"
+  }
+]

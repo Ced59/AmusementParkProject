@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+  "name": "Sandia Peak Tramway",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/013f1c78-9744-4e63-958f-9d19b6cd193c/sandia-peak-tramway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T01:37:37Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "7c47d832e9004d1ca16bc7d14c97f3ca",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128871775424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T01:35:11.663Z",
+  "lastDataEventId": "photo-6235ce176d844553bffbb36ddbee8dc2",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Sandia, Sandia Peak Tramway et Sandia Peak Aerial Tramway : zéro résultat ; aucun homonyme dans US.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "5b1dafb623e247a0b2cfe83a3f15bab9",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sandia_Peak,_New_Mexico,_USA_2024_1.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "dconvertini",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "id": "2ceb04d12f60446dae490248dce14c6e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sandia-Peak-Tramway-tower-two.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "MateoTimateo",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "6235ce176d844553bffbb36ddbee8dc2",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sandia_Peak_Tramway_Car_by_Anna_Cummings_Photography_cropped.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "AnnaCummingsPhotography",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "closedDateCount": 30
+}

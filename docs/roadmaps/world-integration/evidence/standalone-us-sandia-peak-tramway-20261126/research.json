@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Sandia, Sandia Peak Tramway et Sandia Peak Aerial Tramway : zéro résultat ; aucun homonyme dans US.json.",
+  "decision": "Téléphérique panoramique autonome avec station, tarifs et horaire propres, hors parc parent. La classification initiale Funicular héritée du modèle a été corrigée par Apply distinct en Aerial tramway avant publication.",
+  "officialPricing": "Page officielle : aller retour adulte 21–61 ans 35 $, enfant 2–12 ans 25 $, jeune 13–20 et senior 62+ 30 $, militaire admissible 30 $ ; aller simple 24 $. Moins de deux ans gratuit. Taxes en sus ; pages officielles contradictoires sur frais de terrain de 3,70 $ ou 3,75 $ par achat, à vérifier au paiement.",
+  "officialHours": "Mercredi-lundi 09:00–20:00 pour les montées, dernier retour depuis le sommet 22:00, mardi fermé. Thanksgiving 2026 et 24–25 décembre 09:00–16:00, mardis des fêtes 22 et 29 décembre ouverts 09:00–20:00. Maintenance 19 janvier–12 février 2027 fermée, reprise annoncée le 13 février sous réserve. Météo peut suspendre le service.",
+  "accessibility": "L’exploitant confirme l’accès en fauteuil de la cabine et de la terrasse supérieure. Animaux d’assistance admis.",
+  "history": "Premiers passagers le 7 mai 1966 selon l’histoire officielle.",
+  "photos": "Trois photos exactes et créditées : cabine photographiée en 2024 CC BY-SA 2.0, pylône CC BY-SA 4.0 et autre cabine CC BY-SA 4.0. Huit métadonnées de langues par image.",
+  "sources": [
+    {
+      "label": "Sandia Peak Tramway — tarifs officiels",
+      "url": "https://sandiapeak.com/aerial-tram-tickets/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Sandia Peak Tramway — horaires, adresse, accessibilité et frais",
+      "url": "https://sandiapeak.com/get-here/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Sandia Peak Tramway — horaires des fêtes 2026–2027",
+      "url": "https://sandiapeak.com/holiday-hours-2026-27/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Sandia Peak Tramway — ouverture le 7 mai 1966",
+      "url": "https://sandiapeak.com/history-construction/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap via Nominatim — base du téléphérique, coordonnées",
+      "url": "https://www.openstreetmap.org/node/7782834270",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Sandia Peak, New Mexico, USA 2024 1.jpg (dconvertini, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sandia_Peak,_New_Mexico,_USA_2024_1.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Sandia-Peak-Tramway-tower-two.jpg (MateoTimateo, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sandia-Peak-Tramway-tower-two.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Sandia Peak Tramway Car by Anna Cummings Photography cropped.jpg (AnnaCummingsPhotography, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sandia_Peak_Tramway_Car_by_Anna_Cummings_Photography_cropped.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "L’exploitant affiche deux montants de frais de terrain et des horaires modifiés pendant les fêtes. La maintenance 2027 a une date de reprise provisoire ; vérifier avant visite. Les photos du pylône et de la seconde cabine ne sont pas présentées comme des vues de 2026."
+}

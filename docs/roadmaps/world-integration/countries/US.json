@@ -79873,6 +79873,163 @@
         "attractions": [],
         "rationale": "Funiculaire autonome avec tarif, gares et horaires propres, hors parc parent."
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-sandia-peak-tramway-20261126",
+      "name": "Sandia Peak Tramway",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique autonome",
+      "locality": "30 Tramway Road Northeast, Albuquerque, NM 87122",
+      "siteId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T01:37:37Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation régulière publiée, avec fermeture de maintenance prévue en 2027.",
+      "identityConfidence": "Gare, horaires, tarifs, accès et histoire vérifiés chez l’exploitant ; trois photos exactes sous licence ; recherche PDE sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sandia Peak Aerial Tramway",
+        "Sandia Tram"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T01:35:11.663Z",
+      "integrationHistory": [
+        {
+          "eventId": "f9c23809-937c-4de1-98c7-04b05cc8103e",
+          "appliedAt": "2026-11-26T01:32:08.179Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/operations.json#f9c23809-937c-4de1-98c7-04b05cc8103e",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche sans doublon ; identité, adresse et huit descriptions."
+        },
+        {
+          "eventId": "49b6e844-d0ab-4953-b4dc-69ebda18cb10",
+          "appliedAt": "2026-11-26T01:32:32.144Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/operations.json#49b6e844-d0ab-4953-b4dc-69ebda18cb10",
+          "auditEvidence": null,
+          "summary": "Tarifs, règles quotidiennes et exceptions de fêtes et maintenance intégrés."
+        },
+        {
+          "eventId": "a442c6ae-8912-4c89-b79e-773a83af4840",
+          "appliedAt": "2026-11-26T01:33:18.696Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/operations.json#a442c6ae-8912-4c89-b79e-773a83af4840",
+          "auditEvidence": null,
+          "summary": "Correction du sous-type Funicular en Aerial tramway."
+        },
+        {
+          "eventId": "a8dd4a38-60c7-4f35-b02d-c559c0878aad",
+          "appliedAt": "2026-11-26T01:34:02.090Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/operations.json#a8dd4a38-60c7-4f35-b02d-c559c0878aad",
+          "auditEvidence": null,
+          "summary": "Ouverture du 7 mai 1966 documentée."
+        },
+        {
+          "eventId": "b5282453-a2c9-4b8d-b887-37e881b53ab5",
+          "appliedAt": "2026-11-26T01:34:24.782Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/operations.json#b5282453-a2c9-4b8d-b887-37e881b53ab5",
+          "auditEvidence": null,
+          "summary": "Accès en fauteuil et animaux d’assistance documentés dans huit langues."
+        },
+        {
+          "eventId": "photo-5b1dafb623e247a0b2cfe83a3f15bab9",
+          "appliedAt": "2026-11-26T01:34:42.536Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/operations.json#photo-5b1dafb623e247a0b2cfe83a3f15bab9",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : dconvertini (CC BY-SA 2.0)."
+        },
+        {
+          "eventId": "photo-2ceb04d12f60446dae490248dce14c6e",
+          "appliedAt": "2026-11-26T01:34:55.936Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/operations.json#photo-2ceb04d12f60446dae490248dce14c6e",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : MateoTimateo (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-6235ce176d844553bffbb36ddbee8dc2",
+          "appliedAt": "2026-11-26T01:35:11.663Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "013f1c78-9744-4e63-958f-9d19b6cd193c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/operations.json#photo-6235ce176d844553bffbb36ddbee8dc2",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-sandia-peak-tramway-20261126/audit.json",
+          "summary": "Photo exacte 3/3 importée : AnnaCummingsPhotography (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Vérifier la reprise après maintenance 2027, les changements météo et les frais de terrain avant future actualisation.",
+      "sources": [
+        {
+          "label": "Sandia Peak Tramway — tarifs officiels",
+          "url": "https://sandiapeak.com/aerial-tram-tickets/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Sandia Peak Tramway — horaires, adresse, accessibilité et frais",
+          "url": "https://sandiapeak.com/get-here/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Sandia Peak Tramway — horaires des fêtes 2026–2027",
+          "url": "https://sandiapeak.com/holiday-hours-2026-27/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Sandia Peak Tramway — ouverture le 7 mai 1966",
+          "url": "https://sandiapeak.com/history-construction/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap via Nominatim — base du téléphérique, coordonnées",
+          "url": "https://www.openstreetmap.org/node/7782834270",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Sandia Peak, New Mexico, USA 2024 1.jpg (dconvertini, CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sandia_Peak,_New_Mexico,_USA_2024_1.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Sandia-Peak-Tramway-tower-two.jpg (MateoTimateo, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sandia-Peak-Tramway-tower-two.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Sandia Peak Tramway Car by Anna Cummings Photography cropped.jpg (AnnaCummingsPhotography, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sandia_Peak_Tramway_Car_by_Anna_Cummings_Photography_cropped.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Téléphérique autonome à billets, stations et horaire propres, hors parc parent."
+      }
     }
   ]
 }
