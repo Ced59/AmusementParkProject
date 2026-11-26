@@ -1,0 +1,75 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b18a007b-9b7e-4caf-b90a-551cea96d1aa",
+  "name": "Goldbelt Tram",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b18a007b-9b7e-4caf-b90a-551cea96d1aa/goldbelt-tram",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T02:30:55Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "6348ced7e4f44bd0864a2c2527dc8297",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128875795424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T02:28:38.122Z",
+  "lastDataEventId": "cb4e5c21-fcc8-4f86-9388-72fbb7bb67c0",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Goldbelt Tram et Mount Roberts Tramway : zéro résultat ; vérification du registre US sans homonyme.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 52,
+    "earnedPoints": 52,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "c9289b11238b49d1b36aafa1f99be10a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tram_over_Juneau.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Sonny SideUp",
+      "license": "CC BY 2.0"
+    },
+    {
+      "id": "e799dadf2d39423b8456ad728d9bea23",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Roberts_Tramway_0036.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Gillfoto",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "543a892e7754473cb3364951d0951460",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Roberts_Tramway_car.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Roger Mommaerts",
+      "license": "CC BY-SA 2.0"
+    }
+  ],
+  "pricingFieldBlockedByTemporaryClosure": true,
+  "openingHoursFieldBlockedByTemporaryClosure": true,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1
+}

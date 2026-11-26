@@ -1,0 +1,52 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Goldbelt Tram et Mount Roberts Tramway : zéro résultat ; vérification du registre US sans homonyme.",
+  "decision": "Téléphérique panoramique indépendant, avec station, billetterie et exploitant propres, ouvert en 1996. Statut TemporarilyClosed : fermeture depuis un incident d’avril 2026, exploitation 2027 encore à l’étude.",
+  "closure": "L’exploitant confirme que le téléphérique est temporairement fermé pendant les évaluations. La société mère prévoit une expérience améliorée en 2028 mais ne confirme pas de service pour 2027. Le hall de la station basse reste ouvert ; ne pas le confondre avec la circulation du tram.",
+  "pricingAndHours": "Aucun tarif ni horaire de montée actuel confirmé. Les anciens horaires et liens de billets présents sur le site ne sont pas réutilisés pour un trajet actuellement fermé.",
+  "history": "Ouverture en 1996 selon la page About de l’exploitant ; précision année uniquement.",
+  "photos": "Trois vues exactes du téléphérique et de la station, licences Creative Commons vérifiées, crédit et textes alternatifs en huit langues.",
+  "sources": [
+    {
+      "label": "Goldbelt Tram — statut de fermeture et station basse",
+      "url": "https://www.goldbelttram.com/goldbelt-tram-update/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Goldbelt — évaluation de la saison 2027 et projet 2028",
+      "url": "https://www.mygoldbelt.com/news/item/2026-11-13/Fall-CEO-Livestream-Cascade-Point%2C-Tram-and-Goldbelts-Future",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Goldbelt Tram — histoire et caractéristiques",
+      "url": "https://www.goldbelttram.com/about/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Goldbelt Tram — adresse officielle",
+      "url": "https://www.goldbelttram.com/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station au 490 South Franklin Street",
+      "url": "https://www.openstreetmap.org/way/227451300",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Tram over Juneau.jpg (Sonny SideUp, CC BY 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Tram_over_Juneau.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Mount Roberts Tramway 0036.jpg (Gillfoto, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Mount_Roberts_Tramway_0036.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Mount Roberts Tramway car.jpg (Roger Mommaerts, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Mount_Roberts_Tramway_car.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "La date de reprise des trajets est inconnue ; le projet 2028 n’est pas une promesse de réouverture à cette date. Vérifier les annonces avant de modifier le statut et de saisir des horaires ou tarifs."
+}
