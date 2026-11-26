@@ -3258,6 +3258,199 @@
         "attractions": [],
         "rationale": "Tour d’observation à billets propres ; le belvédère et la terrasse sont des formules d’une même attraction autonome."
       }
+    },
+    {
+      "entryId": "MY-candidate-discovery-penang-hill-railway-20261126",
+      "name": "Penang Hill Railway",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Funiculaire panoramique",
+      "locality": "Air Itam–Bukit Bendera, Penang",
+      "siteId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T04:09:54Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Funiculaire en exploitation avec horaires et billets publics ; fermeture de maintenance précisément annoncée.",
+      "identityConfidence": "Train, gare, billets, horaires et exploitant confirmés ; ouverture officielle sourcée et trois photos exactes ; aucun doublon détecté.",
+      "possibleMatches": [],
+      "aliases": [
+        "Penang Hill Funicular Railway",
+        "Bukit Bendera Funicular",
+        "Penang Hill Funicular"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T04:11:23.017Z",
+      "integrationHistory": [
+        {
+          "eventId": "727ef18d-163d-4428-8e9f-b4b1721c2f64",
+          "appliedAt": "2026-11-26T04:01:38.022Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#727ef18d-163d-4428-8e9f-b4b1721c2f64",
+          "auditEvidence": null,
+          "summary": "Création masquée, huit descriptions et ouverture officielle de 1924."
+        },
+        {
+          "eventId": "3b7e1365-30bf-49f9-9428-fb2db64bc5af",
+          "appliedAt": "2026-11-26T04:03:46.249Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#3b7e1365-30bf-49f9-9428-fb2db64bc5af",
+          "auditEvidence": null,
+          "summary": "Accès en fauteuil et assistance à l’embarquement intégrés."
+        },
+        {
+          "eventId": "9969a5dd-2022-478a-8dfe-731b771251d2",
+          "appliedAt": "2026-11-26T04:04:09.817Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#9969a5dd-2022-478a-8dfe-731b771251d2",
+          "auditEvidence": null,
+          "summary": "Horaires, vingt tarifs et sept fermetures de maintenance intégrés."
+        },
+        {
+          "eventId": "0bcedd8a-e2d4-4526-a197-42e23f3cd53b",
+          "appliedAt": "2026-11-26T04:04:31.940Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#0bcedd8a-e2d4-4526-a197-42e23f3cd53b",
+          "auditEvidence": null,
+          "summary": "Date d’ouverture officielle et essais de 1923 documentés."
+        },
+        {
+          "eventId": "photo-962c1dbe5ced41a9b5f81134bbc7e786",
+          "appliedAt": "2026-11-26T04:05:02.058Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#photo-962c1dbe5ced41a9b5f81134bbc7e786",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : HundenvonPenang (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-4a70d81dfbad4b7b906d5a52a38d29b7",
+          "appliedAt": "2026-11-26T04:05:20.311Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#photo-4a70d81dfbad4b7b906d5a52a38d29b7",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Azreey (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-39e2165890304afc8871cbddb1c44d3f",
+          "appliedAt": "2026-11-26T04:05:41.020Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#photo-39e2165890304afc8871cbddb1c44d3f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 importée : Songgg12 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-metadata-962c1dbe5ced41a9b5f81134bbc7e786",
+          "appliedAt": "2026-11-26T04:06:25.053Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#photo-metadata-962c1dbe5ced41a9b5f81134bbc7e786",
+          "auditEvidence": null,
+          "summary": "Photo 1/3 : légende distincte du texte alternatif dans huit langues."
+        },
+        {
+          "eventId": "photo-metadata-4a70d81dfbad4b7b906d5a52a38d29b7",
+          "appliedAt": "2026-11-26T04:06:36.428Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#photo-metadata-4a70d81dfbad4b7b906d5a52a38d29b7",
+          "auditEvidence": null,
+          "summary": "Photo 2/3 : légende distincte du texte alternatif dans huit langues."
+        },
+        {
+          "eventId": "photo-metadata-39e2165890304afc8871cbddb1c44d3f",
+          "appliedAt": "2026-11-26T04:06:47.429Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#photo-metadata-39e2165890304afc8871cbddb1c44d3f",
+          "auditEvidence": null,
+          "summary": "Photo 3/3 : légende distincte du texte alternatif dans huit langues."
+        },
+        {
+          "eventId": "f06e115d-85b8-4bfd-a0b6-1bf96e1241b0",
+          "appliedAt": "2026-11-26T04:11:23.017Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/operations.json#f06e115d-85b8-4bfd-a0b6-1bf96e1241b0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-my-penang-hill-railway-20261126/audit.json",
+          "summary": "Prix au guichet distingués des prix en ligne ; huit offres aller simple indiquées comme vendues uniquement en gare. Audit 100/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette entrée ; recontrôler le service après la fermeture du 4 au 10 janvier 2027, ainsi que tarifs, horaires et conditions d’accès. Ajouter un événement daté à chaque nouvelle intégration sans effacer l’historique.",
+      "sources": [
+        {
+          "label": "Exploitant — horaires et tarifs",
+          "url": "https://penanghill.gov.my/index.php/en/tickets",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — foire aux questions et règles de billetterie",
+          "url": "https://penanghill.gov.my/index.php/en/faq",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — accès en fauteuil",
+          "url": "https://penanghill.gov.my/index.php/en/facilities-services",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — communiqué de maintenance du 4 au 10 janvier 2027",
+          "url": "https://corporate.penanghill.gov.my/images/images/Press_Release/2026/ENG_-_PENYELENGARAAN_BERJADUAL_TAHUNAN_KALI_PERTAMA_2027.pdf",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — centenaire et date d’ouverture officielle",
+          "url": "https://corporate.penanghill.gov.my/images/images/Press_Release/2022/Penang_Hill_Railway_100th_Anniversary_-_EN.pdf",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — gare inférieure",
+          "url": "https://www.openstreetmap.org/node/534134886",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Penang Hill funicular railway.jpg (HundenvonPenang, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Penang_Hill_funicular_railway.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Penang Hill Railway Upper Station.jpg (Azreey, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Penang_Hill_Railway_Upper_Station.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Penang Hill Funicular Railway.jpg (Songgg12, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Penang_Hill_Funicular_Railway.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "MY",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Billetterie, files et horaires propres pour le funiculaire ; les prestataires et attractions du sommet sont séparés de son billet."
+      }
     }
   ]
 }

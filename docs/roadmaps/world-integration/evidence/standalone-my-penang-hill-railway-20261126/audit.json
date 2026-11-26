@@ -1,0 +1,80 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "47f75587-cc43-4320-8e58-63ca4605b73f",
+  "name": "Penang Hill Railway",
+  "countryCode": "MY",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/47f75587-cc43-4320-8e58-63ca4605b73f/penang-hill-railway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T04:09:54Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "3e5bbc136ebd4a8f911a71cd8f6be9af",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128882167424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T04:11:23.017Z",
+  "lastDataEventId": "f06e115d-85b8-4bfd-a0b6-1bf96e1241b0",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks avec Penang Hill : aucun résultat avant création ; aucun homonyme dans MY.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "962c1dbe5ced41a9b5f81134bbc7e786",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penang_Hill_funicular_railway.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "HundenvonPenang",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "4a70d81dfbad4b7b906d5a52a38d29b7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penang_Hill_Railway_Upper_Station.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Azreey",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "39e2165890304afc8871cbddb1c44d3f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penang_Hill_Funicular_Railway.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Songgg12",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 20,
+  "openingRules": 1,
+  "closureOverrides": 7,
+  "sitePublicationReceipt": "ceb52fe5-de78-46a3-b74e-6eff141893c1",
+  "note": "La publication et Facebook sont suivis séparément de la date d’intégration de données.",
+  "counterOnlyOneWayOffers": 8
+}

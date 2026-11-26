@@ -1,0 +1,147 @@
+[
+  {
+    "step": "core",
+    "operationId": "727ef18d-163d-4428-8e9f-b4b1721c2f64",
+    "appliedAtUtc": "2026-11-26T04:01:38.0220211Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "3b7e1365-30bf-49f9-9428-fb2db64bc5af",
+    "appliedAtUtc": "2026-11-26T04:03:46.2491083Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "9969a5dd-2022-478a-8dfe-731b771251d2",
+    "appliedAtUtc": "2026-11-26T04:04:09.8178486Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "0bcedd8a-e2d4-4526-a197-42e23f3cd53b",
+    "appliedAtUtc": "2026-11-26T04:04:31.9405196Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-962c1dbe5ced41a9b5f81134bbc7e786",
+    "imageId": "962c1dbe5ced41a9b5f81134bbc7e786",
+    "createdAtUtc": "2026-11-26T04:04:58.368Z",
+    "updatedAtUtc": "2026-11-26T04:05:02.058Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penang_Hill_funicular_railway.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-4a70d81dfbad4b7b906d5a52a38d29b7",
+    "imageId": "4a70d81dfbad4b7b906d5a52a38d29b7",
+    "createdAtUtc": "2026-11-26T04:05:16.85Z",
+    "updatedAtUtc": "2026-11-26T04:05:20.311Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penang_Hill_Railway_Upper_Station.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-39e2165890304afc8871cbddb1c44d3f",
+    "imageId": "39e2165890304afc8871cbddb1c44d3f",
+    "createdAtUtc": "2026-11-26T04:05:37.673Z",
+    "updatedAtUtc": "2026-11-26T04:05:41.02Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penang_Hill_Funicular_Railway.jpg"
+  },
+  {
+    "step": "photo-1-metadata",
+    "eventId": "photo-metadata-962c1dbe5ced41a9b5f81134bbc7e786",
+    "imageId": "962c1dbe5ced41a9b5f81134bbc7e786",
+    "updatedAtUtc": "2026-11-26T04:06:25.053Z",
+    "languages": 8
+  },
+  {
+    "step": "photo-2-metadata",
+    "eventId": "photo-metadata-4a70d81dfbad4b7b906d5a52a38d29b7",
+    "imageId": "4a70d81dfbad4b7b906d5a52a38d29b7",
+    "updatedAtUtc": "2026-11-26T04:06:36.428Z",
+    "languages": 8
+  },
+  {
+    "step": "photo-3-metadata",
+    "eventId": "photo-metadata-39e2165890304afc8871cbddb1c44d3f",
+    "imageId": "39e2165890304afc8871cbddb1c44d3f",
+    "updatedAtUtc": "2026-11-26T04:06:47.429Z",
+    "languages": 8
+  },
+  {
+    "step": "publish",
+    "operationId": "ceb52fe5-de78-46a3-b74e-6eff141893c1",
+    "appliedAtUtc": "2026-11-26T04:07:34.7031211Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "3e5bbc136ebd4a8f911a71cd8f6be9af",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T04:08:25.4482638Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128882167424431"
+  },
+  {
+    "step": "pricing-correction",
+    "operationId": "f06e115d-85b8-4bfd-a0b6-1bf96e1241b0",
+    "appliedAtUtc": "2026-11-26T04:11:23.0171007Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": [],
+    "note": "Huit allers simples uniquement au guichet, douze allers retours disponibles aussi en ligne."
+  }
+]
