@@ -1,0 +1,84 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+  "name": "Ulriksbanen",
+  "countryCode": "NO",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/5c92d7e0-0619-4afb-b553-7eeac037238e/ulriksbanen",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T00:05:41Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "54719d4d23ff4508b7381e675bd10283",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128865865424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T00:05:13.927Z",
+  "lastDataEventId": "72aad68b-ee2b-4461-895e-011832c3c98b",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions NO sur Ulriksbanen, Ulriken643, Ulriken Cable Car et Ulriken : zéro résultat ; aucun homonyme dans le backlog NO.",
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "135439d642a64c3c961516f2e9b5dfd5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ulriksbanen_Ulriken_Bergen_2.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "kallerna",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2026-08-11",
+      "historical": false
+    },
+    {
+      "id": "83fe5327c1f142378a9b54389264722d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ulriksbanen_Ulriken_Bergen.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "kallerna",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2026-08-11",
+      "historical": false
+    },
+    {
+      "id": "6ca0aedc2c964d8d9bbd597749f8030f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_cable_car_and_Bergen_from_Mount_Ulriken_02.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Ciara Ní Riain",
+      "license": "CC BY-SA 4.0",
+      "photographedOn": "2018-04-30",
+      "historical": true
+    }
+  ],
+  "pricingOfferCount": 6,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "openingRules": 11,
+  "openingExceptions": 14,
+  "january2027Closed": true
+}

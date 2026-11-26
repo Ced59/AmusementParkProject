@@ -1398,6 +1398,193 @@
         "attractions": [],
         "rationale": "Ligne de funiculaire autonome avec billetterie et horaires propres ; les loisirs du mont Fløyen ne constituent pas un parc parent de la ligne."
       }
+    },
+    {
+      "entryId": "NO-candidate-discovery-ulriksbanen-bergen-20261126",
+      "name": "Ulriksbanen",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique à billet propre",
+      "locality": "Haukelandsbakken 40, 5009 Bergen",
+      "siteId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T00:05:41Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif au 25 novembre 2026, avec fermeture complète annoncée en janvier 2027 pour maintenance.",
+      "identityConfidence": "Gare, tarifs, horaires, accès, histoire et photos exactes documentés ; recherches sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Ulriken Cable Car",
+        "Ulriken643"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T00:05:13.927Z",
+      "integrationHistory": [
+        {
+          "eventId": "df85b588-99b7-4852-8738-bd05747833e3",
+          "appliedAt": "2026-11-25T23:56:27.210Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#df85b588-99b7-4852-8738-bd05747833e3",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherches sans doublon ; identité, adresse et huit descriptions."
+        },
+        {
+          "eventId": "38ca6dfa-0529-45f0-b64d-1397c4d905ae",
+          "appliedAt": "2026-11-25T23:56:54.255Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#38ca6dfa-0529-45f0-b64d-1397c4d905ae",
+          "auditEvidence": null,
+          "summary": "Six tarifs officiels et calendrier saisonnier, fermeture de janvier 2027 et exceptions intégrés."
+        },
+        {
+          "eventId": "5b9efee7-be06-45b1-a1dd-5052055734bf",
+          "appliedAt": "2026-11-25T23:57:42.273Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#5b9efee7-be06-45b1-a1dd-5052055734bf",
+          "auditEvidence": null,
+          "summary": "Ouverture en 1961 documentée à la précision de l’année."
+        },
+        {
+          "eventId": "d6aac59d-6835-43bd-851a-f3813f2be928",
+          "appliedAt": "2026-11-25T23:58:04.652Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#d6aac59d-6835-43bd-851a-f3813f2be928",
+          "auditEvidence": null,
+          "summary": "Rampes, ascenseurs et distinction du bus documentés dans huit langues."
+        },
+        {
+          "eventId": "photo-135439d642a64c3c961516f2e9b5dfd5",
+          "appliedAt": "2026-11-25T23:58:32.491Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#photo-135439d642a64c3c961516f2e9b5dfd5",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : kallerna (CC BY-SA 4.0, 2026-08-11)."
+        },
+        {
+          "eventId": "photo-83fe5327c1f142378a9b54389264722d",
+          "appliedAt": "2026-11-25T23:58:48.349Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#photo-83fe5327c1f142378a9b54389264722d",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : kallerna (CC BY-SA 4.0, 2026-08-11)."
+        },
+        {
+          "eventId": "photo-6ca0aedc2c964d8d9bbd597749f8030f",
+          "appliedAt": "2026-11-25T23:59:19.312Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#photo-6ca0aedc2c964d8d9bbd597749f8030f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 importée : Ciara Ní Riain (CC BY-SA 4.0, 2018-04-30)."
+        },
+        {
+          "eventId": "ac2837c1-e075-4586-8ae4-6a0a4e0f1209",
+          "appliedAt": "2026-11-26T00:00:21.061Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#ac2837c1-e075-4586-8ae4-6a0a4e0f1209",
+          "auditEvidence": null,
+          "summary": "Réécriture initiale des descriptions pour retirer les métriques brutes après contrôle éditorial."
+        },
+        {
+          "eventId": "51b7c878-f718-48e2-8d4f-1a8758e1c597",
+          "appliedAt": "2026-11-26T00:01:08.672Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#51b7c878-f718-48e2-8d4f-1a8758e1c597",
+          "auditEvidence": null,
+          "summary": "Révision des huit descriptions, grammaire et métriques ; audit sans bloqueur."
+        },
+        {
+          "eventId": "72aad68b-ee2b-4461-895e-011832c3c98b",
+          "appliedAt": "2026-11-26T00:05:13.927Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5c92d7e0-0619-4afb-b553-7eeac037238e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/operations.json#72aad68b-ee2b-4461-895e-011832c3c98b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-no-ulriksbanen-bergen-20261126/audit.json",
+          "summary": "Correction du site officiel et de la source historique vers des pages actives ; audit final sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Vérifier la réouverture prévue le 2 février 2027 et les tarifs de la saison suivante ; clarifier l’écart entre FAQ ancienne et horaires actuels sur le dernier départ.",
+      "sources": [
+        {
+          "label": "Ulriken643 — téléphérique officiel et historique depuis 1961",
+          "url": "https://ulriken643.no/en/blog/ulriksbanen-den-komplette-guiden-for-forstegangsbesokende",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Ulriken643 — tarifs officiels de la télécabine",
+          "url": "https://ulriken643.no/en/prices/",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Ulriken643 — horaires et fermeture de janvier 2027",
+          "url": "https://ulriken643.no/en/opening-hours",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Ulriken643 — calendrier d’hiver 2026–2027 et réouverture",
+          "url": "https://ulriken643.no/en/blog/ulriken-in-winter-opening-hours-january-closure",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Ulriken643 — adresse de la station basse et bus distinct",
+          "url": "https://ulriken643.no/en/find-us",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Ulriken643 — rampes et ascenseurs des cabines",
+          "url": "https://ulriken643.no/en/page/q-a",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Visit Bergen — coordonnées GPS de la station basse",
+          "url": "https://en.visitbergen.com/things-to-do/ulriken643-ulriken-cable-car-p824813",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Ulriksbanen Ulriken Bergen 2.jpg (kallerna, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Ulriksbanen_Ulriken_Bergen_2.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Ulriksbanen Ulriken Bergen.jpg (kallerna, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Ulriksbanen_Ulriken_Bergen.jpg",
+          "accessedAt": "2026-11-25"
+        },
+        {
+          "label": "Wikimedia Commons — Aerial view of cable car and Bergen from Mount Ulriken 02.jpg (Ciara Ní Riain, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_cable_car_and_Bergen_from_Mount_Ulriken_02.jpg",
+          "accessedAt": "2026-11-25"
+        }
+      ],
+      "countryCodeAtInventory": "NO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Téléphérique autonome avec billet et horaires propres ; les autres activités du sommet sont vendues séparément."
+      }
     }
   ]
 }

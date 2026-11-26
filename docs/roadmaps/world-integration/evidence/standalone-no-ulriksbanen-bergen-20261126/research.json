@@ -1,0 +1,63 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions NO sur Ulriksbanen, Ulriken643, Ulriken Cable Car et Ulriken : zéro résultat ; aucun homonyme dans le backlog NO.",
+  "decision": "Téléphérique autonome à billetterie, gare, tarifs et horaires propres ; le restaurant, la zipline et les sentiers au sommet ne sont pas inclus dans le billet de la ligne. Le classement standalone est justifié.",
+  "officialPricing": "Billet téléphérique seul : aller simple adulte 255 NOK, enfant 4–16 ans 120 NOK, famille 2 adultes jusqu’à 3 enfants 630 NOK ; retour 435/180/1050 NOK. Le bus est facturé séparément. Bergen Card réduit de 10 % les billets standard.",
+  "officialHours": "Octobre–mars : lundi fermé ; mardi–mercredi et dimanche 09:00–19:00 ; jeudi–samedi 09:00–23:00. Avril–septembre quotidien 09:00–23:00. Fermeture complète 1er–31 janvier 2027 pour maintenance, reprise annoncée le 2 février. Noël 2026, 15 février et Pâques 2027 encodés comme exceptions. La FAQ ancienne cite 21:00 comme dernier départ, en conflit avec la page horaires actuelle ; privilégier la page actualisée et vérifier le jour de visite.",
+  "accessibility": "Exploitant : rampes et ascenseurs vers les cabines. Le bus Ulriken Express est distinct ; solution taxi annoncée pour les fauteuils non pliables pendant ses horaires.",
+  "history": "L’exploitant date le début du transport de passagers de 1961 ; aucune date jour/mois non attestée n’a été inventée.",
+  "photos": "Deux photos exactes du matériel actuel prises le 11 août 2026 par kallerna (CC BY-SA 4.0) ; troisième photo exacte du matériel ancien prise en 2018 par Ciara Ní Riain (CC BY-SA 4.0), explicitement présentée comme historique.",
+  "sources": [
+    {
+      "label": "Ulriken643 — téléphérique officiel et historique depuis 1961",
+      "url": "https://ulriken643.no/en/blog/ulriksbanen-den-komplette-guiden-for-forstegangsbesokende",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Ulriken643 — tarifs officiels de la télécabine",
+      "url": "https://ulriken643.no/en/prices/",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Ulriken643 — horaires et fermeture de janvier 2027",
+      "url": "https://ulriken643.no/en/opening-hours",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Ulriken643 — calendrier d’hiver 2026–2027 et réouverture",
+      "url": "https://ulriken643.no/en/blog/ulriken-in-winter-opening-hours-january-closure",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Ulriken643 — adresse de la station basse et bus distinct",
+      "url": "https://ulriken643.no/en/find-us",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Ulriken643 — rampes et ascenseurs des cabines",
+      "url": "https://ulriken643.no/en/page/q-a",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Visit Bergen — coordonnées GPS de la station basse",
+      "url": "https://en.visitbergen.com/things-to-do/ulriken643-ulriken-cable-car-p824813",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Ulriksbanen Ulriken Bergen 2.jpg (kallerna, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Ulriksbanen_Ulriken_Bergen_2.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Ulriksbanen Ulriken Bergen.jpg (kallerna, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Ulriksbanen_Ulriken_Bergen.jpg",
+      "accessedAt": "2026-11-25"
+    },
+    {
+      "label": "Wikimedia Commons — Aerial view of cable car and Bergen from Mount Ulriken 02.jpg (Ciara Ní Riain, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_cable_car_and_Bergen_from_Mount_Ulriken_02.jpg",
+      "accessedAt": "2026-11-25"
+    }
+  ],
+  "uncertainty": "Tarifs et horaires susceptibles de changer ; fermeture janvier 2027 programmée. La FAQ ancienne sur l’heure du dernier départ contredit la page horaires actuelle. Recontrôler le calendrier et les prix avant saison 2027."
+}

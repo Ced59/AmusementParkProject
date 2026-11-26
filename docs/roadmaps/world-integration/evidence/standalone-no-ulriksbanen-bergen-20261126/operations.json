@@ -1,0 +1,163 @@
+[
+  {
+    "step": "core",
+    "operationId": "df85b588-99b7-4852-8738-bd05747833e3",
+    "appliedAtUtc": "2026-11-25T23:56:27.2107164Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "38ca6dfa-0529-45f0-b64d-1397c4d905ae",
+    "appliedAtUtc": "2026-11-25T23:56:54.2552302Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "5b9efee7-be06-45b1-a1dd-5052055734bf",
+    "appliedAtUtc": "2026-11-25T23:57:42.2733553Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "d6aac59d-6835-43bd-851a-f3813f2be928",
+    "appliedAtUtc": "2026-11-25T23:58:04.6520696Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-135439d642a64c3c961516f2e9b5dfd5",
+    "imageId": "135439d642a64c3c961516f2e9b5dfd5",
+    "createdAtUtc": "2026-11-25T23:58:29.06Z",
+    "updatedAtUtc": "2026-11-25T23:58:32.491Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ulriksbanen_Ulriken_Bergen_2.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-83fe5327c1f142378a9b54389264722d",
+    "imageId": "83fe5327c1f142378a9b54389264722d",
+    "createdAtUtc": "2026-11-25T23:58:44.863Z",
+    "updatedAtUtc": "2026-11-25T23:58:48.349Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ulriksbanen_Ulriken_Bergen.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-6ca0aedc2c964d8d9bbd597749f8030f",
+    "imageId": "6ca0aedc2c964d8d9bbd597749f8030f",
+    "createdAtUtc": "2026-11-25T23:59:15.336Z",
+    "updatedAtUtc": "2026-11-25T23:59:19.312Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_cable_car_and_Bergen_from_Mount_Ulriken_02.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "correction",
+    "operationId": "ac2837c1-e075-4586-8ae4-6a0a4e0f1209",
+    "appliedAtUtc": "2026-11-26T00:00:21.0611222Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "textfix",
+    "operationId": "51b7c878-f718-48e2-8d4f-1a8758e1c597",
+    "appliedAtUtc": "2026-11-26T00:01:08.6724718Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "e6cd65a6-059d-4ce1-9b48-e016d9739211",
+    "appliedAtUtc": "2026-11-26T00:01:55.4533358Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "54719d4d23ff4508b7381e675bd10283",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T00:02:56.1910953Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128865865424431"
+  },
+  {
+    "step": "linkfix",
+    "operationId": "72aad68b-ee2b-4461-895e-011832c3c98b",
+    "appliedAtUtc": "2026-11-26T00:05:13.9271291Z",
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  }
+]
