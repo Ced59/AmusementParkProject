@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "c8fe7f6d-56c0-4bf7-86da-56483a1b2326",
+    "appliedAtUtc": "2026-11-26T02:44:50.7089128Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-81729e9cc02540c1ae487e3dbe7bf237",
+    "imageId": "81729e9cc02540c1ae487e3dbe7bf237",
+    "createdAtUtc": "2026-11-26T02:45:38.074Z",
+    "updatedAtUtc": "2026-11-26T02:45:42.125Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gondola_ski_lift_(Unsplash).jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-3bda2cd12cf14eb6947db5c31d7ebdf3",
+    "imageId": "3bda2cd12cf14eb6947db5c31d7ebdf3",
+    "createdAtUtc": "2026-11-26T02:45:52.223Z",
+    "updatedAtUtc": "2026-11-26T02:45:55.947Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jasper_Tramway_from_above_2012.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-ea6d49d3e905439fb3634d04c7d1a12f",
+    "imageId": "ea6d49d3e905439fb3634d04c7d1a12f",
+    "createdAtUtc": "2026-11-26T02:46:05.959Z",
+    "updatedAtUtc": "2026-11-26T02:46:09.364Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jasper_Tramway_from_below_2009.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "visitors",
+    "operationId": "ba92c6aa-fad8-4a89-ac73-6daccb177640",
+    "appliedAtUtc": "2026-11-26T02:46:33.5061668Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "d14635a9-f447-4637-8d35-deddba7d63e5",
+    "appliedAtUtc": "2026-11-26T02:47:13.9785755Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "2793d911-4edb-4219-8310-35016d83e134",
+    "appliedAtUtc": "2026-11-26T02:47:36.7702484Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "fb2d7c71-7247-4410-8f55-6daaaa13f3c9",
+    "appliedAtUtc": "2026-11-26T02:48:12.6073352Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "cd2db500daee43c9bb8c41f4b6d32521",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T02:48:54.5393645Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128876935424431"
+  }
+]
