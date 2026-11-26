@@ -1,0 +1,63 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks « Gulmarg » : aucun résultat avant création ; aucun homonyme dans IN.json.",
+  "decision": "Deux tronçons de télécabine avec billetterie et créneaux propres entre Gulmarg, Kongdoori et Apharwat. Le télésiège Kongdoori est un produit distinct de l’exploitant et ne fait pas partie de cette fiche.",
+  "history": "Document du département de la faune du Jammu-et-Cachemire : premier tronçon mis en service en 1998 après chantier commencé en 1988 ; deuxième mis en service en 2005 après chantier commencé en 2003.",
+  "service": "Premiers embarquements annoncés à 08:30 pour la phase I et 09:15 pour la phase II ; pas d’heure de fin pérenne dans l’avis officiel. Fermetures habituelles les deuxièmes et quatrièmes lundis du mois ; vingt-quatre dates intégrées sur un an.",
+  "pricing": "Le portail officiel n’affiche les montants qu’après connexion ; aucun prix chiffré n’a été intégré sans vérification. Réservation en ligne par créneau ; vente Tatkal à la gare de base de 08:30 à 10:00 hors week-end pour les non-réservés, selon avis actuel.",
+  "accessibility": "Aucune règle d’accès fiable et actuelle trouvée ; ne pas en inventer.",
+  "photos": "Quatre images exactes de cabines et de la gare, avec licences et auteurs vérifiés sur Wikimedia Commons, et textes alternatifs et légendes distincts dans huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant JKCCC — projet Gulmarg Gondola",
+      "url": "https://www.jammukashmircablecar.com/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant JKCCC — avis de réservation, premier embarquement et maintenance",
+      "url": "https://www.jammukashmircablecar.com/notifications.html",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant JKCCC — portail officiel de réservation, tarif après connexion",
+      "url": "https://etickets.jammukashmircablecar.com/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Département de la faune du Jammu-et-Cachemire — mises en service 1998 et 2005",
+      "url": "https://jkwildlife.com/wild/pdf/sanc/gulmarg%20info.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Ministère indien du Tourisme — contexte et premier tronçon",
+      "url": "https://www.incredibleindia.gov.in/en/jammu-and-kashmir/gulmarg/thrilling-adventure-experiences-in-gulmarg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station G1",
+      "url": "https://www.openstreetmap.org/node/513152167",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Gulmarg Gondola Kashmir 2.jpg (Dr.himshree, CC BY 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Gulmarg_Gondola_Kashmir_2.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Gulmarg Gondola Seen108.jpg (Maheshkumarrathi, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Gulmarg_Gondola_Seen108.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Gulmarg-Gondala.JPG (Vikas Yadav, Public domain)",
+      "url": "https://commons.wikimedia.org/wiki/File:Gulmarg-Gondala.JPG",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Gondola lift..JPG (Rudolph.A.furtado, CC0 1.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Gondola_lift..JPG",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Tarifs exacts réservés aux usagers connectés du portail officiel ; heure de fin non publiée dans l’avis consulté. La fermeture de maintenance et les créneaux peuvent évoluer."
+}
