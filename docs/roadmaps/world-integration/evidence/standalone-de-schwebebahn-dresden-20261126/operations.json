@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "e1f7837c-73c2-4899-b463-fd0a4a87b140",
+    "appliedAtUtc": "2026-11-26T00:28:38.3170295Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "69a2e2cc-4070-4988-8bef-c6f7ce99243c",
+    "appliedAtUtc": "2026-11-26T00:29:05.8955385Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "3636c7e0-8f9a-42e2-936d-cecb07349963",
+    "appliedAtUtc": "2026-11-26T00:30:04.9909067Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "660ee8f8-440c-43f8-a8cc-033479362b9a",
+    "appliedAtUtc": "2026-11-26T00:30:26.8123544Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-f2d93fd43e3b4182ba4512c9309f18e1",
+    "imageId": "f2d93fd43e3b4182ba4512c9309f18e1",
+    "createdAtUtc": "2026-11-26T00:30:39.771Z",
+    "updatedAtUtc": "2026-11-26T00:30:43.465Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dresden-Loschwitz,Schwebebahn_13.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-7f680ce5d2a34261bec669dc2144c078",
+    "imageId": "7f680ce5d2a34261bec669dc2144c078",
+    "createdAtUtc": "2026-11-26T00:30:53.21Z",
+    "updatedAtUtc": "2026-11-26T00:30:56.538Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dresden_Bergbahn_129.JPG",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-34bd81b527a742bd98e2f625d292c002",
+    "imageId": "34bd81b527a742bd98e2f625d292c002",
+    "createdAtUtc": "2026-11-26T00:31:05.923Z",
+    "updatedAtUtc": "2026-11-26T00:31:09.434Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schwebebahn_Dresden_-_Untere_Station_(Dresden_Suspension_Railway_-_Lower_Station)_-_geo.hlipp.de_-_32428.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "b2337769-2940-4249-be00-99a58985cfc5",
+    "appliedAtUtc": "2026-11-26T00:31:39.8670852Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "13ea9bd399cc4f72ac7798260c3202d9",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T00:32:47.9102825Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128867977424431"
+  }
+]
