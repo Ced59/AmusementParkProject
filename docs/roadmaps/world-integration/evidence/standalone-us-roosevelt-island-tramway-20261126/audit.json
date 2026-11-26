@@ -1,0 +1,75 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+  "name": "Roosevelt Island Tramway",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/fd6f1ceb-0012-447c-bcf0-f83846c9f8e6/roosevelt-island-tramway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T01:58:13Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "bef7b99d4b4d4f5db423b5e39d92876f",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128873665424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T01:56:44.700Z",
+  "lastDataEventId": "photo-metadata-90940e6dae7944869990991356fb6aa9",
+  "presenceSearch": "PDE SearchStandaloneAttractions US pour Roosevelt : zéro résultat ; SearchParks Roosevelt : zéro résultat ; aucun homonyme dans US.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "f91de24626f34113b5af53b13b26fa1d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0596.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Superbass",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "406ba39d041841a7bf7c2568e639b70c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0598.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Superbass",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "90940e6dae7944869990991356fb6aa9",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:UES_terminal_of_Roosevelt_Island_Tramway_from_departing_car,_September_2025.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Pi.1415926535",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 1,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1
+}

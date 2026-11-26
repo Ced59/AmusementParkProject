@@ -1,0 +1,137 @@
+[
+  {
+    "step": "core",
+    "operationId": "7833ebd7-a0af-47b6-bdb3-24793d6476ca",
+    "appliedAtUtc": "2026-11-26T01:52:46.0042399Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "26de00b3-bba4-4b47-b207-62fe9dba5827",
+    "appliedAtUtc": "2026-11-26T01:53:10.8590358Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "78bf11cd-5f03-480f-9cae-0a00fd337c8f",
+    "appliedAtUtc": "2026-11-26T01:53:57.6990054Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "60d79752-0993-4d09-b1b6-865aec81c27c",
+    "appliedAtUtc": "2026-11-26T01:54:19.677668Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-f91de24626f34113b5af53b13b26fa1d",
+    "imageId": "f91de24626f34113b5af53b13b26fa1d",
+    "createdAtUtc": "2026-11-26T01:54:33.807Z",
+    "updatedAtUtc": "2026-11-26T01:54:37.579Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0596.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-406ba39d041841a7bf7c2568e639b70c",
+    "imageId": "406ba39d041841a7bf7c2568e639b70c",
+    "createdAtUtc": "2026-11-26T01:54:47.546Z",
+    "updatedAtUtc": "2026-11-26T01:54:50.996Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0598.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-90940e6dae7944869990991356fb6aa9",
+    "imageId": "90940e6dae7944869990991356fb6aa9",
+    "createdAtUtc": "2026-11-26T01:55:01.265Z",
+    "updatedAtUtc": "2026-11-26T01:55:04.785Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:UES_terminal_of_Roosevelt_Island_Tramway_from_departing_car,_September_2025.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-1-metadata",
+    "eventId": "photo-metadata-f91de24626f34113b5af53b13b26fa1d",
+    "imageId": "f91de24626f34113b5af53b13b26fa1d",
+    "updatedAtUtc": "2026-11-26T01:56:23.088Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0596.jpg"
+  },
+  {
+    "step": "photo-2-metadata",
+    "eventId": "photo-metadata-406ba39d041841a7bf7c2568e639b70c",
+    "imageId": "406ba39d041841a7bf7c2568e639b70c",
+    "updatedAtUtc": "2026-11-26T01:56:33.882Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0598.jpg"
+  },
+  {
+    "step": "photo-3-metadata",
+    "eventId": "photo-metadata-90940e6dae7944869990991356fb6aa9",
+    "imageId": "90940e6dae7944869990991356fb6aa9",
+    "updatedAtUtc": "2026-11-26T01:56:44.7Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:UES_terminal_of_Roosevelt_Island_Tramway_from_departing_car,_September_2025.jpg"
+  },
+  {
+    "step": "publish",
+    "operationId": "35cfd995-90a6-499c-adde-d0569df9b9f2",
+    "appliedAtUtc": "2026-11-26T01:57:12.4188588Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "bef7b99d4b4d4f5db423b5e39d92876f",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T01:58:02.3732946Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128873665424431"
+  }
+]
