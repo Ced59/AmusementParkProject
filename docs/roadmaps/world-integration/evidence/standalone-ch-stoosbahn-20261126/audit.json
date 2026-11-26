@@ -1,0 +1,175 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "57fd892a-dfbd-4a8d-8ee3-75cf269182df",
+  "name": "Stoosbahn",
+  "countryCode": "CH",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/57fd892a-dfbd-4a8d-8ee3-75cf269182df/stoosbahn",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T07:34:03Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "fd4840677a6f450d85b423854e21118e",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128897743424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T07:30:43.279Z",
+  "lastDataEventId": "4e0df04e-f536-46d2-8e6a-7f54b311664f",
+  "completeness": {
+    "completenessScore": 85,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "188e429b4e05423e836f550ae41f4d70",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "b39479e5bc05469884b3edb01bb4ce88",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Stéphane Gottraux · CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "6412c8fd203b4e9ba8a9567a7ef63eb4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Adrian Michael · CC BY 4.0 · https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Adrian Michael · CC BY 4.0 · https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Adrian Michael · CC BY 4.0 · https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Adrian Michael · CC BY 4.0 · https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Adrian Michael · CC BY 4.0 · https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Adrian Michael · CC BY 4.0 · https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Adrian Michael · CC BY 4.0 · https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Adrian Michael · CC BY 4.0 · https://creativecommons.org/licenses/by/4.0/ · https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "openingRules": 1,
+  "sitePublicationReceipt": "f7be07c1-66a1-457b-81ed-67cfb1c4b4ef",
+  "note": "Révision en semaine jusqu’au 4 décembre 2026. Week-ends à vérifier. Prix communs à deux modes sans offre structurée. Publications du site et Facebook exclues de la date de dernière intégration de données."
+}

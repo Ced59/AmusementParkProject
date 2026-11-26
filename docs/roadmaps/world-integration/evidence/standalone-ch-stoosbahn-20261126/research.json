@@ -1,0 +1,63 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "Recherches PDE Park et Standalone Attraction Stoos : aucun résultat. Aucune entrée Stoosbahn dans le backlog suisse préexistant.",
+  "classification": "Funiculaire autonome Schwyz–Stoos, distinct du téléphérique Morschach–Stoos desservant le même village. Cabines à compensation de pente et gare propre.",
+  "facts": "L’exploitant indique 1 740 m de longueur, 744 m de dénivelé, une pente maximale de 110 % et des cabines accessibles. Son communiqué précise la mise en service publique le 17 décembre 2017 après les cérémonies du 15. Gare basse à Hinteres Schlattli, nœud OSM 46.9912364, 8.6733895.",
+  "pricing": "La grille de prix officielle est commune au funiculaire Schwyz–Stoos et au téléphérique Morschach–Stoos ; les montants ne sont pas attribués sans qualification à la ligne. Aucun prix fixe créé.",
+  "hours": "Au 26 novembre 2026, le funiculaire est en révision du 23 novembre au 4 décembre, avec une exception annoncée pour les week-ends ; reprise annoncée le 5 décembre. La règle structurée ferme uniquement les jours de semaine encore à venir pendant cette période. Aucune heure précise de week-end ni horaire ultérieur n’est supposé.",
+  "access": "L’exploitant confirme le plancher horizontal et l’accès en fauteuil. Il recommande le funiculaire plutôt que le téléphérique voisin aux personnes en fauteuil ou avec poussette.",
+  "photos": "Trois vues exactes inspectées : cabine et Mythen en 2018, cabines près de la gare haute en 2018 (Stéphane Gottraux, CC BY-SA 4.0) et voie vers les Mythen en juillet 2026 (Adrian Michael, CC BY 4.0). Sources, crédits, licences, huit textes alternatifs et huit légendes.",
+  "sources": [
+    {
+      "label": "Stoosbahnen — ligne, données techniques et accessibilité",
+      "url": "https://www.stoos.ch/en/stories/weltrekord",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Stoosbahnen — horaire du funiculaire Schwyz–Stoos",
+      "url": "https://www.stoos.ch/en/pages/funicular-schwyz-stoos",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Stoos-Muotatal — état d’exploitation et révision de novembre–décembre 2026",
+      "url": "https://stoos-muotatal.ch/betriebsinformationen/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Stoos Hotels — exception des week-ends pendant la révision",
+      "url": "https://stoos-hotels.ch/en/arrival/wellness-hotel-stoos/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Stoosbahnen — communiqué sur le début du service public le 17 décembre 2017",
+      "url": "https://stoos-muotatal.ch/wp-content/uploads/2018/08/Medienmitteilung-Stoosbahnen-AG-2018.08.29.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Stoosbahnen — tarifs communs funiculaire et téléphérique",
+      "url": "https://www.stoos.ch/en/pages/prices-stoos-return-one-way-funicular-and-cable-car",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — gare basse Stoosbahn",
+      "url": "https://www.openstreetmap.org/node/3605815365",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Stoosbahn01.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Stossbahn_2026.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Stoosbahn02.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "nextReview": "Confirmer la reprise réelle après la révision, publier des horaires fiables si disponibles et distinguer les tarifs par mode et période. Ajouter un événement de données daté à chaque actualisation."
+}
