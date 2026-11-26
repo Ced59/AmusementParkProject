@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+  "name": "Banff Gondola",
+  "countryCode": "CA",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/f3fb5a84-c402-42a6-bd35-fa9f33f981c6/banff-gondola",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T02:41:47Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "01aa40377af745a9856847de5df7547c",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128876461424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T02:39:29.051Z",
+  "lastDataEventId": "21c54b14-d41e-471a-a9d8-b350017e48a5",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Banff Gondola et Sulphur Mountain Gondola : zéro résultat ; aucun homonyme dans CA.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "4664df63cf9b4784bae27eb9ef888460",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Banff_Gondola_from_top_-_Banff_Alberta.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Ian Poellet",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "69b8fb4a994441ddb4afd6fb65bd381f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sulphur_Mountain_Gondolas,_Banff_(202072212).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Antony Stanley",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "id": "0a90961794714770a1ab24d84f53f5be",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Banff-National-Park_AB_Banff-Gondola_2022-09-25_(6).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Milan Suvajac",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 1,
+  "openingRules": 12
+}
