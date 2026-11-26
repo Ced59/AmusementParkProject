@@ -1,0 +1,49 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "Recherche PDE et backlog CL : aucun Funicular de Santiago standalone ni fiche Park homonyme. Le Teleférico Pío Nono et Sky Costanera sont des installations distinctes. Le Parque Metropolitano est une destination plus large et demeure une autre ligne du backlog.",
+  "classification": "Funiculaire historique du cerro San Cristóbal avec sa propre billetterie, ses horaires et son accès Pío Nono 450. Attraction autonome de transport panoramique, distincte du téléphérique et du zoo.",
+  "facts": "Exploitant : ouverture le 25 avril 1925, déclaration Monument historique le 16 novembre 2000, restauration des voitures rouges en 2022. Ligne d’environ 500 m ; durée de trajet annoncée de 5 à 7 minutes. Départ Pío Nono, coordonnées de la station OSM.",
+  "pricing": "FAQ officielle : aller-retour plein tarif pour résident chilien à 2 300 CLP du mardi au vendredi, 2 990 CLP le samedi, dimanche et jours fériés. La billetterie affiche des prix « dès » pour d’autres profils et trajets ; aucun prix fixe étranger ou aller simple extrapolé.",
+  "hours": "Horaires d’été publiés : lundi 13 h–19 h 45, mardi à dimanche 10 h–19 h 45 ; premier lundi du mois fermé pour maintenance. Règles saisies du 26 novembre au 31 décembre 2026, avec fermeture du lundi 7 décembre. Horizon 2027 et jours fériés à revérifier ; aucune extrapolation annuelle.",
+  "access": "L’exploitant signale rampe et ascenseur pour fauteuils/poussettes et gratuité pour une personne handicapée munie de la carte SENADIS.",
+  "stopCaveat": "La FAQ mentionne la station intermédiaire Zoológico mais ses indications sur le nombre de stations sont contradictoires ; une photo documente la station sans promettre sa desserte actuelle.",
+  "photos": "Trois photos exactes et réutilisables : rame rouge restaurée et station Zoológico en 2022 (Sfs90, CC BY-SA 4.0), ancienne voiture verte en 2010 avant restauration (David Berkowitz, CC BY 2.0). Toutes sourcées, créditées et localisées en huit langues.",
+  "sources": [
+    {
+      "label": "Funicular Santiago — informations officielles, FAQ, tarifs et horaires",
+      "url": "https://funicularsantiago.cl/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Funicular Santiago — histoire et restauration",
+      "url": "https://funicularsantiago.cl/nuestra-historia/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Funicular Santiago — billetterie et catégories de billets",
+      "url": "https://funicularsantiago.cl/tickets/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station de départ Pío Nono",
+      "url": "https://www.openstreetmap.org/node/575514909",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte du Funicular de Santiago, crédit et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte du Funicular de Santiago, crédit et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte du Funicular de Santiago, crédit et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "nextReview": "Revérifier grille étrangère/enfant, horaires et calendrier 2027, desserte effective de la station Zoológico et tarifs fériés. Ajouter un nouvel événement daté pour chaque future modification de données."
+}

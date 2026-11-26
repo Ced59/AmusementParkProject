@@ -1,0 +1,177 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "9441282b-c275-4bee-bd4e-7036b665ab6b",
+  "name": "Funicular de Santiago",
+  "countryCode": "CL",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/9441282b-c275-4bee-bd4e-7036b665ab6b/funicular-de-santiago",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T06:16:52Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "065cb2cf98f9453a9244c723a971d207",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128892505424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T06:12:09.989Z",
+  "lastDataEventId": "502d868b-e475-4c52-a4e0-8c42a1c7dd88",
+  "completeness": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "8ab0df42a8204ab0ac8a9d2d2611b036",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "9e50bf61e4604dddb9a24b56a7081faf",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Sfs90, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "0b2d6664708849779d50a9a41dd79ab4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "David Berkowitz, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "David Berkowitz, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "David Berkowitz, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "David Berkowitz, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "David Berkowitz, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "David Berkowitz, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "David Berkowitz, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "David Berkowitz, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 3,
+  "accessConditionCount": 1,
+  "pricingOffers": 2,
+  "openingRules": 2,
+  "openingDateOverrides": 1,
+  "sitePublicationReceipt": "40a16222-2246-401a-9d63-309fae588a7c",
+  "note": "Les règles horaires se terminent le 31 décembre 2026 et devront être revérifiées pour 2027. Publication et Facebook exclus de la date de dernière intégration de données."
+}
