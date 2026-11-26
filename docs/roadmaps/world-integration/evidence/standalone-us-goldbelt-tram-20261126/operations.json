@@ -1,0 +1,86 @@
+[
+  {
+    "step": "core",
+    "operationId": "ee164683-fc98-4398-a18c-358b80a2e489",
+    "appliedAtUtc": "2026-11-26T02:27:08.5650323Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-c9289b11238b49d1b36aafa1f99be10a",
+    "imageId": "c9289b11238b49d1b36aafa1f99be10a",
+    "createdAtUtc": "2026-11-26T02:27:44.25Z",
+    "updatedAtUtc": "2026-11-26T02:27:47.85Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tram_over_Juneau.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-e799dadf2d39423b8456ad728d9bea23",
+    "imageId": "e799dadf2d39423b8456ad728d9bea23",
+    "createdAtUtc": "2026-11-26T02:27:57.289Z",
+    "updatedAtUtc": "2026-11-26T02:28:00.707Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Roberts_Tramway_0036.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-543a892e7754473cb3364951d0951460",
+    "imageId": "543a892e7754473cb3364951d0951460",
+    "createdAtUtc": "2026-11-26T02:28:10.413Z",
+    "updatedAtUtc": "2026-11-26T02:28:13.734Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Roberts_Tramway_car.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "history",
+    "operationId": "cb4e5c21-fcc8-4f86-9388-72fbb7bb67c0",
+    "appliedAtUtc": "2026-11-26T02:28:38.1225148Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "9ad95057-7c4c-4ee0-9bb1-649f263d3f33",
+    "appliedAtUtc": "2026-11-26T02:29:06.6904549Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "6348ced7e4f44bd0864a2c2527dc8297",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T02:29:51.8444549Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128875795424431"
+  }
+]
