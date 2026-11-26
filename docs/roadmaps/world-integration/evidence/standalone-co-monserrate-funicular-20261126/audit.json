@@ -1,0 +1,176 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "07f4593a-ba40-4d39-9354-120f16c7b92c",
+  "name": "Funicular de Monserrate",
+  "countryCode": "CO",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/07f4593a-ba40-4d39-9354-120f16c7b92c/funicular-de-monserrate",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T06:42:53Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "8e9b293d333342739de41171f1be07f0",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128894233424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T06:39:39.854Z",
+  "lastDataEventId": "bb4c0cfa-0c8e-475b-aaf6-71637fadfb80",
+  "completeness": {
+    "completenessScore": 87,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 78,
+    "earnedPoints": 68,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "0f99283caa6c46b1a5a6b0947258a2cb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "janeyhenning, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "janeyhenning, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "janeyhenning, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "janeyhenning, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "janeyhenning, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "janeyhenning, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "janeyhenning, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "janeyhenning, CC BY 2.0 · https://creativecommons.org/licenses/by/2.0/ · https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "0a141478ca1043f9a1f6d393bfe7ae84",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "TitiNicola, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "TitiNicola, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "TitiNicola, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "TitiNicola, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "TitiNicola, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "TitiNicola, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "TitiNicola, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "TitiNicola, CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/ · https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    },
+    {
+      "id": "733b6241787946b9912c0f716aa85ed5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Guaiquerí, CC0 1.0 · https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Guaiquerí, CC0 1.0 · https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Guaiquerí, CC0 1.0 · https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "es",
+          "value": "Guaiquerí, CC0 1.0 · https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "it",
+          "value": "Guaiquerí, CC0 1.0 · https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Guaiquerí, CC0 1.0 · https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Guaiquerí, CC0 1.0 · https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Guaiquerí, CC0 1.0 · https://creativecommons.org/publicdomain/zero/1.0/ · https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg · Wikimedia 960 px thumbnail; no other changes."
+        }
+      ]
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 2,
+  "accessConditionCount": 1,
+  "pricingOffers": 3,
+  "openingRules": 0,
+  "sitePublicationReceipt": "0c096735-9e12-4d30-a5d8-f79179b5709d",
+  "note": "Horaires partagés « funicular y/o teleférico » non attribuables avec certitude au funiculaire. Aucune règle horaire propre inventée ; publication et Facebook exclus de la date de dernière intégration de données."
+}
