@@ -1,0 +1,67 @@
+{
+  "dateUtc": "2026-11-26T03:42:12.5688278Z",
+  "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+  "entityName": "Rocky Top Mountain Coaster",
+  "reason": "Fiche publiée le 16 novembre, observée masquée le 26 novembre; cause de la remise en revue non établie. Républication après contrôle du contenu et de la visibilité.",
+  "parkDataEditor": {
+    "operationId": "ee2e1c17-3f84-45da-a583-500da84f1e55",
+    "changes": [
+      {
+        "entityType": "StandaloneAttraction",
+        "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+        "entityKey": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
+        "displayName": "Rocky Top Mountain Coaster",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "audit": {
+    "completenessScore": 98,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 82,
+    "earnedPoints": 80,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "images": {
+    "exactAttractionPhotos": 3,
+    "note": "Les trois photos originales de l’attraction restent publiées ; une quatrième image de logo Wiegand est présente dans le graphe, sans être utilisée dans la galerie Facebook."
+  },
+  "publicPages": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "nl": 200,
+    "it": 200,
+    "es": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/f807c731-c7ca-4eaf-a29d-1cd0533b4822/rocky-top-mountain-coaster",
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127525183424431",
+    "publishedAtUtc": "2026-11-16T00:18:11.015942Z",
+    "note": "Publication Facebook existante conservée ; rétablissement de la même fiche."
+  },
+  "backlogTracking": {
+    "lastDataIntegrationAt": "2026-11-16T00:16:45.952Z",
+    "publicationOnly": true,
+    "note": "La modification de visibilité et de revue est consignée séparément ; elle ne modifie ni la date ni l’historique des intégrations de données."
+  }
+}
