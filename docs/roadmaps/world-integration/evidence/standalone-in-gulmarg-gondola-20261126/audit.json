@@ -1,0 +1,89 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+  "name": "Gulmarg Gondola",
+  "countryCode": "IN",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/32d68a81-523a-4f25-8984-aa6701fe33dd/gulmarg-gondola",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T04:43:27Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "aaf965b428004e55a404bb6d755baab3",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128884879424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T04:41:20.477Z",
+  "lastDataEventId": "b96f12d5-a8fb-416d-a3c4-671a817c6fb2",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks « Gulmarg » : aucun résultat avant création ; aucun homonyme dans IN.json.",
+  "completeness": {
+    "completenessScore": 83,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "24471076480745788ca83a0a21f09aae",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gulmarg_Gondola_Kashmir_2.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Dr.himshree",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "1a9479fa5a4749fda92dc00ca1416306",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gulmarg_Gondola_Seen108.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Maheshkumarrathi",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "9360bf48bf494e579075ee71455c4266",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gulmarg-Gondala.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Vikas Yadav",
+      "license": "Public domain"
+    },
+    {
+      "id": "c3deb021c0b14d0a8baa25698f1eca68",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gondola_lift..JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Rudolph.A.furtado",
+      "license": "CC0 1.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 2,
+  "maintenanceClosureOverrides": 24,
+  "sitePublicationReceipt": "ee83a04f-007a-45ff-b91c-19ea44d067ca",
+  "note": "Publication et Facebook séparés du dernier événement de données. Aucun prix chiffré n’a été publié sans accès au tarif officiel."
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "step": "core",
+    "operationId": "ca095152-5612-406b-8706-ab087a7891a7",
+    "appliedAtUtc": "2026-11-26T04:36:19.3530656Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "65b79008-52dd-4cd4-a571-552b469dfe50",
+    "appliedAtUtc": "2026-11-26T04:37:03.8463461Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-24471076480745788ca83a0a21f09aae",
+    "imageId": "24471076480745788ca83a0a21f09aae",
+    "createdAtUtc": "2026-11-26T04:38:34.067Z",
+    "updatedAtUtc": "2026-11-26T04:38:38.223Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gulmarg_Gondola_Kashmir_2.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-1a9479fa5a4749fda92dc00ca1416306",
+    "imageId": "1a9479fa5a4749fda92dc00ca1416306",
+    "createdAtUtc": "2026-11-26T04:38:52.496Z",
+    "updatedAtUtc": "2026-11-26T04:38:56.477Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gulmarg_Gondola_Seen108.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-9360bf48bf494e579075ee71455c4266",
+    "imageId": "9360bf48bf494e579075ee71455c4266",
+    "createdAtUtc": "2026-11-26T04:39:08.141Z",
+    "updatedAtUtc": "2026-11-26T04:39:12.466Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gulmarg-Gondala.JPG"
+  },
+  {
+    "step": "photo-4-import",
+    "eventId": "photo-c3deb021c0b14d0a8baa25698f1eca68",
+    "imageId": "c3deb021c0b14d0a8baa25698f1eca68",
+    "createdAtUtc": "2026-11-26T04:39:23.145Z",
+    "updatedAtUtc": "2026-11-26T04:39:26.551Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gondola_lift..JPG"
+  },
+  {
+    "step": "history",
+    "operationId": "b96f12d5-a8fb-416d-a3c4-671a817c6fb2",
+    "appliedAtUtc": "2026-11-26T04:41:20.4776623Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 2,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized",
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "ee83a04f-007a-45ff-b91c-19ea44d067ca",
+    "appliedAtUtc": "2026-11-26T04:41:42.6875675Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "aaf965b428004e55a404bb6d755baab3",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T04:42:21.5266656Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128884879424431"
+  }
+]

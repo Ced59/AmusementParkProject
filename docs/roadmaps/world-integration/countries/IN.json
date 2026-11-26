@@ -6220,6 +6220,164 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "IN-candidate-discovery-gulmarg-gondola-20261126",
+      "name": "Gulmarg Gondola",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Télécabine panoramique",
+      "locality": "Gulmarg–Kongdoori–Apharwat, Jammu-et-Cachemire",
+      "siteId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T04:43:27Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "L’exploitant annonce la réouverture, les premiers embarquements et les jours de maintenance ; réservation officielle active.",
+      "identityConfidence": "Deux sections et station G1 confirmées par l’exploitant, le tourisme indien, OpenStreetMap et quatre photos exactes ; aucun doublon détecté.",
+      "possibleMatches": [],
+      "aliases": [
+        "Gulmarg Cable Car",
+        "Gulmarg Gondola Phase I and II",
+        "Gulmarg Gondola G1-G2 / G3-G4"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T04:41:20.477Z",
+      "integrationHistory": [
+        {
+          "eventId": "ca095152-5612-406b-8706-ab087a7891a7",
+          "appliedAt": "2026-11-26T04:36:19.353Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-in-gulmarg-gondola-20261126/operations.json#ca095152-5612-406b-8706-ab087a7891a7",
+          "auditEvidence": null,
+          "summary": "Fiche brouillon en huit langues, trajet et station G1 localisés."
+        },
+        {
+          "eventId": "65b79008-52dd-4cd4-a571-552b469dfe50",
+          "appliedAt": "2026-11-26T04:37:03.846Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-in-gulmarg-gondola-20261126/operations.json#65b79008-52dd-4cd4-a571-552b469dfe50",
+          "auditEvidence": null,
+          "summary": "Premiers embarquements et vingt-quatre fermetures de maintenance documentés ; prix non inventés."
+        },
+        {
+          "eventId": "photo-24471076480745788ca83a0a21f09aae",
+          "appliedAt": "2026-11-26T04:38:38.223Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-in-gulmarg-gondola-20261126/operations.json#photo-24471076480745788ca83a0a21f09aae",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/4 importée : Dr.himshree (CC BY 4.0)."
+        },
+        {
+          "eventId": "photo-1a9479fa5a4749fda92dc00ca1416306",
+          "appliedAt": "2026-11-26T04:38:56.477Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-in-gulmarg-gondola-20261126/operations.json#photo-1a9479fa5a4749fda92dc00ca1416306",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/4 importée : Maheshkumarrathi (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-9360bf48bf494e579075ee71455c4266",
+          "appliedAt": "2026-11-26T04:39:12.466Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-in-gulmarg-gondola-20261126/operations.json#photo-9360bf48bf494e579075ee71455c4266",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/4 importée : Vikas Yadav (Public domain)."
+        },
+        {
+          "eventId": "photo-c3deb021c0b14d0a8baa25698f1eca68",
+          "appliedAt": "2026-11-26T04:39:26.551Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-in-gulmarg-gondola-20261126/operations.json#photo-c3deb021c0b14d0a8baa25698f1eca68",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4/4 importée : Rudolph.A.furtado (CC0 1.0)."
+        },
+        {
+          "eventId": "b96f12d5-a8fb-416d-a3c4-671a817c6fb2",
+          "appliedAt": "2026-11-26T04:41:20.477Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "32d68a81-523a-4f25-8984-aa6701fe33dd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-in-gulmarg-gondola-20261126/operations.json#b96f12d5-a8fb-416d-a3c4-671a817c6fb2",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-in-gulmarg-gondola-20261126/audit.json",
+          "summary": "Ouvertures des phases I et II en 1998 et 2005, sourcées auprès du gouvernement régional."
+        }
+      ],
+      "nextAction": "Conserver cette entrée ; relever les tarifs exacts de chaque phase depuis le portail officiel avec accès légitime, puis recontrôler les heures de fin, les fermetures et l’accessibilité. Ajouter un événement daté à chaque nouvelle intégration.",
+      "sources": [
+        {
+          "label": "Exploitant JKCCC — projet Gulmarg Gondola",
+          "url": "https://www.jammukashmircablecar.com/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant JKCCC — avis de réservation, premier embarquement et maintenance",
+          "url": "https://www.jammukashmircablecar.com/notifications.html",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant JKCCC — portail officiel de réservation, tarif après connexion",
+          "url": "https://etickets.jammukashmircablecar.com/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Département de la faune du Jammu-et-Cachemire — mises en service 1998 et 2005",
+          "url": "https://jkwildlife.com/wild/pdf/sanc/gulmarg%20info.pdf",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Ministère indien du Tourisme — contexte et premier tronçon",
+          "url": "https://www.incredibleindia.gov.in/en/jammu-and-kashmir/gulmarg/thrilling-adventure-experiences-in-gulmarg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — station G1",
+          "url": "https://www.openstreetmap.org/node/513152167",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Gulmarg Gondola Kashmir 2.jpg (Dr.himshree, CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gulmarg_Gondola_Kashmir_2.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Gulmarg Gondola Seen108.jpg (Maheshkumarrathi, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gulmarg_Gondola_Seen108.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Gulmarg-Gondala.JPG (Vikas Yadav, Public domain)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gulmarg-Gondala.JPG",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Gondola lift..JPG (Rudolph.A.furtado, CC0 1.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gondola_lift..JPG",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "IN",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Billetterie et créneaux de télécabine propres aux deux sections ; télésiège Kongdoori distinct."
+      }
     }
   ]
 }
