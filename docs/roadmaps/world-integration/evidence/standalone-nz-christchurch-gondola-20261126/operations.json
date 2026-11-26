@@ -1,0 +1,118 @@
+[
+  {
+    "step": "core",
+    "operationId": "9886679d-0efb-4733-b62d-029efee85078",
+    "appliedAtUtc": "2026-11-26T05:14:47.230427Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "cdf31929-9982-43eb-abd2-d4e74cb193b5",
+    "appliedAtUtc": "2026-11-26T05:16:09.5511085Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-f6c55f0de36645fc9eaa2bdbdcdab7d8",
+    "imageId": "f6c55f0de36645fc9eaa2bdbdcdab7d8",
+    "createdAtUtc": "2026-11-26T05:17:27.582Z",
+    "updatedAtUtc": "2026-11-26T05:17:31.361Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Christchurch_Gondola_Cabin.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-4aa9b9e8a68e40abafca8c3cb9b76294",
+    "imageId": "4aa9b9e8a68e40abafca8c3cb9b76294",
+    "createdAtUtc": "2026-11-26T05:17:41.267Z",
+    "updatedAtUtc": "2026-11-26T05:17:44.697Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Christchurch_Gondola.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-13a82849cfa44da380d75c92d1e17b30",
+    "imageId": "13a82849cfa44da380d75c92d1e17b30",
+    "createdAtUtc": "2026-11-26T05:17:54.236Z",
+    "updatedAtUtc": "2026-11-26T05:17:57.828Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sunset,_Christchurch_Gondola.jpg"
+  },
+  {
+    "step": "photo-4-import",
+    "eventId": "photo-d4fa10d9d9b54244aaebdba745fd47d6",
+    "imageId": "d4fa10d9d9b54244aaebdba745fd47d6",
+    "createdAtUtc": "2026-11-26T05:18:07.986Z",
+    "updatedAtUtc": "2026-11-26T05:18:11.504Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_Christchurch_Gondola.jpg"
+  },
+  {
+    "step": "history",
+    "operationId": "7a0b4755-f002-4ec6-bd31-dba558980002",
+    "appliedAtUtc": "2026-11-26T05:18:36.3151194Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "84532904-5dac-490e-8214-0738dadefd8a",
+    "appliedAtUtc": "2026-11-26T05:18:56.896488Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "1caeb0b3-f72c-4296-896e-8928b42a1685",
+    "appliedAtUtc": "2026-11-26T05:19:54.4659699Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "907c999f2a4f45d09f348d672bd881c4",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T05:20:34.6859844Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128888083424431"
+  }
+]

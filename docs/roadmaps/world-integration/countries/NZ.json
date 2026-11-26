@@ -2580,6 +2580,163 @@
         "attractions": [],
         "rationale": "Funiculaire à billet visiteur et terminus propres ; les activités près de Kelburn se visitent séparément."
       }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-christchurch-gondola-20261126",
+      "name": "Christchurch Gondola",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Télécabine panoramique",
+      "locality": "Heathcote, Christchurch, Port Hills",
+      "siteId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T05:21:57Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Gondole active, billetterie et horaires 2026–2027 publiés par l’exploitant.",
+      "identityConfidence": "Station, ouverture, tarifs, horaires, accès et quatre photos exactes confirmés ; aucune fiche PDE avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Mount Cavendish Gondola",
+        "Heathcote Gondola"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T05:18:56.896Z",
+      "integrationHistory": [
+        {
+          "eventId": "9886679d-0efb-4733-b62d-029efee85078",
+          "appliedAt": "2026-11-26T05:14:47.230Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/operations.json#9886679d-0efb-4733-b62d-029efee85078",
+          "auditEvidence": null,
+          "summary": "Création avec huit descriptions, adresse, date d’ouverture et capacité par cabine."
+        },
+        {
+          "eventId": "cdf31929-9982-43eb-abd2-d4e74cb193b5",
+          "appliedAt": "2026-11-26T05:16:09.551Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/operations.json#cdf31929-9982-43eb-abd2-d4e74cb193b5",
+          "auditEvidence": null,
+          "summary": "Six tarifs et sept périodes horaires officielles, dont la fermeture du 25 décembre."
+        },
+        {
+          "eventId": "photo-f6c55f0de36645fc9eaa2bdbdcdab7d8",
+          "appliedAt": "2026-11-26T05:17:31.361Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/operations.json#photo-f6c55f0de36645fc9eaa2bdbdcdab7d8",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/4 importée : TanyaHyde (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-4aa9b9e8a68e40abafca8c3cb9b76294",
+          "appliedAt": "2026-11-26T05:17:44.697Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/operations.json#photo-4aa9b9e8a68e40abafca8c3cb9b76294",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/4 importée : eGuide Travel (CC BY 2.0)."
+        },
+        {
+          "eventId": "photo-13a82849cfa44da380d75c92d1e17b30",
+          "appliedAt": "2026-11-26T05:17:57.828Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/operations.json#photo-13a82849cfa44da380d75c92d1e17b30",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/4 importée : Maksym Kozlenko (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-d4fa10d9d9b54244aaebdba745fd47d6",
+          "appliedAt": "2026-11-26T05:18:11.504Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/operations.json#photo-d4fa10d9d9b54244aaebdba745fd47d6",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4/4 importée : Zshameel (CC BY 4.0)."
+        },
+        {
+          "eventId": "7a0b4755-f002-4ec6-bd31-dba558980002",
+          "appliedAt": "2026-11-26T05:18:36.315Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/operations.json#7a0b4755-f002-4ec6-bd31-dba558980002",
+          "auditEvidence": null,
+          "summary": "Événement historique de l’ouverture du 24 novembre 1992 sourcé par l’exploitant."
+        },
+        {
+          "eventId": "84532904-5dac-490e-8214-0738dadefd8a",
+          "appliedAt": "2026-11-26T05:18:56.896Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "672f495a-f7e0-4c9a-a741-ef6265ef9b0d",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/operations.json#84532904-5dac-490e-8214-0738dadefd8a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-christchurch-gondola-20261126/audit.json",
+          "summary": "Conditions détaillées d’accès en fauteuil roulant et limites de la navette intégrées."
+        }
+      ],
+      "nextAction": "Conserver cette entrée ; recontrôler tarifs et horaires avant le 1er octobre 2027, puis ajouter un événement daté à chaque nouvelle intégration.",
+      "sources": [
+        {
+          "label": "Christchurch Attractions — tarifs, horaires, trajet et accès",
+          "url": "https://www.christchurchattractions.nz/christchurch-gondola/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Christchurch Attractions — FAQ, ouverture de 1992, tarifs aller simple et fauteuils",
+          "url": "https://www.christchurchattractions.nz/frequently-asked-questions/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Christchurch Attractions — réservation officielle",
+          "url": "https://christchurchattractions.rezdy.com/219842/christchurch-gondola",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Christchurch Attractions — lien cartographique vers la station inférieure",
+          "url": "https://www.google.com/maps/place/Christchurch+Gondola/@-43.5849403,172.7075123,15z/data=!4m5!3m4!1s0x0:0x6a5bb175a9206bdb!8m2!3d-43.5849403!4d172.7075123",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Christchurch Gondola Cabin.jpg (TanyaHyde, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Christchurch_Gondola_Cabin.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Christchurch Gondola.jpg (eGuide Travel, CC BY 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Christchurch_Gondola.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Sunset, Christchurch Gondola.jpg (Maksym Kozlenko, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sunset,_Christchurch_Gondola.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:View from Christchurch Gondola.jpg (Zshameel, CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Christchurch_Gondola.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Billets aller simple et aller-retour propres à la gondole ; tram, barques et autres activités de l’exploitant distincts."
+      }
     }
   ]
 }
