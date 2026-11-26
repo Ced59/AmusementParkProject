@@ -1,0 +1,118 @@
+[
+  {
+    "step": "core",
+    "operationId": "6e23f4b0-e176-42e2-b093-8e2dedb7dcf9",
+    "appliedAtUtc": "2026-11-26T05:02:53.0758176Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-e0bb66612c804fe0bef400e1c391410a",
+    "imageId": "e0bb66612c804fe0bef400e1c391410a",
+    "createdAtUtc": "2026-11-26T05:03:53.009Z",
+    "updatedAtUtc": "2026-11-26T05:03:56.811Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_P%C3%ADo_Nono_01.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-45cd5b59a1be47a88efe574e4815081d",
+    "imageId": "45cd5b59a1be47a88efe574e4815081d",
+    "createdAtUtc": "2026-11-26T05:04:07.133Z",
+    "updatedAtUtc": "2026-11-26T05:04:10.613Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_de_Estaci%C3%B3n_Zool%C3%B3gico_del_Telef%C3%A9rico_P%C3%ADo_Nono.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-7d9e53ab547d474f9fd12623de567c0b",
+    "imageId": "7d9e53ab547d474f9fd12623de567c0b",
+    "createdAtUtc": "2026-11-26T05:04:20.091Z",
+    "updatedAtUtc": "2026-11-26T05:04:23.432Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Manuel_Foster_Plaza_M%C3%A9xico_del_Telef%C3%A9rico_P%C3%ADo_Nono.jpg"
+  },
+  {
+    "step": "photo-4-import",
+    "eventId": "photo-b49faf261b3f4f95bd8be9abaf24b774",
+    "imageId": "b49faf261b3f4f95bd8be9abaf24b774",
+    "createdAtUtc": "2026-11-26T05:04:32.715Z",
+    "updatedAtUtc": "2026-11-26T05:04:36.134Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_P%C3%ADo_Nono_06.jpg"
+  },
+  {
+    "step": "history",
+    "operationId": "27b9af44-fa22-43c9-a0fa-9daeadf2876b",
+    "appliedAtUtc": "2026-11-26T05:05:27.2834389Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "d207d563-4fc2-4370-8d31-0d88a9c44e51",
+    "appliedAtUtc": "2026-11-26T05:05:52.2375882Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "technical",
+    "operationId": "b6543071-f3ae-4852-94eb-ba6f94a451a5",
+    "appliedAtUtc": "2026-11-26T05:07:49.354067Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "5a3bbb80-c715-4a65-b3cd-db893baaedfc",
+    "appliedAtUtc": "2026-11-26T05:08:22.5878506Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "949e9f7c637f45de9dc1d93b54a7283a",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T05:09:04.4808678Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128887207424431"
+  }
+]

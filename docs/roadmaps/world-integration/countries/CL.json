@@ -1053,6 +1053,168 @@
         "attractions": [],
         "rationale": "Billet, horaires et accès propres au mirador ; les commerces du centre Cenco Costanera ne font pas partie du produit."
       }
+    },
+    {
+      "entryId": "CL-candidate-discovery-teleferico-pio-nono-20261126",
+      "name": "Teleférico Pío Nono",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "Cerro San Cristóbal, Providencia, Santiago",
+      "siteId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T05:10:46Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Ligne active avec billetterie et informations de visite sur le site officiel en novembre 2026.",
+      "identityConfidence": "Ligne, stations, date d’ouverture, accès et quatre photos exactes vérifiés ; aucun doublon PDE détecté.",
+      "possibleMatches": [],
+      "aliases": [
+        "Línea Pío Nono",
+        "Teleférico Santiago Pío Nono"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T05:07:49.354Z",
+      "integrationHistory": [
+        {
+          "eventId": "6e23f4b0-e176-42e2-b093-8e2dedb7dcf9",
+          "appliedAt": "2026-11-26T05:02:53.075Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/operations.json#6e23f4b0-e176-42e2-b093-8e2dedb7dcf9",
+          "auditEvidence": null,
+          "summary": "Création avec huit descriptions, localisation de Zoológico et date d’ouverture publique sourcée."
+        },
+        {
+          "eventId": "photo-e0bb66612c804fe0bef400e1c391410a",
+          "appliedAt": "2026-11-26T05:03:56.811Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/operations.json#photo-e0bb66612c804fe0bef400e1c391410a",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/4 importée : Sfs90 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-45cd5b59a1be47a88efe574e4815081d",
+          "appliedAt": "2026-11-26T05:04:10.613Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/operations.json#photo-45cd5b59a1be47a88efe574e4815081d",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/4 importée : TomasVial (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-7d9e53ab547d474f9fd12623de567c0b",
+          "appliedAt": "2026-11-26T05:04:23.432Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/operations.json#photo-7d9e53ab547d474f9fd12623de567c0b",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/4 importée : TomasVial (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-b49faf261b3f4f95bd8be9abaf24b774",
+          "appliedAt": "2026-11-26T05:04:36.134Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/operations.json#photo-b49faf261b3f4f95bd8be9abaf24b774",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4/4 importée : Sfs90 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "27b9af44-fa22-43c9-a0fa-9daeadf2876b",
+          "appliedAt": "2026-11-26T05:05:27.283Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/operations.json#27b9af44-fa22-43c9-a0fa-9daeadf2876b",
+          "auditEvidence": null,
+          "summary": "Événement historique sourcé du 24 mars 2026."
+        },
+        {
+          "eventId": "d207d563-4fc2-4370-8d31-0d88a9c44e51",
+          "appliedAt": "2026-11-26T05:05:52.237Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/operations.json#d207d563-4fc2-4370-8d31-0d88a9c44e51",
+          "auditEvidence": null,
+          "summary": "Accès en fauteuil roulant depuis Zoológico documenté depuis la FAQ officielle."
+        },
+        {
+          "eventId": "b6543071-f3ae-4852-94eb-ba6f94a451a5",
+          "appliedAt": "2026-11-26T05:07:49.354Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/operations.json#b6543071-f3ae-4852-94eb-ba6f94a451a5",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pio-nono-20261126/audit.json",
+          "summary": "Capacité de huit personnes par cabine et accessibilité réduite indiquées dans les données techniques."
+        }
+      ],
+      "nextAction": "Conserver cette entrée ; confirmer la grille de prix par âge et jour, les dates des saisons pour les horaires et le statut de Chile Nativo ; réviser périodiquement la fiche et ajouter un événement daté à chaque intégration.",
+      "sources": [
+        {
+          "label": "Exploitant — ligne Pío Nono et stations",
+          "url": "https://telefericosantiago.cl/linea-pio-nono/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — ouverture publique du 24 mars 2026",
+          "url": "https://telefericosantiago.cl/sin-categoria/gran-apertura-linea-pio-nono-de-teleferico/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — tarifs indicatifs et types de billets",
+          "url": "https://telefericosantiago.cl/choose-your-ticket/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — FAQ, horaires saisonniers et accessibilité",
+          "url": "https://telefericosantiago.cl/questions/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikipédia — coordonnées de la station Zoológico",
+          "url": "https://es.wikipedia.org/wiki/Zool%C3%B3gico_(estaci%C3%B3n)",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Teleférico Pío Nono 01.jpg (Sfs90, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_P%C3%ADo_Nono_01.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Exterior de Estación Zoológico del Teleférico Pío Nono.jpg (TomasVial, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Exterior_de_Estaci%C3%B3n_Zool%C3%B3gico_del_Telef%C3%A9rico_P%C3%ADo_Nono.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Estación Manuel Foster Plaza México del Teleférico Pío Nono.jpg (TomasVial, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Manuel_Foster_Plaza_M%C3%A9xico_del_Telef%C3%A9rico_P%C3%ADo_Nono.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Teleférico Pío Nono 06.jpg (Sfs90, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_P%C3%ADo_Nono_06.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "CL",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Ligne et aller-retour vendus séparément ; le zoo, le funiculaire et la ligne Pedro de Valdivia constituent d’autres produits."
+      }
     }
   ]
 }

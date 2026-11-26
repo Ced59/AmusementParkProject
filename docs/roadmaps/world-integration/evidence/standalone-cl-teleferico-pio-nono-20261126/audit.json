@@ -1,0 +1,90 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+  "name": "Teleférico Pío Nono",
+  "countryCode": "CL",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/2353bd59-6500-4cbf-a3dd-145f7be86d4b/teleferico-pio-nono",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T05:10:46Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "949e9f7c637f45de9dc1d93b54a7283a",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128887207424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T05:07:49.354Z",
+  "lastDataEventId": "b6543071-f3ae-4852-94eb-ba6f94a451a5",
+  "presenceSearch": "PDE SearchStandaloneAttractions « Teleférico » avec CountryCode CL : zéro résultat ; pas de ligne Pío Nono dans CL.json avant création.",
+  "completeness": {
+    "completenessScore": 81,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 60,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "e0bb66612c804fe0bef400e1c391410a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_P%C3%ADo_Nono_01.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Sfs90",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "45cd5b59a1be47a88efe574e4815081d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exterior_de_Estaci%C3%B3n_Zool%C3%B3gico_del_Telef%C3%A9rico_P%C3%ADo_Nono.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "TomasVial",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "7d9e53ab547d474f9fd12623de567c0b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Manuel_Foster_Plaza_M%C3%A9xico_del_Telef%C3%A9rico_P%C3%ADo_Nono.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "TomasVial",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "b49faf261b3f4f95bd8be9abaf24b774",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_P%C3%ADo_Nono_06.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Sfs90",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "ridersPerVehicle": 8,
+  "sitePublicationReceipt": "5a3bbb80-c715-4a65-b3cd-db893baaedfc",
+  "note": "Horaires saisonniers et tarifs exacts à compléter lorsque leur grille sera publiée sans ambiguïté. La publication et Facebook ne changent pas la date de dernière intégration de données."
+}
