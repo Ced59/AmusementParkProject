@@ -79587,6 +79587,149 @@
         "attractions": [],
         "rationale": "Funiculaire autonome avec billetterie, gares et horaire propres, hors parc parent."
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-duquesne-incline-pittsburgh-20261126",
+      "name": "Duquesne Incline",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Funiculaire panoramique historique à billet propre",
+      "locality": "1197 West Carson Street, Pittsburgh, PA 15219",
+      "siteId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T01:16:59Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation quotidienne affichée par l’exploitant.",
+      "identityConfidence": "Gares, horaires, tarifs, accès et histoire vérifiés chez l’exploitant ; absence de doublon PDE ; trois photos exactes sous licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Duquesne Incline Railway",
+        "Duquesne Funicular",
+        "Mount Washington Duquesne Incline"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T01:14:21.622Z",
+      "integrationHistory": [
+        {
+          "eventId": "b3551bdd-b6e5-48c5-91d1-475210494b6f",
+          "appliedAt": "2026-11-26T01:11:53.867Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-duquesne-incline-pittsburgh-20261126/operations.json#b3551bdd-b6e5-48c5-91d1-475210494b6f",
+          "auditEvidence": null,
+          "summary": "Création masquée après recherche sans doublon ; identité, adresse et huit descriptions."
+        },
+        {
+          "eventId": "36ce3e3a-1644-4419-9957-2db04f345637",
+          "appliedAt": "2026-11-26T01:12:20.052Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-duquesne-incline-pittsburgh-20261126/operations.json#36ce3e3a-1644-4419-9957-2db04f345637",
+          "auditEvidence": null,
+          "summary": "Tarifs par trajet, paiement et horaires quotidiens intégrés."
+        },
+        {
+          "eventId": "25c316fa-9f12-4220-9260-851b1396696d",
+          "appliedAt": "2026-11-26T01:13:10.000Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-duquesne-incline-pittsburgh-20261126/operations.json#25c316fa-9f12-4220-9260-851b1396696d",
+          "auditEvidence": null,
+          "summary": "Ouverture du 20 mai 1877 documentée."
+        },
+        {
+          "eventId": "9e364d17-d99a-4630-b492-e8a30eec61cd",
+          "appliedAt": "2026-11-26T01:13:31.464Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-duquesne-incline-pittsburgh-20261126/operations.json#9e364d17-d99a-4630-b492-e8a30eec61cd",
+          "auditEvidence": null,
+          "summary": "Accès en fauteuil depuis la station haute et limite de largeur documentés dans huit langues."
+        },
+        {
+          "eventId": "photo-6306cac1ae8043788fed3a29ec595d71",
+          "appliedAt": "2026-11-26T01:13:52.217Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-duquesne-incline-pittsburgh-20261126/operations.json#photo-6306cac1ae8043788fed3a29ec595d71",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Dllu (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-bd92d9a2a9c0489e83b3c6fc0ef4b740",
+          "appliedAt": "2026-11-26T01:14:08.235Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-duquesne-incline-pittsburgh-20261126/operations.json#photo-bd92d9a2a9c0489e83b3c6fc0ef4b740",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Doawk7 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-df65dab2432f41f8bc6495eadeb22da7",
+          "appliedAt": "2026-11-26T01:14:21.622Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-duquesne-incline-pittsburgh-20261126/operations.json#photo-df65dab2432f41f8bc6495eadeb22da7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-duquesne-incline-pittsburgh-20261126/audit.json",
+          "summary": "Photo exacte 3/3 importée : Dllu (CC BY-SA 4.0)."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Recontrôler tarifs et horaires, et vérifier l’accessibilité depuis la station haute avant une future mise à jour.",
+      "sources": [
+        {
+          "label": "Duquesne Incline — site officiel, ouverture, accessibilité et paiement",
+          "url": "https://www.duquesneincline.org/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Duquesne Incline — tarifs et heures officiels",
+          "url": "https://duquesneincline.org/indexe6b4.html?page=hoursandfares",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Pittsburgh Regional Transit — Riding the Inclines, confirmation de la ligne autonome",
+          "url": "https://rideprt.org/Services/Riding-the-Inclines/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap via Nominatim — Duquesne Lower Station, coordonnées",
+          "url": "https://www.openstreetmap.org/way/43082419",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Ascending the Duquesne Incline.jpg (Dllu, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Ascending_the_Duquesne_Incline.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Drive Gear and Cable Drum at the Duquesne Incline.jpg (Doawk7, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Drive_Gear_and_Cable_Drum_at_the_Duquesne_Incline.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Duquesne Incline lower building.jpg (Dllu, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Duquesne_Incline_lower_building.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Funiculaire autonome avec billet, gares, horaire et exposition propres, hors parc parent."
+      }
     }
   ]
 }

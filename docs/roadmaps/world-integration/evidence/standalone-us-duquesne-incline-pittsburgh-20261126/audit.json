@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "ce9af924-ba66-4318-bf0a-41b4aaf5abf9",
+  "name": "Duquesne Incline",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ce9af924-ba66-4318-bf0a-41b4aaf5abf9/duquesne-incline",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T01:16:59Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "2f2716acc5c5406ca35efbb80bfb75a5",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128870719424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T01:14:21.622Z",
+  "lastDataEventId": "photo-df65dab2432f41f8bc6495eadeb22da7",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Duquesne Incline et Pittsburgh Duquesne Incline : zéro résultat ; aucun homonyme dans US.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "6306cac1ae8043788fed3a29ec595d71",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ascending_the_Duquesne_Incline.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Dllu",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "bd92d9a2a9c0489e83b3c6fc0ef4b740",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Drive_Gear_and_Cable_Drum_at_the_Duquesne_Incline.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Doawk7",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "df65dab2432f41f8bc6495eadeb22da7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Duquesne_Incline_lower_building.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Dllu",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "pricingOfferCount": 4,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "closedDateCount": 0
+}

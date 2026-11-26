@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "b3551bdd-b6e5-48c5-91d1-475210494b6f",
+    "appliedAtUtc": "2026-11-26T01:11:53.8678032Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "36ce3e3a-1644-4419-9957-2db04f345637",
+    "appliedAtUtc": "2026-11-26T01:12:20.0520741Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "25c316fa-9f12-4220-9260-851b1396696d",
+    "appliedAtUtc": "2026-11-26T01:13:10.0008794Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "9e364d17-d99a-4630-b492-e8a30eec61cd",
+    "appliedAtUtc": "2026-11-26T01:13:31.4647933Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-6306cac1ae8043788fed3a29ec595d71",
+    "imageId": "6306cac1ae8043788fed3a29ec595d71",
+    "createdAtUtc": "2026-11-26T01:13:48.631Z",
+    "updatedAtUtc": "2026-11-26T01:13:52.217Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ascending_the_Duquesne_Incline.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-bd92d9a2a9c0489e83b3c6fc0ef4b740",
+    "imageId": "bd92d9a2a9c0489e83b3c6fc0ef4b740",
+    "createdAtUtc": "2026-11-26T01:14:04.689Z",
+    "updatedAtUtc": "2026-11-26T01:14:08.235Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Drive_Gear_and_Cable_Drum_at_the_Duquesne_Incline.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-df65dab2432f41f8bc6495eadeb22da7",
+    "imageId": "df65dab2432f41f8bc6495eadeb22da7",
+    "createdAtUtc": "2026-11-26T01:14:18.271Z",
+    "updatedAtUtc": "2026-11-26T01:14:21.622Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Duquesne_Incline_lower_building.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "f3b35165-3fbb-485c-a2d6-38f2f624c925",
+    "appliedAtUtc": "2026-11-26T01:14:53.2276159Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "2f2716acc5c5406ca35efbb80bfb75a5",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T01:15:57.8885235Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128870719424431"
+  }
+]

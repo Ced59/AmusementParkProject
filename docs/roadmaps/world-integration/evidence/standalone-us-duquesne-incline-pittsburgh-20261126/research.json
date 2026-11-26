@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Duquesne Incline et Pittsburgh Duquesne Incline : zéro résultat ; aucun homonyme dans US.json.",
+  "decision": "Funiculaire autonome historique, avec gares, horaire et tarifs propres, hors parc parent. La ligne est aussi un transport public mais sa visite panoramique et l’exposition de la station haute en font une attraction touristique autonome.",
+  "officialPricing": "Site exploitant : adulte 12–64 ans 2,50 $ aller simple / 5 $ aller retour ; enfant 6–11 ans 1,25 $ / 2,50 $ ; cinq ans et moins gratuits. Senior 65+ gratuit avec carte PRT éligible seulement ; autres conditions pour étudiants et groupes. Paiement en espèces exactes au guichet, sans réservation ni carte bancaire.",
+  "officialHours": "Site exploitant : 365 jours par an, 06:30 à 00:30 le lendemain. Calendrier structuré jusqu’au 31 décembre 2027 ; vérifier interruptions ponctuelles.",
+  "accessibility": "La station haute du 1220 Grandview Avenue est accessible ; nombreuses marches depuis le parking de la station basse. Voitures historiques acceptant les fauteuils de largeur maximale 25 pouces (63,5 cm).",
+  "history": "Ouverture le 20 mai 1877 selon l’exploitant ; restauration et reprise par des habitants en 1963.",
+  "photos": "Trois photos exactes sous CC BY-SA 4.0 avec crédits et métadonnées en huit langues : voiture rouge sur la voie, engrenage et tambour de câble, bâtiment de la station basse. Photographies 2015 et 2024 ; ne pas les présenter comme des vues actuelles.",
+  "sources": [
+    {
+      "label": "Duquesne Incline — site officiel, ouverture, accessibilité et paiement",
+      "url": "https://www.duquesneincline.org/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Duquesne Incline — tarifs et heures officiels",
+      "url": "https://duquesneincline.org/indexe6b4.html?page=hoursandfares",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Pittsburgh Regional Transit — Riding the Inclines, confirmation de la ligne autonome",
+      "url": "https://rideprt.org/Services/Riding-the-Inclines/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap via Nominatim — Duquesne Lower Station, coordonnées",
+      "url": "https://www.openstreetmap.org/way/43082419",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Ascending the Duquesne Incline.jpg (Dllu, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Ascending_the_Duquesne_Incline.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Drive Gear and Cable Drum at the Duquesne Incline.jpg (Doawk7, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Drive_Gear_and_Cable_Drum_at_the_Duquesne_Incline.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Duquesne Incline lower building.jpg (Dllu, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Duquesne_Incline_lower_building.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "La page de l’exploitant porte un ancien copyright et des tarifs transitoires pourraient changer ; prix et horaires à recontrôler avant une visite. L’accessibilité en fauteuil dépend de la largeur et de l’accès par la station haute."
+}
