@@ -80182,6 +80182,183 @@
         "attractions": [],
         "rationale": "Téléphérique indépendant avec tarif spécifique et horaire public, hors parc parent."
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-roosevelt-island-tramway-20261126",
+      "name": "Roosevelt Island Tramway",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique urbain panoramique",
+      "locality": "East 60th Street and Second Avenue, New York, NY 10022",
+      "siteId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T01:58:13Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Service régulier toute l’année confirmé par RIOC, avec maintenance 2027 annoncée.",
+      "identityConfidence": "Deux stations, exploitation, tarifs et horaires vérifiés chez RIOC/MTA ; histoire sourcée ; trois photos exactes licenciées ; recherche sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Roosevelt Island Tram",
+        "RI Tram"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T01:56:44.700Z",
+      "integrationHistory": [
+        {
+          "eventId": "7833ebd7-a0af-47b6-bdb3-24793d6476ca",
+          "appliedAt": "2026-11-26T01:52:46.004Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#7833ebd7-a0af-47b6-bdb3-24793d6476ca",
+          "auditEvidence": null,
+          "summary": "Création masquée après contrôle des doublons ; identité, station Manhattan et huit descriptions."
+        },
+        {
+          "eventId": "26de00b3-bba4-4b47-b207-62fe9dba5827",
+          "appliedAt": "2026-11-26T01:53:10.859Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#26de00b3-bba4-4b47-b207-62fe9dba5827",
+          "auditEvidence": null,
+          "summary": "Tarif MTA 2026, horaires officiels et maintenance 2027."
+        },
+        {
+          "eventId": "78bf11cd-5f03-480f-9cae-0a00fd337c8f",
+          "appliedAt": "2026-11-26T01:53:57.699Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#78bf11cd-5f03-480f-9cae-0a00fd337c8f",
+          "auditEvidence": null,
+          "summary": "Ouverture du 17 mai 1976 documentée."
+        },
+        {
+          "eventId": "60d79752-0993-4d09-b1b6-865aec81c27c",
+          "appliedAt": "2026-11-26T01:54:19.677Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#60d79752-0993-4d09-b1b6-865aec81c27c",
+          "auditEvidence": null,
+          "summary": "Fauteuils, poussettes et vélos documentés dans huit langues."
+        },
+        {
+          "eventId": "photo-f91de24626f34113b5af53b13b26fa1d",
+          "appliedAt": "2026-11-26T01:54:37.579Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#photo-f91de24626f34113b5af53b13b26fa1d",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Superbass (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-406ba39d041841a7bf7c2568e639b70c",
+          "appliedAt": "2026-11-26T01:54:50.996Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#photo-406ba39d041841a7bf7c2568e639b70c",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Superbass (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-90940e6dae7944869990991356fb6aa9",
+          "appliedAt": "2026-11-26T01:55:04.785Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#photo-90940e6dae7944869990991356fb6aa9",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 importée : Pi.1415926535 (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-metadata-f91de24626f34113b5af53b13b26fa1d",
+          "appliedAt": "2026-11-26T01:56:23.088Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#photo-metadata-f91de24626f34113b5af53b13b26fa1d",
+          "auditEvidence": null,
+          "summary": "Légende photo 1/3 rendue distincte du texte alternatif dans huit langues."
+        },
+        {
+          "eventId": "photo-metadata-406ba39d041841a7bf7c2568e639b70c",
+          "appliedAt": "2026-11-26T01:56:33.882Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#photo-metadata-406ba39d041841a7bf7c2568e639b70c",
+          "auditEvidence": null,
+          "summary": "Légende photo 2/3 rendue distincte du texte alternatif dans huit langues."
+        },
+        {
+          "eventId": "photo-metadata-90940e6dae7944869990991356fb6aa9",
+          "appliedAt": "2026-11-26T01:56:44.700Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fd6f1ceb-0012-447c-bcf0-f83846c9f8e6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/operations.json#photo-metadata-90940e6dae7944869990991356fb6aa9",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-roosevelt-island-tramway-20261126/audit.json",
+          "summary": "Légende photo 3/3 rendue distincte du texte alternatif dans huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Vérifier la fréquence réduite du 2 janvier au 26 février 2027 et la date encore inconnue du second chantier de 2027.",
+      "sources": [
+        {
+          "label": "RIOC — horaires, OMNY, accès et situation",
+          "url": "https://www.rioc.ny.gov/community/transportation/tram",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "RIOC — maintenance et réduction du service en 2027",
+          "url": "https://www.rioc.ny.gov/news-and-events/news/two-upcoming-roosevelt-island-tram-overhaul-projects-in-2027",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "MTA — tarif plein 2026",
+          "url": "https://www.mta.info/document/186881",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Roosevelt Island Historical Society — ouverture 17 mai 1976",
+          "url": "https://rihs.us/2020/05/16/may-16-17-weekend-edition-may-17th-is-the-trams-44th-birthday/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — station Manhattan",
+          "url": "https://www.openstreetmap.org/way/32946753",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — 2024-11-18- Roosevelt Island Tramway-0596.jpg (Superbass, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0596.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — 2024-11-18- Roosevelt Island Tramway-0598.jpg (Superbass, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0598.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — UES terminal of Roosevelt Island Tramway from departing car, September 2025.jpg (Pi.1415926535, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:UES_terminal_of_Roosevelt_Island_Tramway_from_departing_car,_September_2025.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Téléphérique public à stations autonomes et panorama touristique, hors parc parent."
+      }
     }
   ]
 }

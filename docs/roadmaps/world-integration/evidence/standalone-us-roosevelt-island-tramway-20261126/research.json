@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions US pour Roosevelt : zéro résultat ; SearchParks Roosevelt : zéro résultat ; aucun homonyme dans US.json.",
+  "decision": "Téléphérique aérien autonome, avec deux stations publiques et traversée panoramique de l’East River ; transport quotidien et visite touristique, hors parc parent. Le tarif MTA partagé ne change pas son caractère de site indépendant.",
+  "officialPricing": "RIOC accepte les tarifs MTA, OMNY et titres illimités. MTA : plein tarif 2026 de 3 $ par trajet ; conditions de correspondance et plafonnement à vérifier.",
+  "officialHours": "RIOC : dimanche–jeudi 06:00–02:00 le lendemain ; vendredi–samedi 06:00–03:30 le lendemain. Maintenance du 2 janvier au 26 février 2027 : une cabine, départs toutes les 15 minutes. Autre chantier fin printemps/été 2027, dates non annoncées.",
+  "accessibility": "RIOC confirme fauteuils et aides à la mobilité, poussettes et vélos dans les cabines. Itinéraires en station modifiés durant le second chantier 2027.",
+  "history": "Ouverture le 17 mai 1976 selon la Roosevelt Island Historical Society ; RIOC confirme 1976.",
+  "photos": "Trois photos exactes de la cabine et de la station de Manhattan, CC BY-SA 4.0, créditées dans huit langues.",
+  "sources": [
+    {
+      "label": "RIOC — horaires, OMNY, accès et situation",
+      "url": "https://www.rioc.ny.gov/community/transportation/tram",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "RIOC — maintenance et réduction du service en 2027",
+      "url": "https://www.rioc.ny.gov/news-and-events/news/two-upcoming-roosevelt-island-tram-overhaul-projects-in-2027",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "MTA — tarif plein 2026",
+      "url": "https://www.mta.info/document/186881",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Roosevelt Island Historical Society — ouverture 17 mai 1976",
+      "url": "https://rihs.us/2020/05/16/may-16-17-weekend-edition-may-17th-is-the-trams-44th-birthday/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station Manhattan",
+      "url": "https://www.openstreetmap.org/way/32946753",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — 2024-11-18- Roosevelt Island Tramway-0596.jpg (Superbass, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0596.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — 2024-11-18- Roosevelt Island Tramway-0598.jpg (Superbass, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:2024-11-18-_Roosevelt_Island_Tramway-0598.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — UES terminal of Roosevelt Island Tramway from departing car, September 2025.jpg (Pi.1415926535, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:UES_terminal_of_Roosevelt_Island_Tramway_from_departing_car,_September_2025.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "L’adresse est exprimée selon le carrefour officiel East 60th Street/Second Avenue ; coordonnées OSM. Le calendrier du second chantier 2027 reste indéterminé ; vérifier les avis RIOC avant déplacement."
+}
