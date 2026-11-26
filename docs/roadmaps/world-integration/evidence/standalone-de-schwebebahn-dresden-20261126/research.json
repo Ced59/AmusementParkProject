@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions DE pour Schwebebahn Dresden, Dresden Suspension Railway et Bergbahn Dresden : zéro résultat ; aucun dossier homonyme dans DE.json.",
+  "decision": "Ligne suspendue historique autonome Körnerplatz–Oberloschwitz, avec gares, horaires et billet propres ; aucun parc parent. Sous-type Funicular retenu pour le catalogue, bien que la voiture soit suspendue sous sa structure.",
+  "officialPricing": "DVB affiche depuis le 1er avril 2025 les billets simples adulte/réduit/famille à 5/3/12 €, retours à 7/4/17 €. Réduit notamment pour élèves jusqu’au 15e anniversaire. Famille : 2 adultes et 4 élèves maximum. Aller et retour le même jour, retour possible par l’autre Bergbahn. Deutschlandticket et titre urbain simple non valables ; tarifs à recontrôler.",
+  "officialHours": "DVB : hiver du 2 novembre 2026 au 26 mars 2027 tous les jours 10:00–18:00 ; été dès le 27 mars 2027 tous les jours 09:30–20:00. Fermetures pour révision du 22 février au 5 mars et du 1er au 12 novembre 2027. Horaire d’été structuré jusqu’au 31 octobre ; horaires postérieurs non affirmés.",
+  "accessibility": "L’exploitant déclare l’accès en fauteuil roulant impossible pour raisons de protection du monument.",
+  "history": "La chronologie officielle DVB date la mise en service du 6 mai 1901.",
+  "photos": "Trois photos exactes et créditées : voiture à la station haute, voiture suspendue sur la pente, station basse. Sources Wikimedia Commons CC BY-SA 4.0, CC BY 2.5 et CC BY-SA 2.0 ; importation de miniatures redimensionnées sans autre modification.",
+  "sources": [
+    {
+      "label": "DVB — Schwebebahn, accessibilité et révisions 2027",
+      "url": "https://www.dvb.de/de-de/entdecken/bergbahnen/schwebebahn/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "DVB — horaires 2026–2027, prix et conditions de billetterie",
+      "url": "https://www.dvb.de/de-de/entdecken/bergbahnen/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "DVB — jalon officiel de mise en service du 6 mai 1901",
+      "url": "https://www.dvb.de/de-de/die-dvb/geschichte/meilensteine-der-dresdner-nahverkehrsgeschichte",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap via Mapcarta — position station basse",
+      "url": "https://mapcarta.com/N246854779",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Dresden-Loschwitz,Schwebebahn 13.jpg (Bybbisch94; Christian Gebhardt, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dresden-Loschwitz,Schwebebahn_13.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Dresden Bergbahn 129.JPG (Norbert Aepli, Switzerland (noebu), CC BY 2.5)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dresden_Bergbahn_129.JPG",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Schwebebahn Dresden - Untere Station (Dresden Suspension Railway - Lower Station) - geo.hlipp.de - 32428.jpg (Colin Smith on geo.hlipp.de, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Schwebebahn_Dresden_-_Untere_Station_(Dresden_Suspension_Railway_-_Lower_Station)_-_geo.hlipp.de_-_32428.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Tarifs affichés depuis 2025 à recontrôler ; le site ne donne pas encore d’horaire après la révision de novembre 2027. Une actualité DVB parle d’un hiver finissant le 25 mars, tandis que la page tarifs/horaire actuelle dit 26 mars ; la page actuelle a été retenue."
+}

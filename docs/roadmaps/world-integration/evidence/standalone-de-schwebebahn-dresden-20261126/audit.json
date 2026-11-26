@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "81f63fac-0511-406b-9041-254077a2ad0a",
+  "name": "Schwebebahn Dresden",
+  "countryCode": "DE",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/81f63fac-0511-406b-9041-254077a2ad0a/schwebebahn-dresden",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T00:34:10Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "13ea9bd399cc4f72ac7798260c3202d9",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128867977424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T00:31:09.434Z",
+  "lastDataEventId": "photo-34bd81b527a742bd98e2f625d292c002",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions DE pour Schwebebahn Dresden, Dresden Suspension Railway et Bergbahn Dresden : zéro résultat ; aucun dossier homonyme dans DE.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "f2d93fd43e3b4182ba4512c9309f18e1",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dresden-Loschwitz,Schwebebahn_13.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Bybbisch94; Christian Gebhardt",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "7f680ce5d2a34261bec669dc2144c078",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dresden_Bergbahn_129.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Norbert Aepli, Switzerland (noebu)",
+      "license": "CC BY 2.5"
+    },
+    {
+      "id": "34bd81b527a742bd98e2f625d292c002",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schwebebahn_Dresden_-_Untere_Station_(Dresden_Suspension_Railway_-_Lower_Station)_-_geo.hlipp.de_-_32428.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Colin Smith on geo.hlipp.de",
+      "license": "CC BY-SA 2.0"
+    }
+  ],
+  "pricingOfferCount": 6,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "regularRuleCount": 5,
+  "springMaintenanceClosed": true,
+  "autumnMaintenanceClosed": true
+}
