@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "a6a42969-70dd-4f08-8539-e30558c40d04",
+    "appliedAtUtc": "2026-11-26T00:38:27.6999021Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "273dbe97-a5a0-44db-a1fb-e1dfc6db00cf",
+    "appliedAtUtc": "2026-11-26T00:38:51.1078301Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "e530be53-ec65-4a78-8029-3a938ce6466f",
+    "appliedAtUtc": "2026-11-26T00:39:47.9989046Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "27b05950-e601-4c06-a49b-c525b23a1487",
+    "appliedAtUtc": "2026-11-26T00:40:09.6713392Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-5ba4e2871db14bb6ad8cbaacdd5ea15e",
+    "imageId": "5ba4e2871db14bb6ad8cbaacdd5ea15e",
+    "createdAtUtc": "2026-11-26T00:40:21.833Z",
+    "updatedAtUtc": "2026-11-26T00:40:25.248Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20250226.Standseilbahn_Dresden.-024.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-8463fe4d071f4f3281b45d5b742c58e3",
+    "imageId": "8463fe4d071f4f3281b45d5b742c58e3",
+    "createdAtUtc": "2026-11-26T00:40:35.373Z",
+    "updatedAtUtc": "2026-11-26T00:40:38.719Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:DD-Standseilbahn-4.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-f612ce31ddbc4d08b526bc0fa2a44d07",
+    "imageId": "f612ce31ddbc4d08b526bc0fa2a44d07",
+    "createdAtUtc": "2026-11-26T00:40:49.096Z",
+    "updatedAtUtc": "2026-11-26T00:40:52.463Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20240826.Standseilbahn_Loschwitz_in_Dresden,_Bergstation.-011.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "947e2244-2d09-41c1-a47f-ed91d1e6be3c",
+    "appliedAtUtc": "2026-11-26T00:42:09.8580473Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "708a4596bbd94521ad4360f050dd8881",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T00:42:45.3588029Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128869093424431"
+  }
+]
