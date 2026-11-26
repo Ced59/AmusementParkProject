@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions « Sky Costanera » et SearchParks « Costanera » : aucun résultat avant création ; aucun homonyme dans CL.json.",
+  "decision": "Mirador à entrée et tarifs propres, situé aux étages supérieurs de Gran Torre Costanera. Le centre commercial reste distinct de la visite du mirador.",
+  "history": "L’exploitant date l’ouverture au public du 11 août 2015 dans son matériel éducatif.",
+  "service": "Mirador ouvert 10:00–22:00 tous les jours ; dernière montée 21:00, billetterie 10:00–21:00. Horaires des jours fériés à vérifier.",
+  "pricing": "Quatre tarifs publics vérifiés : adulte dès 13 ans 25 000 CLP normal ou 30 000 CLP sunset ; enfant 5–12 ans 10 000 CLP dans les deux créneaux. L’exploitant donne deux formulations contradictoires de la gratuité (« 0–4 ans » et « moins de 4 ans ») : ne pas fixer la règle pour un enfant de quatre ans sans confirmation.",
+  "accessibility": "La FAQ officielle confirme des aménagements de mobilité réduite dans le centre commercial et à l’accès du mirador, sans détailler un dispositif précis.",
+  "photos": "Quatre images exactes de la tour, de l’entrée et des vues depuis le mirador, sous CC BY-SA 4.0 avec auteur, source, huit textes alternatifs et huit légendes distinctes.",
+  "sources": [
+    {
+      "label": "Exploitant — tarifs, créneaux et horaires",
+      "url": "https://skycostanera.cl/es/tarifas-y-horarios",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — accessibilité et achat",
+      "url": "https://www.skycostanera.cl/es/preguntas-frecuentes",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — publication éducative et date d’ouverture",
+      "url": "https://www.skycostanera.cl/sites/sky/files/2022-11/AULA_CIELO%20ABIERTO_.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — point du mirador",
+      "url": "https://www.openstreetmap.org/node/5627461421",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — adresse de Cenco Costanera",
+      "url": "https://www.openstreetmap.org/way/159707319",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Sky Costanera 20260815.jpg (Rjcastillo, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sky_Costanera_20260815.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Acceso Sky Costanera.jpg (Warko, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Acceso_Sky_Costanera.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Vista al atardecer desde Sky Costanera.jpg (PerasNevadas, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Vista_al_atardecer_desde_Sky_Costanera.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Sky Costanera - Providencia.jpg (Corsario CL, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sky_Costanera_-_Providencia.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Tarif exact des enfants de quatre ans à confirmer auprès de l’exploitant ; horaires fériés variables. Les prix présentés ne sont pas attribués au canal en ligne sans vérification du panier."
+}

@@ -1,0 +1,133 @@
+[
+  {
+    "step": "core",
+    "operationId": "c0ad46fe-fbb8-4ee2-97d4-abb412d910ef",
+    "appliedAtUtc": "2026-11-26T04:48:20.019899Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "4fff0490-14b2-41d8-b162-b2ec23063c0a",
+    "appliedAtUtc": "2026-11-26T04:49:59.2619259Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "73399af2-a977-486e-a35f-a73486ecab60",
+    "appliedAtUtc": "2026-11-26T04:50:15.7149612Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "1a546913-47f2-4e46-9e8f-93f0595100fe",
+    "appliedAtUtc": "2026-11-26T04:50:28.8578156Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-db40379356a54eee8b4e0c408de5dd58",
+    "imageId": "db40379356a54eee8b4e0c408de5dd58",
+    "createdAtUtc": "2026-11-26T04:51:19.415Z",
+    "updatedAtUtc": "2026-11-26T04:51:23.234Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Costanera_20260815.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-90094a60806c44a99b5f3a21336fc6bd",
+    "imageId": "90094a60806c44a99b5f3a21336fc6bd",
+    "createdAtUtc": "2026-11-26T04:51:33.114Z",
+    "updatedAtUtc": "2026-11-26T04:51:36.729Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acceso_Sky_Costanera.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-a2654529bece47989142896f9dca7ab3",
+    "imageId": "a2654529bece47989142896f9dca7ab3",
+    "createdAtUtc": "2026-11-26T04:51:47.44Z",
+    "updatedAtUtc": "2026-11-26T04:51:50.918Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_al_atardecer_desde_Sky_Costanera.jpg"
+  },
+  {
+    "step": "photo-4-import",
+    "eventId": "photo-8d3b5c47523547038427f5648f198fd0",
+    "imageId": "8d3b5c47523547038427f5648f198fd0",
+    "createdAtUtc": "2026-11-26T04:52:00.69Z",
+    "updatedAtUtc": "2026-11-26T04:52:04.15Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Costanera_-_Providencia.jpg"
+  },
+  {
+    "step": "publish",
+    "operationId": "4f9c2b24-67a4-413c-bfd5-fdd068e9f95e",
+    "appliedAtUtc": "2026-11-26T04:52:29.2477136Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "df2e8571306a4ebf8b3815d6692e6cd7",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T04:53:11.20191Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128885779424431"
+  },
+  {
+    "step": "hours-only",
+    "operationId": "b62b7201-8bbc-4a4e-b36f-53a349ecd487",
+    "appliedAtUtc": "2026-11-26T04:54:25.2904056Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  }
+]
