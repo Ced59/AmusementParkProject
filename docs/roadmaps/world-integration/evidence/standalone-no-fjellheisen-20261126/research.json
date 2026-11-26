@@ -1,0 +1,63 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions « Fjellheisen » avec CountryCode NO : aucun résultat ; aucune entrée Fjellheisen dans NO.json avant création.",
+  "decision": "Téléphérique touristique avec billets aller simple et aller-retour propres, distinct du café et des excursions guidées de Storsteinen.",
+  "history": "L’exploitant date l’ouverture du 22 février 1961 et la modernisation de 2016.",
+  "service": "Téléphérique annoncé quotidiennement 09:00–00:00, départs toutes les demi-heures. Règle datée du 26 novembre 2026 au 25 novembre 2027 pour recontrôle. L’accès à l’ancienne terrasse extérieure supérieure est fermé pendant les travaux. Navette incluse annoncée à partir du 30 novembre 2026 ; elle ne circule pas jusqu’à minuit.",
+  "pricing": "Six tarifs NOK affichés par l’exploitant : aller-retour adulte 645, enfant 3–15 ans 310, famille 2+2 1360 ; aller simple adulte 415, enfant 195, famille 850. Le montant du transport d’un vélo diffère selon deux pages officielles ; aucune offre vélo publiée.",
+  "accessibility": "Pendant les travaux de modernisation, l’exploitant ne peut pas accueillir les visiteurs en fauteuil roulant ni ceux qui utilisent un déambulateur. La fiche est explicitement marquée non accessible pour l’instant.",
+  "photos": "Cinq photos exactes de cabines, vue, station inférieure et station supérieure. Les vues des stations prises avant les travaux actuels sont datées dans les légendes. Auteur, licence CC BY-SA 4.0, source, huit textes alternatifs et huit légendes pour chacune.",
+  "sources": [
+    {
+      "label": "Fjellheisen — prix, horaires, trajet et capacité officiels",
+      "url": "https://www.fjellheisen.no/engelsk/fjellheisen-home",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Fjellheisen — avis de travaux, accès et parking provisoire",
+      "url": "https://www.fjellheisen.no/engelsk/important-info",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Fjellheisen — histoire officielle et ouverture du 22 février 1961",
+      "url": "https://www.fjellheisen.no/engelsk/about-us",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Fjellheisen — billetterie officielle",
+      "url": "https://book.fjellheisen.no/en/todo",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Fjellheisen — lien cartographique officiel vers la station inférieure",
+      "url": "https://www.google.com/maps/place/Fjellheisen/@69.6410699,18.9774346,14z/data=!4m12!1m6!3m5!1s0x0:0x4c8c4f3c4c21549d!2sFjellheisen!8m2!3d69.6410697!4d18.9861893!3m4!1s0x0:0x4c8c4f3c4c21549d!8m2!3d69.6410697!4d18.9861893",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Ankunft in der Bergstation Fjellheisen Tromsø.jpg (JoachimKohlerBremen, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Ankunft_in_der_Bergstation_Fjellheisen_Troms%C3%B8.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Fjellheisen - Tromsø, Norway 2023-07-08.jpg (Ryan Hodnett, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Fjellheisen_-_Troms%C3%B8,_Norway_2023-07-08.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Fjellheisen, Tromsdalen, and Tromsøysundet - Tromsø, Norway 2023-07-08.jpg (Ryan Hodnett, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Fjellheisen,_Tromsdalen,_and_Troms%C3%B8ysundet_-_Troms%C3%B8,_Norway_2023-07-08.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Fjellheisen Lower Station - Tromsø, Norway 2023-07-08.jpg (Ryan Hodnett, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Fjellheisen_Lower_Station_-_Troms%C3%B8,_Norway_2023-07-08.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — File:Teleférico, Tromsø, Noruega, 2019-09-04, DD 29.jpg (Diego Delso, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico,_Troms%C3%B8,_Noruega,_2019-09-04,_DD_29.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Recontrôler l’accessibilité, les travaux, la terrasse, les horaires, la navette et les tarifs lors des changements annoncés ; ne pas recopier les tarifs vélo contradictoires."
+}

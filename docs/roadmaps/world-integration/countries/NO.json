@@ -1585,6 +1585,193 @@
         "attractions": [],
         "rationale": "Téléphérique autonome avec billet et horaires propres ; les autres activités du sommet sont vendues séparément."
       }
+    },
+    {
+      "entryId": "NO-candidate-discovery-fjellheisen-20261126",
+      "name": "Fjellheisen",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "Tromsdalen, Tromsø, Storsteinen",
+      "siteId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T05:36:18Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Téléphérique actif pendant les travaux, billetterie et horaire quotidien officiels en novembre 2026.",
+      "identityConfidence": "Exploitant, date d’ouverture, accès temporaire, tarifs, adresse et cinq photos exactes vérifiés ; aucun doublon PDE.",
+      "possibleMatches": [],
+      "aliases": [
+        "Tromsø Cable Car",
+        "Fjellheisen Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T05:32:49.161Z",
+      "integrationHistory": [
+        {
+          "eventId": "df11b998-f36a-4f29-87db-3a5b4765d61f",
+          "appliedAt": "2026-11-26T05:27:17.822Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#df11b998-f36a-4f29-87db-3a5b4765d61f",
+          "auditEvidence": null,
+          "summary": "Création avec huit descriptions, localisation, ouverture historique, capacité et accessibilité actuelle."
+        },
+        {
+          "eventId": "photo-353585180d6f46289011bbcbb2f6a4cd",
+          "appliedAt": "2026-11-26T05:28:25.303Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#photo-353585180d6f46289011bbcbb2f6a4cd",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/5 importée : JoachimKohlerBremen (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-0071fa17e3cf47e4ab6edcd2f360ec95",
+          "appliedAt": "2026-11-26T05:28:38.386Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#photo-0071fa17e3cf47e4ab6edcd2f360ec95",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/5 importée : Ryan Hodnett (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-514f9b88f18d40beaaf79c545ca3c019",
+          "appliedAt": "2026-11-26T05:28:51.146Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#photo-514f9b88f18d40beaaf79c545ca3c019",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/5 importée : Ryan Hodnett (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-1e93f9026ed44395b7853b79937a9409",
+          "appliedAt": "2026-11-26T05:29:04.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#photo-1e93f9026ed44395b7853b79937a9409",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4/5 importée : Ryan Hodnett (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-b7f63a7d50ea4930bffdda30d31bf353",
+          "appliedAt": "2026-11-26T05:29:17.553Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#photo-b7f63a7d50ea4930bffdda30d31bf353",
+          "auditEvidence": null,
+          "summary": "Photo exacte 5/5 importée : Diego Delso (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "511d5821-e82a-4560-aaeb-0c073d926908",
+          "appliedAt": "2026-11-26T05:29:53.418Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#511d5821-e82a-4560-aaeb-0c073d926908",
+          "auditEvidence": null,
+          "summary": "Six tarifs officiels et horaire quotidien 09:00–minuit avec borne de vérification."
+        },
+        {
+          "eventId": "29ff194e-3c27-4069-b719-c6308c0f2f2c",
+          "appliedAt": "2026-11-26T05:31:03.079Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#29ff194e-3c27-4069-b719-c6308c0f2f2c",
+          "auditEvidence": null,
+          "summary": "Événement du 22 février 1961 sourcé par l’exploitant."
+        },
+        {
+          "eventId": "c9d0a689-c21c-4889-9ea0-854a3634c4e6",
+          "appliedAt": "2026-11-26T05:31:29.479Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#c9d0a689-c21c-4889-9ea0-854a3634c4e6",
+          "auditEvidence": null,
+          "summary": "Restriction temporaire pour fauteuils roulants et déambulateurs intégrée depuis l’avis officiel."
+        },
+        {
+          "eventId": "7135940e-ef14-49f6-92b8-295131a596d4",
+          "appliedAt": "2026-11-26T05:32:49.161Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cded2cd0-af78-450e-92c7-38a0f7864655",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/operations.json#7135940e-ef14-49f6-92b8-295131a596d4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-no-fjellheisen-20261126/audit.json",
+          "summary": "Formulations publiques ajustées pour respecter le contrôle éditorial sans perdre les indications de trajet du site officiel."
+        }
+      ],
+      "nextAction": "Conserver cette entrée ; surveiller les travaux et réévaluer accessibilité, terrasse, horaires, navette et tarifs avant la fin de la règle du 25 novembre 2027 ; ajouter un événement daté à chaque mise à jour des données.",
+      "sources": [
+        {
+          "label": "Fjellheisen — prix, horaires, trajet et capacité officiels",
+          "url": "https://www.fjellheisen.no/engelsk/fjellheisen-home",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Fjellheisen — avis de travaux, accès et parking provisoire",
+          "url": "https://www.fjellheisen.no/engelsk/important-info",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Fjellheisen — histoire officielle et ouverture du 22 février 1961",
+          "url": "https://www.fjellheisen.no/engelsk/about-us",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Fjellheisen — billetterie officielle",
+          "url": "https://book.fjellheisen.no/en/todo",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Fjellheisen — lien cartographique officiel vers la station inférieure",
+          "url": "https://www.google.com/maps/place/Fjellheisen/@69.6410699,18.9774346,14z/data=!4m12!1m6!3m5!1s0x0:0x4c8c4f3c4c21549d!2sFjellheisen!8m2!3d69.6410697!4d18.9861893!3m4!1s0x0:0x4c8c4f3c4c21549d!8m2!3d69.6410697!4d18.9861893",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Ankunft in der Bergstation Fjellheisen Tromsø.jpg (JoachimKohlerBremen, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Ankunft_in_der_Bergstation_Fjellheisen_Troms%C3%B8.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Fjellheisen - Tromsø, Norway 2023-07-08.jpg (Ryan Hodnett, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Fjellheisen_-_Troms%C3%B8,_Norway_2023-07-08.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Fjellheisen, Tromsdalen, and Tromsøysundet - Tromsø, Norway 2023-07-08.jpg (Ryan Hodnett, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Fjellheisen,_Tromsdalen,_and_Troms%C3%B8ysundet_-_Troms%C3%B8,_Norway_2023-07-08.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Fjellheisen Lower Station - Tromsø, Norway 2023-07-08.jpg (Ryan Hodnett, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Fjellheisen_Lower_Station_-_Troms%C3%B8,_Norway_2023-07-08.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — File:Teleférico, Tromsø, Noruega, 2019-09-04, DD 29.jpg (Diego Delso, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico,_Troms%C3%B8,_Noruega,_2019-09-04,_DD_29.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "NO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Billets propres au téléphérique ; café, excursions et sentiers du sommet distincts."
+      }
     }
   ]
 }

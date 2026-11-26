@@ -1,0 +1,141 @@
+[
+  {
+    "step": "core",
+    "operationId": "df11b998-f36a-4f29-87db-3a5b4765d61f",
+    "appliedAtUtc": "2026-11-26T05:27:17.8223909Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-353585180d6f46289011bbcbb2f6a4cd",
+    "imageId": "353585180d6f46289011bbcbb2f6a4cd",
+    "createdAtUtc": "2026-11-26T05:28:21.67Z",
+    "updatedAtUtc": "2026-11-26T05:28:25.303Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ankunft_in_der_Bergstation_Fjellheisen_Troms%C3%B8.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-0071fa17e3cf47e4ab6edcd2f360ec95",
+    "imageId": "0071fa17e3cf47e4ab6edcd2f360ec95",
+    "createdAtUtc": "2026-11-26T05:28:35.018Z",
+    "updatedAtUtc": "2026-11-26T05:28:38.386Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fjellheisen_-_Troms%C3%B8,_Norway_2023-07-08.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-514f9b88f18d40beaaf79c545ca3c019",
+    "imageId": "514f9b88f18d40beaaf79c545ca3c019",
+    "createdAtUtc": "2026-11-26T05:28:47.784Z",
+    "updatedAtUtc": "2026-11-26T05:28:51.146Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fjellheisen,_Tromsdalen,_and_Troms%C3%B8ysundet_-_Troms%C3%B8,_Norway_2023-07-08.jpg"
+  },
+  {
+    "step": "photo-4-import",
+    "eventId": "photo-1e93f9026ed44395b7853b79937a9409",
+    "imageId": "1e93f9026ed44395b7853b79937a9409",
+    "createdAtUtc": "2026-11-26T05:29:01.173Z",
+    "updatedAtUtc": "2026-11-26T05:29:04.636Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fjellheisen_Lower_Station_-_Troms%C3%B8,_Norway_2023-07-08.jpg"
+  },
+  {
+    "step": "photo-5-import",
+    "eventId": "photo-b7f63a7d50ea4930bffdda30d31bf353",
+    "imageId": "b7f63a7d50ea4930bffdda30d31bf353",
+    "createdAtUtc": "2026-11-26T05:29:14.224Z",
+    "updatedAtUtc": "2026-11-26T05:29:17.553Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico,_Troms%C3%B8,_Noruega,_2019-09-04,_DD_29.jpg"
+  },
+  {
+    "step": "visitors",
+    "operationId": "511d5821-e82a-4560-aaeb-0c073d926908",
+    "appliedAtUtc": "2026-11-26T05:29:53.4182502Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "29ff194e-3c27-4069-b719-c6308c0f2f2c",
+    "appliedAtUtc": "2026-11-26T05:31:03.0798125Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "c9d0a689-c21c-4889-9ea0-854a3634c4e6",
+    "appliedAtUtc": "2026-11-26T05:31:29.4790074Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "text-fix",
+    "operationId": "7135940e-ef14-49f6-92b8-295131a596d4",
+    "appliedAtUtc": "2026-11-26T05:32:49.1614175Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "f3b48454-010e-4da2-a49f-d11f0748a21d",
+    "appliedAtUtc": "2026-11-26T05:33:47.257731Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "b3ef05fc0958428baf1c200c61212885",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T05:34:40.4250911Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128888761424431"
+  }
+]
