@@ -1,0 +1,80 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b0633098-9aff-4841-9ff3-96c5421b7ca6",
+  "name": "Seorak Cable Car",
+  "countryCode": "KR",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b0633098-9aff-4841-9ff3-96c5421b7ca6/seorak-cable-car",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T04:27:46Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "4022c6fbca034125b855c25ea34325b3",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128883823424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T04:25:09.363Z",
+  "lastDataEventId": "cbf6bf98-ab63-41ad-a205-27d3ccdbb396",
+  "presenceSearch": "PDE SearchStandaloneAttractions (Seoraksan, Seorak) et SearchParks (Seoraksan) : aucun résultat avant création ; aucun homonyme dans KR.json.",
+  "completeness": {
+    "completenessScore": 89,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "a4a9417acc7f4157bffed0a058244048",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_03.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Bernard Gagnon",
+      "license": "CC0 1.0"
+    },
+    {
+      "id": "c5970603772347e8bde6a98d18a3a78e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_04.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Bernard Gagnon",
+      "license": "CC0 1.0"
+    },
+    {
+      "id": "b9edda37341544b9bf461083fc52fbba",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_02.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": 8,
+      "captionLanguages": 8,
+      "author": "Bernard Gagnon",
+      "license": "CC0 1.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 7,
+  "sitePublicationReceipt": "ea5e8f29-dee8-4b09-80ed-b9c32629c7e3",
+  "note": "La publication et Facebook sont des événements séparés de la dernière intégration de données. Les horaires varient chaque jour ; aucune plage fixe n’est fabriquée."
+}

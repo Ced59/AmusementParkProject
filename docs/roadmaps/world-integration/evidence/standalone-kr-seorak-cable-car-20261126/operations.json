@@ -1,0 +1,125 @@
+[
+  {
+    "step": "core",
+    "operationId": "701d809f-ecb2-49b3-a1f7-592b2e3cf78e",
+    "appliedAtUtc": "2026-11-26T04:19:23.149704Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "5431a516-d5a4-4fb5-8b3a-daa845c539ed",
+    "appliedAtUtc": "2026-11-26T04:20:37.6379982Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "752616d0-a72a-44d4-879b-294defa26aaf",
+    "appliedAtUtc": "2026-11-26T04:20:51.710366Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-a4a9417acc7f4157bffed0a058244048",
+    "imageId": "a4a9417acc7f4157bffed0a058244048",
+    "createdAtUtc": "2026-11-26T04:21:48.13Z",
+    "updatedAtUtc": "2026-11-26T04:21:52.147Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_03.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-c5970603772347e8bde6a98d18a3a78e",
+    "imageId": "c5970603772347e8bde6a98d18a3a78e",
+    "createdAtUtc": "2026-11-26T04:22:04.757Z",
+    "updatedAtUtc": "2026-11-26T04:22:08.376Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_04.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-b9edda37341544b9bf461083fc52fbba",
+    "imageId": "b9edda37341544b9bf461083fc52fbba",
+    "createdAtUtc": "2026-11-26T04:22:19.911Z",
+    "updatedAtUtc": "2026-11-26T04:22:23.401Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_02.jpg"
+  },
+  {
+    "step": "core-correction",
+    "operationId": "d3491b8b-c292-4e28-b636-07f5f3732c51",
+    "appliedAtUtc": "2026-11-26T04:23:55.1462317Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "cbf6bf98-ab63-41ad-a205-27d3ccdbb396",
+    "appliedAtUtc": "2026-11-26T04:25:09.3632969Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "ea5e8f29-dee8-4b09-80ed-b9c32629c7e3",
+    "appliedAtUtc": "2026-11-26T04:25:28.3259667Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "4022c6fbca034125b855c25ea34325b3",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T04:26:19.2364855Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128883823424431"
+  }
+]

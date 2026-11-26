@@ -20,7 +20,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 81 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 9 |
+| Intégration achevée | 10 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -31,7 +31,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **12 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **67 candidats sans fiche**.
 
-Standalone : **9 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **10 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **6 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -112,6 +112,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | KR-candidate-f79a928621830e | Sanjeong Land | Pocheon , Gyeonggi-do | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/20584.htm) |
 | KR-candidate-44a9bb9d6f19aa | Sea Life Busan Aquarium | Busan | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#South_Korea) |
 | KR-candidate-0919f742442422 | Seongjigok Land | Busan | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5093.htm) |
+| KR-candidate-discovery-seorak-cable-car-20261126 | Seorak Cable Car | Sogongwon–Gwongeumseong, Sokcho, Gangwon | StandaloneAttraction | Published | Intégration achevée | 2026-11-26T04:25:09.363Z | — | Conserver cette entrée ; recontrôler régulièrement les tarifs et l’annonce quotidienne des horaires, et ajouter un événement daté à chaque nouvelle intégration sans effacer l’historique. Qualification standalone : AlreadyStandalone. La ligne possède sa billetterie et ses règles d’accès propres ; le parc national et ses sentiers ne font pas partie de cette attraction. Signal source : Téléphérique en exploitation, billets retour et tarifs publics, service dépendant du vent.. [Exploitant — présentation et reconstruction de 2002](https://www.sorakcablecar.co.kr/about) · [Exploitant — tarifs, vente, horaires variables et accessibilité](https://www.sorakcablecar.co.kr/guide) · [Office coréen du tourisme — identité, adresse et billets retour](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=97439) · [OpenStreetMap — station inférieure](https://www.openstreetmap.org/node/5055800356) · [Wikimedia Commons — Seoraksan Cable Car 03.jpg (Bernard Gagnon, CC0 1.0)](https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_03.jpg) · [Wikimedia Commons — Seoraksan Cable Car 04.jpg (Bernard Gagnon, CC0 1.0)](https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_04.jpg) · [Wikimedia Commons — Seoraksan Cable Car 02.jpg (Bernard Gagnon, CC0 1.0)](https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_02.jpg) |
 | KR-candidate-2d3c17ab77ee46 | Seoul Children's Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#South_Korea) |
 | KR-candidate-b9aea39248aede | Seoul Grand Park Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#South_Korea) |
 | KR-park-59f6925d-4eb2-4fcb-89cd-1f5f36910727 | Seoul Land | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/5019.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#South_Korea) |

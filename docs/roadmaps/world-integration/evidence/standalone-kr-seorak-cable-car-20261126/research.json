@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions (Seoraksan, Seorak) et SearchParks (Seoraksan) : aucun résultat avant création ; aucun homonyme dans KR.json.",
+  "decision": "Ligne de téléphérique exploitée avec billetterie, tarifs et règles d’accès propres ; les sentiers du parc national autour de Gwongeumseong ne sont pas inclus dans sa fiche.",
+  "service": "De Sogongwon à Gwongeumseong, environ cinq minutes par trajet ; billet retour seulement. Horaires fixés quotidiennement selon météo et saison, sans grille pérenne fiable ; vent fort = arrêt possible.",
+  "pricing": "Tarifs du 26 novembre 2026, 16 000 KRW adulte, 12 000 KRW enfant, gratuit moins de 36 mois ; cinq réductions conditionnelles avec justificatif. Vente sur place le jour même uniquement ; pas de réservation.",
+  "history": "Le site de l’exploitant indique une réinstallation complète en 2002 avec technologie suisse ; cet événement est daté à l’année, sans confondre avec la création de la société le 15 janvier 1970.",
+  "accessibility": "Fauteuil roulant admis par ascenseur vers le quai au 2e étage ; poussette interdite en cabine, dépôt gratuit à la gare inférieure.",
+  "photos": "Trois images exactes du téléphérique et de la station, Bernard Gagnon, CC0 1.0, avec crédits, textes alternatifs et légendes distinctes dans huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — présentation et reconstruction de 2002",
+      "url": "https://www.sorakcablecar.co.kr/about",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — tarifs, vente, horaires variables et accessibilité",
+      "url": "https://www.sorakcablecar.co.kr/guide",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Office coréen du tourisme — identité, adresse et billets retour",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=97439",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station inférieure",
+      "url": "https://www.openstreetmap.org/node/5055800356",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Seoraksan Cable Car 03.jpg (Bernard Gagnon, CC0 1.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_03.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Seoraksan Cable Car 04.jpg (Bernard Gagnon, CC0 1.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_04.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Seoraksan Cable Car 02.jpg (Bernard Gagnon, CC0 1.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Seoraksan_Cable_Car_02.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Pas de grille horaire fixe publiable : consulter l’annonce du jour sur le site de l’exploitant. L’accès peut être suspendu pour météo. La date de création de la société n’est pas utilisée comme date d’ouverture de la ligne."
+}
