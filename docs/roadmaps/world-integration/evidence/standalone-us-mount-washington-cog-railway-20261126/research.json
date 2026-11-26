@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Mount Washington Cog Railway et The Cog Railway : zéro résultat ; aucun homonyme dans US.json.",
+  "decision": "Train à crémaillère historique exploité comme attraction autonome avec sa propre gare, billetterie et excursions, ouvert toute l’année avec destinations saisonnières distinctes.",
+  "history": "Ouverture officielle le 3 juillet 1869 selon l’exploitant.",
+  "season": "2 novembre 2026–29 avril 2027 : Waumbek en excursion hivernale d’une heure ; dès 30 avril et jusque fin octobre 2027 : sommet prévu. Base fermée Thanksgiving et Noël.",
+  "pricing": "Prix et départs variables selon la date et la destination ; tarif dynamique sans montant inventé. Les valeurs 57 USD adulte et 43 USD enfant publiées dans la politique de remboursement concernent une réduction après trajet écourté et ne sont pas prises pour le prix de vente Waumbek.",
+  "accessibility": "Gare accessible, voitures historiques à trois marches et portes étroites ; fauteuil pliant seulement si place, pas de fauteuil motorisé. Contact préalable conseillé.",
+  "photos": "Trois photos exactes de train, locomotive à vapeur et voie, CC BY-SA 4.0, créditées en huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — saisons Waumbek/sommet, fermeture fériée et adresse",
+      "url": "https://www.thecog.com/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — détails de l’excursion hivernale",
+      "url": "https://www.thecog.com/waumbek",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — billetterie, prix variables et conditions",
+      "url": "https://www.thecog.com/tickets",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — conditions d’accessibilité",
+      "url": "https://www.thecog.com/disabilities-statement",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — ouverture du 3 juillet 1869",
+      "url": "https://www.thecog.com/company",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station Marshfield",
+      "url": "https://www.openstreetmap.org/node/2940708215",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Mount Washington Cog Railway October 2021 015 edit.jpg (King of Hearts, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_015_edit.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Mount Washington Cog Railway October 2021 024.jpg (King of Hearts, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_024.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Mount Washington Cog Railway October 2021 002.jpg (King of Hearts, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_002.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Aucune grille horaire fixe officielle publique : les départs sont proposés au cas par cas dans la réservation. La fiche et les preuves contiennent la source et les périodes saisonnières ; aucun horaire structuré n’est créé faute de plage fixe fiable. Audit à 92 sans blocage. Les conditions météo peuvent modifier la destination."
+}

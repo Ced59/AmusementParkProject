@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "b92d8e24-95a7-4668-a507-8d482f200bff",
+    "appliedAtUtc": "2026-11-26T02:54:27.1551508Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-82a4a6bf121540019eab6f6a96ef09c8",
+    "imageId": "82a4a6bf121540019eab6f6a96ef09c8",
+    "createdAtUtc": "2026-11-26T02:55:17.789Z",
+    "updatedAtUtc": "2026-11-26T02:55:21.436Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_015_edit.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-f22f1d2266eb494ea6e60c3f02335148",
+    "imageId": "f22f1d2266eb494ea6e60c3f02335148",
+    "createdAtUtc": "2026-11-26T02:55:30.873Z",
+    "updatedAtUtc": "2026-11-26T02:55:34.192Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_024.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-d3709da718e4462c8882a13b7601b526",
+    "imageId": "d3709da718e4462c8882a13b7601b526",
+    "createdAtUtc": "2026-11-26T02:55:45.83Z",
+    "updatedAtUtc": "2026-11-26T02:55:49.134Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_002.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "visitors",
+    "operationId": "f6790046-5dd7-41ff-8851-c887da6ffb94",
+    "appliedAtUtc": "2026-11-26T02:56:21.565183Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "d61b8e79-1680-41bb-bac5-dffe69d8c75b",
+    "appliedAtUtc": "2026-11-26T02:56:56.208519Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "0106223b-a9ed-4079-8ac8-dbabd6942a8e",
+    "appliedAtUtc": "2026-11-26T02:57:20.0483617Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "4291f7a3-bbd3-4be7-b2da-f37b4f5a68df",
+    "appliedAtUtc": "2026-11-26T02:58:00.4320565Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "50a1fa0aec604a85aeee5f24a8f2cf0f",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T02:58:40.1702063Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128877715424431"
+  }
+]
