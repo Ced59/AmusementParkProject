@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "bd65687d-1255-431f-849a-ff15be37e32e",
+    "appliedAtUtc": "2026-11-26T02:36:34.6991582Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-4664df63cf9b4784bae27eb9ef888460",
+    "imageId": "4664df63cf9b4784bae27eb9ef888460",
+    "createdAtUtc": "2026-11-26T02:36:54.1Z",
+    "updatedAtUtc": "2026-11-26T02:36:57.789Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Banff_Gondola_from_top_-_Banff_Alberta.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-69b8fb4a994441ddb4afd6fb65bd381f",
+    "imageId": "69b8fb4a994441ddb4afd6fb65bd381f",
+    "createdAtUtc": "2026-11-26T02:37:07.552Z",
+    "updatedAtUtc": "2026-11-26T02:37:10.909Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sulphur_Mountain_Gondolas,_Banff_(202072212).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-0a90961794714770a1ab24d84f53f5be",
+    "imageId": "0a90961794714770a1ab24d84f53f5be",
+    "createdAtUtc": "2026-11-26T02:37:20.447Z",
+    "updatedAtUtc": "2026-11-26T02:37:23.792Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Banff-National-Park_AB_Banff-Gondola_2022-09-25_(6).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "visitors",
+    "operationId": "f7a3da9d-bb33-4926-afe3-2e807eb800eb",
+    "appliedAtUtc": "2026-11-26T02:38:37.1398644Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "8cd314b5-5a71-491a-ab0a-18eeb93cc1e2",
+    "appliedAtUtc": "2026-11-26T02:39:04.820457Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "21c54b14-d41e-471a-a9d8-b350017e48a5",
+    "appliedAtUtc": "2026-11-26T02:39:29.0514387Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "publish",
+    "operationId": "dc179569-f8a7-4fdf-a2ff-d1585d17f4be",
+    "appliedAtUtc": "2026-11-26T02:40:04.3340099Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "01aa40377af745a9856847de5df7547c",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T02:40:44.2543734Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128876461424431"
+  }
+]

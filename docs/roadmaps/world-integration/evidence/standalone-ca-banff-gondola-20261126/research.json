@@ -1,0 +1,43 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Banff Gondola et Sulphur Mountain Gondola : zéro résultat ; aucun homonyme dans CA.json.",
+  "decision": "Télécabine touristique indépendante sur le mont Sulphur, billets, station et centre d’interprétation propres ; exploitation en cours et horaires officiels publiés pour 2026–2027.",
+  "history": "Ouverture en 1959 selon Pursuit ; précision année conservée sans inventer un jour.",
+  "hours": "20 novembre–17 décembre 2026, 10:00–21:00 chaque jour, dernière montée 19:30 ; 18–31 décembre 10:00–22:00, dernière montée 20:30. Calendrier 2027 officiel intégré, y compris fermeture maintenance du 4 au 15 janvier.",
+  "pricing": "Tarifs variables selon la date et l’heure, achat officiel à créneau ; aucun montant fixe inventé. Offre structurée en mode Dynamic sans minimum, avec note en huit langues et lien de réservation.",
+  "accessibility": "Cabines accessibles à la plupart des fauteuils, rampe et ascenseurs ; limites de dimensions/poids précisées. La passerelle de crête à escaliers est exclue de l’accès fauteuil.",
+  "photos": "Trois vues exactes de la ligne et des cabines, licences Creative Commons vérifiées, crédits et textes alternatifs en huit langues.",
+  "sources": [
+    {
+      "label": "Pursuit — horaires 2026–2027, tarifs variables, adresse et accessibilité",
+      "url": "https://www.pursuit.com/experiences/banff-gondola/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Pursuit — année d’ouverture 1959",
+      "url": "https://www.banffjaspercollection.com/canadian-rockies/stories/banff-gondola-vs-jasper-skytram-what-s-the-difference/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station basse",
+      "url": "https://www.openstreetmap.org/way/764291471",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Banff Gondola from top - Banff Alberta.jpg (Ian Poellet, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Banff_Gondola_from_top_-_Banff_Alberta.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Sulphur Mountain Gondolas, Banff (202072212).jpg (Antony Stanley, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Sulphur_Mountain_Gondolas,_Banff_(202072212).jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Banff-National-Park AB Banff-Gondola 2022-09-25 (6).jpg (Milan Suvajac, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Banff-National-Park_AB_Banff-Gondola_2022-09-25_(6).jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Prix exact déterminé par le créneau au moment de la réservation ; il faut consulter la billetterie. Horaires et éventuelles fermetures peuvent changer."
+}

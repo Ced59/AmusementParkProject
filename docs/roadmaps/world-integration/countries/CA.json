@@ -7827,6 +7827,143 @@
         "attractions": [],
         "rationale": "Téléphérique de visite autonome, hors parc parent, temporairement fermé avec réouverture annoncée."
       }
+    },
+    {
+      "entryId": "CA-candidate-discovery-banff-gondola-20261126",
+      "name": "Banff Gondola",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Télécabine panoramique",
+      "locality": "100 Mountain Avenue, Banff, AB T1L 1J3",
+      "siteId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T02:41:47Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation toute l’année selon horaires saisonniers, fermeture maintenance annoncée du 4 au 15 janvier 2027.",
+      "identityConfidence": "Exploitant, adresse, horaires et accessibilité vérifiés ; trois photos exactes licenciées ; recherche sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sulphur Mountain Gondola",
+        "Banff Sulphur Mountain Gondola"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T02:39:29.051Z",
+      "integrationHistory": [
+        {
+          "eventId": "bd65687d-1255-431f-849a-ff15be37e32e",
+          "appliedAt": "2026-11-26T02:36:34.699Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-banff-gondola-20261126/operations.json#bd65687d-1255-431f-849a-ff15be37e32e",
+          "auditEvidence": null,
+          "summary": "Création masquée, statut en exploitation et huit descriptions."
+        },
+        {
+          "eventId": "photo-4664df63cf9b4784bae27eb9ef888460",
+          "appliedAt": "2026-11-26T02:36:57.789Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-banff-gondola-20261126/operations.json#photo-4664df63cf9b4784bae27eb9ef888460",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : Ian Poellet (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-69b8fb4a994441ddb4afd6fb65bd381f",
+          "appliedAt": "2026-11-26T02:37:10.909Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-banff-gondola-20261126/operations.json#photo-69b8fb4a994441ddb4afd6fb65bd381f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : Antony Stanley (CC BY-SA 2.0)."
+        },
+        {
+          "eventId": "photo-0a90961794714770a1ab24d84f53f5be",
+          "appliedAt": "2026-11-26T02:37:23.792Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-banff-gondola-20261126/operations.json#photo-0a90961794714770a1ab24d84f53f5be",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 importée : Milan Suvajac (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "f7a3da9d-bb33-4926-afe3-2e807eb800eb",
+          "appliedAt": "2026-11-26T02:38:37.139Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-banff-gondola-20261126/operations.json#f7a3da9d-bb33-4926-afe3-2e807eb800eb",
+          "auditEvidence": null,
+          "summary": "Horaires 2026–2027 et tarification dynamique documentés."
+        },
+        {
+          "eventId": "8cd314b5-5a71-491a-ab0a-18eeb93cc1e2",
+          "appliedAt": "2026-11-26T02:39:04.820Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-banff-gondola-20261126/operations.json#8cd314b5-5a71-491a-ab0a-18eeb93cc1e2",
+          "auditEvidence": null,
+          "summary": "Ouverture en 1959 documentée au niveau année."
+        },
+        {
+          "eventId": "21c54b14-d41e-471a-a9d8-b350017e48a5",
+          "appliedAt": "2026-11-26T02:39:29.051Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f3fb5a84-c402-42a6-bd35-fa9f33f981c6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-banff-gondola-20261126/operations.json#21c54b14-d41e-471a-a9d8-b350017e48a5",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-banff-gondola-20261126/audit.json",
+          "summary": "Accessibilité des cabines et limites de la passerelle documentées."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Réviser les horaires saisonniers et le prix dynamique quand l’exploitant les actualise ; enregistrer chaque nouvelle intégration sans effacer l’historique.",
+      "sources": [
+        {
+          "label": "Pursuit — horaires 2026–2027, tarifs variables, adresse et accessibilité",
+          "url": "https://www.pursuit.com/experiences/banff-gondola/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Pursuit — année d’ouverture 1959",
+          "url": "https://www.banffjaspercollection.com/canadian-rockies/stories/banff-gondola-vs-jasper-skytram-what-s-the-difference/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — station basse",
+          "url": "https://www.openstreetmap.org/way/764291471",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Banff Gondola from top - Banff Alberta.jpg (Ian Poellet, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Banff_Gondola_from_top_-_Banff_Alberta.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Sulphur Mountain Gondolas, Banff (202072212).jpg (Antony Stanley, CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Sulphur_Mountain_Gondolas,_Banff_(202072212).jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Banff-National-Park AB Banff-Gondola 2022-09-25 (6).jpg (Milan Suvajac, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Banff-National-Park_AB_Banff-Gondola_2022-09-25_(6).jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "CA",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Télécabine touristique à billets propres et centre d’interprétation, distinct des parcs."
+      }
     }
   ]
 }
