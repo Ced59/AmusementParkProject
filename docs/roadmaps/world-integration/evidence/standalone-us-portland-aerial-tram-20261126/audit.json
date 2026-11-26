@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "1460ebee-c3d7-46a3-a27e-7231df067252",
+  "name": "Portland Aerial Tram",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/1460ebee-c3d7-46a3-a27e-7231df067252/portland-aerial-tram",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T01:46:43Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "b2acaf72b2894cfeb7e7eb87f69dc283",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128872717424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T01:44:32.192Z",
+  "lastDataEventId": "photo-67ffc99e9a6048b1ac52464baefc1d20",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Portland Aerial Tram : zéro résultat ; aucun homonyme dans US.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "da2bac4f96c34cfab811846ce8cf06f6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portland_Aerial_Tram_in_the_Snow.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "atul666",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "id": "b242886eacea46a68f85696aa6c936ea",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portland_Aerial_Tram_-_Portland,_Oregon_(14430118458).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Doug Kerr",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "id": "67ffc99e9a6048b1ac52464baefc1d20",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gibbs_Street_Ped_Bridge_with_Portland_Aerial_Tram_cabin_above.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Steve Morgan",
+      "license": "CC BY-SA 3.0"
+    }
+  ],
+  "pricingOfferCount": 1,
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "closedDateCount": 10
+}

@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Portland Aerial Tram : zéro résultat ; aucun homonyme dans US.json.",
+  "decision": "Téléphérique urbain autonome avec stations, tarif spécifique et horaires propres, ouvert au public en plus des patients et agents OHSU. Sa vue panoramique constitue une attraction touristique indépendante, hors parc parent.",
+  "officialPricing": "Exploitant : aller retour public valable le jour de l’achat 9 $, pass mensuel 40 $, annuel 440 $. Enfants de six ans et moins gratuits avec adulte payant et pass du kiosque. Paiement en ligne ou par carte aux gares ; Hop et autres titres locaux non valables.",
+  "officialHours": "Lundi-vendredi 05:30–21:30 ; samedi 09:00–17:00 ; dimanche fermé. Jours de fermeture officiels 26 novembre et 25 décembre 2026, puis 1/18 janvier, 15 février, 31 mai, 4 juillet, 6 septembre, 25 novembre et 25 décembre 2027.",
+  "accessibility": "L’exploitant confirme l’accueil des fauteuils roulants et autres aides à la mobilité. South Waterfront est le point d’entrée conseillé.",
+  "history": "Ouverture le 27 janvier 2007 selon la ville de Portland ; exploitation par OHSU et propriété publique PBOT.",
+  "photos": "Trois photos exactes sous CC BY-SA : cabine en hiver, station basse et cabine en archive, cabine au-dessus de la passerelle Gibbs Street. Images créditées et métadonnées en huit langues.",
+  "sources": [
+    {
+      "label": "Portland Aerial Tram — tarifs officiels",
+      "url": "https://www.gobytram.com/fare",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Portland Aerial Tram — horaires et fermetures 2026–2027",
+      "url": "https://www.gobytram.com/hours",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Portland Aerial Tram — accès fauteuil",
+      "url": "https://www.gobytram.com/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Portland Aerial Tram — station basse et adresse",
+      "url": "https://www.gobytram.com/directions/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Ville de Portland — propriété et ouverture du 27 janvier 2007",
+      "url": "https://www.portland.gov/transportation/portland-aerial-tram",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap via Nominatim — station South Waterfront, coordonnées et code postal",
+      "url": "https://www.openstreetmap.org/way/75733977",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Portland Aerial Tram in the Snow.jpg (atul666, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Portland_Aerial_Tram_in_the_Snow.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Portland Aerial Tram - Portland, Oregon (14430118458).jpg (Doug Kerr, CC BY-SA 2.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Portland_Aerial_Tram_-_Portland,_Oregon_(14430118458).jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Gibbs Street Ped Bridge with Portland Aerial Tram cabin above.jpg (Steve Morgan, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Gibbs_Street_Ped_Bridge_with_Portland_Aerial_Tram_cabin_above.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "La page officielle de directions imprime le code postal 97232, mais OpenStreetMap donne 97239 pour l’adresse et la station ; 97239 retenu. Des fermetures de maintenance peuvent s’ajouter. Les anciennes vues ne décrivent pas le site en 2026."
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "step": "core",
+    "operationId": "e8e4bfce-2ee9-466f-9b70-352f547a9ca0",
+    "appliedAtUtc": "2026-11-26T01:41:58.8274524Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "extras",
+    "operationId": "d5da074f-0113-4b79-a672-0d94571c98af",
+    "appliedAtUtc": "2026-11-26T01:42:24.6961403Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "history",
+    "operationId": "193207c9-984e-4e3e-8e39-d13c4c1672b3",
+    "appliedAtUtc": "2026-11-26T01:43:10.0717214Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "access",
+    "operationId": "6cee94d5-5eb1-4f1e-a022-7d8d49dfeb62",
+    "appliedAtUtc": "2026-11-26T01:43:32.4356728Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1",
+    "eventId": "photo-da2bac4f96c34cfab811846ce8cf06f6",
+    "imageId": "da2bac4f96c34cfab811846ce8cf06f6",
+    "createdAtUtc": "2026-11-26T01:44:00.366Z",
+    "updatedAtUtc": "2026-11-26T01:44:04.459Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portland_Aerial_Tram_in_the_Snow.jpg",
+    "isCurrent": true,
+    "isPublished": true
+  },
+  {
+    "step": "photo-2",
+    "eventId": "photo-b242886eacea46a68f85696aa6c936ea",
+    "imageId": "b242886eacea46a68f85696aa6c936ea",
+    "createdAtUtc": "2026-11-26T01:44:15.444Z",
+    "updatedAtUtc": "2026-11-26T01:44:18.815Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portland_Aerial_Tram_-_Portland,_Oregon_(14430118458).jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "photo-3",
+    "eventId": "photo-67ffc99e9a6048b1ac52464baefc1d20",
+    "imageId": "67ffc99e9a6048b1ac52464baefc1d20",
+    "createdAtUtc": "2026-11-26T01:44:28.839Z",
+    "updatedAtUtc": "2026-11-26T01:44:32.192Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gibbs_Street_Ped_Bridge_with_Portland_Aerial_Tram_cabin_above.jpg",
+    "isCurrent": false,
+    "isPublished": true
+  },
+  {
+    "step": "publish",
+    "operationId": "aba0c0c2-f273-4de0-8765-8d291eca9f95",
+    "appliedAtUtc": "2026-11-26T01:45:05.7530132Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "b2acaf72b2894cfeb7e7eb87f69dc283",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T01:45:46.5619568Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128872717424431"
+  }
+]
