@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+  "name": "Mount Washington Cog Railway",
+  "countryCode": "US",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c/mount-washington-cog-railway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T02:59:58Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "50a1fa0aec604a85aeee5f24a8f2cf0f",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128877715424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T02:57:20.048Z",
+  "lastDataEventId": "0106223b-a9ed-4079-8ac8-dbabd6942a8e",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Mount Washington Cog Railway et The Cog Railway : zéro résultat ; aucun homonyme dans US.json.",
+  "completeness": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 68,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "82a4a6bf121540019eab6f6a96ef09c8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_015_edit.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "King of Hearts",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "f22f1d2266eb494ea6e60c3f02335148",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_024.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "King of Hearts",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "d3709da718e4462c8882a13b7601b526",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_002.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "King of Hearts",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 1,
+  "openingRules": 0
+}

@@ -80487,6 +80487,159 @@
         "attractions": [],
         "rationale": "Téléphérique de visite avec station et billetterie propres, distinct des parcs."
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-mount-washington-cog-railway-20261126",
+      "name": "Mount Washington Cog Railway",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Train à crémaillère panoramique",
+      "locality": "3168 Base Station Road, Mount Washington, NH 03589",
+      "siteId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T02:59:58Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation à l’année, destination Waumbek en hiver 2026–2027, retour au sommet annoncé dès le 30 avril 2027 ; gare fermée Thanksgiving et Noël.",
+      "identityConfidence": "Exploitant, date d’ouverture, saisons et accessibilité vérifiés ; trois photos exactes licenciées ; recherche sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "The Cog",
+        "The Cog Railway",
+        "Mount Washington Railway"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T02:57:20.048Z",
+      "integrationHistory": [
+        {
+          "eventId": "b92d8e24-95a7-4668-a507-8d482f200bff",
+          "appliedAt": "2026-11-26T02:54:27.155Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-mount-washington-cog-railway-20261126/operations.json#b92d8e24-95a7-4668-a507-8d482f200bff",
+          "auditEvidence": null,
+          "summary": "Création masquée, huit descriptions et date d’ouverture 1869."
+        },
+        {
+          "eventId": "photo-82a4a6bf121540019eab6f6a96ef09c8",
+          "appliedAt": "2026-11-26T02:55:21.436Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-mount-washington-cog-railway-20261126/operations.json#photo-82a4a6bf121540019eab6f6a96ef09c8",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 importée : King of Hearts (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-f22f1d2266eb494ea6e60c3f02335148",
+          "appliedAt": "2026-11-26T02:55:34.192Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-mount-washington-cog-railway-20261126/operations.json#photo-f22f1d2266eb494ea6e60c3f02335148",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 importée : King of Hearts (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "photo-d3709da718e4462c8882a13b7601b526",
+          "appliedAt": "2026-11-26T02:55:49.134Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-mount-washington-cog-railway-20261126/operations.json#photo-d3709da718e4462c8882a13b7601b526",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 importée : King of Hearts (CC BY-SA 4.0)."
+        },
+        {
+          "eventId": "f6790046-5dd7-41ff-8851-c887da6ffb94",
+          "appliedAt": "2026-11-26T02:56:21.565Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-mount-washington-cog-railway-20261126/operations.json#f6790046-5dd7-41ff-8851-c887da6ffb94",
+          "auditEvidence": null,
+          "summary": "Saisons, prix dynamiques et absence d’horaires fixes documentés."
+        },
+        {
+          "eventId": "d61b8e79-1680-41bb-bac5-dffe69d8c75b",
+          "appliedAt": "2026-11-26T02:56:56.208Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-mount-washington-cog-railway-20261126/operations.json#d61b8e79-1680-41bb-bac5-dffe69d8c75b",
+          "auditEvidence": null,
+          "summary": "Événement d’ouverture daté du 3 juillet 1869."
+        },
+        {
+          "eventId": "0106223b-a9ed-4079-8ac8-dbabd6942a8e",
+          "appliedAt": "2026-11-26T02:57:20.048Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b2dab5bc-d22a-47d1-ba8b-5f2b54ecef1c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-mount-washington-cog-railway-20261126/operations.json#0106223b-a9ed-4079-8ac8-dbabd6942a8e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-mount-washington-cog-railway-20261126/audit.json",
+          "summary": "Accès fauteuil limité dans les voitures historiques documenté."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Si l’exploitant publie une grille horaire ou des prix fixes, compléter les champs structurés et enregistrer une nouvelle date de dernière intégration sans effacer l’historique.",
+      "sources": [
+        {
+          "label": "Exploitant — saisons Waumbek/sommet, fermeture fériée et adresse",
+          "url": "https://www.thecog.com/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — détails de l’excursion hivernale",
+          "url": "https://www.thecog.com/waumbek",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — billetterie, prix variables et conditions",
+          "url": "https://www.thecog.com/tickets",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — conditions d’accessibilité",
+          "url": "https://www.thecog.com/disabilities-statement",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Exploitant — ouverture du 3 juillet 1869",
+          "url": "https://www.thecog.com/company",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — station Marshfield",
+          "url": "https://www.openstreetmap.org/node/2940708215",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Mount Washington Cog Railway October 2021 015 edit.jpg (King of Hearts, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_015_edit.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Mount Washington Cog Railway October 2021 024.jpg (King of Hearts, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_024.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — Mount Washington Cog Railway October 2021 002.jpg (King of Hearts, CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Mount_Washington_Cog_Railway_October_2021_002.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Excursion ferroviaire touristique avec billet, gare et exploitant autonomes."
+      }
     }
   ]
 }
