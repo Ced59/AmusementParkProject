@@ -1,0 +1,54 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Hakone Ropeway et Hakone Rōpuwei : aucun résultat. Aucun doublon dans JP.json.",
+  "decision": "Ligne touristique autonome avec exploitant, quatre stations, billetterie propre et parcours paysager.",
+  "history": "Premier tronçon Sounzan–Owakudani ouvert le 6 décembre 1959 ; extension vers Togendai en 1960.",
+  "service": "Horaires habituels 09:00–17:00 février–novembre, 09:00–16:15 décembre–janvier, météo susceptible de modifier le service.",
+  "maintenance": "Sounzan–Owakudani suspendu 7–24 décembre 2026 ; Owakudani–Togendai suspendu 12 janvier–26 février 2027. L’autre tronçon fonctionne et un bus de remplacement est prévu. Ne pas marquer la ligne entière fermée.",
+  "pricing": "Billet numérique officiel : adulte 2 000 JPY simple, 3 000 JPY retour ; enfant 6–11 ans 700 JPY simple, 1 000 JPY retour. Smartphone nécessaire. Vente numérique suspendue pendant les deux périodes partielles.",
+  "accessibility": "Stations sans obstacle et utilisateur de fauteuil restant dans son fauteuil en cabine, prêt de fauteuil sur place. Accessibilité du bus à confirmer.",
+  "photos": "Trois photos exactes sous CC0 ou CC BY-SA avec crédits, textes alternatifs et légendes en huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — itinéraire, horaires habituels, cabines et accessibilité",
+      "url": "https://www.hakonenavi.jp/international/en/transportation/hakone-ropeway",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "EMot officiel — tarifs adultes et enfants",
+      "url": "https://www.emot-tickets.jp/detail-purchase?language=en&masterBookId=30&set=true&site=",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — suspensions partielles 2026–2027 et bus",
+      "url": "https://www.hakonenavi.jp/international/en/wp-content/uploads/sites/2/2026/10/ba6bb82c4492138e168451a655a538b3.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — ouverture 1959",
+      "url": "https://www.hakonenavi.jp/wp-content/uploads/2019/12/20191203_1.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station Sounzan",
+      "url": "https://www.openstreetmap.org/way/239023420",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hakone Ropeway - Hakone, Kanagawa, Japan - DSC07952.jpg (Daderot, CC0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_-_Hakone,_Kanagawa,_Japan_-_DSC07952.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hakone Ropeway 1.jpg (っ, CC BY-SA 3.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_1.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Hakone Ropeway and Gōra.jpg (Christophe95, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_and_G%C5%8Dra.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "La maintenance n’interrompt qu’un tronçon à la fois ; horaires structurés représentatifs de la partie active, vérifier les bulletins du jour."
+}

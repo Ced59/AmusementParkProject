@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "ca5d5cb2-e1e6-4bdc-8269-385adff8af60",
+  "name": "Hakone Ropeway",
+  "countryCode": "JP",
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ca5d5cb2-e1e6-4bdc-8269-385adff8af60/hakone-ropeway",
+  "publicLocalesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "httpStatusByLocale": {
+    "fr": 200,
+    "en": 200,
+    "de": 200,
+    "es": 200,
+    "it": 200,
+    "nl": 200,
+    "pl": 200,
+    "pt": 200
+  },
+  "publicVerifiedAtUtc": "2026-11-26T03:14:12Z",
+  "facebookStatus": "Published",
+  "facebookPublicationId": "6725ad44b8974a8c9730dab4ed36b289",
+  "facebookExternalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128878351424431",
+  "lastDataIntegrationAtUtc": "2026-11-26T03:12:30.855Z",
+  "lastDataEventId": "photo-metadata-b4fc8f13d4a6466cbdef8d3c65fcb932",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks pour Hakone Ropeway et Hakone Rōpuwei : aucun résultat. Aucun doublon dans JP.json.",
+  "completeness": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 74,
+    "earnedPoints": 74,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "photoEvidence": [
+    {
+      "id": "82a5b51146ef4a5fbe4b8f9e96998710",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_-_Hakone,_Kanagawa,_Japan_-_DSC07952.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Daderot",
+      "license": "CC0"
+    },
+    {
+      "id": "f6c02d6fd0b44876b238c036d12e808f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_1.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "っ",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "id": "b4fc8f13d4a6466cbdef8d3c65fcb932",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hakone_Ropeway_and_G%C5%8Dra.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "languages": 8,
+      "author": "Christophe95",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "descriptionLanguages": 8,
+  "historyEventCount": 1,
+  "accessConditionCount": 1,
+  "pricingOffers": 4,
+  "openingRules": 3
+}
