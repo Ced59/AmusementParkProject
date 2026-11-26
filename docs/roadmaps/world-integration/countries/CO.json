@@ -1865,6 +1865,148 @@
         "attractions": [],
         "rationale": "Le téléphérique est une ligne distincte du funiculaire historique, bien que l’exploitant propose une billetterie et une fenêtre d’ouverture communes."
       }
+    },
+    {
+      "entryId": "CO-candidate-discovery-funicular-monserrate-20261126",
+      "name": "Funicular de Monserrate",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Funiculaire panoramique",
+      "locality": "Paseo Bolívar, Bogotá",
+      "siteId": "07f4593a-ba40-4d39-9354-120f16c7b92c",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T06:42:53Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Ligne historique et billetterie opérées par Teleférico a Monserrate SA ; mode disponible selon l’exploitation.",
+      "identityConfidence": "Station, ouverture de 1929, modernisation de 2003, tarif commun et trois photos exactes vérifiés ; distinct du téléphérique.",
+      "possibleMatches": [],
+      "aliases": [
+        "Funicular a Monserrate",
+        "Monserrate Funicular"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T06:39:39.854Z",
+      "integrationHistory": [
+        {
+          "eventId": "1e645ae7-12be-4696-97c6-d126bf0d9ad0",
+          "appliedAt": "2026-11-26T06:35:31.737Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07f4593a-ba40-4d39-9354-120f16c7b92c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-funicular-20261126/operations.json#1e645ae7-12be-4696-97c6-d126bf0d9ad0",
+          "auditEvidence": null,
+          "summary": "Création de la standalone avec huit descriptions, localisation et date historique d’ouverture."
+        },
+        {
+          "eventId": "photo-0f99283caa6c46b1a5a6b0947258a2cb",
+          "appliedAt": "2026-11-26T06:36:39.793Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07f4593a-ba40-4d39-9354-120f16c7b92c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-funicular-20261126/operations.json#photo-0f99283caa6c46b1a5a6b0947258a2cb",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 du funiculaire importée avec crédit, licence et huit localisations."
+        },
+        {
+          "eventId": "photo-0a141478ca1043f9a1f6d393bfe7ae84",
+          "appliedAt": "2026-11-26T06:37:09.152Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07f4593a-ba40-4d39-9354-120f16c7b92c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-funicular-20261126/operations.json#photo-0a141478ca1043f9a1f6d393bfe7ae84",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 du funiculaire importée avec crédit, licence et huit localisations."
+        },
+        {
+          "eventId": "photo-733b6241787946b9912c0f716aa85ed5",
+          "appliedAt": "2026-11-26T06:37:50.021Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07f4593a-ba40-4d39-9354-120f16c7b92c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-funicular-20261126/operations.json#photo-733b6241787946b9912c0f716aa85ed5",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 du funiculaire importée avec crédit, licence et huit localisations."
+        },
+        {
+          "eventId": "c23ef02f-7858-4035-ba38-53d9b75d8892",
+          "appliedAt": "2026-11-26T06:38:36.141Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07f4593a-ba40-4d39-9354-120f16c7b92c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-funicular-20261126/operations.json#c23ef02f-7858-4035-ba38-53d9b75d8892",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels partagés avec le téléphérique, conditionnés à la disponibilité du funiculaire."
+        },
+        {
+          "eventId": "bb4c0cfa-0c8e-475b-aaf6-71637fadfb80",
+          "appliedAt": "2026-11-26T06:39:39.854Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07f4593a-ba40-4d39-9354-120f16c7b92c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-funicular-20261126/operations.json#bb4c0cfa-0c8e-475b-aaf6-71637fadfb80",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-co-monserrate-funicular-20261126/audit.json",
+          "summary": "Deux événements historiques et l’accès adapté sourcés dans huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier les heures propres au funiculaire, la dernière sortie et le mode en service. Ajouter un événement réel à chaque nouvelle intégration de données.",
+      "sources": [
+        {
+          "label": "Cerro de Monserrate — tarifs et horaires officiels",
+          "url": "https://monserrate.co/es/horarios-y-tarifas/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Cerro de Monserrate — histoire du funiculaire",
+          "url": "https://monserrate.co/es/sobre-monserrate/history/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Biblioteca Digital de Bogotá — inauguration du 18 août 1929",
+          "url": "https://www.bibliotecadigitaldebogota.gov.co/resources/2087850/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Alcaldía de Bogotá — modernisation de décembre 2003",
+          "url": "https://bogota.gov.co/mi-ciudad/cultura-recreacion-y-deporte/monserrate-religion-gastronomia-y-hermosa-panoramica-de-bogota",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Cerro de Monserrate — accès et services",
+          "url": "https://monserrate.co/es/preparar-visita/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — station inférieure du funiculaire",
+          "url": "https://www.openstreetmap.org/node/12536828938",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — funiculaire de Monserrate, auteur et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — funiculaire de Monserrate, auteur et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — funiculaire de Monserrate, auteur et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "CO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "La voie ferrée et ses voitures forment une attraction distincte du téléphérique, malgré l’exploitant et les tarifs communs."
+      }
     }
   ]
 }

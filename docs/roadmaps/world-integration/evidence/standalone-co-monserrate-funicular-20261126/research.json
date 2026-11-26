@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "Recherche PDE Colombie : aucun Funicular de Monserrate, seulement le téléphérique voisin intégré séparément. Aucun Park homonyme ni ligne CO préexistante pour le funiculaire.",
+  "classification": "Funiculaire historique à tracé et véhicules propres, distinct du téléphérique ; même exploitant et billetterie commune, sans assimiler les deux installations.",
+  "facts": "La Biblioteca Digital de Bogotá date l’inauguration du 18 août 1929. La ville de Bogotá date de décembre 2003 les nouvelles voitures à toit vitré. Station inférieure Carrera 2 Este No. 21-48, coordonnées OSM 4.603004, -74.060844.",
+  "pricing": "Trois tarifs COP officiels communs aux deux modes : aller-retour 35 000 et aller simple 21 000 du lundi au samedi et fériés ; aller-retour dimanche 21 000. Vérifier le mode réellement proposé à l’achat.",
+  "hours": "Les horaires publiés « funicular y/o teleférico » couvrent au moins un des deux modes, sans garantie du funiculaire à chaque créneau. Aucune règle horaire propre au funiculaire inventée. La page institutionnelle et la grille divergent sur la dernière sortie du soir.",
+  "access": "Accès adapté selon l’exploitant ; poussettes pliées à l’embarquement ; chemins raides et irréguliers au sommet.",
+  "photos": "Trois photos exactes : voiture sur la voie en 2011 (janeyhenning, CC BY 2.0), voiture vue depuis une station en 2017 (TitiNicola, CC BY-SA 4.0) et rails avec vue sur Bogotá en 2026 (Guaiquerí, CC0 1.0). Une image faussement catégorisée sur Commons représentait Montserrat en Espagne et a été exclue. Source, auteur, licence, huit alts et légendes pour les trois images.",
+  "sources": [
+    {
+      "label": "Cerro de Monserrate — tarifs et horaires officiels",
+      "url": "https://monserrate.co/es/horarios-y-tarifas/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Cerro de Monserrate — histoire du funiculaire",
+      "url": "https://monserrate.co/es/sobre-monserrate/history/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Biblioteca Digital de Bogotá — inauguration du 18 août 1929",
+      "url": "https://www.bibliotecadigitaldebogota.gov.co/resources/2087850/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Alcaldía de Bogotá — modernisation de décembre 2003",
+      "url": "https://bogota.gov.co/mi-ciudad/cultura-recreacion-y-deporte/monserrate-religion-gastronomia-y-hermosa-panoramica-de-bogota",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Cerro de Monserrate — accès et services",
+      "url": "https://monserrate.co/es/preparar-visita/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — station inférieure du funiculaire",
+      "url": "https://www.openstreetmap.org/node/12536828938",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — funiculaire de Monserrate, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — funiculaire de Monserrate, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — funiculaire de Monserrate, auteur et licence vérifiés",
+      "url": "https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "nextReview": "Obtenir les heures propres au funiculaire, confirmer la dernière sortie et le mode quotidien ; revoir les tarifs. Conserver les photos datées et ajouter une nouvelle preuve à toute modification de données."
+}

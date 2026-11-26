@@ -1,0 +1,96 @@
+[
+  {
+    "step": "core",
+    "operationId": "1e645ae7-12be-4696-97c6-d126bf0d9ad0",
+    "appliedAtUtc": "2026-11-26T06:35:31.7371813Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-0f99283caa6c46b1a5a6b0947258a2cb",
+    "imageId": "0f99283caa6c46b1a5a6b0947258a2cb",
+    "createdAtUtc": "2026-11-26T06:36:35.993Z",
+    "updatedAtUtc": "2026-11-26T06:36:39.793Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Here_comes_our_funicular.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-0a141478ca1043f9a1f6d393bfe7ae84",
+    "imageId": "0a141478ca1043f9a1f6d393bfe7ae84",
+    "createdAtUtc": "2026-11-26T06:37:05.532Z",
+    "updatedAtUtc": "2026-11-26T06:37:09.152Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funicular_para_el_acceso_al_Cerro_Monserrate.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-733b6241787946b9912c0f716aa85ed5",
+    "imageId": "733b6241787946b9912c0f716aa85ed5",
+    "createdAtUtc": "2026-11-26T06:37:46.169Z",
+    "updatedAtUtc": "2026-11-26T06:37:50.021Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funicular_de_Monserrate_01.jpg"
+  },
+  {
+    "step": "visitors",
+    "operationId": "c23ef02f-7858-4035-ba38-53d9b75d8892",
+    "appliedAtUtc": "2026-11-26T06:38:36.1416991Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "context",
+    "operationId": "bb4c0cfa-0c8e-475b-aaf6-71637fadfb80",
+    "appliedAtUtc": "2026-11-26T06:39:39.8545067Z",
+    "counts": {
+      "created": 2,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 2,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized",
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "site-publication",
+    "operationId": "0c096735-9e12-4d30-a5d8-f79179b5709d",
+    "appliedAtUtc": "2026-11-26T06:40:22.8325933Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "8e9b293d333342739de41171f1be07f0",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T06:41:08.5969479Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128894233424431"
+  }
+]
