@@ -53765,7 +53765,7 @@
         "Rocky Top Coaster"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-26T03:42:12.568Z",
+      "lastDataIntegrationAt": "2026-11-16T00:16:45.952Z",
       "integrationHistory": [
         {
           "eventId": "apply-23269b09-5c6f-4a69-b22f-e2e4806ae105",
@@ -53856,19 +53856,9 @@
           "evidence": "PARK_DATA_EDITOR:apply:5f3ffce7-4587-4cee-8a1e-e58ccf647967",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-rocky-top-mountain-coaster-20261116/audit.json",
           "summary": "Événement d’ouverture du 22 novembre 2018 intégré ; audit final 100/100 sans bloqueur."
-        },
-        {
-          "eventId": "apply-ee2e1c17-3f84-45da-a583-500da84f1e55",
-          "appliedAt": "2026-11-26T03:42:12.568Z",
-          "outcome": "completed",
-          "entityKind": "StandaloneAttraction",
-          "entityId": "f807c731-c7ca-4eaf-a29d-1cd0533b4822",
-          "evidence": "PARK_DATA_EDITOR:apply:ee2e1c17-3f84-45da-a583-500da84f1e55",
-          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-rocky-top-republish-20261126/audit.json",
-          "summary": "Visibilité restaurée après observation d’une fiche masquée ; audit 98/100 sans blocage, trois photos exactes et huit pages publiques HTTP 200."
         }
       ],
-      "nextAction": "Conserver la ligne et l’ancienne identité Park liée. Surveiller un éventuel nouveau masquage, rafraîchir les tarifs et horaires officiels, et chercher une photo de l’ouverture de 2018 sous licence compatible.",
+      "nextAction": "Conserver la ligne et l’ancienne identité Park liée. Surveiller un éventuel nouveau masquage ; republication documentée séparément le 26 novembre 2026. Rafraîchir les tarifs et horaires officiels et chercher une photo de l’ouverture de 2018 sous licence compatible.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -53928,6 +53918,11 @@
         {
           "label": "Fiche autonome publiée",
           "url": "https://amusement-parks.fun/fr/attraction/f807c731-c7ca-4eaf-a29d-1cd0533b4822/rocky-top-mountain-coaster",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Reçu de republication du 26 novembre 2026",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/evidence/standalone-us-rocky-top-republish-20261126/audit.json",
           "accessedAt": "2026-11-26"
         }
       ],

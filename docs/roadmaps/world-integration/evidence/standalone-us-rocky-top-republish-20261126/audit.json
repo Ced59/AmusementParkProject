@@ -58,5 +58,10 @@
     "postUrl": "https://www.facebook.com/1285475681307050/posts/122127525183424431",
     "publishedAtUtc": "2026-11-16T00:18:11.015942Z",
     "note": "Publication Facebook existante conservée ; rétablissement de la même fiche."
+  },
+  "backlogTracking": {
+    "lastDataIntegrationAt": "2026-11-16T00:16:45.952Z",
+    "publicationOnly": true,
+    "note": "La modification de visibilité et de revue est consignée séparément ; elle ne modifie ni la date ni l’historique des intégrations de données."
   }
 }
