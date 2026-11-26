@@ -1,0 +1,97 @@
+[
+  {
+    "step": "core",
+    "operationId": "2434cb14-c653-4781-ba97-e3a2deaee30b",
+    "appliedAtUtc": "2026-11-26T06:07:30.6825686Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-8ab0df42a8204ab0ac8a9d2d2611b036",
+    "imageId": "8ab0df42a8204ab0ac8a9d2d2611b036",
+    "createdAtUtc": "2026-11-26T06:08:33.623Z",
+    "updatedAtUtc": "2026-11-26T06:08:37.193Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-9e50bf61e4604dddb9a24b56a7081faf",
+    "imageId": "9e50bf61e4604dddb9a24b56a7081faf",
+    "createdAtUtc": "2026-11-26T06:08:46.899Z",
+    "updatedAtUtc": "2026-11-26T06:08:50.384Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg"
+  },
+  {
+    "step": "photo-3-import",
+    "eventId": "photo-0b2d6664708849779d50a9a41dd79ab4",
+    "imageId": "0b2d6664708849779d50a9a41dd79ab4",
+    "createdAtUtc": "2026-11-26T06:09:01.416Z",
+    "updatedAtUtc": "2026-11-26T06:09:04.936Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg"
+  },
+  {
+    "step": "visitors",
+    "operationId": "b2be8e75-a1fb-40bc-adc5-ac092f30b9b4",
+    "appliedAtUtc": "2026-11-26T06:10:47.6778324Z",
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "context",
+    "operationId": "502d868b-e475-4c52-a4e0-8c42a1c7dd88",
+    "appliedAtUtc": "2026-11-26T06:12:09.9892765Z",
+    "counts": {
+      "created": 3,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 3,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized",
+      "history-canonicalization.source-access-date-normalized",
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "site-publication",
+    "operationId": "40a16222-2246-401a-9d63-309fae588a7c",
+    "appliedAtUtc": "2026-11-26T06:14:20.977004Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "facebook",
+    "publicationId": "065cb2cf98f9453a9244c723a971d207",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-26T06:15:28.5417134Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128892505424431"
+  }
+]

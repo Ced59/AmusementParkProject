@@ -1215,6 +1215,139 @@
         "attractions": [],
         "rationale": "Ligne et aller-retour vendus séparément ; le zoo, le funiculaire et la ligne Pedro de Valdivia constituent d’autres produits."
       }
+    },
+    {
+      "entryId": "CL-candidate-discovery-funicular-santiago-20261126",
+      "name": "Funicular de Santiago",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Funiculaire panoramique",
+      "locality": "Pío Nono 450, Providencia, Santiago",
+      "siteId": "9441282b-c275-4bee-bd4e-7036b665ab6b",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T06:16:52Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Funiculaire en exploitation avec billetterie, FAQ et horaires publiés par son exploitant.",
+      "identityConfidence": "Lieu, histoire, station de départ, prix résidents, horaires et trois photos exactes vérifiés ; aucun doublon standalone ou Park homonyme.",
+      "possibleMatches": [],
+      "aliases": [
+        "Funicular del Cerro San Cristóbal",
+        "Funicular Santiago",
+        "Funicular Parque Metropolitano"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-26T06:12:09.989Z",
+      "integrationHistory": [
+        {
+          "eventId": "2434cb14-c653-4781-ba97-e3a2deaee30b",
+          "appliedAt": "2026-11-26T06:07:30.682Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9441282b-c275-4bee-bd4e-7036b665ab6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-funicular-santiago-20261126/operations.json#2434cb14-c653-4781-ba97-e3a2deaee30b",
+          "auditEvidence": null,
+          "summary": "Création de la standalone avec identité, position, ouverture historique et huit descriptions éditoriales."
+        },
+        {
+          "eventId": "photo-8ab0df42a8204ab0ac8a9d2d2611b036",
+          "appliedAt": "2026-11-26T06:08:37.193Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9441282b-c275-4bee-bd4e-7036b665ab6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-funicular-santiago-20261126/operations.json#photo-8ab0df42a8204ab0ac8a9d2d2611b036",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/3 du Funicular importée avec crédit, licence et huit légendes."
+        },
+        {
+          "eventId": "photo-9e50bf61e4604dddb9a24b56a7081faf",
+          "appliedAt": "2026-11-26T06:08:50.384Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9441282b-c275-4bee-bd4e-7036b665ab6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-funicular-santiago-20261126/operations.json#photo-9e50bf61e4604dddb9a24b56a7081faf",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/3 du Funicular importée avec crédit, licence et huit légendes."
+        },
+        {
+          "eventId": "photo-0b2d6664708849779d50a9a41dd79ab4",
+          "appliedAt": "2026-11-26T06:09:04.936Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9441282b-c275-4bee-bd4e-7036b665ab6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-funicular-santiago-20261126/operations.json#photo-0b2d6664708849779d50a9a41dd79ab4",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/3 du Funicular importée avec crédit, licence et huit légendes."
+        },
+        {
+          "eventId": "b2be8e75-a1fb-40bc-adc5-ac092f30b9b4",
+          "appliedAt": "2026-11-26T06:10:47.677Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9441282b-c275-4bee-bd4e-7036b665ab6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-funicular-santiago-20261126/operations.json#b2be8e75-a1fb-40bc-adc5-ac092f30b9b4",
+          "auditEvidence": null,
+          "summary": "Deux tarifs résidents officiels et horaires d’été bornés, incluant la fermeture du premier lundi de décembre."
+        },
+        {
+          "eventId": "502d868b-e475-4c52-a4e0-8c42a1c7dd88",
+          "appliedAt": "2026-11-26T06:12:09.989Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9441282b-c275-4bee-bd4e-7036b665ab6b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-funicular-santiago-20261126/operations.json#502d868b-e475-4c52-a4e0-8c42a1c7dd88",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cl-funicular-santiago-20261126/audit.json",
+          "summary": "Trois jalons historiques et une condition d’accessibilité sourcés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; revérifier le calendrier et les prix 2027, les tarifs étrangers/enfants et la desserte de Zoológico. Ajouter un événement réel lors de toute nouvelle intégration de données.",
+      "sources": [
+        {
+          "label": "Funicular Santiago — informations officielles, FAQ, tarifs et horaires",
+          "url": "https://funicularsantiago.cl/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Funicular Santiago — histoire et restauration",
+          "url": "https://funicularsantiago.cl/nuestra-historia/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Funicular Santiago — billetterie et catégories de billets",
+          "url": "https://funicularsantiago.cl/tickets/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "OpenStreetMap — station de départ Pío Nono",
+          "url": "https://www.openstreetmap.org/node/575514909",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte du Funicular de Santiago, crédit et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_de_Santiago_-_funicular_pasando_sobre_sendero.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte du Funicular de Santiago, crédit et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago.jpg",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte du Funicular de Santiago, crédit et licence vérifiés",
+          "url": "https://commons.wikimedia.org/wiki/File:Funicular_de_Santiago_-_estacion_Zoologico.jpg",
+          "accessedAt": "2026-11-26"
+        }
+      ],
+      "countryCodeAtInventory": "CL",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
+        "attractions": [],
+        "rationale": "Billetterie, accès et horaires propres au funiculaire ; il se distingue du téléphérique et du parc métropolitain entier."
+      }
     }
   ]
 }
