@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions US pour Monongahela Incline, Monongahela et Mon Incline : zéro résultat ; aucun homonyme dans US.json.",
+  "decision": "Funiculaire historique autonome avec gares, tarif PRT et horaires propres. C’est aussi un transport public, mais la visite panoramique constitue une attraction indépendante hors parc parent.",
+  "officialPricing": "PRT : pass de trois heures 2,75 $, réduit 1,35 $ selon éligibilité, cinq ans et moins gratuits. Le tarif est encaissé à la station haute. Les tarifs anciens d’un site indépendant n’ont pas été repris.",
+  "officialHours": "PRT : lundi-samedi 05:30–00:45 lendemain ; dimanche et jours fériés 08:45–minuit. Thanksgiving 2026 codé avec l’horaire férié ; autres exceptions futures à recontrôler.",
+  "accessibility": "Brochure PRT : seule la voiture ouest est accessible en fauteuil ; les deux stations disposent d’ascenseurs selon le guide du funiculaire. Vérifier le service avant visite.",
+  "history": "PRT confirme l’ouverture publique du 28 mai 1870.",
+  "photos": "Trois photos exactes CC0 de Cbaile19, prises en 2024–2025 : voiture sur la voie, bâtiment de la station basse et station haute. Crédits et métadonnées en huit langues.",
+  "sources": [
+    {
+      "label": "Pittsburgh Regional Transit — Riding the Inclines, horaires, tarifs et ouverture",
+      "url": "https://rideprt.org/Services/Riding-the-Inclines/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Pittsburgh Regional Transit — brochure accessibilité, voiture ouest",
+      "url": "https://www.rideprt.org/siteassets/rider-info/accessibility/accessibility_bro_web-1.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Pittsburgh Regional Transit — Thanksgiving 2026",
+      "url": "https://rideprt.org/newsroom/news-releases/thanksgiving-day-service-information--pittsburgh-regional-transit/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap via Nominatim — Monongahela Lower Station, coordonnées",
+      "url": "https://www.openstreetmap.org/way/43081627",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Monongahela Incline car, 2024-12-15.jpg (Cbaile19, CC0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Monongahela_Incline_car,_2024-12-15.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Monongahela Incline, 2024-12-15.jpg (Cbaile19, CC0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Monongahela_Incline,_2024-12-15.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Monongahela Incline upper station, Mount Washington, 2025-02-24-1.jpg (Cbaile19, CC0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Monongahela_Incline_upper_station,_Mount_Washington,_2025-02-24-1.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Les interruptions ponctuelles et l’état des ascenseurs ne peuvent être prédits. Le calendrier des jours fériés futurs doit être vérifié sur PRT ; les prix reduced nécessitent une éligibilité."
+}
