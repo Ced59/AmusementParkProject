@@ -1,0 +1,53 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "Le client PDE a trouvé le parc masqué ec87d6d1-534f-4ae4-95e8-abfc4112ba82 avec un seul ParkItem Sternrodler a5e3fc3e-a125-4f31-80dd-6ed7a7e69759 ; aucune standalone Sternrodler existante. Export contrôlé avant migration.",
+  "classification": "La destination estivale vend exclusivement des trajets sur le Sternrodler ; restaurant, aire de jeux et domaine de ski hivernal ne constituent pas un parc multi-manèges. Migration de la fiche Park et de son seul item vers une standalone, avec conservation des UUID historiques et masquage NotRelevant des anciens enregistrements.",
+  "facts": "Page officielle : construction 2002 (jour d’ouverture inconnu), modèle Wiegand Alpine Coaster, descente 800 m, remontée 300 m, dénivelé 90 m, vitesse maximale 45 km/h, deux personnes par bob et charge maximale 220 kg. Contrôle TÜV favorable le 9 juin 2026 annoncé par l’exploitant.",
+  "pricing": "Sept offres reproduisent la grille officielle 2026 en EUR : un trajet 3,90 adulte / 2,90 enfant ; 5 jetons 18,50 / 13,50 ; 10 jetons 35 / 25 ; bloc familial 6+6 jetons 34. Gratuit jusqu’à trois ans, tarif enfant jusqu’à 14 ans et jetons valables trois ans. Ces prix doivent être revérifiés pour 2027.",
+  "hours": "L’avis visuel officiel de novembre 2026 annonce vendredi dès 12 h, samedi et dimanche dès 10 h, fermeture au crépuscule et ouverture dépendante de la météo. Aucune heure de fermeture précise n’est donnée ; aucune règle horaire structurée ou calendrier 2027 inventé. La page générale contient une saisonnalité différente et obsolète.",
+  "safety": "L’exploitant donne deux âges minimums différents pour conduire seul (9 et 10 ans sur la même page) : la fiche demande confirmation sur place, sans fixer d’âge erroné. La capacité de deux adultes, la charge maximale de 220 kg et le freinage par la personne à l’arrière sont sourcés.",
+  "photos": "Deux photos Wikimedia Commons vérifiées visuellement montrent la piste et sa remontée, et non la simple route ou le restaurant. Martin Lindner, CC BY-SA 4.0 ; chaque photo comporte source, crédits, huit textes alternatifs et huit légendes. Le logo Wiegand apparaît en image de référence, distinct des deux photos de l’attraction.",
+  "sources": [
+    {
+      "label": "Erlebnisberg Sternrodt — page officielle du Sternrodler, caractéristiques et conditions",
+      "url": "https://www.erlebnisberg-sternrodt.de/die-rodelbahn/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Erlebnisberg Sternrodt — tarifs 2026 et validité des jetons",
+      "url": "https://www.erlebnisberg-sternrodt.de/preise-saison-2026/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Erlebnisberg Sternrodt — horaires officiels de novembre 2026",
+      "url": "https://www.erlebnisberg-sternrodt.de/%C3%B6ffnungszeiten/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Erlebnisberg Sternrodt — présentation et autres services",
+      "url": "https://www.erlebnisberg-sternrodt.de/",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wiegand — référence constructeur à Bruchhausen",
+      "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-1033",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "RCDB — Sternrodler",
+      "url": "https://rcdb.com/13145.htm",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — piste Sternrodler, Martin Lindner, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Erlebnisberg_Sternrodt_3.JPG",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — piste Sternrodler, Martin Lindner, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Sternroth.JPG",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "nextReview": "Revérifier les horaires et tarifs 2027, la route K41 et clarifier l’âge de conduite en solo auprès de l’exploitant. Ajouter une nouvelle preuve et date lors de tout nouvel Apply ou ImportPhoto."
+}

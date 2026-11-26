@@ -1,0 +1,115 @@
+[
+  {
+    "step": "facebook",
+    "publicationId": "d3251ecc064b47caa03f7dd5ef4f10ac",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122128890513424431"
+  },
+  {
+    "step": "core",
+    "operationId": "cb6c8c57-ccbb-4189-98a6-032952cc2579",
+    "appliedAtUtc": "2026-11-26T05:46:58.1220859Z",
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "visitors",
+    "operationId": "2d4203a6-8853-4c92-a59d-f19987f83eb3",
+    "appliedAtUtc": "2026-11-26T05:48:31.7647449Z",
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "photo-1-import",
+    "eventId": "photo-55fc20e713214e919f9f193f853e51ad",
+    "imageId": "55fc20e713214e919f9f193f853e51ad",
+    "createdAtUtc": "2026-11-26T05:49:50.166Z",
+    "updatedAtUtc": "2026-11-26T05:49:53.741Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Erlebnisberg_Sternrodt_3.JPG"
+  },
+  {
+    "step": "photo-2-import",
+    "eventId": "photo-ffb98648b2424e3986c2eec362d39494",
+    "imageId": "ffb98648b2424e3986c2eec362d39494",
+    "createdAtUtc": "2026-11-26T05:50:10.081Z",
+    "updatedAtUtc": "2026-11-26T05:50:13.54Z",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sternroth.JPG"
+  },
+  {
+    "step": "context",
+    "operationId": "3b393334-5a02-48a4-b1b8-f308c8bb11c7",
+    "appliedAtUtc": "2026-11-26T05:52:13.9313805Z",
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 1,
+      "errors": 0
+    },
+    "warnings": [
+      "history-canonicalization.source-access-date-normalized"
+    ],
+    "errors": []
+  },
+  {
+    "step": "manufacturer-check",
+    "operationId": "0f87f00d-f519-4bd5-a4d3-c9af41ecd529",
+    "appliedAtUtc": "2026-11-26T05:53:37.0063603Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "note": "Wiegand déjà repris de l’ancien ParkItem ; aucune nouvelle intégration de données."
+  },
+  {
+    "step": "text-fix",
+    "operationId": "6e9467bb-45f2-4df0-a605-a5df981053aa",
+    "appliedAtUtc": "2026-11-26T05:54:35.2329106Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  },
+  {
+    "step": "site-publication",
+    "operationId": "3f94aa7c-7fac-4899-b86e-c6c6ceed9768",
+    "appliedAtUtc": "2026-11-26T05:55:16.1779902Z",
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "warnings": [],
+    "errors": []
+  }
+]

@@ -1213,20 +1213,22 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Sternrodler confirmé par l’opérateur, intégré le 26 novembre 2026.",
+      "identityConfidence": "La référence constructeur Bruchhausen désigne le Sternrodler intégré sur la ligne principale du parc masqué migré.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-park-ec87d6d1-534f-4ae4-95e8-abfc4112ba82"
+      ],
       "aliases": [
         "Bruchhausen"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Doublon de découverte conservé. Consulter DE-park-ec87d6d1-534f-4ae4-95e8-abfc4112ba82 pour la fiche publique, les preuves et la dernière date d’intégration ; ne pas recréer de deuxième alpine coaster.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -1240,8 +1242,8 @@
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-26",
         "attractions": [
           {
             "name": "Bruchhausen",
@@ -1252,8 +1254,9 @@
             "referenceId": "location-id-1033"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Référence Wiegand identifiée comme le Sternrodler de la ligne historique Erlebnisberg Sternrodt ; une seule standalone publiée."
+      },
+      "duplicateOf": "DE-park-ec87d6d1-534f-4ae4-95e8-abfc4112ba82"
     },
     {
       "entryId": "DE-candidate-standalone-8c2347398e71cc",
@@ -7600,26 +7603,93 @@
     },
     {
       "entryId": "DE-park-ec87d6d1-534f-4ae4-95e8-abfc4112ba82",
-      "name": "Erlebnisberg Sternrodt",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "ec87d6d1-534f-4ae4-95e8-abfc4112ba82",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "name": "Sternrodler",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": "Olsberg-Bruchhausen, Rhénanie-du-Nord-Westphalie",
+      "siteId": "bb7a1741-c681-4883-a977-45e738cb83c0",
+      "legacySiteIds": [
+        "ec87d6d1-534f-4ae4-95e8-abfc4112ba82"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-26T05:59:16Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — exploitation et contrôle TÜV 2026 confirmés par l’opérateur",
+      "identityConfidence": "Migration PDE de la fiche Park masquée et de son unique ParkItem, avec UUID conservés ; piste autonome à billetterie propre et deux photos exactes.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Erlebnisberg Sternrodt",
+        "Bergrodelbahn Sternrodler",
+        "Sommerrodelbahn Bruchhausen"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-26T05:54:35.232Z",
+      "integrationHistory": [
+        {
+          "eventId": "cb6c8c57-ccbb-4189-98a6-032952cc2579",
+          "appliedAt": "2026-11-26T05:46:58.122Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb7a1741-c681-4883-a977-45e738cb83c0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-sternrodler-20261126/operations.json#cb6c8c57-ccbb-4189-98a6-032952cc2579",
+          "auditEvidence": null,
+          "summary": "Migration du parc masqué et de son seul item vers Sternrodler, avec huit descriptions et données techniques officielles."
+        },
+        {
+          "eventId": "2d4203a6-8853-4c92-a59d-f19987f83eb3",
+          "appliedAt": "2026-11-26T05:48:31.764Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb7a1741-c681-4883-a977-45e738cb83c0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-sternrodler-20261126/operations.json#2d4203a6-8853-4c92-a59d-f19987f83eb3",
+          "auditEvidence": null,
+          "summary": "Sept offres officielles 2026 et note datée sur les horaires de novembre et la météo."
+        },
+        {
+          "eventId": "photo-55fc20e713214e919f9f193f853e51ad",
+          "appliedAt": "2026-11-26T05:49:53.741Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb7a1741-c681-4883-a977-45e738cb83c0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-sternrodler-20261126/operations.json#photo-55fc20e713214e919f9f193f853e51ad",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/2 de Sternrodler importée avec licence, crédits et huit localisations."
+        },
+        {
+          "eventId": "photo-ffb98648b2424e3986c2eec362d39494",
+          "appliedAt": "2026-11-26T05:50:13.540Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb7a1741-c681-4883-a977-45e738cb83c0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-sternrodler-20261126/operations.json#photo-ffb98648b2424e3986c2eec362d39494",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/2 de Sternrodler importée avec licence, crédits et huit localisations."
+        },
+        {
+          "eventId": "3b393334-5a02-48a4-b1b8-f308c8bb11c7",
+          "appliedAt": "2026-11-26T05:52:13.931Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb7a1741-c681-4883-a977-45e738cb83c0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-sternrodler-20261126/operations.json#3b393334-5a02-48a4-b1b8-f308c8bb11c7",
+          "auditEvidence": null,
+          "summary": "Conditions de places et de freinage, et histoire de construction datée de 2002."
+        },
+        {
+          "eventId": "6e9467bb-45f2-4df0-a605-a5df981053aa",
+          "appliedAt": "2026-11-26T05:54:35.232Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bb7a1741-c681-4883-a977-45e738cb83c0",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-sternrodler-20261126/operations.json#6e9467bb-45f2-4df0-a605-a5df981053aa",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-sternrodler-20261126/audit.json",
+          "summary": "Précision de l’année 2026 dans les huit descriptions publiques."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les UUID historiques. Revérifier tarifs et horaires 2027, la fermeture dépendante du crépuscule et de la météo, et clarifier l’âge de conduite en solo (pages officielles contradictoires). Ajouter une nouvelle date réelle et sa preuve à chaque mise à jour des données.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7640,13 +7710,48 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13145.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Erlebnisberg Sternrodt — page officielle du Sternrodler, caractéristiques et conditions",
+          "url": "https://www.erlebnisberg-sternrodt.de/die-rodelbahn/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Erlebnisberg Sternrodt — tarifs 2026 et validité des jetons",
+          "url": "https://www.erlebnisberg-sternrodt.de/preise-saison-2026/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Erlebnisberg Sternrodt — horaires officiels de novembre 2026",
+          "url": "https://www.erlebnisberg-sternrodt.de/%C3%B6ffnungszeiten/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Erlebnisberg Sternrodt — présentation et autres services",
+          "url": "https://www.erlebnisberg-sternrodt.de/",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wiegand — référence constructeur à Bruchhausen",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-1033",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — piste Sternrodler, Martin Lindner, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Erlebnisberg_Sternrodt_3.JPG",
+          "accessedAt": "2026-11-26"
+        },
+        {
+          "label": "Wikimedia Commons — piste Sternrodler, Martin Lindner, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sternroth.JPG",
+          "accessedAt": "2026-11-26"
         }
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-26",
         "attractions": [
           {
             "name": "Sternrodler",
@@ -7659,8 +7764,11 @@
             "sourceOpenedYear": "2002"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Le Sternrodler est le seul manège du lieu, avec billetterie par trajet. Restaurant, jeux et ski saisonnier sont annexes ; l’ancien Park et son ParkItem restent masqués et classés NotRelevant."
+      },
+      "possibleBacklogEntries": [
+        "DE-candidate-standalone-346f1602cb6e07"
+      ]
     },
     {
       "entryId": "DE-park-815bb3f3-9fb9-4bfd-aac1-472af9e18700",
