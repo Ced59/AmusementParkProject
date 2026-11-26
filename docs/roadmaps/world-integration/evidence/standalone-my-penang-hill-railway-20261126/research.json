@@ -1,0 +1,58 @@
+{
+  "reviewedAt": "2026-11-26",
+  "presenceSearch": "PDE SearchStandaloneAttractions et SearchParks avec Penang Hill : aucun résultat avant création ; aucun homonyme dans MY.json.",
+  "decision": "Funiculaire avec billets, files et horaires propres entre Air Itam et Bukit Bendera. Les autres prestataires et attractions du sommet disposent de leurs propres accès ; la fiche décrit uniquement le funiculaire.",
+  "history": "Essais le 21 octobre 1923, ouverture officielle le 1er janvier 1924 selon le communiqué du centenaire de l’exploitant.",
+  "service": "06:30–23:00 tous les jours, dernier départ montant 22:00, dernière descente 23:00 ; guichets 06:15–21:45. Fermeture annoncée du 4 au 10 janvier 2027 inclus.",
+  "pricing": "20 offres directes (standard/résident, adulte/enfant/senior selon disponibilité, aller retour ou simple, file normale/express). Les huit offres aller simple sont exclusivement au guichet ; les douze allers retours disposent de prix en ligne et au guichet. Le tarif résident exige un justificatif ; sunrise RM6 au guichet sous conditions.",
+  "accessibility": "Embarquement en fauteuil par accès dédié avec assistance du personnel, selon la page officielle ; prêt gratuit de fauteuils sous réserve de disponibilité.",
+  "photos": "Trois photos exactes de la voie, d’une voiture en circulation et de la gare supérieure sous CC BY-SA 4.0 avec crédits, textes alternatifs et légendes distinctes dans huit langues.",
+  "sources": [
+    {
+      "label": "Exploitant — horaires et tarifs",
+      "url": "https://penanghill.gov.my/index.php/en/tickets",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — foire aux questions et règles de billetterie",
+      "url": "https://penanghill.gov.my/index.php/en/faq",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — accès en fauteuil",
+      "url": "https://penanghill.gov.my/index.php/en/facilities-services",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — communiqué de maintenance du 4 au 10 janvier 2027",
+      "url": "https://corporate.penanghill.gov.my/images/images/Press_Release/2026/ENG_-_PENYELENGARAAN_BERJADUAL_TAHUNAN_KALI_PERTAMA_2027.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Exploitant — centenaire et date d’ouverture officielle",
+      "url": "https://corporate.penanghill.gov.my/images/images/Press_Release/2022/Penang_Hill_Railway_100th_Anniversary_-_EN.pdf",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "OpenStreetMap — gare inférieure",
+      "url": "https://www.openstreetmap.org/node/534134886",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Penang Hill funicular railway.jpg (HundenvonPenang, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Penang_Hill_funicular_railway.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Penang Hill Railway Upper Station.jpg (Azreey, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Penang_Hill_Railway_Upper_Station.jpg",
+      "accessedAt": "2026-11-26"
+    },
+    {
+      "label": "Wikimedia Commons — Penang Hill Funicular Railway.jpg (Songgg12, CC BY-SA 4.0)",
+      "url": "https://commons.wikimedia.org/wiki/File:Penang_Hill_Funicular_Railway.jpg",
+      "accessedAt": "2026-11-26"
+    }
+  ],
+  "uncertainty": "Le barème et les horaires peuvent changer ; le communiqué fixe la fermeture du 4 au 10 janvier 2027. Les tarifs résidents dépendent d’un justificatif et de la catégorie d’âge."
+}
