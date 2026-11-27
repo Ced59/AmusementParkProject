@@ -1,0 +1,45 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Canton Tower / 广州塔, tour panoramique de la rive sud de la rivière des Perles, Guangzhou.",
+  "antiDuplicate": "SearchParks et SearchStandaloneAttractions PDE sur Canton Tower et 广州塔 en CN : zéro résultat, fiches masquées comprises. Aucun homonyme ou variante Guangzhou Tower/广州塔 dans CN.json avant création.",
+  "sources": [
+    {
+      "url": "https://www.haizhu.gov.cn/hzdt/ztlm/tzhz/rjhj/lyjd/csmp/content/mpost_9190964.html",
+      "finding": "Haizhu District — Canton Tower, ouverture et présentation"
+    },
+    {
+      "url": "https://www.haizhu.gov.cn/zwgk/wgk/fwgk/content/post_8799689.html",
+      "finding": "Haizhu District — horaires et exploitant, publication décembre 2025"
+    },
+    {
+      "url": "https://wglj.gz.gov.cn/ggfw/lyl/lydwcx/content/post_10878689.html",
+      "finding": "Guangzhou culture and tourism bureau — liste des attractions, juin 2026"
+    },
+    {
+      "url": "https://www.cantontower.com/",
+      "finding": "Canton Tower — site de l’exploitant"
+    },
+    {
+      "url": "https://www.cantontower.com/ticket/guidelines/",
+      "finding": "Canton Tower — billets officiels cités par le district"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Q168400",
+      "finding": "Wikidata — coordonnées et hauteur"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:广州塔_-_2026-05-11_07.jpg",
+      "finding": "Wikimedia Commons — tour depuis la rive en 2026, 瑞丽江的河水, CC BY-SA 4.0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:广州塔_-_2026-05-11_03.jpg",
+      "finding": "Wikimedia Commons — structure de la tour en 2026, 瑞丽江的河水, CC BY-SA 4.0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Canton_Tower_-_433M_Sightseeing_Observation_Deck.jpg",
+      "finding": "Wikimedia Commons — belvédère en 2025, Renek78, CC0"
+    }
+  ],
+  "photoDecision": "Trois photos exactes : extérieur depuis la rivière et détail de la structure pris en 2026 sous CC BY-SA 4.0, intérieur du belvédère pris en 2025 sous CC0. Auteurs, licences et source Wikimedia vérifiés.",
+  "editorialDecision": "Tour Operating, ouverte au public en 2010 selon le district. Les horaires 09:30–22:30 proviennent de la liste officielle du district publiée le 24 décembre 2025 et sont structurés seulement jusqu’au 31 janvier 2027. Le site de l’exploitant a renvoyé HTTP 412 depuis cet environnement ; aucun tarif courant ni accessibilité non vérifiée n’a été inventé. La liste officielle des attractions de juin 2026 confirme l’activité. La première tentative Facebook a échoué avant publication car la page SEO n’était pas prête ; préchauffage SSR puis nouvelle publication réussie, un seul post externe."
+}

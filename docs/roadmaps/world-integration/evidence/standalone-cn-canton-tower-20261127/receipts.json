@@ -1,0 +1,126 @@
+{
+  "entryId": "CN-candidate-discovery-canton-tower-20261127",
+  "standaloneAttractionId": "b3c47825-130b-4747-ab2f-8a42bed3766d",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "116cad7c-d536-40e8-a53e-d6032b4f3b18",
+      "appliedAtUtc": "2026-11-27T18:29:05.9893421Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "bde97c2d-904f-4d69-95dd-8ffee83eba93",
+      "appliedAtUtc": "2026-11-27T18:31:48.9136164Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "4cccff15-31f7-45af-a933-171f94f12684",
+      "appliedAtUtc": "2026-11-27T18:31:59.6013433Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "555971e6-b1bd-4fde-ac6e-0c86f99f9271",
+      "appliedAtUtc": "2026-11-27T18:32:40.3203128Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "30dc7b9186b54698b9a7e58985b9cfe4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%B9%BF%E5%B7%9E%E5%A1%94_-_2026-05-11_07.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1600,
+      "height": 1200,
+      "credit": "瑞丽江的河水 / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "b326b96af8f84db0bb04f19e3c1724bf",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%B9%BF%E5%B7%9E%E5%A1%94_-_2026-05-11_03.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1200,
+      "height": 1600,
+      "credit": "瑞丽江的河水 / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "70918a00d5db47b59d089da4dca92064",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Canton_Tower_-_433M_Sightseeing_Observation_Deck.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1600,
+      "height": 901,
+      "credit": "Renek78 / Wikimedia Commons (CC0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "7c1c7db3434e4735a090b2044aa4d702",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T18:34:08.4971869Z",
+    "externalPostId": "1285475681307050_122129078943424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129078943424431"
+  }
+}
