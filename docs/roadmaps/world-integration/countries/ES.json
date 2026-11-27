@@ -8198,6 +8198,86 @@
         "attractions": [],
         "rationale": "Téléphérique touristique à billet propre ; distinct du funiculaire et du Téléphérique de Montjuïc."
       }
+    },
+    {
+      "entryId": "ES-candidate-discovery-teleferico-madrid-20261127",
+      "name": "Teleférico de Madrid",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "Paseo Pintor Rosales, 28008 Madrid",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Fermé pour rénovation intégrale au 27 novembre 2026. La ville a commencé à retirer l'ancien câble en janvier 2026 ; l'annonce de réouverture au premier trimestre 2027 reste prévisionnelle.",
+      "identityConfidence": "Installation distincte des deux téléphériques de Barcelone, source municipale et deux photos historiques exactes vérifiées ; recherche PDE des fiches existantes et masquées encore nécessaire.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleférico de la Casa de Campo",
+        "Madrid Teleférico",
+        "Madrid cable car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher les alias dans Park et StandaloneAttraction via PDE, fiches masquées comprises. Si l'identité autonome est confirmée, intégrer le statut de fermeture temporaire et l'histoire de la ligne de 1969 ; ne publier ni horaires ni anciens tarifs comme actuels. Les photos libres montrent les anciennes cabines et doivent être présentées comme historiques. Revérifier la date de réouverture auprès d'EMT Madrid avant de l'afficher comme ferme, puis audit, publication et annonce Facebook.",
+      "sources": [
+        {
+          "label": "Ayuntamiento de Madrid — retrait de l'ancien câble et projet de rénovation",
+          "url": "https://www.madrid.es/portales/munimadrid/es/Inicio/Actualidad/Noticias/Renovacion-integral-del-Teleferico-empieza-la-fase-de-desmontaje-del-cableado-original/?vgnextchannel=a12149fa40ec9410VgnVCM100000171f5a0aRCRD&vgnextfmt=default&vgnextoid=2a70403e735db910VgnVCM100000891ecb1aRCRD",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Tourisme officiel de Madrid — fermeture et réouverture prévisionnelle",
+          "url": "https://www.esmadrid.com/informacion-turistica/teleferico-madrid",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant EMT Madrid — site du téléphérique",
+          "url": "https://teleferico.emtmadrid.es/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ayuntamiento de Madrid — budget 2027, rénovation encore en phase finale",
+          "url": "https://www.madrid.es/portales/munimadrid/es/Inicio/El-Ayuntamiento/Tetuan/El-presupuesto-de-EMT-Madrid-para-2027-superara-los-930-millones-de-euros/?vgnextchannel=0813ca5d5fb96010VgnVCM100000dc0ca8c0RCRD&vgnextfmt=default&vgnextoid=829d6490e4c81a10VgnVCM200000f921e388RCRD",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — anciennes cabines, Xylo2121, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Madrid.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — ancienne ligne en 2016, Tim Adams, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Madrid_20161106_1.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-27-independent-source-discovery",
+        "method": "Sources municipales et contrôle du registre ES ; rechercher les fiches existantes via PDE avant création.",
+        "foundAt": "2026-11-27"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-27",
+        "attractions": [
+          {
+            "name": "Teleférico de Madrid",
+            "source": "Ayuntamiento de Madrid",
+            "url": "https://www.madrid.es/portales/munimadrid/es/Inicio/Actualidad/Noticias/Renovacion-integral-del-Teleferico-empieza-la-fase-de-desmontaje-del-cableado-original/?vgnextchannel=a12149fa40ec9410VgnVCM100000171f5a0aRCRD&vgnextfmt=default&vgnextoid=2a70403e735db910VgnVCM100000891ecb1aRCRD",
+            "family": "Téléphérique panoramique",
+            "sourceVenueName": "Teleférico de Madrid",
+            "sourceLifecycleSignal": "Fermeture pour rénovation en cours",
+            "sourceLocality": "Madrid"
+          }
+        ],
+        "rationale": "Ligne touristique à deux gares entre Pintor Rosales et Casa de Campo, exploitée comme attraction propre et distincte des autres équipements du parc urbain. L'identité doit être confirmée via PDE."
+      }
     }
   ]
 }
