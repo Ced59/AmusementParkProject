@@ -9411,7 +9411,7 @@
         "Torre Panoramica de Curitiba"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-27T18:47:19.311Z",
+      "lastDataIntegrationAt": "2026-11-27T19:02:03.044Z",
       "integrationHistory": [
         {
           "eventId": "BR-curitiba-tower-20261127-completed",
@@ -9422,6 +9422,16 @@
           "evidence": "docs/roadmaps/world-integration/evidence/standalone-br-torre-panoramica-curitiba-20261127/receipts.json",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-br-torre-panoramica-curitiba-20261127/audit.json",
           "summary": "Torre Panorâmica de Curitiba publiée avec trois photos, horaires, tarifs, audit et annonce Facebook."
+        },
+        {
+          "eventId": "BR-curitiba-tower-20261127-price-audience-corrected",
+          "appliedAt": "2026-11-27T19:02:03.044Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4319bf02-dee8-4753-93e6-fc77b1e5a109",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-br-torre-panoramica-curitiba-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-br-torre-panoramica-curitiba-20261127/audit.json",
+          "summary": "Tarif réduit reclassé pour toutes les catégories éligibles ; fiche publiée et audit sans blocage."
         }
       ],
       "nextAction": "Conserver cette ligne. Recontrôler horaires et tarifs municipaux après le 31 décembre 2026, fin de la page événement ; vérifier séparément tout changement d’accessibilité ou de capacité.",

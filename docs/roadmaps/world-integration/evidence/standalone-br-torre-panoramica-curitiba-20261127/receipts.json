@@ -25,6 +25,12 @@
       "operationId": "42755bdb-0482-441a-99e0-5a99c29d39ec",
       "appliedAtUtc": "2026-11-27T18:48:04.1471953Z",
       "isApplied": true
+    },
+    {
+      "stage": "pricingAudienceCorrection",
+      "operationId": "70ee9ac7-afe2-436f-8268-b278f551706d",
+      "appliedAtUtc": "2026-11-27T19:02:03.0442449Z",
+      "isApplied": true
     }
   ],
   "photos": [
