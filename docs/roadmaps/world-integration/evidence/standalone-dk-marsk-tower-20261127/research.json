@@ -1,0 +1,45 @@
+{
+  "reviewedAt": "2026-11-27",
+  "candidateEntryId": "DK-candidate-discovery-marsk-tower-20261127",
+  "identity": "Marsk Tower / Marsk Tårnet, Hjemstedvej 60, 6780 Skærbæk, au débouché continental de la route vers Rømø. Ce n'est pas Mærsk Tårnet à Copenhague.",
+  "officialSearch": "Client PARK_DATA_EDITOR : SearchStandaloneAttractions et SearchParks, pays DK puis sans pays, noms Marsk, Marsk Tower, Marsk Tårnet, Marsktårnet, Marsk Camp, Hjemsted, Skærbæk, Rømø ; zéro résultat pour la tour. Recherche publique moteur également vide. Création envisageable après contrôle du Preview.",
+  "standaloneDecision": "Tour d'observation permanente avec billet et contrôle d'accès propres. Marsk Camp comporte hébergements, restaurant et minigolf, mais aucun inventaire de parc d'attractions structuré ; ces activités voisines ne doivent pas être importées comme parkItems de la tour.",
+  "operatingStatus": "Tour en exploitation au 27 novembre 2026, avec billets en ligne. L'ascenseur est fermé pour une durée indéterminée selon l'exploitant ; accès uniquement par les escaliers à cette date. Fermeture possible par mauvais temps, chiens interdits.",
+  "mechanics": "Tour de 25 m, plateforme à 36 m au-dessus du niveau de la mer, double spirale en acier Corten conçue par BIG ; 146 marches à la montée et 131 à la descente selon l'exploitant. Ne pas la classifier comme attraction mécanique ni attribuer un constructeur de manège.",
+  "openingHistory": "Année 2021 certaine. Les sources secondaires divergent entre août et octobre 2021 pour l'ouverture ou l'inauguration ; aucune date précise n'est introduite sans source primaire concluante.",
+  "location": "Coordonnées de la catégorie Wikimedia Commons : 55°09′10.4″N, 8°44′26.48″E, soit environ 55.152889, 8.740689. Adresse officielle Hjemstedvej 60, 6780 Skærbæk.",
+  "pricing": "Page officielle consultée le 27 novembre 2026 : billet à partir de 7 ans 95 DKK, enfant 0–6 ans gratuit, famille (deux adultes et jusqu'à trois enfants de moins de 18 ans) 250 DKK, pass annuel 180 DKK, groupe de plus de dix personnes 76 DKK/personne, classe scolaire avec enseignant 25 DKK/personne, classe de la zone 6780 gratuite. Vérifier les conditions et la fraîcheur avant Apply. Ne pas publier l'ascenseur gratuit comme offre accessible : il est fermé.",
+  "openingHours": "La page horaire officielle affiche une colonne Tower & Minigolf générée en JavaScript, mais limite son calendrier au 1er octobre 2026 ; au 27 novembre 2026, elle ne fournit pas de dates futures fiables. Les plages statiques de réception et restaurant ne sont pas des horaires de la tour. Ne pas les copier. La billetterie par créneau peut fournir une disponibilité au moment de la visite, sans permettre d'extrapoler un calendrier annuel.",
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_North-East,_2026-07-23.jpg",
+      "author": "Kirkgaard",
+      "license": "CC0 1.0",
+      "observed": "Vue complète de la tour et de son escalier depuis le nord-est, juillet 2026 ; photo principale possible.",
+      "thumbnailBytes": 443418
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_South-West,_2026-07-23.jpg",
+      "author": "Kirkgaard",
+      "license": "CC0 1.0",
+      "observed": "Vue complète de l'autre côté, avec l'entrée et des visiteurs, juillet 2026.",
+      "thumbnailBytes": 368685
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_core_%26_staircase,_2026-07-23.jpg",
+      "author": "Kirkgaard",
+      "license": "CC0 1.0",
+      "observed": "Escalier et noyau structurel depuis la tour, juillet 2026.",
+      "thumbnailBytes": 123291
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_lookout_01.jpg",
+      "author": "Elgaard",
+      "license": "CC BY-SA 4.0",
+      "observed": "Plateforme et vue sur le marais, juillet 2021.",
+      "thumbnailBytes": 189872
+    }
+  ],
+  "photoMethod": "Quatre variantes Wikimedia de 960 px, toutes sous 960 Kio, téléchargées et inspectées visuellement. Aucun recadrage ni autre transformation ; attribution à fournir dans les huit langues lors de l'import.",
+  "nextAction": "Preview de création via PDE, Apply privé, import des photos, grille tarifaire, histoire et accès, export final et audit, publication publique et annonce Facebook. Rechercher l'horaire effectif propre à la tour sans reprendre celui du restaurant ou du camping."
+}
