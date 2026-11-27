@@ -1,0 +1,15 @@
+{
+  "entryId": "BR-candidate-discovery-trem-corcovado-20261127",
+  "standaloneAttractionId": "cb0246fb-d037-42fa-91bc-3c2edbcb9bf3",
+  "evaluatedAtUtc": "2026-11-27T23:26:12.363Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/cb0246fb-d037-42fa-91bc-3c2edbcb9bf3/trem-do-corcovado",
+  "publicationBlockers": []
+}

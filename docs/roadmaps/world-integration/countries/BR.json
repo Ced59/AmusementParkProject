@@ -9559,6 +9559,94 @@
         "attractions": [],
         "rationale": "Mirador à billetterie et horaires propres dans la tour de diffusion du Lago Norte ; aucune fiche Park parent trouvée. Distincte de la Torre de TV de l’Eixo Monumental, dont le mirador est fermé."
       }
+    },
+    {
+      "entryId": "BR-candidate-discovery-trem-corcovado-20261127",
+      "name": "Trem do Corcovado",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Chemin de fer touristique à billet propre",
+      "locality": "Cosme Velho, Rio de Janeiro, RJ",
+      "siteId": "cb0246fb-d037-42fa-91bc-3c2edbcb9bf3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Billetterie et horaires 2026 affichés par la concession ; accès au sommet maintenu pendant le remplacement des escaliers mécaniques.",
+      "identityConfidence": "Concession et billet distincts du Parc national de la Tijuca ; station confirmée par exploitant et OSM ; recherches PDE Park et Standalone Corcovado/Cristo Redentor/Trem do Corcovado sans correspondance brésilienne.",
+      "possibleMatches": [],
+      "aliases": [
+        "Corcovado Train",
+        "Estrada de Ferro do Corcovado",
+        "Tren del Corcovado"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T23:23:38.500Z",
+      "integrationHistory": [
+        {
+          "eventId": "br-trem-corcovado-data-20261127",
+          "appliedAt": "2026-11-27T23:23:38.500Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cb0246fb-d037-42fa-91bc-3c2edbcb9bf3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-br-trem-corcovado-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-br-trem-corcovado-20261127/audit.json",
+          "summary": "Fiche publiée avec trois photos exactes créditées, horaires officiels, gratuité enfant et tarif général variable sans montant inventé ; annonce Facebook confirmée."
+        }
+      ],
+      "nextAction": "Recontrôler le prix adulte du créneau via la billetterie officielle, les horaires après 2026 et l’accessibilité du sommet à la fin du chantier. Conserver cette ligne.",
+      "sources": [
+        {
+          "label": "Exploitant — horaires, adresse et informations pratiques",
+          "url": "https://www.tremdocorcovado.rio/institucional/informacoes-uteis",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — billet aller-retour et accès au monument",
+          "url": "https://www.tremdocorcovado.rio/ingressos",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — contact et chantier des escaliers mécaniques",
+          "url": "https://www.tremdocorcovado.rio/contato",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Parc national de la Tijuca — accès par le train et chantier",
+          "url": "https://parquenacionaldatijuca.rio/como-visitar-o-corcovado/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — station Cosme Velho et coordonnées",
+          "url": "https://www.openstreetmap.org/node/4476763090",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, ArlindoPereira / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Novo_Trem_do_Corcovado.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Geogast / Wikimedia Commons (CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Trem_do_Corcovado_%E2%80%A2_Esta%C3%A7%C3%A3o_Cosme_Velho_%E2%80%A2_Trem_da_4%C2%AA_gera%C3%A7%C3%A3o_%E2%80%A2_1.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Geogast / Wikimedia Commons (CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Trem_do_Corcovado_%E2%80%A2_Esta%C3%A7%C3%A3o_Cristo_Redentor_%E2%80%A2_Trem_da_4%C2%AA_gera%C3%A7%C3%A3o_%E2%80%A2_1.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "BR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Transport touristique exploité par une concession distincte avec billetterie propre incluant le monument ; le Parc national de la Tijuca n’est pas un parc d’attractions parent dans le registre."
+      }
     }
   ]
 }
