@@ -1,0 +1,17 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "b3718c55-4004-4111-ae58-db8a1f093782",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/b3718c55-4004-4111-ae58-db8a1f093782/tsutenkaku-tower",
+  "status": "Operating",
+  "completenessScore": 95,
+  "dataQualityLevel": "Excellent",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "961d178032df4489927ca541d856d869",
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129077797424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T18:22:41.529Z",
+  "lastDataIntegrationBasis": "Dernier Apply de contenu substantiel (condition d’accès à la plateforme extérieure), distinct de la visibilité et de Facebook.",
+  "gap": "Vérifier le tarif après le 3 janvier 2027 et renouveler le calendrier après le 1er février 2027."
+}
