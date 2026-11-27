@@ -2007,6 +2007,109 @@
         "attractions": [],
         "rationale": "La voie ferrée et ses voitures forment une attraction distincte du téléphérique, malgré l’exploitant et les tarifs communs."
       }
+    },
+    {
+      "entryId": "CO-candidate-discovery-mirador-torre-colpatria-20261127",
+      "name": "Mirador Torre Colpatria",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Mirador panoramique à billet propre",
+      "locality": "Santa Fe, Bogotá",
+      "siteId": "6f36e11e-8e3c-4902-a0b4-493ee2f193d8",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie de l’exploitant et horaires actifs en novembre 2026.",
+      "identityConfidence": "Mirador à billets et horaires propres ; recherches PDE Park et Standalone sous trois noms sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "Torre Colpatria",
+        "Colpatria Tower observation deck",
+        "Mirador Colpatria"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T19:20:07.598Z",
+      "integrationHistory": [
+        {
+          "eventId": "CO-mirador-torre-colpatria-integration-20261127",
+          "appliedAt": "2026-11-27T19:20:07.598Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6f36e11e-8e3c-4902-a0b4-493ee2f193d8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-co-mirador-colpatria-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-co-mirador-colpatria-20261127/audit.json",
+          "summary": "Fiche de mirador publiée avec données sourcées, trois photos exactes et publication Facebook vérifiée."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; vérifier les horaires 2027 et les tarifs directement sur les pages de billets de l’exploitant, puis consigner toute mise à jour datée.",
+      "sources": [
+        {
+          "label": "Exploitant — expérience, horaires et conditions de visite",
+          "url": "https://latorrecolpatria.com/experiencia-mirador/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — billetterie, liste avec prix anciens",
+          "url": "https://latorrecolpatria.com/entradas/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — billet individuel national",
+          "url": "https://latorrecolpatria.com/producto/entrada-nacional/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — billet individuel foreign",
+          "url": "https://latorrecolpatria.com/producto/entrada-extranjero/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — billet individuel nationalPreferential",
+          "url": "https://latorrecolpatria.com/producto/entrada-nacional-preferencial/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — billet combiné MAMBO, confirmation des horaires",
+          "url": "https://latorrecolpatria.com/torre-colpatria-mambo/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ministère colombien des Transports — jours fériés de décembre",
+          "url": "https://mintransporte.gov.co/publicaciones/12452/boletin-estrategico-de-seguridad-y-movilidad/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikidata Q3120855 — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q3120855",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Felipe Restrpo Acosta, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:2021_Bogotá_-_Torre_Colpatria.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Peter Chovanec, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bogota_z_Mirador_Torre_Colpatria_(34553345656).jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Felipe Restrepo Acosta, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:2018_Bogotá_la_torre_Colpatria_desde_la_Avenida_26.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "CO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Mirador à billetterie et horaires propres au 48e étage ; aucune fiche Park parent trouvée. Fiche standalone publiée et auditée."
+      }
     }
   ]
 }

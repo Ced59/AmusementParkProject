@@ -1,0 +1,76 @@
+{
+  "entryId": "CO-candidate-discovery-mirador-torre-colpatria-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Operating observation deck at floor 48 of Torre Colpatria, Bogotá, with its own admission tickets and visitor hours. It is a standalone visit rather than a park attraction. Building opened in 1979 and is stated as 196 m tall by the operator.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Torre Colpatria (CO)",
+      "Mirador Torre Colpatria (CO)",
+      "Colpatria (CO)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Torre Colpatria (CO)",
+      "Mirador Torre Colpatria (CO)",
+      "Colpatria (CO)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "operatorSource": "https://latorrecolpatria.com/experiencia-mirador/",
+  "museumComboSource": "https://latorrecolpatria.com/torre-colpatria-mambo/",
+  "individualTicketSources": {
+    "national": "https://latorrecolpatria.com/producto/entrada-nacional/",
+    "foreign": "https://latorrecolpatria.com/producto/entrada-extranjero/",
+    "nationalPreferential": "https://latorrecolpatria.com/producto/entrada-nacional-preferencial/"
+  },
+  "ticketListingSource": "https://latorrecolpatria.com/entradas/",
+  "holidaySource": "https://mintransporte.gov.co/publicaciones/12452/boletin-estrategico-de-seguridad-y-movilidad/",
+  "wikidataCoordinates": "https://www.wikidata.org/wiki/Q3120855",
+  "observations": {
+    "address": "Carrera Séptima con Calle 26, Santa Fe, Bogotá",
+    "coordinates": [
+      4.6108333333333,
+      -74.070277777778
+    ],
+    "heightMeters": 196,
+    "observationFloor": 48,
+    "opened": "1979",
+    "hours": "Operator: Thu/Fri 17:00–21:00 (last entry 20:20); Sat 12:00–21:00 (last entry 20:20); Sun/public holidays 11:00–18:00 (last entry 17:20). Normally Mon–Wed closed.",
+    "admissionCOP": {
+      "ColombianAge11To59": 35000,
+      "ForeignVisitor": 50000,
+      "ColombianAge4To10Or60Plus": 30000
+    },
+    "pricingProvenance": "Current individual ticket product pages checked 27 November 2026. The official ticket listing still displays older 25,000/30,000/23,000 COP amounts; individual product pages and their descriptions are used. Do not infer free admission below age four.",
+    "weatherPolicy": "Operator warns access may close for rain or operational reasons."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2021_Bogotá_-_Torre_Colpatria.jpg",
+      "artist": "Felipe Restrpo Acosta",
+      "license": "CC BY-SA 4.0",
+      "captured": "2021-10-19 06:51:47",
+      "depicts": "tower exterior"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bogota_z_Mirador_Torre_Colpatria_(34553345656).jpg",
+      "artist": "Peter Chovanec",
+      "license": "CC BY 2.0",
+      "captured": "2017-04-16 00:56",
+      "depicts": "panorama from the mirador"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2018_Bogotá_la_torre_Colpatria_desde_la_Avenida_26.jpg",
+      "artist": "Felipe Restrepo Acosta",
+      "license": "CC BY-SA 4.0",
+      "captured": "2018-01-07 11:22:59",
+      "depicts": "tower from Avenida 26"
+    }
+  ],
+  "scopeNotes": [
+    "Recurring hours are limited to 31 December 2026. Colombian public holidays on 8 and 25 December receive explicit holiday overrides; check 2027 hours when published.",
+    "The operator website had a July–August 2026 all-week special; it is expired and was not carried forward.",
+    "The product pages show nationality and age-specific admission; bring proof of eligibility. The older official listing amounts are recorded as a source discrepancy."
+  ]
+}
