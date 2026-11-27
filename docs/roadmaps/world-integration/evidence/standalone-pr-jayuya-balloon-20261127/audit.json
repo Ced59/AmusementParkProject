@@ -1,0 +1,26 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "86f3c54e-95eb-4c94-b363-0f487572718c",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/86f3c54e-95eb-4c94-b363-0f487572718c/globo-aerostatico-de-jayuya",
+  "status": "Unknown",
+  "statusNote": "Disponibilité du jour non attestée après l’interruption aérienne signalée en janvier 2026 ; informations de visite à vérifier auprès de Jayuya.",
+  "completenessScore": 82,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "photoCount": 1,
+  "primaryPhotoId": "e5939ace24a0446686caaf39af003102",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "coordinates": "Adresse municipale fournie ; coordonnées GPS précises non imputées à partir d’une estimation."
+}

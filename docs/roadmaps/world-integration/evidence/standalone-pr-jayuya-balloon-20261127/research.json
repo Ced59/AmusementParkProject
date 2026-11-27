@@ -1,0 +1,29 @@
+{
+  "reviewedAt": "2026-11-27",
+  "classification": "Ballon captif municipal au complexe Tierra Alta, avec billet individuel distinct des tyroliennes ; attraction standalone.",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions, sans filtre de visibilité, par Jayuya, Globo Aerostático, Tierra Alta et Aerostatic Balloon ; aucun doublon dans PR. La recherche de parcs par Globo Aerostático retournait uniquement Ty’Bamboo en France, résultat textuel hors sujet.",
+  "lifecycle": "Aerophile et El Nuevo Día documentent une ouverture en 2017 ; la tempête Isaías détruit la première installation en 2020 ; les vols publics reprennent en mars 2024. WIPR signale en janvier 2026 une suspension liée à une restriction d’espace aérien de 24 heures. Les horaires et tarifs listés sur Jayuya.com ne sont pas confirmés à une date actuelle certaine : statut du jour Unknown, renvoi vers l’office de tourisme, aucun prix actuel publié.",
+  "photo": "Photo exacte de l’installation d’origine par Eduanj, datée du 25 juin 2017, CC BY-SA 4.0, inspectée visuellement ; légendes explicites sur son ancienneté et la reconstruction de 2024.",
+  "sources": [
+    {
+      "label": "Jayuya.com — informations touristiques et billet distinct",
+      "url": "https://jayuya.com/aventura-en-las-alturas-jayuya/"
+    },
+    {
+      "label": "El Nuevo Día — destruction en 2020 et reprise publique en mars 2024",
+      "url": "https://www.elnuevodia.com/negocios/turismo/notas/el-globo-aerostatico-de-jayuya-retomara-los-viajes-para-el-publico-desde-este-sabado/"
+    },
+    {
+      "label": "WIPR — interruption aérienne temporaire en janvier 2026",
+      "url": "https://wipr.pr/suspenden-temporalmente-operaciones-del-globo-aerostatico-de-jayuya/"
+    },
+    {
+      "label": "Wikimedia Commons — installation d’origine en juin 2017, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Globo_Jayuya.jpg"
+    },
+    {
+      "label": "Aerophile — Jayuya 2017",
+      "url": "https://www.aerophile.com/en/clients/municipio-autonomo-de-jayuya/"
+    }
+  ]
+}

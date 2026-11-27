@@ -1,0 +1,58 @@
+{
+  "entryId": "PR-candidate-discovery-67e6ca0dd25fda",
+  "standaloneAttractionId": "86f3c54e-95eb-4c94-b363-0f487572718c",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "0c61c15d-2944-489e-82bd-2a7941b709db",
+      "appliedAtUtc": "2026-11-27T15:02:48.749145Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "939e6686-91cd-4211-9169-a5522d36bc85",
+      "appliedAtUtc": "2026-11-27T15:03:50.6444767Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "929a0c36-78b2-4cdc-968c-abbc8a895288",
+      "appliedAtUtc": "2026-11-27T15:05:24.3800898Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "e5939ace24a0446686caaf39af003102",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Globo_Jayuya.jpg",
+      "ownerId": "86f3c54e-95eb-4c94-b363-0f487572718c",
+      "isPublished": true
+    }
+  ],
+  "finalAudit": {
+    "completenessScore": 82,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "photoCount": 1,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ]
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T15:05:24.3800898Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/86f3c54e-95eb-4c94-b363-0f487572718c/globo-aerostatico-de-jayuya",
+    "facebookPublishedAtUtc": "2026-11-27T15:06:14.0959643Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129063835424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-pr-jayuya-balloon-20261127/receipts.json"
+  }
+}
