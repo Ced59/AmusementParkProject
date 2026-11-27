@@ -1,0 +1,25 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "839ff04f-11c2-4888-a66c-1adcddda86ef",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/839ff04f-11c2-4888-a66c-1adcddda86ef/ballon-de-la-villa-borghese",
+  "status": "Removed",
+  "completenessScore": 86,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "photoCount": 2,
+  "primaryPhotoId": "83c329a80f674cca8ac410a8193a90a9",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "coordinates": "Ancien point d’envol non géocodé avec une précision suffisante ; jardins de la Villa Borghese indiqués sans coordonnées supposées."
+}
