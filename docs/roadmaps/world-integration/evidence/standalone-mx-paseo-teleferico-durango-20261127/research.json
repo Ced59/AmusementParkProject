@@ -1,0 +1,59 @@
+{
+  "entryId": "MX-candidate-discovery-paseo-teleferico-durango-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Separately ticketed scenic cable car between Calvario and Remedios, not a theme park.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Teleférico de Durango (MX)",
+      "Teleferico Durango (MX)",
+      "Paseo Teleférico Durango (MX)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Teleférico de Durango (MX)",
+      "Teleferico Durango (MX)",
+      "Paseo Teleférico Durango (MX)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAliasAndSourceUrlMatches": 0
+  },
+  "sources": {
+    "stateTourism": "https://durangodepelicula.com/inicio/lugares-turisticos/miradores-y-vistas-panoramicas/",
+    "nationalCulture": "https://sic.gob.mx/ficha.php?table=ea&table_id=63",
+    "stateTourismMap": "https://maps.app.goo.gl/yznwgkMG37jASE2t6"
+  },
+  "observations": {
+    "stations": [
+      "Calvario, Calle Cerro del Calvario",
+      "Remedios, Cerro de los Remedios"
+    ],
+    "mappedBaseCoordinates": [
+      24.0234591,
+      -104.6769126
+    ],
+    "length": "664 metres, Secretaría de Cultura listing",
+    "hours": "Tuesday–Sunday 10:00–21:00, Durango State Tourism",
+    "fare": "MXN 80 return, MXN 40 one-way; MXN 40 reduced senior/disabled fare with ride type unspecified, mentioned only in notes"
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_de_Durango.JPG",
+      "artist": "Noé González-Gallegos",
+      "license": "CC BY-SA 4.0",
+      "captured": "2016-01-31",
+      "depicts": "cabine verte du téléphérique sur la ligne"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACerro_del_Calvario.JPG",
+      "artist": "EduardoOlivares",
+      "license": "CC BY-SA 3.0",
+      "captured": "2012-07-26",
+      "depicts": "câbles de la ligne vers le Cerro del Calvario"
+    }
+  ],
+  "scopeNotes": [
+    "Two exact licensed photos visually inspected; both are older historical views, so do not use them as evidence for current cabin livery.",
+    "The state tourism page is the current hours and fare source; the national culture listing is older and used only for route length.",
+    "The reduced fare ride type is not specified in the official source and is excluded from structured ticket offers."
+  ]
+}
