@@ -1,0 +1,45 @@
+{
+  "reviewedAt": "2026-11-27",
+  "presenceSearch": "Recherche Park et StandaloneAttraction par le client PARK_DATA_EDITOR à effectuer avant toute création.",
+  "classification": "Ancien ballon captif autonome exploité auprès des Deichtorhallen à Hambourg. La fiche éventuelle doit porter sur la période hambourgeoise de HighFlyer, sans le confondre avec le site culturel ni avec un ballon réinstallé ailleurs.",
+  "lifecycle": "Le fabricant situe son installation à Hambourg en 2005. Kulturkarte indique explicitement la fin du service en mars 2014 et l'expiration du contrat d'occupation du terrain la même année. Les photographies de 2006 et 2013 montrent le ballon, mais ne prouvent pas un service continu pendant toute cette période. Ne pas publier des horaires ni des tarifs actuels.",
+  "photos": "Trois photographies du HighFlyer hambourgeois inspectées visuellement : ballon devant les Deichtorhallen en 2006, ballon au-dessus du bâtiment en 2006, dessous du ballon lors d'un vol en 2013. GeorgHH a placé les deux vues de 2006 dans le domaine public ; la vue de Thomas Fries de 2013 est sous CC BY-SA 3.0 DE. Les droits, auteurs, dates et pages de chaque fichier ont été vérifiés sur Wikimedia Commons. Les trois fichiers JPEG récupérés font moins de 960 Kio chacun ; pour la troisième vue, utiliser la variante Wikimedia de 960 px.",
+  "sources": [
+    {
+      "label": "Aerophile — référence constructeur, Hambourg 2005",
+      "url": "https://www.aerophile.com/en/clients/vladi-private-island/",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Kulturkarte Hamburg — fermeture en mars 2014 et emplacement",
+      "url": "https://www.kulturkarte.de/hamburg/31039ballon",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Kulturkarte Hamburg — fin de l'occupation du terrain en 2014",
+      "url": "https://www.kulturkarte.de/nachrichten/High-Flyer_nun_in_Rio_1460197843",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "WELT — mise en route et exploitant en septembre 2005",
+      "url": "https://www.welt.de/print-welt/article163101/Dem-Michel-auf-die-Spitze-gucken.html",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — HighFlyer Hamburg01, GeorgHH, domaine public",
+      "url": "https://commons.wikimedia.org/wiki/File:HighFlyer_Hamburg01.jpg",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — HighFlyer Hamburg03, GeorgHH, domaine public",
+      "url": "https://commons.wikimedia.org/wiki/File:HighFlyer_Hamburg03.jpg",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — Highflyer IMG-1399, Thomas Fries, CC BY-SA 3.0 DE",
+      "url": "https://commons.wikimedia.org/wiki/File:Projekt_Hei%C3%9Fluftballon_-_Highflyer_-IMG-1399.jpg",
+      "accessedAt": "2026-11-27"
+    }
+  ],
+  "nextReview": "Confirmer l'absence d'une fiche Park ou StandaloneAttraction équivalente dans l'éditeur, puis créer ou enrichir la fiche historique. Ne déclarer aucune exploitation actuelle et garder le suivi du ballon transféré comme dossier séparé."
+}
