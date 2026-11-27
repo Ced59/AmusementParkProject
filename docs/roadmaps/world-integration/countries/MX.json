@@ -3955,11 +3955,11 @@
         "Teleférico de Montetaxco"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-27T22:15:27.093Z",
+      "lastDataIntegrationAt": "2026-11-27T22:15:08.356Z",
       "integrationHistory": [
         {
           "eventId": "mx-teleferico-taxco-data-20261127",
-          "appliedAt": "2026-11-27T22:15:27.093Z",
+          "appliedAt": "2026-11-27T22:15:08.356Z",
           "outcome": "completed",
           "entityKind": "StandaloneAttraction",
           "entityId": "ec6a22c8-4c9c-4bbf-a59a-ac8cea603db6",
