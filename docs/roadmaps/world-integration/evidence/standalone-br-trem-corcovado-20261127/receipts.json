@@ -1,0 +1,141 @@
+{
+  "entryId": "BR-candidate-discovery-trem-corcovado-20261127",
+  "standaloneAttractionId": "cb0246fb-d037-42fa-91bc-3c2edbcb9bf3",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "96297c2e-94df-44d3-9550-ad742810f96d",
+      "appliedAtUtc": "2026-11-27T23:17:31.4988457Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "a3e13e92-94e1-430c-ad36-4b23514f2036",
+      "appliedAtUtc": "2026-11-27T23:18:27.5648947Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricingInitialDynamic",
+      "operationId": "f390c5a3-77a4-4307-8730-66de40bf9c4b",
+      "appliedAtUtc": "2026-11-27T23:18:03.9996261Z",
+      "isApplied": true,
+      "supersededBy": "pricingConfirmedChild"
+    },
+    {
+      "stage": "pricingConfirmedChild",
+      "operationId": "f66f51bf-aadc-4769-952d-92d744d24d2e",
+      "appliedAtUtc": "2026-11-27T23:23:38.5009394Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publishVisibility",
+      "operationId": "fabeebfd-a866-48c3-9e1c-8c0df3cfd88a",
+      "appliedAtUtc": "2026-11-27T23:24:24.7294128Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "252a1691ff9448bd935650a73bec41ae",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Novo_Trem_do_Corcovado.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1280,
+      "credit": "ArlindoPereira / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T23:19:19.691Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "501b5b8f044b4b41bd070e2120be5352",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trem_do_Corcovado_%E2%80%A2_Esta%C3%A7%C3%A3o_Cosme_Velho_%E2%80%A2_Trem_da_4%C2%AA_gera%C3%A7%C3%A3o_%E2%80%A2_1.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "Geogast / Wikimedia Commons (CC BY 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T23:20:10.358Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "00f9e178c21249c1a3e8d9eda44c2ee0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trem_do_Corcovado_%E2%80%A2_Esta%C3%A7%C3%A3o_Cristo_Redentor_%E2%80%A2_Trem_da_4%C2%AA_gera%C3%A7%C3%A3o_%E2%80%A2_1.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "Geogast / Wikimedia Commons (CC BY 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T23:19:43.732Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "4aad1e9a07594656b7df1f9ff3bd1385",
+    "publishedAtUtc": "2026-11-27T23:25:58.1668352Z",
+    "externalPostId": "1285475681307050_122129105529424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129105529424431"
+  },
+  "pricingQualification": "Le tarif général dépend du créneau et reste non chiffré ; seule la gratuité officielle des enfants jusqu’à six ans accompagnés a un montant fixe. Une première offre Dynamic sans montant déclenchait HTTP 500 lors de l’audit ; elle a été remplacée avant publication.",
+  "socialPreview": {
+    "canonicalSeoReady": true,
+    "ogImageId": "501b5b8f044b4b41bd070e2120be5352"
+  }
+}
