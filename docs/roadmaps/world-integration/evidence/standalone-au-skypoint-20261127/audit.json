@@ -1,0 +1,17 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "5e19c9bb-8e8f-4458-a6b5-4e69f92b62c1",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/5e19c9bb-8e8f-4458-a6b5-4e69f92b62c1/skypoint-observation-deck",
+  "status": "Operating",
+  "completenessScore": 76,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "1931fcc5dd2143d4a64332ace45a4dc6",
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129076861424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T18:12:00.818Z",
+  "lastDataIntegrationBasis": "Dernier Apply de contenu substantiel (accessibilité), distinct de la visibilité et de Facebook.",
+  "gap": "Relever le calendrier après le 25 décembre 2026 et vérifier les prix avant une nouvelle publication."
+}

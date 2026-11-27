@@ -1,0 +1,126 @@
+{
+  "entryId": "AU-candidate-discovery-skypoint-observation-deck-20261127",
+  "standaloneAttractionId": "5e19c9bb-8e8f-4458-a6b5-4e69f92b62c1",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "72039115-a2fb-44f3-a073-07d777889882",
+      "appliedAtUtc": "2026-11-27T18:09:27.1077134Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "24a11014-6daa-4673-bfd5-caad6f012a2e",
+      "appliedAtUtc": "2026-11-27T18:11:50.3262777Z",
+      "isApplied": true
+    },
+    {
+      "stage": "access",
+      "operationId": "b448a8ed-e8b9-4320-ab27-07e7afc79c71",
+      "appliedAtUtc": "2026-11-27T18:12:00.8189711Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "1b19651f-2c45-4979-97c5-2bbfef537089",
+      "appliedAtUtc": "2026-11-27T18:12:33.0809658Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "1931fcc5dd2143d4a64332ace45a4dc6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Q1_and_Surfers_Paradise_light_rail_station_2026.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1600,
+      "height": 1200,
+      "credit": "Totallynotarandomalt69 / Wikimedia Commons (CC BY 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "dae3733fcc704270b572a489aadd695e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-10-02_SkyPoint_Observation_Deck_31.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 768,
+      "height": 1024,
+      "credit": "Chris.sherlock2 / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "ffb611922f684a4c93ceaf9e55b4acd7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bar_of_SkyPoint_Observation_Deck.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 943,
+      "height": 1257,
+      "credit": "Rick888chen / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "b21aa4ba6f1d4bb5a216f4bfd23a3afe",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T18:13:24.1676752Z",
+    "externalPostId": "1285475681307050_122129076861424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129076861424431"
+  }
+}
