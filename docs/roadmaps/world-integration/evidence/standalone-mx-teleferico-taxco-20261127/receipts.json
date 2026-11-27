@@ -1,0 +1,164 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-taxco-20261127",
+  "standaloneAttractionId": "ec6a22c8-4c9c-4bbf-a59a-ac8cea603db6",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "50974ccd-372c-46d6-bf70-02cf765982ef",
+      "appliedAtUtc": "2026-11-27T22:12:02.2911006Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "ebb7fa4b-2767-497a-a281-d1066a3fb157",
+      "appliedAtUtc": "2026-11-27T22:12:13.7206777Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "23b337e2-4746-4d65-9a02-cc730f74a039",
+      "appliedAtUtc": "2026-11-27T22:12:26.5846189Z",
+      "isApplied": true
+    },
+    {
+      "stage": "core-corrected",
+      "operationId": "30b093dd-c405-4e03-bcf2-90cf67a16c7a",
+      "appliedAtUtc": "2026-11-27T22:15:08.3567527Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "57305517-d837-4f26-8570-1f1d8af1c050",
+      "appliedAtUtc": "2026-11-27T22:15:27.0933399Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "95f47e399b224fb289d37bc871175cbf",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATeleferico_Taxco.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 1306,
+      "credit": "Microstar / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:13:19.42Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "e0003521ec864fb98479cfc3a8d4807d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATerminalCableTaxco.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 643,
+      "credit": "AlejandroLinaresGarcia / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:13:33.962Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "7513cdfadb2241d68b06fe5cef21601e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACableCarDecend.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 643,
+      "credit": "AlejandroLinaresGarcia / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:13:50.298Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "604b39382ec14bd98e72c215ae478f4c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AViewCableCarTaxco2.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 643,
+      "credit": "AlejandroLinaresGarcia / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:14:13.882Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Failed",
+    "publicationId": "7633eda008c84b27b9df8beef03e16bc",
+    "failureCode": "preview-page-not-ready",
+    "externalPostUrl": null
+  }
+}

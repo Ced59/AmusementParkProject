@@ -617,7 +617,7 @@
         {
           "siteId": "1f17d2cb-1349-4d76-baef-fd1a12c0f3ba",
           "name": "Bosque Mágico",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [
@@ -3850,6 +3850,166 @@
         "relation": "AlreadyStandalone",
         "attractions": [],
         "rationale": "Téléphérique touristique à stations, horaires et tarifs propres ; aucune fiche Park parent ni Standalone homonyme trouvée. Fiche autonome publiée et auditée."
+      }
+    },
+    {
+      "entryId": "MX-candidate-discovery-teleferico-orizaba-20261127",
+      "name": "Teleférico de Orizaba",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Plaza Pichucalco, Orizaba, Veracruz",
+      "siteId": "ee89f70d-d026-434c-b32e-733aa2cfa5f6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "TemporarilyClosed",
+      "sourceLifecycleSignal": "La presse locale du 25 novembre 2026 indique des essais de maintenance et aucune date confirmée de réouverture.",
+      "identityConfidence": "Trajet, station et identité confirmés par le tourisme officiel ; recherches PDE Park et Standalone sous plusieurs noms sans fiche, backlog sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleferico de Orizaba",
+        "Teleférico Orizaba",
+        "Teleferico Orizaba"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T21:56:39.099Z",
+      "integrationHistory": [
+        {
+          "eventId": "mx-teleferico-orizaba-data-20261127",
+          "appliedAt": "2026-11-27T21:56:39.099Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee89f70d-d026-434c-b32e-733aa2cfa5f6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-teleferico-orizaba-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mx-teleferico-orizaba-20261127/audit.json",
+          "summary": "Fiche visible avec quatre photos créditées ; fermeture temporaire clairement signalée sans horaire ou tarif trompeur."
+        }
+      ],
+      "nextAction": "Publier l’annonce Facebook en précisant la fermeture temporaire ; surveiller la réouverture officielle et alors mettre à jour statut, horaires et tarif avec de nouvelles sources, sans retirer cette ligne.",
+      "sources": [
+        {
+          "label": "Tourisme officiel d’Orizaba — trajet, accès et prestations du sommet",
+          "url": "https://www.orizaba.travel/teleferico-y-ecoparque-cerro-del-borrego/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "El Sol de Orizaba — maintenance et absence de date de reprise, 25 novembre 2026",
+          "url": "https://oem.com.mx/elsoldeorizaba/local/teleferico-de-orizaba-podria-regresar-en-diciembre-realizan-pruebas-para-garantizar-la-seguridad-33311476",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — station de départ Plaza Pichucalco",
+          "url": "https://www.openstreetmap.org/node/3246850574",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Chivista / Wikimedia Commons (CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_Orizaba.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Isaacvp / Wikimedia Commons (CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Orizaba_visto_desde_la_Alameda_Francisco_Gabilondo_Soler_01.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Isaacvp / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Fuente_y_Telef%C3%A9rico_de_Orizaba_01.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, Álvaro de la Paz Franco / Wikimedia Commons (CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Paseo_del_R%C3%ADo_Orizaba,_Puente_5,_Puente_3,_Telef%C3%A9rico_27.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Liaison payante entre Plaza Pichucalco et le Cerro del Borrego, distincte des équipements de l’Ecoparque au sommet."
+      }
+    },
+    {
+      "entryId": "MX-candidate-discovery-teleferico-taxco-20261127",
+      "name": "Teleférico de Taxco",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Ahuacatitlán, Taxco de Alarcón, Guerrero",
+      "siteId": "ec6a22c8-4c9c-4bbf-a59a-ac8cea603db6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant publie des horaires, tarifs et modalités d’achat sur sa page officielle.",
+      "identityConfidence": "Exploitant, adresse et tracé confirmés ; recherches PDE sous les noms Taxco et Monte Taxco sans résultat, backlog sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleferico Taxco",
+        "Teleférico Montetaxco",
+        "Teleférico de Montetaxco"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T22:15:08.356Z",
+      "integrationHistory": [
+        {
+          "eventId": "mx-teleferico-taxco-data-20261127",
+          "appliedAt": "2026-11-27T22:15:08.356Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ec6a22c8-4c9c-4bbf-a59a-ac8cea603db6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-teleferico-taxco-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mx-teleferico-taxco-20261127/audit.json",
+          "summary": "Fiche visible avec horaires et tarifs de l’exploitant, quatre photos créditées et descriptions en huit langues."
+        }
+      ],
+      "nextAction": "Publier l’annonce Facebook avec la photo de la cabine ; vérifier périodiquement les horaires et tarifs de l’exploitant, sans retirer cette ligne.",
+      "sources": [
+        {
+          "label": "Hotel Montetaxco — trajet, horaires, tarifs et achat",
+          "url": "https://montetaxcohotel.mx/teleferico-taxco/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "ADO — adresse de la station inférieure à Ahuacatitlán",
+          "url": "https://blog.ado.com.mx/teleferico-de-montetaxco",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — station inférieure du téléphérique",
+          "url": "https://www.openstreetmap.org/way/503145048",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Microstar / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ATeleferico_Taxco.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, AlejandroLinaresGarcia / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ATerminalCableTaxco.JPG",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, AlejandroLinaresGarcia / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ACableCarDecend.JPG",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, AlejandroLinaresGarcia / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3AViewCableCarTaxco2.JPG",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Trajet vendu à la station indépendamment de l’hébergement, du parking et des prestations de l’hôtel."
       }
     }
   ]

@@ -1,0 +1,146 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-orizaba-20261127",
+  "standaloneAttractionId": "ee89f70d-d026-434c-b32e-733aa2cfa5f6",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "830afdee-4220-4cff-8419-a65e9ad1acaa",
+      "appliedAtUtc": "2026-11-27T21:54:55.2980891Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "dc4ac5ad-2f12-43d4-875a-46b3c6b57b00",
+      "appliedAtUtc": "2026-11-27T21:57:01.8319592Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "09d412e724284d06a8f7d4e970010294",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_Orizaba.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "Chivista / Wikimedia Commons (CC0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:55:58.229Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "37cd4ad356554a91a1ce2cc83f8a7539",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Orizaba_visto_desde_la_Alameda_Francisco_Gabilondo_Soler_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1280,
+      "credit": "Isaacvp / Wikimedia Commons (CC0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:56:13.212Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "201df432c4d443a79c03b3a035c39f8f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fuente_y_Telef%C3%A9rico_de_Orizaba_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "Isaacvp / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:56:26.324Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "a23ad5473e1a4d64af4bc52aee017f54",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paseo_del_R%C3%ADo_Orizaba,_Puente_5,_Puente_3,_Telef%C3%A9rico_27.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Álvaro de la Paz Franco / Wikimedia Commons (CC0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:56:39.099Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Failed",
+    "publicationId": "940217466c794ad587e0402db3e77f6f",
+    "failureCode": "preview-page-not-ready",
+    "externalPostUrl": null
+  }
+}
