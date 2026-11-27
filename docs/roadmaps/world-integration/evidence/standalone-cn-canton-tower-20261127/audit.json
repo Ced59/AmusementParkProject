@@ -1,0 +1,17 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "b3c47825-130b-4747-ab2f-8a42bed3766d",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/b3c47825-130b-4747-ab2f-8a42bed3766d/canton-tower",
+  "status": "Operating",
+  "completenessScore": 83,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "30dc7b9186b54698b9a7e58985b9cfe4",
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129078943424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T18:31:59.601Z",
+  "lastDataIntegrationBasis": "Dernier Apply de contenu substantiel (histoire de l’ouverture), distinct de la visibilité et de Facebook.",
+  "gap": "Vérifier les tarifs actuels et l’accessibilité sur une source directe dès que l’accès au site officiel est disponible ; recontrôler les horaires après janvier 2027."
+}
