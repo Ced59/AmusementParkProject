@@ -1,0 +1,15 @@
+{
+  "entryId": "CO-candidate-discovery-mirador-torre-colpatria-20261127",
+  "standaloneAttractionId": "6f36e11e-8e3c-4902-a0b4-493ee2f193d8",
+  "evaluatedAtUtc": "2026-11-27T19:20:08.554Z",
+  "result": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 60,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/6f36e11e-8e3c-4902-a0b4-493ee2f193d8/mirador-torre-colpatria",
+  "publicationBlockers": []
+}

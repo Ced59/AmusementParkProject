@@ -1,0 +1,126 @@
+{
+  "entryId": "CO-candidate-discovery-mirador-torre-colpatria-20261127",
+  "standaloneAttractionId": "6f36e11e-8e3c-4902-a0b4-493ee2f193d8",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "bd8b2145-4b69-47c6-a463-6bd0a3f948e0",
+      "appliedAtUtc": "2026-11-27T19:14:49.8415364Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "2a3116d9-d1f3-4026-8104-e0c3903a4f54",
+      "appliedAtUtc": "2026-11-27T19:17:10.2932095Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "83b227fe-6466-436a-a623-f41c5ce7a1ac",
+      "appliedAtUtc": "2026-11-27T19:17:21.604Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "70e68575-cb3e-41bb-a82c-827065016721",
+      "appliedAtUtc": "2026-11-27T19:20:07.5983657Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "3e31e3b9bea04f1797cb1d98151f82bd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2021_Bogotá_-_Torre_Colpatria.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1707,
+      "credit": "Felipe Restrpo Acosta / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "701fa022b44b423789b0eecb4614836d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bogota_z_Mirador_Torre_Colpatria_(34553345656).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 960,
+      "credit": "Peter Chovanec / Wikimedia Commons (CC BY 2.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "e027779a5add4935855a98d3e5248d09",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2018_Bogotá_la_torre_Colpatria_desde_la_Avenida_26.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1707,
+      "credit": "Felipe Restrepo Acosta / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "3e294336fabf4e48a09ec4aaf7629fbf",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T19:21:45.6990273Z",
+    "externalPostId": "1285475681307050_122129083221424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129083221424431"
+  }
+}
