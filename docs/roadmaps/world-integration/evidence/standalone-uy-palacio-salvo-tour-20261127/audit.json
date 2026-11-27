@@ -1,0 +1,15 @@
+{
+  "entryId": "UY-candidate-discovery-palacio-salvo-tour-20261127",
+  "standaloneAttractionId": "cb68d37b-574c-45d3-aad8-34adc1c791e3",
+  "evaluatedAtUtc": "2026-11-27T21:06:08.427Z",
+  "result": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 60,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/cb68d37b-574c-45d3-aad8-34adc1c791e3/palacio-salvo-visite-guidee",
+  "publicationBlockers": []
+}

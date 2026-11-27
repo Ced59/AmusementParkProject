@@ -1,0 +1,159 @@
+{
+  "entryId": "UY-candidate-discovery-palacio-salvo-tour-20261127",
+  "standaloneAttractionId": "cb68d37b-574c-45d3-aad8-34adc1c791e3",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "d780c1a2-b2ae-4e65-9436-9720f58b27fa",
+      "appliedAtUtc": "2026-11-27T21:01:24.8275575Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "4936f766-dc86-48d4-af60-8f19af916f19",
+      "appliedAtUtc": "2026-11-27T21:01:40.294482Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "ec85f666-aadf-44b8-8b78-2c527cd38113",
+      "appliedAtUtc": "2026-11-27T21:02:31.8770209Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "6ecae255-c7c2-4952-b7e2-d52a5b8eca61",
+      "appliedAtUtc": "2026-11-27T21:04:14.5155813Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "e656ae080654480493e2e0b8a138d790",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_Salvo_de_Montevideo,_2025.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 1275,
+      "credit": "Ucriesidelplata / Wikimedia Commons (CC BY 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:02:53.743Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "41ae2d8d3b834bd79a0e831e30395890",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_Salvo_42.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 797,
+      "height": 1200,
+      "credit": "Willy Rey / Wikimedia Commons (CC BY-SA 3.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:03:08.916Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "487508c1cff94f31b010058815f07e95",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_aerea_del_Palacio_Salvo_-_dji202402271943580169d.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Claudio Di Mauro / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:03:22.201Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "78c741643e7d4174838f88fd4ac41adf",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Balcones_del_Palacio_Salvo_de_Montevideo.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1280,
+      "credit": "Felipe Restrepo Acosta / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:03:36.48Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "446d7c01e7a343dfbfdacee81d7b1aca",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T21:05:15.2168283Z",
+    "externalPostId": "1285475681307050_122129093091424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129093091424431"
+  }
+}

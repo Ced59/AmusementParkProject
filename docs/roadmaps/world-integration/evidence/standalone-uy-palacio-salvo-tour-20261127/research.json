@@ -1,0 +1,74 @@
+{
+  "entryId": "UY-candidate-discovery-palacio-salvo-tour-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Ticketed guided tour of Palacio Salvo with a viewpoint, terrace, stained glass and Tango Museum. Its route and tickets are independent of the mixed-use building.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Palacio Salvo (UY)",
+      "Salvo Palace (UY)",
+      "Mirador Palacio Salvo (UY)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Palacio Salvo (UY)",
+      "Salvo Palace (UY)",
+      "Mirador Palacio Salvo (UY)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAliasAndSourceUrlMatches": 0
+  },
+  "sources": {
+    "municipalTourism": "https://www.descubrimontevideo.uy/palacio-salvo",
+    "November2026Booking": "https://redtickets.uy/evento/Visitas-guiadas-al-Palacio-Salvo--NOVIEMBRE/34067/",
+    "coordinates": "https://www.openstreetmap.org/?mlat=-34.9068402&mlon=-56.1983509#map=18/-34.9068402/-56.1983509"
+  },
+  "observations": {
+    "address": "Plaza Independencia 848, Montevideo",
+    "coordinates": [
+      -34.9068402,
+      -56.1983509
+    ],
+    "receptionHours": "Monday–Friday 10:00–17:00, Saturday 10:00–14:00, Sunday 12:00–16:00 according to the tourism page.",
+    "visitFormat": "Guided timed departures in Spanish, English and Portuguese; about 45 minutes. Booking via RedTickets.",
+    "route": "Several floors, stained glass, terrace, floor-25 viewpoint and Tango Museum per November 2026 ticket listing.",
+    "access": "Stairs on route; terrace omitted when weather prevents access.",
+    "price": "Paid, but no publicly visible numeric current price on booking page; dynamic price with no fabricated minimum.",
+    "youngChildren": "Children five and younger free per the November ticket listing."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_Salvo_de_Montevideo,_2025.jpg",
+      "artist": "Ucriesidelplata",
+      "license": "CC BY 4.0",
+      "captured": "2025-05-07 17:25:25",
+      "depicts": "exterior of the building in 2025"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_Salvo_42.jpg",
+      "artist": "Willy Rey",
+      "license": "CC BY-SA 3.0",
+      "captured": "Taken on 23 May 2011, 04:49:57",
+      "depicts": "interior staircase and stained glass"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_aerea_del_Palacio_Salvo_-_dji202402271943580169d.jpg",
+      "artist": "Claudio Di Mauro",
+      "license": "CC BY-SA 4.0",
+      "captured": "2024-03-12",
+      "depicts": "building in Montevideo skyline at sunset"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Balcones_del_Palacio_Salvo_de_Montevideo.jpg",
+      "artist": "Felipe Restrepo Acosta",
+      "license": "CC BY-SA 4.0",
+      "captured": "Taken on 26 December 2016, 13:19:17",
+      "depicts": "close-up of balconies and domes"
+    }
+  ],
+  "scopeNotes": [
+    "November 2026 live departure list proves operation; future dates must be checked on the ticketing site.",
+    "Structured opening hours describe reception windows, not a continuous walk-in tour.",
+    "No numeric adult price is published in the accessible ticket listing; no price has been invented.",
+    "The exterior and aerial photos are not claimed to be taken during the tour."
+  ]
+}

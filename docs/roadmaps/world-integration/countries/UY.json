@@ -16,7 +16,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "Palacio Salvo — visite guidée : fiche autonome publiée le 27 novembre 2026 avec quatre photos exactes et publication Facebook ; prix adulte variable non chiffré faute de montant public actuel et départs ultérieurs à recontrôler."
   ],
   "entries": [
     {
@@ -168,6 +169,86 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "UY-candidate-discovery-palacio-salvo-tour-20261127",
+      "name": "Palacio Salvo — visite guidée",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Visite guidée et mirador à billet propre",
+      "locality": "Plaza Independencia 848, Montevideo",
+      "siteId": "cb68d37b-574c-45d3-aad8-34adc1c791e3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Tourisme de Montevideo : visites guidées actives ; RedTickets présente des départs datés en novembre 2026.",
+      "identityConfidence": "Billetterie et parcours guidé propres ; recherches PDE Park et Standalone sous trois noms sans fiche, backlog sans nom ni source correspondants.",
+      "possibleMatches": [],
+      "aliases": [
+        "Palacio Salvo",
+        "Salvo Palace",
+        "Mirador Palacio Salvo"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T21:03:36.480Z",
+      "integrationHistory": [
+        {
+          "eventId": "standalone-palacio-salvo-tour-20261127",
+          "appliedAt": "2026-11-27T21:03:36.480Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cb68d37b-574c-45d3-aad8-34adc1c791e3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-uy-palacio-salvo-tour-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-uy-palacio-salvo-tour-20261127/audit.json",
+          "summary": "Palacio Salvo : visite guidée, données officielles et réservations, quatre photos exactes et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; contrôler la billetterie et les créneaux à partir de décembre 2026 et compléter le prix chiffré lorsqu’il sera officiellement visible.",
+      "sources": [
+        {
+          "label": "Tourisme de Montevideo — visite guidée, langues et horaires",
+          "url": "https://www.descubrimontevideo.uy/palacio-salvo",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "RedTickets — dates de novembre 2026, parcours et conditions",
+          "url": "https://redtickets.uy/evento/Visitas-guiadas-al-Palacio-Salvo--NOVIEMBRE/34067/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — Palacio Salvo",
+          "url": "https://www.openstreetmap.org/?mlat=-34.9068402&mlon=-56.1983509#map=18/-34.9068402/-56.1983509",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Ucriesidelplata / Wikimedia Commons (CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Palacio_Salvo_de_Montevideo,_2025.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Willy Rey / Wikimedia Commons (CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Palacio_Salvo_42.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Claudio Di Mauro / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Vista_aerea_del_Palacio_Salvo_-_dji202402271943580169d.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, Felipe Restrepo Acosta / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:2016_Balcones_del_Palacio_Salvo_de_Montevideo.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Visite guidée avec parcours, créneaux et billet distincts des fonctions résidentielles et commerciales de l’immeuble."
+      }
     }
   ]
 }
