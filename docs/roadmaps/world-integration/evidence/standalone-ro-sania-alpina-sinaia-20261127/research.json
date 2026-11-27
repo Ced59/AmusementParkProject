@@ -1,0 +1,20 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Sania Alpină Sinaia, luge alpine sur rails à Sinaia (Roumanie), exploitée par Transport Urban Sinaia ; distincte de la télécabine de transport.",
+  "antiDuplicate": "Recherches PDE SearchParks et SearchStandaloneAttractions sur Sania Alpina, Sania Alpină et Sinaia sans fiche homonyme avant création. Le dossier RCDB Gondola Sinaia est lié sans seconde fiche de coaster.",
+  "officialSources": [
+    {
+      "url": "https://sinaiago.ro/",
+      "finding": "Mise à jour du 27 novembre 2026 à 09:10 : Gondola Sinaia et Sania Alpină ne fonctionnent pas pour le public."
+    },
+    {
+      "url": "https://www.sunkidworld.com/en/projects/detail/romanias-longest-mountain-coaster-boosts-year-round-tourism-in-sinaia/",
+      "finding": "Ouverture le 1er décembre 2025 ; fabricant Sunkid ; descente de 2 157 m, dénivelé 438 m, vitesse maximale 40 km/h et transport des luges par la télécabine ; galerie photo de l’installation."
+    },
+    {
+      "url": "https://www.primaria-sinaia.ro/2025/09/09/hotararea-nr-108-din-02-09-2025-privind-aprobarea-tarifului-aferent-instalatiei-de-agrement-sanie-alpina-practicat-de-sc-transport-urban-sinaia-srl-si-programul-de-functionare/",
+      "finding": "Décision tarifaire de 2025 : 70 lei par course et horaires saisonniers. Le tarif n’est pas présenté comme actuel, la période 2025–2026 affichée par l’exploitant étant expirée."
+    }
+  ],
+  "editorialDecision": "Attraction autonome publiée avec statut TemporarilyClosed et sans horaires futurs inventés. Trois photos exactes fournies par la page constructeur avec crédit de la source."
+}

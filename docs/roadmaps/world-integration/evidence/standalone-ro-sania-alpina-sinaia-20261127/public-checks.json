@@ -1,0 +1,50 @@
+[
+  {
+    "language": "fr",
+    "url": "https://amusement-parks.fun/fr/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5ed0ed849a454b51a7d459cc8d6eead5/social-preview-v2"
+  },
+  {
+    "language": "en",
+    "url": "https://amusement-parks.fun/en/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5ed0ed849a454b51a7d459cc8d6eead5/social-preview-v2"
+  },
+  {
+    "language": "de",
+    "url": "https://amusement-parks.fun/de/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5ed0ed849a454b51a7d459cc8d6eead5/social-preview-v2"
+  },
+  {
+    "language": "es",
+    "url": "https://amusement-parks.fun/es/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5ed0ed849a454b51a7d459cc8d6eead5/social-preview-v2"
+  },
+  {
+    "language": "it",
+    "url": "https://amusement-parks.fun/it/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5ed0ed849a454b51a7d459cc8d6eead5/social-preview-v2"
+  },
+  {
+    "language": "nl",
+    "url": "https://amusement-parks.fun/nl/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5ed0ed849a454b51a7d459cc8d6eead5/social-preview-v2"
+  },
+  {
+    "language": "pl",
+    "url": "https://amusement-parks.fun/pl/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5ed0ed849a454b51a7d459cc8d6eead5/social-preview-v2"
+  },
+  {
+    "language": "pt",
+    "url": "https://amusement-parks.fun/pt/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5ed0ed849a454b51a7d459cc8d6eead5/social-preview-v2"
+  }
+]

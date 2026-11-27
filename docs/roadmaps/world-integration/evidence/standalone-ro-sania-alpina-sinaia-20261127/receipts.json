@@ -1,0 +1,133 @@
+{
+  "entryId": "RO-candidate-discovery-5f303f6b7ebd416a",
+  "standaloneAttractionId": "3beac74e-685b-46b1-b3a5-ee10c882fdb5",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "8a15d685-f776-419a-9ead-ff579b6b9721",
+      "appliedAtUtc": "2026-11-27T16:15:59.9737391Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "5e6151b9-df92-463b-8c13-a2bc61ab2366",
+      "appliedAtUtc": "2026-11-27T16:16:45.9428383Z",
+      "isApplied": true
+    },
+    {
+      "stage": "details",
+      "operationId": "ec5b640b-794d-45d7-ba0c-c72565a50982",
+      "appliedAtUtc": "2026-11-27T16:16:59.601729Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "3fcae6c2-c93b-4c03-be57-4afc58642af3",
+      "appliedAtUtc": "2026-11-27T16:19:26.1698475Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "5ed0ed849a454b51a7d459cc8d6eead5",
+      "sourceUrl": "https://www.sunkidworld.com/fileadmin/_processed_/a/5/csm_2026-03_MOCO_Sinaia__RO___c__Provid_22_S.R.L.__3__cef188de99.jpg",
+      "importedAtUtc": "2026-11-27T16:17:46.665Z",
+      "publishedAtUtc": "2026-11-27T16:18:35.447Z",
+      "isCurrent": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Provid 22 S.R.L. / Sunkid"
+    },
+    {
+      "imageId": "136e1b5d7fac4475a1345a7db3b369d6",
+      "sourceUrl": "https://www.sunkidworld.com/fileadmin/_processed_/5/b/csm_2026-03_MOCO_Sinaia__RO___c__Provid_22_S.R.L.__7__8b21a3ac73.jpg",
+      "importedAtUtc": "2026-11-27T16:18:04.595Z",
+      "publishedAtUtc": "2026-11-27T16:18:40.959Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Provid 22 S.R.L. / Sunkid"
+    },
+    {
+      "imageId": "a4f47e50a28a42349b080848276ac068",
+      "sourceUrl": "https://www.sunkidworld.com/fileadmin/_processed_/8/0/csm_2026-03_MOCO_Sinaia__RO___c__Sinaia_a0c07a580c.jpg",
+      "importedAtUtc": "2026-11-27T16:18:13.103Z",
+      "publishedAtUtc": "2026-11-27T16:18:46.583Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Sinaia / Sunkid"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T16:18:46.583Z",
+  "lastDataIntegrationStage": "Publication des métadonnées et légendes de la troisième photo",
+  "finalAudit": {
+    "completenessScore": 89,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "completenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-ro-sania-alpina-sinaia-20261127/final-completeness.json"
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T16:19:26.1698475Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+    "facebookStatus": "Published",
+    "facebookPublishedAtUtc": "2026-11-27T16:20:38.9983617Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129070819424431"
+  }
+}
