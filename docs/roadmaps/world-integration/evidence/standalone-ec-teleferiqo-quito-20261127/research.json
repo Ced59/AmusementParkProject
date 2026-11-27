@@ -1,0 +1,85 @@
+{
+  "entryId": "EC-candidate-discovery-teleferiqo-quito-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Paid scenic cable car linking a Quito base station to Cruz Loma, with dedicated fares and a return trip. Hiking, swings, horse rides and other Cruz Loma activities are outside the scope of this entry.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "TelefériQo (EC)",
+      "Teleférico de Quito (EC)",
+      "Cruz Loma (EC)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "TelefériQo (EC)",
+      "Teleférico de Quito (EC)",
+      "Cruz Loma (EC)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAliasAndSourceUrlMatches": 0
+  },
+  "sources": {
+    "experience": "https://teleferico.com.ec/product/teleferiqo/",
+    "dedicatedHoursAndTariffs": "https://teleferico.com.ec/horarios-y-tarifas/",
+    "faq": "https://teleferico.com.ec/preguntas-frecuentes/",
+    "coordinates": "https://www.openstreetmap.org/?mlat=-0.1895411&mlon=-78.5283237#map=18/-0.1895411/-78.5283237"
+  },
+  "observations": {
+    "address": "Fulgencio Araujo y Avenida Occidental, Quito",
+    "baseCoordinates": [
+      -0.1895411,
+      -78.5283237
+    ],
+    "route": "Base station to Cruz Loma, around 2.5 km in 18 minutes.",
+    "hours": "Mon–Thu 10:00–18:00, Fri 08:00–18:00, Sat–Sun 08:00–19:00.",
+    "lastTicket": "Mon–Fri 17:00, Sat–Sun 17:30; allow about 18 minutes to descend.",
+    "ecuadorianIdFaresUSD": {
+      "adult": 5.25,
+      "under18": 3.25,
+      "seniorOrDisabled": 2.5
+    },
+    "generalFaresUSD": {
+      "adult": 9,
+      "under18": 7,
+      "seniorOrDisabled": 6.5
+    },
+    "minimumAge": "18 months",
+    "access": "Wheelchairs permitted; thunderstorms may stop operation temporarily.",
+    "sales": "Ticket office on site only; operator FAQ says no current online sales."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gondolas_of_the_TeleferiQo_in_Quito,_Ecuador.jpg",
+      "artist": "AndrewDressel",
+      "license": "CC BY-SA 4.0",
+      "captured": "2017-06-24 11:04:15",
+      "depicts": "gondolas on the TelefériQo line"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_station_of_the_TeleferiQo_in_Quito,_Ecuador.jpg",
+      "artist": "AndrewDressel",
+      "license": "CC BY-SA 4.0",
+      "captured": "2017-06-24 11:11:34",
+      "depicts": "Cruz Loma upper station"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9riQo.jpg",
+      "artist": "Eman Jaradat",
+      "license": "CC BY-SA 4.0",
+      "captured": "2016-07-08 01:33:25",
+      "depicts": "Andean landscape seen from the TelefériQo area"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9riQo_views_of_mountains_and_Quito_-_Ecuador_-_South_America.jpg",
+      "artist": "David Berkowitz",
+      "license": "CC BY 2.0",
+      "captured": "2010-07-18 18:14:49",
+      "depicts": "Quito view from Cruz Loma"
+    }
+  ],
+  "scopeNotes": [
+    "The FAQ still carries a different operating-hours statement next to its January 2024 reopening notice. The dedicated hours-and-fares page was chosen as the current schedule source.",
+    "The site calendar ends February 2027 and needs re-verification.",
+    "The four licensed photos are exact to the cable car, upper station or Cruz Loma view; their dates are retained in source evidence.",
+    "Ticket fare categories are conditional on presentation of an Ecuadorian national ID; no generic discount is implied."
+  ]
+}
