@@ -1,0 +1,15 @@
+{
+  "entryId": "ES-candidate-discovery-mirador-torre-glories-20261127",
+  "standaloneAttractionId": "5ae63369-a550-4fa9-85df-0413e6f7040e",
+  "evaluatedAtUtc": "2026-11-27T20:35:00.626Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/5ae63369-a550-4fa9-85df-0413e6f7040e/mirador-torre-glories",
+  "publicationBlockers": []
+}

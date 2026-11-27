@@ -1,0 +1,78 @@
+{
+  "entryId": "ES-candidate-discovery-mirador-torre-glories-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Paid observation deck on the upper level of Torre Glòries, with a dedicated public entrance and operator ticketing. The standard tour includes the Hipermirador exhibition and the viewpoint; Cloud Cities is a separate add-on. Distinct visitor experience from the office tower.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Mirador Torre Glòries (ES)",
+      "Torre Glòries (ES)",
+      "Torre Agbar (ES)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Mirador Torre Glòries (ES)",
+      "Torre Glòries (ES)",
+      "Torre Agbar (ES)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "operatorHoursSource": "https://www.miradortorreglories.com/planifica-tu-visita/como-llegar-horarios/",
+  "operatorTicketSource": "https://www.miradortorreglories.com/planifica-tu-visita/comprar-entradas/",
+  "cityGuideSource": "https://guia.barcelona.cat/es/detall/torre-glories-mirador-de-torre-glories_99400678749.html",
+  "coordinateSource": "https://www.openstreetmap.org/?mlat=41.4036614&mlon=2.1899895#map=18/41.4036614/2.1899895",
+  "observations": {
+    "address": "Avinguda Diagonal 209, 08018 Barcelona",
+    "entranceCoordinates": [
+      41.4036614,
+      2.1899895
+    ],
+    "observationHeightMeters": 125,
+    "operatorWinterHours": "1 Nov–31 Mar Wednesday–Monday 10:00–18:00, Tuesday closed; last entry one hour before closing.",
+    "DecemberExceptions": "25 Dec closed; 24 and 31 Dec 10:00–15:00.",
+    "regularAdmissionEUR": {
+      "general": 18,
+      "youthOrSenior": 15,
+      "childrenThrough12": 0
+    },
+    "cloudCitiesAdultEUR": 22,
+    "specialOffers": "Operator shows online promotions; reference prices are fixed examples, final checkout may differ.",
+    "sourceChecked": "Operator hours and ticket pages directly fetched 27 Nov 2026."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:025_Torre_Gl%C3%B2ries,_av._Diagonal_209-211_(Barcelona),_vista_des_de_l%27est.jpg",
+      "artist": "Enric",
+      "license": "CC BY-SA 4.0",
+      "captured": "2025-03-05 18:47:01",
+      "depicts": "tower at dusk"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:027_Torre_Gl%C3%B2ries,_av._Diagonal_209-211_(Barcelona),_entrada_principal.jpg",
+      "artist": "Enric",
+      "license": "CC BY-SA 4.0",
+      "captured": "2025-03-05 18:49:11",
+      "depicts": "visitor entrance"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barcelona-Sant_Marti,_kantoorgebouw_Mirador_Torre_Gl%C3%B2ries_IPA-40657_en_deel_van_Museu_del_Disseny_IPA-42742_IMG_3351_2026-08-28_14.02.jpg",
+      "artist": "Michielverbeek",
+      "license": "CC BY-SA 4.0",
+      "captured": "2026-08-28 14:02:44",
+      "depicts": "tower from adjacent plaza"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cloud_Cities_Barcelona.jpg",
+      "artist": "Clemens Schmillen",
+      "license": "CC BY-SA 4.0",
+      "captured": "2025-09-26",
+      "depicts": "Cloud Cities Barcelona add-on installation"
+    }
+  ],
+  "scopeNotes": [
+    "Barcelona city guide lists a conflicting winter schedule (daily until 18:30); current operator page was used for the structured calendar, and visitors are advised to verify booking slots.",
+    "Calendar ends 31 Mar 2027; next season requires re-verification.",
+    "Cloud Cities is not included in general admission; its photo caption and price make this clear.",
+    "Four exact licensed photos include source, creator and localized metadata."
+  ]
+}
