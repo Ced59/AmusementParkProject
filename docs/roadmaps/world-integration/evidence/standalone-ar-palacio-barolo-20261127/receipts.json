@@ -1,0 +1,159 @@
+{
+  "entryId": "AR-candidate-discovery-palacio-barolo-tour-20261127",
+  "standaloneAttractionId": "b377b668-a4df-466d-b9d4-e053d76e6bba",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "9e530ca2-18fa-4a6e-b35e-3a0d5ea39c94",
+      "appliedAtUtc": "2026-11-27T20:12:03.3278052Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "b16bc9a8-db1f-445d-947c-400807d5b854",
+      "appliedAtUtc": "2026-11-27T20:12:15.6480069Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "1c1b3f82-580a-478d-b6aa-baf93807627e",
+      "appliedAtUtc": "2026-11-27T20:12:26.3666951Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "79179181-971f-4ded-a8d5-112ea72ace90",
+      "appliedAtUtc": "2026-11-27T20:14:36.4819902Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "021c060dd8774913835e60bd46c0d663",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_Barolo_visto_de_frente.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "EEJCC / Wikimedia Commons (CC0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:13:25.522Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "d529a31aee6046ad9fa8b718bd40c818",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador_Barolo.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 540,
+      "credit": "Pablogenesini / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:13:38.539Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "f84c8d69315340afb865e29a28150758",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Faro_Palacio_Barolo.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 641,
+      "credit": "Nicolás E. Moro / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:13:51.386Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "6f2375a4f04e49caaa2065da4eeed8c5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Escaleras_del_Palacio_Barolo_2015.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 640,
+      "height": 475,
+      "credit": "Gerardo Silveira Mirazón / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:14:04.787Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "271e7bb00ffd48ad89ff3a72096b7157",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T20:16:02.3108381Z",
+    "externalPostId": "1285475681307050_122129087691424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129087691424431"
+  }
+}
