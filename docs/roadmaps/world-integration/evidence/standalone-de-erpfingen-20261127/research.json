@@ -1,0 +1,16 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Sommerbobbahn Erpfingen, luge d’été en auge au Melchinger Tal 2, Sonnenbühl-Erpfingen, exploitée par Freizeitbetriebe Möck.",
+  "antiDuplicate": "Recherches PDE SearchParks et SearchStandaloneAttractions sur Erpfingen, Sommerbob et Sonnenbühl sans fiche homonyme visible ou masquée.",
+  "officialSources": [
+    {
+      "url": "https://sommerbob.de/sommerbobbahn/",
+      "finding": "Piste de 1 300 m et dénivelé de 75 m ; pause hivernale après la saison 2026, reprise envisagée vers février ou mars 2027. Trois photos exactes de la piste, prix par course affichés pendant la pause."
+    },
+    {
+      "url": "https://sommerbob.de/kontakt/",
+      "finding": "Adresse Im Melchinger Tal 2 et exploitant Freizeitbetriebe Möck."
+    }
+  ],
+  "editorialDecision": "Fiche autonome de luge d’été en auge, statut TemporarilyClosed. Les tarifs affichés pendant la fermeture sont documentés mais non insérés comme tarifs actuels : le client PDE refuse les offres actives pour une attraction fermée. Aucun jour de reprise inventé."
+}

@@ -1,0 +1,121 @@
+{
+  "entryId": "DE-candidate-f828e0f7c6953e",
+  "standaloneAttractionId": "f048d619-bf35-4e4a-81bc-4000c38d591b",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "445c13f9-344a-4ded-a2c2-84e3ec4a4213",
+      "appliedAtUtc": "2026-11-27T16:44:29.0510706Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "53c58ce3-5d64-4285-a157-9f8b1cacab87",
+      "appliedAtUtc": "2026-11-27T16:48:25.8440992Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "92fd28fb158049cd951332074e61acec",
+      "sourceUrl": "https://sommerbob.de/wp-content/uploads/2024/03/Sommerbobbahn-bobbahn-00067-scaled.jpg",
+      "importedAtUtc": "2026-11-27T16:45:59.542Z",
+      "publishedAtUtc": "2026-11-27T16:47:39.377Z",
+      "isCurrent": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Freizeitbetriebe Möck / Sommerbob"
+    },
+    {
+      "imageId": "a2c9534584c34d9690039830459b1277",
+      "sourceUrl": "https://sommerbob.de/wp-content/uploads/2024/03/Sommerbobbahn-bobbahn-09758-scaled.jpg",
+      "importedAtUtc": "2026-11-27T16:47:06.049Z",
+      "publishedAtUtc": "2026-11-27T16:47:44.958Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Freizeitbetriebe Möck / Sommerbob"
+    },
+    {
+      "imageId": "04f04a6d99e34b96925bdc409903c75d",
+      "sourceUrl": "https://sommerbob.de/wp-content/uploads/2024/03/Sommerbobbahn-bobbahn-00063-scaled.jpg",
+      "importedAtUtc": "2026-11-27T16:47:23.721Z",
+      "publishedAtUtc": "2026-11-27T16:47:50.514Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Freizeitbetriebe Möck / Sommerbob"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T16:47:50.514Z",
+  "lastDataIntegrationStage": "Publication des métadonnées et légendes de la troisième photo",
+  "finalAudit": {
+    "completenessScore": 83,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "completenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erpfingen-20261127/final-completeness.json"
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T16:48:25.8440992Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/f048d619-bf35-4e4a-81bc-4000c38d591b/sommerbobbahn-erpfingen",
+    "facebookStatus": "Published",
+    "facebookPublishedAtUtc": "2026-11-27T16:49:02.6902478Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129072301424431"
+  }
+}
