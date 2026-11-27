@@ -1,0 +1,138 @@
+{
+  "entryId": "JP-candidate-discovery-tsutenkaku-tower-20261127",
+  "standaloneAttractionId": "b3718c55-4004-4111-ae58-db8a1f093782",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "9a9bb5c7-c855-401d-a899-21b1983a0f4b",
+      "appliedAtUtc": "2026-11-27T18:18:45.2281019Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "c83f608b-d75c-4290-9992-727d2802a7b1",
+      "appliedAtUtc": "2026-11-27T18:22:09.2122486Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "272ea6d7-c5cb-44d5-9cdf-02c2cb0cccb9",
+      "appliedAtUtc": "2026-11-27T18:22:20.2349477Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "f60677ea-35e6-477b-b281-3ecc27c45f48",
+      "appliedAtUtc": "2026-11-27T18:22:30.832918Z",
+      "isApplied": true
+    },
+    {
+      "stage": "access",
+      "operationId": "97ef37f5-2940-49c4-837d-1087f64bd311",
+      "appliedAtUtc": "2026-11-27T18:22:41.5295976Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "c71b4c4f-92c8-4251-936a-2f1d96088469",
+      "appliedAtUtc": "2026-11-27T18:23:13.0993909Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "961d178032df4489927ca541d856d869",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Tsutenkaku,_Osaka.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1200,
+      "height": 1600,
+      "credit": "Sakai Yayoi / Wikimedia Commons (CC0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "68a9da4335a54e36b8e22ed1e3c167bb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shinsekai_and_Tsutenkaku_Tower.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1600,
+      "height": 1200,
+      "credit": "Sakai Yayoi / Wikimedia Commons (CC0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "39e999bbc6c04a6c91f02cc6bab1a258",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osaka_Skyline_from_Tsutenkaku_20260510_110100_UTC%2B9.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1600,
+      "height": 1200,
+      "credit": "Loggieloggie / Wikimedia Commons (CC0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "ce076b6ca2af4a6e90ae30d1c6a07e98",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T18:23:48.3181434Z",
+    "externalPostId": "1285475681307050_122129077797424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129077797424431"
+  }
+}

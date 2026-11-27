@@ -19627,6 +19627,98 @@
         "attractions": [],
         "rationale": "Tour panoramique à billet et exploitant propres ; recherches PDE Park et Standalone en anglais et japonais sans résultat."
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-tsutenkaku-tower-20261127",
+      "name": "Tsutenkaku Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique à billet propre",
+      "locality": "Shinsekai, Naniwa-ku, Osaka",
+      "siteId": "b3718c55-4004-4111-ae58-db8a1f093782",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site officiel actif avec créneaux de visite, tarifs, horaires et exceptions publiées pour la fin de 2026 et début 2027.",
+      "identityConfidence": "Tour panoramique indépendante à entrée propre ; recherches PDE Park et Standalone en anglais et japonais sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "通天閣",
+        "Tsūtenkaku"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T18:22:41.529Z",
+      "integrationHistory": [
+        {
+          "eventId": "JP-tsutenkaku-20261127-completed",
+          "appliedAt": "2026-11-27T18:22:41.529Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b3718c55-4004-4111-ae58-db8a1f093782",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tsutenkaku-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tsutenkaku-20261127/audit.json",
+          "summary": "Tsutenkaku Tower publié avec trois photos, horaires, prix, histoire, audit et annonce Facebook."
+        }
+      ],
+      "nextAction": "Conserver cette ligne ; vérifier les tarifs après le 3 janvier 2027 et actualiser les horaires après le 1er février 2027. Les activités Tower Slider et Dive & Walk ont des billets séparés.",
+      "sources": [
+        {
+          "label": "Tsutenkaku — horaires, tarifs, réservations et accès",
+          "url": "https://www.tsutenkaku.co.jp/annai/index.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Tsutenkaku — plateforme extérieure et restriction fauteuil",
+          "url": "https://www.tsutenkaku.co.jp/tour/tenbo-paradise.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Tsutenkaku — guide officiel et ouverture le 28 octobre 1956",
+          "url": "https://www.tsutenkaku.co.jp/pdf/Tsutenkaku-guide202011.pdf",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Office de tourisme d’Osaka — histoire et hauteur de la tour",
+          "url": "https://www.osaka-info.jp/en/spot/tsutenkaku/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "JNTO — adresse et quartier Shinsekai",
+          "url": "https://www.japan.travel/en/spot/1100/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikidata — coordonnées de la tour",
+          "url": "https://www.wikidata.org/wiki/Q1148463",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — tour en 2026, Sakai Yayoi, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:New_Tsutenkaku,_Osaka.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Shinsekai et tour en 2026, Sakai Yayoi, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Shinsekai_and_Tsutenkaku_Tower.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — panorama depuis la tour en 2026, Loggieloggie, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Osaka_Skyline_from_Tsutenkaku_20260510_110100_UTC%2B9.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Tour d’observation à billet propre, sans Park parent ; les activités de glisse et de saut ont des billets distincts de l’observation générale."
+      }
     }
   ]
 }

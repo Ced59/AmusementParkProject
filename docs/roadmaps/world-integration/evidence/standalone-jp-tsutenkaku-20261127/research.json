@@ -1,0 +1,45 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Tsutenkaku Tower, tour panoramique de Shinsekai à Osaka.",
+  "antiDuplicate": "SearchParks et SearchStandaloneAttractions PDE sur Tsutenkaku et 通天閣 au Japon : zéro résultat, fiches masquées comprises. Aucun homonyme Tsutenkaku ou 通天閣 dans JP.json avant création.",
+  "sources": [
+    {
+      "url": "https://www.tsutenkaku.co.jp/annai/index.html",
+      "finding": "Tsutenkaku — horaires, tarifs, réservations et accès"
+    },
+    {
+      "url": "https://www.tsutenkaku.co.jp/tour/tenbo-paradise.html",
+      "finding": "Tsutenkaku — plateforme extérieure et restriction fauteuil"
+    },
+    {
+      "url": "https://www.tsutenkaku.co.jp/pdf/Tsutenkaku-guide202011.pdf",
+      "finding": "Tsutenkaku — guide officiel et ouverture le 28 octobre 1956"
+    },
+    {
+      "url": "https://www.osaka-info.jp/en/spot/tsutenkaku/",
+      "finding": "Office de tourisme d’Osaka — histoire et hauteur de la tour"
+    },
+    {
+      "url": "https://www.japan.travel/en/spot/1100/",
+      "finding": "JNTO — adresse et quartier Shinsekai"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Q1148463",
+      "finding": "Wikidata — coordonnées de la tour"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:New_Tsutenkaku,_Osaka.jpg",
+      "finding": "Wikimedia Commons — tour en 2026, Sakai Yayoi, CC0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Shinsekai_and_Tsutenkaku_Tower.jpg",
+      "finding": "Wikimedia Commons — Shinsekai et tour en 2026, Sakai Yayoi, CC0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Osaka_Skyline_from_Tsutenkaku_20260510_110100_UTC%2B9.jpg",
+      "finding": "Wikimedia Commons — panorama depuis la tour en 2026, Loggieloggie, CC0"
+    }
+  ],
+  "photoDecision": "Trois photos exactes prises en 2026, sous CC0 et avec auteurs vérifiés sur Wikimedia : tour, rue de Shinsekai avec la tour et panorama depuis le belvédère.",
+  "editorialDecision": "Tour Operating, hauteur 108 m avec paratonnerre selon l’office de tourisme, tour actuelle ouverte en 1956. Billets généraux 1 500 ¥ adulte dès quinze ans et 800 ¥ enfant de cinq à quatorze ans ; tarifs majorés du 30 décembre 2026 au 3 janvier 2027 clairement signalés en notes. Horaires ordinaires et quatre exceptions officielles structurés jusqu’au 1er février 2027. La restriction fauteuil concerne uniquement la plateforme extérieure spéciale ; l’accessibilité du belvédère général n’est pas affirmée sans source explicite."
+}
