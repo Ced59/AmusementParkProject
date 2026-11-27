@@ -42,10 +42,10 @@
   },
   "photos": [
     {
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Obelisco_de_Buenos_Aires,_Argentina.jpg",
-      "artist": "Franco Javier Perez",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Obelisco_de_Buenos_Aires,_Avenida_9_de_Julio.jpg",
+      "artist": "Dibumartinez23",
       "license": "CC BY-SA 4.0",
-      "captured": "2023-06-13",
+      "captured": "Taken on 23 April 2024",
       "depicts": "monument exterior"
     },
     {
@@ -63,16 +63,17 @@
       "depicts": "staircase interior"
     },
     {
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Obelisco_de_Buenos_Aires,_Argentina,_en_ocaso.jpg",
-      "artist": "Sushikdda",
-      "license": "CC0",
-      "captured": "2025-01-31 19:24:32",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-vista-panoramica1500x610.jpg",
+      "artist": "GCBA",
+      "license": "CC BY 2.5 ar",
+      "captured": "2025-12",
       "depicts": "panorama from deck"
     }
   ],
   "scopeNotes": [
     "Official city tourism information was checked on 27 Nov 2026 and last modified on 24 Aug 2026. The operator booking domain returned HTTP 503 during research; booking availability and displayed price should be confirmed again before travel.",
     "Hours are represented only through 31 Dec 2026 and should be checked for 2027.",
-    "The visit is explicitly not accessible to wheelchair users and persons with reduced mobility; this fact is shown in the page and structured access conditions."
+    "The visit is explicitly not accessible to wheelchair users and persons with reduced mobility; this fact is shown in the page and structured access conditions.",
+    "Earlier photo candidates were reviewed but not imported; only the four photographs listed above are published and cited in the country register."
   ]
 }
