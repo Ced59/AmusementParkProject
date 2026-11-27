@@ -1,0 +1,15 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-torreon-20261127",
+  "standaloneAttractionId": "2c855871-1a65-4a41-abb7-f9e1e2eb965c",
+  "evaluatedAtUtc": "2026-11-27T22:32:47.583Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/2c855871-1a65-4a41-abb7-f9e1e2eb965c/teleferico-de-torreon",
+  "publicationBlockers": []
+}
