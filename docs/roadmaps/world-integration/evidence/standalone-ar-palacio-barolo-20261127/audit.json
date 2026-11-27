@@ -1,0 +1,15 @@
+{
+  "entryId": "AR-candidate-discovery-palacio-barolo-tour-20261127",
+  "standaloneAttractionId": "b377b668-a4df-466d-b9d4-e053d76e6bba",
+  "evaluatedAtUtc": "2026-11-27T20:17:27.355Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/b377b668-a4df-466d-b9d4-e053d76e6bba/palacio-barolo-visite-guidee",
+  "publicationBlockers": []
+}

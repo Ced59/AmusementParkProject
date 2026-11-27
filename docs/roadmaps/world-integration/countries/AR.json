@@ -1847,6 +1847,86 @@
         "attractions": [],
         "rationale": "Mirador dans une galerie commerciale avec entrée tarifée et créneaux propres, distinct du passage public. Fiche standalone publiée et auditée."
       }
+    },
+    {
+      "entryId": "AR-candidate-discovery-palacio-barolo-tour-20261127",
+      "name": "Palacio Barolo — visite guidée",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Visite guidée et mirador à billet propre",
+      "locality": "Av. de Mayo 1370, Monserrat, Buenos Aires",
+      "siteId": "b377b668-a4df-466d-b9d4-e053d76e6bba",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Tours guidés diurnes et tarifs publiés par Palacio Barolo Tours le 27 novembre 2026.",
+      "identityConfidence": "Nom, adresse, visite et billet confirmés par exploitant et ville ; recherches PDE et backlog sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Palacio Barolo Tours",
+        "Visitas guiadas Palacio Barolo",
+        "Palacio Barolo viewpoint"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T20:14:04.787Z",
+      "integrationHistory": [
+        {
+          "eventId": "AR-palacio-barolo-tour-integration-20261127",
+          "appliedAt": "2026-11-27T20:14:04.787Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b377b668-a4df-466d-b9d4-e053d76e6bba",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-palacio-barolo-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ar-palacio-barolo-20261127/audit.json",
+          "summary": "Visite guidée publiée avec conditions de réservation, quatre tarifs, quatre photos exactes et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; revérifier chez l’exploitant les créneaux, les tarifs et les conditions d’accès au phare, puis dater chaque mise à jour de données.",
+      "sources": [
+        {
+          "label": "Palacio Barolo Tours — jours, tarifs et conditions de la visite diurne",
+          "url": "https://palaciobarolotours.com/visitas-guiadas-diurnas/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ville de Buenos Aires, tourisme — bâtiment, adresse et visite",
+          "url": "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/palacio-barolo",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — coordonnées",
+          "url": "https://www.openstreetmap.org/?mlat=-34.6096625&mlon=-58.3857277#map=18/-34.6096625/-58.3857277",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, EEJCC / Wikimedia Commons (CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Palacio_Barolo_visto_de_frente.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Pablogenesini / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Mirador_Barolo.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Nicolás E. Moro / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Faro_Palacio_Barolo.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, Gerardo Silveira Mirazón / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Escaleras_del_Palacio_Barolo_2015.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Visite guidée indépendante avec réservation et billet propres, donnant accès aux miradors et au phare. Aucune fiche Park ou Standalone homonyme trouvée ; fiche publiée et auditée."
+      }
     }
   ]
 }

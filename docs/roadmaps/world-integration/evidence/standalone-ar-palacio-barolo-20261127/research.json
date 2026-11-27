@@ -1,0 +1,76 @@
+{
+  "entryId": "AR-candidate-discovery-palacio-barolo-tour-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Paid, guided observation tour of Palacio Barolo. Admission covers the building route, panoramic balconies and generally the lighthouse; the operator sells it as its own visitor experience. The tour has distinct ticket prices and reservations.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Palacio Barolo (AR)",
+      "Mirador Barolo (AR)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Palacio Barolo (AR)",
+      "Mirador Barolo (AR)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "operatorSource": "https://palaciobarolotours.com/visitas-guiadas-diurnas/",
+  "cityTourismSource": "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/palacio-barolo",
+  "coordinateSource": "https://www.openstreetmap.org/?mlat=-34.6096625&mlon=-58.3857277#map=18/-34.6096625/-58.3857277",
+  "observations": {
+    "address": "Av. de Mayo 1370, Monserrat, Buenos Aires",
+    "coordinates": [
+      -34.6096625,
+      -58.3857277
+    ],
+    "daytimeVisits": "Wednesday through Monday by reservation; Tuesday closed; exact departure slots vary and must be checked in booking system.",
+    "tourDuration": "Up to 90 minutes",
+    "arrival": "15 minutes before departure",
+    "access": "Fourteen floors by lift, then eight by narrow stairs; lighthouse may close during heavy rain or electrical storms.",
+    "admissionARS": {
+      "general": 16800,
+      "argentineResidentDNI": 9600,
+      "residentStudentOrRetiree": 7100,
+      "nonresidentStudentOrRetiree": 12700
+    },
+    "buildingOpened": "1923 (city tourism source; not treated as tour opening date)",
+    "sourceChecked": "Operator and city tourism directly fetched 27 Nov 2026."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_Barolo_visto_de_frente.jpg",
+      "artist": "EEJCC",
+      "license": "CC0",
+      "captured": "2024-01-03",
+      "depicts": "building facade"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador_Barolo.jpg",
+      "artist": "Pablogenesini",
+      "license": "CC BY-SA 4.0",
+      "captured": "2016-12-02 18:38:54",
+      "depicts": "view from observation balcony"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Faro_Palacio_Barolo.jpg",
+      "artist": "Nicolás E. Moro",
+      "license": "CC BY-SA 4.0",
+      "captured": "2016-12-04",
+      "depicts": "lighthouse glass dome and mechanism"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Escaleras_del_Palacio_Barolo_2015.jpg",
+      "artist": "Gerardo Silveira Mirazón",
+      "license": "CC BY-SA 4.0",
+      "captured": "2015-07-16",
+      "depicts": "interior staircase"
+    }
+  ],
+  "scopeNotes": [
+    "Structured calendar records Tuesday closure only; operator requires booking and gives variable exact departure slots. No continuous walk-in interval is invented.",
+    "The Spanish operator page covers Wednesday–Monday, with prices for the same days and public holidays.",
+    "Lighthouse access may be suspended by heavy rain or thunderstorms; the guided building tour can still run.",
+    "Four exact photos with source, creator, license and localized metadata."
+  ]
+}
