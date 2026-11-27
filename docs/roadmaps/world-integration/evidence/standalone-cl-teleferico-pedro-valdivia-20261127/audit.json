@@ -1,0 +1,15 @@
+{
+  "entryId": "CL-candidate-discovery-teleferico-pedro-valdivia-20261127",
+  "standaloneAttractionId": "6bc78fa7-0889-40c5-afb7-1313d928312b",
+  "evaluatedAtUtc": "2026-11-27T21:18:38.570Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/6bc78fa7-0889-40c5-afb7-1313d928312b/teleferico-santiago-ligne-pedro-de-valdivia",
+  "publicationBlockers": []
+}
