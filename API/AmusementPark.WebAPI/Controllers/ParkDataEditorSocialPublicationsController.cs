@@ -26,13 +26,13 @@ public sealed class ParkDataEditorSocialPublicationsController : ControllerBase
 {
     private readonly IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>> draftHandler;
     private readonly ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>> publishHandler;
-    private readonly ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>> retryHandler;
+    private readonly ICommandHandler<RetryOwnFacebookPublicationCommand, ApplicationResult<SocialPublication>> retryHandler;
     private readonly ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>> deleteHandler;
 
     public ParkDataEditorSocialPublicationsController(
         IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>> draftHandler,
         ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>> publishHandler,
-        ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>> retryHandler,
+        ICommandHandler<RetryOwnFacebookPublicationCommand, ApplicationResult<SocialPublication>> retryHandler,
         ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>> deleteHandler)
     {
         this.draftHandler = draftHandler;
@@ -49,7 +49,7 @@ public sealed class ParkDataEditorSocialPublicationsController : ControllerBase
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<SocialPublication> result = await this.retryHandler.HandleAsync(
-            new RetrySocialPublicationCommand(publicationId, this.User.GetUserId(), RequireRequesterOwnership: true),
+            new RetryOwnFacebookPublicationCommand(publicationId, this.User.GetUserId()),
             cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {

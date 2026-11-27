@@ -20,7 +20,7 @@ public sealed class RetrySocialPublicationCommandHandler
 
     public Task<ApplicationResult<SocialPublication>> HandleAsync(RetrySocialPublicationCommand command, CancellationToken cancellationToken = default)
     {
-        return this.service.RetryAsync(command.PublicationId, command.RequestedByUserId, cancellationToken, command.RequireRequesterOwnership);
+        return this.service.RetryAsync(command.PublicationId, command.RequestedByUserId, cancellationToken);
     }
 }
 
