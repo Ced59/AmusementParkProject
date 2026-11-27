@@ -1,0 +1,40 @@
+{
+  "reviewedAt": "2026-11-27",
+  "candidateEntryId": "ES-candidate-discovery-teleferico-madrid-20261127",
+  "presenceSearch": "Absent du registre ES avant ce dossier ; SearchParks et SearchStandaloneAttractions via PARK_DATA_EDITOR restent obligatoires, y compris pour les fiches masquées et les alias Casa de Campo.",
+  "classification": "Téléphérique touristique durable de 2,5 km entre Pintor Rosales et Casa de Campo, avec deux gares et identité propre. Les autres équipements de Casa de Campo ne constituent pas des parkItems à rattacher à cette ligne.",
+  "lifecycle": "Fermé pour rénovation au 27 novembre 2026. Le câble de l'installation historique a commencé à être démonté le 20 janvier 2026. Ne publier ni horaires ni tarifs comme actuels. Les anciens tarifs toujours présents sur certaines pages municipales sont obsolètes pendant la fermeture.",
+  "history": "Inauguration de la ligne historique en juin 1969 selon la Ville de Madrid. L'ancien système bicâble de Von Roll est remplacé par un système monocâble prévu avec 47 cabines de 10 places. La ville prévoit une réouverture au premier trimestre 2027 sur sa page touristique, mais sa communication budgétaire d'octobre 2026 place encore la phase finale des travaux en 2027 : traiter la date comme prévision et recontrôler auprès d'EMT.",
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Madrid.jpg",
+      "author": "Xylo2121",
+      "license": "CC BY-SA 4.0",
+      "description": "Deux anciennes cabines bleues au-dessus de Casa de Campo ; sujet exact inspecté visuellement.",
+      "fileSizeBytes": 269719
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Madrid_20161106_1.jpg",
+      "author": "Tim Adams",
+      "license": "CC BY 3.0",
+      "description": "Ancienne cabine bleue 58 sur la ligne en novembre 2016 ; sujet exact inspecté visuellement.",
+      "fileSizeBytes": 192968
+    }
+  ],
+  "photoCaveat": "Les deux clichés montrent le système historique retiré en 2026, jamais les cabines futures. La légende publique doit situer leur époque. Les variantes Wikimedia de 960 px ont été téléchargées sans autre modification.",
+  "nextReview": "Recherche officielle des identités, éventuelle migration legacy, puis intégration et audit avant publication et annonce Facebook. Revalider l'avancement du chantier et la prévision de réouverture avant Apply.",
+  "sources": [
+    {
+      "label": "Ville de Madrid — démantèlement et caractéristiques des deux systèmes",
+      "url": "https://www.madrid.es/portales/munimadrid/es/Inicio/Actualidad/Noticias/Renovacion-integral-del-Teleferico-empieza-la-fase-de-desmontaje-del-cableado-original/?vgnextchannel=a12149fa40ec9410VgnVCM100000171f5a0aRCRD&vgnextfmt=default&vgnextoid=2a70403e735db910VgnVCM100000891ecb1aRCRD"
+    },
+    {
+      "label": "Tourisme officiel de Madrid — fermeture et réouverture projetée",
+      "url": "https://www.esmadrid.com/informacion-turistica/teleferico-madrid"
+    },
+    {
+      "label": "Ville de Madrid — budget 2027 et phase finale des travaux",
+      "url": "https://www.madrid.es/portales/munimadrid/es/Inicio/El-Ayuntamiento/Tetuan/El-presupuesto-de-EMT-Madrid-para-2027-superara-los-930-millones-de-euros/?vgnextchannel=0813ca5d5fb96010VgnVCM100000dc0ca8c0RCRD&vgnextfmt=default&vgnextoid=829d6490e4c81a10VgnVCM200000f921e388RCRD"
+    }
+  ]
+}
