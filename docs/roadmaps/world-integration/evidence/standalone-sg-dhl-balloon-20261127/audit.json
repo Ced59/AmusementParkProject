@@ -1,0 +1,26 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "34e2ee44-45f0-46e2-9668-6331b186893b",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/34e2ee44-45f0-46e2-9668-6331b186893b/dhl-balloon",
+  "status": "Removed",
+  "completenessScore": 86,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "photoCount": 3,
+  "primaryPhotoId": "47c108638ef8452abda4668e4dd733ae",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "historicalPhotoDecision": "Image principale d’août 2006 et légendes historiques ; statut Removed. Aucun tarif ni horaire actuel.",
+  "coordinates": "Emplacement exact de l’ancien ballon non certifié ; rue historique renseignée sans coordonnées inventées."
+}

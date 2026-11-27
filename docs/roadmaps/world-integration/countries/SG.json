@@ -2376,6 +2376,98 @@
           "network": "Facebook"
         }
       }
+    },
+    {
+      "entryId": "SG-candidate-discovery-dhl-balloon-20261127",
+      "name": "DHL Balloon",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ballon captif historique",
+      "locality": "Tan Quee Lan Street, Bugis, Singapore",
+      "siteId": "34e2ee44-45f0-46e2-9668-6331b186893b",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27T14:23:20Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Attraction lancée en avril 2006 et arrêtée en octobre 2008 selon CNA.",
+      "identityConfidence": "Ancienne activité à billet propre de Singapore Ducktours, distincte du Singapore Flyer et des autres ballons ; aucune fiche Park ou StandaloneAttraction trouvée par DHL Balloon, DHL, Singapore Ducktours et Tan Quee Lan dans le client PDE le 27 novembre 2026. Trois photos exactes et leurs droits vérifiés.",
+      "possibleMatches": [],
+      "aliases": [
+        "The DHL Balloon",
+        "DHL tethered balloon Singapore"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T14:23:08.819Z",
+      "integrationHistory": [
+        {
+          "eventId": "c81fd447-9b8d-49a4-9b15-b8eef698eb42",
+          "appliedAt": "2026-11-27T14:23:08.819Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "34e2ee44-45f0-46e2-9668-6331b186893b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-dhl-balloon-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-dhl-balloon-20261127/audit.json",
+          "summary": "Fiche historique et huit descriptions, deux événements, trois photos publiées, contrôle public et publication Facebook terminés."
+        }
+      ],
+      "nextAction": "Conserver la ligne et l’historique de trois photos ; suivre les corrections documentées sans inventer de tarif actuel ni de coordonnées précises.",
+      "sources": [
+        {
+          "label": "CNA — ouverture et fin du ballon DHL de Singapour",
+          "url": "https://www.channelnewsasia.com/singapore/homegrown-tour-company-duck-hippo-acquired-international-operator-5723531",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Time Out Singapore — attraction documentée en août 2008",
+          "url": "https://www.timeout.com/singapore/things-to-do/the-dhl-balloon",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — vue du ballon, Sengkang, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:The_DHL_Balloon_2%2C_Aug_06.JPG",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — ballon en vol, Terence Ong, CC BY 2.5",
+          "url": "https://commons.wikimedia.org/wiki/File:DHL_Balloon.JPG",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — envol du ballon, Waycool27, domaine public",
+          "url": "https://commons.wikimedia.org/wiki/File:DHLBalloon-Singapore-2007.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-27-new-standalone-discovery",
+        "method": "Recherche des ballons captifs historiques non référencés, contrôle source presse et client PDE, puis inspection des photos Wikimedia Commons.",
+        "foundAt": "2026-11-27"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [
+          {
+            "name": "DHL Balloon",
+            "source": "CNA",
+            "url": "https://www.channelnewsasia.com/singapore/homegrown-tour-company-duck-hippo-acquired-international-operator-5723531",
+            "family": "Ballon captif",
+            "sourceVenueName": "DHL Balloon",
+            "sourceLifecycleSignal": "2006–2008",
+            "sourceLocality": "Bugis, Singapore"
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration c81fd447-9b8d-49a4-9b15-b8eef698eb42 ; conserver les références de découverte."
+      },
+      "publicationEvidence": {
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/34e2ee44-45f0-46e2-9668-6331b186893b/dhl-balloon",
+        "sitePublishedAtUtc": "2026-11-27T14:23:08.819Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129058369424431",
+        "facebookPublishedAtUtc": "2026-11-27T14:23:55.174Z",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-sg-dhl-balloon-20261127/receipts.json"
+      }
     }
   ]
 }

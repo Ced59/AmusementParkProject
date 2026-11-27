@@ -1,0 +1,29 @@
+{
+  "reviewedAt": "2026-11-27",
+  "classification": "Ballon captif autonome de Singapore Ducktours sur Tan Quee Lan Street près de Bugis. Attraction historique et retirée, distincte du Singapore Flyer et des autres ballons de Singapour.",
+  "presenceSearch": "Client PARK_DATA_EDITOR : SearchParks et SearchStandaloneAttractions, sans filtre de visibilité, avec DHL Balloon, DHL, Singapore Ducktours et Tan Quee Lan ; aucun résultat.",
+  "lifecycle": "CNA attribue à l’attraction une ouverture en avril 2006 et une fin en octobre 2008. Aucun prix ni horaire actuel n’est publié.",
+  "photos": "Trois JPEG Wikimedia Commons inspectés visuellement ; ils montrent le ballon DHL exact en 2006 ou vers 2007. Les pages source établissent les auteurs et licences : Sengkang CC BY-SA 3.0, Terence Ong CC BY 2.5, Waycool27 domaine public. Les légendes présentent explicitement ces photos comme historiques.",
+  "sources": [
+    {
+      "label": "CNA — historique et dates",
+      "url": "https://www.channelnewsasia.com/singapore/homegrown-tour-company-duck-hippo-acquired-international-operator-5723531"
+    },
+    {
+      "label": "Time Out — ancienne attraction",
+      "url": "https://www.timeout.com/singapore/things-to-do/the-dhl-balloon"
+    },
+    {
+      "label": "Wikimedia Commons — photo Sengkang",
+      "url": "https://commons.wikimedia.org/wiki/File:The_DHL_Balloon_2%2C_Aug_06.JPG"
+    },
+    {
+      "label": "Wikimedia Commons — photo Terence Ong",
+      "url": "https://commons.wikimedia.org/wiki/File:DHL_Balloon.JPG"
+    },
+    {
+      "label": "Wikimedia Commons — photo Waycool27",
+      "url": "https://commons.wikimedia.org/wiki/File:DHLBalloon-Singapore-2007.jpg"
+    }
+  ]
+}
