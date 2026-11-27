@@ -1031,7 +1031,7 @@
         {
           "siteId": "88d00988-5b05-4f44-90f8-e628445f45b6",
           "name": "Tivoli Karolinelund",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -2155,6 +2155,96 @@
       ],
       "countryCodeAtInventory": "DK",
       "countryResolution": null
+    },
+    {
+      "entryId": "DK-candidate-discovery-marsk-tower-20261127",
+      "name": "Marsk Tower",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "Hjemstedvej 60, 6780 Skærbæk",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "InProgress",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Tour visitable et billets en vente sur le site officiel au 27 novembre 2026. L'ascenseur seul est annoncé fermé pour une durée indéterminée ; la tour reste accessible par les escaliers, sous réserve de météo.",
+      "identityConfidence": "Marsk Tower près de Skærbæk identifié par l'exploitant et la fiche touristique officielle. Recherches PDE par Marsk, Marsk Tårnet, Marsktårnet, Hjemsted, Skærbæk et Rømø sans résultat parmi Park et StandaloneAttraction, au Danemark puis dans le monde.",
+      "possibleMatches": [],
+      "aliases": [
+        "Marsk Tårnet",
+        "Marsktårnet",
+        "Marsh Tower"
+      ],
+      "assignedTo": "codex-world-standalone-marsk-20261127",
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Créer puis compléter la StandaloneAttraction via PDE avec quatre photographies exactes, les données officielles, le tarif propre à la tour et l'avertissement sur l'ascenseur. Les horaires 2026 de la tour ne sont pas fiables sur la page horaire actuelle : son calendrier intégré est limité au 1er octobre 2026 et ne doit pas être extrapolé. Audit, publication publique et annonce Facebook ensuite ; dater uniquement les Apply et imports réellement réussis.",
+      "sources": [
+        {
+          "label": "Marsk Camp — Marsk Tower, architecture et accès",
+          "url": "https://marskcamp.dk/en/marsk-tower/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Marsk Camp — tarifs propres à la tour",
+          "url": "https://marskcamp.dk/en/accommodation/pricing/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Marsk Camp — calendrier à vérifier ; interface limitée au 1er octobre 2026",
+          "url": "https://marskcamp.dk/en/opening-hours/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "VisitDenmark — identité et localisation de la tour",
+          "url": "https://www.visitdenmark.com/denmark/plan-your-trip/marsk-tower-skaerbaek-gdk1154963",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Marsk Tower North-East, Kirkgaard, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_North-East,_2026-07-23.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Marsk Tower South-West, Kirkgaard, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_South-West,_2026-07-23.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — escalier, Kirkgaard, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_core_%26_staircase,_2026-07-23.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — plateforme, Elgaard, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_lookout_01.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-27-independent-source-discovery",
+        "method": "Signalement utilisateur, sources officielles, recherche de doublons PDE dans les parcs et standalone, contrôle visuel des photographies.",
+        "foundAt": "2026-11-27"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-27",
+        "attractions": [
+          {
+            "name": "Marsk Tower",
+            "source": "Marsk Camp",
+            "url": "https://marskcamp.dk/en/marsk-tower/",
+            "family": "Tour panoramique",
+            "sourceVenueName": "Marsk Camp",
+            "sourceLifecycleSignal": "Tour ouverte ; ascenseur fermé",
+            "sourceLocality": "Skærbæk"
+          }
+        ],
+        "rationale": "Installation fixe à billet individuel et accès dédié, exploitée dans un camping avec minigolf et restaurant. Ce domaine touristique n'est pas un parc d'attractions structuré ; la tour relève d'une fiche standalone."
+      }
     }
   ]
 }
