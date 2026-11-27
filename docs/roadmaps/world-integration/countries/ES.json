@@ -8357,6 +8357,85 @@
         "facebookStatus": "Published",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-es-teleferico-madrid-20261127/receipts.json"
       }
+    },
+    {
+      "entryId": "ES-candidate-discovery-faro-moncloa-20261127",
+      "name": "Faro de Moncloa",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Mirador panoramique à billet propre",
+      "locality": "Avenida de la Memoria 2, Madrid",
+      "siteId": "1db77634-73a3-4627-a7cf-b4da20481941",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Office de tourisme de Madrid : ouvert, billets, horaires et exceptions de fin 2026 publiés.",
+      "identityConfidence": "Adresse, mirador et prix officiels ; recherches PDE Park et Standalone sous deux noms sans fiche ; backlog sans ligne homonyme.",
+      "possibleMatches": [],
+      "aliases": [
+        "Faro de la Moncloa",
+        "Faro Moncloa"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T20:23:02.858Z",
+      "integrationHistory": [
+        {
+          "eventId": "ES-faro-moncloa-integration-20261127",
+          "appliedAt": "2026-11-27T20:23:02.858Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1db77634-73a3-4627-a7cf-b4da20481941",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-es-faro-moncloa-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-es-faro-moncloa-20261127/audit.json",
+          "summary": "Mirador publié avec calendrier de fêtes, trois tarifs officiels, quatre photos exactes et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; revérifier les tarifs et le calendrier après le 10 janvier 2027, puis dater chaque nouvelle intégration de données.",
+      "sources": [
+        {
+          "label": "Madrid tourisme — informations, prix, horaires et fermetures",
+          "url": "https://www.esmadrid.com/informacion-turistica/faro-de-moncloa",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ayuntamiento de Madrid — confirmation municipale du mirador et des horaires",
+          "url": "https://www.madrid.es/portales/munimadrid/es/Faro-de-la-Moncloa/?vgnextchannel=e9a3ca5d5fb96010VgnVCM100000dc0ca8c0RCRD&vgnextfmt=default&vgnextoid=ee4f13db5b71c010VgnVCM1000000b205a0aRCRD",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — coordonnées",
+          "url": "https://www.openstreetmap.org/?mlat=40.4372985&mlon=-3.7216762#map=18/40.4372985/-3.7216762",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Diario de Madrid / Wikimedia Commons (CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Conoce_la_historia_de_Madrid_desde_el_Faro_de_Moncloa_02.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Tiia Monto / Wikimedia Commons (CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Faro_de_Moncloa_-_interior.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Tiia Monto / Wikimedia Commons (CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Faro_de_Moncloa_-_deck.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, Javier Perez Montes / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Vista_desde_el_Faro_de_Moncloa_-_Arco_de_la_Victoria_-_Madrid_01.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Mirador municipal à billet, horaire et accès propres ; aucune fiche Park ou Standalone homonyme trouvée. Fiche publiée et auditée."
+      }
     }
   ]
 }
