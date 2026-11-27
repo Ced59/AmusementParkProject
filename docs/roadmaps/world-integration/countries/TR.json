@@ -2081,28 +2081,43 @@
     },
     {
       "entryId": "TR-candidate-discovery-d1ebe9bac80783",
-      "name": "Ballon Turkap — Istanbul",
-      "entityKind": "ToQualify",
+      "name": "Kadıköy Balonu (Turkap)",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
       "locality": "Kadıköy, Istanbul",
-      "siteId": null,
+      "siteId": "86e6a35a-7042-4e88-8254-4fbfdc70dac5",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2003 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Installation datée de 2003 par Aerophile ; ballon retiré du quai de Kadıköy en octobre 2013 selon la presse locale.",
+      "identityConfidence": "Fabricant Aerophile et photos de Kadıköy concordants ; recherches PDE SearchParks et SearchStandaloneAttractions par Turkap, Türk Balon, Kadıköy Balon, Kadikoy Balloon et Kadıköy sans résultat, fiches masquées incluses, le 27 novembre 2026.",
       "possibleMatches": [],
       "aliases": [
-        "Turkap Istanbul, Turkey"
+        "Turkap Istanbul, Turkey",
+        "Ballon Turkap — Istanbul",
+        "Kadıköy Balonu",
+        "Kadıköy Seyir Balonu",
+        "Turkap tethered balloon"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-27T14:45:22.094Z",
+      "integrationHistory": [
+        {
+          "eventId": "7dc30bda-9934-4d64-81af-b6446b343a05",
+          "appliedAt": "2026-11-27T14:45:22.094Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86e6a35a-7042-4e88-8254-4fbfdc70dac5",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tr-kadikoy-balloon-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tr-kadikoy-balloon-20261127/audit.json",
+          "summary": "Fiche historique en huit langues, trois photos exactes créditées, histoire, publication site et Facebook vérifiées"
+        }
+      ],
+      "nextAction": "Fiche historique publique et Facebook publiés ; conserver la ligne et sa dernière date réelle, mettre à jour si de nouvelles sources fiables apparaissent.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -2113,6 +2128,31 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Habertürk — retrait du ballon, 10 octobre 2013",
+          "url": "https://www.haberturk.com/gundem/haber/884823-balon-kadikoye-veda-ediyor",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Arkitera — rétrospective, retrait et évolution du ballon",
+          "url": "https://www.arkitera.com/haber/balon-kadikoye-veda-etti/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Kadıköy, juillet 2009, domaine public",
+          "url": "https://commons.wikimedia.org/wiki/File:HeliumballoonKadikoy.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — ballon de Kadıköy, mai 2012, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:BASE_Jumping_from_static_Istanbul_Kad%C4%B1k%C3%B6y_Balloon.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — vue depuis l’eau, février 2011, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Balon_-_panoramio_%281%29.jpg",
+          "accessedAt": "2026-11-27"
         }
       ],
       "discovery": {
@@ -2121,8 +2161,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "Ballon Turkap — Istanbul",
@@ -2130,13 +2170,13 @@
             "url": "https://www.aerophile.com/en/clients/turkap/",
             "family": "Ballon captif",
             "sourceVenueName": "Ballon Turkap — Istanbul",
-            "sourceLifecycleSignal": "Référence constructeur datée 2003 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLifecycleSignal": "Installation 2003 ; retrait confirmé en octobre 2013.",
+            "matchingMethod": "Recherche fraîche PDE sans doublon, photos vérifiées et reçu de création de fiche.",
             "sourceLocality": "Kadıköy, Istanbul",
             "referenceId": "aerophile-turkap"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 7dc30bda-9934-4d64-81af-b6446b343a05 ; conserver les références de découverte."
       }
     },
     {

@@ -1,0 +1,72 @@
+{
+  "entryId": "TR-candidate-discovery-d1ebe9bac80783",
+  "standaloneAttractionId": "86e6a35a-7042-4e88-8254-4fbfdc70dac5",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "615fb6ed-cd00-4b47-92bb-e6aea215fe16",
+      "appliedAtUtc": "2026-11-27T14:41:35.2768761Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "d4d535bf-3ea8-4717-9775-ae6c7ccc1e19",
+      "appliedAtUtc": "2026-11-27T14:43:22.2796303Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "7dc30bda-9934-4d64-81af-b6446b343a05",
+      "appliedAtUtc": "2026-11-27T14:45:22.0942149Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "0214722f0e364246b6bc63000ab7d22a",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:HeliumballoonKadikoy.jpg",
+      "ownerId": "86e6a35a-7042-4e88-8254-4fbfdc70dac5",
+      "isPublished": true
+    },
+    {
+      "imageId": "05a711d9bdc04cc38eea52cddafb87e7",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balon_-_panoramio_%281%29.jpg",
+      "ownerId": "86e6a35a-7042-4e88-8254-4fbfdc70dac5",
+      "isPublished": true
+    },
+    {
+      "imageId": "2f0dc2bad1ab40ea9d8ad57497b4c044",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:BASE_Jumping_from_static_Istanbul_Kad%C4%B1k%C3%B6y_Balloon.jpg",
+      "ownerId": "86e6a35a-7042-4e88-8254-4fbfdc70dac5",
+      "isPublished": true
+    }
+  ],
+  "finalAudit": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ]
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T14:45:22.0942149Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/86e6a35a-7042-4e88-8254-4fbfdc70dac5/kadikoy-balonu",
+    "facebookPublishedAtUtc": "2026-11-27T14:46:14.5402771Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129061843424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-tr-kadikoy-balloon-20261127/receipts.json"
+  }
+}

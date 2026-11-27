@@ -1,0 +1,25 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "86e6a35a-7042-4e88-8254-4fbfdc70dac5",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/86e6a35a-7042-4e88-8254-4fbfdc70dac5/kadikoy-balonu",
+  "status": "Removed",
+  "completenessScore": 86,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "photoCount": 3,
+  "primaryPhotoId": "0214722f0e364246b6bc63000ab7d22a",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "coordinates": "Ancien emplacement exact non géocodé avec une précision suffisante ; quai de Kadıköy indiqué sans coordonnées supposées."
+}

@@ -17,9 +17,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1867 | 7554 |
-| Standalone | 372 | 1 | 109 |
+| Standalone | 373 | 1 | 108 |
 
-**Reprise standalone :** en plus des 109 candidates sans correspondance, **193 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **538 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **87 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 108 candidates sans correspondance, **193 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **538 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **87 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **72** types à décider, **1254** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -252,15 +252,16 @@ Périmètre national entier des sources. Cette rubrique conserve la distinction 
 | [Géorgie](countries/GE.md) | 2 | 0 | 1 | 0 | 3 | 0 |
 | [Kazakhstan](countries/KZ.md) | 0 | 0 | 0 | 0 | 3 | 0 |
 | [Russie](countries/RU.md) | 1 | 0 | 1 | 0 | 30 | 0 |
-| [Turquie](countries/TR.md) | 0 | 0 | 1 | 0 | 17 | 0 |
-| **Total** | **7** | **0** | **3** | **0** | **54** | **0** |
+| [Turquie](countries/TR.md) | 1 | 0 | 0 | 0 | 17 | 0 |
+| **Total** | **8** | **0** | **2** | **0** | **54** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **7**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **8**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Arménie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Azerbaïdjan : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Géorgie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Russie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
+- Turquie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
