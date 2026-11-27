@@ -1,0 +1,159 @@
+{
+  "entryId": "ES-candidate-discovery-mirador-torre-glories-20261127",
+  "standaloneAttractionId": "5ae63369-a550-4fa9-85df-0413e6f7040e",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "69c84a46-bea9-420c-a4e1-569f25262251",
+      "appliedAtUtc": "2026-11-27T20:30:32.4222906Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "e6b8ef3c-f66f-4891-b376-0fa957493b42",
+      "appliedAtUtc": "2026-11-27T20:30:44.060328Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "16335ba6-a1fa-4984-8786-9083fa7e0a09",
+      "appliedAtUtc": "2026-11-27T20:30:54.3838437Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "66a48814-541b-4348-9d59-d37cba9c33cc",
+      "appliedAtUtc": "2026-11-27T20:33:14.3381854Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "eaef572acbb641e7ba7e6935c9c3ddc6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:025_Torre_Gl%C3%B2ries,_av._Diagonal_209-211_(Barcelona),_vista_des_de_l%27est.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 1280,
+      "credit": "Enric / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:31:56.496Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "faabab119b0042d9bd37ca90ca411146",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:027_Torre_Gl%C3%B2ries,_av._Diagonal_209-211_(Barcelona),_entrada_principal.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "Enric / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:32:11.337Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "614bf585ffa54b1186def42471bc68cd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barcelona-Sant_Marti,_kantoorgebouw_Mirador_Torre_Gl%C3%B2ries_IPA-40657_en_deel_van_Museu_del_Disseny_IPA-42742_IMG_3351_2026-08-28_14.02.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1353,
+      "credit": "Michielverbeek / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:32:26.624Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "11fe0cb4c5bb430ab2b7dc9c137db800",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cloud_Cities_Barcelona.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Clemens Schmillen / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:32:40.142Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "b0e6f0b62fe54fdaa085a6da3353a89a",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T20:33:59.3406658Z",
+    "externalPostId": "1285475681307050_122129089803424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129089803424431"
+  }
+}
