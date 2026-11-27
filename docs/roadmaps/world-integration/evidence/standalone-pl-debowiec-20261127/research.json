@@ -1,0 +1,29 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Tor Saneczkowy – Stok Dębowca / Słoneczna Polana, Bielsko-Biała. Exploitant indiqué : Turystyka Beskidzka, ul. Skalna 58.",
+  "antiDuplicate": "Recherches PDE SearchParks et SearchStandaloneAttractions sur Dębowiec, Debowiec et Bielsko-Biała : aucune fiche. La ligne historique PL-candidate-standalone-7593d78959d32c (« Luge Wiegand — Bielsko Biala ») cite exactement le site de l’exploitant ; elle est conservée comme identité stable et marquée intégrée.",
+  "standaloneAssessment": "Site dédié, exploitant, règles et billetterie propres à la piste. Le domaine skiable Dębowiec voisin appartient à une autre offre ; aucune fiche Park parent créée pour cette piste.",
+  "sources": [
+    {
+      "url": "https://www.torsaneczkowy.bielsko.pl/",
+      "finding": "Horaires affichés de mai à octobre, fermeture en cas de pluie, règles enfants de moins de huit ans, contact et identité de l’exploitant."
+    },
+    {
+      "url": "https://www.torsaneczkowy.bielsko.pl/assets/plan.png",
+      "finding": "Plan officiel : descente de 410 m, remontée de 115 m, trois tunnels et quatre longues courbes."
+    },
+    {
+      "url": "https://www.torsaneczkowybielsko.beskidy24.pl/",
+      "finding": "Galerie de quatre photos portant la mention Foto: www.torsaneczkowy.bielsko.pl ; trois images sélectionnées et vérifiées comme montrant précisément la piste."
+    },
+    {
+      "url": "https://www.bbosir.bielsko.pl/obiekty/bielsko-bialski-osrodek-rekreacyjno-narciarski-debowiec",
+      "finding": "Domaine skiable voisin identifié séparément pour le contrôle du rattachement."
+    },
+    {
+      "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1375",
+      "finding": "Référence constructeur Bielsko Biala, avec lien vers le même site opérateur ; correspondance avec la piste de Dębowiec."
+    }
+  ],
+  "editorialDecision": "Création de la standalone comme luge en auge, TemporarilyClosed fin novembre puisque les horaires actuellement affichés couvrent mai à octobre. Les anciens guides présentent parfois la piste comme ouverte toute l’année : le calendrier de l’exploitant actuel prévaut. Pas de tarif actuel saisi en période fermée. Réouverture 2027 inconnue."
+}

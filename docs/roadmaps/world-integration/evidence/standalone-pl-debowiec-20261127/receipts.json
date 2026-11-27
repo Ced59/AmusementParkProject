@@ -1,0 +1,120 @@
+{
+  "entryId": "PL-candidate-standalone-7593d78959d32c",
+  "standaloneAttractionId": "c210d410-ed07-434a-aa3e-fdc067a85b88",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "eeb46d9f-f091-40c8-8f9b-022f1482c68a",
+      "appliedAtUtc": "2026-11-27T16:56:28.0020689Z",
+      "isApplied": true
+    },
+    {
+      "stage": "editorial",
+      "operationId": "6846082a-3050-4c82-a672-3a3faea989ec",
+      "appliedAtUtc": "2026-11-27T17:00:04.3408356Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "3e7b2652-d719-4740-91e9-a6e2a11350cc",
+      "appliedAtUtc": "2026-11-27T17:00:25.3771981Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "af99b0f0af564f24a930464ee2fe1faf",
+      "sourceUrl": "https://www.torsaneczkowybielsko.beskidy24.pl/upload/gallery/image-790-2289.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Tor Saneczkowy Stok Dębowca / Beskidy24",
+      "publishedAtUtc": null
+    },
+    {
+      "imageId": "b7c12f01365a4d08a75caccfbf44a1ad",
+      "sourceUrl": "https://www.torsaneczkowybielsko.beskidy24.pl/upload/gallery/image-790-2288.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Tor Saneczkowy Stok Dębowca / Beskidy24",
+      "publishedAtUtc": "2026-11-27T16:59:06.873Z"
+    },
+    {
+      "imageId": "b9969c80af2c4352b4e8257d9082acf8",
+      "sourceUrl": "https://www.torsaneczkowybielsko.beskidy24.pl/upload/gallery/image-790-2290.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Tor Saneczkowy Stok Dębowca / Beskidy24",
+      "publishedAtUtc": "2026-11-27T16:59:15.85Z"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T17:00:04.340Z",
+  "lastDataIntegrationStage": "Dernière mise à jour substantielle des descriptions en huit langues ; la visibilité et Facebook sont des opérations de publication distinctes.",
+  "facebook": {
+    "status": "Published",
+    "publicationId": "ccb33aa9aca94da5abb9da3365819fe0",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129072985424431",
+    "publishedAtUtc": "2026-11-27T17:03:13.2622407Z",
+    "previousPublicationDeletedAfterFormattingError": "10b5bbe59fb54cf0b0937521eaa573c9"
+  },
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+}

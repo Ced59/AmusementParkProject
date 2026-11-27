@@ -1,0 +1,29 @@
+{
+  "asOfUtc": "2026-11-27T17:04:20Z",
+  "siteId": "c210d410-ed07-434a-aa3e-fdc067a85b88",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca",
+  "status": "TemporarilyClosed",
+  "completenessScore": 78,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "af99b0f0af564f24a930464ee2fe1faf",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129072985424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T17:00:04.340Z",
+  "lastDataIntegrationBasis": "Horodatage serveur de la dernière mise à jour éditoriale, ramené à la milliseconde. Visibilité et Facebook datés à part.",
+  "gap": "La date et les horaires de réouverture ne sont pas encore annoncés ; les anciens guides évoquent une ouverture annuelle alors que la page actuelle ne donne que des horaires de mai à octobre."
+}
