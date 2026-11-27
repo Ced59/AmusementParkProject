@@ -1,0 +1,57 @@
+{
+  "reviewedAt": "2026-11-27",
+  "presenceSearch": "Absente du registre DE avant cette découverte ; les recherches Park et StandaloneAttraction dans PARK_DATA_EDITOR restent à faire, fiches masquées comprises.",
+  "classification": "Téléphérique permanent du centre de Coblence à la forteresse Ehrenbreitstein, avec gares, billet et horaire propres. Aucun parc d'attractions parent identifié dans le registre ; cette conclusion attend la recherche PDE.",
+  "facts": "L'exploitant identifie Skyglide Event Deutschland GmbH comme opérateur et le groupe Doppelmayr comme constructeur. La ligne mesure 890 m. La cérémonie officielle a eu lieu le 2 juillet 2010 ; la chronique des archives municipales situe les premières courses ouvertes au public le 4 juillet 2010, lors du Buga-Baustellenfest. Conserver cette distinction dans la frise.",
+  "operatingStatus": "En service au 27 novembre 2026. L'exploitant annonce une pause du 2 au 18 novembre puis des trajets à partir du 19 novembre ; son calendrier donne des heures jour par jour. Ne pas appliquer une grille hebdomadaire générique à la période de l'Avent.",
+  "pricing": "Page officielle vérifiée le 27 novembre 2026 : aller-retour adulte 15,50 EUR ; autres tarifs et réductions sur la page. Revalider au moment de l'Apply et conserver la date de vérification réelle.",
+  "photos": "Trois photographies de la ligne réalisées le 22 août 2026 par Yair-haklai, CC BY-SA 4.0, inspectées visuellement. La vue verticale Seilbahn Koblenz-2.jpg montre les cabines et la forteresse ; les deux vues horizontales situent la ligne sur la rive du Rhin et en face de la forteresse. Variantes Wikimedia de 960 px inspectées ; chacune est inférieure à 960 Kio.",
+  "sources": [
+    {
+      "label": "Exploitant — état de la saison et horaires du 27 novembre 2026",
+      "url": "https://www.seilbahn-koblenz.de/homepage.html",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Exploitant — calendrier détaillé",
+      "url": "https://www.seilbahn-koblenz.de/events.html",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Exploitant — tarifs",
+      "url": "https://www.seilbahn-koblenz.de/ticketpreise-seilbahn-koblenz.html",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Exploitant — caractéristiques, constructeur et exploitant",
+      "url": "https://www.seilbahn-koblenz.de/zahlen-und-fakten.html",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Ville de Coblence — chronique de 2010",
+      "url": "https://www.koblenz.de/leben-in-koblenz/kultur/stadtarchiv/stadtchronik/stadtchronik-2010.pdf?cid=2k9f",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Communiqué de l'ancien maire — inauguration du 2 juillet 2010",
+      "url": "https://www.hofmanngoettig.de/?p=19644",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — cabines au pied de la forteresse, Yair-haklai, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz-2.jpg",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — rives du Rhin, Yair-haklai, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz.jpg",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — ligne face à la forteresse, Yair-haklai, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz-3.jpg",
+      "accessedAt": "2026-11-27"
+    }
+  ],
+  "nextReview": "Recherche officielle des identités et éventuel parc legacy, puis intégration des données et des images. Vérifier de nouveau la page de tarif et le calendrier juste avant publication."
+}

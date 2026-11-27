@@ -35933,6 +35933,96 @@
         "attractions": [],
         "rationale": "Funiculaire autonome, avec gares, horaire et billet propres, hors parc parent."
       }
+    },
+    {
+      "entryId": "DE-candidate-discovery-seilbahn-koblenz-20261127",
+      "name": "Seilbahn Koblenz",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "Konrad-Adenauer-Ufer, 56068 Koblenz",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Service actif au 27 novembre 2026 : l’exploitant affiche ses trajets datés de novembre et décembre.",
+      "identityConfidence": "Source d’exploitation, données techniques et photos exactes vérifiées ; entrée absente du registre national, recherche Park et Standalone via PDE encore nécessaire.",
+      "possibleMatches": [],
+      "aliases": [
+        "Koblenz cable car",
+        "Rheinseilbahn Koblenz",
+        "Téléphérique de Coblence"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher tous les alias dans Park et StandaloneAttraction via le client officiel, fiches masquées comprises. Confirmer le caractère autonome et les éventuels liens legacy, puis intégrer avec au moins trois photos exactes, horaires propres et tarifs datés ; publier la fiche et l’annonce Facebook après audit.",
+      "sources": [
+        {
+          "label": "Seilbahn Koblenz — état du service et horaires datés en novembre 2026",
+          "url": "https://www.seilbahn-koblenz.de/homepage.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Seilbahn Koblenz — calendrier des trajets",
+          "url": "https://www.seilbahn-koblenz.de/events.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Seilbahn Koblenz — tarifs propres au téléphérique",
+          "url": "https://www.seilbahn-koblenz.de/ticketpreise-seilbahn-koblenz.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Seilbahn Koblenz — données techniques et exploitant",
+          "url": "https://www.seilbahn-koblenz.de/zahlen-und-fakten.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ville de Coblence — emplacement et nature du site",
+          "url": "https://www.koblenz.de/leben-in-koblenz/freizeit/seilbahn-koblenz/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Seilbahn Koblenz-2, Yair-haklai, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz-2.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Seilbahn Koblenz, Yair-haklai, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Seilbahn Koblenz-3, Yair-haklai, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz-3.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-27-independent-source-discovery",
+        "method": "Site officiel du téléphérique et relevé national ; recherche des fiches existantes par le client PDE requise avant création.",
+        "foundAt": "2026-11-27"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-27",
+        "attractions": [
+          {
+            "name": "Seilbahn Koblenz",
+            "source": "Exploitant",
+            "url": "https://www.seilbahn-koblenz.de/homepage.html",
+            "family": "Téléphérique panoramique",
+            "sourceVenueName": "Seilbahn Koblenz",
+            "sourceLifecycleSignal": "En service le 27 novembre 2026",
+            "sourceLocality": "Koblenz"
+          }
+        ],
+        "rationale": "Ligne permanente à gares, billet et horaires propres reliant le centre de Coblence à la forteresse Ehrenbreitstein, sans parc d’attractions parent identifié dans le registre. Vérifier l’identité via PDE avant création."
+      }
     }
   ]
 }
