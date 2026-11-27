@@ -1,0 +1,29 @@
+{
+  "asOfUtc": "2026-11-27T17:16:59Z",
+  "siteId": "44267b1b-e1cb-49e4-8d97-3a4fb2b31989",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing",
+  "status": "Operating",
+  "completenessScore": 74,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 2,
+  "primaryPhotoId": "9e027fea1c294af4bc25e7e461700a84",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129073903424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T17:14:12.988Z",
+  "lastDataIntegrationBasis": "Horodatage serveur de la dernière publication de métadonnées photo, distinct des opérations de visibilité et Facebook.",
+  "gap": "Pas de créneaux journaliers permanents publiés ; consulter le calendrier de réservation. Photos officielles anciennes mais montrant exactement l’activité."
+}

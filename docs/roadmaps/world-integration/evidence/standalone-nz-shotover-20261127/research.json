@@ -1,0 +1,25 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Shotover Canyon Swing, balançoire géante au-dessus de la rivière Shotover à Arthurs Point. Accueil et navette au 34 Shotover Street, Queenstown.",
+  "antiDuplicate": "Recherches SearchParks et SearchStandaloneAttractions dans le PDE sur Shotover en NZ : zéro résultat, y compris fiches masquées. Recherche du nom et du domaine de l’exploitant dans le backlog NZ : aucune ligne préexistante. Nevis Swing et Nevis Catapult sont des activités distinctes.",
+  "officialSources": [
+    {
+      "url": "https://www.canyonswing.co.nz/canyon-swing/",
+      "finding": "Produit solo ou tandem, chute puis mouvement pendulaire, prix standards, transport compris, âge et conditions de harnais/santé."
+    },
+    {
+      "url": "https://www.canyonswing.co.nz/specials-combos/",
+      "finding": "Tarifs standards solo 309 NZD et duo 618 NZD au 27 novembre 2026 ; la promotion Black Friday de courte durée est exclue des offres enregistrées."
+    },
+    {
+      "url": "https://www.canyonswing.co.nz/faqs/",
+      "finding": "Accueil à Queenstown, plateforme à Arthurs Point, activité toute l’année sauf Noël ; réservation conseillée."
+    },
+    {
+      "url": "https://www.newzealand.com/int/plan/business/canyon-swing-giant-rope-swing/",
+      "finding": "Fiche touristique indépendante confirmant identité et exploitation."
+    }
+  ],
+  "photoDecision": "Deux photos montrant précisément le Shotover Canyon Swing, issues de l’exploitant ; fichiers nommés 2020 et 2021, sans affirmation de prise de vue récente.",
+  "editorialDecision": "Fiche standalone Operating, deux tarifs de base, âge minimum et deux conditions d’accès en huit langues. Le point d’accueil est présenté comme tel ; le public ne peut pas rejoindre directement la plateforme. Horaires quotidiens exacts non inventés."
+}

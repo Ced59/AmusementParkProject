@@ -1,0 +1,63 @@
+{
+  "checkedAtUtc": "2026-11-27T17:16:59Z",
+  "languages": [
+    {
+      "language": "fr",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/fr/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing"
+    },
+    {
+      "language": "en",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/en/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing"
+    },
+    {
+      "language": "de",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/de/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing"
+    },
+    {
+      "language": "es",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/es/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing"
+    },
+    {
+      "language": "it",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/it/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing"
+    },
+    {
+      "language": "nl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/nl/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing"
+    },
+    {
+      "language": "pl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/pl/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing"
+    },
+    {
+      "language": "pt",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/pt/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing"
+    }
+  ],
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129073903424431"
+}

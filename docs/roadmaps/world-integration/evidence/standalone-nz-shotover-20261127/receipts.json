@@ -1,0 +1,99 @@
+{
+  "entryId": "NZ-candidate-discovery-shotover-20261127",
+  "standaloneAttractionId": "44267b1b-e1cb-49e4-8d97-3a4fb2b31989",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "29d90908-38bf-449a-8c3a-379592694190",
+      "appliedAtUtc": "2026-11-27T17:11:11.2938789Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "e5d1b016-8612-4e1a-b410-1b40c428089f",
+      "appliedAtUtc": "2026-11-27T17:11:51.4730902Z",
+      "isApplied": true
+    },
+    {
+      "stage": "conditions",
+      "operationId": "87999b52-807a-431d-91a1-5f25a189d1c3",
+      "appliedAtUtc": "2026-11-27T17:12:42.4154414Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "4bf0d6a2-b6f9-428f-b97a-570e4988f02f",
+      "appliedAtUtc": "2026-11-27T17:14:54.5296831Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "9e027fea1c294af4bc25e7e461700a84",
+      "sourceUrl": "https://www.canyonswing.co.nz/wp-content/uploads/sites/14/2021/01/Scenic-Banner-1024x600.jpg",
+      "importedAtUtc": "2026-11-27T17:13:29.737Z",
+      "publishedAtUtc": "2026-11-27T17:14:01.746Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Shotover Canyon Swing"
+    },
+    {
+      "imageId": "f890fdb943d645e79bbbcc3ec701e777",
+      "sourceUrl": "https://www.canyonswing.co.nz/wp-content/uploads/sites/14/2020/02/block2-canyon-adventure-activity-queenstown.jpg",
+      "importedAtUtc": "2026-11-27T17:13:45.708Z",
+      "publishedAtUtc": "2026-11-27T17:14:12.988Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Shotover Canyon Swing"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T17:14:12.988Z",
+  "lastDataIntegrationStage": "Publication des métadonnées et légendes de la seconde photo ; la visibilité et Facebook sont datés à part.",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/44267b1b-e1cb-49e4-8d97-3a4fb2b31989/shotover-canyon-swing",
+  "facebook": {
+    "status": "Published",
+    "publicationId": "92cdecaa05224690b47aca54a08831c0",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129073903424431",
+    "publishedAtUtc": "2026-11-27T17:15:35.0437899Z"
+  }
+}
