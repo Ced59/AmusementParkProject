@@ -1,0 +1,52 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-zacatecas-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Operating paid tourist cable car between Cerro del Grillo and Cerro de la Bufa, with its own schedule and one-way/return fares. It is an independent visitor experience rather than an attraction inside a larger park.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Teleférico de Zacatecas (MX)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Teleférico de Zacatecas (MX)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "operatorSource": "https://zacatecastravel.com/en/teleferico",
+  "nationalTourismSource": "https://visitmexico.com/es/destino/2273/teleferico-de-zacatecas",
+  "coordinateSource": "https://www.openstreetmap.org/?mlat=22.7788572&mlon=-102.5703223#map=17/22.7788572/-102.5703223",
+  "observations": {
+    "route": "Cerro del Grillo to Cerro de la Bufa, 650 m, around seven minutes",
+    "coordinates": [
+      22.7788572,
+      -102.5703223
+    ],
+    "hours": "Daily 10:00–18:00; optional high-season night service 19:00–22:00, not encoded as regular hours",
+    "oneWayMXN": {
+      "adult": 100,
+      "childOrSenior": 50
+    },
+    "returnMXN": {
+      "adult": 160,
+      "childOrSenior": 80
+    },
+    "residentDiscount": "Zacatecas residents may receive 50% off base fare, subject to station conditions.",
+    "openingYear": "1979",
+    "sourcesChecked": "Zacatecas Turismo and VisitMexico fetched directly 27 Nov 2026."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Recorrido_de_Telef%C3%A9rico,_Zacatecas.jpg",
+      "artist": "And chv",
+      "license": "CC BY-SA 4.0",
+      "captured": "2021-08-27",
+      "depicts": "View towards Cerro de la Bufa from inside a contemporary cable-car cabin"
+    }
+  ],
+  "scopeNotes": [
+    "One exact licensed photo after renovation; older Commons images of the pre-renovation cabins were excluded.",
+    "Published fares were cross-checked between tourism sources; confirm at stations because prices can change.",
+    "The optional night service is not encoded in the regular daytime schedule."
+  ]
+}

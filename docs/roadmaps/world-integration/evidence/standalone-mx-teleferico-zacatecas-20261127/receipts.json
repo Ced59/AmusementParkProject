@@ -1,0 +1,69 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-zacatecas-20261127",
+  "standaloneAttractionId": "07815501-7033-4c73-b693-79f764bdc401",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "3753ccf5-74ea-4f03-a9f0-7e8ff21342a7",
+      "appliedAtUtc": "2026-11-27T20:02:13.9089983Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "d25340d5-bc5f-405b-9a2b-539316af7cfa",
+      "appliedAtUtc": "2026-11-27T20:02:33.4335227Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "2cb2fa4a-ba97-4f88-b1c4-ba9470c85a4e",
+      "appliedAtUtc": "2026-11-27T20:02:45.3240888Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "ea4b4097-8838-4251-ba97-7db7d9150c50",
+      "appliedAtUtc": "2026-11-27T20:03:58.5642135Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "24978b6a6f984dbba4b04fda78666927",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Recorrido_de_Telef%C3%A9rico,_Zacatecas.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 1280,
+      "credit": "And chv / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:03:25.115Z"
+    }
+  ],
+  "facebook": {
+    "id": "9e32c3f3c4b54532b664d7dccefb14ad",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T20:04:32.4948089Z",
+    "externalPostId": "1285475681307050_122129087241424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129087241424431"
+  }
+}
