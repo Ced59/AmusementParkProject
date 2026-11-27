@@ -1,0 +1,72 @@
+{
+  "entryId": "SG-candidate-discovery-dhl-balloon-20261127",
+  "standaloneAttractionId": "34e2ee44-45f0-46e2-9668-6331b186893b",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "b9c20c17-61a0-4aa8-bfe7-5fbc10fe7121",
+      "appliedAtUtc": "2026-11-27T14:17:50.1443016Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "fb48704d-5589-45a3-873f-edc1cf27fde2",
+      "appliedAtUtc": "2026-11-27T14:20:02.6097249Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "c81fd447-9b8d-49a4-9b15-b8eef698eb42",
+      "appliedAtUtc": "2026-11-27T14:23:08.8193123Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "47c108638ef8452abda4668e4dd733ae",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_DHL_Balloon_2%2C_Aug_06.JPG",
+      "ownerId": "34e2ee44-45f0-46e2-9668-6331b186893b",
+      "isPublished": true
+    },
+    {
+      "imageId": "a7056e9da5354e4fbbe7fff649726b15",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:DHL_Balloon.JPG",
+      "ownerId": "34e2ee44-45f0-46e2-9668-6331b186893b",
+      "isPublished": true
+    },
+    {
+      "imageId": "ba31859fa3c84c2fa4131589d93972d5",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:DHLBalloon-Singapore-2007.jpg",
+      "ownerId": "34e2ee44-45f0-46e2-9668-6331b186893b",
+      "isPublished": true
+    }
+  ],
+  "finalAudit": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ]
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T14:23:08.8193123Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/34e2ee44-45f0-46e2-9668-6331b186893b/dhl-balloon",
+    "facebookPublishedAtUtc": "2026-11-27T14:23:55.1746838Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129058369424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-sg-dhl-balloon-20261127/receipts.json"
+  }
+}
