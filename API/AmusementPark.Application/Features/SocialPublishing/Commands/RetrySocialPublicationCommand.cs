@@ -7,5 +7,6 @@ namespace AmusementPark.Application.Features.SocialPublishing.Commands;
 
 public sealed record RetrySocialPublicationCommand(
     string PublicationId,
-    string? RequestedByUserId) : ICommand<ApplicationResult<SocialPublication>>;
+    string? RequestedByUserId,
+    bool RequireRequesterOwnership = false) : ICommand<ApplicationResult<SocialPublication>>;
 

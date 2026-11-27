@@ -1,6 +1,20 @@
 {
-  "version": "6.0.41",
+  "version": "6.0.42",
   "history": [
+    {
+      "version": "6.0.42",
+      "releasedAt": "2026-11-27",
+      "labels": {
+        "fr": "Fiabilité des publications améliorée",
+        "en": "Improved publication reliability",
+        "de": "Zuverlässigere Veröffentlichungen",
+        "nl": "Betrouwbaardere publicaties",
+        "it": "Pubblicazioni più affidabili",
+        "es": "Publicaciones más fiables",
+        "pl": "Większa niezawodność publikacji",
+        "pt": "Publicações mais fiáveis"
+      }
+    },
     {
       "version": "6.0.41",
       "releasedAt": "2026-11-24",

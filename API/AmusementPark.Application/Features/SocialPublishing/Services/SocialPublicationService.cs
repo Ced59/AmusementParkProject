@@ -48,12 +48,20 @@ public sealed class SocialPublicationService : ISocialPublicationService
             cancellationToken);
     }
 
-    public Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, CancellationToken cancellationToken) =>
-        this.RetryAsync(publicationId, requestedByUserId, true, cancellationToken);
-    private async Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, bool reconcileAutomaticParkAnnouncement, CancellationToken cancellationToken)
+    public Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, CancellationToken cancellationToken, bool requireRequesterOwnership = false) =>
+        this.RetryAsync(publicationId, requestedByUserId, true, requireRequesterOwnership, cancellationToken);
+    private async Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, bool reconcileAutomaticParkAnnouncement, bool requireRequesterOwnership, CancellationToken cancellationToken)
     {
         SocialPublication? publication = await this.repository.GetByIdAsync(publicationId, cancellationToken);
         if (publication is null)
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationNotFound(publicationId));
+        }
+        if (requireRequesterOwnership
+            && (publication.Trigger != SocialPublicationTrigger.Manual
+                || publication.Network != SocialNetwork.Facebook
+                || string.IsNullOrWhiteSpace(requestedByUserId)
+                || !string.Equals(publication.RequestedByUserId, requestedByUserId, StringComparison.Ordinal)))
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationNotFound(publicationId));
         }
@@ -67,6 +75,29 @@ public sealed class SocialPublicationService : ISocialPublicationService
         if (publication.Status != SocialPublicationStatus.Failed)
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeRetried());
+        }
+        if (requireRequesterOwnership)
+        {
+            ISocialPublisher? publisher = this.FindPublisher(publication.Network);
+            if (publisher is null || !publisher.Describe().IsConfigured)
+            {
+                return ApplicationResult<SocialPublication>.Failure(
+                    SocialPublishingApplicationErrors.PublisherOperationFailed(null));
+            }
+
+            ApplicationResult<SocialPublicationRecovery> recovery = await this.reconciler.RecoverFailedAsync(
+                publisher,
+                publication,
+                requestedByUserId,
+                cancellationToken);
+            if (!recovery.IsSuccess || recovery.Value is null)
+            {
+                return ApplicationResult<SocialPublication>.Failure(recovery.Errors);
+            }
+            if (recovery.Value.IsRecovered && recovery.Value.Publication is not null)
+            {
+                return ApplicationResult<SocialPublication>.Success(recovery.Value.Publication);
+            }
         }
         publication = await this.repository.TryClaimFailedForRetryAsync(
             publication.Id!, publication.UpdatedAtUtc, requestedByUserId, cancellationToken);
@@ -388,7 +419,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
         }
 
         await this.PreservePublicPageDuringSocialPreparationAsync(publicationUri!.AbsolutePath, cancellationToken);
-        return await this.RetryAsync(publication.Id!, requestedByUserId, false, cancellationToken);
+        return await this.RetryAsync(publication.Id!, requestedByUserId, false, false, cancellationToken);
     }
 
     public async Task<ApplicationResult<SocialPublication>> RefreshParkAnnouncementPreviewAsync(

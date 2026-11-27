@@ -275,6 +275,77 @@ public sealed class SocialPublicationServiceTests
     }
 
     [Fact]
+    public async Task RetryAsync_WhenOwnManualFacebookPostAlreadyExists_ShouldReconcileWithoutDuplicate()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication failedPublication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.Manual,
+            RequestedByUserId = "editor-1",
+            Message = "San Bernardo cable car announcement",
+            Url = "https://amusement-parks.fun/fr/attraction/attraction-1/san-bernardo",
+            AttemptedAtUtc = new DateTime(2026, 11, 27, 21, 37, 0, DateTimeKind.Utc),
+            FailureCode = "publisher-response-timeout",
+        };
+        repository.Publications.Add(failedPublication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        publisher.ReconciliationResult = new SocialPublisherLinkReconciliationResult(
+            true,
+            true,
+            false,
+            "123_456",
+            "https://www.facebook.com/123/posts/456",
+            null,
+            null);
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        ApplicationResult<SocialPublication> result = await service.RetryAsync(
+            "publication-1",
+            "editor-1",
+            CancellationToken.None,
+            requireRequesterOwnership: true);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(SocialPublicationStatus.Published, failedPublication.Status);
+        Assert.Equal("123_456", failedPublication.ExternalPostId);
+        Assert.Equal(1, publisher.ReconcileCallCount);
+        Assert.Equal(0, publisher.PublishCallCount);
+        Assert.Single(repository.Publications);
+    }
+
+    [Fact]
+    public async Task RetryAsync_WhenManualFacebookPostHasDifferentRequester_ShouldRejectWithoutPublication()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        repository.Publications.Add(new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.Manual,
+            RequestedByUserId = "editor-1",
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/home",
+        });
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        ApplicationResult<SocialPublication> result = await service.RetryAsync(
+            "publication-1",
+            "editor-2",
+            CancellationToken.None,
+            requireRequesterOwnership: true);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "social-publishing.publication.not-found");
+        Assert.Equal(0, publisher.ReconcileCallCount);
+        Assert.Equal(0, publisher.PublishCallCount);
+    }
+
+    [Fact]
     public async Task RetryParkAnnouncementAsync_ShouldKeepStalePageAvailableAndPublishSameRecord()
     {
         List<string> events = new List<string>();

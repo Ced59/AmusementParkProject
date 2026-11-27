@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'SearchStandaloneAttractions', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'HistoryDiagnostics', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'DeleteOwnFacebookPublication', 'RetryFacebookPublication', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'SearchStandaloneAttractions', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'HistoryDiagnostics', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'DeleteOwnFacebookPublication', 'RetryFacebookPublication', 'RetryOwnFacebookPublication', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -1661,6 +1661,17 @@ switch ($Action) {
         Invoke-ParkDataEditorJsonApi `
             -Method POST `
             -RelativePath "park-data-editor/parks/$([Uri]::EscapeDataString($ParkId.Trim()))/social-preview/publications/$([Uri]::EscapeDataString($PublicationId.Trim()))/retry" `
+            -Body @{}
+    }
+    'RetryOwnFacebookPublication' {
+        if ([string]::IsNullOrWhiteSpace($PublicationId)) {
+            throw 'PublicationId is required for RetryOwnFacebookPublication.'
+        }
+
+        Wait-ParkDataEditorAvailability | Out-Null
+        Invoke-ParkDataEditorJsonApi `
+            -Method POST `
+            -RelativePath "park-data-editor/social-publications/facebook/$([Uri]::EscapeDataString($PublicationId.Trim()))/retry" `
             -Body @{}
     }
     'RevokeCurrent' {
