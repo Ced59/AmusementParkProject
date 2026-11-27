@@ -12212,15 +12212,15 @@
     {
       "entryId": "DE-candidate-discovery-abeb6c93e2f038",
       "name": "HiFlyer Hamburg",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
       "locality": "Hambourg",
-      "siteId": null,
+      "siteId": "de0ab809-1661-4421-bd91-9339fd9cec38",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27T14:10:07Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "HighFlyer a cessé son exploitation à Hambourg en mars 2014 ; son contrat d’occupation a pris fin en 2014.",
@@ -12231,9 +12231,50 @@
         "High-Flyer Hamburg"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher HighFlyer, High Flyer et High-Flyer dans Park et StandaloneAttraction via le client officiel, fiches masquées comprises. Si aucun équivalent n’existe, créer une fiche autonome historique au statut Removed avec photographies exactes ; ne publier aucun horaire ou tarif actuel.",
+      "lastDataIntegrationAt": "2026-11-27T14:08:23Z",
+      "integrationHistory": [
+        {
+          "eventId": "baec24d8-8c7b-4eac-8cf6-3178ac429ad2",
+          "appliedAt": "2026-11-27T14:04:15Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "de0ab809-1661-4421-bd91-9339fd9cec38",
+          "evidence": "PARK_DATA_EDITOR:apply:baec24d8-8c7b-4eac-8cf6-3178ac429ad2",
+          "auditEvidence": null,
+          "summary": "Création privée du ballon captif HighFlyer Hamburg, retiré depuis 2014, avec huit descriptions historiques."
+        },
+        {
+          "eventId": "highflyer-three-historic-photos-20261127",
+          "appliedAt": "2026-11-27T14:05:29Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "de0ab809-1661-4421-bd91-9339fd9cec38",
+          "evidence": "PARK_DATA_EDITOR:image:578ab443fcd14f50a90ecb1c2f3979c6",
+          "auditEvidence": null,
+          "summary": "Trois photographies exactes du ballon de 2006 et 2013 importées en privé, avec huit légendes et crédits."
+        },
+        {
+          "eventId": "3e74f5fe-38b4-483b-bfb1-3714faa21d27",
+          "appliedAt": "2026-11-27T14:06:36Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "de0ab809-1661-4421-bd91-9339fd9cec38",
+          "evidence": "PARK_DATA_EDITOR:apply:3e74f5fe-38b4-483b-bfb1-3714faa21d27",
+          "auditEvidence": null,
+          "summary": "Historique sourcé en huit langues : ouverture en 2005 et fin des vols en mars 2014."
+        },
+        {
+          "eventId": "9c3b8ea7-3ef1-4bc5-9aa9-f36503b1b226",
+          "appliedAt": "2026-11-27T14:08:23Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "de0ab809-1661-4421-bd91-9339fd9cec38",
+          "evidence": "PARK_DATA_EDITOR:apply:9c3b8ea7-3ef1-4bc5-9aa9-f36503b1b226",
+          "auditEvidence": "PARK_DATA_EDITOR:completeness:de0ab809-1661-4421-bd91-9339fd9cec38:2026-11-27",
+          "summary": "Audit public 86/100 sans bloqueur ; trois photos historiques publiées et fiche visible en huit langues."
+        }
+      ],
+      "nextAction": "Conserver la ligne intégrée et l’archive des trois photos ; rechercher une source primaire sur le démontage et préciser les coordonnées seulement si un emplacement exact est établi.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -12269,6 +12310,11 @@
           "label": "Wikimedia Commons — Highflyer IMG-1399, Thomas Fries, CC BY-SA 3.0 DE",
           "url": "https://commons.wikimedia.org/wiki/File:Projekt_Hei%C3%9Fluftballon_-_Highflyer_-IMG-1399.jpg",
           "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "WELT — premiers vols en 2005",
+          "url": "https://www.welt.de/print-welt/article163101/Dem-Michel-auf-die-Spitze-gucken.html",
+          "accessedAt": "2026-11-27"
         }
       ],
       "discovery": {
@@ -12277,7 +12323,7 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-27",
         "attractions": [
           {
@@ -12292,7 +12338,15 @@
             "referenceId": "aerophile-vladi-private-island"
           }
         ],
-        "rationale": "Ballon captif autrefois autonome devant les Deichtorhallen. Exploitation hambourgeoise arrêtée en mars 2014 et ballon retiré ; aucune fiche active ne doit être créée. Trois photos historiques exactes sont réutilisables."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 9c3b8ea7-3ef1-4bc5-9aa9-f36503b1b226 ; conserver les références de découverte."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-27T14:08:23.3044966Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/de0ab809-1661-4421-bd91-9339fd9cec38/highflyer-hamburg",
+        "facebookPublishedAtUtc": "2026-11-27T14:09:17.4008817Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129055915424431",
+        "facebookStatus": "Published",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-highflyer-hamburg-20261127/receipts.json"
       }
     },
     {

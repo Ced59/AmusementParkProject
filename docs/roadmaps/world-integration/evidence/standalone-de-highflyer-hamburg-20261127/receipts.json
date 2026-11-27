@@ -1,0 +1,75 @@
+{
+  "entryId": "DE-candidate-discovery-abeb6c93e2f038",
+  "standaloneAttractionId": "de0ab809-1661-4421-bd91-9339fd9cec38",
+  "historicalSources": [
+    "https://www.welt.de/print-welt/article163101/Dem-Michel-auf-die-Spitze-gucken.html",
+    "https://www.kulturkarte.de/hamburg/31039ballon"
+  ],
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "baec24d8-8c7b-4eac-8cf6-3178ac429ad2",
+      "appliedAtUtc": "2026-11-27T14:04:15.1756335Z"
+    },
+    {
+      "stage": "history",
+      "operationId": "3e74f5fe-38b4-483b-bfb1-3714faa21d27",
+      "appliedAtUtc": "2026-11-27T14:06:36.2249034Z"
+    },
+    {
+      "stage": "publish",
+      "operationId": "9c3b8ea7-3ef1-4bc5-9aa9-f36503b1b226",
+      "appliedAtUtc": "2026-11-27T14:08:23.3044966Z"
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "c2f37980f49843a1961c78050b082139",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:HighFlyer_Hamburg01.jpg",
+      "ownerId": "de0ab809-1661-4421-bd91-9339fd9cec38"
+    },
+    {
+      "imageId": "578ab443fcd14f50a90ecb1c2f3979c6",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Projekt_Hei%C3%9Fluftballon_-_Highflyer_-IMG-1399.jpg",
+      "ownerId": "de0ab809-1661-4421-bd91-9339fd9cec38"
+    },
+    {
+      "imageId": "95bc26cddf6d4430948483ca01920204",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:HighFlyer_Hamburg03.jpg",
+      "ownerId": "de0ab809-1661-4421-bd91-9339fd9cec38"
+    }
+  ],
+  "finalAudit": {
+    "asOfUtc": "2026-11-27",
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "status": "Removed",
+    "descriptionLanguages": 8,
+    "photoCount": 3,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "historicalPhotoDecision": "The 2006 image is the primary image for the removed attraction. Its caption marks the historical date; the status is Removed.",
+    "pricingAndHours": "Not current because the attraction ceased operating in March 2014.",
+    "coordinates": "No sufficiently precise original balloon site coordinate confirmed; venue street address retained."
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T14:08:23.3044966Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/de0ab809-1661-4421-bd91-9339fd9cec38/highflyer-hamburg",
+    "facebookPublishedAtUtc": "2026-11-27T14:09:17.4008817Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129055915424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-highflyer-hamburg-20261127/receipts.json"
+  }
+}
