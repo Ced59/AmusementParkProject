@@ -31,6 +31,12 @@
       "operationId": "24044820-4a72-4f72-a2e2-73f1d53b6bb9",
       "appliedAtUtc": "2026-11-27T16:04:35.2853348Z",
       "isApplied": true
+    },
+    {
+      "stage": "copyedit",
+      "operationId": "0d651c11-57d4-4bfe-80eb-9683d5fc9b4b",
+      "appliedAtUtc": "2026-11-27T16:12:49.0394641Z",
+      "isApplied": true
     }
   ],
   "priorDetailsEnrichmentAppliedAtUtc": "2026-11-27T16:03:28.3656191Z",
@@ -120,11 +126,11 @@
       "credit": "Elferbahnen / Oss"
     }
   ],
-  "lastDataIntegrationAtUtc": "2026-11-27T16:04:35.285Z",
-  "lastDataIntegrationAppliedAtUtc": "2026-11-27T16:04:35.2853348Z",
-  "lastDataIntegrationStage": "Apply details status TemporarilyClosed",
+  "lastDataIntegrationAtUtc": "2026-11-27T16:12:49.039Z",
+  "lastDataIntegrationAppliedAtUtc": "2026-11-27T16:12:49.0394641Z",
+  "lastDataIntegrationStage": "Apply eight-language editorial copyedit",
   "finalAudit": {
-    "auditedAtUtc": "2026-11-27T16:07:15.792Z",
+    "auditedAtUtc": "2026-11-27T16:12:49.039Z",
     "completenessScore": 90,
     "dataQualityLevel": "Good",
     "publicationBlockers": [],

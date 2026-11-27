@@ -505,7 +505,7 @@
         "Alpine Coaster Wiegand — Neustift"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-27T16:04:35.285Z",
+      "lastDataIntegrationAt": "2026-11-27T16:12:49.039Z",
       "integrationHistory": [
         {
           "eventId": "details-elfercoaster-20261127",
@@ -526,9 +526,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/receipts.json",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/audit.json",
           "summary": "Statut corrigé en fermeture temporaire pour révision selon l’exploitant au 27 novembre 2026."
+        },
+        {
+          "eventId": "copyedit-elfercoaster-20261127",
+          "appliedAt": "2026-11-27T16:12:49.039Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4fe6dc2f-bb09-4076-8b48-28486c5bc6bd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/audit.json",
+          "summary": "Descriptions éditoriales corrigées dans les huit langues après vérification publique."
         }
       ],
-      "nextAction": "Fiche et Facebook publiés ; conserver la ligne et vérifier la date de réouverture, les horaires, le tarif de remontée et les conditions d’accès lors d’une prochaine intégration datée.",
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -560,7 +570,7 @@
             "matchingMethod": "Référence Wiegand Neustift, page de l’exploitant, communiqué d’ouverture et recherche PDE Park/Standalone sans doublon."
           }
         ],
-        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration lifecycle-elfercoaster-revision-20261127 ; conserver les références de découverte."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration copyedit-elfercoaster-20261127 ; conserver les références de découverte."
       }
     },
     {

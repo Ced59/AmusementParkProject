@@ -1,5 +1,5 @@
 {
-  "asOfUtc": "2026-11-27T16:07:15.792Z",
+  "asOfUtc": "2026-11-27T16:12:49.039Z",
   "publicChecksAtUtc": "2026-11-27T16:05:09.156Z",
   "siteId": "4fe6dc2f-bb09-4076-8b48-28486c5bc6bd",
   "siteUrl": "https://amusement-parks.fun/fr/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
@@ -27,7 +27,7 @@
   ],
   "publicHttpStatus": 200,
   "ogImageVerified": true,
-  "lastDataIntegrationAtUtc": "2026-11-27T16:04:35.285Z",
-  "lastDataIntegrationBasis": "Apply effectif du statut TemporarilyClosed selon la fermeture officielle pour révision, après enrichissement du modèle et des règles d’accès. Horodatage serveur normalisé à la milliseconde ; site et Facebook publiés séparément.",
+  "lastDataIntegrationAtUtc": "2026-11-27T16:12:49.039Z",
+  "lastDataIntegrationBasis": "Apply effectif des corrections éditoriales dans les huit descriptions, après correction du statut de fermeture temporaire. Horodatage serveur normalisé à la milliseconde.",
   "gap": "Pas d’horaires de reprise ni de tarif de remontée vérifiés, donc aucune règle d’ouverture future inventée."
 }
