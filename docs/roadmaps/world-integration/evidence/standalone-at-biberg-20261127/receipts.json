@@ -1,0 +1,121 @@
+{
+  "entryId": "AT-candidate-discovery-dd51ae961c9499fa",
+  "standaloneAttractionId": "79d5dde0-55b5-4542-aed8-1191c9d7c061",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "79bd14ab-39f3-4a64-80df-cf7a5e876042",
+      "appliedAtUtc": "2026-11-27T16:36:25.5299497Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "ce72e6cc-4b83-4553-8b06-4e9507cb3c71",
+      "appliedAtUtc": "2026-11-27T16:38:48.8206051Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "5dfb4ad388864b0ba687e48048c69088",
+      "sourceUrl": "https://www.saalfelden-leogang.com/deskline/infrastruktur/objekte/sommerrodelbahn-am-biberg_36967/image-thumb__509204__lightbox/Sommerrodelbahn%20Biberg_2152557.jpg",
+      "importedAtUtc": "2026-11-27T16:37:23.665Z",
+      "publishedAtUtc": "2026-11-27T16:37:56.571Z",
+      "isCurrent": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Hochkönig / Roland Haschka"
+    },
+    {
+      "imageId": "cfb2ce6f736c45b3940e67d86bc3cbd3",
+      "sourceUrl": "https://www.saalfelden-leogang.com/deskline/infrastruktur/objekte/sommerrodelbahn-am-biberg_36967/image-thumb__509205__lightbox/Sommerrodelbahn%20am%20Biberg_2152558.jpg",
+      "importedAtUtc": "2026-11-27T16:37:32.147Z",
+      "publishedAtUtc": "2026-11-27T16:38:02.248Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Hochkönig / Roland Haschka"
+    },
+    {
+      "imageId": "e1d415f4e8d147e9a00a49ae208b27c2",
+      "sourceUrl": "https://www.saalfelden-leogang.com/deskline/infrastruktur/objekte/sommerrodelbahn-am-biberg_36967/image-thumb__509206__lightbox/Biberg%20Sommerrodelbahn_2152559.jpg",
+      "importedAtUtc": "2026-11-27T16:37:40.325Z",
+      "publishedAtUtc": "2026-11-27T16:38:07.814Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Hochkönig / Roland Haschka"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T16:38:07.814Z",
+  "lastDataIntegrationStage": "Publication des métadonnées et légendes de la troisième photo",
+  "finalAudit": {
+    "completenessScore": 83,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "completenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-biberg-20261127/final-completeness.json"
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T16:38:48.8206051Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "facebookStatus": "Published",
+    "facebookPublishedAtUtc": "2026-11-27T16:39:35.3944902Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129071833424431"
+  }
+}
