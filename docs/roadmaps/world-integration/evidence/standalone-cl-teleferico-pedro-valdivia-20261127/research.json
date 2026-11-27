@@ -1,0 +1,91 @@
+{
+  "entryId": "CL-candidate-discovery-teleferico-pedro-valdivia-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Paid sightseeing cable car line from Oasis via Tupahue to Cumbre. It is distinct from the already integrated Pío Nono line, which runs from Zoológico via Chile Nativo to Manuel Foster. The official operator sells separate return tickets for each line and a combined offer.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Teleférico Pedro de Valdivia (CL)",
+      "Teleferico Pedro de Valdivia (CL)",
+      "Estación Oasis (CL)"
+    ],
+    "standaloneExactResultCount": 0,
+    "parkQueries": [
+      "Teleférico Pedro de Valdivia (CL)",
+      "Estación Oasis (CL)"
+    ],
+    "parkResultCount": 0,
+    "backlogPedroLineNameOrMainSourceMatches": 0,
+    "knownRelatedEntity": {
+      "entryId": "CL-candidate-discovery-teleferico-pio-nono-20261126",
+      "siteId": "2353bd59-6500-4cbf-a3dd-145f7be86d4b",
+      "name": "Teleférico Pío Nono",
+      "distinction": "Different stations and line ticket, shared operator and ticket portal."
+    }
+  },
+  "sources": {
+    "line": "https://telefericosantiago.cl/linea-pedro-de-valdivia/",
+    "ticketOffers": "https://telefericosantiago.cl/choose-your-ticket/",
+    "faqs": "https://telefericosantiago.cl/questions/",
+    "seasonalHours": "https://telefericosantiago.cl/faq/cual-es-el-horario-de-teleferico-santiago/",
+    "priceFactors": "https://telefericosantiago.cl/faq/cuanto-cuesta-el-teleferico-de-santiago/",
+    "coordinates": "https://www.openstreetmap.org/?mlat=-33.4145875&mlon=-70.6155243#map=18/-33.4145875/-70.6155243"
+  },
+  "observations": {
+    "address": "Estación Oasis, Avenida El Cerro 750, Providencia, Santiago",
+    "coordinates": [
+      -33.4145875,
+      -70.6155243
+    ],
+    "stations": [
+      "Oasis",
+      "Tupahue",
+      "Cumbre"
+    ],
+    "summerHours": "Tuesday–Sunday 10:00–19:45; Monday closed. Operator does not publish exact seasonal boundary dates.",
+    "winterHours": "Tuesday–Sunday 10:00–18:45.",
+    "startingPricesCLP": {
+      "lineReturn": 2750,
+      "combinedWithPioNono": 3900,
+      "underTwo": 0
+    },
+    "priceFactors": "Weekday/weekend, age and route. Current checkout amount may differ from starting price.",
+    "access": "Wheelchair boarding with lift at Oasis; children under twelve accompanied by an adult.",
+    "serviceChanges": "Weather or maintenance may alter operation."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Santiago_Cable_Car.jpg",
+      "artist": "Robert Motecinos Holda",
+      "license": "CC0",
+      "captured": "2025-04-26 13:52:26",
+      "depicts": "Pedro de Valdivia cabins above Santiago"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teleferico_en_Santiago,_Chile.jpg",
+      "artist": "Anaepg86",
+      "license": "CC BY-SA 4.0",
+      "captured": "2024-09-13",
+      "depicts": "cable car and skyline at sunset"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Oasis,_Parque_Metropolitano,_Santiago_20231020_01.jpg",
+      "artist": "Carlos yo",
+      "license": "CC BY-SA 4.0",
+      "captured": "2023-10-20 11:05:06",
+      "depicts": "Oasis starting station"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Tupahue_en_2025.jpg",
+      "artist": "TomasVial",
+      "license": "CC BY-SA 4.0",
+      "captured": "2025-06-21 12:29:41",
+      "depicts": "Tupahue intermediate station"
+    }
+  ],
+  "scopeNotes": [
+    "The operator line page stated open on 27 Nov 2026 and 10:00–19:45.",
+    "The structured calendar covers the current southern summer through February 2027, then needs re-verification.",
+    "The ticket page is shared with Pío Nono, but two separate line offers and station sequences confirm distinct entities.",
+    "All four selected photos depict this older Pedro de Valdivia line or its stations; no Pío Nono images were reused."
+  ]
+}

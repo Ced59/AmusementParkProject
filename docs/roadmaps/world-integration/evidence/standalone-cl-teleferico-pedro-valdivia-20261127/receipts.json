@@ -1,0 +1,159 @@
+{
+  "entryId": "CL-candidate-discovery-teleferico-pedro-valdivia-20261127",
+  "standaloneAttractionId": "6bc78fa7-0889-40c5-afb7-1313d928312b",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "82bd5b83-8af6-4224-8542-150b4851336a",
+      "appliedAtUtc": "2026-11-27T21:13:27.7998532Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "94c66e69-9158-493d-bada-734fbcd41e03",
+      "appliedAtUtc": "2026-11-27T21:13:48.1706889Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "b5f96c1f-6539-47f8-b1ed-47386c39a2ab",
+      "appliedAtUtc": "2026-11-27T21:14:44.3951331Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "2750cbec-b681-4dd6-bd3d-82ca80df85ce",
+      "appliedAtUtc": "2026-11-27T21:16:32.6779295Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "430a412ca9684f919427acab9bac211e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Santiago_Cable_Car.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 1440,
+      "credit": "Robert Motecinos Holda / Wikimedia Commons (CC0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:15:16.973Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "d4da52bf6cd6434495ea7a109b41a20f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teleferico_en_Santiago,_Chile.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1280,
+      "credit": "Anaepg86 / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:15:30.54Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "3719933e707742ccb90c09c924255f1b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Oasis,_Parque_Metropolitano,_Santiago_20231020_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Carlos yo / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:15:45.105Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "1ce9d9d515bb42ae8f1a72f8246aa5ca",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Tupahue_en_2025.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 540,
+      "credit": "TomasVial / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:16:00.035Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "1bfffbb86d2f4f29a662dc2373b81246",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T21:17:48.2588628Z",
+    "externalPostId": "1285475681307050_122129093751424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129093751424431"
+  }
+}

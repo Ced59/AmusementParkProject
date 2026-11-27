@@ -19,7 +19,8 @@
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
     "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
-    "Revue standalone du 22 octobre : 1 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc."
+    "Revue standalone du 22 octobre : 1 observations supplémentaires d’installations, avant dédoublonnage. Le constructeur ou RCDB ne prouve pas l’autonomie par rapport à un parc.",
+    "Teleférico Santiago — ligne Pedro de Valdivia : fiche autonome publiée le 27 novembre 2026 avec quatre photos exactes et publication Facebook ; distincte de la ligne Pío Nono déjà intégrée. Tarifs et horaires saisonniers à recontrôler."
   ],
   "entries": [
     {
@@ -1347,6 +1348,102 @@
         "reviewedAt": "2026-11-26",
         "attractions": [],
         "rationale": "Billetterie, accès et horaires propres au funiculaire ; il se distingue du téléphérique et du parc métropolitain entier."
+      }
+    },
+    {
+      "entryId": "CL-candidate-discovery-teleferico-pedro-valdivia-20261127",
+      "name": "Teleférico Santiago — ligne Pedro de Valdivia",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique touristique à billet propre",
+      "locality": "Estación Oasis, Avenida El Cerro 750, Providencia, Santiago",
+      "siteId": "6bc78fa7-0889-40c5-afb7-1313d928312b",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant : ligne Oasis–Tupahue–Cumbre ouverte et billet aller-retour distinct en novembre 2026.",
+      "identityConfidence": "Trois stations et billet propres ; recherche PDE des noms Pedro de Valdivia et Estación Oasis sans résultat ; ligne Pío Nono connue et distincte.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleférico Pedro de Valdivia",
+        "Teleferico Pedro de Valdivia",
+        "Línea Pedro de Valdivia",
+        "Teleférico Oasis–Cumbre"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T21:16:00.035Z",
+      "integrationHistory": [
+        {
+          "eventId": "standalone-teleferico-pedro-valdivia-20261127",
+          "appliedAt": "2026-11-27T21:16:00.035Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6bc78fa7-0889-40c5-afb7-1313d928312b",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pedro-valdivia-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cl-teleferico-pedro-valdivia-20261127/audit.json",
+          "summary": "Teleférico Pedro de Valdivia : ligne distincte, données officielles, quatre photos exactes et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne et recontrôler les tarifs variables ainsi que le passage à l’horaire d’hiver lors de la prochaine actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — ligne Pedro de Valdivia et stations",
+          "url": "https://telefericosantiago.cl/linea-pedro-de-valdivia/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — billetterie et tarifs de départ",
+          "url": "https://telefericosantiago.cl/choose-your-ticket/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — FAQ, parcours et accessibilité",
+          "url": "https://telefericosantiago.cl/questions/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — horaires saisonniers",
+          "url": "https://telefericosantiago.cl/faq/cual-es-el-horario-de-teleferico-santiago/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — facteurs de variation des prix",
+          "url": "https://telefericosantiago.cl/faq/cuanto-cuesta-el-teleferico-de-santiago/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — station Oasis",
+          "url": "https://www.openstreetmap.org/?mlat=-33.4145875&mlon=-70.6155243#map=18/-33.4145875/-70.6155243",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Robert Motecinos Holda / Wikimedia Commons (CC0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Santiago_Cable_Car.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Anaepg86 / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Teleferico_en_Santiago,_Chile.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Carlos yo / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Oasis,_Parque_Metropolitano,_Santiago_20231020_01.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, TomasVial / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Tupahue_en_2025.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Ligne touristique Oasis–Tupahue–Cumbre avec billet aller-retour propre ; Pío Nono dessert d’autres stations et possède déjà sa fiche."
       }
     }
   ]
