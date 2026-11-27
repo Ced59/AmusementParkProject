@@ -1,0 +1,15 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-zacatecas-20261127",
+  "standaloneAttractionId": "07815501-7033-4c73-b693-79f764bdc401",
+  "evaluatedAtUtc": "2026-11-27T20:06:33.858Z",
+  "result": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 60,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/07815501-7033-4c73-b693-79f764bdc401/teleferico-de-zacatecas",
+  "publicationBlockers": []
+}

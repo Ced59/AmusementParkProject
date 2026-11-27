@@ -3787,6 +3787,70 @@
         "attractions": [],
         "rationale": "Belvédère touristique avec billetterie propre, distinct des musées et restaurants de la tour."
       }
+    },
+    {
+      "entryId": "MX-candidate-discovery-teleferico-zacatecas-20261127",
+      "name": "Teleférico de Zacatecas",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique touristique avec billet propre",
+      "locality": "Cerro del Grillo – Cerro de la Bufa, Zacatecas",
+      "siteId": "07815501-7033-4c73-b693-79f764bdc401",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Service et billetterie publiés par Zacatecas Turismo et VisitMexico, consultés le 27 novembre 2026.",
+      "identityConfidence": "Trajet, ville et tarif confirmés par deux sources touristiques ; recherches PDE Park et Standalone sans fiche homonyme.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleferico de Zacatecas",
+        "Zacatecas Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T20:03:25.115Z",
+      "integrationHistory": [
+        {
+          "eventId": "MX-teleferico-zacatecas-integration-20261127",
+          "appliedAt": "2026-11-27T20:03:25.115Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "07815501-7033-4c73-b693-79f764bdc401",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-teleferico-zacatecas-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mx-teleferico-zacatecas-20261127/audit.json",
+          "summary": "Téléphérique publié avec horaires, quatre tarifs officiels, photo exacte et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; revérifier horaires, tarifs et service nocturne avec l’exploitant, puis dater chaque mise à jour de données.",
+      "sources": [
+        {
+          "label": "Zacatecas Turismo — horaires, tarifs, stations et réductions",
+          "url": "https://zacatecastravel.com/en/teleferico",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "VisitMexico — trajet, horaires et fonctionnement",
+          "url": "https://visitmexico.com/es/destino/2273/teleferico-de-zacatecas",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — coordonnées de la ligne",
+          "url": "https://www.openstreetmap.org/?mlat=22.7788572&mlon=-102.5703223#map=17/22.7788572/-102.5703223",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — And chv, CC BY-SA 4.0, 2021",
+          "url": "https://commons.wikimedia.org/wiki/File:Recorrido_de_Telef%C3%A9rico,_Zacatecas.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Téléphérique touristique à stations, horaires et tarifs propres ; aucune fiche Park parent ni Standalone homonyme trouvée. Fiche autonome publiée et auditée."
+      }
     }
   ]
 }
