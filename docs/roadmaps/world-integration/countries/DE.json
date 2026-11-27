@@ -12223,16 +12223,17 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "HighFlyer a cessé son exploitation à Hambourg en mars 2014 ; son contrat d’occupation a pris fin en 2014.",
+      "identityConfidence": "Ballon captif HighFlyer identifié devant les Deichtorhallen ; période d’exploitation et photographies historiques sourcées. Recherche PDE actualisée encore nécessaire avant création.",
       "possibleMatches": [],
       "aliases": [
-        "Vladi Private Island Hambourg, Germany"
+        "High Flyer Hamburg",
+        "High-Flyer Hamburg"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Rechercher HighFlyer, High Flyer et High-Flyer dans Park et StandaloneAttraction via le client officiel, fiches masquées comprises. Si aucun équivalent n’existe, créer une fiche autonome historique au statut Removed avec photographies exactes ; ne publier aucun horaire ou tarif actuel.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -12243,6 +12244,31 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Kulturkarte Hamburg — fin du service en mars 2014",
+          "url": "https://www.kulturkarte.de/hamburg/31039ballon",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Kulturkarte Hamburg — fin du contrat de terrain en 2014",
+          "url": "https://www.kulturkarte.de/nachrichten/High-Flyer_nun_in_Rio_1460197843",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — HighFlyer Hamburg01, GeorgHH, domaine public",
+          "url": "https://commons.wikimedia.org/wiki/File:HighFlyer_Hamburg01.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — HighFlyer Hamburg03, GeorgHH, domaine public",
+          "url": "https://commons.wikimedia.org/wiki/File:HighFlyer_Hamburg03.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Highflyer IMG-1399, Thomas Fries, CC BY-SA 3.0 DE",
+          "url": "https://commons.wikimedia.org/wiki/File:Projekt_Hei%C3%9Fluftballon_-_Highflyer_-IMG-1399.jpg",
+          "accessedAt": "2026-11-27"
         }
       ],
       "discovery": {
@@ -12252,7 +12278,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "HiFlyer Hamburg",
@@ -12260,13 +12286,13 @@
             "url": "https://www.aerophile.com/en/clients/vladi-private-island/",
             "family": "Ballon captif",
             "sourceVenueName": "HiFlyer Hamburg",
-            "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
+            "sourceLifecycleSignal": "Exploitation à Hambourg arrêtée en mars 2014 ; installation retirée.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Hambourg",
             "referenceId": "aerophile-vladi-private-island"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Ballon captif autrefois autonome devant les Deichtorhallen. Exploitation hambourgeoise arrêtée en mars 2014 et ballon retiré ; aucune fiche active ne doit être créée. Trois photos historiques exactes sont réutilisables."
       }
     },
     {
