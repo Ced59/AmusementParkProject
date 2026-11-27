@@ -1,0 +1,41 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "SkyPoint Observation Deck, belvédère du niveau 77 du Q1 à Surfers Paradise, Gold Coast.",
+  "antiDuplicate": "SearchParks et SearchStandaloneAttractions PDE sur SkyPoint, SkyPoint Observation Deck et Q1 en AU : zéro résultat, fiches masquées comprises. Aucun homonyme ni variante Q1 dans AU.json. SkyPoint Climb est l’activité extérieure distincte.",
+  "sources": [
+    {
+      "url": "https://www.skypoint.com.au/about-us",
+      "finding": "SkyPoint — présentation officielle et exploitant"
+    },
+    {
+      "url": "https://www.skypoint.com.au/visit",
+      "finding": "SkyPoint — localisation, horaires datés et événements"
+    },
+    {
+      "url": "https://www.skypoint.com.au/tickets",
+      "finding": "SkyPoint — billets et prix variables"
+    },
+    {
+      "url": "https://next-skypoint.cdn.prismic.io/next-skypoint/Z71Hr57c43Q3gKv1_ZpnDah5LeNNTxSig_240514-SkyPointAccessibilityGuide.pdf",
+      "finding": "SkyPoint — guide officiel d’accessibilité"
+    },
+    {
+      "url": "https://www.skypoint.com.au/climb",
+      "finding": "SkyPoint — ascension extérieure distincte"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Q1_and_Surfers_Paradise_light_rail_station_2026.jpg",
+      "finding": "Wikimedia Commons — Q1 et tramway, 2026, Totallynotarandomalt69, CC BY 4.0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:2024-10-02_SkyPoint_Observation_Deck_31.jpg",
+      "finding": "Wikimedia Commons — vue depuis le belvédère, 2024, Chris.sherlock2, CC BY-SA 4.0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Bar_of_SkyPoint_Observation_Deck.jpg",
+      "finding": "Wikimedia Commons — intérieur du belvédère, Rick888chen, CC BY-SA 4.0"
+    }
+  ],
+  "photoDecision": "Trois photos exactes, autorisations et auteurs Wikimedia vérifiés : façade Q1 2026, panorama depuis SkyPoint 2024 et intérieur du belvédère 2019. La photo ancienne décrit l’espace intérieur au moment de la prise de vue, pas une configuration actuelle garantie.",
+  "editorialDecision": "Belvédère Operating, au niveau 77 et à 230 m selon le site officiel. Horaires structurés exclusivement du 27 novembre au 25 décembre 2026, avec quatre exceptions vérifiées ; aucune extrapolation après le calendrier affiché. Pas de tarif général structuré, les prix officiels sont datés ou à partir de. Accessibilité vérifiée sur le guide officiel ; restrictions nocturnes et événements signalés par le site."
+}
