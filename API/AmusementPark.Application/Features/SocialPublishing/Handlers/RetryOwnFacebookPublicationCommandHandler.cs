@@ -56,9 +56,13 @@ public sealed class RetryOwnFacebookPublicationCommandHandler
             return ApplicationResult<SocialPublication>.Failure(
                 SocialPublishingApplicationErrors.PublicationCannotBeRetried());
         }
-        // Exact message matching also binds the post to its destination.
-        if (string.IsNullOrWhiteSpace(publication.Url)
-            || !publication.Message.TrimEnd().EndsWith(publication.Url, StringComparison.Ordinal))
+        // The preview image is a query parameter on the link sent to Facebook,
+        // while the human-readable message ends with the canonical page URL.
+        // Accept only that one known query parameter to keep reconciliation
+        // bound to the same destination.
+        string? messageDestinationUrl = GetMessageDestinationUrl(publication.Url);
+        if (messageDestinationUrl is null
+            || !publication.Message.TrimEnd().EndsWith(messageDestinationUrl, StringComparison.Ordinal))
         {
             return ApplicationResult<SocialPublication>.Failure(
                 SocialPublishingApplicationErrors.PublicationReconciliationAmbiguous());
@@ -86,5 +90,26 @@ public sealed class RetryOwnFacebookPublicationCommandHandler
 
         return await this.service.RetryAsync(
             publication.Id!, command.RequestedByUserId, cancellationToken, publication.UpdatedAtUtc);
+    }
+
+    private static string? GetMessageDestinationUrl(string? publicationUrl)
+    {
+        if (string.IsNullOrWhiteSpace(publicationUrl))
+        {
+            return null;
+        }
+
+        int queryStart = publicationUrl.IndexOf('?');
+        if (queryStart < 0)
+        {
+            return publicationUrl;
+        }
+
+        const string imageQueryName = "facebook-image=";
+        string query = publicationUrl[(queryStart + 1)..];
+        return query.StartsWith(imageQueryName, StringComparison.Ordinal)
+            && Guid.TryParseExact(query[imageQueryName.Length..], "N", out _)
+            ? publicationUrl[..queryStart]
+            : null;
     }
 }

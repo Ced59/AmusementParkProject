@@ -59,6 +59,47 @@ public sealed class RetryOwnFacebookPublicationCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenPreviewImageQueryIsPresent_ShouldReconcileCanonicalMessageUrl()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication publication = FailedPublication();
+        publication.Url += "?facebook-image=95f47e399b224fb289d37bc871175cbf";
+        repository.Publications.Add(publication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        publisher.ReconciliationResult = new SocialPublisherLinkReconciliationResult(
+            true, true, false, "123_456", "https://www.facebook.com/123/posts/456", null, null);
+        Mock<ISocialPublicationService> service = new Mock<ISocialPublicationService>(MockBehavior.Strict);
+        RetryOwnFacebookPublicationCommandHandler handler = CreateHandler(repository, service.Object, publisher);
+
+        ApplicationResult<SocialPublication> result = await handler.HandleAsync(
+            new RetryOwnFacebookPublicationCommand("publication-1", "editor-1"));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(SocialPublicationStatus.Published, publication.Status);
+        Assert.Equal(1, publisher.ReconcileCallCount);
+        service.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenPreviewQueryHasUnexpectedParameter_ShouldStopBeforeReconciliation()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication publication = FailedPublication();
+        publication.Url += "?facebook-image=95f47e399b224fb289d37bc871175cbf&other=1";
+        repository.Publications.Add(publication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        Mock<ISocialPublicationService> service = new Mock<ISocialPublicationService>(MockBehavior.Strict);
+        RetryOwnFacebookPublicationCommandHandler handler = CreateHandler(repository, service.Object, publisher);
+
+        ApplicationResult<SocialPublication> result = await handler.HandleAsync(
+            new RetryOwnFacebookPublicationCommand("publication-1", "editor-1"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(0, publisher.ReconcileCallCount);
+        service.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenAnotherUserCalls_ShouldRejectBeforeReconciliation()
     {
         InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
