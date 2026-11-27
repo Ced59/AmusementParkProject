@@ -1,0 +1,104 @@
+{
+  "entryId": "PE-candidate-discovery-telecabinas-kuelap-20261127",
+  "standaloneAttractionId": "201ea3fd-aa12-49c1-b10a-c5c1e50ba711",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "17d73704-dc41-40fc-8f96-51b859869147",
+      "appliedAtUtc": "2026-11-27T22:51:09.4008935Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "2dfc5e4e-19fd-40a2-8136-c22b120690b9",
+      "appliedAtUtc": "2026-11-27T22:51:43.3881278Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "c761e5da-15e3-4ba7-8a0a-439edfafc234",
+      "appliedAtUtc": "2026-11-27T22:51:56.375633Z",
+      "isApplied": true
+    },
+    {
+      "stage": "descriptions",
+      "operationId": "f445dc4e-aae1-49f7-a35a-68f371e5da6b",
+      "appliedAtUtc": "2026-11-27T22:54:38.8693125Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "f3729602-ec9c-40cc-9f19-ea3c74f9dd07",
+      "appliedAtUtc": "2026-11-27T22:55:04.1023371Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "f9f21582d4154ee2a5690f2f14c8e248",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKu%C3%A9lap%2C_2023_%2807%29.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Draceane / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:52:56.481Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "e7a631069dd240409fb53f20eba592a4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKu%C3%A9lap%2C_2023_%2809%29.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Draceane / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:53:10.878Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "0d2cf8eaa8284d33b582fdca8214745b",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129102931424431",
+    "publishedAtUtc": "2026-11-27T22:56:04.8359725Z"
+  }
+}
