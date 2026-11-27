@@ -15,7 +15,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 29 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -26,7 +26,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **2 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **27 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **2 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -60,6 +60,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | PE-candidate-e8bdfa0f249733 | Play Park SJL | San Juan de Lurigancho , Lima , Lima Province | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/20831.htm) |
 | PE-candidate-722fe9c63f15ea | Rancho Aventura | Lima , Lima Province | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/22580.htm) |
 | PE-candidate-158dee257644ec | Rancho Aventura Park | Cieneguilla , Lima Province | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. Correspondance possible : Aventura Park (37cb5bad-fdda-41e8-bbea-d8c6ebdf8dd9). [RCDB](https://rcdb.com/8644.htm) |
+| PE-candidate-discovery-telecabinas-kuelap-20261127 | Telecabinas Kuélap | Nuevo Tingo – La Malca, Luya, Amazonas | StandaloneAttraction | Published | Intégration achevée | 2026-11-27T22:54:38.869Z | — | Recontrôler le calendrier 2027 et les modalités de paiement par carte/QR avant de prolonger les horaires ; conserver cette ligne. Qualification standalone : AlreadyStandalone. Billet propre de transport en bus et télécabine, distinct du droit d’entrée du site archéologique de Kuélap. Signal source : L’exploitant présente un service actif avec tarif, horaires et calendrier opérationnel 2026 ; reprise après maintenance annuelle confirmée.. [Exploitant — services, parcours et horaires](https://www.telecabinaskuelap.com/es/servicios) · [Exploitant — calendrier opérationnel 2026](http://www.telecabinaskuelap.com/assets/doc/Calendario_Operativo_TK_2026.pdf) · [Exploitant — tarif en espèces](https://www.telecabinaskuelap.com/es/horarios-y-tarifas) · [Exploitant — communiqué du 1er avril 2026, moyens de paiement et dernière montée](https://telecabinaskuelap.com/es/noticias/detalle/93) · [OpenStreetMap — tracé du téléphérique](https://www.openstreetmap.org/way/460126002) · [Wikimedia Commons — photo 1, Draceane / Wikimedia Commons (CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File%3AKu%C3%A9lap%2C_2023_%2807%29.jpg) · [Wikimedia Commons — photo 2, Draceane / Wikimedia Commons (CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File%3AKu%C3%A9lap%2C_2023_%2809%29.jpg) |
 | PE-candidate-8d69b121528244 | Valery World | Ica , Ica | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/12474.htm) |
 | PE-candidate-24d68b5f72dd31 | Villalandia | San Isidro , Lima Province | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5605.htm) |
 | PE-candidate-fa2918bb60ece6 | Villalandia | San Miguel , Lima , Lima Province | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/6364.htm) |

@@ -1,0 +1,15 @@
+{
+  "entryId": "PE-candidate-discovery-telecabinas-kuelap-20261127",
+  "standaloneAttractionId": "201ea3fd-aa12-49c1-b10a-c5c1e50ba711",
+  "evaluatedAtUtc": "2026-11-27T22:57:13.534Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/201ea3fd-aa12-49c1-b10a-c5c1e50ba711/telecabinas-kuelap",
+  "publicationBlockers": []
+}

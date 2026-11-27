@@ -880,6 +880,86 @@
       ]
     },
     {
+      "entryId": "PE-candidate-discovery-telecabinas-kuelap-20261127",
+      "name": "Telecabinas Kuélap",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Nuevo Tingo – La Malca, Luya, Amazonas",
+      "siteId": "201ea3fd-aa12-49c1-b10a-c5c1e50ba711",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant présente un service actif avec tarif, horaires et calendrier opérationnel 2026 ; reprise après maintenance annuelle confirmée.",
+      "identityConfidence": "Service distinct de la billetterie de la forteresse ; tracé et station confirmés par exploitant et OSM ; recherches PDE Park et Standalone Kuélap/Kuelap sans résultat ; backlog sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleferico de Kuelap",
+        "Teleférico de Kuélap",
+        "Telecabinas Kuelap"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T22:54:38.869Z",
+      "integrationHistory": [
+        {
+          "eventId": "pe-telecabinas-kuelap-data-20261127",
+          "appliedAt": "2026-11-27T22:54:38.869Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "201ea3fd-aa12-49c1-b10a-c5c1e50ba711",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-pe-telecabinas-kuelap-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pe-telecabinas-kuelap-20261127/audit.json",
+          "summary": "Fiche publiée avec deux photos exactes créditées, prix officiel en espèces, calendrier 2026 et annonce Facebook confirmée."
+        }
+      ],
+      "nextAction": "Recontrôler le calendrier 2027 et les modalités de paiement par carte/QR avant de prolonger les horaires ; conserver cette ligne.",
+      "sources": [
+        {
+          "label": "Exploitant — services, parcours et horaires",
+          "url": "https://www.telecabinaskuelap.com/es/servicios",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — calendrier opérationnel 2026",
+          "url": "http://www.telecabinaskuelap.com/assets/doc/Calendario_Operativo_TK_2026.pdf",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — tarif en espèces",
+          "url": "https://www.telecabinaskuelap.com/es/horarios-y-tarifas",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — communiqué du 1er avril 2026, moyens de paiement et dernière montée",
+          "url": "https://telecabinaskuelap.com/es/noticias/detalle/93",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — tracé du téléphérique",
+          "url": "https://www.openstreetmap.org/way/460126002",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Draceane / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3AKu%C3%A9lap%2C_2023_%2807%29.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Draceane / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3AKu%C3%A9lap%2C_2023_%2809%29.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Billet propre de transport en bus et télécabine, distinct du droit d’entrée du site archéologique de Kuélap."
+      }
+    },
+    {
       "entryId": "PE-candidate-8d69b121528244",
       "name": "Valery World",
       "entityKind": "Park",
