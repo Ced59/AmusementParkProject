@@ -1,0 +1,87 @@
+{
+  "entryId": "DK-candidate-discovery-marsk-tower-20261127",
+  "standaloneAttractionId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08",
+  "officialSource": "https://marskcamp.dk/en/marsk-tower/",
+  "pricingSource": "https://marskcamp.dk/en/accommodation/pricing/",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "cd1ff2f0-9d0a-4e68-88c8-cd570fe65e69",
+      "appliedAtUtc": "2026-11-27T13:21:43.2316738Z"
+    },
+    {
+      "stage": "pricing",
+      "operationId": "73c800ac-9665-427a-b8da-fd519190aa06",
+      "appliedAtUtc": "2026-11-27T13:28:38.9908112Z"
+    },
+    {
+      "stage": "access-history",
+      "operationId": "691568d8-9ac4-41d5-96cb-29de74e2467d",
+      "appliedAtUtc": "2026-11-27T13:33:14.964089Z"
+    },
+    {
+      "stage": "textfix",
+      "operationId": "6dcd491b-ab05-4114-ba98-d96ffa3c0b8c",
+      "appliedAtUtc": "2026-11-27T13:34:28.0998062Z"
+    },
+    {
+      "stage": "publish",
+      "operationId": "9418336e-114b-45ae-b803-75da05d4b2b8",
+      "appliedAtUtc": "2026-11-27T13:36:10.6303598Z"
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "9546094f9e1f4e33a5b27348bb31de58",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_North-East,_2026-07-23.jpg",
+      "ownerId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08"
+    },
+    {
+      "imageId": "3191ea941dad4e9eaa9855a9583fc526",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_lookout_01.jpg",
+      "ownerId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08"
+    },
+    {
+      "imageId": "21678611cd1e45d485b8a5e69ca7a42c",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_core_%26_staircase,_2026-07-23.jpg",
+      "ownerId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08"
+    },
+    {
+      "imageId": "5a52dbcd095c487dbe0a5ab07aaf0879",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_South-West,_2026-07-23.jpg",
+      "ownerId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08"
+    }
+  ],
+  "finalAudit": {
+    "asOfUtc": "2026-11-27",
+    "completenessScore": 87,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "photoCount": 4,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "openingHours": "No reliable future tower-specific schedule published on the checked operator page.",
+    "lift": "Closed indefinitely according to operator."
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T13:36:10.6303598Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/ee6b68fd-00de-4e07-8ea2-10ebff7ffc08/marsk-tower",
+    "facebookPublishedAtUtc": "2026-11-27T13:37:57.7082958Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129052327424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-dk-marsk-tower-20261127/receipts.json"
+  }
+}
