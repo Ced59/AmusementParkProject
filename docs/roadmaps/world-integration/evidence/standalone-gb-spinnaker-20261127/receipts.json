@@ -1,0 +1,120 @@
+{
+  "entryId": "GB-candidate-discovery-spinnaker-20261127",
+  "standaloneAttractionId": "5cb2b798-e0fb-4c39-8ab7-4363181c2e3d",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "09b0ac70-acfb-418b-83a0-75c2dd0aca57",
+      "appliedAtUtc": "2026-11-27T17:26:15.9318373Z",
+      "isApplied": true
+    },
+    {
+      "stage": "more",
+      "operationId": "b8f2750e-0516-4d69-96bb-80b6f9c1068f",
+      "appliedAtUtc": "2026-11-27T17:30:53.1598578Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "9c0d1f02-8071-41f1-90de-05fe7668a627",
+      "appliedAtUtc": "2026-11-27T17:31:09.9230558Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "8cef00fb822340b09924ed0c72b88a68",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spinnaker_Tower,_Portsmouth_(seen_from_Catamaran_to_Ryde)_(August_2025)_(1).jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 1440,
+      "credit": "Hassocks5489 / Wikimedia Commons (CC0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "b84538ea15784e3c80863a3257ae665b",
+      "sourceUrl": "https://spinnakertower.co.uk/assets/holding-page-bg-desktop.webp",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1600,
+      "height": 900,
+      "credit": "Spinnaker Tower / spinnakertower.co.uk",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "ae4056d349e44b0c850c9de20395468c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spinnaker_Tower_glass_floor.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "Editor5807 / Wikimedia Commons (public domain)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "1a1008ad3a9d4c13bb8cb3d2f47690e4",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T17:31:48.5749979Z",
+    "externalPostId": "1285475681307050_122129074683424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129074683424431"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Spinnaker Tower, tour panoramique autonome à Gunwharf Quays, Portsmouth.",
+  "antiDuplicate": "SearchParks et SearchStandaloneAttractions PDE sur Spinnaker en GB : zéro résultat, fiches masquées comprises. Aucun nom, alias, Gunwharf ou Portsmouth retrouvé dans GB.json avant création.",
+  "sources": [
+    {
+      "url": "https://spinnakertower.co.uk/",
+      "finding": "Spinnaker Tower — site officiel et accueil actuel"
+    },
+    {
+      "url": "https://investportsmouth.co.uk/new-partnership-to-secure-the-future-of-spinnaker-tower/",
+      "finding": "Portsmouth City Council — transition vers Landsec"
+    },
+    {
+      "url": "https://www.portsmouth.co.uk/business/spinnaker-tower-reopens-after-handover-to-new-operator-9311812",
+      "finding": "The News Portsmouth — réouverture des plateformes"
+    },
+    {
+      "url": "https://nominatim.openstreetmap.org/search?q=Spinnaker+Tower%2C+Portsmouth&format=json&limit=3",
+      "finding": "OpenStreetMap Nominatim — adresse et coordonnées"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Spinnaker_Tower,_Portsmouth_(seen_from_Catamaran_to_Ryde)_(August_2025)_(1).jpg",
+      "finding": "Wikimedia Commons — vue de 2025, Hassocks5489, CC0"
+    },
+    {
+      "url": "https://spinnakertower.co.uk/assets/holding-page-bg-desktop.webp",
+      "finding": "Spinnaker Tower — photo actuelle du site officiel"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Spinnaker_Tower_glass_floor.JPG",
+      "finding": "Wikimedia Commons — sol vitré en 2009, Editor5807, domaine public"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Spinnaker_Tower",
+      "finding": "Date historique d’ouverture publique en octobre 2005 ; source secondaire utilisée seulement pour la chronologie."
+    }
+  ],
+  "photoDecision": "Trois photos exactes : vue complète de 2025 (CC0), vue actuelle diffusée par l’exploitant, vue historique du sol vitré de 2009 (domaine public). La dernière est explicitement datée dans sa légende.",
+  "editorialDecision": "Statut Operating confirmé par le corps du nouveau site officiel. Billets sans réservation sur place ; aucun tarif ou horaire exact inventé. Historique 2005 et transition 2026, descriptions et métadonnées photo en huit langues."
+}

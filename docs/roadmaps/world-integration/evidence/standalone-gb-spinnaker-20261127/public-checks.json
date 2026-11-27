@@ -1,0 +1,61 @@
+{
+  "checkedAtUtc": "2026-11-27T17:33:09.800330+00:00",
+  "languages": [
+    {
+      "language": "fr",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/fr/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower"
+    },
+    {
+      "language": "en",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/en/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower"
+    },
+    {
+      "language": "de",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/de/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower"
+    },
+    {
+      "language": "es",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/es/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower"
+    },
+    {
+      "language": "it",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/it/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower"
+    },
+    {
+      "language": "nl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/nl/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower"
+    },
+    {
+      "language": "pl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/pl/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower"
+    },
+    {
+      "language": "pt",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/pt/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower"
+    }
+  ]
+}
