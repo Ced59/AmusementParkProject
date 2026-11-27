@@ -1,0 +1,61 @@
+{
+  "checkedAtUtc": "2026-11-27T17:43:56.097631+00:00",
+  "languages": [
+    {
+      "language": "fr",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/fr/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower"
+    },
+    {
+      "language": "en",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/en/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower"
+    },
+    {
+      "language": "de",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/de/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower"
+    },
+    {
+      "language": "es",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/es/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower"
+    },
+    {
+      "language": "it",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/it/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower"
+    },
+    {
+      "language": "nl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/nl/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower"
+    },
+    {
+      "language": "pl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/pl/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower"
+    },
+    {
+      "language": "pt",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/pt/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower"
+    }
+  ]
+}
