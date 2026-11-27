@@ -1,0 +1,33 @@
+{
+  "reviewedAt": "2026-11-27",
+  "classification": "Ballon captif indépendant du quai de Kadıköy, attraction panoramique avec sa propre nacelle. La fiche est historique : l’installation a été retirée.",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions, sans filtre de visibilité, par Turkap, Türk Balon, Kadıköy Balon, Kadikoy Balloon et Kadıköy ; zéro résultat avant création.",
+  "lifecycle": "Aerophile date l’installation de 2003 ; Habertürk confirme le retrait au 10 octobre 2013. Arkitera mentionne dix ans de service, le changement de livrée jaune vers le drapeau turc et les caractéristiques techniques. Aucune ouverture, billetterie ou horaire actuel allégué.",
+  "photo": "Trois photos exactes inspectées : sphère jaune de 2009 par Spiderone (domaine public), ballon au drapeau depuis l’eau en 2011 par altungd (CC BY-SA 3.0) et vue de dessous en 2012 par Kontizas Dimitrios (CC BY-SA 3.0). Sources, auteurs et licences sont présents dans les crédits des huit langues.",
+  "sources": [
+    {
+      "label": "Habertürk — retrait du ballon, 10 octobre 2013",
+      "url": "https://www.haberturk.com/gundem/haber/884823-balon-kadikoye-veda-ediyor"
+    },
+    {
+      "label": "Arkitera — rétrospective, retrait et évolution du ballon",
+      "url": "https://www.arkitera.com/haber/balon-kadikoye-veda-etti/"
+    },
+    {
+      "label": "Wikimedia Commons — Kadıköy, juillet 2009, domaine public",
+      "url": "https://commons.wikimedia.org/wiki/File:HeliumballoonKadikoy.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — ballon de Kadıköy, mai 2012, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:BASE_Jumping_from_static_Istanbul_Kad%C4%B1k%C3%B6y_Balloon.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — vue depuis l’eau, février 2011, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Balon_-_panoramio_%281%29.jpg"
+    },
+    {
+      "label": "Aerophile — Turkap",
+      "url": "https://www.aerophile.com/en/clients/turkap/"
+    }
+  ]
+}
