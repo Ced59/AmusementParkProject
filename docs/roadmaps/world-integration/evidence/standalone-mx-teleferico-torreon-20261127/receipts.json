@@ -1,0 +1,158 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-torreon-20261127",
+  "standaloneAttractionId": "2c855871-1a65-4a41-abb7-f9e1e2eb965c",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "9cc058a2-e914-44fd-9497-243cb36f96cb",
+      "appliedAtUtc": "2026-11-27T22:26:39.1607062Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "85f2fcef-ac55-45d3-a53b-ff327ac1e484",
+      "appliedAtUtc": "2026-11-27T22:26:50.5923018Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "6a252bef-c005-4b30-9ed2-dd75ffed2cf3",
+      "appliedAtUtc": "2026-11-27T22:27:02.8216484Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "3ea6481e-5818-47e2-b8c3-f534b20c380c",
+      "appliedAtUtc": "2026-11-27T22:29:57.2269633Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "defd8c2c5f3b41908f1034a5d691b5b6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_07.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "ProtoplasmaKid / Wikimedia Commons (CC BY 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:29:17.359Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "38bb1b154f004661b560392c12c95102",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_03.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "ProtoplasmaKid / Wikimedia Commons (CC BY 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:29:23.192Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "e85ac73ee2aa4fa098478af1b3d3b590",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_05.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "ProtoplasmaKid / Wikimedia Commons (CC BY 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:29:28.741Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "578ad8a09d9449a1b6fdd9a1d2ef84ca",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_06.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "ProtoplasmaKid / Wikimedia Commons (CC BY 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:29:34.285Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "1385e2ae7ae74f6ca1822c957ed5d89e",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129100591424431",
+    "publishedAtUtc": "2026-11-27T22:31:28.4475095Z"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-torreon-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Public sightseeing cable car from central Torreón to Puerto Noas with a separate ticket. Puerto Noas, Christmas village and parking are not the cable car itself.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Teleférico Torreón (MX)",
+      "Teleferico Torreon (MX)",
+      "Puerto Noas (MX)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Teleférico Torreón (MX)",
+      "Teleferico Torreon (MX)",
+      "Puerto Noas (MX)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAliasAndSourceUrlMatches": 0
+  },
+  "sources": {
+    "cityTourism": "https://www.torreon.gob.mx/turismo/teleferico.html",
+    "directorSeasonalAnnouncement": "https://hola.mx/torreon/aldea-navidena-de-puerto-noas-abrira-sus-puertas-el-26-de-noviembre-29287",
+    "departureVicinityGeoreference": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_Torre%C3%B3n_01.jpg"
+  },
+  "observations": {
+    "departure": "Calle Treviño 155–209, Centro, Torreón",
+    "mappedCoordinates": [
+      25.53839,
+      -103.45689
+    ],
+    "length": "1466 metres according to municipal tourism; the convention bureau gives 1437 metres, so city value takes precedence",
+    "seasonalHours": "Daily 11:00–22:00 beginning 26 Nov 2026, announced by director for Christmas village period; validity capped 7 Jan 2027",
+    "fare": "MXN 30 adult; MXN 15 reduced for seniors, students, disabled visitors",
+    "separateProducts": "Aldea Navideña entrance free; parking MXN 50 separately at Cristo de las Noas access."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_07.jpg",
+      "artist": "ProtoplasmaKid",
+      "license": "CC BY 4.0",
+      "captured": "2026-05-03",
+      "depicts": "cabine rouge à la station Treviño"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_03.jpg",
+      "artist": "ProtoplasmaKid",
+      "license": "CC BY 4.0",
+      "captured": "2026-05-03",
+      "depicts": "embarquement de passagers"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_05.jpg",
+      "artist": "ProtoplasmaKid",
+      "license": "CC BY 4.0",
+      "captured": "2026-05-03",
+      "depicts": "cabine sur la ligne vers le Cerro de las Noas"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_06.jpg",
+      "artist": "ProtoplasmaKid",
+      "license": "CC BY 4.0",
+      "captured": "2026-05-03",
+      "depicts": "cabines sur le versant du Cerro de las Noas"
+    }
+  ],
+  "scopeNotes": [
+    "Photographs captured 3 May 2026 and visually inspected: exact station, cabins and line.",
+    "Do not confuse Puerto Noas hours until 23:00 with cable car hours until 22:00.",
+    "Recheck normal schedule after Christmas season before extending opening hours beyond 7 Jan 2027."
+  ]
+}

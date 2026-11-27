@@ -4011,6 +4011,86 @@
         "attractions": [],
         "rationale": "Trajet vendu à la station indépendamment de l’hébergement, du parking et des prestations de l’hôtel."
       }
+    },
+    {
+      "entryId": "MX-candidate-discovery-teleferico-torreon-20261127",
+      "name": "Teleférico de Torreón",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Calle Treviño, Centro, Torreón, Coahuila",
+      "siteId": "2c855871-1a65-4a41-abb7-f9e1e2eb965c",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "La direction annonce des horaires quotidiens et des tarifs pour la saison de l’Aldea Navideña à compter du 26 novembre 2026.",
+      "identityConfidence": "Tracé et adresse de la station Treviño confirmés par la municipalité ; recherches PDE Park et Standalone sous Torreón et Puerto Noas sans résultat, backlog sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleferico Torreon",
+        "Teleférico Cristo de las Noas",
+        "Teleférico Puerto Noas"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T22:29:34.285Z",
+      "integrationHistory": [
+        {
+          "eventId": "mx-teleferico-torreon-data-20261127",
+          "appliedAt": "2026-11-27T22:29:34.285Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2c855871-1a65-4a41-abb7-f9e1e2eb965c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-teleferico-torreon-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mx-teleferico-torreon-20261127/audit.json",
+          "summary": "Fiche visible avec horaire saisonnier, tarifs, quatre photos créditées de 2026 et annonce Facebook publiée."
+        }
+      ],
+      "nextAction": "Vérifier les horaires et tarifs après la saison de l’Aldea Navideña, dès janvier 2027, et actualiser la fiche sans retirer cette ligne.",
+      "sources": [
+        {
+          "label": "Municipalité de Torreón — ligne, station Treviño et destination",
+          "url": "https://www.torreon.gob.mx/turismo/teleferico.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Hola.mx, 18 novembre 2026 — déclaration de la directrice sur horaires saisonniers et tarifs",
+          "url": "https://hola.mx/torreon/aldea-navidena-de-puerto-noas-abrira-sus-puertas-el-26-de-noviembre-29287",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — repère géographique voisin de la station de départ",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_Torre%C3%B3n_01.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, ProtoplasmaKid / Wikimedia Commons (CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_07.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, ProtoplasmaKid / Wikimedia Commons (CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_03.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, ProtoplasmaKid / Wikimedia Commons (CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_05.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, ProtoplasmaKid / Wikimedia Commons (CC BY 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_Torre%C3%B3n_-_2026_-_06.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Trajet à billet propre entre la station Treviño et le Puerto Noas ; accès à l’Aldea et stationnement séparés."
+      }
     }
   ]
 }
