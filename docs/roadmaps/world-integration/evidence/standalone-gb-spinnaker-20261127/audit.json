@@ -1,0 +1,17 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "5cb2b798-e0fb-4c39-8ab7-4363181c2e3d",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/5cb2b798-e0fb-4c39-8ab7-4363181c2e3d/spinnaker-tower",
+  "status": "Operating",
+  "completenessScore": 74,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "8cef00fb822340b09924ed0c72b88a68",
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129074683424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T17:30:53.159Z",
+  "lastDataIntegrationBasis": "Dernier Apply de contenu substantiel (coordonnées, date et histoire), distinct de la visibilité et de Facebook.",
+  "gap": "Le nouveau site officiel n’indique pas encore de prix ni d’horaires courants."
+}
