@@ -1,0 +1,15 @@
+{
+  "entryId": "US-candidate-discovery-gateway-arch-tram-20261127",
+  "standaloneAttractionId": "a4d5663f-1d38-43fe-8b2a-5a0b68dc139a",
+  "evaluatedAtUtc": "2026-11-27T20:55:40.871Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/a4d5663f-1d38-43fe-8b2a-5a0b68dc139a/gateway-arch-tram-ride-to-the-top",
+  "publicationBlockers": []
+}
