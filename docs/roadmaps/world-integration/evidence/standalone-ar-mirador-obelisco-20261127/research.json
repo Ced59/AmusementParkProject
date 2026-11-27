@@ -1,0 +1,79 @@
+{
+  "entryId": "AR-candidate-discovery-mirador-obelisco-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "The Obelisco de Buenos Aires opened a regularly ticketed observation deck in November 2025. Its own entry, hours and sales make Mirador Obelisco a standalone attraction, distinct from simply viewing the public monument from the square.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Mirador Obelisco (AR)",
+      "Obelisco (AR)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Mirador Obelisco (AR)",
+      "Obelisco (AR)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "tourismOfficeSource": "https://turismo.buenosaires.gob.ar/es/article/mirador-obelisco",
+  "tourismOfficeLastModified": "2026-08-24T12:01:32-03:00",
+  "openingSource": "https://turismo.buenosaires.gob.ar/es/turismo-noticias/un-nuevo-atractivo-tur%C3%ADstico-de-la-ciudad-abri%C3%B3-el-mirador-obelisco",
+  "bookingOperator": "https://miradorobelisco.com.ar/",
+  "wikidataCoordinates": "https://www.wikidata.org/wiki/Q831389",
+  "observations": {
+    "address": "Plaza de la República, Avenida 9 de Julio y Avenida Corrientes, San Nicolás, Buenos Aires",
+    "coordinates": [
+      -34.60376,
+      -58.38162
+    ],
+    "observationHeightMeters": 67.5,
+    "publicOpening": "2025-11-01",
+    "durationMinutes": 20,
+    "hours": "Sun–Wed 09:00–21:00; Thu–Sat 09:00–23:45, per city tourism office checked 27 Nov 2026.",
+    "admissionARS": {
+      "residentGeneral": 22500,
+      "residentRetireeOrChildAge4To11": 18000,
+      "nonresidentGeneral": 36000,
+      "nonresidentChildAge4To11": 29000
+    },
+    "minimumAgeYears": 4,
+    "accessibility": "City tourism office states eight steps before the lift and thirty-five more spiral steps to the deck. It expressly says the visit is not accessible to wheelchair users or those with reduced mobility.",
+    "weatherPolicy": "City office states rescheduling/refund in force majeure such as demonstrations or bad weather."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Obelisco_de_Buenos_Aires,_Avenida_9_de_Julio.jpg",
+      "artist": "Dibumartinez23",
+      "license": "CC BY-SA 4.0",
+      "captured": "Taken on 23 April 2024",
+      "depicts": "monument exterior"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-interior-ventanas1500x610.jpg",
+      "artist": "GCBA",
+      "license": "CC BY 2.5 ar",
+      "captured": "2025-12",
+      "depicts": "observation deck windows"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-interior-escaleras1500x610.jpg",
+      "artist": "GCBA",
+      "license": "CC BY 2.5 ar",
+      "captured": "2025-12",
+      "depicts": "staircase interior"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-vista-panoramica1500x610.jpg",
+      "artist": "GCBA",
+      "license": "CC BY 2.5 ar",
+      "captured": "2025-12",
+      "depicts": "panorama from deck"
+    }
+  ],
+  "scopeNotes": [
+    "Official city tourism information was checked on 27 Nov 2026 and last modified on 24 Aug 2026. The operator booking domain returned HTTP 503 during research; booking availability and displayed price should be confirmed again before travel.",
+    "Hours are represented only through 31 Dec 2026 and should be checked for 2027.",
+    "The visit is explicitly not accessible to wheelchair users and persons with reduced mobility; this fact is shown in the page and structured access conditions.",
+    "Earlier photo candidates were reviewed but not imported; only the four photographs listed above are published and cited in the country register."
+  ]
+}
