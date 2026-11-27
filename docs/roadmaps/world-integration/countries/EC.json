@@ -17,7 +17,8 @@
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : Pistes sourcées ; compléments locaux requis. Un pays sans ligne n’est jamais déclaré terminé.",
+    "TelefériQo de Quito : fiche autonome publiée le 27 novembre 2026 avec quatre photos exactes, horaires, six catégories de tarifs et publication Facebook ; horaires divergents entre FAQ ancienne et page officielle dédiée documentés."
   ],
   "entries": [
     {
@@ -414,6 +415,92 @@
             "sourceName": "Vulqano Park"
           }
         ]
+      }
+    },
+    {
+      "entryId": "EC-candidate-discovery-teleferiqo-quito-20261127",
+      "name": "TelefériQo de Quito",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Fulgencio Araujo et Avenida Occidental, Quito",
+      "siteId": "c2ba09a3-60bb-4b7c-83d9-aa3b5a20574f",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant : trajet, horaires, tarifs et billetterie sur place actifs en novembre 2026.",
+      "identityConfidence": "Exploitant, adresse et itinéraire confirmés ; recherches PDE Park et Standalone sous quatre noms sans résultat, backlog sans nom ni source correspondants.",
+      "possibleMatches": [],
+      "aliases": [
+        "TelefériQo",
+        "TeleferiQo",
+        "Teleférico de Quito",
+        "Teleferico de Quito"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T21:25:34.531Z",
+      "integrationHistory": [
+        {
+          "eventId": "standalone-teleferiqo-quito-20261127",
+          "appliedAt": "2026-11-27T21:25:34.531Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c2ba09a3-60bb-4b7c-83d9-aa3b5a20574f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ec-teleferiqo-quito-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ec-teleferiqo-quito-20261127/audit.json",
+          "summary": "TelefériQo Quito : données officielles, horaires, tarifs, quatre photos exactes et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne et recontrôler les horaires, la dernière vente et les tarifs officiels lors de la prochaine actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — trajet TelefériQo et station de départ",
+          "url": "https://teleferico.com.ec/product/teleferiqo/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — horaires et tarifs individuels",
+          "url": "https://teleferico.com.ec/horarios-y-tarifas/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — FAQ, billets et conditions d’accès",
+          "url": "https://teleferico.com.ec/preguntas-frecuentes/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — station de départ TelefériQo",
+          "url": "https://www.openstreetmap.org/?mlat=-0.1895411&mlon=-78.5283237#map=18/-0.1895411/-78.5283237",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, AndrewDressel / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gondolas_of_the_TeleferiQo_in_Quito,_Ecuador.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, AndrewDressel / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Top_station_of_the_TeleferiQo_in_Quito,_Ecuador.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Eman Jaradat / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9riQo.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, David Berkowitz / Wikimedia Commons (CC BY 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9riQo_views_of_mountains_and_Quito_-_Ecuador_-_South_America.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Liaison en cabine de la station de Quito à Cruz Loma, avec ticket aller-retour et exploitation propres, distincte des activités proposées au sommet."
       }
     }
   ]

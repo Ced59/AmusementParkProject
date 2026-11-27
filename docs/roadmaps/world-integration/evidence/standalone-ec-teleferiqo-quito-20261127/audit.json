@@ -1,0 +1,15 @@
+{
+  "entryId": "EC-candidate-discovery-teleferiqo-quito-20261127",
+  "standaloneAttractionId": "c2ba09a3-60bb-4b7c-83d9-aa3b5a20574f",
+  "evaluatedAtUtc": "2026-11-27T21:27:23.172Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/c2ba09a3-60bb-4b7c-83d9-aa3b5a20574f/teleferiqo-de-quito",
+  "publicationBlockers": []
+}

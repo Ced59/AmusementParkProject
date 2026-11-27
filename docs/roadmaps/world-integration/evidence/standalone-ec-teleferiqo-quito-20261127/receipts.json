@@ -1,0 +1,159 @@
+{
+  "entryId": "EC-candidate-discovery-teleferiqo-quito-20261127",
+  "standaloneAttractionId": "c2ba09a3-60bb-4b7c-83d9-aa3b5a20574f",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "98cbaa1f-ad2c-4d41-8842-fc42346b968a",
+      "appliedAtUtc": "2026-11-27T21:23:15.0849373Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "dbc910f9-8416-4b61-8d58-bdc17f72c17d",
+      "appliedAtUtc": "2026-11-27T21:23:31.9892969Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "afa073d6-6187-4c75-9dc3-3dd8216c26c6",
+      "appliedAtUtc": "2026-11-27T21:24:26.2705028Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "67703249-b7f9-485a-9f7f-a0ce640b23d2",
+      "appliedAtUtc": "2026-11-27T21:26:02.9691065Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "821c0be933a648059b48ecb97636e1de",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gondolas_of_the_TeleferiQo_in_Quito,_Ecuador.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "AndrewDressel / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:24:54.416Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "63254c14e31544f2ac2cf5a00d9620bc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_station_of_the_TeleferiQo_in_Quito,_Ecuador.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "AndrewDressel / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:25:07.848Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "daaaad84b2764f178cce11d619fba3a7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9riQo.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Eman Jaradat / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:25:20.727Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "aa7370e0d23c4b66855f7538cf0df46d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9riQo_views_of_mountains_and_Quito_-_Ecuador_-_South_America.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "David Berkowitz / Wikimedia Commons (CC BY 2.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:25:34.531Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "f211f04b58a74245ac64b25ae79a5a70",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T21:26:40.8407598Z",
+    "externalPostId": "1285475681307050_122129094303424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129094303424431"
+  }
+}
