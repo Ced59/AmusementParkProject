@@ -1,0 +1,15 @@
+{
+  "entryId": "ES-candidate-discovery-mirador-madrid-cibeles-20261127",
+  "standaloneAttractionId": "e24e63fb-b0c6-4cdd-b3eb-fe25af4e13b3",
+  "evaluatedAtUtc": "2026-11-27T20:44:57.683Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/e24e63fb-b0c6-4cdd-b3eb-fe25af4e13b3/mirador-madrid",
+  "publicationBlockers": []
+}

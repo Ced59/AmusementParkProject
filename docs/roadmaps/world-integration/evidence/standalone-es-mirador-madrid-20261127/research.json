@@ -1,0 +1,84 @@
+{
+  "entryId": "ES-candidate-discovery-mirador-madrid-cibeles-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Operating ticketed municipal observation deck inside the Palacio de Cibeles tower. Its access, entry slots and prices are distinct from entry to the wider palace and CentroCentro.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Mirador Madrid (ES)",
+      "Palacio de Cibeles (ES)",
+      "CentroCentro (ES)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Mirador Madrid (ES)",
+      "Palacio de Cibeles (ES)",
+      "CentroCentro (ES)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "officialTourismSource": "https://www.esmadrid.com/informacion-turistica/mirador-madrid",
+  "palaceSource": "https://www.esmadrid.com/informacion-turistica/palacio-cibeles",
+  "coordinateSource": "https://www.openstreetmap.org/?mlat=40.4189657&mlon=-3.6920892#map=18/40.4189657/-3.6920892",
+  "observations": {
+    "address": "Plaza de Cibeles 1, 28014 Madrid",
+    "coordinates": [
+      40.4189657,
+      -3.6920892
+    ],
+    "regularHours": "Tuesday–Sunday 10:30–14:00 and 16:00–19:30, 30-minute admission slots; Monday closed.",
+    "yearEndClosures": [
+      "2026-12-24",
+      "2026-12-25",
+      "2026-12-31",
+      "2027-01-01",
+      "2027-01-05",
+      "2027-01-06"
+    ],
+    "admissionEUR": {
+      "general": 4,
+      "reduced": 2,
+      "superReduced": 1
+    },
+    "onlineFeeEUR": 0.5,
+    "access": "Final approach from floor 6E has 88 steps; lift priority for visitors with mobility difficulty.",
+    "weather": "Weather and safety may change access.",
+    "sourceChecked": "Official tourism page last updated 28 Sep 2026 and directly fetched 27 Nov 2026."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_de_Cibeles_2024.jpg",
+      "artist": "Dudva",
+      "license": "CC0",
+      "captured": "2024-02-09",
+      "depicts": "Palacio de Cibeles facade and central tower"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_de_Cibeles_-_Madrid_-_20250406_003.jpg",
+      "artist": "Américo Toledano",
+      "license": "CC BY-SA 4.0",
+      "captured": "2025-04-06 16:15:33",
+      "depicts": "palace entrance"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:008495_-_Madrid_(9416183413).jpg",
+      "artist": "M.Peinado",
+      "license": "CC BY 2.0",
+      "captured": "2013-07-20 19:04",
+      "depicts": "Cibeles square from the viewpoint"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:008496_-_Madrid_(9418982760).jpg",
+      "artist": "M.Peinado",
+      "license": "CC BY 2.0",
+      "captured": "2013-07-20 19:03",
+      "depicts": "Paseo de Recoletos from the viewpoint"
+    }
+  ],
+  "scopeNotes": [
+    "The same official page includes a past special opening on 26 September; it was ignored for current operating hours.",
+    "The structured calendar represents two daytime visiting windows and closure dates; tickets are for exact 30-minute starts, not unrestricted walk-in access.",
+    "Calendar ends 10 Jan 2027 and then requires re-verification.",
+    "Four exact licensed photos include facade, entrance and two views explicitly documented as taken from the viewpoint."
+  ]
+}

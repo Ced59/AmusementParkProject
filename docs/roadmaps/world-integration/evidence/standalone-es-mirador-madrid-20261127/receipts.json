@@ -1,0 +1,159 @@
+{
+  "entryId": "ES-candidate-discovery-mirador-madrid-cibeles-20261127",
+  "standaloneAttractionId": "e24e63fb-b0c6-4cdd-b3eb-fe25af4e13b3",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "7c244bac-3507-4b8c-beae-af98a1948bb6",
+      "appliedAtUtc": "2026-11-27T20:39:58.206834Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "55a3a43a-32ee-43e1-901e-936b6c46091b",
+      "appliedAtUtc": "2026-11-27T20:40:09.7817657Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "c9e7e898-399d-4a10-9378-f566cefd089f",
+      "appliedAtUtc": "2026-11-27T20:40:20.667449Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "2cb0c8b7-5142-4c42-ab1a-4bd2b38b68dc",
+      "appliedAtUtc": "2026-11-27T20:42:28.7866094Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "656ed5e7e5de43f68f515262b0e42e09",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_de_Cibeles_2024.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 625,
+      "credit": "Dudva / Wikimedia Commons (CC0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:41:21.832Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "b611e9ecb6ce495bbef9c9d52fd0ff36",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palacio_de_Cibeles_-_Madrid_-_20250406_003.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1440,
+      "credit": "Américo Toledano / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:41:35.768Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "388fd298b2aa4eeaa9dcdf404c6f393b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:008495_-_Madrid_(9416183413).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "M.Peinado / Wikimedia Commons (CC BY 2.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:41:48.873Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "c31e882774c9485eb7d36487ea574343",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:008496_-_Madrid_(9418982760).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "M.Peinado / Wikimedia Commons (CC BY 2.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:42:02.39Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "0914ff9d828845b8bb0b7993acf2767c",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T20:43:52.9543267Z",
+    "externalPostId": "1285475681307050_122129091093424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129091093424431"
+  }
+}
