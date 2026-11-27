@@ -1,0 +1,26 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "fdcabbc6-1385-49cc-8cbc-b4908831a049",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/fdcabbc6-1385-49cc-8cbc-b4908831a049/dhl-hong-kong-balloon",
+  "status": "Removed",
+  "completenessScore": 86,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "photoCount": 1,
+  "primaryPhotoId": "a76c3fcac70642b2abab98f397d5c777",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "historicalPhotoDecision": "Photo datée du 13 août 2011 et statut Removed. Aucun tarif ni horaire contemporain.",
+  "coordinates": "L’emplacement exact ancien n’est pas établi avec la précision nécessaire ; la promenade est indiquée sans coordonnées supposées."
+}
