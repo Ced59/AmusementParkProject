@@ -2159,15 +2159,15 @@
     {
       "entryId": "DK-candidate-discovery-marsk-tower-20261127",
       "name": "Marsk Tower",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tour panoramique",
       "locality": "Hjemstedvej 60, 6780 Skærbæk",
-      "siteId": null,
+      "siteId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-11-27",
-      "editorialStatus": "InProgress",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27T13:39:17Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Tour visitable et billets en vente sur le site officiel au 27 novembre 2026. L'ascenseur seul est annoncé fermé pour une durée indéterminée ; la tour reste accessible par les escaliers, sous réserve de météo.",
@@ -2178,10 +2178,71 @@
         "Marsktårnet",
         "Marsh Tower"
       ],
-      "assignedTo": "codex-world-standalone-marsk-20261127",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Créer puis compléter la StandaloneAttraction via PDE avec quatre photographies exactes, les données officielles, le tarif propre à la tour et l'avertissement sur l'ascenseur. Les horaires 2026 de la tour ne sont pas fiables sur la page horaire actuelle : son calendrier intégré est limité au 1er octobre 2026 et ne doit pas être extrapolé. Audit, publication publique et annonce Facebook ensuite ; dater uniquement les Apply et imports réellement réussis.",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T13:36:10Z",
+      "integrationHistory": [
+        {
+          "eventId": "cd1ff2f0-9d0a-4e68-88c8-cd570fe65e69",
+          "appliedAt": "2026-11-27T13:21:43Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08",
+          "evidence": "PARK_DATA_EDITOR:apply:cd1ff2f0-9d0a-4e68-88c8-cd570fe65e69",
+          "auditEvidence": null,
+          "summary": "Création privée, localisation, état de l'ascenseur et huit descriptions."
+        },
+        {
+          "eventId": "marsk-four-photos-20261127",
+          "appliedAt": "2026-11-27T13:27:03Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08",
+          "evidence": "PARK_DATA_EDITOR:image:3191ea941dad4e9eaa9855a9583fc526",
+          "auditEvidence": null,
+          "summary": "Quatre photos exactes importées en privé, dont la vue principale 9546094f9e1f4e33a5b27348bb31de58 ; légendes et crédits en huit langues."
+        },
+        {
+          "eventId": "73c800ac-9665-427a-b8da-fd519190aa06",
+          "appliedAt": "2026-11-27T13:28:38Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08",
+          "evidence": "PARK_DATA_EDITOR:apply:73c800ac-9665-427a-b8da-fd519190aa06",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels en DKK vérifiés le 27 novembre 2026 : six billets et un pass annuel ; tarif de l'ascenseur fermé exclu."
+        },
+        {
+          "eventId": "691568d8-9ac4-41d5-96cb-29de74e2467d",
+          "appliedAt": "2026-11-27T13:33:14Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08",
+          "evidence": "PARK_DATA_EDITOR:apply:691568d8-9ac4-41d5-96cb-29de74e2467d",
+          "auditEvidence": null,
+          "summary": "Accès par 146 marches avec ascenseur fermé, provenance officielle et historique de l'ouverture en 2021."
+        },
+        {
+          "eventId": "6dcd491b-ab05-4114-ba98-d96ffa3c0b8c",
+          "appliedAt": "2026-11-27T13:34:28Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08",
+          "evidence": "PARK_DATA_EDITOR:apply:6dcd491b-ab05-4114-ba98-d96ffa3c0b8c",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues corrigées après contrôle éditorial ; hauteur conservée dans le champ structuré."
+        },
+        {
+          "eventId": "9418336e-114b-45ae-b803-75da05d4b2b8",
+          "appliedAt": "2026-11-27T13:36:10Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee6b68fd-00de-4e07-8ea2-10ebff7ffc08",
+          "evidence": "PARK_DATA_EDITOR:apply:9418336e-114b-45ae-b803-75da05d4b2b8",
+          "auditEvidence": "PARK_DATA_EDITOR:completeness:ee6b68fd-00de-4e07-8ea2-10ebff7ffc08:2026-11-27",
+          "summary": "Audit final 87/100 sans bloqueur ; quatre photos publiées ; fiche visible et vérifiée dans huit langues."
+        }
+      ],
+      "nextAction": "Conserver la ligne intégrée ; revérifier les horaires de la tour et l’état de l’ascenseur sur les pages officielles, puis dater chaque nouvelle intégration.",
       "sources": [
         {
           "label": "Marsk Camp — Marsk Tower, architecture et accès",
@@ -2222,6 +2283,21 @@
           "label": "Wikimedia Commons — plateforme, Elgaard, CC BY-SA 4.0",
           "url": "https://commons.wikimedia.org/wiki/File:Marsk_Tower_lookout_01.jpg",
           "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Bjarke Ingels Group — projet Marsk Tower",
+          "url": "https://big.dk/projects/marsk-tower-4092",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "ArchDaily — projet réalisé en 2021",
+          "url": "https://www.archdaily.com/966611/marsk-tower-big",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Australian Design Review — ouverture en 2021",
+          "url": "https://www.australiandesignreview.com/amp/architecture/bigs-marsk-tower-officially-opens-in-denmark/",
+          "accessedAt": "2026-11-27"
         }
       ],
       "discovery": {
@@ -2230,7 +2306,7 @@
         "foundAt": "2026-11-27"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-27",
         "attractions": [
           {
@@ -2243,7 +2319,15 @@
             "sourceLocality": "Skærbæk"
           }
         ],
-        "rationale": "Installation fixe à billet individuel et accès dédié, exploitée dans un camping avec minigolf et restaurant. Ce domaine touristique n'est pas un parc d'attractions structuré ; la tour relève d'une fiche standalone."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 9418336e-114b-45ae-b803-75da05d4b2b8 ; conserver les références de découverte."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-27T13:36:10.6303598Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/ee6b68fd-00de-4e07-8ea2-10ebff7ffc08/marsk-tower",
+        "facebookPublishedAtUtc": "2026-11-27T13:37:57.7082958Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129052327424431",
+        "facebookStatus": "Published",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-dk-marsk-tower-20261127/receipts.json"
       }
     }
   ]
