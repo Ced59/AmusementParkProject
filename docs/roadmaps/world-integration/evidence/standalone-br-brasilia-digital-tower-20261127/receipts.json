@@ -1,0 +1,132 @@
+{
+  "entryId": "BR-candidate-discovery-brasilia-digital-tower-20261127",
+  "standaloneAttractionId": "1174e3d6-93cd-420d-bb41-f78359a80fef",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "86c8a467-0ea3-46b9-8ae6-786fd125c4c2",
+      "appliedAtUtc": "2026-11-27T18:58:25.2460127Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "6d694579-7d92-4c1a-a848-ed65aef5f4bd",
+      "appliedAtUtc": "2026-11-27T19:04:04.1192023Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "03cc1ea0-df37-4e63-ae2c-24169bc3eea7",
+      "appliedAtUtc": "2026-11-27T19:04:15.5108142Z",
+      "isApplied": true
+    },
+    {
+      "stage": "access",
+      "operationId": "54caf4f4-95c2-4a33-83a7-6acd9dedb6c6",
+      "appliedAtUtc": "2026-11-27T19:04:26.52963Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "1ae4fb4c-b2c0-4292-b5dc-ee2f52550a74",
+      "appliedAtUtc": "2026-11-27T19:05:00.945792Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "ede708723ffa4b6b81b930e404826fff",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flor_do_Cerrado_TV_Tower_BSB_07_2014_9935.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1600,
+      "credit": "Mariordo (Mario Roberto Durán Ortiz) / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "38a6acf8d7544ff4bad4b5e76384f706",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brasília_-_Torre_de_TV_Digital_(4).jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 960,
+      "credit": "Sintegrity / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "213f8d7be0b6487a9a9584abd3b0386c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brasilia_DF_Brasil_-_Janela_da_Torre_Digital_-_panoramio.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 960,
+      "credit": "Josue Marinho / Wikimedia Commons (CC BY 3.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "232d2853907b4a1499950dc2fd6171d8",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T19:06:11.004756Z",
+    "externalPostId": "1285475681307050_122129081679424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129081679424431"
+  }
+}
