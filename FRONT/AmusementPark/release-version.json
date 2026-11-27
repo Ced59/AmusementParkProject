@@ -1,6 +1,20 @@
 {
-  "version": "6.0.42",
+  "version": "6.0.43",
   "history": [
+    {
+      "version": "6.0.43",
+      "releasedAt": "2026-11-27",
+      "labels": {
+        "fr": "Annonces Facebook avec photo rétablies",
+        "en": "Facebook photo announcements restored",
+        "de": "Facebook-Fotoankündigungen wiederhergestellt",
+        "nl": "Facebook-aankondigingen met foto hersteld",
+        "it": "Annunci Facebook con foto ripristinati",
+        "es": "Anuncios de Facebook con foto restablecidos",
+        "pl": "Przywrócono ogłoszenia na Facebooku ze zdjęciem",
+        "pt": "Anúncios no Facebook com fotografia repostos"
+      }
+    },
     {
       "version": "6.0.42",
       "releasedAt": "2026-11-27",
