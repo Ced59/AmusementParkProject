@@ -1,0 +1,70 @@
+{
+  "entryId": "ES-candidate-discovery-teleferico-madrid-20261127",
+  "standaloneAttractionId": "d9e69764-2e94-49c5-b064-5bd04ca75d59",
+  "officialSource": "https://teleferico.emtmadrid.es/",
+  "operations": [
+    {
+      "stage": "core.live",
+      "operationId": "faec6f28-712a-49ea-8b8f-07ff443cc39f",
+      "appliedAtUtc": "2026-11-27T13:54:43.3062765Z"
+    },
+    {
+      "stage": "textfix",
+      "operationId": "97ef4dd6-d758-468c-a99b-1f0e3ab0fab6",
+      "appliedAtUtc": "2026-11-27T13:56:45.9598437Z"
+    },
+    {
+      "stage": "history",
+      "operationId": "b5396a53-3068-4117-b84e-8704c8823f17",
+      "appliedAtUtc": "2026-11-27T13:57:45.6881033Z"
+    },
+    {
+      "stage": "publish",
+      "operationId": "673a582c-5472-41c7-bb3b-93c37cf9803e",
+      "appliedAtUtc": "2026-11-27T13:59:44.2768419Z"
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "165e5a400e3740fa9c32f1d226c9839b",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Madrid_20161106_1.jpg",
+      "ownerId": "d9e69764-2e94-49c5-b064-5bd04ca75d59"
+    },
+    {
+      "imageId": "c980cf8d494c4dcd8531454a18ad0c64",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Madrid.jpg",
+      "ownerId": "d9e69764-2e94-49c5-b064-5bd04ca75d59"
+    }
+  ],
+  "finalAudit": {
+    "asOfUtc": "2026-11-27",
+    "completenessScore": 93,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "status": "TemporarilyClosed",
+    "descriptionLanguages": 8,
+    "photoCount": 2,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "historicalPhotoDecision": "The 2016 image is the primary visual because the line is closed for a full rebuild. The caption and alt text identify the former installation; the live status is TemporarilyClosed.",
+    "pricingAndHours": "Not current while service is closed; await official reopening information."
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T13:59:44.2768419Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/d9e69764-2e94-49c5-b064-5bd04ca75d59/teleferico-de-madrid",
+    "facebookPublishedAtUtc": "2026-11-27T14:00:32.3365969Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129054967424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-es-teleferico-madrid-20261127/receipts.json"
+  }
+}
