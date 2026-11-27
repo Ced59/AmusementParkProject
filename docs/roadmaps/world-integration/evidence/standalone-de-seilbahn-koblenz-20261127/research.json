@@ -4,8 +4,19 @@
   "classification": "Téléphérique permanent du centre de Coblence à la forteresse Ehrenbreitstein, avec gares, billet et horaire propres. Aucun parc d'attractions parent identifié dans le registre ; cette conclusion attend la recherche PDE.",
   "facts": "L'exploitant identifie Skyglide Event Deutschland GmbH comme opérateur et le groupe Doppelmayr comme constructeur. La ligne mesure 890 m. La cérémonie officielle a eu lieu le 2 juillet 2010 ; la chronique des archives municipales situe les premières courses ouvertes au public le 4 juillet 2010, lors du Buga-Baustellenfest. Conserver cette distinction dans la frise.",
   "operatingStatus": "En service au 27 novembre 2026. L'exploitant annonce une pause du 2 au 18 novembre puis des trajets à partir du 19 novembre ; son calendrier donne des heures jour par jour. Ne pas appliquer une grille hebdomadaire générique à la période de l'Avent.",
-  "pricing": "Page officielle vérifiée le 27 novembre 2026 : aller-retour adulte 15,50 EUR ; autres tarifs et réductions sur la page. Revalider au moment de l'Apply et conserver la date de vérification réelle.",
-  "photos": "Trois photographies de la ligne réalisées le 22 août 2026 par Yair-haklai, CC BY-SA 4.0, inspectées visuellement. La vue verticale Seilbahn Koblenz-2.jpg montre les cabines et la forteresse ; les deux vues horizontales situent la ligne sur la rive du Rhin et en face de la forteresse. Variantes Wikimedia de 960 px inspectées ; chacune est inférieure à 960 Kio.",
+  "pricing": "Page officielle vérifiée le 27 novembre 2026 : aller-retour adulte 15,50 EUR, tarif réduit 15 EUR, étudiant/apprenti 8,50 EUR, enfant de 7 à 17 ans 7 EUR ; aller simple adulte 12 EUR ; billet du soir dès 17 h 30 adulte 9,90 EUR aller-retour ou 8 EUR simple. La page détaille également les billets de 2 et 3 jours et les cartes mensuelles ou trimestrielles. Les enfants de moins de 7 ans voyagent gratuitement. Revalider les montants et conditions au moment de l'Apply ; conserver la date de vérification réelle.",
+  "photos": "Six photographies exactes et distinctes inspectées visuellement, toutes sous CC BY-SA 4.0 et disponibles en variantes Wikimedia de moins de 960 Kio. Les trois vues du 22 août 2026 par Yair-haklai montrent la ligne et la forteresse ; la vue verticale Seilbahn Koblenz-2.jpg est un bon visuel principal. Trois vues supplémentaires montrent clairement les cabines : la traversée du Rhin par Hartmut Schmidt Heidelberg (Foeniz), deux cabines devant Ehrenbreitstein par Ingo Mehling, et une cabine au-dessus du fleuve par Till Wicher. Le choix final doit comparer les images déjà présentes après l'export PDE et n'importer aucun doublon.",
+  "calendarCoverage": {
+    "sourceUrl": "https://www.seilbahn-koblenz.de/events.html",
+    "verifiedAt": "2026-11-27",
+    "firstDate": "2026-11-27",
+    "lastDate": "2027-10-17",
+    "publishedDateCount": 323,
+    "closedDateCount": 51,
+    "compressedRuleCount": 27,
+    "missingDates": ["2027-03-27", "2027-04-06"],
+    "notes": "Chaque date officiellement publiée a été vérifiée et peut être représentée par 27 règles continues non chevauchantes. Les deux dates absentes de la source restent inconnues ; ne pas les déclarer fermées ou ouvertes. Le calendrier doit être rechargé juste avant l'Apply, car l'exploitant peut le modifier."
+  },
   "location": "La catégorie Commons de la gare basse donne 50° 21′ 42,84″ N et 7° 36′ 18,23″ E, soit 50.3619, 7.605064. L'exploitant indique Konrad-Adenauer-Ufer, 56068 Koblenz.",
   "sources": [
     {
@@ -56,6 +67,21 @@
     {
       "label": "Wikimedia Commons — ligne face à la forteresse, Yair-haklai, CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz-3.jpg",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — traversée du Rhin, Hartmut Schmidt Heidelberg (Foeniz), CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Cableway_crossing_the_Rhine_from_the_city_bank_to_Ehrenbreitstein_fortress.jpg",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — cabines devant Ehrenbreitstein, Ingo Mehling, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Fortress_Ehrenbreitstein_Cable_Car.jpg",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — cabine au-dessus du Rhin, Till Wicher, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Koblenzer_Seilbahn.jpg",
       "accessedAt": "2026-11-27"
     }
   ],
