@@ -17,9 +17,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1867 | 7554 |
-| Standalone | 375 | 1 | 106 |
+| Standalone | 376 | 1 | 105 |
 
-**Reprise standalone :** en plus des 106 candidates sans correspondance, **193 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **538 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **87 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 105 candidates sans correspondance, **193 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **538 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **87 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **72** types à décider, **1254** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -380,11 +380,11 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Thaïlande](countries/TH.md) | 1 | 0 | 0 | 2 | 4 | 0 |
 | [Timor oriental](countries/TL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Turkménistan](countries/TM.md) | 0 | 0 | 0 | 0 | 1 | 0 |
-| [Viêt Nam](countries/VN.md) | 1 | 0 | 3 | 1 | 21 | 0 |
+| [Viêt Nam](countries/VN.md) | 2 | 0 | 2 | 1 | 21 | 0 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **81** | **0** | **51** | **4** | **689** | **0** |
+| **Total** | **82** | **0** | **50** | **4** | **689** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **80**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **81**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Cambodge : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Chine : 6 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -401,7 +401,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - Singapour : 8 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Taïwan : 6 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Thaïlande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
-- Viêt Nam : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
+- Viêt Nam : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |

@@ -1,0 +1,30 @@
+{
+  "asOfUtc": "2026-11-27T15:32:32.464Z",
+  "siteId": "436a8669-e09a-4e44-b11a-d5ce3c8bdf7e",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+  "status": "Operating",
+  "completenessScore": 86,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "799a75f7ab404fd09406556a8e0c52b4",
+  "historyEventCount": 1,
+  "currentAdmissionOffers": 2,
+  "weeklyHours": "07:15–16:30, selon le site de Dalattourist au 27 novembre 2026 ; confirmer avant visite",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "lengthTechnicalField": "Laissé vide : divergence 2 400 m Dalattourist / environ 1 700 m RCDB.",
+  "publicChecksAtUtc": "2026-11-27T15:22:17.826Z",
+  "finalCompletenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla3-20261127/final-completeness.json"
+}

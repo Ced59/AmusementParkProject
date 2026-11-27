@@ -1,0 +1,61 @@
+{
+  "checkedAtUtc": "2026-11-27T15:22:17.826Z",
+  "checks": [
+    {
+      "lang": "fr",
+      "status": 200,
+      "url": "https://amusement-parks.fun/fr/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/799a75f7ab404fd09406556a8e0c52b4/social-preview-v2"
+    },
+    {
+      "lang": "en",
+      "status": 200,
+      "url": "https://amusement-parks.fun/en/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/799a75f7ab404fd09406556a8e0c52b4/social-preview-v2"
+    },
+    {
+      "lang": "de",
+      "status": 200,
+      "url": "https://amusement-parks.fun/de/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/799a75f7ab404fd09406556a8e0c52b4/social-preview-v2"
+    },
+    {
+      "lang": "es",
+      "status": 200,
+      "url": "https://amusement-parks.fun/es/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/799a75f7ab404fd09406556a8e0c52b4/social-preview-v2"
+    },
+    {
+      "lang": "it",
+      "status": 200,
+      "url": "https://amusement-parks.fun/it/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/799a75f7ab404fd09406556a8e0c52b4/social-preview-v2"
+    },
+    {
+      "lang": "nl",
+      "status": 200,
+      "url": "https://amusement-parks.fun/nl/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/799a75f7ab404fd09406556a8e0c52b4/social-preview-v2"
+    },
+    {
+      "lang": "pl",
+      "status": 200,
+      "url": "https://amusement-parks.fun/pl/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/799a75f7ab404fd09406556a8e0c52b4/social-preview-v2"
+    },
+    {
+      "lang": "pt",
+      "status": 200,
+      "url": "https://amusement-parks.fun/pt/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/799a75f7ab404fd09406556a8e0c52b4/social-preview-v2"
+    }
+  ]
+}
