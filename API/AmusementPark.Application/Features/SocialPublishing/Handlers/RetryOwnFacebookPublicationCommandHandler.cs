@@ -84,6 +84,7 @@ public sealed class RetryOwnFacebookPublicationCommandHandler
             return ApplicationResult<SocialPublication>.Success(recovery.Value.Publication);
         }
 
-        return await this.service.RetryAsync(publication.Id!, command.RequestedByUserId, cancellationToken);
+        return await this.service.RetryAsync(
+            publication.Id!, command.RequestedByUserId, cancellationToken, publication.UpdatedAtUtc);
     }
 }

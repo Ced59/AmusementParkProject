@@ -275,6 +275,35 @@ public sealed class SocialPublicationServiceTests
     }
 
     [Fact]
+    public async Task RetryAsync_WhenReconciledRecordVersionHasChanged_ShouldNotPublish()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication failedPublication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.Manual,
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/home",
+            UpdatedAtUtc = new DateTime(2026, 11, 27, 21, 45, 0, DateTimeKind.Utc),
+        };
+        repository.Publications.Add(failedPublication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        ApplicationResult<SocialPublication> result = await service.RetryAsync(
+            "publication-1",
+            "editor-1",
+            CancellationToken.None,
+            new DateTime(2026, 11, 27, 21, 37, 0, DateTimeKind.Utc));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(SocialPublicationStatus.Failed, failedPublication.Status);
+        Assert.Equal(0, publisher.PublishCallCount);
+    }
+
+    [Fact]
     public async Task RetryParkAnnouncementAsync_ShouldKeepStalePageAvailableAndPublishSameRecord()
     {
         List<string> events = new List<string>();

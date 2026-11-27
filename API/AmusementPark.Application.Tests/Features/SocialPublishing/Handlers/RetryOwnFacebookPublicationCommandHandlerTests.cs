@@ -46,7 +46,7 @@ public sealed class RetryOwnFacebookPublicationCommandHandlerTests
         repository.Publications.Add(publication);
         StubSocialPublisher publisher = StubSocialPublisher.Configured();
         Mock<ISocialPublicationService> service = new Mock<ISocialPublicationService>(MockBehavior.Strict);
-        service.Setup(value => value.RetryAsync("publication-1", "editor-1", It.IsAny<CancellationToken>()))
+        service.Setup(value => value.RetryAsync("publication-1", "editor-1", It.IsAny<CancellationToken>(), publication.UpdatedAtUtc))
             .ReturnsAsync(ApplicationResult<SocialPublication>.Success(publication));
         RetryOwnFacebookPublicationCommandHandler handler = CreateHandler(repository, service.Object, publisher);
 

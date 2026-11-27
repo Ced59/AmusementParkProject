@@ -48,9 +48,9 @@ public sealed class SocialPublicationService : ISocialPublicationService
             cancellationToken);
     }
 
-    public Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, CancellationToken cancellationToken) =>
-        this.RetryAsync(publicationId, requestedByUserId, true, cancellationToken);
-    private async Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, bool reconcileAutomaticParkAnnouncement, CancellationToken cancellationToken)
+    public Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, CancellationToken cancellationToken, DateTime? expectedUpdatedAtUtc = null) =>
+        this.RetryAsync(publicationId, requestedByUserId, true, expectedUpdatedAtUtc, cancellationToken);
+    private async Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, bool reconcileAutomaticParkAnnouncement, DateTime? expectedUpdatedAtUtc, CancellationToken cancellationToken)
     {
         SocialPublication? publication = await this.repository.GetByIdAsync(publicationId, cancellationToken);
         if (publication is null)
@@ -69,7 +69,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeRetried());
         }
         publication = await this.repository.TryClaimFailedForRetryAsync(
-            publication.Id!, publication.UpdatedAtUtc, requestedByUserId, cancellationToken);
+            publication.Id!, expectedUpdatedAtUtc ?? publication.UpdatedAtUtc, requestedByUserId, cancellationToken);
         if (publication is null)
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeRetried());
@@ -388,7 +388,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
         }
 
         await this.PreservePublicPageDuringSocialPreparationAsync(publicationUri!.AbsolutePath, cancellationToken);
-        return await this.RetryAsync(publication.Id!, requestedByUserId, false, cancellationToken);
+        return await this.RetryAsync(publication.Id!, requestedByUserId, false, null, cancellationToken);
     }
 
     public async Task<ApplicationResult<SocialPublication>> RefreshParkAnnouncementPreviewAsync(
