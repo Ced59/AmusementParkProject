@@ -1,0 +1,126 @@
+{
+  "entryId": "AR-candidate-discovery-torre-monumental-20261127",
+  "standaloneAttractionId": "fa893e6c-42c0-4f02-af9c-f060cd4b0437",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "d5ab9853-7da4-44bc-a2b1-2471a2d4d90f",
+      "appliedAtUtc": "2026-11-27T19:40:29.4253204Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "2f12a303-3b90-4244-829c-5894434579a5",
+      "appliedAtUtc": "2026-11-27T19:42:38.7768889Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "759d8897-838a-4a18-bf25-d2ae092d25b3",
+      "appliedAtUtc": "2026-11-27T19:42:50.0308349Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "97dd15d5-1b5c-4f59-be34-c37b112253a2",
+      "appliedAtUtc": "2026-11-27T19:43:23.9780885Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "524abae07b61423384fa92b11ba3dbe5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torre_Monumental_situada_en_la_plaza_Fuerza_A%C3%A9rea_Argentina,_barrio_de_Retiro,_Buenos_Aires.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1920,
+      "credit": "Gerardo javier verdejos / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "7425beb3ddd04f2a98c1765ce71d7f4f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torre_Monumental,_Buenos_Aires_1.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1707,
+      "credit": "Eugenio Hansen, OFS / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "ad4ff10045e140c384fb929e480f1751",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torre_Monumental_-_Torre_del_Reloj.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1871,
+      "credit": "Matías Profeta / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "2985683eab854863a8745d5e0e0f57df",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T19:44:36.91791Z",
+    "externalPostId": "1285475681307050_122129085255424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129085255424431"
+  }
+}

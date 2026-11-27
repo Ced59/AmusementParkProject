@@ -16,7 +16,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 48 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 1 |
+| Intégration achevée | 2 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -27,7 +27,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **2 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **47 candidats sans fiche**.
 
-Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **2 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -79,6 +79,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | AR-candidate-30f837f8971f0f | Super Park | Sarandí , Buenos Aires | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/20833.htm) |
 | AR-candidate-9bd83940e0392f | Super Park | La Plata , Buenos Aires | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/21480.htm) |
 | AR-candidate-32b2840fd0164c | Temaikèn | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Argentina) |
+| AR-candidate-discovery-torre-monumental-20261127 | Torre Monumental | Retiro, Buenos Aires | StandaloneAttraction | Published | Intégration achevée | 2026-11-27T19:42:50.030Z | — | Conserver la ligne ; confirmer le calendrier de Noël et les horaires après le 24 décembre, puis revérifier les tarifs municipaux et dater toute nouvelle intégration. Qualification standalone : AlreadyStandalone. Tour municipale visitable avec billet et horaires propres ; aucune fiche Park parent trouvée. Fiche standalone publiée et auditée. Signal source : Visite tarifée et horaires réguliers publiés par la ville en novembre 2026.. [Ville de Buenos Aires, Culture — horaires, billets, visite et pluie](https://buenosaires.gob.ar/cultura/patrimonio-de-la-ciudad/torre-monumental) · [Ville de Buenos Aires — billetterie de la Torre Monumental](https://entradasba.buenosaires.gob.ar/establecimientos/57) · [Ancienne page de tourisme de la ville — fermeture annoncée à Noël, à confirmer](https://turismo.buenosaires.gob.ar/en/article/access-monumental-tower) · [Wikidata Q570385 — coordonnées](https://www.wikidata.org/wiki/Q570385) · [Wikimedia Commons — photo 1, Gerardo javier verdejos, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Torre_Monumental_situada_en_la_plaza_Fuerza_A%C3%A9rea_Argentina,_barrio_de_Retiro,_Buenos_Aires.jpg) · [Wikimedia Commons — photo 2, Eugenio Hansen, OFS, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Torre_Monumental,_Buenos_Aires_1.jpg) · [Wikimedia Commons — photo 3, Matías Profeta, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Torre_Monumental_-_Torre_del_Reloj.jpg) |
 | AR-candidate-3a2e5b9fa90b93 | Z! Zona | Ciudadela , Buenos Aires | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/22037.htm) |
 | AR-candidate-b56ca041065572 | Z! Zona | Buenos Aires , Buenos Aires | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/23684.htm) |
 | AR-candidate-7ce51101f1cbe1 | Zona Magica | Temperley , Buenos Aires | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/13896.htm) |
