@@ -1,0 +1,72 @@
+{
+  "entryId": "AR-candidate-discovery-teleferico-san-bernardo-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Paid scenic cable car from Parque San Martín to the Cerro San Bernardo summit. The newer Ala Delta lift, starting at the summit, is a separate attraction.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Teleférico San Bernardo (AR)",
+      "Teleferico Salta (AR)",
+      "Cerro San Bernardo (AR)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Teleférico San Bernardo (AR)",
+      "Teleferico Salta (AR)",
+      "Cerro San Bernardo (AR)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAliasAndSourceUrlMatches": 0
+  },
+  "sources": {
+    "operator": "https://www.telefericosanbernardo.com/teleferico.html",
+    "cityTourism": "https://saltaciudad.travel/posts/teleferico-san-bernardo",
+    "separateAlaDeltaLine": "https://saltaciudad.travel/posts/teleferico-ala-delta",
+    "baseStationCoordinates": "https://www.openstreetmap.org/way/197839559"
+  },
+  "observations": {
+    "baseStation": "Av. San Martín y Hipólito Irigoyen, Parque San Martín, Salta",
+    "baseCoordinates": [
+      -24.79385,
+      -65.40158
+    ],
+    "distance": "1,016 metres according to operator",
+    "ascent": "Approximately 10 minutes",
+    "hours": "Daily 09:00–19:00 per Salta City Tourism; temporary closures possible.",
+    "pricing": "Paid; no current numeric amount verifiable on operator or municipal pages. Dynamic amount left unspecified."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cable_Car_to_the_Cerro_San_Bernardo_-_Salta_-_Argentina.jpg",
+      "artist": "Adam Jones Adam63",
+      "license": "CC BY-SA 3.0",
+      "captured": "2009-07-24",
+      "depicts": "gondola and Salta panorama"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gondolas_del_Teleferico_de_Salta.jpg",
+      "artist": "HoracioABAN",
+      "license": "CC BY-SA 4.0",
+      "captured": "2017-08-25 17:50:26",
+      "depicts": "two gondolas on the San Bernardo slope"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_panoramica_de_la_ciudad_de_Salta_desde_la_cima_del_cerro_San_Bernardo.jpg",
+      "artist": "M.K.O.",
+      "license": "CC BY 2.0",
+      "captured": "2013-06-01 00:04:26",
+      "depicts": "panorama of Salta from the summit"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_San_Bernardo_-_Salta,_Argentina.jpg",
+      "artist": "Banfield",
+      "license": "CC BY-SA 2.5 ar",
+      "captured": "2013-03-28",
+      "depicts": "historic Parque San Martín station entrance"
+    }
+  ],
+  "scopeNotes": [
+    "A 31 October 2026 municipal promotion advertised special 09:30–19:30 hours; regular City Tourism listing is 09:00–19:00. Calendar ends February 2027 and needs recheck.",
+    "Photographs date from 2009–2017 and are explicitly dated in their captions; the entrance image is historical and is not the cover.",
+    "Ala Delta is a distinct cable car at the summit and should be assessed as a separate standalone candidate."
+  ]
+}

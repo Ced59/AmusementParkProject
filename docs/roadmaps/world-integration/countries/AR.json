@@ -1927,6 +1927,135 @@
         "attractions": [],
         "rationale": "Visite guidée indépendante avec réservation et billet propres, donnant accès aux miradors et au phare. Aucune fiche Park ou Standalone homonyme trouvée ; fiche publiée et auditée."
       }
+    },
+    {
+      "entryId": "AR-candidate-discovery-teleferico-san-bernardo-20261127",
+      "name": "Teleférico San Bernardo",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Parque San Martín, Salta",
+      "siteId": "503652c6-c827-4c41-90ac-653b7b1360df",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant et tourisme municipal présentent le trajet comme actif en novembre 2026.",
+      "identityConfidence": "Trajet, station de départ, nom et localisation vérifiés ; recherches PDE Park et Standalone sous trois noms sans résultat, backlog sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleferico San Bernardo",
+        "Teleférico de Salta",
+        "Teleferico de Salta"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T21:44:24.358Z",
+      "integrationHistory": [
+        {
+          "eventId": "ar-teleferico-san-bernardo-data-20261127",
+          "appliedAt": "2026-11-27T21:44:24.358Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "503652c6-c827-4c41-90ac-653b7b1360df",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-teleferico-san-bernardo-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ar-teleferico-san-bernardo-20261127/audit.json",
+          "summary": "Fiche publiée avec quatre photos créditées, horaires du tourisme municipal, tarif dynamique et localisation de la station corrigée."
+        }
+      ],
+      "nextAction": "Annonce Facebook en attente : relancer l’enregistrement caf911029b3146e98ecaffdfddcb9ecd avec la reprise sûre après déploiement, puis vérifier son URL ; conserver la ligne et contrôler les horaires et tarifs ultérieurs.",
+      "sources": [
+        {
+          "label": "Exploitant — trajet et caractéristiques",
+          "url": "https://www.telefericosanbernardo.com/teleferico.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Tourisme de Salta — station, horaires et accès",
+          "url": "https://saltaciudad.travel/posts/teleferico-san-bernardo",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Tourisme de Salta — ligne Ala Delta distincte",
+          "url": "https://saltaciudad.travel/posts/teleferico-ala-delta",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — station de départ",
+          "url": "https://www.openstreetmap.org/way/197839559",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Adam Jones Adam63 / Wikimedia Commons (CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Cable_Car_to_the_Cerro_San_Bernardo_-_Salta_-_Argentina.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, HoracioABAN / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gondolas_del_Teleferico_de_Salta.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, M.K.O. / Wikimedia Commons (CC BY 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Vista_panoramica_de_la_ciudad_de_Salta_desde_la_cima_del_cerro_San_Bernardo.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, Banfield / Wikimedia Commons (CC BY-SA 2.5 ar)",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_San_Bernardo_-_Salta,_Argentina.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Liaison payante en cabine du Parque San Martín au Cerro San Bernardo ; la ligne Ala Delta démarre au sommet et est une attraction distincte."
+      }
+    },
+    {
+      "entryId": "AR-candidate-discovery-teleferico-ala-delta-salta-20261127",
+      "name": "Teleférico Ala Delta",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Cerro San Bernardo–Cerro Ala Delta, Salta",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Tourisme municipal décrit une ligne active distincte vers le Cerro Ala Delta en novembre 2026.",
+      "identityConfidence": "Ligne indépendante et station de départ confirmées par le tourisme municipal ; recherches PDE sans fiche correspondante, un résultat flou renvoie à la ligne San Bernardo distincte.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleferico Ala Delta",
+        "Teleférico Aladelta",
+        "Teleférico Cerro Ala Delta"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Vérifier les horaires et tarifs propres à la ligne ; obtenir au moins une photo exacte avec licence réutilisable avant toute publication ; créer la fiche et l’annonce Facebook.",
+      "sources": [
+        {
+          "label": "Tourisme de Salta — ligne Ala Delta et station de départ",
+          "url": "https://saltaciudad.travel/posts/teleferico-ala-delta",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Gouvernement de Salta — activité des deux lignes en 2026",
+          "url": "https://www.salta.gob.ar/prensa/noticias/mas-de-80000-personas-visitaron-el-teleferico-san-bernardo-y-aladelta-durante-el-verano-106533",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "La nouvelle ligne part du sommet San Bernardo et mène au Cerro Ala Delta ; elle possède son propre trajet et peut se prendre séparément. Ne pas fusionner avec la ligne San Bernardo."
+      }
     }
   ]
 }

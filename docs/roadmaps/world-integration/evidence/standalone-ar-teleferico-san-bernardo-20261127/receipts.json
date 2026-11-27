@@ -1,0 +1,167 @@
+{
+  "entryId": "AR-candidate-discovery-teleferico-san-bernardo-20261127",
+  "standaloneAttractionId": "503652c6-c827-4c41-90ac-653b7b1360df",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "8baf7731-4864-45eb-bf0a-488ed577db64",
+      "appliedAtUtc": "2026-11-27T21:34:56.2015266Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "9c1b34c0-5917-4086-b365-64d2e87609fe",
+      "appliedAtUtc": "2026-11-27T21:35:08.3354883Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "78a59c17-9d4a-4dc5-a830-f8c638e8608d",
+      "appliedAtUtc": "2026-11-27T21:35:20.6061385Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "b225ebdf-e703-45be-a069-c143b3a734f8",
+      "appliedAtUtc": "2026-11-27T21:37:06.483026Z",
+      "isApplied": true
+    },
+    {
+      "stage": "location",
+      "operationId": "097c089e-9f22-42a9-a3d1-3772deb2b450",
+      "appliedAtUtc": "2026-11-27T21:44:24.3586023Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "ca225427cf7045f88ac80e5cae54ac5e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cable_Car_to_the_Cerro_San_Bernardo_-_Salta_-_Argentina.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "Adam Jones Adam63 / Wikimedia Commons (CC BY-SA 3.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:36:10.643Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "aea4e971936d4d7bae6c9db689e4574a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gondolas_del_Teleferico_de_Salta.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 576,
+      "credit": "HoracioABAN / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:36:23.459Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "4e881ef77a504792aa3b6de796f284a8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_panoramica_de_la_ciudad_de_Salta_desde_la_cima_del_cerro_San_Bernardo.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 446,
+      "credit": "M.K.O. / Wikimedia Commons (CC BY 2.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:36:37.097Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "944fe858238c4d9abc2aab6e8f168414",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_San_Bernardo_-_Salta,_Argentina.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1332,
+      "credit": "Banfield / Wikimedia Commons (CC BY-SA 2.5 ar)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T21:38:39.438Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "caf911029b3146e98ecaffdfddcb9ecd",
+    "status": "Failed",
+    "publishedAtUtc": null,
+    "externalPostId": null,
+    "externalPostUrl": null,
+    "failureCode": "publisher-response-timeout",
+    "failureMessage": "Facebook n'a pas répondu à temps ; la publication doit être rapprochée avant toute relance."
+  }
+}
