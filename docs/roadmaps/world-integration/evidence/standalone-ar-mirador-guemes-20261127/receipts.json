@@ -1,0 +1,161 @@
+{
+  "entryId": "AR-candidate-discovery-mirador-guemes-20261127",
+  "standaloneAttractionId": "011239f0-873b-4b36-bf49-2396a6eca33f",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "0903f635-fdb2-4b6e-a376-16d029a573b0",
+      "appliedAtUtc": "2026-11-27T19:49:55.46022Z",
+      "isApplied": true
+    },
+    {
+      "stage": "descriptions",
+      "operationId": "12f63ed7-a792-4cf4-90ff-c4f5dfb1f064",
+      "appliedAtUtc": "2026-11-27T19:52:22.9547472Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "b1d38056-4d5b-41ce-8a01-c255b2ef0a3e",
+      "appliedAtUtc": "2026-11-27T19:52:34.6637214Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "0fe82203-6642-4064-a1df-46e2142f6041",
+      "appliedAtUtc": "2026-11-27T19:52:46.8705803Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "51be9f11-66cb-4acc-9c16-23dd820c02c6",
+      "appliedAtUtc": "2026-11-27T19:53:24.1546499Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "048b18f9320143b491a32f50cd443697",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador_Galer%C3%ADa_G%C3%BCemes.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1080,
+      "height": 1350,
+      "credit": "Sabriloporto / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "50adafdff68e424baafadda42b1da750",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_de_la_ciudad_de_Buenos_Aires_desde_el_mirador_de_la_Galer%C3%ADa_G%C3%BCemes.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 720,
+      "credit": "Hersims / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "72534d40be8841ca9104d5d8aa679e8d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ojo_del_mirador_de_la_Galer%C3%ADa_G%C3%BCemes.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 2276,
+      "credit": "Hersims / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "9dc1ba14c23d44f495e1774d92f7b9dd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Galer%C3%ADa_G%C3%BCemes_mirador.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1280,
+      "credit": "Gobierno de la Ciudad de Buenos Aires / Wikimedia Commons (CC BY 2.5 AR)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "5ebe42de449f41548b4b6faad26f73e0",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T19:54:07.0281607Z",
+    "externalPostId": "1285475681307050_122129086443424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129086443424431"
+  }
+}
