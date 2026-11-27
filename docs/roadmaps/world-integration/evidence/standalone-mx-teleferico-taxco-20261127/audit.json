@@ -1,0 +1,15 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-taxco-20261127",
+  "standaloneAttractionId": "ec6a22c8-4c9c-4bbf-a59a-ac8cea603db6",
+  "evaluatedAtUtc": "2026-11-27T22:21:17.467Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ec6a22c8-4c9c-4bbf-a59a-ac8cea603db6/teleferico-de-taxco",
+  "publicationBlockers": []
+}

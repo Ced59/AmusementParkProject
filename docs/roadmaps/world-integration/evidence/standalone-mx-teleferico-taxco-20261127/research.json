@@ -1,0 +1,73 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-taxco-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Separately ticketed sightseeing cable car operated by Hotel Montetaxco; hotel rooms, parking and summit restaurant are separate products.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Teleférico de Taxco (MX)",
+      "Teleferico Taxco (MX)",
+      "Monte Taxco (MX)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Teleférico de Taxco (MX)",
+      "Teleferico Taxco (MX)",
+      "Monte Taxco (MX)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAliasAndSourceUrlMatches": 0
+  },
+  "sources": {
+    "officialOperator": "https://montetaxcohotel.mx/teleferico-taxco/",
+    "lowerStationAddress": "https://blog.ado.com.mx/teleferico-de-montetaxco",
+    "lowerStationCoordinates": "https://www.openstreetmap.org/way/503145048"
+  },
+  "observations": {
+    "lowerStation": "Los Plateros 3, Ahuacatitlán, 40225 Taxco de Alarcón",
+    "lowerStationCoordinates": [
+      18.56792,
+      -99.60513
+    ],
+    "length": "approximately 800 metres according to operator",
+    "rideTime": "about 5 minutes according to operator",
+    "hours": "Sunday–Thursday 07:30–19:00; Friday–Saturday 07:30–21:00, seasonal change possible",
+    "fare": "MXN 185 general round trip over age three; MXN 140 INAPAM with card; under three free",
+    "purchase": "On site at station, cash only",
+    "hotelInclusion": "Ordinary room rate does not include ride; direct-booking special may include two round trips; parking extra."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATeleferico_Taxco.jpg",
+      "artist": "Microstar",
+      "license": "CC BY-SA 4.0",
+      "captured": "2019-04-09",
+      "depicts": "cabine jaune Montetaxco"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATerminalCableTaxco.JPG",
+      "artist": "AlejandroLinaresGarcia",
+      "license": "CC BY-SA 4.0",
+      "captured": "2009-08-23",
+      "depicts": "station supérieure et cabines"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACableCarDecend.JPG",
+      "artist": "AlejandroLinaresGarcia",
+      "license": "CC BY-SA 4.0",
+      "captured": "2009-08-23",
+      "depicts": "cabine suspendue sur le versant"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AViewCableCarTaxco2.JPG",
+      "artist": "AlejandroLinaresGarcia",
+      "license": "CC BY-SA 4.0",
+      "captured": "2009-08-23",
+      "depicts": "vue de Taxco depuis la cabine"
+    }
+  ],
+  "scopeNotes": [
+    "All four Commons images visually inspected and depict either the exact cable car, its terminal, or a view from inside a cabin.",
+    "Most photos are from 2009 and one from 2019; they show the route but are not current proof of cabin appearance.",
+    "Reverify seasonal hours and fares with the operator after 31 March 2027."
+  ]
+}

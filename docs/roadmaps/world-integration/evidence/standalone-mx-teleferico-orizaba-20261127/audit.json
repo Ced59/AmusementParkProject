@@ -1,0 +1,15 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-orizaba-20261127",
+  "standaloneAttractionId": "ee89f70d-d026-434c-b32e-733aa2cfa5f6",
+  "evaluatedAtUtc": "2026-11-27T22:00:51.381Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 46,
+    "earnedPoints": 42,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ee89f70d-d026-434c-b32e-733aa2cfa5f6/teleferico-de-orizaba",
+  "publicationBlockers": []
+}

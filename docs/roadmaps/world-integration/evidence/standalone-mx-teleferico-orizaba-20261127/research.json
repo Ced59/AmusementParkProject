@@ -1,0 +1,70 @@
+{
+  "entryId": "MX-candidate-discovery-teleferico-orizaba-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Independent paid cable car connecting Plaza Pichucalco to Cerro del Borrego. Currently suspended for mechanical work; the destination park and its rides are distinct.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Teleférico de Orizaba (MX)",
+      "Teleferico Orizaba (MX)",
+      "Cerro del Borrego (MX)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Teleférico de Orizaba (MX)",
+      "Teleferico Orizaba (MX)",
+      "Cerro del Borrego (MX)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAliasAndSourceUrlMatches": 0
+  },
+  "sources": {
+    "officialTourism": "https://www.orizaba.travel/teleferico-y-ecoparque-cerro-del-borrego/",
+    "closureUpdate": "https://oem.com.mx/elsoldeorizaba/local/teleferico-de-orizaba-podria-regresar-en-diciembre-realizan-pruebas-para-garantizar-la-seguridad-33311476",
+    "baseStationCoordinates": "https://www.openstreetmap.org/node/3246850574"
+  },
+  "observations": {
+    "baseStation": "Plaza Pichucalco, between Avenida Poniente 5 and Puente Independencia",
+    "baseCoordinates": [
+      18.84649,
+      -97.10744
+    ],
+    "length": "917 metres according to official tourism",
+    "statusOn2026-11-27": "Temporarily closed for major mechanical work and testing; no confirmed reopening date.",
+    "hoursAndPrices": "Not published as current: official tourism page still lists normal hours and MXN 100, but these are inapplicable during closure."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_Orizaba.jpg",
+      "artist": "Chivista",
+      "license": "CC0",
+      "captured": "2025-03-22 11:28:32",
+      "depicts": "cabins at base station"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Orizaba_visto_desde_la_Alameda_Francisco_Gabilondo_Soler_01.jpg",
+      "artist": "Isaacvp",
+      "license": "CC0",
+      "captured": "2025-12-06",
+      "depicts": "cabins above Alameda Francisco Gabilondo Soler"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fuente_y_Telef%C3%A9rico_de_Orizaba_01.jpg",
+      "artist": "Isaacvp",
+      "license": "CC BY-SA 4.0",
+      "captured": "2018-01-14",
+      "depicts": "cabins over urban bridge and fountain"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paseo_del_R%C3%ADo_Orizaba,_Puente_5,_Puente_3,_Telef%C3%A9rico_27.jpg",
+      "artist": "Álvaro de la Paz Franco",
+      "license": "CC0",
+      "captured": "2022-05-22",
+      "depicts": "cabins and cable viewed from below"
+    }
+  ],
+  "scopeNotes": [
+    "The official tourism page is an identity/route source; local reporting from 25 Nov 2026 supersedes its static opening hours until reopening.",
+    "Public page and Facebook announcement must state closure and avoid inviting immediate rides.",
+    "Recheck operator/municipal announcement before changing status to Operating or restoring hours and pricing."
+  ]
+}
