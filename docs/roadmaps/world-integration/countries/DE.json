@@ -15420,7 +15420,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Doublon de DE-candidate-4c021d67f83d96 ; suivre cette entrée principale, sans créer une seconde standalone. La recherche PDE des fiches masquées reste à faire sur l'entrée principale.",
+      "nextAction": "Doublon constructeur de DE-candidate-4c021d67f83d96, dont la piste est publiée sous la fiche 2a39c14d-48f8-4877-aac9-343e1a331354. Conserver cette référence sans créer de deuxième fiche.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -15452,7 +15452,7 @@
             "referenceId": "location-id-1289"
           }
         ],
-        "rationale": "La référence constructeur est la même piste de luge de Bad Doberan que l'entrée principale du backlog. Doublon conservé pour tracer l'identité constructeur."
+        "rationale": "La référence Wiegand renvoie à la même piste en auge que la Sommerrodelbahn Bad Doberan publiée ; doublon conservé pour la traçabilité."
       }
     },
     {
@@ -24620,27 +24620,38 @@
     {
       "entryId": "DE-candidate-4c021d67f83d96",
       "name": "Sommerrodelbahn Bad Doberan",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine adventure world",
       "locality": "Bad Doberan",
-      "siteId": null,
+      "siteId": "2a39c14d-48f8-4877-aac9-343e1a331354",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "L'exploitant annonce la saison principale 2026 à partir du 1er juin et un marché de Noël les 5 et 6 décembre 2026 ; les horaires courants sont à recontrôler avant publication.",
-      "identityConfidence": "Site officiel et référence constructeur concordent sur une luge fixe de 721 m au Stülower Weg 70. Identité Park et StandaloneAttraction masquée encore à rechercher via PDE.",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant propose des courses en novembre et décembre les week-ends et pendant les vacances selon la météo ; aucun horaire fixe pour ces jours n’est publié.",
+      "identityConfidence": "Haute : identité et adresse de l’exploitant, référence constructeur Wiegand, recherche PDE Park et StandaloneAttraction sans homonyme, trois photos exactes de la piste.",
       "possibleMatches": [],
       "aliases": [
         "Luge Wiegand — Bad Doberan"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher les variantes et l'adresse dans Park et StandaloneAttraction via PDE, y compris les fiches masquées. Trouver ou obtenir une photo exacte réutilisable montrant la luge ; aucune photo libre exacte n'a été confirmée dans les recherches Wikimedia/Flickr du 27 novembre 2026. Ne pas publier sans photo. Vérifier les tarifs et horaires officiels avant Apply. L'entrée constructeur DE-candidate-standalone-18f0ac77b0937b est un doublon conservé.",
+      "lastDataIntegrationAt": "2026-11-27T16:29:13.496Z",
+      "integrationHistory": [
+        {
+          "eventId": "sommerrodelbahn-bad-doberan-integration-20261127",
+          "appliedAt": "2026-11-27T16:29:13.496Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a39c14d-48f8-4877-aac9-343e1a331354",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-bad-doberan-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-bad-doberan-20261127/audit.json",
+          "summary": "Sommerrodelbahn Bad Doberan créée en huit langues avec trois photos exactes, tarifs et conditions d’âge ; fiche et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne et sa date réelle ; vérifier les horaires météodépendants, tarifs et photos lors de la prochaine intégration datée. Ne pas recréer la piste depuis le doublon constructeur.",
       "sources": [
         {
           "label": "Freizeitpark App",
@@ -24664,11 +24675,14 @@
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-27",
         "attractions": [],
-        "rationale": "La luge permanente est l'attraction principale d'un lieu avec billetterie propre ; la pelouse, la salle louable et les jeux ne forment pas un parc d'attractions structuré dans les sources consultées. L'identité du site doit encore être contrôlée via PDE."
-      }
+        "rationale": "Luge d’été en auge avec billetterie propre ; fiche autonome publiée. Les équipements de pique-nique et de jeux autour de la piste ne justifient pas une seconde fiche de parc selon les sources vérifiées."
+      },
+      "possibleBacklogEntries": [
+        "DE-candidate-standalone-18f0ac77b0937b"
+      ]
     },
     {
       "entryId": "DE-standalone-a55847c8-a9ff-4026-9b6f-99e049ceb0ca",

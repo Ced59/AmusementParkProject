@@ -1,0 +1,20 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Sommerrodelbahn Bad Doberan, luge d’été en auge au Stülower Weg 70, exploitée comme attraction à billet distinct.",
+  "antiDuplicate": "Recherches PDE SearchParks et SearchStandaloneAttractions sur Bad Doberan et Stülower Weg sans fiche homonyme visible ou masquée. La ligne constructeur Wiegand est liée comme doublon, non publiée une seconde fois.",
+  "officialSources": [
+    {
+      "url": "https://sommerrodelbahn-dbr.de/unsere-bahn/",
+      "finding": "Piste de 721 m, dont 521 m de descente, dénivelé de 40 m, spirale surélevée, pont et sept courbes ; quatre photos exactes sur la page, dont trois publiées."
+    },
+    {
+      "url": "https://sommerrodelbahn-dbr.de/preise-zeiten/",
+      "finding": "Tarifs adultes et enfants, interdiction avant trois ans et accompagnement avant huit ans ; novembre et décembre les week-ends et vacances selon la météo, sans heures fixes pour cette période."
+    },
+    {
+      "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1289",
+      "finding": "Référence constructeur Wiegand reliée à la piste de Bad Doberan."
+    }
+  ],
+  "editorialDecision": "Fiche standalone comme luge d’été en auge, sans classification alpine coaster sur rails. Statut Operating saisonnier ; aucun horaire fixe inventé pour novembre. Trois photos exactes de l’exploitant avec attribution de la source."
+}

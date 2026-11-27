@@ -1,0 +1,31 @@
+{
+  "asOfUtc": "2026-11-27T16:30:40.000Z",
+  "siteId": "2a39c14d-48f8-4877-aac9-343e1a331354",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+  "status": "Operating",
+  "completenessScore": 76,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "93e78a91016642c39980963c8baa76e3",
+  "currentAdmissionOffers": 2,
+  "accessConditionCount": 1,
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129071281424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T16:29:13.496Z",
+  "lastDataIntegrationBasis": "Dernier Apply substantiel des conditions d’âge, horodatage serveur normalisé à la milliseconde ; site et Facebook publiés séparément.",
+  "gap": "Pas d’heure précise vérifiée pour les journées de novembre et décembre : le service dépend de la météo. Aucune règle d’ouverture future inventée."
+}
