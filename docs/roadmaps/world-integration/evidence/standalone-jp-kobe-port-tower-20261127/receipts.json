@@ -1,0 +1,144 @@
+{
+  "entryId": "JP-candidate-discovery-kobe-port-tower-20261127",
+  "standaloneAttractionId": "c67bef50-0dd1-4383-925d-e0c6006aa831",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "4b48667e-d802-4191-9ebf-47c658fbbfe7",
+      "appliedAtUtc": "2026-11-27T17:47:06.8134233Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing-initial",
+      "operationId": "d9d650a7-da3f-4819-be25-f9c6688c8b33",
+      "appliedAtUtc": "2026-11-27T17:50:09.864699Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "79b0c1ea-89e6-4dc6-90f9-b18d5320e307",
+      "appliedAtUtc": "2026-11-27T17:51:13.8390006Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "93e1a8ca-99e0-4ebe-b142-adcaa3e6268f",
+      "appliedAtUtc": "2026-11-27T17:50:15.0872248Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "1097849f-eeef-4043-9851-12eec3e8e526",
+      "appliedAtUtc": "2026-11-27T17:50:20.6989591Z",
+      "isApplied": true
+    },
+    {
+      "stage": "access",
+      "operationId": "130b7d35-c384-4524-9a4a-81ebf6f3f101",
+      "appliedAtUtc": "2026-11-27T17:51:20.0609762Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "f4b17863-e838-44b9-b80a-0b97429821ea",
+      "appliedAtUtc": "2026-11-27T17:51:39.4510728Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "83b5bb3c63c54898a2526054fca7b18b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kobe_Port_Tower.png",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 900,
+      "height": 2020,
+      "credit": "加茂川の民 / Wikimedia Commons (CC0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "e10165fa1bf44a41ab81eea4eb466dd3",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kobe_Port_Tower_in_November_2025_at_night_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1707,
+      "credit": "ノボホショコロトソ / Wikimedia Commons (CC BY 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "3a1b57fcad294193a52dd7e100b7e8bb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kobe_Kobe_Port_Tower_Panoaramablick_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 956,
+      "credit": "Zairon / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "452d6a782a3a422d8a9cac3de7d88265",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T17:52:24.5448901Z",
+    "externalPostId": "1285475681307050_122129075757424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129075757424431"
+  }
+}

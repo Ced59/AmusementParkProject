@@ -1,0 +1,37 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Kobe Port Tower, tour d’observation autonome à Hatoba-cho, Kobe.",
+  "antiDuplicate": "SearchParks et SearchStandaloneAttractions PDE sur Kobe Port Tower et 神戸ポートタワー au Japon : zéro résultat, fiches masquées comprises. Aucun homonyme dans JP.json avant création ; Kobe Portopialand est un ancien parc différent.",
+  "sources": [
+    {
+      "url": "https://www.kobe-port-tower.com/en/",
+      "finding": "Kobe Port Tower — identité, horaires, tarifs et conditions de visite"
+    },
+    {
+      "url": "https://www.kobe-port-tower.com/en/ticket/",
+      "finding": "Kobe Port Tower — billets officiels"
+    },
+    {
+      "url": "https://www.kobe-port-tower.com/faq/",
+      "finding": "Kobe Port Tower — FAQ et accès en fauteuil"
+    },
+    {
+      "url": "https://nominatim.openstreetmap.org/search?q=Kobe+Port+Tower%2C+Kobe&format=json&limit=2",
+      "finding": "OpenStreetMap Nominatim — position de la tour"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Kobe_Port_Tower.png",
+      "finding": "Wikimedia Commons — photo novembre 2026, 加茂川の民, CC0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Kobe_Port_Tower_in_November_2025_at_night_01.jpg",
+      "finding": "Wikimedia Commons — photo novembre 2025, ノボホショコロトソ, CC BY 4.0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Kobe_Kobe_Port_Tower_Panoaramablick_01.jpg",
+      "finding": "Wikimedia Commons — vue depuis la tour en 2018, Zairon, CC BY-SA 4.0"
+    }
+  ],
+  "photoDecision": "Trois photos exactes et réutilisables : vue de la tour en 2026 CC0, vue de 2025 CC BY 4.0, panorama depuis la tour en 2018 CC BY-SA 4.0 explicitement daté.",
+  "editorialDecision": "Statut Operating, prix adultes et enfants pour observatoire seul ou avec toit, horaires ordinaires et date de dernière entrée. Le toit exige un escalier ; les autres étages peuvent être desservis par ascenseur avec assistance. Le calendrier saisi finit en mars 2027 pour recontrôle."
+}
