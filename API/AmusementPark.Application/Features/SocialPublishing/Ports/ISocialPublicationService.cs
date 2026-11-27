@@ -15,7 +15,8 @@ public interface ISocialPublicationService
     Task<ApplicationResult<SocialPublication>> RetryAsync(
         string publicationId,
         string? requestedByUserId,
-        CancellationToken cancellationToken);
+        CancellationToken cancellationToken,
+        DateTime? expectedUpdatedAtUtc = null);
 
     Task<ApplicationResult<SocialPublication>> UpdateAsync(
         string publicationId,

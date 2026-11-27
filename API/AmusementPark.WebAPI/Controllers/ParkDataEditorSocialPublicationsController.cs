@@ -26,16 +26,37 @@ public sealed class ParkDataEditorSocialPublicationsController : ControllerBase
 {
     private readonly IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>> draftHandler;
     private readonly ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>> publishHandler;
+    private readonly ICommandHandler<RetryOwnFacebookPublicationCommand, ApplicationResult<SocialPublication>> retryHandler;
     private readonly ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>> deleteHandler;
 
     public ParkDataEditorSocialPublicationsController(
         IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>> draftHandler,
         ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>> publishHandler,
+        ICommandHandler<RetryOwnFacebookPublicationCommand, ApplicationResult<SocialPublication>> retryHandler,
         ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>> deleteHandler)
     {
         this.draftHandler = draftHandler;
         this.publishHandler = publishHandler;
+        this.retryHandler = retryHandler;
         this.deleteHandler = deleteHandler;
+    }
+
+    [HttpPost("facebook/{publicationId}/retry")]
+    [AdminAudit("park-data-editor.social-publication.retry-own", "SocialPublication", TargetIdRouteKey = "publicationId")]
+    [ProducesResponseType(typeof(SocialPublicationDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> RetryOwnFacebookAsync(
+        [FromRoute] string publicationId,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<SocialPublication> result = await this.retryHandler.HandleAsync(
+            new RetryOwnFacebookPublicationCommand(publicationId, this.User.GetUserId()),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
     }
 
     [HttpGet("facebook/draft")]

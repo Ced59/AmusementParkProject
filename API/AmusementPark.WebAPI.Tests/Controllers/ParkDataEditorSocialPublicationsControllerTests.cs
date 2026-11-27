@@ -39,6 +39,7 @@ public sealed class ParkDataEditorSocialPublicationsControllerTests
         ParkDataEditorSocialPublicationsController controller = new ParkDataEditorSocialPublicationsController(
             Mock.Of<IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>>>(MockBehavior.Strict),
             publishHandler.Object,
+            Mock.Of<ICommandHandler<RetryOwnFacebookPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
             Mock.Of<ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict))
         {
             ControllerContext = new ControllerContext
@@ -88,6 +89,7 @@ public sealed class ParkDataEditorSocialPublicationsControllerTests
         ParkDataEditorSocialPublicationsController controller = new ParkDataEditorSocialPublicationsController(
             Mock.Of<IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>>>(MockBehavior.Strict),
             Mock.Of<ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<RetryOwnFacebookPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
             deleteHandler.Object)
         {
             ControllerContext = new ControllerContext
@@ -105,5 +107,46 @@ public sealed class ParkDataEditorSocialPublicationsControllerTests
 
         Assert.IsType<OkObjectResult>(result);
         deleteHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RetryOwnFacebookAsync_ShouldRequireRequesterOwnership()
+    {
+        Mock<ICommandHandler<RetryOwnFacebookPublicationCommand, ApplicationResult<SocialPublication>>> retryHandler =
+            new Mock<ICommandHandler<RetryOwnFacebookPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict);
+        retryHandler.Setup(handler => handler.HandleAsync(
+                It.Is<RetryOwnFacebookPublicationCommand>(command =>
+                    command.PublicationId == "publication-1"
+                    && command.RequestedByUserId == "editor-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<SocialPublication>.Success(new SocialPublication
+            {
+                Id = "publication-1",
+                Network = SocialNetwork.Facebook,
+                Status = SocialPublicationStatus.Published,
+                Message = "Published",
+                Url = "https://amusement-parks.fun/fr/home",
+            }));
+        ParkDataEditorSocialPublicationsController controller = new ParkDataEditorSocialPublicationsController(
+            Mock.Of<IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            retryHandler.Object,
+            Mock.Of<ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict))
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext
+                {
+                    User = new ClaimsPrincipal(new ClaimsIdentity(
+                        new[] { new Claim(ClaimTypes.NameIdentifier, "editor-1") },
+                        "test")),
+                },
+            },
+        };
+
+        IActionResult result = await controller.RetryOwnFacebookAsync("publication-1", CancellationToken.None);
+
+        Assert.IsType<OkObjectResult>(result);
+        retryHandler.VerifyAll();
     }
 }
