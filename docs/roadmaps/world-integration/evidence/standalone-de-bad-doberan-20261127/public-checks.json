@@ -1,0 +1,50 @@
+[
+  {
+    "language": "fr",
+    "url": "https://amusement-parks.fun/fr/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/93e78a91016642c39980963c8baa76e3/social-preview-v2"
+  },
+  {
+    "language": "en",
+    "url": "https://amusement-parks.fun/en/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/93e78a91016642c39980963c8baa76e3/social-preview-v2"
+  },
+  {
+    "language": "de",
+    "url": "https://amusement-parks.fun/de/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/93e78a91016642c39980963c8baa76e3/social-preview-v2"
+  },
+  {
+    "language": "es",
+    "url": "https://amusement-parks.fun/es/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/93e78a91016642c39980963c8baa76e3/social-preview-v2"
+  },
+  {
+    "language": "it",
+    "url": "https://amusement-parks.fun/it/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/93e78a91016642c39980963c8baa76e3/social-preview-v2"
+  },
+  {
+    "language": "nl",
+    "url": "https://amusement-parks.fun/nl/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/93e78a91016642c39980963c8baa76e3/social-preview-v2"
+  },
+  {
+    "language": "pl",
+    "url": "https://amusement-parks.fun/pl/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/93e78a91016642c39980963c8baa76e3/social-preview-v2"
+  },
+  {
+    "language": "pt",
+    "url": "https://amusement-parks.fun/pt/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/93e78a91016642c39980963c8baa76e3/social-preview-v2"
+  }
+]

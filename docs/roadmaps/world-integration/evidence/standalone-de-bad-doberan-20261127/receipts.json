@@ -1,0 +1,140 @@
+{
+  "entryId": "DE-candidate-4c021d67f83d96",
+  "standaloneAttractionId": "2a39c14d-48f8-4877-aac9-343e1a331354",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "446c624b-d3c6-46d1-bf5d-2b33f733f67e",
+      "appliedAtUtc": "2026-11-27T16:26:10.1168458Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "51f09af4-8660-40bc-9add-b255697902e8",
+      "appliedAtUtc": "2026-11-27T16:27:02.2617418Z",
+      "isApplied": true
+    },
+    {
+      "stage": "details",
+      "operationId": "be519448-1c21-4e0a-80bc-fa1c0c5662b2",
+      "appliedAtUtc": "2026-11-27T16:27:08.2352448Z",
+      "isApplied": true
+    },
+    {
+      "stage": "access",
+      "operationId": "b1951ccf-e2db-46e5-b75a-8acc5186ac6c",
+      "appliedAtUtc": "2026-11-27T16:29:13.4966726Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "3b918c9b-7bdd-49ae-b4c1-e4861e7c0e2c",
+      "appliedAtUtc": "2026-11-27T16:30:01.1898555Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "93e78a91016642c39980963c8baa76e3",
+      "sourceUrl": "https://sommerrodelbahn-dbr.de/wp/wp-content/uploads/2023/01/unsere_bahn004.jpg",
+      "importedAtUtc": "2026-11-27T16:27:41.84Z",
+      "publishedAtUtc": "2026-11-27T16:28:13.825Z",
+      "isCurrent": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Sommerrodelbahn Bad Doberan"
+    },
+    {
+      "imageId": "b5cb701935de44bab95d502eeca75196",
+      "sourceUrl": "https://sommerrodelbahn-dbr.de/wp/wp-content/uploads/2023/01/unsere_bahn006.jpg",
+      "importedAtUtc": "2026-11-27T16:27:50.424Z",
+      "publishedAtUtc": "2026-11-27T16:28:19.371Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Sommerrodelbahn Bad Doberan"
+    },
+    {
+      "imageId": "5351d4d3df2147e6a98e0b3739aee569",
+      "sourceUrl": "https://sommerrodelbahn-dbr.de/wp/wp-content/uploads/2023/01/unsere_bahn001.jpg",
+      "importedAtUtc": "2026-11-27T16:27:58.64Z",
+      "publishedAtUtc": "2026-11-27T16:28:24.95Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Sommerrodelbahn Bad Doberan"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T16:29:13.496Z",
+  "lastDataIntegrationAppliedAtUtc": "2026-11-27T16:29:13.4966726Z",
+  "lastDataIntegrationStage": "Apply des conditions d’âge officielles",
+  "finalAudit": {
+    "completenessScore": 76,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "completenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-bad-doberan-20261127/final-completeness.json"
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T16:30:01.1898555Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/2a39c14d-48f8-4877-aac9-343e1a331354/sommerrodelbahn-bad-doberan",
+    "facebookStatus": "Published",
+    "facebookPublishedAtUtc": "2026-11-27T16:30:39.1374991Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129071281424431"
+  }
+}
