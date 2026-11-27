@@ -284,8 +284,9 @@ public sealed class SocialPublicationServiceTests
             Network = SocialNetwork.Facebook,
             Status = SocialPublicationStatus.Failed,
             Trigger = SocialPublicationTrigger.Manual,
-            RequestedByUserId = "editor-1",
-            Message = "San Bernardo cable car announcement",
+            RequestedByUserId = "admin-2",
+            CreatedByUserId = "editor-1",
+            Message = "San Bernardo cable car announcement https://amusement-parks.fun/fr/attraction/attraction-1/san-bernardo",
             Url = "https://amusement-parks.fun/fr/attraction/attraction-1/san-bernardo",
             AttemptedAtUtc = new DateTime(2026, 11, 27, 21, 37, 0, DateTimeKind.Utc),
             FailureCode = "publisher-response-timeout",
@@ -327,6 +328,7 @@ public sealed class SocialPublicationServiceTests
             Status = SocialPublicationStatus.Failed,
             Trigger = SocialPublicationTrigger.Manual,
             RequestedByUserId = "editor-1",
+            CreatedByUserId = "editor-1",
             Message = "Announcement",
             Url = "https://amusement-parks.fun/fr/home",
         });
@@ -341,6 +343,35 @@ public sealed class SocialPublicationServiceTests
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "social-publishing.publication.not-found");
+        Assert.Equal(0, publisher.ReconcileCallCount);
+        Assert.Equal(0, publisher.PublishCallCount);
+    }
+
+    [Fact]
+    public async Task RetryAsync_WhenManualFacebookMessageDoesNotEndWithTargetUrl_ShouldStopWithoutReconciliation()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        repository.Publications.Add(new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.Manual,
+            RequestedByUserId = "editor-1",
+            CreatedByUserId = "editor-1",
+            Message = "Same message used for different destinations",
+            Url = "https://amusement-parks.fun/fr/attraction/attraction-1/san-bernardo",
+        });
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        ApplicationResult<SocialPublication> result = await service.RetryAsync(
+            "publication-1",
+            "editor-1",
+            CancellationToken.None,
+            requireRequesterOwnership: true);
+
+        Assert.False(result.IsSuccess);
         Assert.Equal(0, publisher.ReconcileCallCount);
         Assert.Equal(0, publisher.PublishCallCount);
     }

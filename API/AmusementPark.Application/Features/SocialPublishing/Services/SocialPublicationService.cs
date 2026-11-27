@@ -57,11 +57,19 @@ public sealed class SocialPublicationService : ISocialPublicationService
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationNotFound(publicationId));
         }
+        bool isOriginalRequester = !string.IsNullOrWhiteSpace(requestedByUserId)
+            && string.Equals(publication.CreatedByUserId, requestedByUserId, StringComparison.Ordinal);
+        bool isUnmodifiedLegacyPublication = publication.CreatedByUserId is null
+            && !string.IsNullOrWhiteSpace(requestedByUserId)
+            && string.Equals(publication.RequestedByUserId, requestedByUserId, StringComparison.Ordinal)
+            && publication.LastSynchronizedAtUtc is null
+            && publication.AttemptedAtUtc is DateTime attemptedAtUtc
+            && attemptedAtUtc >= publication.RequestedAtUtc
+            && attemptedAtUtc <= publication.RequestedAtUtc.AddMinutes(1);
         if (requireRequesterOwnership
             && (publication.Trigger != SocialPublicationTrigger.Manual
                 || publication.Network != SocialNetwork.Facebook
-                || string.IsNullOrWhiteSpace(requestedByUserId)
-                || !string.Equals(publication.RequestedByUserId, requestedByUserId, StringComparison.Ordinal)))
+                || (!isOriginalRequester && !isUnmodifiedLegacyPublication)))
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationNotFound(publicationId));
         }
@@ -78,6 +86,14 @@ public sealed class SocialPublicationService : ISocialPublicationService
         }
         if (requireRequesterOwnership)
         {
+            // The exact destination must be part of the matched Facebook message.
+            // Older custom messages without this marker cannot be reconciled safely.
+            if (string.IsNullOrWhiteSpace(publication.Url)
+                || !publication.Message.TrimEnd().EndsWith(publication.Url, StringComparison.Ordinal))
+            {
+                return ApplicationResult<SocialPublication>.Failure(
+                    SocialPublishingApplicationErrors.PublicationReconciliationAmbiguous());
+            }
             ISocialPublisher? publisher = this.FindPublisher(publication.Network);
             if (publisher is null || !publisher.Describe().IsConfigured)
             {
