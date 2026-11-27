@@ -138,9 +138,9 @@
     }
   ],
   "facebook": {
-    "status": "Failed",
+    "status": "Published",
     "publicationId": "940217466c794ad587e0402db3e77f6f",
-    "failureCode": "preview-page-not-ready",
-    "externalPostUrl": null
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129101623424431",
+    "publishedAtUtc": "2026-11-27T22:41:13.0322763Z"
   }
 }

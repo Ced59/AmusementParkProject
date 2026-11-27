@@ -1,0 +1,98 @@
+{
+  "entryId": "MX-candidate-discovery-paseo-teleferico-durango-20261127",
+  "standaloneAttractionId": "d1b00b4a-6744-4f93-a666-f5119594b558",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "5637db63-2a63-44bb-9723-245594d3275b",
+      "appliedAtUtc": "2026-11-27T22:37:02.0470973Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "081a9482-f8f0-4c6b-9e08-14a62156518b",
+      "appliedAtUtc": "2026-11-27T22:37:13.6935233Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "5174d063-d5da-46f4-b9d4-1d7e7a6b789b",
+      "appliedAtUtc": "2026-11-27T22:37:25.4591538Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "4e397190-4a3e-4900-967f-e3734e6b9b62",
+      "appliedAtUtc": "2026-11-27T22:38:37.9376988Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "678f1144b89a41cfb5095f16464dc628",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_de_Durango.JPG",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Noé González-Gallegos / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:38:03.123Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "8888f919b9424d71a7614632e8ee75f1",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACerro_del_Calvario.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "EduardoOlivares / Wikimedia Commons (CC BY-SA 3.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T22:38:15.967Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "6de60e3c2ab541648d97825bcafbd6b5",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129101479424431",
+    "publishedAtUtc": "2026-11-27T22:40:27.5069336Z"
+  }
+}

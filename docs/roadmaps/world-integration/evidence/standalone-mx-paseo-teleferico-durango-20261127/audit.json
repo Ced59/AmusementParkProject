@@ -1,0 +1,15 @@
+{
+  "entryId": "MX-candidate-discovery-paseo-teleferico-durango-20261127",
+  "standaloneAttractionId": "d1b00b4a-6744-4f93-a666-f5119594b558",
+  "evaluatedAtUtc": "2026-11-27T22:42:46.788Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/d1b00b4a-6744-4f93-a666-f5119594b558/paseo-teleferico-durango",
+  "publicationBlockers": []
+}

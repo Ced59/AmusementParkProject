@@ -3888,7 +3888,7 @@
           "summary": "Fiche visible avec quatre photos créditées ; fermeture temporaire clairement signalée sans horaire ou tarif trompeur."
         }
       ],
-      "nextAction": "Publier l’annonce Facebook en précisant la fermeture temporaire ; surveiller la réouverture officielle et alors mettre à jour statut, horaires et tarif avec de nouvelles sources, sans retirer cette ligne.",
+      "nextAction": "Surveiller la réouverture officielle ; à confirmation, actualiser statut, horaires et tarif avec de nouvelles sources, sans retirer cette ligne.",
       "sources": [
         {
           "label": "Tourisme officiel d’Orizaba — trajet, accès et prestations du sommet",
@@ -3968,7 +3968,7 @@
           "summary": "Fiche visible avec horaires et tarifs de l’exploitant, quatre photos créditées et descriptions en huit langues."
         }
       ],
-      "nextAction": "Publier l’annonce Facebook avec la photo de la cabine ; vérifier périodiquement les horaires et tarifs de l’exploitant, sans retirer cette ligne.",
+      "nextAction": "Vérifier périodiquement les horaires et tarifs de l’exploitant, sans retirer cette ligne.",
       "sources": [
         {
           "label": "Hotel Montetaxco — trajet, horaires, tarifs et achat",
@@ -4090,6 +4090,76 @@
         "relation": "AlreadyStandalone",
         "attractions": [],
         "rationale": "Trajet à billet propre entre la station Treviño et le Puerto Noas ; accès à l’Aldea et stationnement séparés."
+      }
+    },
+    {
+      "entryId": "MX-candidate-discovery-paseo-teleferico-durango-20261127",
+      "name": "Paseo Teleférico Durango",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Cerro del Calvario – Cerro de los Remedios, Durango",
+      "siteId": "d1b00b4a-6744-4f93-a666-f5119594b558",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Tourisme de l’État de Durango publie horaires du mardi au dimanche et tarifs aller simple / aller-retour.",
+      "identityConfidence": "Tracé, stations et tarif confirmés par le tourisme de l’État ; recherches PDE Park et Standalone sous trois variantes sans résultat, backlog sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleférico de Durango",
+        "Teleferico Durango",
+        "Paseo Teleferico Durango"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T22:38:15.967Z",
+      "integrationHistory": [
+        {
+          "eventId": "mx-paseo-teleferico-durango-data-20261127",
+          "appliedAt": "2026-11-27T22:38:15.967Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d1b00b4a-6744-4f93-a666-f5119594b558",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-paseo-teleferico-durango-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mx-paseo-teleferico-durango-20261127/audit.json",
+          "summary": "Fiche visible avec deux photos précises et créditées, tarifs, horaires et annonce Facebook confirmée."
+        }
+      ],
+      "nextAction": "Revérifier les horaires et tarifs du tourisme de Durango après mars 2027 et actualiser la fiche sans retirer cette ligne.",
+      "sources": [
+        {
+          "label": "Secretaría de Turismo de Durango — stations, horaires et tarifs",
+          "url": "https://durangodepelicula.com/inicio/lugares-turisticos/miradores-y-vistas-panoramicas/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Secretaría de Cultura de México — longueur et trajet historique",
+          "url": "https://sic.gob.mx/ficha.php?table=ea&table_id=63",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Carte liée par le tourisme de Durango — station Calvario",
+          "url": "https://maps.app.goo.gl/yznwgkMG37jASE2t6",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Noé González-Gallegos / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ATelef%C3%A9rico_de_Durango.JPG",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, EduardoOlivares / Wikimedia Commons (CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File%3ACerro_del_Calvario.JPG",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Trajet à billet propre entre deux collines avec stations dédiées, distinct des miradors et du centre historique."
       }
     }
   ]
