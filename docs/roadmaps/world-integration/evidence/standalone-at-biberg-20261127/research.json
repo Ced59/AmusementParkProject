@@ -1,0 +1,20 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Sommerrodelbahn am Biberg, luge d’été en auge à Kehlbach 55, Saalfelden.",
+  "antiDuplicate": "Recherches PDE SearchParks et SearchStandaloneAttractions sur Biberg, Sommerrodelbahn am Biberg et Saalfelden, sans fiche visible ou masquée.",
+  "officialSources": [
+    {
+      "url": "https://www.hochkoenig.at/de/sommer/sommerbahnen/sommerrodelbahn-am-biberg-in-saalfelden.html",
+      "finding": "Piste de 1,6 km et dénivelé de 345 m ; piste et Huggenbergbahn actuellement fermées, retour annoncé à l’été 2027 sans jour précis."
+    },
+    {
+      "url": "https://www.skiamade.com/de/sommerregionen/hochkoenig/sommerrodelbahn-biberg",
+      "finding": "Grille 2026 distinguant billet pour la seule descente et billets combinant montée et descente : autonomie commerciale. Tarifs de la saison terminée, non reportés comme prix actuels."
+    },
+    {
+      "url": "https://www.saalfelden-leogang.com/en/news-events/a-z/summer-toboggan-run-on-biberg_az_36967",
+      "finding": "Photos exactes du parcours et crédit visible Hochkönig / Roland Haschka."
+    }
+  ],
+  "editorialDecision": "Fiche autonome de luge d’été en auge, statut TemporarilyClosed. Aucune date exacte de réouverture ni tarif futur inventé ; trois photos de la piste avec attribution."
+}

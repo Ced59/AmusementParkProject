@@ -1,0 +1,29 @@
+{
+  "asOfUtc": "2026-11-27T16:39:36.000Z",
+  "siteId": "79d5dde0-55b5-4542-aed8-1191c9d7c061",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+  "status": "TemporarilyClosed",
+  "completenessScore": 83,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "5dfb4ad388864b0ba687e48048c69088",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129071833424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T16:38:07.814Z",
+  "lastDataIntegrationBasis": "Dernière publication substantielle des métadonnées et légendes photo ; horodatage serveur, distinct de la visibilité et Facebook.",
+  "gap": "Aucun prix ou horaire de l’été 2027 vérifié pendant la fermeture ; ceux de 2026 ne sont pas réutilisés."
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "language": "fr",
+    "url": "https://amusement-parks.fun/fr/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5dfb4ad388864b0ba687e48048c69088/social-preview-v2"
+  },
+  {
+    "language": "en",
+    "url": "https://amusement-parks.fun/en/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5dfb4ad388864b0ba687e48048c69088/social-preview-v2"
+  },
+  {
+    "language": "de",
+    "url": "https://amusement-parks.fun/de/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5dfb4ad388864b0ba687e48048c69088/social-preview-v2"
+  },
+  {
+    "language": "es",
+    "url": "https://amusement-parks.fun/es/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5dfb4ad388864b0ba687e48048c69088/social-preview-v2"
+  },
+  {
+    "language": "it",
+    "url": "https://amusement-parks.fun/it/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5dfb4ad388864b0ba687e48048c69088/social-preview-v2"
+  },
+  {
+    "language": "nl",
+    "url": "https://amusement-parks.fun/nl/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5dfb4ad388864b0ba687e48048c69088/social-preview-v2"
+  },
+  {
+    "language": "pl",
+    "url": "https://amusement-parks.fun/pl/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5dfb4ad388864b0ba687e48048c69088/social-preview-v2"
+  },
+  {
+    "language": "pt",
+    "url": "https://amusement-parks.fun/pt/attraction/79d5dde0-55b5-4542-aed8-1191c9d7c061/sommerrodelbahn-am-biberg",
+    "status": 200,
+    "ogImage": "https://amusement-parks.fun/api/images/binary/5dfb4ad388864b0ba687e48048c69088/social-preview-v2"
+  }
+]
