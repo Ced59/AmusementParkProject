@@ -2299,28 +2299,43 @@
     },
     {
       "entryId": "IT-candidate-discovery-cb7eff7281ba02",
-      "name": "Ballon de la Villa Borghese",
-      "entityKind": "ToQualify",
+      "name": "Ballon de la Villa Borghese (L’Ottavo Colle)",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
       "locality": "Rome",
-      "siteId": null,
+      "siteId": "839ff04f-11c2-4888-a66c-1adcddda86ef",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2003 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Ouverture payante en juillet 2003 ; vols suspendus pendant la pause hivernale de 2005 et jamais repris, selon la presse.",
+      "identityConfidence": "Fabricant Aerophile, billet propre documenté et photos exactes de la Villa Borghese concordants ; recherches PDE SearchParks et SearchStandaloneAttractions par Villa Borghese, Aerophile Italia, Ottavo Colle et Aerostato Roma sans doublon, fiches masquées incluses, le 27 novembre 2026.",
       "possibleMatches": [],
       "aliases": [
-        "Aerophile Italia Rome, Italy"
+        "Aerophile Italia Rome, Italy",
+        "Ballon de la Villa Borghese",
+        "L’Ottavo Colle",
+        "Aerophile Italia",
+        "Aerophile 5500 Rome"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-27T14:56:45.734Z",
+      "integrationHistory": [
+        {
+          "eventId": "af3465b1-295a-4bbc-870e-f8116704a41f",
+          "appliedAt": "2026-11-27T14:56:45.734Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "839ff04f-11c2-4888-a66c-1adcddda86ef",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-villa-borghese-balloon-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-villa-borghese-balloon-20261127/audit.json",
+          "summary": "Fiche historique en huit langues, deux photos exactes créditées, histoire, publication site et Facebook vérifiées"
+        }
+      ],
+      "nextAction": "Fiche historique publique et Facebook publiés ; conserver la ligne et sa dernière date réelle, actualiser si une source précise le devenir de la plateforme.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -2331,6 +2346,26 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wanted in Rome — ouverture, billets et site en juillet 2003",
+          "url": "https://www.wantedinrome.com/news/rome-with-a-view.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Il Giornale via PatrimonioSOS — vols jamais repris après 2005",
+          "url": "https://patrimoniosos.uniud.it/articolo/26331/?mode=metadata&topic=musei",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte en vol en 2003, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:There_was_a_sun_and_now_it%27s_gone%2C_Aerophile_5500%2C_Rome.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte en 2005, domaine public",
+          "url": "https://commons.wikimedia.org/wiki/File:Balvb.jpg",
+          "accessedAt": "2026-11-27"
         }
       ],
       "discovery": {
@@ -2339,8 +2374,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "Ballon de la Villa Borghese",
@@ -2348,13 +2383,13 @@
             "url": "https://www.aerophile.com/en/clients/aerophile-italia/",
             "family": "Ballon captif",
             "sourceVenueName": "Ballon de la Villa Borghese",
-            "sourceLifecycleSignal": "Référence constructeur datée 2003 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLifecycleSignal": "Ouvert en 2003, vols non repris après la pause hivernale de 2005.",
+            "matchingMethod": "Recherche fraîche PDE sans doublon, billet propre historique, deux photos exactes et reçus de création.",
             "sourceLocality": "Rome",
             "referenceId": "aerophile-aerophile-italia"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration af3465b1-295a-4bbc-870e-f8116704a41f ; conserver les références de découverte."
       }
     },
     {

@@ -1,0 +1,71 @@
+{
+  "entryId": "IT-candidate-discovery-cb7eff7281ba02",
+  "standaloneAttractionId": "839ff04f-11c2-4888-a66c-1adcddda86ef",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "80723c9f-cbe5-4fa5-980d-9b88dbcd1390",
+      "appliedAtUtc": "2026-11-27T14:51:50.6439061Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "96c9b636-9519-4fc6-a128-bd02c0ad2122",
+      "appliedAtUtc": "2026-11-27T14:53:27.0714321Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "0dfaea61-9498-41dc-a6bc-3a6faa551864",
+      "appliedAtUtc": "2026-11-27T14:54:03.089436Z",
+      "isApplied": true
+    },
+    {
+      "stage": "status",
+      "operationId": "af3465b1-295a-4bbc-870e-f8116704a41f",
+      "appliedAtUtc": "2026-11-27T14:56:45.7344034Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "83c329a80f674cca8ac410a8193a90a9",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:There_was_a_sun_and_now_it%27s_gone%2C_Aerophile_5500%2C_Rome.jpg",
+      "ownerId": "839ff04f-11c2-4888-a66c-1adcddda86ef",
+      "isPublished": true
+    },
+    {
+      "imageId": "f5afe37b5e6b4628bd86ae85c380a621",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balvb.jpg",
+      "ownerId": "839ff04f-11c2-4888-a66c-1adcddda86ef",
+      "isPublished": true
+    }
+  ],
+  "finalAudit": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "photoCount": 2,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ]
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T14:54:03.089436Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/839ff04f-11c2-4888-a66c-1adcddda86ef/ballon-de-la-villa-borghese",
+    "facebookPublishedAtUtc": "2026-11-27T14:57:51.8032083Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129063061424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-it-villa-borghese-balloon-20261127/receipts.json"
+  }
+}

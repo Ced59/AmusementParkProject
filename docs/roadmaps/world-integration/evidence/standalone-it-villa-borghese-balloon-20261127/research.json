@@ -1,0 +1,30 @@
+{
+  "reviewedAt": "2026-11-27",
+  "classification": "Ballon panoramique indépendant des jardins publics de la Villa Borghese, avec billet propre et nacelle captive. L’expérience a cessé en 2005.",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions, sans filtre de visibilité, par Villa Borghese, Aerophile Italia, Ottavo Colle et Aerostato Roma ; zéro résultat avant création.",
+  "lifecycle": "Aerophile date le ballon de 2003 ; Wanted in Rome précise une ouverture le 23 juillet 2003 et un billet séparé ; Il Giornale, conservé par PatrimonioSOS, rapporte que les ascensions suspendues pour la pause hivernale de 2005 n’ont jamais repris. Aucun tarif ni horaire actuel allégué.",
+  "photo": "Deux photographies exactes inspectées : ballon en vol du 7 septembre 2003 par Albarubescens (CC BY-SA 4.0), détail du ballon en août 2005 par Notafly (domaine public). Sources, auteurs et licences sont présents dans les crédits des huit langues.",
+  "publicStatusDecision": "Le statut ClosedDefinitively était absent du catalogue public selon le filtre du dépôt et renvoyait une page 404 malgré isVisible=true. Le statut Removed a été appliqué pour représenter l’ancienne attraction retirée du service ; l’API publique et les huit pages ont ensuite répondu 200.",
+  "sources": [
+    {
+      "label": "Aerophile — ballon de Villa Borghese",
+      "url": "https://www.aerophile.com/en/clients/aerophile-italia/"
+    },
+    {
+      "label": "Wanted in Rome — ouverture, billets et site en juillet 2003",
+      "url": "https://www.wantedinrome.com/news/rome-with-a-view.html"
+    },
+    {
+      "label": "Il Giornale via PatrimonioSOS — vols jamais repris après 2005",
+      "url": "https://patrimoniosos.uniud.it/articolo/26331/?mode=metadata&topic=musei"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte en vol en 2003, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:There_was_a_sun_and_now_it%27s_gone%2C_Aerophile_5500%2C_Rome.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte en 2005, domaine public",
+      "url": "https://commons.wikimedia.org/wiki/File:Balvb.jpg"
+    }
+  ]
+}
