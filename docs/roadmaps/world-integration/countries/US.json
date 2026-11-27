@@ -38,7 +38,8 @@
     "Découverte du 25 novembre : Sky View Observatory publié avec trois formules, calendrier officiel et trois vues exactes créditées.",
     "Skydeck Chicago : belvédère à billet propre créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Tarifs dynamiques et horaires d’hiver suivis dans le backlog permanent.",
     "SUMMIT One Vanderbilt : observatoire immersif new-yorkais créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Prix variables et horaires datés suivis dans le backlog permanent.",
-    "Edge NYC : observatoire immersif new-yorkais créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Prix variables et horaires datés suivis dans le backlog permanent."
+    "Edge NYC : observatoire immersif new-yorkais créé et publié le 25 novembre 2026 avec trois photos libres exactes, huit descriptions et publication Facebook. Prix variables et horaires datés suivis dans le backlog permanent.",
+    "Gateway Arch — Tram Ride to the Top : fiche autonome publiée le 27 novembre 2026 avec quatre photos exactes, calendrier de fin d’année, tarifs variables, accessibilité et publication Facebook ; prochaine vérification des données saisonnières."
   ],
   "entries": [
     {
@@ -80644,6 +80645,106 @@
         "reviewedAt": "2026-11-26",
         "attractions": [],
         "rationale": "Excursion ferroviaire touristique avec billet, gare et exploitant autonomes."
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-gateway-arch-tram-20261127",
+      "name": "Gateway Arch — Tram Ride to the Top",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tram panoramique à billet propre",
+      "locality": "Gateway Arch, St. Louis, Missouri",
+      "siteId": "a4d5663f-1d38-43fe-8b2a-5a0b68dc139a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant et National Park Service : tram actif, billetterie et horaires publiés en novembre 2026.",
+      "identityConfidence": "Tram et billet propres, distincts du musée gratuit ; recherche PDE Park et Standalone et backlog par noms, alias et URL sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Gateway Arch tram",
+        "Tram Ride to the Top",
+        "St. Louis Arch tram"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T20:51:01.652Z",
+      "integrationHistory": [
+        {
+          "eventId": "standalone-gateway-arch-tram-20261127",
+          "appliedAt": "2026-11-27T20:51:01.652Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a4d5663f-1d38-43fe-8b2a-5a0b68dc139a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-gateway-arch-tram-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-gateway-arch-tram-20261127/audit.json",
+          "summary": "Gateway Arch tram : données officielles, calendrier et tarifs, quatre photos exactes et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne et recontrôler les tarifs variables et les horaires saisonniers lors de la prochaine actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — Tram Ride to the Top et parcours",
+          "url": "https://www.gatewayarch.com/gateway-arch-national-park/tram-ride-to-the-top/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — billetterie et tarifs de départ 2026",
+          "url": "https://www.gatewayarch.com/plan-your-visit/activity-pricing/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "National Park Service — horaires saisonniers",
+          "url": "https://home.nps.gov/jeff/planyourvisit/hours.htm",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "National Park Service — exceptions de fin 2026",
+          "url": "https://www.nps.gov/jeff/learn/news/gateway-arch-national-park-announces-extended-holiday-hours-and-winter-visitor-opportunities.htm",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "National Park Service — accessibilité du sommet",
+          "url": "https://www.nps.gov/jeff/planyourvisit/accessibility.htm",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "National Park Service — frais et entrée du musée",
+          "url": "https://www.nps.gov/jeff/planyourvisit/fees.htm",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — Gateway Arch",
+          "url": "https://www.openstreetmap.org/?mlat=38.6246258&mlon=-90.1849637#map=18/38.6246258/-90.1849637",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, w_lemay / Wikimedia Commons (CC BY-SA 2.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gateway_Arch,_Gateway_Arch_National_Park,_St._Louis,_MO_-_53051959352.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Antony-22 / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gateway_Arch_interior_2025s.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Antony-22 / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gateway_Arch_interior_2025t.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, PCN02WPS / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:St._Louis_skyline_from_the_Gateway_Arch,_June_2023.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Trajet en capsule et accès au sommet à billet dédié, distincts du musée gratuit du parc national ; aucune fiche homonyme trouvée."
       }
     }
   ]

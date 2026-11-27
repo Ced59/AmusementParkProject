@@ -1,0 +1,81 @@
+{
+  "entryId": "US-candidate-discovery-gateway-arch-tram-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Paid five-seat capsule tram inside Gateway Arch with an observation area at the top. The free museum is a separate experience. This is a standalone, ticketed attraction within a national park.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Gateway Arch (US)",
+      "Tram Ride to the Top (US)"
+    ],
+    "standaloneExactResultCount": 0,
+    "parkQueries": [
+      "Gateway Arch (US)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAliasAndSourceUrlMatches": 0,
+    "unrelatedSearchResult": "The St. Louis Wheel appeared in a broad fuzzy PDE search and was excluded."
+  },
+  "sources": {
+    "operatorExperience": "https://www.gatewayarch.com/gateway-arch-national-park/tram-ride-to-the-top/",
+    "operatorPricing": "https://www.gatewayarch.com/plan-your-visit/activity-pricing/",
+    "npsHours": "https://home.nps.gov/jeff/planyourvisit/hours.htm",
+    "npsHolidayHours": "https://www.nps.gov/jeff/learn/news/gateway-arch-national-park-announces-extended-holiday-hours-and-winter-visitor-opportunities.htm",
+    "npsAccessibility": "https://www.nps.gov/jeff/planyourvisit/accessibility.htm",
+    "npsFees": "https://www.nps.gov/jeff/planyourvisit/fees.htm",
+    "coordinates": "https://www.openstreetmap.org/?mlat=38.6246258&mlon=-90.1849637#map=18/38.6246258/-90.1849637"
+  },
+  "observations": {
+    "address": "11 N 4th St, St. Louis, Missouri",
+    "coordinates": [
+      38.6246258,
+      -90.1849637
+    ],
+    "archHeightMeters": 192,
+    "winterHours": "9:00–18:00; last tram departure approximately one hour before closing.",
+    "late2026Exceptions": "Nov 27–28 and Dec 26–30 9:00–20:00; Dec 24 and 31 9:00–16:00; Dec 25 and Jan 1 closed.",
+    "startingAdmissionUSD": {
+      "adult": 15,
+      "child3To15": 11,
+      "nationalParkPass": 12,
+      "under2": 0
+    },
+    "access": "NPS documents 96 stairs in six flights at the top; the summit experience is not wheelchair accessible.",
+    "museum": "Admission to the museum beneath the arch is free."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gateway_Arch,_Gateway_Arch_National_Park,_St._Louis,_MO_-_53051959352.jpg",
+      "artist": "w_lemay",
+      "license": "CC BY-SA 2.0",
+      "captured": "2023-03-23 14:14:33",
+      "depicts": "extérieur de l’arche"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gateway_Arch_interior_2025s.jpg",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Antony-22\" title=\"User:Antony-22\">Antony-22</a>",
+      "license": "CC BY-SA 4.0",
+      "captured": "2025-02-20 16:39:27",
+      "depicts": "portes d’embarquement du tram"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gateway_Arch_interior_2025t.jpg",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Antony-22\" title=\"User:Antony-22\">Antony-22</a>",
+      "license": "CC BY-SA 4.0",
+      "captured": "2025-02-20 16:42:08",
+      "depicts": "intérieur d’une capsule"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:St._Louis_skyline_from_the_Gateway_Arch,_June_2023.jpg",
+      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:PCN02WPS\" title=\"User:PCN02WPS\">PCN02WPS</a>",
+      "license": "CC BY-SA 4.0",
+      "captured": "2023-06-26 17:42:38",
+      "depicts": "vue sur St. Louis depuis le sommet"
+    }
+  ],
+  "scopeNotes": [
+    "Operator quotes starting prices, so structured pricing is dynamic rather than fixed.",
+    "Time-specific holiday exceptions rely on the NPS November 2026 announcement.",
+    "Four exact licensed photos cover the structure, boarding doors, tram capsule and summit view.",
+    "Seasonal hours and variable prices need rechecking before a later visit."
+  ]
+}

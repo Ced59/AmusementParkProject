@@ -1,0 +1,159 @@
+{
+  "entryId": "US-candidate-discovery-gateway-arch-tram-20261127",
+  "standaloneAttractionId": "a4d5663f-1d38-43fe-8b2a-5a0b68dc139a",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "cfdd5a99-9115-4629-8491-8c4f8e57476c",
+      "appliedAtUtc": "2026-11-27T20:49:03.2443532Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "daf82449-be5f-4682-9e79-2123d69b10d7",
+      "appliedAtUtc": "2026-11-27T20:49:15.1586612Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "5860584a-d690-4730-a54a-3ccc9fed4533",
+      "appliedAtUtc": "2026-11-27T20:49:27.5508534Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "e79764b2-7ec2-4c2a-8001-74baaf2cc128",
+      "appliedAtUtc": "2026-11-27T20:51:30.3310924Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "5a0d6262d9994626a360339758adad16",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gateway_Arch,_Gateway_Arch_National_Park,_St._Louis,_MO_-_53051959352.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "w_lemay / Wikimedia Commons (CC BY-SA 2.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:50:21.67Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "88f4385832914c0991ba81f3f33b8dfb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gateway_Arch_interior_2025s.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Antony-22 / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:50:35.315Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "6d296e1a9df6455cacd223de4b2abcef",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gateway_Arch_interior_2025t.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1440,
+      "credit": "Antony-22 / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:50:48.67Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "3f6016075d6a4755a5340280ca56bcf4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:St._Louis_skyline_from_the_Gateway_Arch,_June_2023.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "PCN02WPS / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:51:01.652Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "32a30130cc6748168b321dfa9ca247e0",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T20:54:07.8778229Z",
+    "externalPostId": "1285475681307050_122129091813424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129091813424431"
+  }
+}
