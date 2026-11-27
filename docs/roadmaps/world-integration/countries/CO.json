@@ -2031,11 +2031,11 @@
         "Mirador Colpatria"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-27T19:20:07.598Z",
+      "lastDataIntegrationAt": "2026-11-27T19:17:21.604Z",
       "integrationHistory": [
         {
           "eventId": "CO-mirador-torre-colpatria-integration-20261127",
-          "appliedAt": "2026-11-27T19:20:07.598Z",
+          "appliedAt": "2026-11-27T19:17:21.604Z",
           "outcome": "completed",
           "entityKind": "StandaloneAttraction",
           "entityId": "6f36e11e-8e3c-4902-a0b4-493ee2f193d8",
