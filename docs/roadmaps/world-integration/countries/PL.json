@@ -4203,29 +4203,43 @@
     },
     {
       "entryId": "PL-candidate-standalone-7593d78959d32c",
-      "name": "Luge Wiegand — Bielsko Biala",
-      "entityKind": "ToQualify",
+      "name": "Tor Saneczkowy – Stok Dębowca",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Bielsko-Biała",
+      "siteId": "c210d410-ed07-434a-aa3e-fdc067a85b88",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Horaires de mai à octobre sur le site de l’exploitant au 27 novembre 2026.",
+      "identityConfidence": "Référence constructeur Wiegand reliée au site de l’exploitant, piste et photos vérifiées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Bielsko Biala"
+        "Bielsko Biala",
+        "Słoneczna Polana",
+        "Tor saneczkowy na Dębowcu",
+        "Luge Wiegand — Bielsko Biala"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-27T17:00:04.340Z",
+      "integrationHistory": [
+        {
+          "eventId": "PL-debowiec-20261127-complete",
+          "appliedAt": "2026-11-27T17:00:04.340Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c210d410-ed07-434a-aa3e-fdc067a85b88",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-pl-debowiec-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pl-debowiec-20261127/audit.json",
+          "summary": "Référence Wiegand identifiée comme Tor Saneczkowy – Stok Dębowca ; fiche autonome, trois photos, huit langues, site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la référence Wiegand et la date de dernière intégration ; revoir les horaires et le statut avant la saison suivante.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -4236,11 +4250,26 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.torsaneczkowy.bielsko.pl",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — Tor Saneczkowy Stok Dębowca",
+          "url": "https://www.torsaneczkowy.bielsko.pl/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — plan technique",
+          "url": "https://www.torsaneczkowy.bielsko.pl/assets/plan.png",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Galerie Beskidy24 attribuée à l’exploitant",
+          "url": "https://www.torsaneczkowybielsko.beskidy24.pl/",
+          "accessedAt": "2026-11-27"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "Bielsko Biala",
@@ -4251,7 +4280,7 @@
             "referenceId": "location-id-1375"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Référence Wiegand location-id-1375 rapprochée du site opérateur torsaneczkowy.bielsko.pl ; piste autonome à billetterie propre, séparée du domaine skiable voisin."
       }
     },
     {
@@ -9997,66 +10026,6 @@
           }
         ],
         "rationale": "Piste de luge d’été avec billet propre près de la gare supérieure du télésiège ; distincte de l’alpine coaster interne au Górski Park Równica."
-      }
-    },
-    {
-      "entryId": "PL-candidate-discovery-debowiec-20261127",
-      "name": "Tor Saneczkowy – Stok Dębowca",
-      "entityKind": "StandaloneAttraction",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Luge d’été",
-      "locality": "Bielsko-Biała",
-      "siteId": "c210d410-ed07-434a-aa3e-fdc067a85b88",
-      "legacySiteIds": [],
-      "presence": "Published",
-      "presenceObservedAt": "2026-11-27",
-      "editorialStatus": "Integrated",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Horaires de mai à octobre sur le site de l’exploitant au 27 novembre 2026.",
-      "identityConfidence": "Exploitant direct ; galerie partenaire attribuant les photos à l’exploitant",
-      "possibleMatches": [],
-      "aliases": [
-        "Słoneczna Polana",
-        "Tor saneczkowy na Dębowcu"
-      ],
-      "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-27T17:00:04.340Z",
-      "integrationHistory": [
-        {
-          "eventId": "PL-debowiec-20261127-complete",
-          "appliedAt": "2026-11-27T17:00:04.340Z",
-          "outcome": "completed",
-          "entityKind": "StandaloneAttraction",
-          "entityId": "c210d410-ed07-434a-aa3e-fdc067a85b88",
-          "evidence": "docs/roadmaps/world-integration/evidence/standalone-pl-debowiec-20261127/receipts.json",
-          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pl-debowiec-20261127/audit.json",
-          "summary": "Nouvelle fiche autonome, trois photos attribuées, huit langues, audit, publication site et Facebook."
-        }
-      ],
-      "nextAction": "Conserver la ligne et sa date ; revoir les heures et le statut avant la saison suivante.",
-      "sources": [
-        {
-          "label": "Exploitant — Tor Saneczkowy Stok Dębowca",
-          "url": "https://www.torsaneczkowy.bielsko.pl/",
-          "accessedAt": "2026-11-27"
-        },
-        {
-          "label": "Exploitant — plan technique",
-          "url": "https://www.torsaneczkowy.bielsko.pl/assets/plan.png",
-          "accessedAt": "2026-11-27"
-        },
-        {
-          "label": "Galerie Beskidy24 attribuée à l’exploitant",
-          "url": "https://www.torsaneczkowybielsko.beskidy24.pl/",
-          "accessedAt": "2026-11-27"
-        }
-      ],
-      "standaloneAssessment": {
-        "relation": "AlreadyStandalone",
-        "reviewedAt": "2026-11-27",
-        "attractions": [],
-        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration PL-debowiec-20261127-complete ; conserver les références de découverte."
       }
     }
   ]
