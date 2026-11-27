@@ -1,0 +1,15 @@
+{
+  "entryId": "BR-candidate-discovery-brasilia-digital-tower-20261127",
+  "standaloneAttractionId": "1174e3d6-93cd-420d-bb41-f78359a80fef",
+  "evaluatedAtUtc": "2026-11-27T19:05:10.226Z",
+  "result": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 68,
+    "earnedPoints": 64,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/1174e3d6-93cd-420d-bb41-f78359a80fef/torre-de-tv-digital-de-brasilia",
+  "publicationBlockers": []
+}

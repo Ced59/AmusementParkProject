@@ -1,0 +1,69 @@
+{
+  "entryId": "BR-candidate-discovery-brasilia-digital-tower-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Operating paid observation deck in a freestanding digital broadcast tower in Taquari, Lago Norte. It is not the older central Brasília TV Tower on Eixo Monumental, whose observation deck is closed. The operator advertises visits and own hours. Side domes are not ordinarily open with the deck ticket.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Torre Digital (BR)",
+      "Torre de TV Digital (BR)",
+      "Flor do Cerrado (BR)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Torre Digital (BR)",
+      "Torre de TV Digital (BR)",
+      "Flor do Cerrado (BR)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "operatorSource": "https://linktr.ee/torredigitaloficial",
+  "tourismSource": "https://exploreturdf.com.br/trilhaserumos/torre-de-tv-digital/",
+  "priceSource": "https://guiabsb.digital/noticia/torre-digital-mirante-aberto-torre-de-tv-fechada-ingresso-horario",
+  "wikidataCoordinates": "https://www.wikidata.org/wiki/Q627859",
+  "observations": {
+    "address": "Setor Habitacional Taquari, Lago Norte, Brasília, Distrito Federal",
+    "coordinates": [
+      -15.699269,
+      -47.829569
+    ],
+    "totalTowerHeightMeters": 182,
+    "opened": "2012-04-21",
+    "hours": "Operator Linktree: Tue–Fri 12:00–18:00; Sat/Sun/holidays 10:00–19:00; Monday closed.",
+    "admissionBRL": {
+      "full": 26,
+      "half": 13
+    },
+    "pricingProvenance": "Guide BSB, published 18 Oct 2026, citing the operator’s Instagram profile. The older Explore Tur listing still says R$22/R$11 and must not be treated as the current price. Verify on the operator channel before travel.",
+    "accessibility": "Explore Tur DF lists ramps, tactile flooring, Braille maps and reserved parking. No unsupported assertion that all areas are step-free.",
+    "regularVisitScope": "Public observation deck only; side domes open for separate events."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flor_do_Cerrado_TV_Tower_BSB_07_2014_9935.jpg",
+      "artist": "Mariordo (Mario Roberto Durán Ortiz)",
+      "license": "CC BY-SA 4.0",
+      "captured": "2014-07-12 10:30:53",
+      "depicts": "tower exterior"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brasília_-_Torre_de_TV_Digital_(4).jpg",
+      "artist": "Sintegrity",
+      "license": "CC BY-SA 4.0",
+      "captured": "2023-01-06 15:22",
+      "depicts": "tower in landscape"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brasilia_DF_Brasil_-_Janela_da_Torre_Digital_-_panoramio.jpg",
+      "artist": "Josue Marinho",
+      "license": "CC BY 3.0",
+      "captured": "Taken on 11 May 2013",
+      "depicts": "view through circular tower window"
+    }
+  ],
+  "scopeNotes": [
+    "Price is reported by independent local guides in October 2026 and should be rechecked with the operator; the official Linktree currently confirms the hours but does not display the price.",
+    "The recurring hours are limited to 31 January 2027 and public holidays are modeled explicitly for Christmas Day and New Year’s Day.",
+    "Explore Tur DF and Guia BSB state 182 m total height; the Fecomércio page states 170 m. The profile uses 182 m with this discrepancy recorded for later verification."
+  ]
+}

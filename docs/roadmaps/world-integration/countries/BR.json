@@ -9470,6 +9470,95 @@
         "attractions": [],
         "rationale": "Mirador municipal à billet, horaires et capacité propres. Le Musée du téléphone fait partie du site ; aucun Park parent correspondant n’a été trouvé."
       }
+    },
+    {
+      "entryId": "BR-candidate-discovery-brasilia-digital-tower-20261127",
+      "name": "Torre de TV Digital de Brasília",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique à billet propre",
+      "locality": "Setor Taquari, Lago Norte, Brasília, Distrito Federal",
+      "siteId": "1174e3d6-93cd-420d-bb41-f78359a80fef",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Canal de l’exploitant : visitation du mirador ouverte du mardi au dimanche en novembre 2026.",
+      "identityConfidence": "Tour autonome à billet ; recherches PDE Park et Standalone sous trois noms sans résultat. Distincte de la Torre de TV du centre, dont le mirador est fermé.",
+      "possibleMatches": [],
+      "aliases": [
+        "Torre Digital",
+        "Flor do Cerrado",
+        "Brasília Digital TV Tower",
+        "Torre Digital Flor do Cerrado"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T19:04:26.530Z",
+      "integrationHistory": [
+        {
+          "eventId": "BR-digital-tower-20261127-completed",
+          "appliedAt": "2026-11-27T19:04:26.530Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1174e3d6-93cd-420d-bb41-f78359a80fef",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-br-brasilia-digital-tower-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-br-brasilia-digital-tower-20261127/audit.json",
+          "summary": "Torre Digital de Brasília publiée avec trois photos, horaires, tarifs, accessibilité, audit et annonce Facebook."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Recontrôler les prix directement auprès de l’exploitant, car Explore Tur DF affiche un ancien montant ; vérifier les horaires après le 31 janvier 2027. Clarifier la hauteur totale divergente selon les sources (170 ou 182 m).",
+      "sources": [
+        {
+          "label": "Exploitant Torre Digital — horaires actuels et visite ouverte",
+          "url": "https://linktr.ee/torredigitaloficial",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Explore Tur DF — localisation, présentation et aides d’accessibilité",
+          "url": "https://exploreturdf.com.br/trilhaserumos/torre-de-tv-digital/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Guia BSB, octobre 2026 — prix et visite du mirador, citant l’exploitant",
+          "url": "https://guiabsb.digital/noticia/torre-digital-mirante-aberto-torre-de-tv-fechada-ingresso-horario",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikidata Q627859 — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q627859",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Fecomércio DF — histoire et inauguration",
+          "url": "https://turismo.fecomerciodf.com.br/lugares/torre-de-tv-digital/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Mariordo (Mario Roberto Durán Ortiz), CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Flor_do_Cerrado_TV_Tower_BSB_07_2014_9935.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Sintegrity, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Brasília_-_Torre_de_TV_Digital_(4).jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Josue Marinho, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Brasilia_DF_Brasil_-_Janela_da_Torre_Digital_-_panoramio.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "BR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Mirador à billetterie et horaires propres dans la tour de diffusion du Lago Norte ; aucune fiche Park parent trouvée. Distincte de la Torre de TV de l’Eixo Monumental, dont le mirador est fermé."
+      }
     }
   ]
 }
