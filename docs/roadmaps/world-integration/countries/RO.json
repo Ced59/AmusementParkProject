@@ -1314,7 +1314,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Le coaster cité dans ce dossier RCDB est Sania Alpină Sinaia, déjà publiée via RO-candidate-discovery-5f303f6b7ebd416a (site 3beac74e-685b-46b1-b3a5-ee10c882fdb5). Ne pas recréer la luge ; qualifier séparément la Gondola Sinaia si elle relève du site.",
       "sources": [
         {
           "label": "RCDB",
@@ -1334,7 +1334,7 @@
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "Sanie Alpină",
@@ -1344,7 +1344,8 @@
             "sourceVenueName": "Gondola Sinaia",
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Sinaia , Prahova",
-            "sourceOpenedYear": "2025"
+            "sourceOpenedYear": "2025",
+            "matchingMethod": "Sanie Alpină correspond à la fiche autonome publiée 3beac74e-685b-46b1-b3a5-ee10c882fdb5 ; voir RO-candidate-discovery-5f303f6b7ebd416a."
           },
           {
             "name": "Mountain Coaster — Gondola Sinaia",
@@ -1356,7 +1357,7 @@
             "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le coaster du dossier RCDB est publié sur la fiche Sania Alpină Sinaia ; ce dossier parent sert à qualifier la Gondola Sinaia distinctement, sans doublon de coaster."
       },
       "possibleBacklogEntries": [
         "RO-candidate-discovery-5f303f6b7ebd416a"
@@ -3152,28 +3153,39 @@
     {
       "entryId": "RO-candidate-discovery-5f303f6b7ebd416a",
       "name": "Sania Alpină Sinaia",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
       "locality": "Sinaia, Prahova, Roumanie",
-      "siteId": null,
+      "siteId": "3beac74e-685b-46b1-b3a5-ee10c882fdb5",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-11-15",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Attraction ouverte en 2025 mais suspendue depuis septembre 2026 avec la Gondola Sinaia ; l’opérateur indique actuellement aucune exploitation avec public.",
-      "identityConfidence": "Nom propre et installation confirmés par l’opérateur ; recherche officielle Park et StandaloneAttraction sans homonyme.",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "TemporarilyClosed",
+      "sourceLifecycleSignal": "Ouverte le 1er décembre 2025 ; le 27 novembre 2026, Transport Urban Sinaia indique que la luge et la Gondola Sinaia ne fonctionnent pas pour le public, sans date de reprise confirmée.",
+      "identityConfidence": "Haute : exploitant Transport Urban Sinaia, fiche technique et photos exactes du fabricant Sunkid, recherche PDE anti-doublon puis publication vérifiée.",
       "possibleMatches": [],
       "aliases": [
         "Sinaia Alpine Coaster",
         "Sania Alpina Sinaia"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer la reprise de l’exploitation auprès de Transport Urban Sinaia et trouver au moins une photo exacte sous licence commerciale compatible. Ne pas utiliser l’image Wikimedia intitulée « The Gondola — Sinaia » : elle montre l’ancienne Telecabina, pas la luge alpine. Créer la fiche après qualification et photo.",
+      "lastDataIntegrationAt": "2026-11-27T16:18:46.583Z",
+      "integrationHistory": [
+        {
+          "eventId": "sania-alpina-sinaia-integration-20261127",
+          "appliedAt": "2026-11-27T16:18:46.583Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3beac74e-685b-46b1-b3a5-ee10c882fdb5",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ro-sania-alpina-sinaia-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ro-sania-alpina-sinaia-20261127/audit.json",
+          "summary": "Sania Alpină Sinaia créée en huit langues avec trois photos exactes, histoire et statut de fermeture temporaire ; fiche et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne et le dernier horodatage réel ; vérifier la reprise de la luge et de la Gondola Sinaia, les tarifs et horaires actuels lors de la prochaine intégration datée.",
       "sources": [
         {
           "label": "Transport Urban Sinaia — annonce du jour, Sania Alpină sans public",
@@ -3194,13 +3206,23 @@
           "label": "Observatorul Prahovean — inauguration annoncée au 1er décembre 2025",
           "url": "https://www.observatorulph.ro/lifestyle/2771919-pe-1-decembrie-se-inaugureaza-sania-alpina-din-sinaia",
           "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Sunkid — ouverture, dimensions, photos exactes du Mountain Coaster",
+          "url": "https://www.sunkidworld.com/en/projects/detail/romanias-longest-mountain-coaster-boosts-year-round-tourism-in-sinaia/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Primăria Sinaia — décision tarifaire historique de septembre 2025",
+          "url": "https://www.primaria-sinaia.ro/2025/09/09/hotararea-nr-108-din-02-09-2025-privind-aprobarea-tarifului-aferent-instalatiei-de-agrement-sanie-alpina-practicat-de-sc-transport-urban-sinaia-srl-si-programul-de-functionare/",
+          "accessedAt": "2026-11-27"
         }
       ],
       "countryCodeAtInventory": "RO",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-11-15",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "Sania Alpină Sinaia",
@@ -3208,12 +3230,12 @@
             "url": "https://sinaiago.ro/",
             "family": "Alpine coaster",
             "sourceVenueName": "Domaine de Sinaia",
-            "sourceLifecycleSignal": "Suspendue au 15 novembre 2026 ; date de reprise inconnue.",
-            "matchingMethod": "Recherche officielle Park et StandaloneAttraction, examen de la source opérateur.",
+            "sourceLifecycleSignal": "Sans public au 27 novembre 2026 selon Transport Urban Sinaia.",
+            "matchingMethod": "Correspondance exploitant, fabricant et recherche PDE ; fiche publique 3beac74e-685b-46b1-b3a5-ee10c882fdb5.",
             "sourceLocality": "Sinaia, Roumanie"
           }
         ],
-        "rationale": "Luge alpine sur rail avec offre séparée de la télécabine ; suspension actuelle et photo exacte libre à résoudre avant publication."
+        "rationale": "Luge sur rails avec billet distinct dans le domaine de Sinaia ; fiche autonome publiée avec trois photos exactes. La Gondola Sinaia reste un dossier lié à qualifier séparément, sans dupliquer la luge."
       },
       "possibleBacklogEntries": [
         "RO-candidate-fe63c049030687"

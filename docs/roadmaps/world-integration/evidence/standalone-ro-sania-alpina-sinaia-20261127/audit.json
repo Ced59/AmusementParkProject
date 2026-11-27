@@ -1,0 +1,30 @@
+{
+  "asOfUtc": "2026-11-27T16:20:39.000Z",
+  "siteId": "3beac74e-685b-46b1-b3a5-ee10c882fdb5",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/3beac74e-685b-46b1-b3a5-ee10c882fdb5/sania-alpina-sinaia",
+  "status": "TemporarilyClosed",
+  "completenessScore": 89,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "5ed0ed849a454b51a7d459cc8d6eead5",
+  "historyEventCount": 1,
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129070819424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T16:18:46.583Z",
+  "lastDataIntegrationBasis": "Dernière mise à jour substantielle des photos publiée par le client PDE ; horodatage serveur, distinct de la publication du site et Facebook.",
+  "gap": "Aucun tarif ou horaire 2026–2027 vérifié pendant la fermeture ; les tarifs historiques ne sont pas projetés dans le futur."
+}
