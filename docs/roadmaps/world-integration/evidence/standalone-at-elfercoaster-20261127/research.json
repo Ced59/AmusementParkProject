@@ -1,0 +1,24 @@
+{
+  "reviewedAt": "2026-11-27",
+  "classification": "Le fabricant Wiegand et la page de l’exploitant permettent d’identifier la piste découverte sous « Alpine Coaster Wiegand — Neustift » comme l’Elfercoaster. C’est une attraction sur rails avec nom et billet de course propres à la station supérieure des Elferbahnen ; aucun parc parent ni fiche correspondante n’a été trouvé dans la recherche PDE.",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions sans filtre de visibilité, le 27 novembre 2026, pour Elfercoaster, Elferbahnen, Neustift im Stubaital et Elfer : aucune fiche de cette attraction. Le résultat « Kolotoce Helfer » pour Elfer est sans rapport.",
+  "opening": "Communiqué officiel Stubai Tirol : inauguration le 8 juillet 2026. Parcours d’environ 1,3 km au total, dont près d’un kilomètre en descente et une remontée d’environ 350 m, vitesse annoncée jusqu’à 40 km/h.",
+  "lifecycle": "Au 27 novembre 2026, la page officielle indique « Derzeit geschlossen » et le bandeau « Alle Anlagen sind derzeit aufgrund von Revision geschlossen ». Statut TemporarilyClosed enregistré ; date de réouverture inconnue, à recontrôler.",
+  "prices": "La page officielle affiche 11 € pour une course individuelle à partir de 16 ans, 8 € enfant et 16 € pour deux. Seul le tarif adulte individuel est saisi ; l’accès à la station supérieure peut nécessiter un billet Elferbahnen distinct.",
+  "hours": "Aucune règle hebdomadaire actuelle renseignée : le site officiel annonce une fermeture pour révision et aucune date de reprise vérifiable au 27 novembre 2026. Ne pas inventer d’horaires de saison future.",
+  "photos": "Trois photographies exactes du communiqué de presse officiel Elferbahnen/Stubai Tirol, inspectées visuellement : passagers dans la luge, vue aérienne du tracé et deux jeunes passagères. La galerie est annoncée libre pour usage éditorial et les crédits Oss/Götsch sont conservés.",
+  "sources": [
+    {
+      "label": "Elferbahnen — attraction, tarif, conditions et statut actuel",
+      "url": "https://www.stubai.at/skigebiete/elferbahnen/sommer/elfercoaster/"
+    },
+    {
+      "label": "Stubai Tirol — inauguration et galerie presse officielle",
+      "url": "https://presse.tirol.at/en/grand-opening-of-the-elfercoaster/291751/"
+    },
+    {
+      "label": "Wiegand — référence constructeur à Neustift",
+      "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=369#location-id-2237"
+    }
+  ]
+}

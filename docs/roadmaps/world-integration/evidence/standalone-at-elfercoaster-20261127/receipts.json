@@ -1,0 +1,158 @@
+{
+  "entryId": "AT-candidate-standalone-03b065bdcee5e2",
+  "standaloneAttractionId": "4fe6dc2f-bb09-4076-8b48-28486c5bc6bd",
+  "operations": [
+    {
+      "stage": "history",
+      "operationId": "bbe76186-0a5d-4e5e-94fe-9dd60411decb",
+      "appliedAtUtc": "2026-11-27T15:57:02.0136493Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "b7d3a4b5-3dae-4524-8a20-080e94270bde",
+      "appliedAtUtc": "2026-11-27T15:57:12.8441213Z",
+      "isApplied": true
+    },
+    {
+      "stage": "core",
+      "operationId": "13f57807-039b-4098-8f00-368ee4946fc2",
+      "appliedAtUtc": "2026-11-27T16:00:42.3823027Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "cb3cc3e6-12fa-404c-993d-65e0fc321e14",
+      "appliedAtUtc": "2026-11-27T16:01:19.3950835Z",
+      "isApplied": true
+    },
+    {
+      "stage": "details",
+      "operationId": "24044820-4a72-4f72-a2e2-73f1d53b6bb9",
+      "appliedAtUtc": "2026-11-27T16:04:35.2853348Z",
+      "isApplied": true
+    },
+    {
+      "stage": "copyedit",
+      "operationId": "0d651c11-57d4-4bfe-80eb-9683d5fc9b4b",
+      "appliedAtUtc": "2026-11-27T16:12:49.0394641Z",
+      "isApplied": true
+    }
+  ],
+  "priorDetailsEnrichmentAppliedAtUtc": "2026-11-27T16:03:28.3656191Z",
+  "photos": [
+    {
+      "imageId": "fd33613e99a34b22b034c327fc2dd3c6",
+      "sourceUrl": "https://presse.tirol.at/app/uploads/2026/07/Eroeffnung_ELFERCOASTER_Fahrgaeste-c-Elferbahnen-Oss-1024x745.jpg",
+      "importedAtUtc": "2026-11-27T15:58:32.078Z",
+      "publishedAtUtc": "2026-11-27T15:59:09.166Z",
+      "isCurrent": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Elferbahnen / Oss"
+    },
+    {
+      "imageId": "c37f32a3be0d4a8f8a8e319c8646d72b",
+      "sourceUrl": "https://presse.tirol.at/app/uploads/2026/07/Eroeffnung_ELFERCOASTER_Luftbild_Bahn_komplett-c-Elferbahnen-Goetsch-1024x576.jpg",
+      "importedAtUtc": "2026-11-27T15:58:39.996Z",
+      "publishedAtUtc": "2026-11-27T15:59:14.38Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Elferbahnen / Götsch"
+    },
+    {
+      "imageId": "d56db0ca5798420d9e5bae8217716ead",
+      "sourceUrl": "https://presse.tirol.at/app/uploads/2026/07/Eroeffnung_ELFERCOASTER_Schuelerinnen-c-Elferbahnen-Oss-1024x683.jpg",
+      "importedAtUtc": "2026-11-27T15:58:48.144Z",
+      "publishedAtUtc": "2026-11-27T15:59:19.878Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Elferbahnen / Oss"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T16:12:49.039Z",
+  "lastDataIntegrationAppliedAtUtc": "2026-11-27T16:12:49.0394641Z",
+  "lastDataIntegrationStage": "Apply eight-language editorial copyedit",
+  "finalAudit": {
+    "auditedAtUtc": "2026-11-27T16:12:49.039Z",
+    "completenessScore": 90,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "completenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/final-completeness.json"
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T16:01:19.3950835Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+    "facebookStatus": "Published",
+    "facebookPublishedAtUtc": "2026-11-27T16:02:03.2338001Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129069361424431"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "checkedAtUtc": "2026-11-27T16:05:09.156Z",
+  "checks": [
+    {
+      "lang": "fr",
+      "url": "https://amusement-parks.fun/fr/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "en",
+      "url": "https://amusement-parks.fun/en/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "de",
+      "url": "https://amusement-parks.fun/de/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "es",
+      "url": "https://amusement-parks.fun/es/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "it",
+      "url": "https://amusement-parks.fun/it/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "nl",
+      "url": "https://amusement-parks.fun/nl/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "pl",
+      "url": "https://amusement-parks.fun/pl/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "pt",
+      "url": "https://amusement-parks.fun/pt/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    }
+  ]
+}
