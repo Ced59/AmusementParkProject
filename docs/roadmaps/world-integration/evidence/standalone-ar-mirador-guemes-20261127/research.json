@@ -1,0 +1,71 @@
+{
+  "entryId": "AR-candidate-discovery-mirador-guemes-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Operating paid rooftop observation deck in the Torre Mitre wing of Galería Güemes, with own limited admission slots and ticket. Distinct from visiting the shops and passage below; this is a standalone attraction by visitor experience and separate admission.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Galería Güemes (AR)",
+      "Mirador Güemes (AR)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Galería Güemes (AR)",
+      "Mirador Güemes (AR)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "operatorSource": "https://www.galeriaguemes.com.ar/mirador.html",
+  "operatorHistory": "https://www.galeriaguemes.com.ar/historia.html",
+  "cityTourismSource": "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/galer%C3%ADa-g%C3%BCemes",
+  "wikidataCoordinates": "https://www.wikidata.org/wiki/Q11682033",
+  "observations": {
+    "address": "Florida 165, entrance to Torre Mitre, San Nicolás, Buenos Aires",
+    "coordinates": [
+      -34.606128,
+      -58.374953
+    ],
+    "observationHeightMeters": 87,
+    "observationFloor": 14,
+    "galleryOpened": "1915",
+    "admissionStarts": "Monday–Friday at 11:00, 12:00, 14:00 and 15:30; small groups. Not a continuous open interval.",
+    "closed": "Saturday, Sunday, public holidays and rainy days.",
+    "admissionARS": 10000,
+    "sourceChecked": "Operator page directly fetched on 27 Nov 2026."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador_Galer%C3%ADa_G%C3%BCemes.jpg",
+      "artist": "Sabriloporto",
+      "license": "CC BY-SA 4.0",
+      "captured": "2018-10-27",
+      "depicts": "viewpoint access structure"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_de_la_ciudad_de_Buenos_Aires_desde_el_mirador_de_la_Galer%C3%ADa_G%C3%BCemes.jpg",
+      "artist": "Hersims",
+      "license": "CC BY-SA 4.0",
+      "captured": "2019-11-09 12:17:08",
+      "depicts": "city panorama from deck"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ojo_del_mirador_de_la_Galer%C3%ADa_G%C3%BCemes.jpg",
+      "artist": "Hersims",
+      "license": "CC BY-SA 4.0",
+      "captured": "2019-11-09 12:26:42",
+      "depicts": "view through round opening"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Galer%C3%ADa_G%C3%BCemes_mirador.jpg",
+      "artist": "Gobierno de la Ciudad de Buenos Aires",
+      "license": "CC BY 2.5 ar",
+      "captured": "2018-01-30",
+      "depicts": "downtown domes from deck"
+    }
+  ],
+  "scopeNotes": [
+    "The integration schema models open intervals rather than appointment start times. To avoid inventing visit durations, the precise starts are in all public descriptions and opening-hours notes; the structured calendar only records weekend and explicit December holiday closures.",
+    "The operator’s mirador page gives ARS 10,000 on 27 Nov 2026; confirm before travel.",
+    "The city tourism page says the mirador is at 87 m; a separate older city building article says the entire building reaches 97 m. The profile stores mirador height, not total building height."
+  ]
+}

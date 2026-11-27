@@ -1,0 +1,15 @@
+{
+  "entryId": "AR-candidate-discovery-mirador-guemes-20261127",
+  "standaloneAttractionId": "011239f0-873b-4b36-bf49-2396a6eca33f",
+  "evaluatedAtUtc": "2026-11-27T19:53:25.343Z",
+  "result": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 60,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/011239f0-873b-4b36-bf49-2396a6eca33f/mirador-de-la-galeria-guemes",
+  "publicationBlockers": []
+}

@@ -1759,6 +1759,94 @@
         "attractions": [],
         "rationale": "Tour municipale visitable avec billet et horaires propres ; aucune fiche Park parent trouvée. Fiche standalone publiée et auditée."
       }
+    },
+    {
+      "entryId": "AR-candidate-discovery-mirador-guemes-20261127",
+      "name": "Mirador de la Galería Güemes",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Mirador panoramique à billet propre",
+      "locality": "San Nicolás, Buenos Aires",
+      "siteId": "011239f0-873b-4b36-bf49-2396a6eca33f",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Mirador rouvert, avec créneaux et tarif propres publiés par l’exploitant en novembre 2026.",
+      "identityConfidence": "Billet et heures d’accès propres au mirador ; recherches PDE Park et Standalone sous deux noms sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "Mirador Güemes",
+        "Galería Güemes viewpoint",
+        "Torre Mitre mirador"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T19:52:46.870Z",
+      "integrationHistory": [
+        {
+          "eventId": "AR-mirador-guemes-integration-20261127",
+          "appliedAt": "2026-11-27T19:52:46.870Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "011239f0-873b-4b36-bf49-2396a6eca33f",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-mirador-guemes-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ar-mirador-guemes-20261127/audit.json",
+          "summary": "Mirador publié avec créneaux exacts, tarif de l’exploitant, quatre photos et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; revérifier les créneaux et le tarif chez l’exploitant, puis dater chaque mise à jour de données. Ne pas transformer les départs en plage d’ouverture continue.",
+      "sources": [
+        {
+          "label": "Exploitant Galería Güemes — créneaux, tarif et fermetures",
+          "url": "https://www.galeriaguemes.com.ar/mirador.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — histoire et hauteur du mirador",
+          "url": "https://www.galeriaguemes.com.ar/historia.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ville de Buenos Aires, tourisme — localisation et mirador",
+          "url": "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/galer%C3%ADa-g%C3%BCemes",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikidata Q11682033 — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q11682033",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Sabriloporto, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Mirador_Galer%C3%ADa_G%C3%BCemes.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Hersims, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Vista_de_la_ciudad_de_Buenos_Aires_desde_el_mirador_de_la_Galer%C3%ADa_G%C3%BCemes.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Hersims, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Ojo_del_mirador_de_la_Galer%C3%ADa_G%C3%BCemes.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, Gobierno de la Ciudad de Buenos Aires, CC BY 2.5 ar",
+          "url": "https://commons.wikimedia.org/wiki/File:Galer%C3%ADa_G%C3%BCemes_mirador.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "AR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Mirador dans une galerie commerciale avec entrée tarifée et créneaux propres, distinct du passage public. Fiche standalone publiée et auditée."
+      }
     }
   ]
 }
