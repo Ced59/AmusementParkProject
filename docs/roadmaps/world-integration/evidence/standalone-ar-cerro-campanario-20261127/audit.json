@@ -1,0 +1,15 @@
+{
+  "entryId": "AR-candidate-discovery-aerosilla-cerro-campanario-20261127",
+  "standaloneAttractionId": "9d705840-8ea1-44d3-a8d8-b3bbaeff9bac",
+  "evaluatedAtUtc": "2026-11-27T23:10:13.197Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/9d705840-8ea1-44d3-a8d8-b3bbaeff9bac/aerosilla-del-cerro-campanario",
+  "publicationBlockers": []
+}

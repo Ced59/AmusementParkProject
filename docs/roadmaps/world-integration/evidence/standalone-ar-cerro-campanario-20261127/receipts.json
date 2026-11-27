@@ -1,0 +1,102 @@
+{
+  "entryId": "AR-candidate-discovery-aerosilla-cerro-campanario-20261127",
+  "standaloneAttractionId": "9d705840-8ea1-44d3-a8d8-b3bbaeff9bac",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "8f9088ad-4ca3-49bf-b0d2-c1286e61ad0b",
+      "appliedAtUtc": "2026-11-27T23:03:43.6401489Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "ee858136-3839-420f-9e6a-912b074a4b72",
+      "appliedAtUtc": "2026-11-27T23:04:00.6995594Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "7bfaa4e9-ecb6-4930-b7eb-14dcfcac1390",
+      "appliedAtUtc": "2026-11-27T23:04:17.2633646Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "f63c35d8-d5c5-4812-b336-83506aa1e94a",
+      "appliedAtUtc": "2026-11-27T23:06:05.5498015Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "e9f9db0275bc4adfbf83a68e1111a8fa",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerosillas_en_el_Cerro_Campanario.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 604,
+      "height": 453,
+      "credit": "Celestejanczuk / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T23:05:33.19Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "fd42e5b6446e458590c72fbbef949a30",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cerro_Campanario_Bariloche_Argentina_-_panoramio_(16).jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "Hiroki Ogawa / Wikimedia Commons (CC BY 3.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T23:05:19.259Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Failed",
+    "publicationId": "8d0adf60125d43d09f6ef3ef92fd7fe9",
+    "attemptedAtUtc": "2026-11-27T23:07:05.2643742Z",
+    "failureCode": "preview-page-not-ready",
+    "failureMessage": "La page publique n'a pas pu être préparée pour son aperçu Facebook.",
+    "retryStatus": "Blocked",
+    "retryErrorCode": "social-publishing.publication.reconciliation-ambiguous",
+    "externalPostUrl": null
+  }
+}
