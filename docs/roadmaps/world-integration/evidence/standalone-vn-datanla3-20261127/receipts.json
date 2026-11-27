@@ -1,0 +1,153 @@
+{
+  "entryId": "VN-candidate-6957b2b48e4fb7",
+  "standaloneAttractionId": "436a8669-e09a-4e44-b11a-d5ce3c8bdf7e",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "46e715f2-1135-43db-9814-2a0dd226c934",
+      "appliedAtUtc": "2026-11-27T15:15:12.594803Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "aa6c4bcc-2dff-4ca6-9dd1-c248725e5553",
+      "appliedAtUtc": "2026-11-27T15:16:36.1215475Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "90bbce17-fa20-409e-9ae2-843727c483bb",
+      "appliedAtUtc": "2026-11-27T15:16:41.3286812Z",
+      "isApplied": true
+    },
+    {
+      "stage": "descriptions",
+      "operationId": "8db76b59-488a-47b4-8ab8-11a234f4ea08",
+      "appliedAtUtc": "2026-11-27T15:20:19.8798255Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "ce50b3a5-7dd3-4cbd-a19e-85e8f3dd3c84",
+      "appliedAtUtc": "2026-11-27T15:21:23.6866519Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "6e0a0609-3d55-4a65-aa2b-61bc2bfc8331",
+      "appliedAtUtc": "2026-11-27T15:21:51.2238965Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "799a75f7ab404fd09406556a8e0c52b4",
+      "sourceUrl": "https://dalattourist.com.vn/public/uploads/blogs/16842402-873e-412f-a722-7a00202a7693_20250523071348_1_z6630733356879_0b66f50a761f58e7b32a409c4af42267.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "credit": "Dalattourist, operator source page",
+      "metadataUpdatedAtUtc": "2026-11-27T15:24:50.999Z",
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "4eb650ea7bb7488c92f55e35e2a2da65",
+      "sourceUrl": "https://dalattourist.com.vn/public/uploads/blogs/ce44fe3e-a19a-4af1-9940-e9970e4430ff_20250122152121_1_DSC00465.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "credit": "Dalattourist, operator source page",
+      "metadataUpdatedAtUtc": "2026-11-27T15:24:56.804Z",
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "05515e086d7f4a50b55d3876f08b6fda",
+      "sourceUrl": "https://dalattourist.com.vn/public/uploads/blogs/6ad1a18c-95cb-43b9-9f41-1f9b649d429b_20250506065603_1_26.webp",
+      "isCurrent": false,
+      "isPublished": true,
+      "credit": "Dalattourist, operator source page",
+      "metadataUpdatedAtUtc": "2026-11-27T15:25:02.748Z",
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "lastPhotoMetadataIntegrationAtUtc": "2026-11-27T15:25:02.748Z",
+  "finalAudit": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "ownPhotoCount": 3,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ]
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T15:21:51.2238965Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
+    "facebookStatus": "Published",
+    "facebookPublishedAtUtc": "2026-11-27T15:22:45.3075031Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129065839424431"
+  }
+}

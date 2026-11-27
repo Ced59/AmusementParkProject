@@ -1567,7 +1567,7 @@
         {
           "siteId": "5af34d68-924a-4058-87b8-6971fe4f91e4",
           "name": "Dam Sen Park",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [
@@ -1662,26 +1662,51 @@
     },
     {
       "entryId": "VN-candidate-6957b2b48e4fb7",
-      "name": "Datanla New Alpine Coaster",
-      "entityKind": "ToQualify",
+      "name": "Datanla Alpine Coaster 3",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB)",
-      "locality": "Đà Lạt , Lâm Đồng",
-      "siteId": null,
+      "category": "Alpine coaster",
+      "locality": "Đà Lạt, Lâm Đồng",
+      "siteId": "436a8669-e09a-4e44-b11a-d5ce3c8bdf7e",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Nouvelle piste de Datanla en service depuis 2018 ; Dalattourist publie la billetterie et les conditions de la piste 3 en novembre 2026.",
+      "identityConfidence": "Haute : piste 3 nommée et photographiée sur la page dédiée Dalattourist ; dossier RCDB distinct de la piste 1 ; recherche PDE Park/Standalone du 27 novembre 2026 sans doublon de piste 3.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Datanla New Alpine Coaster",
+        "Xe trượt thác 3",
+        "New Alpine Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-27T15:25:02.748Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-datanla3-20261127",
+          "appliedAt": "2026-11-27T15:21:51.223Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "436a8669-e09a-4e44-b11a-d5ce3c8bdf7e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla3-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla3-20261127/audit.json",
+          "summary": "Piste 3 distincte créée, huit langues, trois photos exactes, histoire, tarifs, horaires et Facebook publiés."
+        },
+        {
+          "eventId": "photo-localization-datanla3-20261127",
+          "appliedAt": "2026-11-27T15:25:02.748Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "436a8669-e09a-4e44-b11a-d5ce3c8bdf7e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla3-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla3-20261127/audit.json",
+          "summary": "Légendes et textes alternatifs des trois photos localisés en huit langues ; audit final 86/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
       "sources": [
         {
           "label": "RCDB",
@@ -1697,11 +1722,26 @@
           "label": "Dalattourist — exploitant",
           "url": "https://dalattourist.com.vn/hoat-dong",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Dalattourist — fiche officielle de la piste 3, photos et conditions",
+          "url": "https://dalattourist.com.vn/hoat-dong/xe-truot-thac-3",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Dalattourist — billetterie pistes 1 et 3",
+          "url": "https://dalattourist.com.vn/dat-ve/buoc1",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Portail touristique de Đà Lạt — mise en service fin 2018",
+          "url": "https://dalat.vn/vi/detailnews/?id=news_94&t=operate-the-longest-outdoor-skid-slide-in-asia-for-visitors",
+          "accessedAt": "2026-11-27"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "New Alpine Coaster",
@@ -1711,7 +1751,8 @@
             "sourceVenueName": "Datanla New Alpine Coaster",
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Đà Lạt , Lâm Đồng",
-            "sourceOpenedYear": "2017"
+            "sourceOpenedYear": "2018",
+            "matchingMethod": "Identité rapprochée avec la piste 3 de Dalattourist ; le portail touristique de Đà Lạt atteste la mise en service en 2018 (correction du signal initial 2017)."
           },
           {
             "name": "Xe Trượt Thác 3",
@@ -1719,11 +1760,11 @@
             "url": "https://dalattourist.com.vn/hoat-dong",
             "family": "Mountain coaster",
             "sourceVenueName": "Datanla New Alpine Coaster",
-            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
-            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
+            "matchingMethod": "Fiche officielle dédiée, photos de la piste 3 et billetterie distincte de la piste 1.",
+            "sourceLifecycleSignal": "Piste 3 en exploitation et vendue séparément par Dalattourist au 27 novembre 2026."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration photo-localization-datanla3-20261127 ; conserver les références de découverte."
       }
     },
     {
@@ -4247,7 +4288,7 @@
         {
           "siteId": "5137a620-e661-4689-8fb4-e23124e51785",
           "name": "VinWonders Phu Quoc",
-          "similarity": 75.0
+          "similarity": 75
         }
       ],
       "aliases": [
