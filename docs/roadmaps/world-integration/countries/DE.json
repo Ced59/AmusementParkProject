@@ -35960,15 +35960,15 @@
     {
       "entryId": "DE-candidate-discovery-seilbahn-koblenz-20261127",
       "name": "Seilbahn Koblenz",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Téléphérique panoramique",
       "locality": "Konrad-Adenauer-Ufer, 56068 Koblenz",
-      "siteId": null,
+      "siteId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-11-27",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27T13:50:36Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Service actif au 27 novembre 2026 : l’exploitant affiche ses trajets datés de novembre et décembre.",
@@ -35980,9 +35980,70 @@
         "Téléphérique de Coblence"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher tous les alias dans Park et StandaloneAttraction via le client officiel, fiches masquées comprises. Confirmer le caractère autonome et les éventuels liens legacy, puis intégrer avec au moins trois photos exactes, horaires propres et tarifs datés ; publier la fiche et l’annonce Facebook après audit.",
+      "lastDataIntegrationAt": "2026-11-27T13:48:39Z",
+      "integrationHistory": [
+        {
+          "eventId": "c6c1157d-4994-430d-8b3c-4412dc1ff8c0",
+          "appliedAt": "2026-11-27T13:41:34Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef",
+          "evidence": "PARK_DATA_EDITOR:apply:c6c1157d-4994-430d-8b3c-4412dc1ff8c0",
+          "auditEvidence": null,
+          "summary": "Création privée de Seilbahn Koblenz avec fiche, localisation, caractéristiques et descriptions en huit langues."
+        },
+        {
+          "eventId": "koblenz-four-photos-20261127",
+          "appliedAt": "2026-11-27T13:42:48Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef",
+          "evidence": "PARK_DATA_EDITOR:image:ec23fbc4d63b425aaec51afaaad3cc8e",
+          "auditEvidence": null,
+          "summary": "Quatre photos exactes de la traversée du Rhin importées en privé, avec huit traductions et crédits des auteurs."
+        },
+        {
+          "eventId": "4227ca97-5f3c-49e6-8702-a9152d4a753d",
+          "appliedAt": "2026-11-27T13:43:13Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef",
+          "evidence": "PARK_DATA_EDITOR:apply:4227ca97-5f3c-49e6-8702-a9152d4a753d",
+          "auditEvidence": null,
+          "summary": "Grille tarifaire officielle Seilbahn Koblenz vérifiée le 27 novembre 2026, 38 offres en EUR."
+        },
+        {
+          "eventId": "8ee150d0-603f-4a39-8dd5-2bddb9480586",
+          "appliedAt": "2026-11-27T13:43:38Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef",
+          "evidence": "PARK_DATA_EDITOR:apply:8ee150d0-603f-4a39-8dd5-2bddb9480586",
+          "auditEvidence": null,
+          "summary": "Calendrier officiel daté importé : 27 périodes de fonctionnement vérifiées, avec deux jours laissés inconnus faute de source."
+        },
+        {
+          "eventId": "ef790dae-c25f-40a6-81f8-5b66f4a8958f",
+          "appliedAt": "2026-11-27T13:46:54Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef",
+          "evidence": "PARK_DATA_EDITOR:apply:ef790dae-c25f-40a6-81f8-5b66f4a8958f",
+          "auditEvidence": null,
+          "summary": "Constructeur Doppelmayr résolu, modèle 3S, condition d'accès en fauteuil sourcée et ouverture publique du 4 juillet 2010."
+        },
+        {
+          "eventId": "77fba691-c767-4a88-b0bd-13c0bc7dccad",
+          "appliedAt": "2026-11-27T13:48:39Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef",
+          "evidence": "PARK_DATA_EDITOR:apply:77fba691-c767-4a88-b0bd-13c0bc7dccad",
+          "auditEvidence": "PARK_DATA_EDITOR:completeness:a8e9e3da-bb90-482e-9c34-14b5ad4e34ef:2026-11-27",
+          "summary": "Audit final public 100/100 sans bloqueur ; quatre photos publiées ; fiche vérifiée dans huit langues."
+        }
+      ],
+      "nextAction": "Conserver la ligne intégrée ; actualiser tarifs et calendrier à leur échéance, en recherchant les deux dates sans horaire officiel, puis dater chaque intégration.",
       "sources": [
         {
           "label": "Seilbahn Koblenz — état du service et horaires datés en novembre 2026",
@@ -36023,6 +36084,36 @@
           "label": "Wikimedia Commons — Seilbahn Koblenz-3, Yair-haklai, CC BY-SA 4.0",
           "url": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz-3.jpg",
           "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Seilbahn Koblenz — FAQ accessibilité",
+          "url": "https://www.seilbahn-koblenz.de/faqs.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Stadtarchiv Koblenz — chronologie de 2010",
+          "url": "https://www.koblenz.de/leben-in-koblenz/kultur/stadtarchiv/stadtchronik/stadtchronik-2010.pdf?cid=2k9f",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Land Rheinland-Pfalz — premiers trajets en 2010",
+          "url": "https://www.rlp.de/service/pressemitteilungen/detail/50-000-fahren-mit-neuer-rhein-seilbahn",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — traversée du Rhin, Hartmut Schmidt Heidelberg, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Cableway_crossing_the_Rhine_from_the_city_bank_to_Ehrenbreitstein_fortress.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — forteresse, Ingo Mehling, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Fortress_Ehrenbreitstein_Cable_Car.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — cabine, Till Wicher, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Koblenzer_Seilbahn.jpg",
+          "accessedAt": "2026-11-27"
         }
       ],
       "discovery": {
@@ -36031,7 +36122,7 @@
         "foundAt": "2026-11-27"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-27",
         "attractions": [
           {
@@ -36044,7 +36135,15 @@
             "sourceLocality": "Koblenz"
           }
         ],
-        "rationale": "Ligne permanente à gares, billet et horaires propres reliant le centre de Coblence à la forteresse Ehrenbreitstein, sans parc d’attractions parent identifié dans le registre. Vérifier l’identité via PDE avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 77fba691-c767-4a88-b0bd-13c0bc7dccad ; conserver les références de découverte."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-27T13:48:39.2285634Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/a8e9e3da-bb90-482e-9c34-14b5ad4e34ef/seilbahn-koblenz",
+        "facebookPublishedAtUtc": "2026-11-27T13:49:28.8088631Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129053275424431",
+        "facebookStatus": "Published",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-seilbahn-koblenz-20261127/receipts.json"
       }
     }
   ]

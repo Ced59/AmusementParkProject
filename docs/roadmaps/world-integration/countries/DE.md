@@ -15,10 +15,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 129 |
-| À qualifier | 478 |
+| À qualifier | 477 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 40 |
+| Intégration achevée | 41 |
 | Publié, date inconnue | 37 |
 | Hors périmètre enregistré | 92 |
 | Doublon conservé | 33 |
@@ -29,9 +29,9 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **36 publiés**, **129 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **355 candidats sans fiche**.
 
-Standalone : **41 publiées**, **0 masquées**, **10 candidates sans fiche**. Autres dossiers : **46 types à décider**, **61 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+Standalone : **42 publiées**, **0 masquées**, **10 candidates sans fiche**. Autres dossiers : **46 types à décider**, **60 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
 
-Revue standalone : **24 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **53 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **17 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **24 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **52 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **17 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 

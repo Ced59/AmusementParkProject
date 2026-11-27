@@ -1,0 +1,99 @@
+{
+  "entryId": "DE-candidate-discovery-seilbahn-koblenz-20261127",
+  "standaloneAttractionId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef",
+  "officialSource": "https://www.seilbahn-koblenz.de/homepage.html",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "c6c1157d-4994-430d-8b3c-4412dc1ff8c0",
+      "appliedAtUtc": "2026-11-27T13:41:34.9354655Z"
+    },
+    {
+      "stage": "pricing",
+      "operationId": "4227ca97-5f3c-49e6-8702-a9152d4a753d",
+      "appliedAtUtc": "2026-11-27T13:43:13.6361149Z"
+    },
+    {
+      "stage": "hours",
+      "operationId": "8ee150d0-603f-4a39-8dd5-2bddb9480586",
+      "appliedAtUtc": "2026-11-27T13:43:38.9863743Z"
+    },
+    {
+      "stage": "enrichment",
+      "operationId": "ef790dae-c25f-40a6-81f8-5b66f4a8958f",
+      "appliedAtUtc": "2026-11-27T13:46:54.9913204Z"
+    },
+    {
+      "stage": "publish",
+      "operationId": "77fba691-c767-4a88-b0bd-13c0bc7dccad",
+      "appliedAtUtc": "2026-11-27T13:48:39.2285634Z"
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "752e3b10ee244945b2cca988b2f0c984",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seilbahn_Koblenz-2.jpg",
+      "ownerId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef"
+    },
+    {
+      "imageId": "ec23fbc4d63b425aaec51afaaad3cc8e",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Koblenzer_Seilbahn.jpg",
+      "ownerId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef"
+    },
+    {
+      "imageId": "7989c3ea80d8408a82753902a062fcd7",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fortress_Ehrenbreitstein_Cable_Car.jpg",
+      "ownerId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef"
+    },
+    {
+      "imageId": "32a5b9093d4a4d55955487d32afeda7c",
+      "isCurrent": false,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cableway_crossing_the_Rhine_from_the_city_bank_to_Ehrenbreitstein_fortress.jpg",
+      "ownerId": "a8e9e3da-bb90-482e-9c34-14b5ad4e34ef"
+    }
+  ],
+  "finalAudit": {
+    "asOfUtc": "2026-11-27",
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "photoCount": 4,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "pricing": {
+      "currencyCode": "EUR",
+      "admissionOfferCount": 38,
+      "sourceUrl": "https://www.seilbahn-koblenz.de/ticketpreise-seilbahn-koblenz.html"
+    },
+    "openingHours": {
+      "datedRuleCount": 27,
+      "coveredDates": 323,
+      "through": "2027-10-17",
+      "unknownDates": [
+        "2027-03-27",
+        "2027-04-06"
+      ],
+      "sourceUrl": "https://www.seilbahn-koblenz.de/events.html"
+    }
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T13:48:39.2285634Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/a8e9e3da-bb90-482e-9c34-14b5ad4e34ef/seilbahn-koblenz",
+    "facebookPublishedAtUtc": "2026-11-27T13:49:28.8088631Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129053275424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-seilbahn-koblenz-20261127/receipts.json"
+  }
+}
