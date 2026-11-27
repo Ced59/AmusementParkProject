@@ -1,0 +1,25 @@
+{
+  "reviewedAt": "2026-11-27",
+  "classification": "Ballon captif indépendant de West Kowloon Waterfront Promenade, à billet propre ; distinct du DHL Balloon de Singapour et du ballon SkyStar situé dans Ocean Park.",
+  "presenceSearch": "Client PARK_DATA_EDITOR, sans filtre de visibilité : SearchParks et SearchStandaloneAttractions par DHL Balloon, Hong Kong Balloon, West Kowloon Balloon et Future Leisure ; aucun résultat.",
+  "lifecycle": "DHL confirme une mise en service en 2010 ; NextStopHongKong situe le début en novembre 2010 et donne la billetterie de l’époque ; Sing Tao Headline décrit rétrospectivement une exploitation de 2010 à 2013. Aucun tarif ni horaire actuel publié.",
+  "photo": "Une photographie exacte de l’installation sur le front de mer, datée du 13 août 2011, inspectée visuellement. La page Wikimedia Commons indique CC BY 3.0 et demande le crédit Wikipedia user Wpcpey / Wing1990hk. La légende la présente comme historique.",
+  "sources": [
+    {
+      "label": "DHL Express Hong Kong — rétrospective du lancement en 2010",
+      "url": "https://www.linkedin.com/posts/dhl-express-hong-kong_dhl-dhlexpress-dhlhk-activity-6929686514251563008-WFP8"
+    },
+    {
+      "label": "NextStopHongKong — installation, billet propre et lancement en novembre 2010",
+      "url": "https://www.nextstophongkong.com/dhl-hong-kong-balloon/"
+    },
+    {
+      "label": "Sing Tao Headline — période 2010–2013",
+      "url": "https://www.stheadline.com/society/3497671"
+    },
+    {
+      "label": "Wikimedia Commons — photo exacte, CC BY 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:DHL_Balloon_Hong_Kong_201108.jpg"
+    }
+  ]
+}

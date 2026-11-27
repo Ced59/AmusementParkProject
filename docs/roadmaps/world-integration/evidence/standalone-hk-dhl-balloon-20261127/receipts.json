@@ -1,0 +1,58 @@
+{
+  "entryId": "HK-candidate-discovery-dhl-hong-kong-balloon-20261127",
+  "standaloneAttractionId": "fdcabbc6-1385-49cc-8cbc-b4908831a049",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "94eb7abe-7ea9-4a0a-ab0d-f08e5eacd1e2",
+      "appliedAtUtc": "2026-11-27T14:29:06.73556Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "08da7d6b-312c-414f-8c2a-a1a9e256c4c8",
+      "appliedAtUtc": "2026-11-27T14:30:29.1572187Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "c07ef55b-2479-42a3-b4a1-3b2ebc93d03f",
+      "appliedAtUtc": "2026-11-27T14:31:51.4428481Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "a76c3fcac70642b2abab98f397d5c777",
+      "isCurrent": true,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:DHL_Balloon_Hong_Kong_201108.jpg",
+      "ownerId": "fdcabbc6-1385-49cc-8cbc-b4908831a049",
+      "isPublished": true
+    }
+  ],
+  "finalAudit": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "photoCount": 1,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ]
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T14:31:51.4428481Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/fdcabbc6-1385-49cc-8cbc-b4908831a049/dhl-hong-kong-balloon",
+    "facebookPublishedAtUtc": "2026-11-27T14:32:44.7650064Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129059923424431",
+    "facebookStatus": "Published",
+    "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-hk-dhl-balloon-20261127/receipts.json"
+  }
+}
