@@ -1,0 +1,61 @@
+{
+  "checkedAtUtc": "2026-11-27T17:53:56.134417+00:00",
+  "languages": [
+    {
+      "language": "fr",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/fr/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower"
+    },
+    {
+      "language": "en",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/en/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower"
+    },
+    {
+      "language": "de",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/de/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower"
+    },
+    {
+      "language": "es",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/es/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower"
+    },
+    {
+      "language": "it",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/it/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower"
+    },
+    {
+      "language": "nl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/nl/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower"
+    },
+    {
+      "language": "pl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/pl/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower"
+    },
+    {
+      "language": "pt",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/pt/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower"
+    }
+  ]
+}

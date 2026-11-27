@@ -1,0 +1,17 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "c67bef50-0dd1-4383-925d-e0c6006aa831",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/c67bef50-0dd1-4383-925d-e0c6006aa831/kobe-port-tower",
+  "status": "Operating",
+  "completenessScore": 95,
+  "dataQualityLevel": "Excellent",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "83b5bb3c63c54898a2526054fca7b18b",
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129075757424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T17:51:20.060Z",
+  "lastDataIntegrationBasis": "Dernier Apply de contenu substantiel (coordonnées et condition d’accès), distinct de la visibilité et de Facebook.",
+  "gap": "Horaires et tarifs à recontrôler après mars 2027 ou avant en cas de changement officiel."
+}
