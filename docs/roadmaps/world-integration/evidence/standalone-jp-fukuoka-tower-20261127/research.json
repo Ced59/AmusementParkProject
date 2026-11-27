@@ -1,0 +1,45 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Fukuoka Tower, tour panoramique autonome à Momochihama, Fukuoka.",
+  "antiDuplicate": "SearchParks et SearchStandaloneAttractions PDE sur Fukuoka Tower et 福岡タワー au Japon : zéro résultat, fiches masquées comprises. Aucun homonyme dans JP.json avant création.",
+  "sources": [
+    {
+      "url": "https://www.fukuokatower.co.jp/",
+      "finding": "Fukuoka Tower — site de l’exploitant"
+    },
+    {
+      "url": "https://www.fukuokatower.co.jp/charge/",
+      "finding": "Fukuoka Tower — tarifs, horaires et fermeture d’entretien"
+    },
+    {
+      "url": "https://www.fukuokatower.co.jp/company/",
+      "finding": "Fukuoka Tower — historique et ouverture en 1989"
+    },
+    {
+      "url": "https://www.fukuokatower.co.jp/faq/",
+      "finding": "Fukuoka Tower — FAQ accessibilité"
+    },
+    {
+      "url": "https://www.crossroadfukuoka.jp/en/spot/12343",
+      "finding": "Tourisme officiel de Fukuoka — identité, situation et panorama"
+    },
+    {
+      "url": "https://nominatim.openstreetmap.org/search?q=Fukuoka+Tower%2C+Fukuoka&format=json&limit=2",
+      "finding": "OpenStreetMap Nominatim — position de la tour"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Fukuoka_Tower_2024_01.jpg",
+      "finding": "Wikimedia Commons — vue 2024, ノボホショコロトソ, CC BY 4.0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Fukuoka_Tower_2024_04.jpg",
+      "finding": "Wikimedia Commons — vue latérale 2024, ノボホショコロトソ, CC BY 4.0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Views_from_Fukuoka_Tower_04.jpg",
+      "finding": "Wikimedia Commons — panorama depuis la tour 2024, ノボホショコロトソ, CC BY 4.0"
+    }
+  ],
+  "photoDecision": "Trois photos exactes de 2024 sous CC BY 4.0, auteur et source vérifiés par les métadonnées Wikimedia ; une montre le panorama depuis le belvédère.",
+  "editorialDecision": "Statut Operating, tarifs généraux adultes et enfants, horaires ordinaires et fermeture officielle de juin 2027. Accessibilité en fauteuil et chiens d’assistance vérifiées sur la FAQ. Les remises spécialisées sont signalées sans montants non détaillés dans la fiche."
+}

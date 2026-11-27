@@ -1,0 +1,61 @@
+{
+  "checkedAtUtc": "2026-11-27T18:02:45.575776+00:00",
+  "languages": [
+    {
+      "language": "fr",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/fr/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower"
+    },
+    {
+      "language": "en",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/en/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower"
+    },
+    {
+      "language": "de",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/de/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower"
+    },
+    {
+      "language": "es",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/es/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower"
+    },
+    {
+      "language": "it",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/it/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower"
+    },
+    {
+      "language": "nl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/nl/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower"
+    },
+    {
+      "language": "pl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/pl/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower"
+    },
+    {
+      "language": "pt",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "exactPhotoInPage": true,
+      "url": "https://amusement-parks.fun/pt/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower"
+    }
+  ]
+}

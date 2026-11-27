@@ -1,0 +1,17 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "bb28d62e-0114-4a9c-94e5-9111d2103e7c",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/bb28d62e-0114-4a9c-94e5-9111d2103e7c/fukuoka-tower",
+  "status": "Operating",
+  "completenessScore": 95,
+  "dataQualityLevel": "Excellent",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "0f6d808f51a542eab0f142d4b15edb44",
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129076117424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T18:00:23.048Z",
+  "lastDataIntegrationBasis": "Dernier Apply de contenu substantiel (accessibilité et conditions), distinct de la visibilité et de Facebook.",
+  "gap": "Recontrôler le calendrier et les tarifs avant juillet 2027."
+}

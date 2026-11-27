@@ -1,0 +1,138 @@
+{
+  "entryId": "JP-candidate-discovery-fukuoka-tower-20261127",
+  "standaloneAttractionId": "bb28d62e-0114-4a9c-94e5-9111d2103e7c",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "38fbc1b9-55b2-427a-be8f-3b1bf4210fb0",
+      "appliedAtUtc": "2026-11-27T17:56:30.058389Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "028f0e7d-5ffb-4fee-8e9a-6e628099e75a",
+      "appliedAtUtc": "2026-11-27T17:59:14.7895964Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "9ae600cf-f77e-4302-85d7-cb53d8dba190",
+      "appliedAtUtc": "2026-11-27T17:59:20.9296164Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "b82432c4-3343-4215-b67c-ba789979c11e",
+      "appliedAtUtc": "2026-11-27T17:59:26.9955367Z",
+      "isApplied": true
+    },
+    {
+      "stage": "access",
+      "operationId": "f3da1908-816a-4128-91d6-21ee4a4b6104",
+      "appliedAtUtc": "2026-11-27T18:00:23.0483636Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "66812ebf-2b58-4786-b392-6a52b95f66eb",
+      "appliedAtUtc": "2026-11-27T18:00:41.7480909Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "0f6d808f51a542eab0f142d4b15edb44",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fukuoka_Tower_2024_01.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1707,
+      "credit": "ノボホショコロトソ / Wikimedia Commons (CC BY 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "befd584231664f54aa90ebe15f1a7f50",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fukuoka_Tower_2024_04.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1707,
+      "credit": "ノボホショコロトソ / Wikimedia Commons (CC BY 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "679df86813aa4332b85036a8de07b4eb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Views_from_Fukuoka_Tower_04.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 960,
+      "credit": "ノボホショコロトソ / Wikimedia Commons (CC BY 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "65009868f5f54ccfbc29144f2bc66859",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T18:01:22.7449469Z",
+    "externalPostId": "1285475681307050_122129076117424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129076117424431"
+  }
+}
