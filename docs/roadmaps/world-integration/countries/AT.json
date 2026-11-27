@@ -483,29 +483,52 @@
     },
     {
       "entryId": "AT-candidate-standalone-03b065bdcee5e2",
-      "name": "Alpine Coaster Wiegand — Neustift",
-      "entityKind": "ToQualify",
+      "name": "Elfercoaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
-      "locality": null,
-      "siteId": null,
+      "locality": "Station supérieure des Elferbahnen, Moos 12, Neustift im Stubaital",
+      "siteId": "4fe6dc2f-bb09-4076-8b48-28486c5bc6bd",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "TemporarilyClosed",
+      "sourceLifecycleSignal": "Ouvert le 8 juillet 2026 ; l’exploitant annonce une fermeture pour révision le 27 novembre 2026, sans date de reprise vérifiée.",
+      "identityConfidence": "Haute : correspondance fabricant Wiegand et exploitant Elferbahnen, communiqué d’ouverture, photos exactes et recherche PDE anti-doublon.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Neustift"
+        "Neustift",
+        "ELFERCOASTER",
+        "Alpine Coaster Wiegand — Neustift"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-27T16:04:35.285Z",
+      "integrationHistory": [
+        {
+          "eventId": "details-elfercoaster-20261127",
+          "appliedAt": "2026-11-27T16:03:28.365Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4fe6dc2f-bb09-4076-8b48-28486c5bc6bd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/audit.json",
+          "summary": "Elfercoaster identifié, créé en huit langues avec trois photos, histoire, tarif, conditions d’accès et Facebook publiés."
+        },
+        {
+          "eventId": "lifecycle-elfercoaster-revision-20261127",
+          "appliedAt": "2026-11-27T16:04:35.285Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4fe6dc2f-bb09-4076-8b48-28486c5bc6bd",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-elfercoaster-20261127/audit.json",
+          "summary": "Statut corrigé en fermeture temporaire pour révision selon l’exploitant au 27 novembre 2026."
+        }
+      ],
+      "nextAction": "Fiche et Facebook publiés ; conserver la ligne et vérifier la date de réouverture, les horaires, le tarif de remontée et les conditions d’accès lors d’une prochaine intégration datée.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -516,22 +539,28 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.stubai.at/skigebiete/elferbahnen/sommer/elfercoaster/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Stubai Tirol — inauguration du 8 juillet 2026 et photos",
+          "url": "https://presse.tirol.at/en/grand-opening-of-the-elfercoaster/291751/",
+          "accessedAt": "2026-11-27"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
-            "name": "Neustift",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=369#location-id-2237",
+            "name": "Elfercoaster",
+            "source": "Elferbahnen — exploitant",
+            "url": "https://www.stubai.at/skigebiete/elferbahnen/sommer/elfercoaster/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Neustift",
-            "referenceId": "location-id-2237"
+            "sourceVenueName": "Elferbahnen Neustift",
+            "sourceLifecycleSignal": "Fermeture pour révision affichée le 27 novembre 2026 ; date de reprise inconnue.",
+            "matchingMethod": "Référence Wiegand Neustift, page de l’exploitant, communiqué d’ouverture et recherche PDE Park/Standalone sans doublon."
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration lifecycle-elfercoaster-revision-20261127 ; conserver les références de découverte."
       }
     },
     {
@@ -2022,18 +2051,18 @@
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-11-27",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Correspondance de la piste RCDB avec Elfercoaster confirmée par Wiegand et l’exploitant ; l’identité propre du site Elferbahnen reste à qualifier.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Le coaster cité dans cette piste RCDB est Elfercoaster, déjà publié via AT-candidate-standalone-03b065bdcee5e2 (site 4fe6dc2f-bb09-4076-8b48-28486c5bc6bd). Ne pas créer une deuxième fiche pour ce coaster ; qualifier séparément le site Elferbahnen si nécessaire.",
       "sources": [
         {
           "label": "RCDB",
@@ -2048,7 +2077,7 @@
       ],
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "Elfercoaster",
@@ -2058,11 +2087,15 @@
             "sourceVenueName": "Elferbahnen",
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Neustift im Stubaital , Tyrol",
-            "sourceOpenedYear": "2026"
+            "sourceOpenedYear": "2026",
+            "matchingMethod": "Elfercoaster correspond à la fiche autonome publiée 4fe6dc2f-bb09-4076-8b48-28486c5bc6bd ; voir AT-candidate-standalone-03b065bdcee5e2."
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "La piste RCDB de la station Elferbahnen désigne le coaster identifié et intégré sous son nom propre. La station elle-même reste à qualifier, sans seconde création du coaster."
+      },
+      "possibleBacklogEntries": [
+        "AT-candidate-standalone-03b065bdcee5e2"
+      ]
     },
     {
       "entryId": "AT-park-2a93f088-b41a-4f8b-a34e-0ce6ec873b56",

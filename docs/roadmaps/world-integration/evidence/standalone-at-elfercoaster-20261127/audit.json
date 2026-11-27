@@ -1,0 +1,33 @@
+{
+  "asOfUtc": "2026-11-27T16:07:15.792Z",
+  "publicChecksAtUtc": "2026-11-27T16:05:09.156Z",
+  "siteId": "4fe6dc2f-bb09-4076-8b48-28486c5bc6bd",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/4fe6dc2f-bb09-4076-8b48-28486c5bc6bd/elfercoaster",
+  "status": "TemporarilyClosed",
+  "completenessScore": 90,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "fd33613e99a34b22b034c327fc2dd3c6",
+  "historyEventCount": 1,
+  "currentAdmissionOffers": 1,
+  "accessConditionCount": 1,
+  "model": "Alpine Coaster",
+  "openingDate": "2026-07-08",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "lastDataIntegrationAtUtc": "2026-11-27T16:04:35.285Z",
+  "lastDataIntegrationBasis": "Apply effectif du statut TemporarilyClosed selon la fermeture officielle pour révision, après enrichissement du modèle et des règles d’accès. Horodatage serveur normalisé à la milliseconde ; site et Facebook publiés séparément.",
+  "gap": "Pas d’horaires de reprise ni de tarif de remontée vérifiés, donc aucune règle d’ouverture future inventée."
+}
