@@ -1,0 +1,15 @@
+{
+  "entryId": "ES-candidate-discovery-faro-moncloa-20261127",
+  "standaloneAttractionId": "1db77634-73a3-4627-a7cf-b4da20481941",
+  "evaluatedAtUtc": "2026-11-27T20:25:52.622Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/1db77634-73a3-4627-a7cf-b4da20481941/faro-de-moncloa",
+  "publicationBlockers": []
+}

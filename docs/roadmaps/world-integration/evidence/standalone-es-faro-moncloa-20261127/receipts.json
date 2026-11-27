@@ -1,0 +1,159 @@
+{
+  "entryId": "ES-candidate-discovery-faro-moncloa-20261127",
+  "standaloneAttractionId": "1db77634-73a3-4627-a7cf-b4da20481941",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "a2534371-0365-41f6-b263-9dc813d9db40",
+      "appliedAtUtc": "2026-11-27T20:21:00.1558497Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "68ca3e4e-8eeb-4abe-ae48-9462dc1bcb12",
+      "appliedAtUtc": "2026-11-27T20:21:13.2007035Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "092e3943-f1c0-4453-8a1f-62f04725ec55",
+      "appliedAtUtc": "2026-11-27T20:21:24.9537996Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "906cc48c-3539-48d6-a2da-341b0b2b7085",
+      "appliedAtUtc": "2026-11-27T20:23:29.0041058Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "bbb31a60b3b046e69c4776438ced27ed",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Conoce_la_historia_de_Madrid_desde_el_Faro_de_Moncloa_02.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 637,
+      "credit": "Diario de Madrid / Wikimedia Commons (CC BY 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:22:18.996Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "11bc6ea0e8024fb2845cdc5b77389b57",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Faro_de_Moncloa_-_interior.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 628,
+      "credit": "Tiia Monto / Wikimedia Commons (CC BY-SA 3.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:22:33.106Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "6c512d59491748959000b44607dd2411",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Faro_de_Moncloa_-_deck.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 572,
+      "credit": "Tiia Monto / Wikimedia Commons (CC BY-SA 3.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:22:46.541Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "fed2fc2708f14662ab0c3a6e121be71b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_desde_el_Faro_de_Moncloa_-_Arco_de_la_Victoria_-_Madrid_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1200,
+      "credit": "Javier Perez Montes / Wikimedia Commons (CC BY-SA 4.0)",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T20:23:02.858Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "d682288005ad44f09a322bdacdb7068a",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T20:24:09.776277Z",
+    "externalPostId": "1285475681307050_122129088351424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129088351424431"
+  }
+}

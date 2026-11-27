@@ -1,0 +1,75 @@
+{
+  "entryId": "ES-candidate-discovery-faro-moncloa-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Operating municipal observation deck with its own entry ticket and opening hours, reached by panoramic elevator. Clearly a standalone visitor experience, not an attraction inside a theme park.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Faro de Moncloa (ES)",
+      "Faro de la Moncloa (ES)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Faro de Moncloa (ES)",
+      "Faro de la Moncloa (ES)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "officialTourismSource": "https://www.esmadrid.com/informacion-turistica/faro-de-moncloa",
+  "municipalSource": "https://www.madrid.es/portales/munimadrid/es/Faro-de-la-Moncloa/?vgnextchannel=e9a3ca5d5fb96010VgnVCM100000dc0ca8c0RCRD&vgnextfmt=default&vgnextoid=ee4f13db5b71c010VgnVCM1000000b205a0aRCRD",
+  "coordinateSource": "https://www.openstreetmap.org/?mlat=40.4372985&mlon=-3.7216762#map=18/40.4372985/-3.7216762",
+  "observations": {
+    "address": "Avenida de la Memoria 2, Madrid",
+    "coordinates": [
+      40.4372985,
+      -3.7216762
+    ],
+    "observationHeightMeters": 92,
+    "regularHours": "Tuesday–Sunday 09:30–20:00, last ascent 19:30; Monday closed.",
+    "specialMondays": "7 and 28 December 2026, 4 January 2027 open.",
+    "yearEndExceptions": "24 and 31 December close 17:00, last ascent 16:30; 25 December and 1 January open 11:00.",
+    "admissionEUR": {
+      "general": 4,
+      "reduced": 2,
+      "superReduced": 1
+    },
+    "visitDuration": "At most 30 minutes, fixed ticket entry time.",
+    "accessibility": "At most one wheelchair user on deck at a time for safety.",
+    "weather": "Adverse conditions can close the viewpoint.",
+    "sourceChecked": "Madrid tourism page directly fetched 27 Nov 2026."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Conoce_la_historia_de_Madrid_desde_el_Faro_de_Moncloa_02.jpg",
+      "artist": "Diario de Madrid",
+      "license": "CC BY 4.0",
+      "captured": "2018-03-24",
+      "depicts": "view of tower from below"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Faro_de_Moncloa_-_interior.jpg",
+      "artist": "Tiia Monto",
+      "license": "CC BY-SA 3.0",
+      "captured": "2016-08-31",
+      "depicts": "glass-enclosed observation gallery"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Faro_de_Moncloa_-_deck.jpg",
+      "artist": "Tiia Monto",
+      "license": "CC BY-SA 3.0",
+      "captured": "2016-08-31",
+      "depicts": "view from observation deck"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_desde_el_Faro_de_Moncloa_-_Arco_de_la_Victoria_-_Madrid_01.jpg",
+      "artist": "Javier Perez Montes",
+      "license": "CC BY-SA 4.0",
+      "captured": "2025-06-14 15:24:49",
+      "depicts": "view of Arco de la Victoria from deck"
+    }
+  ],
+  "scopeNotes": [
+    "Structured calendar spans 27 Nov 2026 to 10 Jan 2027, including explicit holiday overrides. Future dates beyond that period require re-verification.",
+    "All four photos depict this exact tower, deck or views from it and include creator, license and localized metadata."
+  ]
+}
