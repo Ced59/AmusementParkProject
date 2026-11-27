@@ -1,0 +1,67 @@
+{
+  "entryId": "AR-candidate-discovery-torre-monumental-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Operating paid public observation deck in the municipally managed historic Torre Monumental, Retiro. The city advertises independent tower admission, regular visiting hours and optional guided visits. Distinct from park attractions and from Mirador Obelisco in San Nicolás.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Torre Monumental (AR)",
+      "Torre de los Ingleses (AR)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Torre Monumental (AR)",
+      "Torre de los Ingleses (AR)"
+    ],
+    "parkResultCount": 0,
+    "backlogNameAndSourceUrlMatches": 0
+  },
+  "operatorSource": "https://buenosaires.gob.ar/cultura/patrimonio-de-la-ciudad/torre-monumental",
+  "bookingSource": "https://entradasba.buenosaires.gob.ar/establecimientos/57",
+  "oldTourismSource": "https://turismo.buenosaires.gob.ar/en/article/access-monumental-tower",
+  "wikidataCoordinates": "https://www.wikidata.org/wiki/Q570385",
+  "observations": {
+    "address": "Plaza Fuerza Aérea Argentina, Retiro, Buenos Aires",
+    "coordinates": [
+      -34.592963,
+      -58.373192
+    ],
+    "towerHeightMeters": 60,
+    "observationDeckHeightMeters": 40,
+    "opened": "1916-05-24",
+    "hours": "City culture page: Mon–Fri 10:00–17:00; Sat/Sun/holidays 09:00–17:00. Tours Mon/Thu 11:00 and 15:00, no pre-registration and included with admission.",
+    "admissionARS": {
+      "general": 10000,
+      "ArgentineOrForeignResidentWithDNI": 2000
+    },
+    "freeAdmission": "Wednesdays for Argentine residents only; with proof for retirees, university students, visitors with disabilities plus one companion, children under twelve, Malvinas veterans and public-school student groups.",
+    "weatherPolicy": "City culture page says observation deck closes when it rains."
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torre_Monumental_situada_en_la_plaza_Fuerza_A%C3%A9rea_Argentina,_barrio_de_Retiro,_Buenos_Aires.jpg",
+      "artist": "Gerardo javier verdejos",
+      "license": "CC BY-SA 4.0",
+      "captured": "2022-10-01",
+      "depicts": "tower front exterior"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torre_Monumental,_Buenos_Aires_1.jpg",
+      "artist": "Eugenio Hansen, OFS",
+      "license": "CC BY-SA 4.0",
+      "captured": "2018-02-07 10:09:51",
+      "depicts": "brickwork and base"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torre_Monumental_-_Torre_del_Reloj.jpg",
+      "artist": "Matías Profeta",
+      "license": "CC BY-SA 4.0",
+      "captured": "2015-12-16 13:51:36",
+      "depicts": "clock and plaza"
+    }
+  ],
+  "scopeNotes": [
+    "The current city culture page states public holidays 09:00–17:00, but an older city tourism page lists Christmas Day among closed dates. The published schedule is therefore bounded through 24 December 2026 pending current holiday confirmation.",
+    "The 2026-12-08 public holiday receives an explicit 09:00–17:00 override.",
+    "No claim about step-free access is made because the city source does not establish it."
+  ]
+}

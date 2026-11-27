@@ -1676,6 +1676,89 @@
         "attractions": [],
         "rationale": "Visite distincte du monument librement visible depuis la place, avec billet, horaires et parcours intérieurs propres. Fiche standalone publiée et auditée."
       }
+    },
+    {
+      "entryId": "AR-candidate-discovery-torre-monumental-20261127",
+      "name": "Torre Monumental",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour horloge et mirador à billet propre",
+      "locality": "Retiro, Buenos Aires",
+      "siteId": "fa893e6c-42c0-4f02-af9c-f060cd4b0437",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Visite tarifée et horaires réguliers publiés par la ville en novembre 2026.",
+      "identityConfidence": "Mirador municipal à billet propre ; recherches PDE Park et Standalone sous deux noms sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "Torre de los Ingleses",
+        "English Tower Buenos Aires",
+        "Torre Monumental de Buenos Aires"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T19:42:50.030Z",
+      "integrationHistory": [
+        {
+          "eventId": "AR-torre-monumental-integration-20261127",
+          "appliedAt": "2026-11-27T19:42:50.030Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa893e6c-42c0-4f02-af9c-f060cd4b0437",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-torre-monumental-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ar-torre-monumental-20261127/audit.json",
+          "summary": "Tour et mirador publiés avec horaires, tarifs municipaux, trois photos exactes et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; confirmer le calendrier de Noël et les horaires après le 24 décembre, puis revérifier les tarifs municipaux et dater toute nouvelle intégration.",
+      "sources": [
+        {
+          "label": "Ville de Buenos Aires, Culture — horaires, billets, visite et pluie",
+          "url": "https://buenosaires.gob.ar/cultura/patrimonio-de-la-ciudad/torre-monumental",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ville de Buenos Aires — billetterie de la Torre Monumental",
+          "url": "https://entradasba.buenosaires.gob.ar/establecimientos/57",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ancienne page de tourisme de la ville — fermeture annoncée à Noël, à confirmer",
+          "url": "https://turismo.buenosaires.gob.ar/en/article/access-monumental-tower",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikidata Q570385 — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q570385",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Gerardo javier verdejos, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Torre_Monumental_situada_en_la_plaza_Fuerza_A%C3%A9rea_Argentina,_barrio_de_Retiro,_Buenos_Aires.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Eugenio Hansen, OFS, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Torre_Monumental,_Buenos_Aires_1.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Matías Profeta, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Torre_Monumental_-_Torre_del_Reloj.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "AR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Tour municipale visitable avec billet et horaires propres ; aucune fiche Park parent trouvée. Fiche standalone publiée et auditée."
+      }
     }
   ]
 }

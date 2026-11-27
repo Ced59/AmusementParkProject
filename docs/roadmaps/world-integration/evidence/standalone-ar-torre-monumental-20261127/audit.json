@@ -1,0 +1,15 @@
+{
+  "entryId": "AR-candidate-discovery-torre-monumental-20261127",
+  "standaloneAttractionId": "fa893e6c-42c0-4f02-af9c-f060cd4b0437",
+  "evaluatedAtUtc": "2026-11-27T19:43:25.034Z",
+  "result": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 60,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/fa893e6c-42c0-4f02-af9c-f060cd4b0437/torre-monumental",
+  "publicationBlockers": []
+}
