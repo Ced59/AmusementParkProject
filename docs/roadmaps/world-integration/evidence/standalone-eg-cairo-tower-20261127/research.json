@@ -1,0 +1,33 @@
+{
+  "asOfUtc": "2026-11-27",
+  "identity": "Cairo Tower, tour d’observation sur l’île de Gezira au Caire.",
+  "antiDuplicate": "SearchParks et SearchStandaloneAttractions PDE sur Cairo Tower et برج القاهرة en EG : zéro résultat, fiches masquées comprises. Aucun nom ni alias du lieu dans EG.json avant création.",
+  "sources": [
+    {
+      "url": "https://www.cairo.gov.eg/en/culture/cairo-history/modern-landmarks/cairo-tower/",
+      "finding": "Cairo Governorate — hauteur, plateforme, restaurant et histoire"
+    },
+    {
+      "url": "https://sis.gov.eg/ar/%D9%85%D8%B5%D8%B1/%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9/%D9%85%D8%B9%D8%A7%D9%84%D9%85-%D8%B3%D9%8A%D8%A7%D8%AD%D9%8A%D8%A9/%D8%A8%D8%B1%D8%AC-%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9/",
+      "finding": "Egypt State Information Service — situation à Gezira et identité"
+    },
+    {
+      "url": "https://nominatim.openstreetmap.org/search?q=Cairo+Tower%2C+Cairo&format=json&limit=2",
+      "finding": "OpenStreetMap Nominatim — position de la tour"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Cairo_Tower_in_2025.jpg",
+      "finding": "Wikimedia Commons — BavKraft, photo 2025, CC0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:The_Cairo_Tower.jpg",
+      "finding": "Wikimedia Commons — Mohamedusrii, photo 2026, CC BY 4.0"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:View_from_Cairo_Tower.jpg",
+      "finding": "Wikimedia Commons — Sowr, panorama 2012, CC BY 2.0"
+    }
+  ],
+  "photoDecision": "Trois photos exactes et libres, avec crédits et licences vérifiés par les métadonnées Wikimedia : deux vues extérieures de 2025 et 2026, panorama depuis la tour en 2012 explicitement daté.",
+  "editorialDecision": "Statut Operating fondé sur la page municipale actualisée en 2026. Aucun prix ni horaire inventé : le site de l’exploitant retourne une page d’erreur. La chronologie indique uniquement la fin des travaux en 1961, sans prétendre connaître la date d’ouverture au public."
+}

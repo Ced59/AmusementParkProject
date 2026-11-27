@@ -1,0 +1,17 @@
+{
+  "asOfUtc": "2026-11-27",
+  "siteId": "1eb69b12-25a7-4518-83d2-3abcfe8cdfa3",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/1eb69b12-25a7-4518-83d2-3abcfe8cdfa3/cairo-tower",
+  "status": "Operating",
+  "completenessScore": 74,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "c2510095a2204fc5a9e62b50f3c6e2f7",
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129075301424431",
+  "lastDataIntegrationAtUtc": "2026-11-27T17:41:14.920Z",
+  "lastDataIntegrationBasis": "Dernier Apply de contenu substantiel (histoire), distinct de la visibilité et de Facebook.",
+  "gap": "Horaires et tarifs actuels non vérifiés ; site de l’exploitant indisponible."
+}

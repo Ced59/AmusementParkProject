@@ -1,0 +1,120 @@
+{
+  "entryId": "EG-candidate-discovery-cairo-tower-20261127",
+  "standaloneAttractionId": "1eb69b12-25a7-4518-83d2-3abcfe8cdfa3",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "37678d15-ed0f-43be-9811-4534e63d5812",
+      "appliedAtUtc": "2026-11-27T17:38:27.5495782Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "0b2a69fa-8b53-4c62-b288-2df8377d2013",
+      "appliedAtUtc": "2026-11-27T17:41:14.9201422Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "a25d8a46-a019-40eb-b36f-aa2c47be0a60",
+      "appliedAtUtc": "2026-11-27T17:41:31.4026027Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "c2510095a2204fc5a9e62b50f3c6e2f7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cairo_Tower_in_2025.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1707,
+      "credit": "BavKraft / Wikimedia Commons (CC0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "ee04510a2d434ba1a63ef0e17b78c0c7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Cairo_Tower.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 1707,
+      "credit": "Mohamedusrii / Wikimedia Commons (CC BY 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "103688457a3a40dba2348e203805e0db",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_Cairo_Tower.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 774,
+      "height": 600,
+      "credit": "Sowr / Wikimedia Commons (CC BY 2.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "a0897b5f2ccc4a89b0509fd6b5c08cf3",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T17:42:15.0776407Z",
+    "externalPostId": "1285475681307050_122129075301424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129075301424431"
+  }
+}

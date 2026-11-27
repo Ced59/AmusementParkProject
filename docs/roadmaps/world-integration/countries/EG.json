@@ -3109,7 +3109,7 @@
         {
           "siteId": "305ae321-02ae-4181-a9b0-e02e1d764710",
           "name": "Wonder Land Cairo",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -3171,6 +3171,84 @@
             "sourceName": "Xtreme Land"
           }
         ]
+      }
+    },
+    {
+      "entryId": "EG-candidate-discovery-cairo-tower-20261127",
+      "name": "Cairo Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "Gezira Island, Cairo",
+      "siteId": "1eb69b12-25a7-4518-83d2-3abcfe8cdfa3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "La ville du Caire décrit toujours la plateforme panoramique comme visitable sur une page actualisée en 2026.",
+      "identityConfidence": "Tour autonome, plateforme d’observation et restaurant, aucun homonyme PDE ni ligne EG existante.",
+      "possibleMatches": [],
+      "aliases": [
+        "Tour du Caire",
+        "برج القاهرة",
+        "Borg El Qahira"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T17:41:14.920Z",
+      "integrationHistory": [
+        {
+          "eventId": "EG-cairo-tower-20261127-complete",
+          "appliedAt": "2026-11-27T17:41:14.920Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1eb69b12-25a7-4518-83d2-3abcfe8cdfa3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-eg-cairo-tower-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-eg-cairo-tower-20261127/audit.json",
+          "summary": "Tour panoramique autonome, trois photos libres, histoire et descriptions en huit langues ; site et Facebook publiés."
+        }
+      ],
+      "nextAction": "Conserver la ligne et sa date ; recontrôler tarifs et horaires lorsque le site de l’exploitant sera à nouveau disponible.",
+      "sources": [
+        {
+          "label": "Cairo Governorate — hauteur, plateforme, restaurant et histoire",
+          "url": "https://www.cairo.gov.eg/en/culture/cairo-history/modern-landmarks/cairo-tower/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Egypt State Information Service — situation à Gezira et identité",
+          "url": "https://sis.gov.eg/ar/%D9%85%D8%B5%D8%B1/%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9/%D9%85%D8%B9%D8%A7%D9%84%D9%85-%D8%B3%D9%8A%D8%A7%D8%AD%D9%8A%D8%A9/%D8%A8%D8%B1%D8%AC-%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — position de la tour",
+          "url": "https://nominatim.openstreetmap.org/search?q=Cairo+Tower%2C+Cairo&format=json&limit=2",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — BavKraft, photo 2025, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Cairo_Tower_in_2025.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Mohamedusrii, photo 2026, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Cairo_Tower.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Sowr, panorama 2012, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Cairo_Tower.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "EG",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Tour d’observation autonome sur Gezira ; recherches PDE Park et Standalone par noms anglais et arabe sans résultat."
       }
     }
   ]
