@@ -157,11 +157,12 @@
   ],
   "facebook": {
     "id": "caf911029b3146e98ecaffdfddcb9ecd",
-    "status": "Failed",
-    "publishedAtUtc": null,
-    "externalPostId": null,
-    "externalPostUrl": null,
-    "failureCode": "publisher-response-timeout",
-    "failureMessage": "Facebook n'a pas répondu à temps ; la publication doit être rapprochée avant toute relance."
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T21:37:28.569Z",
+    "externalPostId": "1285475681307050_122129094993424431",
+    "externalPostUrl": "https://www.facebook.com/122103008163424431/posts/122129094993424431",
+    "failureCode": null,
+    "failureMessage": null,
+    "recovery": "Reconciled existing Facebook post after original publisher response timeout; no second post sent."
   }
 }
