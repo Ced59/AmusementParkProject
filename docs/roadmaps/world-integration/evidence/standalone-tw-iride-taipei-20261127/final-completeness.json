@@ -1,0 +1,11 @@
+{
+  "auditedAtUtc": "2026-11-27T15:34:52.050Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 64,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

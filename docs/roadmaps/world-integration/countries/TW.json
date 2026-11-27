@@ -742,46 +742,78 @@
     {
       "entryId": "TW-candidate-standalone-c86b2c13603ebd",
       "name": "i-Ride TAIPEI",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Flying theatre",
-      "locality": null,
-      "siteId": null,
+      "category": "Flying theater",
+      "locality": "Breeze Nanshan, Xinyi, Taipei",
+      "siteId": "f231948b-7a09-4040-8ae9-c20e1fef3abf",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Ouvert le 30 janvier 2019 ; théâtre volant et billetterie propres, horaires et billets officiels consultés le 27 novembre 2026.",
+      "identityConfidence": "Haute : communiqué fabricant Brogent, site officiel i-Ride et photos exactes ; recherche PDE Park/Standalone par noms et adresse sans doublon.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "i-Ride Taipei",
+        "i-Ride TAIPEI Flying Theater",
+        "台北 i-Ride 飛行劇院"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-27T15:32:17.933Z",
+      "integrationHistory": [
+        {
+          "eventId": "photo-import-iride-taipei-20261127",
+          "appliedAt": "2026-11-27T15:32:17.933Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f231948b-7a09-4040-8ae9-c20e1fef3abf",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-iride-taipei-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-iride-taipei-20261127/audit.json",
+          "summary": "Théâtre volant créé, huit langues, trois photos exactes, histoire, tarifs, horaires et Facebook publiés."
+        }
+      ],
+      "nextAction": "Fiche et Facebook publiés ; conserver la ligne et suivre les films, tarifs et horaires officiels lors des prochaines intégrations datées.",
       "sources": [
         {
           "label": "Brogent — projet constructeur",
           "url": "https://www.brogent.com/EN/i-Ride-TAIPEI-cv-7.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "i-Ride — lieu, horaires et consignes",
+          "url": "https://i-ride.com.tw/en/theater/2-i-ride-taipei",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "i-Ride — billets et tarifs",
+          "url": "https://i-ride.com.tw/en/ticket/2-i-ride-taipei",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Brogent — ouverture du 30 janvier 2019",
+          "url": "https://www.brogent.com/EN/Brogent-opens-i-Ride-Taipei-at-Breeze-Nanshan-bv-705.html",
+          "accessedAt": "2026-11-27"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "i-Ride TAIPEI",
             "source": "Brogent — projet constructeur",
             "url": "https://www.brogent.com/EN/i-Ride-TAIPEI-cv-7.html",
             "family": "Flying theatre",
-            "sourceVenueName": "i-Ride TAIPEI"
+            "sourceVenueName": "i-Ride TAIPEI",
+            "sourceLifecycleSignal": "Ouvert le 30 janvier 2019 ; billetterie et horaires officiels actifs au 27 novembre 2026.",
+            "matchingMethod": "Communiqué Brogent, page du théâtre et billetterie séparée ; aucune fiche correspondante dans la recherche PDE du 27 novembre 2026."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration photo-import-iride-taipei-20261127 ; conserver les références de découverte."
       }
     },
     {
