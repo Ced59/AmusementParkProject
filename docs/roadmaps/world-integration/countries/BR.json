@@ -1566,7 +1566,7 @@
         {
           "siteId": "efe19275-c418-4405-846c-822ba48f6a50",
           "name": "Ita Center Park",
-          "similarity": 80.0
+          "similarity": 80
         }
       ],
       "aliases": [],
@@ -9387,6 +9387,89 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "BR-candidate-discovery-torre-panoramica-curitiba-20261127",
+      "name": "Torre Panorâmica de Curitiba",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique municipale à billet propre",
+      "locality": "Mercês, Curitiba, Paraná",
+      "siteId": "4319bf02-dee8-4753-93e6-fc77b1e5a109",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Événement municipal actif jusqu’au 31 décembre 2026 avec tarifs, horaires et capacité de visite.",
+      "identityConfidence": "Tour panoramique autonome, visite tarifée par la ville ; recherches PDE Standalone et Park au Brésil sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Torre Panorâmica",
+        "Torre da Telepar",
+        "Torre Panoramica de Curitiba"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T19:02:03.044Z",
+      "integrationHistory": [
+        {
+          "eventId": "BR-curitiba-tower-20261127-completed",
+          "appliedAt": "2026-11-27T18:47:19.311Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4319bf02-dee8-4753-93e6-fc77b1e5a109",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-br-torre-panoramica-curitiba-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-br-torre-panoramica-curitiba-20261127/audit.json",
+          "summary": "Torre Panorâmica de Curitiba publiée avec trois photos, horaires, tarifs, audit et annonce Facebook."
+        },
+        {
+          "eventId": "BR-curitiba-tower-20261127-price-audience-corrected",
+          "appliedAt": "2026-11-27T19:02:03.044Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4319bf02-dee8-4753-93e6-fc77b1e5a109",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-br-torre-panoramica-curitiba-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-br-torre-panoramica-curitiba-20261127/audit.json",
+          "summary": "Tarif réduit reclassé pour toutes les catégories éligibles ; fiche publiée et audit sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. Recontrôler horaires et tarifs municipaux après le 31 décembre 2026, fin de la page événement ; vérifier séparément tout changement d’accessibilité ou de capacité.",
+      "sources": [
+        {
+          "label": "Institut municipal du tourisme de Curitiba — visite, prix, horaires, accessibilité",
+          "url": "https://guia.curitiba.pr.gov.br/evento/visita-ao-mirante-da-torre-panoramica/1150",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — catégorie Torre Panorâmica de Curitiba, coordonnées",
+          "url": "https://commons.wikimedia.org/wiki/Category:Torre_Panor%C3%A2mica_de_Curitiba",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Ubonat, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Mirantes-h4z7_55467492160_o.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Ubonat, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Curitilife_55536012778_o.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Irina S.B., CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_of_Curitiba_from_Panoramic_Tower_2026.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "BR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Mirador municipal à billet, horaires et capacité propres. Le Musée du téléphone fait partie du site ; aucun Park parent correspondant n’a été trouvé."
+      }
     }
   ]
 }

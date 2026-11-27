@@ -1,0 +1,66 @@
+{
+  "entryId": "BR-candidate-discovery-torre-panoramica-curitiba-20261127",
+  "researchedAt": "2026-11-27",
+  "assessment": "Standalone observation tower with its own municipal admission, hours and visitor capacity. No parent Park found in the PDE search. The ground-floor telephone museum is part of this visitor site; it is not a separate standalone entry.",
+  "duplicateChecks": {
+    "standaloneQueries": [
+      "Torre Panorâmica (BR)",
+      "Curitiba Panoramic (BR)"
+    ],
+    "standaloneResultCount": 0,
+    "parkQueries": [
+      "Curitiba Panoramic (BR)"
+    ],
+    "parkResultCount": 0,
+    "note": "Torre Panorâmica Park search also yielded the unrelated Julianatoren in the Netherlands; excluded by identity and country."
+  },
+  "officialSource": "https://guia.curitiba.pr.gov.br/evento/visita-ao-mirante-da-torre-panoramica/1150",
+  "officialObservations": {
+    "eventPublishedFrom": "2023-05-12",
+    "eventValidThrough": "2026-12-31",
+    "address": "Rua Professor Lycio Grein de Castro Vellozo, 191, Mercês, Curitiba, Paraná",
+    "observationDeckHeightMeters": 109.5,
+    "hours": "Daily 10:00–18:00; first Wednesday of month starts 12:00 for maintenance. May close early in busy periods.",
+    "admissionBRL": {
+      "full": 10,
+      "half": 5,
+      "ageFiveAndUnder": 0
+    },
+    "capacityVisitors": 60,
+    "visitDurationMinutes": 10,
+    "accessibility": "Audio description, viewing instruments adapted for wheelchair users, relief map. No unverified claim that the full route is step-free.",
+    "features": [
+      "360-degree city and Serra do Mar view",
+      "telephone museum",
+      "tourist information point",
+      "Poty Lazzarotto mural"
+    ]
+  },
+  "photos": [
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirantes-h4z7_55467492160_o.jpg",
+      "artist": "Ubonat",
+      "license": "CC BY-SA 4.0",
+      "captured": "2026-08-15",
+      "depicts": "tower exterior"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Curitilife_55536012778_o.jpg",
+      "artist": "Ubonat",
+      "license": "CC BY-SA 4.0",
+      "captured": "2026-08-15",
+      "depicts": "observation deck interior"
+    },
+    {
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_Curitiba_from_Panoramic_Tower_2026.jpg",
+      "artist": "Irina S.B.",
+      "license": "CC BY 4.0",
+      "captured": "2026-04-16",
+      "depicts": "view from observation deck"
+    }
+  ],
+  "scopeNotes": [
+    "Only the municipal listing supports the published prices and hours; the schedule ends on 31 December 2026 because the listing ends then.",
+    "The public profile intentionally does not promise complete wheelchair access beyond the aids documented by the city."
+  ]
+}

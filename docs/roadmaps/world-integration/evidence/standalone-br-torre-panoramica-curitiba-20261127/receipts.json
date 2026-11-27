@@ -1,0 +1,132 @@
+{
+  "entryId": "BR-candidate-discovery-torre-panoramica-curitiba-20261127",
+  "standaloneAttractionId": "4319bf02-dee8-4753-93e6-fc77b1e5a109",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "54a2d065-079c-4358-9f07-d496099b790e",
+      "appliedAtUtc": "2026-11-27T18:43:08.0491058Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "7d9f176d-0213-4aa4-8f2d-bb40cf0d7ba9",
+      "appliedAtUtc": "2026-11-27T18:47:07.334919Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "b789bcfc-9a2c-4e61-917b-894f305baed8",
+      "appliedAtUtc": "2026-11-27T18:47:19.3113494Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "42755bdb-0482-441a-99e0-5a99c29d39ec",
+      "appliedAtUtc": "2026-11-27T18:48:04.1471953Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricingAudienceCorrection",
+      "operationId": "70ee9ac7-afe2-436f-8268-b278f551706d",
+      "appliedAtUtc": "2026-11-27T19:02:03.0442449Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "86fb2f05659246879fd3882d66aa1c19",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirantes-h4z7_55467492160_o.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1920,
+      "height": 3413,
+      "credit": "Ubonat / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "8b27ba7df80d48fd9481f4d8148bd02d",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Curitilife_55536012778_o.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1920,
+      "height": 1440,
+      "credit": "Ubonat / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "b253d350e1e24afc9af86df169bcc2cf",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_Curitiba_from_Panoramic_Tower_2026.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1328,
+      "credit": "Irina S.B. / Wikimedia Commons (CC BY 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "354352a612b94e53ba43962ee93815e0",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T18:52:14.746095Z",
+    "externalPostId": "1285475681307050_122129080623424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129080623424431"
+  }
+}
