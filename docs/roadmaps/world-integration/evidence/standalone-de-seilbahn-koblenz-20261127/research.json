@@ -6,6 +6,7 @@
   "operatingStatus": "En service au 27 novembre 2026. L'exploitant annonce une pause du 2 au 18 novembre puis des trajets à partir du 19 novembre ; son calendrier donne des heures jour par jour. Ne pas appliquer une grille hebdomadaire générique à la période de l'Avent.",
   "pricing": "Page officielle vérifiée le 27 novembre 2026 : aller-retour adulte 15,50 EUR ; autres tarifs et réductions sur la page. Revalider au moment de l'Apply et conserver la date de vérification réelle.",
   "photos": "Trois photographies de la ligne réalisées le 22 août 2026 par Yair-haklai, CC BY-SA 4.0, inspectées visuellement. La vue verticale Seilbahn Koblenz-2.jpg montre les cabines et la forteresse ; les deux vues horizontales situent la ligne sur la rive du Rhin et en face de la forteresse. Variantes Wikimedia de 960 px inspectées ; chacune est inférieure à 960 Kio.",
+  "location": "La catégorie Commons de la gare basse donne 50° 21′ 42,84″ N et 7° 36′ 18,23″ E, soit 50.3619, 7.605064. L'exploitant indique Konrad-Adenauer-Ufer, 56068 Koblenz.",
   "sources": [
     {
       "label": "Exploitant — état de la saison et horaires du 27 novembre 2026",
@@ -35,6 +36,11 @@
     {
       "label": "Communiqué de l'ancien maire — inauguration du 2 juillet 2010",
       "url": "https://www.hofmanngoettig.de/?p=19644",
+      "accessedAt": "2026-11-27"
+    },
+    {
+      "label": "Wikimedia Commons — position de la gare basse",
+      "url": "https://commons.wikimedia.org/wiki/Category:Seilbahn_Koblenz,_lower_station",
       "accessedAt": "2026-11-27"
     },
     {
