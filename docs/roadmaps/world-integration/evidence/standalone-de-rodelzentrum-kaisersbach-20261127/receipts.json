@@ -1,0 +1,144 @@
+{
+  "entryId": "DE-candidate-20052a9d304097",
+  "standaloneAttractionId": "83390ca7-a612-4a9f-bcf5-340c671d996c",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "9e6785fe-1ad4-4ddc-96e1-f609a1bd4afb",
+      "appliedAtUtc": "2026-11-27T15:43:39.4863148Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "ee55be36-0785-4712-a9cb-018bd51b5613",
+      "appliedAtUtc": "2026-11-27T15:44:03.6468505Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "cd90ecbe-8bb1-4246-8a4b-44b2d54d01cc",
+      "appliedAtUtc": "2026-11-27T15:44:35.7178006Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "2d6b8c5e-0160-485a-b874-2afdbd8cdac0",
+      "appliedAtUtc": "2026-11-27T15:48:23.7232127Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "50b9b9efb454417c9202c5a6ef4e731d",
+      "sourceUrl": "https://www.rodelzentrum.de/wp-content/uploads/2026/04/Rodelbahn_Junge_Start-1024x683.webp",
+      "importedAtUtc": "2026-11-27T15:45:55.523Z",
+      "lastDataUpdatedAtUtc": "2026-11-27T15:47:29.008Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Rodelzentrum Kaisersbach — operator photograph"
+    },
+    {
+      "imageId": "ddf7c50398a140e3b1b6025d0f764d1b",
+      "sourceUrl": "https://www.rodelzentrum.de/wp-content/uploads/2026/04/Rodelbahn-1024x683.webp",
+      "importedAtUtc": "2026-11-27T15:46:05.542Z",
+      "lastDataUpdatedAtUtc": "2026-11-27T15:47:34.644Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Rodelzentrum Kaisersbach — operator photograph"
+    },
+    {
+      "imageId": "303b1bd76d1e43f5b7abf1f1eda6c089",
+      "sourceUrl": "https://www.rodelzentrum.de/wp-content/uploads/2026/04/Rodelbahn_Maedchen_Mutter-1024x690.webp",
+      "importedAtUtc": "2026-11-27T15:46:14.199Z",
+      "lastDataUpdatedAtUtc": "2026-11-27T15:47:40.189Z",
+      "isCurrent": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "Rodelzentrum Kaisersbach — operator photograph"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T15:47:40.189Z",
+  "lastDataIntegrationStage": "UpdatePhotoMetadata 3",
+  "finalAudit": {
+    "auditedAtUtc": "2026-11-27T15:50:45.838Z",
+    "completenessScore": 84,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "completenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-rodelzentrum-kaisersbach-20261127/final-completeness.json"
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T15:48:23.7232127Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+    "facebookStatus": "Published",
+    "facebookPublishedAtUtc": "2026-11-27T15:49:10.5481396Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129068191424431"
+  }
+}

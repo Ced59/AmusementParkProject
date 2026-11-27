@@ -1,0 +1,30 @@
+{
+  "asOfUtc": "2026-11-27T15:50:45.838Z",
+  "publicChecksAtUtc": "2026-11-27T15:49:34.313Z",
+  "siteId": "83390ca7-a612-4a9f-bcf5-340c671d996c",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+  "status": "Operating",
+  "completenessScore": 84,
+  "dataQualityLevel": "Publishable",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "303b1bd76d1e43f5b7abf1f1eda6c089",
+  "currentAdmissionOffers": 1,
+  "weeklyHours": "Samedi et dimanche 11:00–17:00 ; jours fériés 11:00–17:00 et vacances scolaires 14:00–17:00 selon exploitant ; fermeture si piste mouillée.",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "lastDataIntegrationAtUtc": "2026-11-27T15:47:40.189Z",
+  "lastDataIntegrationBasis": "Dernière mise à jour des légendes spécifiques, textes alternatifs et crédits de la troisième photo par UpdatePhotoMetadata ; publication du site et de Facebook horodatées séparément.",
+  "gap": "Pas de date exacte d’ouverture de la piste actuelle ni de coordonnées GPS officielles de l’entrée ; aucune date inventée."
+}
