@@ -141,7 +141,9 @@
       "nl",
       "pl",
       "pt"
-    ]
+    ],
+    "auditedAtUtc": "2026-11-27T15:32:32.464Z",
+    "completenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla3-20261127/final-completeness.json"
   },
   "publication": {
     "siteVisibleAtUtc": "2026-11-27T15:21:51.2238965Z",

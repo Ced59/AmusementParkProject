@@ -1687,7 +1687,7 @@
       "integrationHistory": [
         {
           "eventId": "apply-datanla3-20261127",
-          "appliedAt": "2026-11-27T15:21:51.223Z",
+          "appliedAt": "2026-11-27T15:21:23.686Z",
           "outcome": "completed",
           "entityKind": "StandaloneAttraction",
           "entityId": "436a8669-e09a-4e44-b11a-d5ce3c8bdf7e",

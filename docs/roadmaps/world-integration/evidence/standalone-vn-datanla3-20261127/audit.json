@@ -1,5 +1,5 @@
 {
-  "asOfUtc": "2026-11-27T15:22:17.826Z",
+  "asOfUtc": "2026-11-27T15:32:32.464Z",
   "siteId": "436a8669-e09a-4e44-b11a-d5ce3c8bdf7e",
   "siteUrl": "https://amusement-parks.fun/fr/attraction/436a8669-e09a-4e44-b11a-d5ce3c8bdf7e/datanla-alpine-coaster-3",
   "status": "Operating",
@@ -24,5 +24,7 @@
   ],
   "publicHttpStatus": 200,
   "ogImageVerified": true,
-  "lengthTechnicalField": "Laissé vide : divergence 2 400 m Dalattourist / environ 1 700 m RCDB."
+  "lengthTechnicalField": "Laissé vide : divergence 2 400 m Dalattourist / environ 1 700 m RCDB.",
+  "publicChecksAtUtc": "2026-11-27T15:22:17.826Z",
+  "finalCompletenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-vn-datanla3-20261127/final-completeness.json"
 }
