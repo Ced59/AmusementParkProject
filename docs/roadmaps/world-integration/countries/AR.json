@@ -1588,6 +1588,94 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "AR-candidate-discovery-mirador-obelisco-20261127",
+      "name": "Mirador Obelisco",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Mirador panoramique à billet propre",
+      "locality": "San Nicolás, Buenos Aires",
+      "siteId": "ae5c9306-1396-44bf-ac7c-86489fa514c7",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Visite régulière et tarifée selon l’office de tourisme de la ville, contrôlé en novembre 2026.",
+      "identityConfidence": "Mirador à billetterie propre ; recherches PDE Park et Standalone sous deux noms sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "Mirador del Obelisco",
+        "Obelisco de Buenos Aires observation deck",
+        "Obelisco Viewpoint"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T19:32:40.914Z",
+      "integrationHistory": [
+        {
+          "eventId": "AR-mirador-obelisco-integration-20261127",
+          "appliedAt": "2026-11-27T19:32:40.914Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae5c9306-1396-44bf-ac7c-86489fa514c7",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-mirador-obelisco-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ar-mirador-obelisco-20261127/audit.json",
+          "summary": "Mirador publié avec horaires, tarifs, conditions d’accès, quatre photos vérifiées et publication Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne ; vérifier les horaires 2027, les tarifs et le rétablissement du site de réservation, puis dater chaque nouvelle intégration de données.",
+      "sources": [
+        {
+          "label": "Ville de Buenos Aires, tourisme — horaires, tarifs, accès et expérience",
+          "url": "https://turismo.buenosaires.gob.ar/es/article/mirador-obelisco",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Ville de Buenos Aires, tourisme — ouverture du mirador",
+          "url": "https://turismo.buenosaires.gob.ar/es/turismo-noticias/un-nuevo-atractivo-tur%C3%ADstico-de-la-ciudad-abri%C3%B3-el-mirador-obelisco",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Site de réservation Mirador Obelisco — indisponible pendant la recherche",
+          "url": "https://miradorobelisco.com.ar/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikidata Q831389 — coordonnées du monument",
+          "url": "https://www.wikidata.org/wiki/Q831389",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Franco Javier Perez, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Obelisco_de_Buenos_Aires,_Argentina.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, GCBA, CC BY 2.5 ar",
+          "url": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-interior-ventanas1500x610.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, GCBA, CC BY 2.5 ar",
+          "url": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-interior-escaleras1500x610.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 4, Sushikdda, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Obelisco_de_Buenos_Aires,_Argentina,_en_ocaso.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "AR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Visite distincte du monument librement visible depuis la place, avec billet, horaires et parcours intérieurs propres. Fiche standalone publiée et auditée."
+      }
     }
   ]
 }

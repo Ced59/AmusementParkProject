@@ -1,0 +1,161 @@
+{
+  "entryId": "AR-candidate-discovery-mirador-obelisco-20261127",
+  "standaloneAttractionId": "ae5c9306-1396-44bf-ac7c-86489fa514c7",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "1ec6c21e-2349-4622-a651-e5d1030279cc",
+      "appliedAtUtc": "2026-11-27T19:28:55.8858468Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "66c3b4e7-679c-4435-b6c8-1a02be507c6a",
+      "appliedAtUtc": "2026-11-27T19:32:18.3763769Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "a527425c-0e41-4950-a81c-2145ae8e4fff",
+      "appliedAtUtc": "2026-11-27T19:32:29.3649307Z",
+      "isApplied": true
+    },
+    {
+      "stage": "attractionDetails",
+      "operationId": "d01e5549-28f7-4243-a6e7-4c8d50ad7214",
+      "appliedAtUtc": "2026-11-27T19:32:40.9146172Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "9464febb-5dfd-413f-9d5f-9372b2daba19",
+      "appliedAtUtc": "2026-11-27T19:33:16.0547102Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "82a64af8eaac49f28608c1a08bcddc09",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Obelisco_de_Buenos_Aires,_Avenida_9_de_Julio.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 1280,
+      "height": 2276,
+      "credit": "Dibumartinez23 / Wikimedia Commons (CC BY-SA 4.0)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "d83a1028474b48aeb48bf4af7a2809f1",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-interior-ventanas1500x610.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 521,
+      "credit": "Gobierno de la Ciudad Autónoma de Buenos Aires / Wikimedia Commons (CC BY 2.5 AR)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "46cc0056daec411c92c8c93f036a97be",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-interior-escaleras1500x610.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 521,
+      "credit": "Gobierno de la Ciudad Autónoma de Buenos Aires / Wikimedia Commons (CC BY 2.5 AR)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "1d7bedcbd81743698c980a9f6af4b691",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mirador-obelisco-vista-panoramica1500x610.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 1280,
+      "height": 521,
+      "credit": "Gobierno de la Ciudad Autónoma de Buenos Aires / Wikimedia Commons (CC BY 2.5 AR)",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "id": "400adea700ab4ee6bb6307dc50b168f3",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-27T19:34:04.136861Z",
+    "externalPostId": "1285475681307050_122129084475424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129084475424431"
+  }
+}

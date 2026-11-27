@@ -1,0 +1,15 @@
+{
+  "entryId": "AR-candidate-discovery-mirador-obelisco-20261127",
+  "standaloneAttractionId": "ae5c9306-1396-44bf-ac7c-86489fa514c7",
+  "evaluatedAtUtc": "2026-11-27T19:33:16.881Z",
+  "result": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 68,
+    "earnedPoints": 64,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ae5c9306-1396-44bf-ac7c-86489fa514c7/mirador-obelisco",
+  "publicationBlockers": []
+}
