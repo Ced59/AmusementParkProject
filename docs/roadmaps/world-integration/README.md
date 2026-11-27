@@ -17,9 +17,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1867 | 7554 |
-| Standalone | 374 | 1 | 107 |
+| Standalone | 375 | 1 | 106 |
 
-**Reprise standalone :** en plus des 107 candidates sans correspondance, **193 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **538 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **87 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 106 candidates sans correspondance, **193 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **538 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **87 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **72** types à décider, **1254** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -745,7 +745,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Nicaragua](countries/NI.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Panama](countries/PA.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Pays-Bas caribéens](countries/BQ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Porto Rico](countries/PR.md) | 0 | 0 | 1 | 0 | 0 | 0 |
+| [Porto Rico](countries/PR.md) | 1 | 0 | 0 | 0 | 0 | 0 |
 | [République dominicaine](countries/DO.md) | 0 | 0 | 0 | 0 | 3 | 0 |
 | [Saint-Barthélemy](countries/BL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Saint-Christophe-et-Niévès](countries/KN.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -756,14 +756,15 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **84** | **0** | **25** | **2** | **198** | **0** |
+| **Total** | **85** | **0** | **24** | **2** | **198** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **84**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **85**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Bahamas : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Canada : 20 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - États-Unis : 62 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Mexique : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
+- Porto Rico : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |

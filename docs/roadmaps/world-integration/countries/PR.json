@@ -22,28 +22,42 @@
   "entries": [
     {
       "entryId": "PR-candidate-discovery-67e6ca0dd25fda",
-      "name": "Aerostatic Balloon Jayuya",
-      "entityKind": "ToQualify",
+      "name": "Globo Aerostático de Jayuya",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
       "locality": "Jayuya",
-      "siteId": null,
+      "siteId": "86f3c54e-95eb-4c94-b363-0f487572718c",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2017 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Installation inaugurée en 2017, détruite en 2020 puis reconstruite et remise en service en mars 2024. Une interruption aérienne de 24 h a été annoncée en janvier 2026 ; disponibilité actuelle à confirmer.",
+      "identityConfidence": "Fabricant, presse locale, page touristique municipale et photo de 2017 concordants ; recherches PDE SearchParks et SearchStandaloneAttractions par Jayuya, Globo Aerostático, Tierra Alta et Aerostatic Balloon sans doublon local, fiches masquées incluses, le 27 novembre 2026.",
       "possibleMatches": [],
       "aliases": [
-        "Municipio Autonomo de Jayuya Jayuya, Puerto Rico"
+        "Municipio Autonomo de Jayuya Jayuya, Puerto Rico",
+        "Aerostatic Balloon Jayuya",
+        "Globo de Jayuya",
+        "Globo Aerostático de Puerto Rico"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-27T15:05:24.380Z",
+      "integrationHistory": [
+        {
+          "eventId": "929a0c36-78b2-4cdc-968c-abbc8a895288",
+          "appliedAt": "2026-11-27T15:05:24.380Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86f3c54e-95eb-4c94-b363-0f487572718c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-pr-jayuya-balloon-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pr-jayuya-balloon-20261127/audit.json",
+          "summary": "Fiche en huit langues, photo historique exacte créditée, histoire, site et Facebook publiés avec statut actuel à vérifier"
+        }
+      ],
+      "nextAction": "Fiche publique et Facebook publiés ; conserver la ligne, vérifier périodiquement les horaires et le statut auprès de l’office de tourisme et ajouter toute nouvelle intégration datée.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -54,6 +68,26 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Jayuya.com — informations touristiques et billet distinct",
+          "url": "https://jayuya.com/aventura-en-las-alturas-jayuya/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "El Nuevo Día — destruction en 2020 et reprise publique en mars 2024",
+          "url": "https://www.elnuevodia.com/negocios/turismo/notas/el-globo-aerostatico-de-jayuya-retomara-los-viajes-para-el-publico-desde-este-sabado/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "WIPR — interruption aérienne temporaire en janvier 2026",
+          "url": "https://wipr.pr/suspenden-temporalmente-operaciones-del-globo-aerostatico-de-jayuya/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — installation d’origine en juin 2017, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Globo_Jayuya.jpg",
+          "accessedAt": "2026-11-27"
         }
       ],
       "discovery": {
@@ -62,8 +96,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
         "attractions": [
           {
             "name": "Aerostatic Balloon Jayuya",
@@ -71,13 +105,13 @@
             "url": "https://www.aerophile.com/en/clients/municipio-autonomo-de-jayuya/",
             "family": "Ballon captif",
             "sourceVenueName": "Aerostatic Balloon Jayuya",
-            "sourceLifecycleSignal": "Référence constructeur datée 2017 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+            "sourceLifecycleSignal": "Ouvert en 2017 ; reconstruction et reprise des vols en mars 2024 ; statut quotidien à confirmer.",
+            "matchingMethod": "Recherche fraîche PDE sans doublon, tarif du ballon séparé des tyroliennes et photo exacte de l’installation de 2017.",
             "sourceLocality": "Jayuya",
             "referenceId": "aerophile-municipio-autonomo-de-jayuya"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 929a0c36-78b2-4cdc-968c-abbc8a895288 ; conserver les références de découverte."
       }
     },
     {

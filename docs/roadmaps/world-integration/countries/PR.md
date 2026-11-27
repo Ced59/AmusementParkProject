@@ -13,10 +13,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 0 |
-| À qualifier | 2 |
+| À qualifier | 1 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -27,7 +27,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **1 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -35,5 +35,5 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 
 | ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| PR-candidate-discovery-67e6ca0dd25fda | Aerostatic Balloon Jayuya | Jayuya | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle. Qualification standalone : IndependentCandidate. Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Installations référencées : Aerostatic Balloon Jayuya. Signal source : Référence constructeur datée 2017 ; exploitation actuelle et permanence à vérifier.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/municipio-autonomo-de-jayuya/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) |
+| PR-candidate-discovery-67e6ca0dd25fda | Globo Aerostático de Jayuya | Jayuya | StandaloneAttraction | Published | Intégration achevée | 2026-11-27T15:05:24.380Z | — | Fiche publique et Facebook publiés ; conserver la ligne, vérifier périodiquement les horaires et le statut auprès de l’office de tourisme et ajouter toute nouvelle intégration datée. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration 929a0c36-78b2-4cdc-968c-abbc8a895288 ; conserver les références de découverte. Installations référencées : Aerostatic Balloon Jayuya. Signal source : Installation inaugurée en 2017, détruite en 2020 puis reconstruite et remise en service en mars 2024. Une interruption aérienne de 24 h a été annoncée en janvier 2026 ; disponibilité actuelle à confirmer.. [Aerophile — références constructeur](https://www.aerophile.com/en/clients/municipio-autonomo-de-jayuya/) · [Aerophile — références constructeur — annuaire](https://www.aerophile.com/en/clients/) · [Jayuya.com — informations touristiques et billet distinct](https://jayuya.com/aventura-en-las-alturas-jayuya/) · [El Nuevo Día — destruction en 2020 et reprise publique en mars 2024](https://www.elnuevodia.com/negocios/turismo/notas/el-globo-aerostatico-de-jayuya-retomara-los-viajes-para-el-publico-desde-este-sabado/) · [WIPR — interruption aérienne temporaire en janvier 2026](https://wipr.pr/suspenden-temporalmente-operaciones-del-globo-aerostatico-de-jayuya/) · [Wikimedia Commons — installation d’origine en juin 2017, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Globo_Jayuya.jpg) |
 | PR-candidate-2c6c440c40d6fc | Las Cascadas Water Park | Aguadilla | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Puerto_Rico) |
