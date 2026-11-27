@@ -1,0 +1,15 @@
+{
+  "entryId": "AT-candidate-discovery-pfaenderbahn-20261127",
+  "standaloneAttractionId": "13a49d66-555e-4918-9e28-fe47b7dee060",
+  "evaluatedAtUtc": "2026-11-27T23:41:03.414Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/13a49d66-555e-4918-9e28-fe47b7dee060/pfanderbahn",
+  "publicationBlockers": []
+}

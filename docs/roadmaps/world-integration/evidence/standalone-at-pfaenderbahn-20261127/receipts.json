@@ -1,0 +1,146 @@
+{
+  "entryId": "AT-candidate-discovery-pfaenderbahn-20261127",
+  "standaloneAttractionId": "13a49d66-555e-4918-9e28-fe47b7dee060",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "6f8a86e6-fada-416e-b69a-bcd5b478038d",
+      "appliedAtUtc": "2026-11-27T23:35:08.3679491Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "92d2be0c-91dc-4b1a-9923-5c682d93ea62",
+      "appliedAtUtc": "2026-11-27T23:35:36.3832103Z",
+      "isApplied": true
+    },
+    {
+      "stage": "openingHours",
+      "operationId": "0216ad37-006f-4e67-b0a8-d676e5c3e420",
+      "appliedAtUtc": "2026-11-27T23:36:14.6755208Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publishVisibility",
+      "operationId": "f593fbdb-47b1-4932-84cd-44fff06a3654",
+      "appliedAtUtc": "2026-11-27T23:38:08.7315386Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "2be4911e3ccf4d34ad13189f7412486a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pf%C3%A4nderbahn,_Gondel_und_St%C3%BCtze,_1.jpeg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 728,
+      "credit": "Renardo la vulpo / Wikimedia Commons (CC BY-SA 4.0)",
+      "license": "CC BY-SA 4.0",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T23:37:33.516Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "148462295e044ae18b7bc86ee3839713",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:A-V-Bregenz_-_Pfaenderbahn_7861.JPG",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "credit": "ANKAWÜ / Wikimedia Commons (CC BY-SA 3.0)",
+      "license": "CC BY-SA 3.0",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T23:37:07.017Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "f5544f37ba4b427f95a94a4f9fec137c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bregenz_Pf%C3%A4nderbahn_2011.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1445,
+      "credit": "Andreas Praefcke / Wikimedia Commons (CC BY 3.0)",
+      "license": "CC BY 3.0",
+      "publishedMetadataUpdatedAtUtc": "2026-11-27T23:36:42.612Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "08de8d6c193b4f159b7697883e80b202",
+    "publishedAtUtc": "2026-11-27T23:40:58.5844038Z",
+    "externalPostId": "1285475681307050_122129107053424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129107053424431"
+  },
+  "socialPreview": {
+    "canonicalSeoReady": true,
+    "ogImageId": "2be4911e3ccf4d34ad13189f7412486a"
+  },
+  "openingHoursCoverage": {
+    "startDate": "2026-11-27",
+    "endDate": "2027-03-31",
+    "maintenanceClosedFrom": "2027-01-11",
+    "maintenanceClosedThrough": "2027-03-04",
+    "specialShortDays": [
+      "2026-12-24",
+      "2026-12-31"
+    ]
+  }
+}

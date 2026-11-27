@@ -7644,6 +7644,94 @@
         ],
         "rationale": "Luge d’été en auge avec billets propres, y compris une descente sans montée selon la grille officielle de la saison 2026. Fiche autonome publiée avec trois photos exactes ; fermeture actuelle indiquée."
       }
+    },
+    {
+      "entryId": "AT-candidate-discovery-pfaenderbahn-20261127",
+      "name": "Pfänderbahn",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Steinbruchgasse 4, Bregenz, Vorarlberg",
+      "siteId": "13a49d66-555e-4918-9e28-fe47b7dee060",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant affiche un service quotidien et des tarifs valables en 2026–2027 ; révision fermée du 11 janvier au 4 mars 2027 inclus.",
+      "identityConfidence": "Station, tarifs, ligne et autonomie confirmés par exploitant, tourisme de Bregenz et OSM ; recherches PDE Park et Standalone Pfänderbahn/Pfaenderbahn/Pfänder sans correspondance autrichienne.",
+      "possibleMatches": [],
+      "aliases": [
+        "Pfaenderbahn",
+        "Pfänder Cable Car",
+        "Pfänder-Seilbahn"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T23:37:33.516Z",
+      "integrationHistory": [
+        {
+          "eventId": "at-pfaenderbahn-data-20261127",
+          "appliedAt": "2026-11-27T23:37:33.516Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "13a49d66-555e-4918-9e28-fe47b7dee060",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-pfaenderbahn-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-pfaenderbahn-20261127/audit.json",
+          "summary": "Fiche publiée avec trois photos exactes créditées, tarifs officiels, calendrier 2026–2027 incluant la révision et annonce Facebook confirmée."
+        }
+      ],
+      "nextAction": "Recontrôler les horaires et tarifs après le 31 mars 2027 avant de prolonger le calendrier ; conserver cette ligne.",
+      "sources": [
+        {
+          "label": "Exploitant — horaires quotidiens, jours abrégés et révision 2027",
+          "url": "https://www.pfaenderbahn.at/pfaenderbahn/betriebszeiten/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — tarifs 2026–2027, grille PDF",
+          "url": "https://www.pfaenderbahn.at/wp-content/uploads/tarife-pfaenderbahn-26-27.pdf",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — accès et panorama",
+          "url": "https://www.pfaenderbahn.at/en/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Bregenz Tourismus — fonctionnement et fermeture de révision",
+          "url": "https://visitbregenz.com/erleben/see-berg/berg-erleben/pfaenderbahn",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — station inférieure",
+          "url": "https://www.openstreetmap.org/node/266423500",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Renardo la vulpo / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Pf%C3%A4nderbahn,_Gondel_und_St%C3%BCtze,_1.jpeg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, ANKAWÜ / Wikimedia Commons (CC BY-SA 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:A-V-Bregenz_-_Pfaenderbahn_7861.JPG",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 3, Andreas Praefcke / Wikimedia Commons (CC BY 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Bregenz_Pf%C3%A4nderbahn_2011.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "AT",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [],
+        "rationale": "Téléphérique panoramique à billet, stations, horaires et opérateur propres ; les sentiers et le parc animalier au sommet ne constituent pas un parc d’attractions parent."
+      }
     }
   ]
 }
