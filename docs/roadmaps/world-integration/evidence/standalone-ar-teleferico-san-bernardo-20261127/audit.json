@@ -1,0 +1,15 @@
+{
+  "entryId": "AR-candidate-discovery-teleferico-san-bernardo-20261127",
+  "standaloneAttractionId": "503652c6-c827-4c41-90ac-653b7b1360df",
+  "evaluatedAtUtc": "2026-11-27T21:45:26.570Z",
+  "result": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 64,
+    "earnedPoints": 58,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/503652c6-c827-4c41-90ac-653b7b1360df/teleferico-san-bernardo",
+  "publicationBlockers": []
+}
