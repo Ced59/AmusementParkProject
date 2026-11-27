@@ -24,6 +24,85 @@
   ],
   "entries": [
     {
+      "entryId": "AR-candidate-discovery-aerosilla-cerro-campanario-20261127",
+      "name": "Aerosilla del Cerro Campanario",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Aerosilla panoramique à billet propre",
+      "locality": "Av. Exequiel Bustillo km 17,5, San Carlos de Bariloche",
+      "siteId": "9d705840-8ea1-44d3-a8d8-b3bbaeff9bac",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant indiquait ABIERTO le 27 novembre 2026, avec horaires et tarifs affichés.",
+      "identityConfidence": "Station, tarif et ligne confirmés par l’exploitant, le tourisme municipal et OSM ; recherches PDE Park et Standalone Cerro Campanario/Aerosilla/Campanario sans correspondance argentine.",
+      "possibleMatches": [],
+      "aliases": [
+        "Aerosilla Cerro Campanario",
+        "Cerro Campanario chairlift"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T23:05:33.190Z",
+      "integrationHistory": [
+        {
+          "eventId": "ar-aerosilla-cerro-campanario-data-20261127",
+          "appliedAt": "2026-11-27T23:05:33.190Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9d705840-8ea1-44d3-a8d8-b3bbaeff9bac",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-campanario-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-campanario-20261127/audit.json",
+          "summary": "Fiche publiée avec deux photos exactes créditées, tarifs et horaires de l’exploitant ; annonce Facebook non confirmée, rapprochement ambigu à résoudre."
+        }
+      ],
+      "nextAction": "Résoudre le rapprochement Facebook ambigu de la publication 8d0adf60125d43d09f6ef3ef92fd7fe9 avant toute relance ; ne pas lancer une nouvelle publication. Recontrôler horaires et tarifs après 2026.",
+      "sources": [
+        {
+          "label": "Exploitant — tarifs, horaires et état du jour",
+          "url": "https://cerrocampanario.com.ar/informacion-y-tarifas/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — description de l’aerosilla",
+          "url": "https://cerrocampanario.com.ar/la-aerosilla/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — conditions de visite",
+          "url": "https://cerrocampanario.com.ar/preguntas-frecuentes/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Tourisme municipal de Bariloche — accès et activité",
+          "url": "https://www.barilocheturismo.gob.ar/es/actividades-cerro-campanario",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — tracé de l’aerosilla",
+          "url": "https://www.openstreetmap.org/way/1410378988",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 1, Celestejanczuk / Wikimedia Commons (CC BY-SA 4.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Aerosillas_en_el_Cerro_Campanario.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2, Hiroki Ogawa / Wikimedia Commons (CC BY 3.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Cerro_Campanario_Bariloche_Argentina_-_panoramio_(16).jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Aerosilla à billet distinct, empruntable sans excursion Circuito Chico ; sommet également accessible à pied."
+      }
+    },
+    {
       "entryId": "AR-candidate-af1c368db7361e",
       "name": "Aquafun",
       "entityKind": "Park",
@@ -1348,6 +1427,64 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "AR-candidate-discovery-teleferico-cerro-otto-20261127",
+      "name": "Teleférico Cerro Otto",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique à billet propre",
+      "locality": "Av. de los Pioneros km 5, San Carlos de Bariloche",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Blocked",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Fermeture anticipée le 26 octobre 2026 après incident ; réouverture prévue durant la dernière semaine de novembre, sans confirmation fiable trouvée au 27 novembre.",
+      "identityConfidence": "Exploitant, station et ligne identifiés ; recherches PDE Park et Standalone Cerro Otto/Bariloche sans résultat ; statut de reprise non confirmé.",
+      "possibleMatches": [],
+      "aliases": [
+        "Teleferico Cerro Otto",
+        "Teleférico de Bariloche"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Obtenir une confirmation officielle datée de reprise du service après la fermeture d’octobre 2026 ; vérifier l’état opérationnel, puis préparer la fiche avec photos précises et publier Facebook après audit. Ne pas déduire la réouverture des seuls horaires tarifaires affichés.",
+      "sources": [
+        {
+          "label": "Exploitant — tarif, horaire affiché et activité",
+          "url": "https://www.telefericobariloche.com.ar/es-AR/pricing-schedules",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — FAQ et conditions",
+          "url": "https://www.telefericobariloche.com.ar/es-AR/faqs",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Tourisme municipal de Bariloche — téléphérique et accès",
+          "url": "https://barilocheturismo.gob.ar/es/actividades-cerro-otto",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Diario Río Negro — fermeture anticipée après incident et réouverture annoncée fin novembre",
+          "url": "https://www.rionegro.com.ar/sociedad/susto-en-la-cumbre-del-cerro-otto-un-incendio-obligo-a-cerrar-el-teleferico-4772893/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "OpenStreetMap — station inférieure du téléphérique",
+          "url": "https://www.openstreetmap.org/way/30807651",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "attractions": [],
+        "rationale": "Trajet en gondole avec tarif propre et accès touristique à la cime ; la relation exacte avec le complexe touristique doit être explicitée lors de la création."
+      }
     },
     {
       "entryId": "AR-candidate-32b2840fd0164c",
