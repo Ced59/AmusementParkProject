@@ -22268,37 +22268,71 @@
     {
       "entryId": "DE-candidate-20052a9d304097",
       "name": "Rodelzentrum Kaisersbach",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Kaisersbach",
-      "siteId": null,
+      "category": "Luge d’été en rigole",
+      "locality": "Winterhalde 1, 73667 Kaisersbach",
+      "siteId": "83390ca7-a612-4a9f-bcf5-340c671d996c",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
-      "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": "Validated",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant publie prix et horaires au 27 novembre 2026, avec fermeture si piste mouillée ; la commune atteste la luge d’été depuis 1978.",
+      "identityConfidence": "Haute : site de l’exploitant, photos exactes, source communale, recherche PDE Park et Standalone sans doublon.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn Kaisersbach",
+        "Ski- & Rodelzentrum Kaisersbach"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-27T15:47:40.189Z",
+      "integrationHistory": [
+        {
+          "eventId": "photo-metadata-rodelzentrum-kaisersbach-20261127",
+          "appliedAt": "2026-11-27T15:47:40.189Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "83390ca7-a612-4a9f-bcf5-340c671d996c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-rodelzentrum-kaisersbach-20261127/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-rodelzentrum-kaisersbach-20261127/audit.json",
+          "summary": "Fiche autonome créée, huit langues, trois photos exactes, tarifs, horaires et Facebook publiés."
+        }
+      ],
+      "nextAction": "Fiche et Facebook publiés ; conserver la ligne et vérifier les tarifs, horaires saisonniers et état de la piste lors des prochaines intégrations datées.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/rodelzentrum-kaisersbach/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Rodelzentrum Kaisersbach — site, tarifs, horaires et photos",
+          "url": "https://www.rodelzentrum.de/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Commune de Kaisersbach — Ski- & Rodelzentrum",
+          "url": "https://www.kaisersbach.de/freizeit-tourismus/beliebteste-ausflugsziele/ski-rodelzentrum",
+          "accessedAt": "2026-11-27"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-27",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Kaisersbach",
+            "source": "Rodelzentrum Kaisersbach — exploitant",
+            "url": "https://www.rodelzentrum.de/",
+            "family": "Summer toboggan run (trough)",
+            "sourceVenueName": "Rodelzentrum Kaisersbach",
+            "sourceLifecycleSignal": "Tarifs et horaires officiels actifs au 27 novembre 2026 ; fermeture selon météo.",
+            "matchingMethod": "Site officiel, photos exactes et recherche PDE des deux types de fiches sans doublon."
+          }
+        ],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration photo-metadata-rodelzentrum-kaisersbach-20261127 ; conserver les références de découverte."
       }
     },
     {

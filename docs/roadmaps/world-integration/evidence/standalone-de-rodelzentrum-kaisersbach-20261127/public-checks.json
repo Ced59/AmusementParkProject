@@ -1,0 +1,61 @@
+{
+  "checkedAtUtc": "2026-11-27T15:49:34.313Z",
+  "checks": [
+    {
+      "lang": "fr",
+      "url": "https://amusement-parks.fun/fr/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "en",
+      "url": "https://amusement-parks.fun/en/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "de",
+      "url": "https://amusement-parks.fun/de/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "es",
+      "url": "https://amusement-parks.fun/es/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "it",
+      "url": "https://amusement-parks.fun/it/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "nl",
+      "url": "https://amusement-parks.fun/nl/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "pl",
+      "url": "https://amusement-parks.fun/pl/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    },
+    {
+      "lang": "pt",
+      "url": "https://amusement-parks.fun/pt/attraction/83390ca7-a612-4a9f-bcf5-340c671d996c/rodelzentrum-kaisersbach",
+      "status": 200,
+      "namePresent": true,
+      "ogImage": true
+    }
+  ]
+}
