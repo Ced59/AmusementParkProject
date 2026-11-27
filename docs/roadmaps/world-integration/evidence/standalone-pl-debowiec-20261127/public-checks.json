@@ -1,0 +1,63 @@
+{
+  "checkedAtUtc": "2026-11-27T17:04:20Z",
+  "languages": [
+    {
+      "language": "fr",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/fr/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+    },
+    {
+      "language": "en",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/en/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+    },
+    {
+      "language": "de",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/de/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+    },
+    {
+      "language": "es",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/es/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+    },
+    {
+      "language": "it",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/it/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+    },
+    {
+      "language": "nl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/nl/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+    },
+    {
+      "language": "pl",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/pl/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+    },
+    {
+      "language": "pt",
+      "httpStatus": 200,
+      "titleContainsName": true,
+      "ogImageIsExactPhoto": true,
+      "url": "https://amusement-parks.fun/pt/attraction/c210d410-ed07-434a-aa3e-fdc067a85b88/tor-saneczkowy-stok-debowca"
+    }
+  ],
+  "facebookStatus": "Published",
+  "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129072985424431"
+}
