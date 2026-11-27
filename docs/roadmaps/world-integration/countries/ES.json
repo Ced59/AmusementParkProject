@@ -8202,15 +8202,15 @@
     {
       "entryId": "ES-candidate-discovery-teleferico-madrid-20261127",
       "name": "Teleférico de Madrid",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Téléphérique panoramique",
       "locality": "Paseo Pintor Rosales, 28008 Madrid",
-      "siteId": null,
+      "siteId": "d9e69764-2e94-49c5-b064-5bd04ca75d59",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-11-27",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-27T14:01:42Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Fermé pour rénovation intégrale au 27 novembre 2026. La ville a commencé à retirer l'ancien câble en janvier 2026 ; l'annonce de réouverture au premier trimestre 2027 reste prévisionnelle.",
@@ -8222,9 +8222,60 @@
         "Madrid cable car"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher les alias dans Park et StandaloneAttraction via PDE, fiches masquées comprises. Si l'identité autonome est confirmée, intégrer le statut de fermeture temporaire et l'histoire de la ligne de 1969 ; ne publier ni horaires ni anciens tarifs comme actuels. Les photos libres montrent les anciennes cabines et doivent être présentées comme historiques. Revérifier la date de réouverture auprès d'EMT Madrid avant de l'afficher comme ferme, puis audit, publication et annonce Facebook.",
+      "lastDataIntegrationAt": "2026-11-27T13:59:44Z",
+      "integrationHistory": [
+        {
+          "eventId": "faec6f28-712a-49ea-8b8f-07ff443cc39f",
+          "appliedAt": "2026-11-27T13:54:43Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d9e69764-2e94-49c5-b064-5bd04ca75d59",
+          "evidence": "PARK_DATA_EDITOR:apply:faec6f28-712a-49ea-8b8f-07ff443cc39f",
+          "auditEvidence": null,
+          "summary": "Création privée du Teleférico de Madrid avec fermeture temporaire, station Rosales, ouverture de 1969 et huit descriptions."
+        },
+        {
+          "eventId": "madrid-two-historic-photos-20261127",
+          "appliedAt": "2026-11-27T13:55:41Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d9e69764-2e94-49c5-b064-5bd04ca75d59",
+          "evidence": "PARK_DATA_EDITOR:image:c980cf8d494c4dcd8531454a18ad0c64",
+          "auditEvidence": null,
+          "summary": "Deux photographies de l'ancienne installation importées en privé, clairement datées et créditées en huit langues."
+        },
+        {
+          "eventId": "97ef4dd6-d758-468c-a99b-1f0e3ab0fab6",
+          "appliedAt": "2026-11-27T13:56:45Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d9e69764-2e94-49c5-b064-5bd04ca75d59",
+          "evidence": "PARK_DATA_EDITOR:apply:97ef4dd6-d758-468c-a99b-1f0e3ab0fab6",
+          "auditEvidence": null,
+          "summary": "Descriptions éditoriales corrigées en huit langues ; longueur conservée dans le champ structuré."
+        },
+        {
+          "eventId": "b5396a53-3068-4117-b84e-8704c8823f17",
+          "appliedAt": "2026-11-27T13:57:45Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d9e69764-2e94-49c5-b064-5bd04ca75d59",
+          "evidence": "PARK_DATA_EDITOR:apply:b5396a53-3068-4117-b84e-8704c8823f17",
+          "auditEvidence": null,
+          "summary": "Frise historique en huit langues : inauguration 1969, fermeture 2022 et chantier 2026, avec sources municipales."
+        },
+        {
+          "eventId": "673a582c-5472-41c7-bb3b-93c37cf9803e",
+          "appliedAt": "2026-11-27T13:59:44Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d9e69764-2e94-49c5-b064-5bd04ca75d59",
+          "evidence": "PARK_DATA_EDITOR:apply:673a582c-5472-41c7-bb3b-93c37cf9803e",
+          "auditEvidence": "PARK_DATA_EDITOR:completeness:d9e69764-2e94-49c5-b064-5bd04ca75d59:2026-11-27",
+          "summary": "Audit public 93/100 sans bloqueur ; deux photos historiques publiées ; statut temporairement fermé confirmé dans huit langues."
+        }
+      ],
+      "nextAction": "Conserver la ligne intégrée ; suivre le chantier et la réouverture auprès d’EMT, puis remplacer les photos de l’ancienne ligne et renseigner tarifs et horaires après leur publication officielle.",
       "sources": [
         {
           "label": "Ayuntamiento de Madrid — retrait de l'ancien câble et projet de rénovation",
@@ -8255,6 +8306,26 @@
           "label": "Wikimedia Commons — ancienne ligne en 2016, Tim Adams, CC BY 3.0",
           "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_de_Madrid_20161106_1.jpg",
           "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "EMT Madrid — coordonnées de la station de Rosales",
+          "url": "https://teleferico.emtmadrid.es/Contenido/Como-llegar?lang=es-ES",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "EMT Madrid — date d’inauguration",
+          "url": "https://teleferico.emtmadrid.es/Descubre",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "EMT Madrid — interruption en 2022",
+          "url": "https://www.emtmadrid.es/Noticias/EMT-Madrid-pone-en-marcha-la-licitacion-para-la-re.aspx",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "EMT Madrid — rénovation en 2026",
+          "url": "https://www.emtmadrid.es/Noticias/Renovacion-integral-del-Teleferico-empieza-la-fas.aspx",
+          "accessedAt": "2026-11-27"
         }
       ],
       "discovery": {
@@ -8263,7 +8334,7 @@
         "foundAt": "2026-11-27"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-27",
         "attractions": [
           {
@@ -8276,7 +8347,15 @@
             "sourceLocality": "Madrid"
           }
         ],
-        "rationale": "Ligne touristique à deux gares entre Pintor Rosales et Casa de Campo, exploitée comme attraction propre et distincte des autres équipements du parc urbain. L'identité doit être confirmée via PDE."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 673a582c-5472-41c7-bb3b-93c37cf9803e ; conserver les références de découverte."
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-27T13:59:44.2768419Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/d9e69764-2e94-49c5-b064-5bd04ca75d59/teleferico-de-madrid",
+        "facebookPublishedAtUtc": "2026-11-27T14:00:32.3365969Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129054967424431",
+        "facebookStatus": "Published",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-es-teleferico-madrid-20261127/receipts.json"
       }
     }
   ]
