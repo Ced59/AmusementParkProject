@@ -1,0 +1,31 @@
+{
+  "asOfUtc": "2026-11-27T15:34:52.050Z",
+  "publicChecksAtUtc": "2026-11-27T15:34:08.911Z",
+  "siteId": "f231948b-7a09-4040-8ae9-c20e1fef3abf",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+  "status": "Operating",
+  "completenessScore": 91,
+  "dataQualityLevel": "Good",
+  "publicationBlockers": [],
+  "descriptionLanguages": 8,
+  "ownPhotoCount": 3,
+  "primaryPhotoId": "44729ec10d244731a0ed55af4de65650",
+  "historyEventCount": 1,
+  "currentAdmissionOffers": 1,
+  "weeklyHours": "Dimanche-mercredi 11:00-21:30 ; jeudi-samedi 11:00-22:00, source officielle vérifiée le 27 novembre 2026",
+  "publicLanguagesVerified": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt"
+  ],
+  "publicHttpStatus": 200,
+  "ogImageVerified": true,
+  "lastDataIntegrationAtUtc": "2026-11-27T15:32:17.933Z",
+  "lastDataIntegrationBasis": "ImportPhoto de la troisième photo exacte avec légendes et textes alternatifs dans huit langues ; publication du site et de Facebook horodatées séparément.",
+  "gap": "Coordonnées GPS précises de l’entrée non ajoutées ; adresse et étage officiels renseignés."
+}

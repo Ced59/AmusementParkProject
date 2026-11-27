@@ -1,0 +1,61 @@
+{
+  "checkedAtUtc": "2026-11-27T15:34:08.911Z",
+  "checks": [
+    {
+      "lang": "fr",
+      "status": 200,
+      "url": "https://amusement-parks.fun/fr/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/44729ec10d244731a0ed55af4de65650/social-preview-v2"
+    },
+    {
+      "lang": "en",
+      "status": 200,
+      "url": "https://amusement-parks.fun/en/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/44729ec10d244731a0ed55af4de65650/social-preview-v2"
+    },
+    {
+      "lang": "de",
+      "status": 200,
+      "url": "https://amusement-parks.fun/de/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/44729ec10d244731a0ed55af4de65650/social-preview-v2"
+    },
+    {
+      "lang": "es",
+      "status": 200,
+      "url": "https://amusement-parks.fun/es/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/44729ec10d244731a0ed55af4de65650/social-preview-v2"
+    },
+    {
+      "lang": "it",
+      "status": 200,
+      "url": "https://amusement-parks.fun/it/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/44729ec10d244731a0ed55af4de65650/social-preview-v2"
+    },
+    {
+      "lang": "nl",
+      "status": 200,
+      "url": "https://amusement-parks.fun/nl/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/44729ec10d244731a0ed55af4de65650/social-preview-v2"
+    },
+    {
+      "lang": "pl",
+      "status": 200,
+      "url": "https://amusement-parks.fun/pl/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/44729ec10d244731a0ed55af4de65650/social-preview-v2"
+    },
+    {
+      "lang": "pt",
+      "status": 200,
+      "url": "https://amusement-parks.fun/pt/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+      "nameVisible": true,
+      "ogImage": "https://amusement-parks.fun/api/images/binary/44729ec10d244731a0ed55af4de65650/social-preview-v2"
+    }
+  ]
+}

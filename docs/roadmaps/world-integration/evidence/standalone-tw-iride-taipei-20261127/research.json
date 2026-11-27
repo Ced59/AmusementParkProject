@@ -1,0 +1,27 @@
+{
+  "reviewedAt": "2026-11-27",
+  "classification": "Brogent décrit i-Ride TAIPEI comme un théâtre volant autonome implanté dans le centre commercial Breeze Nanshan ; billetterie propre, programme et horaires indépendants. Le centre commercial n’est pas un parc d’attractions.",
+  "presenceSearch": "PDE SearchParks et SearchStandaloneAttractions du 27 novembre 2026, sans filtre de visibilité, par i-Ride TAIPEI, i-Ride et Breeze Nanshan : aucune fiche correspondante à Taipei. La recherche générique i-Ride retournait neuf résultats étrangers sans rapport.",
+  "opening": "Communiqué du fabricant Brogent du 30 janvier 2019 annonçant l’ouverture d’i-Ride TAIPEI dans Breeze Nanshan.",
+  "prices": "La page officielle du 27 novembre 2026 indique un billet ordinaire de 680 TWD et des catégories réduites distinctes ; seul le prix ordinaire non ambigu est enregistré.",
+  "hours": "La page officielle indique dimanche-mercredi 11:00-21:30 et jeudi-samedi 11:00-22:00, avec ventes terminées plus tôt ; variations possibles lors des périodes spéciales.",
+  "photos": "Trois photographies exactes de la page officielle du théâtre de Taipei ont été inspectées : entrée avec enseigne i-Ride TAIPEI, couloir thématique et salle avec sièges suspendus. Les deux PNG ont été convertis en WebP pour respecter la limite de transfert, sans recadrage ; les URL sources originales et crédits sont conservés.",
+  "sources": [
+    {
+      "label": "i-Ride — lieu, horaires et consignes",
+      "url": "https://i-ride.com.tw/en/theater/2-i-ride-taipei"
+    },
+    {
+      "label": "i-Ride — billets et tarifs",
+      "url": "https://i-ride.com.tw/en/ticket/2-i-ride-taipei"
+    },
+    {
+      "label": "Brogent — communiqué d’ouverture du 30 janvier 2019",
+      "url": "https://www.brogent.com/EN/Brogent-opens-i-Ride-Taipei-at-Breeze-Nanshan-bv-705.html"
+    },
+    {
+      "label": "Brogent — fiche de projet",
+      "url": "https://www.brogent.com/en/i-Ride-TAIPEI-cv-7.html"
+    }
+  ]
+}

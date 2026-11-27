@@ -1,0 +1,150 @@
+{
+  "entryId": "TW-candidate-standalone-c86b2c13603ebd",
+  "standaloneAttractionId": "f231948b-7a09-4040-8ae9-c20e1fef3abf",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "e98987d0-4e4c-4a0a-9a03-25d68cdb3d38",
+      "appliedAtUtc": "2026-11-27T15:29:52.653343Z",
+      "isApplied": true
+    },
+    {
+      "stage": "history",
+      "operationId": "6576207e-80f1-44a3-9e30-aca6a37cd20e",
+      "appliedAtUtc": "2026-11-27T15:30:57.5332503Z",
+      "isApplied": true
+    },
+    {
+      "stage": "hours",
+      "operationId": "9f0f9c75-06b3-46d0-ba1a-05caf5834c47",
+      "appliedAtUtc": "2026-11-27T15:31:03.2309732Z",
+      "isApplied": true
+    },
+    {
+      "stage": "pricing",
+      "operationId": "638eebb5-741b-4c19-9476-1ae2efbe8c19",
+      "appliedAtUtc": "2026-11-27T15:31:08.9292274Z",
+      "isApplied": true
+    },
+    {
+      "stage": "publish",
+      "operationId": "39491afc-61c3-472c-9eb4-6e62f779a780",
+      "appliedAtUtc": "2026-11-27T15:33:52.3434778Z",
+      "isApplied": true
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "44729ec10d244731a0ed55af4de65650",
+      "sourceUrl": "https://i-ride.com.tw/assets/upload/images/2025/02/25/15e1013aa80a078e1ded50f8.jpg",
+      "importedAtUtc": "2026-11-27T15:31:56.357Z",
+      "publishedAtUtc": "2026-11-27T15:32:25.031Z",
+      "isCurrent": true,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "i-Ride TAIPEI / Brogent, operator venue page"
+    },
+    {
+      "imageId": "e3ad64a72057413fb668eb1826d351fe",
+      "sourceUrl": "https://i-ride.com.tw/assets/upload/images/2025/02/24/ea4d2c4bd4a46d0b3967f795.png",
+      "importedAtUtc": "2026-11-27T15:32:07.24Z",
+      "publishedAtUtc": "2026-11-27T15:32:30.683Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "i-Ride TAIPEI / Brogent, operator venue page"
+    },
+    {
+      "imageId": "4966946971a147d3a23f4b6378df5be6",
+      "sourceUrl": "https://i-ride.com.tw/assets/upload/images/2025/02/24/021c4689d5a1ffa8d475ef35.png",
+      "importedAtUtc": "2026-11-27T15:32:17.933Z",
+      "publishedAtUtc": "2026-11-27T15:32:36.259Z",
+      "isCurrent": false,
+      "altLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "fr",
+        "en",
+        "de",
+        "es",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "credit": "i-Ride TAIPEI / Brogent, operator venue page"
+    }
+  ],
+  "lastDataIntegrationAtUtc": "2026-11-27T15:32:17.933Z",
+  "lastDataIntegrationStage": "ImportPhoto 3",
+  "finalAudit": {
+    "auditedAtUtc": "2026-11-27T15:34:52.050Z",
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "photoCount": 3,
+    "descriptionLanguages": 8,
+    "publicLanguagesVerified": [
+      "fr",
+      "en",
+      "de",
+      "es",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "completenessEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-iride-taipei-20261127/final-completeness.json"
+  },
+  "publication": {
+    "siteVisibleAtUtc": "2026-11-27T15:33:52.3434778Z",
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/f231948b-7a09-4040-8ae9-c20e1fef3abf/i-ride-taipei",
+    "facebookStatus": "Published",
+    "facebookPublishedAtUtc": "2026-11-27T15:34:37.3469533Z",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122129066667424431"
+  }
+}
