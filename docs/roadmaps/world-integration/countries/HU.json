@@ -152,50 +152,70 @@
     },
     {
       "entryId": "HU-candidate-standalone-3e35e101085ac5",
-      "name": "Alpine Coaster Wiegand — Sasto",
+      "name": "Mátra Bob — Oxygen Adrenalin Park",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
-      "locality": null,
+      "locality": "Sástó, Gyöngyös, Heves, Hongrie",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant présente Mátra Bob, ouvert en octobre 2006, comme une activité de l’Oxygen Adrenalin Park.",
+      "identityConfidence": "Référence Wiegand « Sasto » rapprochée de la page Mátra Bob de l’exploitant et de la fiche Park masquée du site, ID 02c184d8-a54a-4354-a5ec-54822d1b8fb1.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Sasto"
+        "Sasto",
+        "Mátra Bob",
+        "Oxygen Adrenalin Park coaster"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer de standalone distinct. Lors de la reprise de la fiche Park Oxygen Adrenalin Park, intégrer Mátra Bob comme attraction du parc avec au moins une photo exacte et les données propres à l’activité. Conserver lastDataIntegrationAt nul tant qu’aucune donnée n’est importée.",
       "sources": [
         {
-          "label": "Wiegand — références constructeur",
+          "label": "Exploitant Oxygen Adrenalin Park — Mátra Bob, ouverture octobre 2006",
+          "url": "https://adrenalin-park.hu/en/bobsleight",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Oxygen Adrenalin Park — ensemble des activités",
+          "url": "https://adrenalin-park.hu/en/elements",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Oxygen Adrenalin Park — télésiège du parc",
+          "url": "https://adrenalin-park.hu/en/chairlift",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wiegand — référence Sasto",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1041",
-          "accessedAt": "2026-10-22"
+          "accessedAt": "2026-11-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-28",
         "attractions": [
           {
-            "name": "Sasto",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=305#location-id-1041",
+            "name": "Mátra Bob",
+            "source": "Oxygen Adrenalin Park — Mátra Bob",
+            "url": "https://adrenalin-park.hu/en/bobsleight",
             "family": "Alpine coaster",
-            "sourceVenueName": "Sasto",
-            "referenceId": "location-id-1041"
+            "sourceVenueName": "Oxygen Adrenalin Park",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Sástó, Gyöngyös, Hongrie",
+            "sourceOpenedYear": "2006",
+            "parentBacklogEntryId": "HU-park-02c184d8-a54a-4354-a5ec-54822d1b8fb1"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’exploitant présente la piste Mátra Bob dans le menu des activités d’Oxygen Adrenalin Park, avec d’autres activités comme le télésiège ; une fiche Park masquée existe déjà pour le même lieu."
       }
     },
     {
@@ -2847,18 +2867,18 @@
       "siteId": "02c184d8-a54a-4354-a5ec-54822d1b8fb1",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-11-28",
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "L’exploitant présente Mátra Bob et plusieurs autres activités dans Oxygen Adrenalin Park ; parc en exploitation.",
+      "identityConfidence": "Fiche Park masquée confirmée par recherche PDE sous Oxygen Adrenalin Park ; l’exploitant rattache la piste Mátra Bob au parc.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Compléter la fiche Park existante 02c184d8-a54a-4354-a5ec-54822d1b8fb1 en intégrant Mátra Bob comme attraction du parc (données, au moins une photo exacte, audit et publication). Ne pas migrer l’ensemble du parc en standalone ; conserver lastDataIntegrationAt nul jusqu’à un vrai import.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2874,26 +2894,42 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13217.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Oxygen Adrenalin Park — Mátra Bob, ouverture octobre 2006",
+          "url": "https://adrenalin-park.hu/en/bobsleight",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Oxygen Adrenalin Park — ensemble des activités",
+          "url": "https://adrenalin-park.hu/en/elements",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Oxygen Adrenalin Park — télésiège du parc",
+          "url": "https://adrenalin-park.hu/en/chairlift",
+          "accessedAt": "2026-11-28"
         }
       ],
       "countryCodeAtInventory": "HU",
       "countryResolution": null,
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-28",
         "attractions": [
           {
             "name": "Mátra Bob",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13217.htm",
-            "family": "Mountain coaster",
+            "source": "Oxygen Adrenalin Park — Mátra Bob",
+            "url": "https://adrenalin-park.hu/en/bobsleight",
+            "family": "Alpine coaster",
             "sourceVenueName": "Oxygen Adrenalin Park",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Gyöngyös , Heves",
-            "sourceOpenedYear": "2006"
+            "sourceLocality": "Sástó, Gyöngyös, Hongrie",
+            "sourceOpenedYear": "2006",
+            "parentBacklogEntryId": "HU-park-02c184d8-a54a-4354-a5ec-54822d1b8fb1"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Site de loisirs à plusieurs activités ; la piste de bob est une attraction du parc. La fiche Park existante doit être enrichie et non migrée en standalone."
       }
     },
     {
