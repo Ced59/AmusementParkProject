@@ -20018,6 +20018,154 @@
         "currentImageId": "08d5f54134ad4b7db62fb210157143a9",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-tower-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-harukas-300-20261128",
+      "name": "HARUKAS 300",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "1-1-43 Abenosuji, Abeno-ku, Osaka, Japon",
+      "siteId": "427abc92-2fe7-4c04-bb81-769189963cfa",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant affiche une ouverture ordinaire de 9 h à 22 h ; modifications possibles les jours d’événements.",
+      "identityConfidence": "Observatoire à entrée et billetterie distinctes au sommet d’Abeno Harukas ; recherches PDE Park et Standalone « Harukas » sans correspondance avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Harukas 300 Observatory",
+        "Abeno Harukas Observatory",
+        "ハルカス300"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T02:03:22.596Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-181c9e4b-bfa5-46d3-ae12-236716d3eb69",
+          "appliedAt": "2026-11-28T02:00:36.694Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "427abc92-2fe7-4c04-bb81-769189963cfa",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-harukas-300-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : identité, emplacement, ouverture et huit descriptions."
+        },
+        {
+          "eventId": "image-752ee688f1eb438a9951f6186b7e8723",
+          "appliedAt": "2026-11-28T02:01:43Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "427abc92-2fe7-4c04-bb81-769189963cfa",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-harukas-300-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Galerie panoramique exacte, Nesnad, CC BY-SA 4.0, image courante."
+        },
+        {
+          "eventId": "image-fffa8dc354b64c27b175f352a4f900c0",
+          "appliedAt": "2026-11-28T02:02:04Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "427abc92-2fe7-4c04-bb81-769189963cfa",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-harukas-300-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Jardin ouvert exact en 2018, Project Kei, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-5f148b978e3b428bbf66e077d3b386d5",
+          "appliedAt": "2026-11-28T02:02:20Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "427abc92-2fe7-4c04-bb81-769189963cfa",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-harukas-300-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Galerie vitrée exacte en 2014, Facial expression, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-b70efa0b-f39d-40b6-bd55-cb4515d9c994",
+          "appliedAt": "2026-11-28T02:03:22.596Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "427abc92-2fe7-4c04-bb81-769189963cfa",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-harukas-300-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-harukas-300-20261128/audit.json",
+          "summary": "Tarifs officiels courants, condition d’accès et ouverture du 7 mars 2014 sourcée."
+        }
+      ],
+      "nextAction": "Conserver les cinq reçus de données et les preuves de publication. Vérifier en priorité les tarifs : la page officielle « Operation information » affiche encore une ancienne grille, la page « Tickets » affiche les montants saisis. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "HARUKAS 300 — billets officiels",
+          "url": "https://www.abenoharukas-300.jp/en/observatory/ticket.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "HARUKAS 300 — horaires officiels",
+          "url": "https://www.abenoharukas-300.jp/en/observatory/information.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "HARUKAS 300 — accès",
+          "url": "https://www.abenoharukas-300.jp/en/observatory/access.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Kintetsu Group — ouverture en 2014",
+          "url": "https://www.kintetsu-g-hd.co.jp/corporate/history.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — galerie, Nesnad, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Abeno_Harkus-_2024_Jan_1_various.jpeg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — jardin, Project Kei, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Abeno_Harukas_SKY_GARDEN_300.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur, Facial expression, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:The_interior_of_Abeno_Harukas_on_the_60th_floor.JPG",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Observatoire avec propre guichet et billet au sein d’un immeuble commercial ; le complexe n’est pas un parc de loisirs parent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/427abc92-2fe7-4c04-bb81-769189963cfa/harukas-300",
+          "publishedAtUtc": "2026-11-28T02:04:06.137Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ef0a26b0-779e-481f-bf1c-680a86674dab"
+        },
+        "facebook": {
+          "id": "e49019bfb5be4157814b31b65583bdef",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T02:04:49.3663805Z",
+          "externalPostId": "1285475681307050_122129118801424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129118801424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:e49019bfb5be4157814b31b65583bdef"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "752ee688f1eb438a9951f6186b7e8723",
+          "fffa8dc354b64c27b175f352a4f900c0",
+          "5f148b978e3b428bbf66e077d3b386d5"
+        ],
+        "currentImageId": "752ee688f1eb438a9951f6186b7e8723",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-harukas-300-20261128/audit.json"
+      }
     }
   ]
 }
