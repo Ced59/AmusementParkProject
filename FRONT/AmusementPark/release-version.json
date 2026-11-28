@@ -5,14 +5,14 @@
       "version": "6.0.44",
       "releasedAt": "2026-11-28",
       "labels": {
-        "fr": "Reprise des annonces Facebook améliorée",
-        "en": "Improved Facebook announcement retries",
-        "de": "Facebook-Ankündigungen zuverlässiger fortsetzen",
-        "nl": "Facebook-aankondigingen betrouwbaarder hervatten",
-        "it": "Ripresa degli annunci Facebook migliorata",
-        "es": "Mejoras al reintentar anuncios de Facebook",
-        "pl": "Sprawniejsze ponawianie ogłoszeń na Facebooku",
-        "pt": "Repetição de anúncios no Facebook melhorada"
+        "fr": "Améliorations de l’administration",
+        "en": "Administration improvements",
+        "de": "Verbesserungen der Verwaltung",
+        "nl": "Verbeteringen in het beheer",
+        "it": "Miglioramenti dell’amministrazione",
+        "es": "Mejoras de administración",
+        "pl": "Usprawnienia administracji",
+        "pt": "Melhorias na administração"
       }
     },
     {
