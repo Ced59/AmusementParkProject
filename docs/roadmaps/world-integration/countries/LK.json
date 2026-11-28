@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 14,
+  "sourceObservationCount": 15,
   "sourceFamilies": [
     "RCDB",
     "Wikipédia (découverte)"
@@ -457,6 +457,130 @@
           }
         ]
       }
+    },
+    {
+      "entryId": "LK-candidate-discovery-lotus-tower-observation-deck-20261128",
+      "name": "Colombo Lotus Tower Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "320 D. R. Wijewardena Mawatha, Colombo 10, Sri Lanka",
+      "siteId": "c430bddf-dbaf-44c1-aadb-93b2fea287c4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant propose actuellement la réservation datée du belvédère, avec tarifs locaux et étrangers, ainsi que ses horaires d’exploitation.",
+      "identityConfidence": "Absente du registre LK et des recherches PDE Park/Standalone sous Lotus Tower et Nelum Kuluna ; belvédère à billet propre, distinct des autres expériences de la tour.",
+      "possibleMatches": [],
+      "aliases": [
+        "Lotus Tower",
+        "Nelum Kuluna",
+        "Colombo Lotus Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T14:10:00.792Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-e810f7f6-b68f-4684-aaec-b16ec7c13ad5",
+          "appliedAt": "2026-11-28T14:08:59.365Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c430bddf-dbaf-44c1-aadb-93b2fea287c4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lk-lotus-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, accès, tarif étrangers et horaires officiels."
+        },
+        {
+          "eventId": "image-6119bac53f064d458b3c154b1952a32d",
+          "appliedAt": "2026-11-28T14:09:48.511Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c430bddf-dbaf-44c1-aadb-93b2fea287c4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lk-lotus-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la tour importée avec auteur, licence, texte alternatif, légende et crédit en huit langues."
+        },
+        {
+          "eventId": "image-9861e1034ffb475fbdd1e28d3ebdaa84",
+          "appliedAt": "2026-11-28T14:10:00.792Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c430bddf-dbaf-44c1-aadb-93b2fea287c4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-lk-lotus-tower-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-lk-lotus-tower-20261128/audit.json",
+          "summary": "Photo exacte du belvédère importée avec auteur, licence, texte alternatif, légende et crédit en huit langues."
+        }
+      ],
+      "nextAction": "Contrôler périodiquement les horaires et les tarifs dans la billetterie officielle. Le prix local exige une pièce d’identité sri-lankaise ; confirmer le créneau du jour. Conserver cette ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant — billetterie internationale et âge gratuit",
+          "url": "https://tickets.colombolotustower.lk/foreign-visitors/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — billetterie sri-lankaise",
+          "url": "https://tickets.colombolotustower.lk/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — horaires et adresse",
+          "url": "https://colombolotustower.lk/ticketprices/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — informations de visite",
+          "url": "https://colombolotustower.lk/tickets/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "National Building Research Organisation — position de la tour",
+          "url": "https://nbri.gov.lk/images/content_image/publications/newsletter/2nd-newsletter-2019.pdf",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tower, Mike Krüger, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Lotus_Tower_20260216_213906_1.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — deck, Saaremees, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Observation_Deck_Lotus_Tower-Colombo_Srilanka-Andres_Larin.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-28-global-standalone-discovery",
+        "method": "Recherche mondiale hors inventaire : billetterie officielle active, absence de doublon PDE et deux photos exactes sous licence CC BY-SA 4.0.",
+        "foundAt": "2026-11-28"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Belvédère touristique accessible avec billet propre dans la Lotus Tower ; Pixel Bloom, restauration et autres espaces constituent des offres distinctes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/c430bddf-dbaf-44c1-aadb-93b2fea287c4/colombo-lotus-tower-observation-deck",
+          "publishedAtUtc": "2026-11-28T14:11:12.063Z",
+          "evidence": "PARK_DATA_EDITOR:apply:603a8b03-5731-4524-b98b-6d1aa7e919a4"
+        },
+        "facebook": {
+          "id": "d5cbcb7ca93349d8b882dd6a9e465e5d",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T14:12:04.6643455Z",
+          "externalPostId": "1285475681307050_122129189817424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129189817424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:d5cbcb7ca93349d8b882dd6a9e465e5d"
+        }
+      },
+      "countryCodeAtInventory": "LK",
+      "countryResolution": null
     }
   ]
 }
