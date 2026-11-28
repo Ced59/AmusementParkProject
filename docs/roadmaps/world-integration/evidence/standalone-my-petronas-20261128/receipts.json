@@ -1,0 +1,43 @@
+{
+  "entityId": "eee71b6b-44ce-4b26-a811-206cc2fc59d9",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "27696e87-479e-4d63-8227-cb94b8c55b5d",
+      "appliedAtUtc": "2026-11-28T03:17:39.916Z",
+      "summary": "Création masquée : huit descriptions, accès, huit tarifs, horaires et histoire officiels."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "bfb3a47f7c744ba6b931e05c8b20616f",
+      "appliedAtUtc": "2026-11-28T03:18:41.094Z",
+      "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "f55c3d250f0344549d80a05316e75a19",
+      "appliedAtUtc": "2026-11-28T03:18:53.942Z",
+      "summary": "Photo exacte bridge importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "d0c44fed7fa24856a4912c03b213785b",
+      "appliedAtUtc": "2026-11-28T03:19:07.189Z",
+      "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "4dadf417-5209-42bd-8708-53a71fbedfbf",
+    "appliedAtUtc": "2026-11-28T03:19:42.227284Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "1e0b6e3a8fee4d11a0428dae669a9723",
+    "externalPostId": "1285475681307050_122129124609424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129124609424431",
+    "publishedAtUtc": "2026-11-28T03:20:27.2382224Z",
+    "furtherRetriesProhibited": true
+  }
+}
