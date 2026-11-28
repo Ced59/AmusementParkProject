@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 513,
+  "sourceObservationCount": 514,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "JAZA",
@@ -21773,6 +21773,135 @@
           "externalPostId": "1285475681307050_122129141721424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129141721424431",
           "evidence": "PARK_DATA_EDITOR:facebook:146fdf92239244e9898c6ec89d2d6730"
+        }
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-mojiko-retro-observation-room-20261128",
+      "name": "Mojikō Retro Observation Room",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "1-32 Higashiminatomachi, Moji-ku, Kitakyushu 801-0853, Japon",
+      "siteId": "b636d6a4-8f74-47f6-886f-16c7b3ff28a4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant publie les horaires quotidiens, la dernière entrée, les tarifs 2026 et la fermeture de maintenance du 19 janvier 2027.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Mojiko et 門司港 sans résultat ; salle panoramique à entrée propre au sommet d’un immeuble, indépendante des autres installations du quartier.",
+      "possibleMatches": [],
+      "aliases": [
+        "Mojiko Retro Observation Room",
+        "門司港レトロ展望室",
+        "Mojikō Retro High Mart Observation Room"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T13:33:12.812Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c6abe458-1034-483b-be11-4c606909acd0",
+          "appliedAt": "2026-11-28T13:31:35.290Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b636d6a4-8f74-47f6-886f-16c7b3ff28a4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mojiko-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions rédigées, tarifs et horaires officiels."
+        },
+        {
+          "eventId": "image-bbb86b745bad4953afe2907603c7188f",
+          "appliedAt": "2026-11-28T13:32:45.052Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b636d6a4-8f74-47f6-886f-16c7b3ff28a4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mojiko-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photographie exacte day importée avec licence, auteur, texte alternatif, légende et crédit en huit langues."
+        },
+        {
+          "eventId": "image-87faaca9e41144d78390ef7dbdd925c7",
+          "appliedAt": "2026-11-28T13:32:58.198Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b636d6a4-8f74-47f6-886f-16c7b3ff28a4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mojiko-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photographie exacte night importée avec licence, auteur, texte alternatif, légende et crédit en huit langues."
+        },
+        {
+          "eventId": "image-fc445ebed2d54a13bac2aac5a176f7a9",
+          "appliedAt": "2026-11-28T13:33:12.812Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b636d6a4-8f74-47f6-886f-16c7b3ff28a4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mojiko-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mojiko-20261128/audit.json",
+          "summary": "Photographie exacte east importée avec licence, auteur, texte alternatif, légende et crédit en huit langues."
+        }
+      ],
+      "nextAction": "Revérifier les quatre fermetures annuelles annoncées et les tarifs avant toute mise à jour ; conserver cette ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Mojikō Retro — identité, tarifs, horaires, fermeture 2027",
+          "url": "https://mojiko-retoro9.jp/spot/mojiko_retro_observation_room/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Tourisme de Kitakyushu — description, adresse et panorama",
+          "url": "https://kitakyushucity.guide/en/spots/detail/aa241601-5904-4e1f-bc94-82d2a9c916f0",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Tourisme Mojikō Retro — construction 1999 et paysage",
+          "url": "https://mojiko-retroinfo.com/spot/mojiko_retro_observation_room/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikidata Q11654980 — coordonnées de Retro High Mart",
+          "url": "https://www.wikidata.org/wiki/Q11654980",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — day, Soramimi, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Mojiko_Retro_Highmart%2C_Former_Moji_Customs_and_Kammonkyo_Bridge.JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — night, Soramimi, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Mojiko_Retro_Highmart_at_night.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — east, Soramimi, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Mojiko_Retro_Highmart_from_east_side.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Salle panoramique payante, billetterie et horaires propres au 31e étage de Retro High Mart ; le quartier Mojikō Retro n’est pas un parc parent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b636d6a4-8f74-47f6-886f-16c7b3ff28a4/mojiko-retro-observation-room",
+          "publishedAtUtc": "2026-11-28T13:34:28.511Z",
+          "evidence": "PARK_DATA_EDITOR:apply:5c3d1829-11fe-4199-ba58-8848539d6078"
+        },
+        "facebook": {
+          "id": "da629ab867c04e2c85b386eb7e5a1751",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T13:37:51.1448358Z",
+          "externalPostId": "1285475681307050_122129186523424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129186523424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:da629ab867c04e2c85b386eb7e5a1751"
         }
       }
     }

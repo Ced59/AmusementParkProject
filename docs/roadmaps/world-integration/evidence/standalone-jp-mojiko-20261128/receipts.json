@@ -1,0 +1,44 @@
+{
+  "entityId": "b636d6a4-8f74-47f6-886f-16c7b3ff28a4",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "c6abe458-1034-483b-be11-4c606909acd0",
+      "appliedAtUtc": "2026-11-28T13:31:35.290Z",
+      "summary": "Création masquée, huit langues, tarifs et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "bbb86b745bad4953afe2907603c7188f",
+      "appliedAtUtc": "2026-11-28T13:32:45.052Z",
+      "summary": "Photo exacte day avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "87faaca9e41144d78390ef7dbdd925c7",
+      "appliedAtUtc": "2026-11-28T13:32:58.198Z",
+      "summary": "Photo exacte night avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "fc445ebed2d54a13bac2aac5a176f7a9",
+      "appliedAtUtc": "2026-11-28T13:33:12.812Z",
+      "summary": "Photo exacte east avec licence et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "5c3d1829-11fe-4199-ba58-8848539d6078",
+    "appliedAtUtc": "2026-11-28T13:34:28.511Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "da629ab867c04e2c85b386eb7e5a1751",
+    "externalPostId": "1285475681307050_122129186523424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129186523424431",
+    "publishedAtUtc": "2026-11-28T13:37:51.1448358Z",
+    "originalFailureCode": "preview-page-not-ready",
+    "recovery": "RetryOwnFacebookPublication on same publication ID after SEO ready",
+    "furtherRetriesProhibited": true
+  }
+}

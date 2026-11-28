@@ -1,0 +1,29 @@
+{
+  "completenessScore": 94,
+  "dataQualityLevel": "Good",
+  "applicableMaxPoints": 68,
+  "earnedPoints": 64,
+  "publicationBlockers": [],
+  "formulaicPublicTextIssue": null,
+  "manualVerification": {
+    "descriptionsLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "publishedExactPhotoCount": 3,
+    "photoAttribution": "Soramimi, Wikimedia Commons, CC BY-SA 4.0",
+    "publicAttractionApiStatus": 200,
+    "publicImageApiStatus": 200,
+    "publicImageCount": 3,
+    "officialNextClosure": "2027-01-19",
+    "gap": "Older Fukuoka prefectural tourism page still shows superseded 300/150 JPY tariffs; operator page used for current 600/300 JPY. Later irregular closures not yet announced.",
+    "facebookStatus": "Published after SSR preview recovered",
+    "seoReadyAtRetry": true
+  }
+}
