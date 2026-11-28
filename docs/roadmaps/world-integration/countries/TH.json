@@ -4674,6 +4674,145 @@
         "score": 91,
         "publicationBlockers": []
       }
+    },
+    {
+      "entryId": "TH-candidate-discovery-baiyoke-sky-observation-deck-20261128",
+      "name": "Baiyoke Sky Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "222 Soi Ratchaprarop 3, Ratchathewi, Bangkok, Thaïlande",
+      "siteId": "8d6727aa-b152-482a-bc2d-78ed98bc3590",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Le site officiel de l’hôtel propose l’admission au belvédère 10 h–22 h et une offre à 450 THB avec une boisson ; jours fériés et événements spéciaux peuvent modifier l’accès.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Baiyoke Sky et Baiyoke Tower sans résultat ; entrée propre à l’observatoire sans nuitée.",
+      "possibleMatches": [],
+      "aliases": [
+        "Baiyoke Sky Hotel Observation Deck",
+        "Baiyoke Tower II Observation Deck",
+        "Baiyoke Sky Revolving Viewpoint"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T04:56:03.198Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2cf91a6c-d0b3-4ed2-bf8d-401164d75069",
+          "appliedAt": "2026-11-28T04:50:15.232Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8d6727aa-b152-482a-bc2d-78ed98bc3590",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-th-baiyoke-sky-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, tarif publié par l’hôtel, horaires et accès au belvédère."
+        },
+        {
+          "eventId": "image-19283462f86a411f8845f1e9b078e1ab",
+          "appliedAt": "2026-11-28T04:52:02.282Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8d6727aa-b152-482a-bc2d-78ed98bc3590",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-th-baiyoke-sky-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower2 importée avec crédit, licence et métadonnées multilingues."
+        },
+        {
+          "eventId": "image-845c103d7a3b4974b18042f50f0012f5",
+          "appliedAt": "2026-11-28T04:52:17.409Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8d6727aa-b152-482a-bc2d-78ed98bc3590",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-th-baiyoke-sky-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view importée avec crédit, licence et métadonnées multilingues."
+        },
+        {
+          "eventId": "image-6a6ec9c43adf4bf2b7f179087212fbfa",
+          "appliedAt": "2026-11-28T04:52:50.874Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8d6727aa-b152-482a-bc2d-78ed98bc3590",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-th-baiyoke-sky-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte deck importée avec crédit, licence et métadonnées multilingues."
+        },
+        {
+          "eventId": "image-6a6ec9c43adf4bf2b7f179087212fbfa-caption-fix",
+          "appliedAt": "2026-11-28T04:54:26.955Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8d6727aa-b152-482a-bc2d-78ed98bc3590",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-th-baiyoke-sky-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Réécriture de la légende et du texte alternatif de la vue panoramique pour lever le bloqueur de répétition éditoriale."
+        },
+        {
+          "eventId": "image-7a83e84cb76645ecae9b62a571f766f9-hide-duplicate",
+          "appliedAt": "2026-11-28T04:56:03.198Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8d6727aa-b152-482a-bc2d-78ed98bc3590",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-th-baiyoke-sky-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-th-baiyoke-sky-20261128/audit.json",
+          "summary": "Masquage d’une copie en doublon de la vue panoramique ; trois photos distinctes restent visibles."
+        }
+      ],
+      "nextAction": "Vérifier périodiquement le prix et les horaires sur le site officiel ; confirmer séparément si le point de vue tournant au 84e étage est inclus dans l’offre à 450 THB. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Baiyoke Sky Hotel — belvédère du 77e étage, point de vue tournant du 84e, tarif annoncé et horaires",
+          "url": "https://baiyokesky.baiyokehotel.com/things-to-do-in-bangkok-sightseeing-thailand.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — point de vue de la tour Baiyoke et coordonnées",
+          "url": "https://www.openstreetmap.org/node/8797708205",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour, DvTor8303, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Baiyoke_Tower_2_20261104_(1).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — point de vue tournant, Aungmyomyint113, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:A_View_from_Baiyoke_Sky_Hotel_-_Revolving_ViewPoint_(309_meters,_Level_84).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — panorama, Thomasione, domaine public",
+          "url": "https://commons.wikimedia.org/wiki/File:Baiyoke_observation_deck_view.JPG",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "TH",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Billet autonome au belvédère du Baiyoke Sky Hotel, accessible sans nuitée ; aucune fiche de parc parent pertinente."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/8d6727aa-b152-482a-bc2d-78ed98bc3590/baiyoke-sky-observation-deck",
+          "publishedAtUtc": "2026-11-28T04:54:45.831Z",
+          "evidence": "PARK_DATA_EDITOR:apply:90e4aa41-be4f-4740-9d45-1d1e3e775f29"
+        },
+        "facebook": {
+          "id": "4fc56f8f973d4eeb8bc3250eef33c6ea",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T04:55:27.9421989Z",
+          "externalPostId": "1285475681307050_122129133201424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129133201424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:4fc56f8f973d4eeb8bc3250eef33c6ea"
+        }
+      }
     }
   ]
 }
