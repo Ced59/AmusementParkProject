@@ -1,0 +1,49 @@
+{
+  "entityId": "570e68ea-6d1f-4c78-8b2a-96a40c955d2a",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "f5946361-5664-4554-b6cc-4f836541101c",
+      "appliedAtUtc": "2026-11-28T05:54:04.091Z",
+      "summary": "Création masquée, huit langues, tarifs actuels et futurs, horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "651ddc6889f64a909cfb44ef582cc4c5",
+      "appliedAtUtc": "2026-11-28T05:55:02.165Z",
+      "summary": "Photo tower avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "ac26712897a34e3dacb509d8344af140",
+      "appliedAtUtc": "2026-11-28T05:55:10.012Z",
+      "summary": "Photo summer avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "aa4d26792fef4c32836124704675f706",
+      "appliedAtUtc": "2026-11-28T05:55:17.396Z",
+      "summary": "Photo snow avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "3f481e8df4a347b4b0be143bc878087d",
+      "appliedAtUtc": "2026-11-28T05:55:24.560Z",
+      "summary": "Photo viewf avec crédit et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "ad43861d-4245-4b02-b149-bb01b8f50d9b",
+    "appliedAtUtc": "2026-11-28T05:55:50.200Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "8776ce4364474a5ab8fd87fbe10b5b0c",
+    "externalPostId": "1285475681307050_122129138487424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129138487424431",
+    "publishedAtUtc": "2026-11-28T05:56:19.3463339Z",
+    "furtherRetriesProhibited": true
+  }
+}

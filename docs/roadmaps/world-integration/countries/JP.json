@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 509,
+  "sourceObservationCount": 510,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "JAZA",
@@ -21212,6 +21212,145 @@
           "externalPostId": "1285475681307050_122129137635424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129137635424431",
           "evidence": "PARK_DATA_EDITOR:facebook:a18b447b130b4fd5abd1613d286e2651"
+        }
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-goryokaku-tower-20261128",
+      "name": "Goryōkaku Tower Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "43-9 Goryokaku-cho, Hakodate, Hokkaido 040-0001, Japon",
+      "siteId": "570e68ea-6d1f-4c78-8b2a-96a40c955d2a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Exploitant : observatoire ouvert toute l’année de 9 h à 18 h, tarifs actuels et hausse tarifaire officiellement annoncée pour le 1er avril 2027.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Goryokaku sans résultat ; aucune ligne homonyme dans le backlog JP.",
+      "possibleMatches": [],
+      "aliases": [
+        "Goryokaku Tower",
+        "五稜郭タワー",
+        "Goryōkaku Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T05:55:24.560Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f5946361-5664-4554-b6cc-4f836541101c",
+          "appliedAt": "2026-11-28T05:54:04.091Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "570e68ea-6d1f-4c78-8b2a-96a40c955d2a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-goryokaku-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, tarifs actuels et futurs datés, horaires et accès officiels."
+        },
+        {
+          "eventId": "image-651ddc6889f64a909cfb44ef582cc4c5",
+          "appliedAt": "2026-11-28T05:55:02.165Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "570e68ea-6d1f-4c78-8b2a-96a40c955d2a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-goryokaku-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-ac26712897a34e3dacb509d8344af140",
+          "appliedAt": "2026-11-28T05:55:10.012Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "570e68ea-6d1f-4c78-8b2a-96a40c955d2a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-goryokaku-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte summer importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-aa4d26792fef4c32836124704675f706",
+          "appliedAt": "2026-11-28T05:55:17.396Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "570e68ea-6d1f-4c78-8b2a-96a40c955d2a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-goryokaku-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte snow importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-3f481e8df4a347b4b0be143bc878087d",
+          "appliedAt": "2026-11-28T05:55:24.560Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "570e68ea-6d1f-4c78-8b2a-96a40c955d2a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-goryokaku-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-goryokaku-20261128/audit.json",
+          "summary": "Photo exacte viewf importée avec licence, crédit, légende et texte alternatif en huit langues."
+        }
+      ],
+      "nextAction": "Avant le 1er avril 2027, revalider la prise d’effet des nouveaux tarifs déjà datés dans la fiche (1 500/1 130/750 ¥) et les éventuelles modifications d’horaires. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Goryokaku Tower — tarifs actuels, horaires, accès",
+          "url": "https://www.goryokaku-tower.co.jp/en/price/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant Goryokaku Tower — tarifs datés dès le 1er avril 2027",
+          "url": "https://www.goryokaku-tower.co.jp/en/eventtopics/20261011-12363/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant Goryokaku Tower — adresse",
+          "url": "https://www.goryokaku-tower.co.jp/en/access/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour, Benlisquare, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Goryōkaku_Tower_in_Summer_2025.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — fort en été, 姒姓賢寧, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Hakodate_Goryokaku_in_August_2025.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — fort enneigé, 掬茶, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Goryokaku_Tower_in_snow_20231224.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — panorama hivernal, 掬茶, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Goryokaku_Tower_20231224f.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Tour d’observation avec billet propre et niveaux panoramiques distincts du fort historique voisin."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/570e68ea-6d1f-4c78-8b2a-96a40c955d2a/goryokaku-tower-observation-deck",
+          "publishedAtUtc": "2026-11-28T05:55:50.200Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ad43861d-4245-4b02-b149-bb01b8f50d9b"
+        },
+        "facebook": {
+          "id": "8776ce4364474a5ab8fd87fbe10b5b0c",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T05:56:19.3463339Z",
+          "externalPostId": "1285475681307050_122129138487424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129138487424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:8776ce4364474a5ab8fd87fbe10b5b0c"
         }
       }
     }
