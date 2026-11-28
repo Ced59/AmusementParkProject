@@ -1,0 +1,43 @@
+{
+  "entityId": "865e7550-e47b-411e-b96f-182256cbdd6f",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "b361cc44-dde7-44ff-af68-7a6d2369e376",
+      "appliedAtUtc": "2026-11-28T06:54:21.969Z",
+      "summary": "Création masquée, huit langues, prix et horaires saisonniers"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "be896cec72da4bdfb9137300c623e211",
+      "appliedAtUtc": "2026-11-28T06:54:52.659Z",
+      "summary": "Photo tower avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "b6281b2c9fc64df1b0a292f84384eb87",
+      "appliedAtUtc": "2026-11-28T06:55:00.741Z",
+      "summary": "Photo platform avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "38d49716d2ee4973bbe0c8cccf994af1",
+      "appliedAtUtc": "2026-11-28T06:55:09.497Z",
+      "summary": "Photo lake avec licence et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "669f7fd9-3710-49b7-823e-6a4342dbb03d",
+    "appliedAtUtc": "2026-11-28T06:55:56.716Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "90a4d078cba24800b5685e8ac8b75ca3",
+    "externalPostId": "1285475681307050_122129146377424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129146377424431",
+    "publishedAtUtc": "2026-11-28T06:56:40.6331172Z",
+    "furtherRetriesProhibited": true
+  }
+}
