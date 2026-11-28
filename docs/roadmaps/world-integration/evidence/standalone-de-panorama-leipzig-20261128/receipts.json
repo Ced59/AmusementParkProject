@@ -1,0 +1,49 @@
+{
+  "entityId": "0a9a23ed-7450-43f8-860f-ffb97981eb36",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "865f3968-ad62-4220-883d-d454f1b099d5",
+      "appliedAtUtc": "2026-11-28T05:32:40.941Z",
+      "summary": "Création masquée, huit langues, tarifs et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "c26a65bb8fc8400eaf30dad935e6e628",
+      "appliedAtUtc": "2026-11-28T05:33:37.845Z",
+      "summary": "Photo building avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "174792f061bf40de957a486b3ca3a6ff",
+      "appliedAtUtc": "2026-11-28T05:33:45.357Z",
+      "summary": "Photo view1 avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "afe8a03ce3c6464fa518b144c811208b",
+      "appliedAtUtc": "2026-11-28T05:33:53.065Z",
+      "summary": "Photo view2 avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "b79b84580c534df789235ca640eda159",
+      "appliedAtUtc": "2026-11-28T05:34:00.634Z",
+      "summary": "Photo view3 avec crédit et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "506da6c4-c078-417a-86ac-52d9ce9f3a07",
+    "appliedAtUtc": "2026-11-28T05:34:26.962Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "b724bfb4ea754950844cc834096a5716",
+    "externalPostId": "1285475681307050_122129136405424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129136405424431",
+    "publishedAtUtc": "2026-11-28T05:34:54.6588678Z",
+    "furtherRetriesProhibited": true
+  }
+}

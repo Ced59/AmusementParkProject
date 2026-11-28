@@ -6,7 +6,7 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 1057,
+  "sourceObservationCount": 1058,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "AmusementForce",
@@ -36388,6 +36388,140 @@
           "externalPostId": "1285475681307050_122129133627424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129133627424431",
           "evidence": "PARK_DATA_EDITOR:facebook:c7bc19ece3a341cda582ca58dfe131ad"
+        }
+      }
+    },
+    {
+      "entryId": "DE-candidate-discovery-panorama-tower-leipzig-20261128",
+      "name": "Panorama Tower Leipzig Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "Augustusplatz 9, 04109 Leipzig, Allemagne",
+      "siteId": "0a9a23ed-7450-43f8-860f-ffb97981eb36",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Exploitant : plateforme du 31e étage ouverte chaque jour à partir de 9 h, jusqu’à trente minutes avant fermeture du restaurant ; tarif 5 €.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Panorama Tower Leipzig, City-Hochhaus Leipzig, City Hochhaus et Plate of Art sans résultat ; pas de ligne homonyme dans le backlog DE.",
+      "possibleMatches": [],
+      "aliases": [
+        "City-Hochhaus Leipzig Aussichtsplattform",
+        "Panorama Tower Leipzig",
+        "City-Hochhaus Leipzig viewing platform"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T05:34:00.634Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-865f3968-ad62-4220-883d-d454f1b099d5",
+          "appliedAt": "2026-11-28T05:32:40.941Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0a9a23ed-7450-43f8-860f-ffb97981eb36",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-panorama-leipzig-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, tarif officiel, conditions d’accès et horaires hebdomadaires documentés."
+        },
+        {
+          "eventId": "image-c26a65bb8fc8400eaf30dad935e6e628",
+          "appliedAt": "2026-11-28T05:33:37.845Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0a9a23ed-7450-43f8-860f-ffb97981eb36",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-panorama-leipzig-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte building importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-174792f061bf40de957a486b3ca3a6ff",
+          "appliedAt": "2026-11-28T05:33:45.357Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0a9a23ed-7450-43f8-860f-ffb97981eb36",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-panorama-leipzig-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view1 importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-afe8a03ce3c6464fa518b144c811208b",
+          "appliedAt": "2026-11-28T05:33:53.065Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0a9a23ed-7450-43f8-860f-ffb97981eb36",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-panorama-leipzig-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view2 importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-b79b84580c534df789235ca640eda159",
+          "appliedAt": "2026-11-28T05:34:00.634Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0a9a23ed-7450-43f8-860f-ffb97981eb36",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-panorama-leipzig-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-panorama-leipzig-20261128/audit.json",
+          "summary": "Photo exacte view3 importée avec licence, crédit, légende et texte alternatif en huit langues."
+        }
+      ],
+      "nextAction": "Recontrôler les horaires du restaurant, les éventuelles fermetures privées et le tarif avant une prochaine mise à jour ; ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Panorama Tower — plateforme du 31e étage, tarif et horaires",
+          "url": "https://panorama-leipzig.de/location/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Leipzig Tourismus — adresse, gratuité enfants et horaires du restaurant",
+          "url": "https://www.leipzig.travel/poi/city-hochhaus-mit-aussichtsplattform",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — façade, Philip May, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:City-Hochhaus_Leipzig.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — panorama, Derbrauni, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Blick_vom_City-Hochhaus_Leipzig_01.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — centre et Thomaskirche, Tuxyso, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Innenstadt_Leipzig_mit_Thomaskirche_von_Panorama_Tower_2013.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — gare, Tuxyso, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bahnhof_Leipzig_von_Panorama_Tower_2013.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "DE",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Plateforme panoramique du 31e étage à droit d’entrée propre, accessible comme attraction indépendamment du repas dans le restaurant situé dessous."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0a9a23ed-7450-43f8-860f-ffb97981eb36/panorama-tower-leipzig-observation-deck",
+          "publishedAtUtc": "2026-11-28T05:34:26.962Z",
+          "evidence": "PARK_DATA_EDITOR:apply:506da6c4-c078-417a-86ac-52d9ce9f3a07"
+        },
+        "facebook": {
+          "id": "b724bfb4ea754950844cc834096a5716",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T05:34:54.6588678Z",
+          "externalPostId": "1285475681307050_122129136405424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129136405424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:b724bfb4ea754950844cc834096a5716"
         }
       }
     }
