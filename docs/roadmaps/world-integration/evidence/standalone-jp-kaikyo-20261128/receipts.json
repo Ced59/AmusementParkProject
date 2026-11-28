@@ -1,0 +1,42 @@
+{
+  "entityId": "c6f99d2a-65bf-4a2d-943b-1c5ba02ed9d3",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "f8eb7fd1-5429-4441-b7e3-e1768dd80a80",
+      "appliedAtUtc": "2026-11-28T13:41:56.550Z",
+      "summary": "Création masquée, huit langues, tarifs et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "9a29d534404742f49dc6a416d2bf4c75",
+      "appliedAtUtc": "2026-11-28T13:42:50.846Z",
+      "summary": "Photo exacte whole avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "26a8f48d80604378906e2a67e0e434ce",
+      "appliedAtUtc": "2026-11-28T13:43:04.903Z",
+      "summary": "Photo exacte sphere avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "98bf57323e4c454abaade3637dd5569c",
+      "appliedAtUtc": "2026-11-28T13:43:17.383Z",
+      "summary": "Photo exacte night avec licence et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "49245096-c4d2-40e2-a146-2166fef0df23",
+    "appliedAtUtc": "2026-11-28T13:44:22.343Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "b6898e8b224343c48d70cdacb8e4554e",
+    "externalPostId": "1285475681307050_122129187249424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129187249424431",
+    "publishedAtUtc": "2026-11-28T13:45:37.9555037Z",
+    "furtherRetriesProhibited": true
+  }
+}

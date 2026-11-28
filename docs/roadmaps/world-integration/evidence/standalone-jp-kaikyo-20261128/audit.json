@@ -1,0 +1,32 @@
+{
+  "completenessScore": 94,
+  "dataQualityLevel": "Good",
+  "applicableMaxPoints": 68,
+  "earnedPoints": 64,
+  "publicationBlockers": [],
+  "formulaicPublicTextIssue": null,
+  "manualVerification": {
+    "descriptionsLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "publishedExactPhotoCount": 3,
+    "publicAttractionApiStatus": 200,
+    "publicImageApiStatus": 200,
+    "publicImageCount": 3,
+    "pricingEffectiveDate": "2026-04-01",
+    "annualClosureRule": "fourth Saturday of January",
+    "nextClosures": [
+      "2027-01-23",
+      "2028-01-22"
+    ],
+    "facebookStatus": "Published",
+    "gap": "Older regional tourism page still shows pre-April 2026 600/300 JPY tariffs; current operator tariff 750/350 JPY used."
+  }
+}
