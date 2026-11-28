@@ -81051,6 +81051,143 @@
         "publicationBlockers": [],
         "gapCount": 0
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-view-boston-20261128",
+      "name": "View Boston",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Belvédère panoramique",
+      "locality": "800 Boylston Street, Boston, Massachusetts 02199, États-Unis",
+      "siteId": "96d9be7f-465b-4067-9869-18afa9487acc",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Site officiel avec horaires quotidiens, billetterie et prix de départ en vigueur.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous View Boston sans résultat ; observatoire à billet propre dans la Prudential Tower.",
+      "possibleMatches": [],
+      "aliases": [
+        "View Boston at Prudential Center",
+        "Prudential Tower View Boston"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T04:12:50.868Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-380c9654-edee-4655-92a8-7b1d8dd90b69",
+          "appliedAt": "2026-11-28T04:11:12.839Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "96d9be7f-465b-4067-9869-18afa9487acc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-view-boston-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, tarif dynamique à partir du prix officiel, horaires, accès et histoire sourcés."
+        },
+        {
+          "eventId": "image-0a83e450226a41cf91641f2140d19dc7",
+          "appliedAt": "2026-11-28T04:12:25.396Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "96d9be7f-465b-4067-9869-18afa9487acc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-view-boston-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-a06848673424479e91552dbd66fb442d",
+          "appliedAt": "2026-11-28T04:12:38.239Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "96d9be7f-465b-4067-9869-18afa9487acc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-view-boston-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte east importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-200eaccb029343fca6fff70c8162cbce",
+          "appliedAt": "2026-11-28T04:12:50.868Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "96d9be7f-465b-4067-9869-18afa9487acc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-view-boston-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-view-boston-20261128/audit.json",
+          "summary": "Photo exacte west importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        }
+      ],
+      "nextAction": "Recontrôler le prix variable selon la date et les éventuelles fermetures d’événements ; ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "View Boston — visite, adresse, horaires et accès",
+          "url": "https://viewboston.com/plan-your-visit/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "View Boston — billet général et prix à partir de 32 USD",
+          "url": "https://viewboston.com/buy-tickets/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "View Boston — communiqué d’ouverture le 15 juin 2023",
+          "url": "https://www.prnewswire.com/news-releases/view-boston-differently-the-citys-newest-attraction-view-boston-officially-opens-its-doors-301851110.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — Prudential Tower à Boston",
+          "url": "https://www.openstreetmap.org/search?query=Prudential%20Tower%20Boston",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour, Beyond My Ken, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Prudential_Tower_at_dusk_from_Huntington_Avenue.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue est, S5A-0043, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:(USA-Massachusetts)_View_Boston_View_Towards_East_2024-06-09.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue ouest, S5A-0043, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:(USA-Massachusetts)_View_Boston_View_Towards_West_2024-06-09.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Observatoire urbain avec billet, terrasses et entrée propres dans un immeuble de Boston."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/96d9be7f-465b-4067-9869-18afa9487acc/view-boston",
+          "publishedAtUtc": "2026-11-28T04:13:16.672Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6d6f7885-0c20-4200-bc39-1a055c315918"
+        },
+        "facebook": {
+          "id": "128d366d06834b5e845a088dd3a5f7c3",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T04:13:47.798Z",
+          "externalPostId": "1285475681307050_122129129349424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129129349424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:128d366d06834b5e845a088dd3a5f7c3"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "0a83e450226a41cf91641f2140d19dc7",
+          "a06848673424479e91552dbd66fb442d",
+          "200eaccb029343fca6fff70c8162cbce"
+        ],
+        "currentImageId": "0a83e450226a41cf91641f2140d19dc7",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-view-boston-20261128/audit.json"
+      }
     }
   ]
 }
