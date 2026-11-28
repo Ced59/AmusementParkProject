@@ -1,0 +1,43 @@
+{
+  "entityId": "a205c5fc-9e3e-45af-8d3e-586978dd987e",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "49299a80-cc1a-4bad-bc62-338d67857d25",
+      "appliedAtUtc": "2026-11-28T03:33:21.363Z",
+      "summary": "Création masquée : huit descriptions, huit tarifs jour/soir, calendrier, accès et histoire sourcés."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "9e29ee2061af4d1bb0b5be9e06de5a47",
+      "appliedAtUtc": "2026-11-28T03:34:19.063Z",
+      "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "f4bda91ea05e43a2a101b318be803f1e",
+      "appliedAtUtc": "2026-11-28T03:34:32.217Z",
+      "summary": "Photo exacte inside importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "ac4a6c0584184fad8d02dccdb719accf",
+      "appliedAtUtc": "2026-11-28T03:34:45.298Z",
+      "summary": "Photo exacte night importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "8e313855-f588-411d-9551-868547e5b575",
+    "appliedAtUtc": "2026-11-28T03:35:16.6338183Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "a1c71caa4feb44d5ac763c2311635a68",
+    "externalPostId": "1285475681307050_122129126175424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129126175424431",
+    "publishedAtUtc": "2026-11-28T03:36:02.4480588Z",
+    "furtherRetriesProhibited": true
+  }
+}
