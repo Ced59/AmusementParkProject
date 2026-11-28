@@ -312,50 +312,110 @@
     },
     {
       "entryId": "MX-candidate-standalone-0a7d7d4b4d6bd0",
-      "name": "Alpine Coaster Wiegand — Orizaba",
-      "entityKind": "ToQualify",
+      "name": "Tobogán de la Montaña",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
-      "locality": null,
-      "siteId": null,
+      "locality": "Ecoparque Cerro de Escamela, Privada de Circunvalación, Orizaba, Veracruz, Mexique",
+      "siteId": "53a2d607-39ac-4664-9a33-cac8da552af9",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Le tourisme officiel d’Orizaba publie le tarif par descente, les horaires réguliers et les restrictions d’accès.",
+      "identityConfidence": "Référence Wiegand reliée au nom officiel Tobogán de la Montaña ; recherches PDE Park et Standalone sous ce nom et Cerro de Escamela sans fiche.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
       "aliases": [
-        "Orizaba"
+        "Alpine Coaster Wiegand — Orizaba",
+        "Tobogan de la Montana"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-28T04:37:23.942Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-706434ff-caad-4843-8e61-60063cc676ed",
+          "appliedAt": "2026-11-28T04:34:38.747Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "53a2d607-39ac-4664-9a33-cac8da552af9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-tobogan-montana-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : tarif, calendrier, restrictions et ouverture sourcés en huit langues."
+        },
+        {
+          "eventId": "image-dc5194b28ea241999a9c6a5bbe3ee5b8",
+          "appliedAt": "2026-11-28T04:35:46.287Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "53a2d607-39ac-4664-9a33-cac8da552af9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-tobogan-montana-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo de la voie sur le Cerro de Escamela importée sous CC0 avec crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "apply-d4d0451e-c44b-4377-be8c-190f0c0ece6b",
+          "appliedAt": "2026-11-28T04:37:23.942Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "53a2d607-39ac-4664-9a33-cac8da552af9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-mx-tobogan-montana-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mx-tobogan-montana-20261128/audit.json",
+          "summary": "Descriptions visiteurs améliorées après audit pour retirer les mesures techniques brutes."
+        }
+      ],
+      "nextAction": "Vérifier les dates de vacances qui modifient l’ouverture du mardi et du mercredi, ainsi que le tarif avant visite. Chercher d’autres photos libres où les chariots sont visibles. Ne pas republier Facebook.",
       "sources": [
         {
-          "label": "Wiegand — références constructeur",
+          "label": "Wiegand — référence constructeur à Orizaba",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=269#location-id-2161",
-          "accessedAt": "2026-10-22"
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Tourisme officiel d’Orizaba — identité, ouverture, tarif, horaires et règles",
+          "url": "https://www.orizaba.travel/tobogan-de-la-montana-2/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "RCDB — coaster du Cerro de Escamela",
+          "url": "https://rcdb.com/20414.htm",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — Tobogán de la Montaña",
+          "url": "https://www.openstreetmap.org/way/1134664110",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — voie sur le Cerro de Escamela, Isaacvp, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Tobogán_de_la_montaña_en_el_Cerro_de_Escamela,_Orizaba_04.jpg",
+          "accessedAt": "2026-11-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [
-          {
-            "name": "Orizaba",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=269#location-id-2161",
-            "family": "Alpine coaster",
-            "sourceVenueName": "Orizaba",
-            "referenceId": "location-id-2161"
-          }
-        ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Coaster alpin à billet par descente dans l’Ecoparque Cerro de Escamela ; son identité et sa billetterie propres sont confirmées par le tourisme municipal."
+      },
+      "countryCodeAtInventory": "MX",
+      "countryResolution": null,
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/53a2d607-39ac-4664-9a33-cac8da552af9/tobogan-de-la-montana",
+          "publishedAtUtc": "2026-11-28T04:38:02.080Z",
+          "evidence": "PARK_DATA_EDITOR:apply:9a27639a-f96b-48d8-a216-a49ef39fd11c"
+        },
+        "facebook": {
+          "id": "7c01b8ff7a0f48fcb318d7b236e0e17a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T04:38:33.0103269Z",
+          "externalPostId": "1285475681307050_122129131929424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129131929424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:7c01b8ff7a0f48fcb318d7b236e0e17a"
+        }
       }
     },
     {
