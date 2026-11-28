@@ -17,18 +17,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 57 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 6 |
+| Intégration achevée | 7 |
 | Publié, date inconnue | 1 |
 | Hors périmètre enregistré | 48 |
 | Doublon conservé | 1 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **114**. Sources : AmusementForce, EAZA, RCDB, RCDB — Mountain Coaster, Sunkid — archive de projets, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **115**. Sources : AmusementForce, EAZA, RCDB, RCDB — Mountain Coaster, Sunkid — archive de projets, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **1 publiés**, **21 masqués à intégrer**, **48 masqués NotRelevant à réexaminer**, **46 candidats sans fiche**.
 
-Standalone : **6 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **7 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **11 pistes dans des fiches Park masquées**, **1 dans des fiches Park publiées**, **8 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -154,6 +154,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CZ-candidate-e9e4cda654aa5a | Vodni Ráj | Jihlava, Czech Republic | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/vodni-raj-jihlava-czech-republic) |
 | CZ-candidate-89e12449336d24 | Vodní ráj Jihlava | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Czech_Republic) |
 | CZ-candidate-77aee3b7adabef | Vodní svět Sareza | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Czech_Republic) |
+| CZ-candidate-discovery-zizkov-television-tower-20261128 | Žižkov Television Tower Observatory | Mahlerovy sady 1, 130 00 Praha 3, Tchéquie | StandaloneAttraction | Published | Intégration achevée | 2026-11-28T05:41:25.730Z | — | Vérifier les futurs tarifs et fermetures exceptionnelles sur le site officiel. Conserver la ligne et ne pas republier Facebook. Qualification standalone : AlreadyStandalone. Observatoire avec billet dédié, ouvert sans réservation et distinct des restaurants, du minigolf et des autres activités sous la tour. Signal source : L’exploitant confirme un observatoire distinct des restaurants, ouvert tous les jours de 9 h à minuit, avec tarifs officiels en couronnes tchèques.. [Exploitant Tower Park Praha — tarifs, horaires, adresse et distinction des restaurants](https://towerpark.cz/zakaznicke-centrum/) · [Exploitant Tower Park Praha — observatoire et trois cabines](https://towerpark.cz/observator/) · [Wikimedia Commons — tour, SamadAnser, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Žižkov_Television_Tower,_a_distinctive_landmark_in_Prague,_Czech_Republic.jpg) · [Wikimedia Commons — cabine, ŠJů, CC BY 4.0](https://commons.wikimedia.org/wiki/File:Žižkov,_vysílač,_dalekohled.jpg) · [Wikimedia Commons — vue depuis cabine, Sage Ross, CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:View_from_the_observation_deck_of_Žižkov_Television_Tower,_2014-03-09.jpg) · [Wikimedia Commons — château, ŠJů, CC BY 4.0](https://commons.wikimedia.org/wiki/File:Výhled_z_žižkovské_věže,_směr_Pražský_hrad.jpg) |
 | CZ-candidate-be93f7f05a977f | ZOO a zámek Zlín-Lešná | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [EAZA](https://www.eaza.net/membership/) · [Site officiel référencé](https://www.zoolesna.cz) |
 | CZ-candidate-278ce416667dbf | Zoo Brno | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.zoobrno.cz) |
 | CZ-candidate-7e7c23abba9e47 | Zoo Děcín | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.zoodecin.cz) |
