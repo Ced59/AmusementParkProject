@@ -6,7 +6,7 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 114,
+  "sourceObservationCount": 115,
   "sourceFamilies": [
     "AmusementForce",
     "EAZA",
@@ -6306,6 +6306,150 @@
         "reviewedAt": "2026-11-25",
         "attractions": [],
         "rationale": "Tour d’observation à billetterie distincte ; labyrinthe de miroirs et funiculaire voisins, hors de cette identité."
+      }
+    },
+    {
+      "entryId": "CZ-candidate-discovery-zizkov-television-tower-20261128",
+      "name": "Žižkov Television Tower Observatory",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "Mahlerovy sady 1, 130 00 Praha 3, Tchéquie",
+      "siteId": "6faddc3b-08e9-4981-8f36-4fae5ac2bcbc",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant confirme un observatoire distinct des restaurants, ouvert tous les jours de 9 h à minuit, avec tarifs officiels en couronnes tchèques.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Žižkov, Zizkov et Prague TV Tower sans résultat ; aucune ligne homonyme dans le backlog CZ.",
+      "possibleMatches": [],
+      "aliases": [
+        "Žižkovská televizní věž observatoř",
+        "Prague TV Tower Observatory",
+        "Tower Park Praha Observatory"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T05:41:25.730Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-5d4a1cc6-961a-43e6-8d70-8dd58f4c4b76",
+          "appliedAt": "2026-11-28T05:39:05.784Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6faddc3b-08e9-4981-8f36-4fae5ac2bcbc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-zizkov-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, tarif officiel en CZK, accès et horaires documentés."
+        },
+        {
+          "eventId": "image-712bf4449efe414fbd0b7968330beef2",
+          "appliedAt": "2026-11-28T05:40:05.412Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6faddc3b-08e9-4981-8f36-4fae5ac2bcbc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-zizkov-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-c7143dda76b94152b58f8c19cbdefc9d",
+          "appliedAt": "2026-11-28T05:40:13.888Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6faddc3b-08e9-4981-8f36-4fae5ac2bcbc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-zizkov-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte deck importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-17e645b1cf48484ebbde8c90ad82eaf4",
+          "appliedAt": "2026-11-28T05:40:21.556Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6faddc3b-08e9-4981-8f36-4fae5ac2bcbc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-zizkov-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-1e41a4ee27e74a959bf96391da4548e5",
+          "appliedAt": "2026-11-28T05:40:28.859Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6faddc3b-08e9-4981-8f36-4fae5ac2bcbc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-zizkov-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte castle importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "apply-683e459f-ad1c-463a-8edb-fb671bb503f2",
+          "appliedAt": "2026-11-28T05:41:25.730Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6faddc3b-08e9-4981-8f36-4fae5ac2bcbc",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cz-zizkov-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cz-zizkov-20261128/audit.json",
+          "summary": "Descriptions réécrites dans les huit langues après contrôle éditorial ; audit final 94/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Vérifier les futurs tarifs et fermetures exceptionnelles sur le site officiel. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Tower Park Praha — tarifs, horaires, adresse et distinction des restaurants",
+          "url": "https://towerpark.cz/zakaznicke-centrum/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant Tower Park Praha — observatoire et trois cabines",
+          "url": "https://towerpark.cz/observator/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour, SamadAnser, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Žižkov_Television_Tower,_a_distinctive_landmark_in_Prague,_Czech_Republic.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — cabine, ŠJů, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Žižkov,_vysílač,_dalekohled.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue depuis cabine, Sage Ross, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_the_observation_deck_of_Žižkov_Television_Tower,_2014-03-09.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — château, ŠJů, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Výhled_z_žižkovské_věže,_směr_Pražský_hrad.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "CZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Observatoire avec billet dédié, ouvert sans réservation et distinct des restaurants, du minigolf et des autres activités sous la tour."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6faddc3b-08e9-4981-8f36-4fae5ac2bcbc/zizkov-television-tower-observatory",
+          "publishedAtUtc": "2026-11-28T05:41:50.627Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2190044b-1880-45c2-a591-01c51b3082fe"
+        },
+        "facebook": {
+          "id": "b2a168d5fdf940aebdf7c8a626ed06b0",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T05:42:17.0103136Z",
+          "externalPostId": "1285475681307050_122129137257424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129137257424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:b2a168d5fdf940aebdf7c8a626ed06b0"
+        }
       }
     }
   ]

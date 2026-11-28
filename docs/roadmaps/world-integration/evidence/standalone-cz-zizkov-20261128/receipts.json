@@ -1,0 +1,55 @@
+{
+  "entityId": "6faddc3b-08e9-4981-8f36-4fae5ac2bcbc",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "5d4a1cc6-961a-43e6-8d70-8dd58f4c4b76",
+      "appliedAtUtc": "2026-11-28T05:39:05.784Z",
+      "summary": "Création masquée, huit langues, tarifs et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "712bf4449efe414fbd0b7968330beef2",
+      "appliedAtUtc": "2026-11-28T05:40:05.412Z",
+      "summary": "Photo tower avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "c7143dda76b94152b58f8c19cbdefc9d",
+      "appliedAtUtc": "2026-11-28T05:40:13.888Z",
+      "summary": "Photo deck avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "17e645b1cf48484ebbde8c90ad82eaf4",
+      "appliedAtUtc": "2026-11-28T05:40:21.556Z",
+      "summary": "Photo view avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "1e41a4ee27e74a959bf96391da4548e5",
+      "appliedAtUtc": "2026-11-28T05:40:28.859Z",
+      "summary": "Photo castle avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "Apply",
+      "id": "683e459f-ad1c-463a-8edb-fb671bb503f2",
+      "appliedAtUtc": "2026-11-28T05:41:25.730Z",
+      "summary": "Réécriture des descriptions et audit éditorial final"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "2190044b-1880-45c2-a591-01c51b3082fe",
+    "appliedAtUtc": "2026-11-28T05:41:50.627Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "b2a168d5fdf940aebdf7c8a626ed06b0",
+    "externalPostId": "1285475681307050_122129137257424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129137257424431",
+    "publishedAtUtc": "2026-11-28T05:42:17.0103136Z",
+    "furtherRetriesProhibited": true
+  }
+}
