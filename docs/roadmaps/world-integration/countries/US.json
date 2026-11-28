@@ -6,7 +6,7 @@
   "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
   "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 2624,
+  "sourceObservationCount": 2625,
   "sourceFamilies": [
     "ADG — Project Book",
     "AZA",
@@ -81466,6 +81466,145 @@
           "evidence": "PARK_DATA_EDITOR:facebook:a988598e017743998b49fd20024a9e9a"
         }
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-vessel-hudson-yards-20261128",
+      "name": "Vessel at Hudson Yards",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Sculpture panoramique accessible",
+      "locality": "20 Hudson Yards, New York, NY 10001, États-Unis",
+      "siteId": "9df821e2-c5b3-4f74-a063-369b09a15757",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant publie les horaires par jour, l’entrée générale dès 14 $, les billets flexibles dès 20 $ et les parties hautes actuellement accessibles.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Vessel et Hudson Yards sans doublon ; Edge NYC est une autre attraction voisine avec son propre billet.",
+      "possibleMatches": [],
+      "aliases": [
+        "Vessel",
+        "The Vessel",
+        "Hudson Yards Vessel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T13:56:30.010Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-adfd80a5-0ae5-4304-a390-790221a7674a",
+          "appliedAt": "2026-11-28T13:55:20.563Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9df821e2-c5b3-4f74-a063-369b09a15757",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-vessel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, tarifs variables, horaires et conditions d’accès actuelles."
+        },
+        {
+          "eventId": "image-e72bba55170e4d999db082a1710cac2c",
+          "appliedAt": "2026-11-28T13:56:04.087Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9df821e2-c5b3-4f74-a063-369b09a15757",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-vessel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photographie exacte et récente nov importée avec auteur, licence, texte alternatif, légende et crédit en huit langues."
+        },
+        {
+          "eventId": "image-11e0708bb4074ea9a758a7daeb4eedd7",
+          "appliedAt": "2026-11-28T13:56:17.218Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9df821e2-c5b3-4f74-a063-369b09a15757",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-vessel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photographie exacte et récente jun importée avec auteur, licence, texte alternatif, légende et crédit en huit langues."
+        },
+        {
+          "eventId": "image-84183699242e4c3fbe2545a02abb3229",
+          "appliedAt": "2026-11-28T13:56:30.010Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9df821e2-c5b3-4f74-a063-369b09a15757",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-vessel-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-vessel-20261128/audit.json",
+          "summary": "Photographie exacte et récente oct importée avec auteur, licence, texte alternatif, légende et crédit en huit langues."
+        }
+      ],
+      "nextAction": "Revérifier les tarifs variables et les horaires sur la page de l’exploitant. Les niveaux hauts restent partiellement accessibles, et le mauvais temps peut modifier l’ouverture. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Vessel — horaires, tarifs et billetterie",
+          "url": "https://www.vesselnyc.com/visit",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant Vessel — parcours partiellement accessible, météo, enfants et accessibilité",
+          "url": "https://www.vesselnyc.com/faq",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hudson Yards — identité et distinction avec Edge",
+          "url": "https://www.hudsonyardsnewyork.com/attractions/vessel/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hudson Yards — ouverture en mars 2019 et créateur",
+          "url": "https://www.hudsonyardsnewyork.com/press-media/press-releases/hudson-yards-officially-opens",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikidata Q27988215 — coordonnées de Vessel",
+          "url": "https://www.wikidata.org/wiki/Q27988215",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — nov, ajay_suresh, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Vessel_at_Hudson_Yards_(55606459468).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — jun, Joe Mabel, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Hudson_Yards_-_Vessel_-_01.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — oct, FeldBum, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Vessel_in_October_2026.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-25-new-standalone-discovery",
+        "method": "Recherche hors inventaire de l’observatoire à billet propre ; comparaison PDE des alias, source exploitant et trois photos Commons exactes et libres.",
+        "foundAt": "2026-11-25"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Sculpture panoramique accessible avec billet propre sur la place de Hudson Yards ; distincte de l’observatoire Edge déjà publié."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9df821e2-c5b3-4f74-a063-369b09a15757/vessel-at-hudson-yards",
+          "publishedAtUtc": "2026-11-28T13:57:32.019Z",
+          "evidence": "PARK_DATA_EDITOR:apply:122e004b-ab2a-4176-8844-43df6709162f"
+        },
+        "facebook": {
+          "id": "0957589a66294dcab7f7f1784e786cf3",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T13:58:10.6929104Z",
+          "externalPostId": "1285475681307050_122129188311424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129188311424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:0957589a66294dcab7f7f1784e786cf3"
+        }
+      },
+      "countryCodeAtInventory": "US",
+      "countryResolution": null
     }
   ]
 }

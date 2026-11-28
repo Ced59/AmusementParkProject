@@ -1,0 +1,31 @@
+{
+  "completenessScore": 94,
+  "dataQualityLevel": "Good",
+  "applicableMaxPoints": 68,
+  "earnedPoints": 64,
+  "publicationBlockers": [],
+  "formulaicPublicTextIssue": null,
+  "manualVerification": {
+    "descriptionsLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "publishedExactPhotoCount": 3,
+    "photoDates": [
+      "2026-10-21",
+      "2026-06-02",
+      "2026-10-08"
+    ],
+    "publicAttractionApiStatus": 200,
+    "publicImageApiStatus": 200,
+    "publicImageCount": 3,
+    "facebookStatus": "Published",
+    "gap": "Operator visit page provides current varied weekday hours; generic FAQ lists older 11:00-19:00 hours. General and flex admission vary by date and are only advertised as starting prices. Upper levels are only partly accessible."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "entityId": "9df821e2-c5b3-4f74-a063-369b09a15757",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "adfd80a5-0ae5-4304-a390-790221a7674a",
+      "appliedAtUtc": "2026-11-28T13:55:20.563Z",
+      "summary": "Création masquée, huit langues, tarifs variables et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "e72bba55170e4d999db082a1710cac2c",
+      "appliedAtUtc": "2026-11-28T13:56:04.087Z",
+      "summary": "Photo exacte nov avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "11e0708bb4074ea9a758a7daeb4eedd7",
+      "appliedAtUtc": "2026-11-28T13:56:17.218Z",
+      "summary": "Photo exacte jun avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "84183699242e4c3fbe2545a02abb3229",
+      "appliedAtUtc": "2026-11-28T13:56:30.010Z",
+      "summary": "Photo exacte oct avec licence et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "122e004b-ab2a-4176-8844-43df6709162f",
+    "appliedAtUtc": "2026-11-28T13:57:32.019Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "0957589a66294dcab7f7f1784e786cf3",
+    "externalPostId": "1285475681307050_122129188311424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129188311424431",
+    "publishedAtUtc": "2026-11-28T13:58:10.6929104Z",
+    "furtherRetriesProhibited": true
+  }
+}
