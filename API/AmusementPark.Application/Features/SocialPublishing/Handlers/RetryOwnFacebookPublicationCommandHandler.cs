@@ -61,8 +61,11 @@ public sealed class RetryOwnFacebookPublicationCommandHandler
         // Accept only that one known query parameter to keep reconciliation
         // bound to the same destination.
         string? messageDestinationUrl = GetMessageDestinationUrl(publication.Url);
+        bool failedBeforeFacebookRequest = publication.FailureCode is
+            "preview-page-not-ready" or "preview-page-unavailable";
         if (messageDestinationUrl is null
-            || !publication.Message.TrimEnd().EndsWith(messageDestinationUrl, StringComparison.Ordinal))
+            || (!failedBeforeFacebookRequest
+                && !publication.Message.TrimEnd().EndsWith(messageDestinationUrl, StringComparison.Ordinal)))
         {
             return ApplicationResult<SocialPublication>.Failure(
                 SocialPublishingApplicationErrors.PublicationReconciliationAmbiguous());
@@ -74,18 +77,24 @@ public sealed class RetryOwnFacebookPublicationCommandHandler
             return ApplicationResult<SocialPublication>.Failure(
                 SocialPublishingApplicationErrors.PublisherOperationFailed(null));
         }
-        ApplicationResult<SocialPublicationRecovery> recovery = await this.reconciler.RecoverFailedAsync(
-            publisher,
-            publication,
-            command.RequestedByUserId,
-            cancellationToken);
-        if (!recovery.IsSuccess || recovery.Value is null)
+        // A preview preparation failure is returned before the publisher sends
+        // anything to Facebook. There is no external post to reconcile, even
+        // when a caller-supplied message does not end with the destination URL.
+        if (!failedBeforeFacebookRequest)
         {
-            return ApplicationResult<SocialPublication>.Failure(recovery.Errors);
-        }
-        if (recovery.Value.IsRecovered && recovery.Value.Publication is not null)
-        {
-            return ApplicationResult<SocialPublication>.Success(recovery.Value.Publication);
+            ApplicationResult<SocialPublicationRecovery> recovery = await this.reconciler.RecoverFailedAsync(
+                publisher,
+                publication,
+                command.RequestedByUserId,
+                cancellationToken);
+            if (!recovery.IsSuccess || recovery.Value is null)
+            {
+                return ApplicationResult<SocialPublication>.Failure(recovery.Errors);
+            }
+            if (recovery.Value.IsRecovered && recovery.Value.Publication is not null)
+            {
+                return ApplicationResult<SocialPublication>.Success(recovery.Value.Publication);
+            }
         }
 
         return await this.service.RetryAsync(
