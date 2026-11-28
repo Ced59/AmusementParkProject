@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12517 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12518 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -17,7 +17,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1867 | 7554 |
-| Standalone | 436 | 1 | 100 |
+| Standalone | 437 | 1 | 100 |
 
 **Reprise standalone :** en plus des 100 candidates sans correspondance, **193 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **536 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **87 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
@@ -112,7 +112,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Irlande](countries/IE.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Islande](countries/IS.md) | 1 | 0 | 0 | 2 | 0 | 0 |
-| [Italie](countries/IT.md) | 8 | 0 | 1 | 1 | 23 | 2 |
+| [Italie](countries/IT.md) | 9 | 0 | 1 | 1 | 23 | 2 |
 | [Jersey](countries/JE.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Kosovo](countries/XK.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Lettonie](countries/LV.md) | 1 | 0 | 0 | 0 | 3 | 0 |
@@ -139,9 +139,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 6 | 0 | 0 | 0 | 11 | 0 |
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **190** | **1** | **19** | **64** | **257** | **18** |
+| **Total** | **191** | **1** | **19** | **64** | **257** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **167**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **168**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Allemagne : 45 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Autriche : 18 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -153,7 +153,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - France : 15 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Hongrie : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Islande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
-- Italie : 8 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Italie : 9 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Lettonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Lituanie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Norvège : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.

@@ -13890,6 +13890,144 @@
         "currentImageId": "57e1c8f3e0b8451d8a893eea0401a081",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-it-torre-branca-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "IT-candidate-discovery-mole-antonelliana-lift-20261128",
+      "name": "Mole Antonelliana — Ascensore Panoramico",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ascenseur panoramique",
+      "locality": "Via Montebello 20, Torino, Italie",
+      "siteId": "77b83522-55d7-40f3-90d9-781bb352a9ba",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant publie le billet propre de l’ascenseur, les horaires habituels et les fermetures de décembre 2026.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Mole Antonelliana sans résultat ; ascenseur à billet propre au sein du Musée national du cinéma.",
+      "possibleMatches": [],
+      "aliases": [
+        "Ascensore panoramico della Mole Antonelliana",
+        "Mole Antonelliana Panoramic Lift"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T04:23:42.608Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-fd0bff5c-9df6-43b2-8d6d-fe896de230f4",
+          "appliedAt": "2026-11-28T04:20:01.356Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "77b83522-55d7-40f3-90d9-781bb352a9ba",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-mole-antonelliana-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : descriptions en huit langues, tarif de l’ascenseur seul, horaires et exceptions de décembre, accès sourcés."
+        },
+        {
+          "eventId": "image-e5f12a6915c5437cb47cee6d00dedf66",
+          "appliedAt": "2026-11-28T04:20:51.228Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "77b83522-55d7-40f3-90d9-781bb352a9ba",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-mole-antonelliana-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte exterior importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-62a5729fb5394e2aaf9d8941a713bf0d",
+          "appliedAt": "2026-11-28T04:20:59.471Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "77b83522-55d7-40f3-90d9-781bb352a9ba",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-mole-antonelliana-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte lift importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-9238818229f34999848f4a403dc1fa3f",
+          "appliedAt": "2026-11-28T04:21:07.525Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "77b83522-55d7-40f3-90d9-781bb352a9ba",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-mole-antonelliana-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "metadata-9238818229f34999848f4a403dc1fa3f",
+          "appliedAt": "2026-11-28T04:23:42.608Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "77b83522-55d7-40f3-90d9-781bb352a9ba",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-mole-antonelliana-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-mole-antonelliana-20261128/audit.json",
+          "summary": "Légendes et textes alternatifs distincts, vérifiés contre l’audit éditorial."
+        }
+      ],
+      "nextAction": "Actualiser les tarifs et les horaires après les fêtes ; confirmer les fermetures propres à la date de visite. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Museo Nazionale del Cinema — ascenseur panoramique et renouvellement de 1999",
+          "url": "https://www.museocinema.it/it/mole-antonelliana/ascensore-panoramico",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Museo Nazionale del Cinema — prix de l’ascenseur seul et billets combinés",
+          "url": "https://www.museocinema.it/en/plan-your-visit/ticket-prices",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Museo Nazionale del Cinema — horaires et exceptions décembre 2026 / janvier 2027",
+          "url": "https://www.museocinema.it/it/orari-museo-nazionale-del-cinema",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — localisation de la Mole Antonelliana",
+          "url": "https://www.openstreetmap.org/way/83111423",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — extérieur, Memi26, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Mole_Antonelliana_di_Torino.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — ascenseur dans la Mole, Caulfield, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Ascensore_Museo_del_Cinema.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — panorama depuis la Mole, Zairon, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Torino_Mole_Antonelliana_Vista_panoramica_01.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "IT",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Ascenseur panoramique à billet séparé et horaires officiels, distinct de la visite du musée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/77b83522-55d7-40f3-90d9-781bb352a9ba/mole-antonelliana-ascensore-panoramico",
+          "publishedAtUtc": "2026-11-28T04:22:32.515Z",
+          "evidence": "PARK_DATA_EDITOR:apply:49f40720-54eb-474d-884d-2abedfa1c075"
+        },
+        "facebook": {
+          "id": "55dd01f010074d2aa31d540d26ca8708",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T04:23:11.5580569Z",
+          "externalPostId": "1285475681307050_122129130849424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129130849424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:55dd01f010074d2aa31d540d26ca8708"
+        }
+      }
     }
   ]
 }
