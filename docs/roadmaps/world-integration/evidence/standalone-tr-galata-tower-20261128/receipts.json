@@ -1,0 +1,43 @@
+{
+  "entityId": "5f921e9e-fac5-4b9f-9a0f-275ca145df84",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "c31fb8bc-d3ca-4f4e-9db7-eb2fd99b93e3",
+      "appliedAtUtc": "2026-11-28T02:34:29.378Z",
+      "summary": "Création masquée : huit descriptions, accès, prix, horaires et événement historique officiels."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "4be8027fbbaf44ab9a7996e5ed6bcf63",
+      "appliedAtUtc": "2026-11-28T02:36:52.959Z",
+      "summary": "Tour illuminée de nuit, photo exacte de 2025 : Çokiyi, CC BY-SA 4.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "807a1d8906b4445e8dea8842ef308cdf",
+      "appliedAtUtc": "2026-11-28T02:37:08.847Z",
+      "summary": "Intérieur de la tour, photo exacte de 2022 : Interfase, CC BY-SA 4.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "08565134eb364197abfc147aad510b4d",
+      "appliedAtUtc": "2026-11-28T02:37:21.921Z",
+      "summary": "Panorama vers la Corne d’Or, photo exacte de 2023 : Yair Haklai, CC BY-SA 4.0."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "e7afe6cf-4ee7-47ea-a7ee-834e89c6e633",
+    "appliedAtUtc": "2026-11-28T02:38:15.5432009Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "e0e5fd05cd44433b9531b9a9c2aa55e6",
+    "externalPostId": "1285475681307050_122129121459424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129121459424431",
+    "publishedAtUtc": "2026-11-28T02:39:14.3288817Z",
+    "furtherRetriesProhibited": true
+  }
+}
