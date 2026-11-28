@@ -5609,6 +5609,137 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "NL-candidate-discovery-euromast-observation-decks-20261128",
+      "name": "Euromast Observation Decks",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "Parkhaven 20, 3016 GM Rotterdam, Pays-Bas",
+      "siteId": "48e47432-d211-4590-b64a-ad099156b94c",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant vend un billet général pour les terrasses, à prix variable selon l’âge, la date et le créneau, et un billet complet pour inclure l’Euroscoop.",
+      "identityConfidence": "Recherches PDE sous Euromast et Rotterdam Euromast : seule la fiche Euroscoop existait ; le billet général exclut explicitement l’Euroscoop.",
+      "possibleMatches": [
+        {
+          "entityKind": "StandaloneAttraction",
+          "siteId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+          "name": "Euroscoop — Euromast",
+          "reason": "Même tour, ascenseur tournant non inclus dans le billet général des terrasses."
+        }
+      ],
+      "aliases": [
+        "Euromast Viewing Platforms",
+        "Euromast Observation Deck",
+        "Euromast Rotterdam"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T05:18:14.535Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-12e762ff-f4af-4178-9786-027b6baa747c",
+          "appliedAt": "2026-11-28T05:17:17.112Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48e47432-d211-4590-b64a-ad099156b94c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nl-euromast-observation-decks-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, tarifs dynamiques à partir de, horaires annoncés et accès distinct de l’Euroscoop."
+        },
+        {
+          "eventId": "image-7c87dcba0e58414a94e377c7c61bdaea",
+          "appliedAt": "2026-11-28T05:17:57.680Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48e47432-d211-4590-b64a-ad099156b94c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nl-euromast-observation-decks-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec crédit, licence, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-a2b0a7b15c3b4941b13d669a97a3b752",
+          "appliedAt": "2026-11-28T05:18:06.910Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48e47432-d211-4590-b64a-ad099156b94c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nl-euromast-observation-decks-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte deck importée avec crédit, licence, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-869303bf6523451ca8ed66dda8f1740e",
+          "appliedAt": "2026-11-28T05:18:14.535Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "48e47432-d211-4590-b64a-ad099156b94c",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-nl-euromast-observation-decks-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nl-euromast-observation-decks-20261128/audit.json",
+          "summary": "Photo exacte view importée avec crédit, licence, légende et texte alternatif en huit langues."
+        }
+      ],
+      "nextAction": "Vérifier le prix du jour et les horaires sur le calendrier officiel ; les prix affichés sont des minima dynamiques et l’Euroscoop exige un billet distinct. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Euromast — billet général, tarifs variables, Euroscoop distinct et adresse",
+          "url": "https://euromast.nl/en/tickets/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Euromast — horaires affichés et présentation des terrasses",
+          "url": "https://euromast.nl/en/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — Euromast et coordonnées",
+          "url": "https://www.openstreetmap.org/way/238220164",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour, Guilhem Vellut, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Euromast_@_Parkhaven_@_Rotterdam_(30604597745).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — terrasse, Guilhem Vellut, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Observation_deck_@_Euromast_@_Rotterdam_(30304466070).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — pont Érasme, Guilhem Vellut, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Erasmus_Bridge_@_Observation_deck_@_Euromast_@_Rotterdam_(30567941696).jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "NL",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Les plateformes possèdent un billet général propre ; l’Euroscoop est une expérience distincte non incluse et déjà répertoriée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/48e47432-d211-4590-b64a-ad099156b94c/euromast-observation-decks",
+          "publishedAtUtc": "2026-11-28T05:18:47.965Z",
+          "evidence": "PARK_DATA_EDITOR:apply:509cf6ff-53af-4cdf-863c-718ea3ffb5ee"
+        },
+        "facebook": {
+          "id": "da6db1dc1e3e4c819c21e51d0110c330",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T05:19:31.963697Z",
+          "externalPostId": "1285475681307050_122129135031424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129135031424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:da6db1dc1e3e4c819c21e51d0110c330"
+        }
+      }
     }
   ]
 }
