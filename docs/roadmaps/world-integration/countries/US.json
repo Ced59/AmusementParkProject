@@ -80746,6 +80746,311 @@
         "attractions": [],
         "rationale": "Trajet en capsule et accès au sommet à billet dédié, distincts du musée gratuit du parc national ; aucune fiche homonyme trouvée."
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-central-park-carousel-20261128",
+      "name": "Central Park Carousel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Carrousel historique",
+      "locality": "Mid-Park at 65th Street, Central Park, New York, États-Unis",
+      "siteId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Site de l’exploitant, billetterie et horaires quotidiens actifs au 28 novembre 2026 ; météo susceptible de modifier l’ouverture.",
+      "identityConfidence": "Carrousel Friedsam identifié par l’exploitant et la Central Park Conservancy ; recherches PDE Park/Standalone sous Central Park Carousel et Friedsam sans doublon, aucun parc parent homonyme à New York.",
+      "possibleMatches": [],
+      "aliases": [
+        "Friedsam Memorial Carousel",
+        "Central Park Carrousel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T00:56:52.017Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-eaf295ce-1234-4265-bade-a42a27dd215c",
+          "appliedAt": "2026-11-28T00:50:40.600Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : identité, emplacement et huit descriptions."
+        },
+        {
+          "eventId": "image-f52f1e7e0a8442ea819e98e609aaf9f6",
+          "appliedAt": "2026-11-28T00:51:55.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte du pavillon (Mike Peel, CC BY-SA 4.0), crédit et huit langues."
+        },
+        {
+          "eventId": "image-b645bb8748454d06b1acec0913a2edce",
+          "appliedAt": "2026-11-28T00:52:16.118Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte des chevaux et du char (MusikAnimal, CC BY-SA 4.0), crédit et huit langues."
+        },
+        {
+          "eventId": "image-a6b748dd3bda4d2f97d4917492fd3cc7",
+          "appliedAt": "2026-11-28T00:52:44.135Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte du pavillon parmi les arbres (Ajay Suresh, CC BY 2.0), crédit et huit langues."
+        },
+        {
+          "eventId": "apply-67b10f5a-5d51-45a0-bcc5-675d2e2fc731",
+          "appliedAt": "2026-11-28T00:54:13.137Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Jalon historique sourcé sur l’installation du carrousel actuel en 1951."
+        },
+        {
+          "eventId": "apply-eb36d9a6-5727-4c4c-9a6f-a1aa2d7097a2",
+          "appliedAt": "2026-11-28T00:56:52.017Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/audit.json",
+          "summary": "Tarif officiel du tour, billet individuel requis et provenance vérifiée ; audit réel 92/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver les six reçus. Les horaires se terminent au crépuscule et varient avec la météo : aucune fermeture fixe n’a été inventée ; revoir la possibilité d’un calendrier exact. Revérifier le tarif de 4,50 USD sur le site de l’exploitant. Annonce Facebook publiée le 28 novembre 2026 ; ne pas la republier.",
+      "sources": [
+        {
+          "label": "Exploitant — identité, horaires météo et contact",
+          "url": "https://carouselatcentralpark.com/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — billets et tarif actuel",
+          "url": "https://carouselatcentralpark.com/buy-tickets/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — histoire du Friedsam Memorial Carousel",
+          "url": "https://carouselatcentralpark.com/history/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Central Park Conservancy — identité et implantation",
+          "url": "https://www.centralparknyc.org/locations/carousel",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Central Park Conservancy — histoire et règle de billet ; tarif indiqué non retenu car divergent",
+          "url": "https://www.centralparknyc.org/visiting-the-carousel-in-central-park",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — point du carrousel",
+          "url": "https://www.openstreetmap.org/way/585788256",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — photo Mike Peel, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:At_New_York_City_2024_264.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — photo MusikAnimal, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Central_Park_Carousel_interior_in_2015.JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — photo Ajay Suresh, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Central_Park_Carousel_(49019860351).jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Attraction fixe à billet propre dans le parc municipal ouvert de Central Park ; aucune fiche Park correspondante sur le site. Le carrousel et son exploitant sont identifiés indépendamment."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/5550fa07-2bab-4fc3-8b4c-1516583369d3/central-park-carousel",
+          "publishedAtUtc": "2026-11-28T00:57:49.807Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0dc7f73d-d721-4d4f-9cbb-82e7f24379bf"
+        },
+        "facebook": {
+          "id": "a87062bfb781479d9c918b2d326d9d66",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T01:25:56.3954362Z",
+          "externalPostId": "1285475681307050_122129115333424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129115333424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:a87062bfb781479d9c918b2d326d9d66"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "f52f1e7e0a8442ea819e98e609aaf9f6",
+          "b645bb8748454d06b1acec0913a2edce",
+          "a6b748dd3bda4d2f97d4917492fd3cc7"
+        ],
+        "currentImageId": "b645bb8748454d06b1acec0913a2edce",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/audit.json",
+        "score": 92,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-flying-horses-carousel-20261128",
+      "name": "Flying Horses Carousel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Carrousel historique",
+      "locality": "15 Lake Avenue, Oak Bluffs, Martha’s Vineyard, Massachusetts, États-Unis",
+      "siteId": "2f7accb3-8eaa-4c95-bddc-281cad973afe",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "TemporarilyClosed",
+      "sourceLifecycleSignal": "La page générale de l’exploitant termine les week-ends d’ouverture au 31 octobre ; saison suivante non publiée. La page propre du lieu conserve un horaire de week-end sans cette borne.",
+      "identityConfidence": "Carrousel autonome identifié à Oak Bluffs, créé en 1876 puis déplacé en 1884 ; recherches PDE Park et Standalone sous Flying Horses Carousel négatives avant création. Ne pas confondre avec Flying Horse Carousel de Watch Hill ni avec le carrousel texan homonyme.",
+      "possibleMatches": [],
+      "aliases": [
+        "Flying Horses",
+        "Flying Horses Carousel Oak Bluffs"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T01:18:16.080Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-df3a0aed-1525-46c9-a9fe-23fecfd3da81",
+          "appliedAt": "2026-11-28T01:15:41.139Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f7accb3-8eaa-4c95-bddc-281cad973afe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-flying-horses-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : identité, fermeture saisonnière, emplacement et huit descriptions."
+        },
+        {
+          "eventId": "image-8a0f384855064131948cfbd6f3c154c4",
+          "appliedAt": "2026-11-28T01:16:24.845Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f7accb3-8eaa-4c95-bddc-281cad973afe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-flying-horses-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte de l’intérieur en 2006, domaine public, légendes et crédits dans huit langues."
+        },
+        {
+          "eventId": "image-e8dd53ccdbb24372b227642a57ea8708",
+          "appliedAt": "2026-11-28T01:16:58.209Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f7accb3-8eaa-4c95-bddc-281cad973afe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-flying-horses-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte d’une visiteuse cherchant l’anneau, CC BY-SA 3.0, légendes et crédits dans huit langues."
+        },
+        {
+          "eventId": "apply-172f59c1-2b63-4a58-8410-c121adf2b1df",
+          "appliedAt": "2026-11-28T01:18:16.080Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2f7accb3-8eaa-4c95-bddc-281cad973afe",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-flying-horses-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-flying-horses-20261128/audit.json",
+          "summary": "Deux jalons historiques sourcés, de 1884 et 1986 ; audit projeté 100/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver les quatre reçus. Vérifier la date effective de réouverture de la prochaine saison, puis intégrer son calendrier et ses tarifs officiels si publiés. Aucune heure ou offre actuelle n’est affichée pendant la fermeture saisonnière. Annonce Facebook publiée le 28 novembre 2026 ; ne pas la republier.",
+      "sources": [
+        {
+          "label": "Vineyard Preservation Trust — histoire, identité, adresse et saison",
+          "url": "https://vineyardtrust.org/property/flying-horses-carousel/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Vineyard Preservation Trust — fin de saison au 31 octobre",
+          "url": "https://vineyardtrust.org/landmarks/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — point du Flying Horses Carousel",
+          "url": "https://www.openstreetmap.org/node/5058089116",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur, Jared, domaine public",
+          "url": "https://commons.wikimedia.org/wiki/File:Flying_horses_carousel.JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — anneau, C.S. Imming, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Reaching_for_the_Brass_Ring.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Carrousel fixe exploité comme attraction distincte et propriété du Vineyard Preservation Trust, sans fiche Park parent sur le site. La source nomme le lieu indépendamment."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/2f7accb3-8eaa-4c95-bddc-281cad973afe/flying-horses-carousel",
+          "publishedAtUtc": "2026-11-28T01:19:16.501Z",
+          "evidence": "PARK_DATA_EDITOR:apply:463f4613-02c1-468c-8aab-8e56972bb43c"
+        },
+        "facebook": {
+          "id": "4678676c8fad48d29b7dbabb1464c773",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T01:27:12.5012368Z",
+          "externalPostId": "1285475681307050_122129115459424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129115459424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:4678676c8fad48d29b7dbabb1464c773"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "8a0f384855064131948cfbd6f3c154c4",
+          "e8dd53ccdbb24372b227642a57ea8708"
+        ],
+        "currentImageId": "e8dd53ccdbb24372b227642a57ea8708",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-flying-horses-20261128/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-flying-horses-20261128/audit.json",
+        "score": 100,
+        "publicationBlockers": [],
+        "gapCount": 0
+      }
     }
   ]
 }

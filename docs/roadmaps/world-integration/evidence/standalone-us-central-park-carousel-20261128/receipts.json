@@ -1,0 +1,56 @@
+{
+  "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "eaf295ce-1234-4265-bade-a42a27dd215c",
+      "appliedAtUtc": "2026-11-28T00:50:40.600Z",
+      "summary": "Création masquée : identité, emplacement et huit descriptions."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "f52f1e7e0a8442ea819e98e609aaf9f6",
+      "appliedAtUtc": "2026-11-28T00:51:55.636Z",
+      "summary": "Photo exacte du pavillon (Mike Peel, CC BY-SA 4.0), crédit et huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "b645bb8748454d06b1acec0913a2edce",
+      "appliedAtUtc": "2026-11-28T00:52:16.118Z",
+      "summary": "Photo exacte des chevaux et du char (MusikAnimal, CC BY-SA 4.0), crédit et huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "a6b748dd3bda4d2f97d4917492fd3cc7",
+      "appliedAtUtc": "2026-11-28T00:52:44.135Z",
+      "summary": "Photo exacte du pavillon parmi les arbres (Ajay Suresh, CC BY 2.0), crédit et huit langues."
+    },
+    {
+      "kind": "Apply",
+      "id": "67b10f5a-5d51-45a0-bcc5-675d2e2fc731",
+      "appliedAtUtc": "2026-11-28T00:54:13.137Z",
+      "summary": "Jalon historique sourcé sur l’installation du carrousel actuel en 1951."
+    },
+    {
+      "kind": "Apply",
+      "id": "eb36d9a6-5727-4c4c-9a6f-a1aa2d7097a2",
+      "appliedAtUtc": "2026-11-28T00:56:52.017Z",
+      "summary": "Tarif officiel du tour, billet individuel requis et provenance vérifiée ; audit réel 92/100 sans bloqueur."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "0dc7f73d-d721-4d4f-9cbb-82e7f24379bf",
+    "appliedAtUtc": "2026-11-28T00:57:49.807Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "note": "Not submitted while SSR social prewarm remains overloaded.",
+    "publishedPostConfirmed": true,
+    "publicationId": "a87062bfb781479d9c918b2d326d9d66",
+    "externalPostId": "1285475681307050_122129115333424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129115333424431",
+    "publishedAtUtc": "2026-11-28T01:25:56.3954362Z",
+    "furtherRetriesProhibited": true
+  }
+}

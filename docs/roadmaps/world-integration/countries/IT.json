@@ -13696,7 +13696,7 @@
           "summary": "Troisième photo importée ; fiche ensuite publiée avec trois photos ; audit réel 100/100 sans bloqueur. Publication Facebook non confirmée."
         }
       ],
-      "nextAction": "Dès le 5 décembre 2026, vérifier la réouverture effective puis passer en Operating et intégrer la totalité du calendrier officiel jusqu’au 1er novembre 2027 et les tarifs 2026–2027. Facebook : tentative 9ba92b82f29644a5b646cdfa85c32d63 bloquée par le garde-fou de reprise des messages personnalisés ; reprendre uniquement le même enregistrement après correction et déploiement. Conserver cette ligne.",
+      "nextAction": "Dès le 5 décembre 2026, vérifier la réouverture effective puis passer en Operating et intégrer le calendrier officiel jusqu’au 1er novembre 2027 et les tarifs 2026–2027. Annonce Facebook publiée le 28 novembre 2026 ; ne pas la republier. Conserver cette ligne.",
       "sources": [
         {
           "label": "Exploitant — parcours et trois stations",
@@ -13741,6 +13741,22 @@
         "reviewedAt": "2026-11-28",
         "attractions": [],
         "rationale": "Téléphérique fixe avec billet et exploitant propres ; trois stations forment un parcours touristique unique, distinct des domaines skiables et du Panoramic Mont-Blanc côté français."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9b5addc1-ddb4-450f-b1df-f9340c3333af/skyway-monte-bianco",
+          "publishedAtUtc": "2026-11-28T00:30:16.275Z",
+          "evidence": "PARK_DATA_EDITOR:apply:43287afc-e5ff-4f8b-b6a8-8a34bf45ab96"
+        },
+        "facebook": {
+          "id": "9ba92b82f29644a5b646cdfa85c32d63",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T01:24:34.0001195Z",
+          "externalPostId": "1285475681307050_122129115117424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129115117424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:9ba92b82f29644a5b646cdfa85c32d63"
+        }
       }
     }
   ]

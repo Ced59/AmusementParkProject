@@ -185,10 +185,14 @@
     "publicationId": "88b3dbebe520448fb6636b4d4ea30137",
     "initialStatus": "Failed",
     "initialFailureCode": "preview-page-not-ready",
-    "retryOutcome": "social-publishing.publication.reconciliation-ambiguous",
-    "publishedPostConfirmed": false,
+    "publishedPostConfirmed": true,
     "furtherRetriesProhibited": true,
-    "retryDiagnosis": "Message personnalisé sans URL finale ; refus du garde-fou avant rapprochement. L’échec initial de préparation survient avant tout appel à Facebook."
+    "retryDiagnosis": "Message personnalisé sans URL finale ; refus du garde-fou avant rapprochement. L’échec initial de préparation survient avant tout appel à Facebook.",
+    "previousRetryOutcome": "social-publishing.publication.reconciliation-ambiguous",
+    "status": "Published",
+    "externalPostId": "1285475681307050_122129114907424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129114907424431",
+    "publishedAtUtc": "2026-11-28T01:23:27.9190522Z"
   },
   "publicUrl": "https://amusement-parks.fun/fr/attraction/ae2b3898-3f38-47af-b337-ea5260737167/hammetschwand-lift"
 }
