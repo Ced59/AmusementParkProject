@@ -1,0 +1,61 @@
+{
+  "entityId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "6a2c0e83-cb03-48ab-be4d-0946b34f3259",
+      "appliedAtUtc": "2026-11-28T02:11:48.1751605Z",
+      "summary": "Création masquée : identité, emplacement et huit descriptions."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "423126be64f648d283da53155178dff4",
+      "appliedAtUtc": "2026-11-28T02:13:21.774Z",
+      "summary": "Photo courante exacte de la tour en 2026 : Qhairy, CC BY 4.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "c94ba6a43a18437d98523e5412315705",
+      "appliedAtUtc": "2026-11-28T02:13:34.588Z",
+      "summary": "Plateforme d’observation exacte en 2011 : Chongkian, CC BY-SA 3.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "387e12de85c14e74b0406e059c5fbc05",
+      "appliedAtUtc": "2026-11-28T02:13:47.930Z",
+      "summary": "Tour nocturne exacte en 2015 : Theo.Vilein, CC BY-SA 4.0."
+    },
+    {
+      "kind": "Apply",
+      "id": "a91ab46d-911b-4a30-adb3-79e098874cde",
+      "appliedAtUtc": "2026-11-28T02:15:23.2799838Z",
+      "summary": "Descriptions réécrites, billets, accès et ouverture documentés."
+    },
+    {
+      "kind": "Apply",
+      "id": "5bc1e28e-4f60-4bcd-bc54-e9f9017586f4",
+      "appliedAtUtc": "2026-11-28T02:16:12.1324671Z",
+      "summary": "Date d’ouverture à précision annuelle et horaires hebdomadaires sourcés ; audit projeté 100/100."
+    },
+    {
+      "kind": "Apply",
+      "id": "81aecf99-94d5-4b36-9eb4-2f76147debb7",
+      "appliedAtUtc": "2026-11-28T02:20:14.7891839Z",
+      "summary": "Ajout de la source confirmant l’ouverture aux visiteurs en 1997 ; audit réel 100/100 inchangé."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "8e18de25-8a8f-4ec4-905b-d0e1177812a7",
+    "appliedAtUtc": "2026-11-28T02:16:51.711524Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "3a345fd97cae48e6af28f9ac227c7932",
+    "externalPostId": "1285475681307050_122129119725424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129119725424431",
+    "publishedAtUtc": "2026-11-28T02:17:32.3518978Z",
+    "furtherRetriesProhibited": true
+  }
+}

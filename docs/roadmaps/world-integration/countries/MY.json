@@ -3451,6 +3451,178 @@
         "attractions": [],
         "rationale": "Billetterie, files et horaires propres pour le funiculaire ; les prestataires et attractions du sommet sont séparés de son billet."
       }
+    },
+    {
+      "entryId": "MY-candidate-discovery-menara-alor-setar-20261128",
+      "name": "Menara Alor Setar",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "Lot 99, Lebuhraya Darul Aman, 05100 Alor Setar, Kedah, Malaisie",
+      "siteId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Tourism Kedah décrit la visite et les billets ; l’exploitant publie encore sur sa page en octobre 2026.",
+      "identityConfidence": "Tour et plateforme avec billets propres ; recherches Park et Standalone « Alor Setar » sans résultat avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Alor Setar Tower",
+        "Menara Alor Star"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T02:20:14.789Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6a2c0e83-cb03-48ab-be4d-0946b34f3259",
+          "appliedAt": "2026-11-28T02:11:48.175Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : identité, emplacement et huit descriptions."
+        },
+        {
+          "eventId": "image-423126be64f648d283da53155178dff4",
+          "appliedAt": "2026-11-28T02:13:21.774Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo courante exacte de la tour en 2026 : Qhairy, CC BY 4.0."
+        },
+        {
+          "eventId": "image-c94ba6a43a18437d98523e5412315705",
+          "appliedAt": "2026-11-28T02:13:34.588Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Plateforme d’observation exacte en 2011 : Chongkian, CC BY-SA 3.0."
+        },
+        {
+          "eventId": "image-387e12de85c14e74b0406e059c5fbc05",
+          "appliedAt": "2026-11-28T02:13:47.930Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Tour nocturne exacte en 2015 : Theo.Vilein, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-a91ab46d-911b-4a30-adb3-79e098874cde",
+          "appliedAt": "2026-11-28T02:15:23.279Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Descriptions réécrites, billets, accès et ouverture documentés."
+        },
+        {
+          "eventId": "apply-5bc1e28e-4f60-4bcd-bc54-e9f9017586f4",
+          "appliedAt": "2026-11-28T02:16:12.132Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Date d’ouverture à précision annuelle et horaires hebdomadaires sourcés ; audit projeté 100/100."
+        },
+        {
+          "eventId": "apply-81aecf99-94d5-4b36-9eb4-2f76147debb7",
+          "appliedAt": "2026-11-28T02:20:14.789Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "63044c49-3495-4ae1-b3b2-8ef583d92963",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/audit.json",
+          "summary": "Ajout de la source confirmant l’ouverture aux visiteurs en 1997 ; audit réel 100/100 inchangé."
+        }
+      ],
+      "nextAction": "Conserver les reçus de données, l’audit 100/100 et les preuves de publication. Revérifier les tarifs de 2025, notamment les éventuelles différences pour visiteurs étrangers et Star View, auprès de l’exploitant avant toute mise à jour. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Tourism Kedah — livret officiel 2025, page Menara Alor Setar",
+          "url": "https://www.experiencekedah.my/assets/TOURISM%20KEDAH%20%28BM-Eng%29_Handy%20Booklet_FULL-582025.pdf",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Kedah Tourism Directory — construction achevée en 1997",
+          "url": "https://www.kedah.gov.my/wp-content/uploads/2024/10/KEDAH-TOURISM-DIRECTORY.pdf",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — page Facebook actuelle",
+          "url": "https://www.facebook.com/menaraalorsetarofficial/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Publications reprises de la page de l’exploitant, octobre 2026",
+          "url": "https://www.findglocal.com/MY/Alor-Setar/312143725474260/Alor-Setar-Tower-l-Menara-Alor-Setar",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour 2026, Qhairy, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Menara_Alor_Setar_01.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — plateforme 2011, Chongkian, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Alor_Setar_Tower_Observation_Deck.JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour de nuit 2015, Theo.Vilein, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Alor_Setar_at_Night_theo.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "KLIA.info — ouverture au public le 14 août 1997",
+          "url": "https://klia.info/attractions/kedah/alor_setar_tower.htm",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "MY",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Tour avec plateforme d’observation, guichet et billet propres ; aucun parc de loisirs parent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/63044c49-3495-4ae1-b3b2-8ef583d92963/menara-alor-setar",
+          "publishedAtUtc": "2026-11-28T02:16:51.711Z",
+          "evidence": "PARK_DATA_EDITOR:apply:8e18de25-8a8f-4ec4-905b-d0e1177812a7"
+        },
+        "facebook": {
+          "id": "3a345fd97cae48e6af28f9ac227c7932",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T02:17:32.351Z",
+          "externalPostId": "1285475681307050_122129119725424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129119725424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3a345fd97cae48e6af28f9ac227c7932"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "423126be64f648d283da53155178dff4",
+          "c94ba6a43a18437d98523e5412315705",
+          "387e12de85c14e74b0406e059c5fbc05"
+        ],
+        "currentImageId": "423126be64f648d283da53155178dff4",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/audit.json"
+      }
     }
   ]
 }
