@@ -44,7 +44,13 @@
     "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
   },
   "facebook": {
-    "status": "Pending",
-    "note": "Not submitted while SSR social prewarm remains overloaded."
+    "status": "Published",
+    "note": "Not submitted while SSR social prewarm remains overloaded.",
+    "publishedPostConfirmed": true,
+    "publicationId": "a87062bfb781479d9c918b2d326d9d66",
+    "externalPostId": "1285475681307050_122129115333424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129115333424431",
+    "publishedAtUtc": "2026-11-28T01:25:56.3954362Z",
+    "furtherRetriesProhibited": true
   }
 }

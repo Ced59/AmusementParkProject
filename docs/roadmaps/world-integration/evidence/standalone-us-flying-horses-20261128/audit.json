@@ -1,0 +1,17 @@
+{
+  "entityId": "2f7accb3-8eaa-4c95-bddc-281cad973afe",
+  "applicableMaxPoints": 52,
+  "earnedPoints": 52,
+  "dataQualityLevel": "Excellent",
+  "publicationBlockers": [],
+  "formulaicPublicTextIssue": null,
+  "descriptions": 8,
+  "photos": 2,
+  "historyEvents": 2,
+  "status": "TemporarilyClosed",
+  "operatingHoursGap": "Season ended 31 October; next opening not yet published; no current schedule or price assigned",
+  "sitePublished": true,
+  "seoReadyVerification": "HTTP 200 and X-AmusementPark-Seo-Ready: true after deployment",
+  "completenessScore": 100,
+  "seoReady": true
+}

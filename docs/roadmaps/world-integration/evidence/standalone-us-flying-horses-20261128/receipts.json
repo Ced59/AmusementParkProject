@@ -1,0 +1,43 @@
+{
+  "entityId": "2f7accb3-8eaa-4c95-bddc-281cad973afe",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "df3a0aed-1525-46c9-a9fe-23fecfd3da81",
+      "appliedAtUtc": "2026-11-28T01:15:41.139Z",
+      "summary": "Création masquée : identité, fermeture saisonnière, emplacement et huit descriptions."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "8a0f384855064131948cfbd6f3c154c4",
+      "appliedAtUtc": "2026-11-28T01:16:24.845Z",
+      "summary": "Photo exacte de l’intérieur en 2006, domaine public, légendes et crédits dans huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "e8dd53ccdbb24372b227642a57ea8708",
+      "appliedAtUtc": "2026-11-28T01:16:58.209Z",
+      "summary": "Photo exacte d’une visiteuse cherchant l’anneau, CC BY-SA 3.0, légendes et crédits dans huit langues."
+    },
+    {
+      "kind": "Apply",
+      "id": "172f59c1-2b63-4a58-8410-c121adf2b1df",
+      "appliedAtUtc": "2026-11-28T01:18:16.080Z",
+      "summary": "Deux jalons historiques sourcés, de 1884 et 1986 ; audit projeté 100/100 sans bloqueur."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "463f4613-02c1-468c-8aab-8e56972bb43c",
+    "appliedAtUtc": "2026-11-28T01:19:16.501Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "4678676c8fad48d29b7dbabb1464c773",
+    "externalPostId": "1285475681307050_122129115459424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129115459424431",
+    "publishedAtUtc": "2026-11-28T01:27:12.5012368Z",
+    "furtherRetriesProhibited": true
+  }
+}

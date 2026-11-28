@@ -5035,7 +5035,7 @@
           "summary": "Correction éditoriale liée à la fiche principale ; trois photos publiées ; audit 96/100 sans bloqueur. Publication Facebook non confirmée."
         }
       ],
-      "nextAction": "Conserver la fiche et les preuves. Au printemps 2027, revérifier la réouverture effective, puis seulement publier les horaires et tarifs courants. Facebook : tentative 88b3dbebe520448fb6636b4d4ea30137 bloquée par le garde-fou de reprise des messages personnalisés ; reprendre uniquement ce même enregistrement après correction et déploiement. Ne pas créer une seconde publication.",
+      "nextAction": "Conserver la fiche principale, le doublon masqué et leurs reçus. Vérifier la réouverture de la prochaine saison du Hammetschwand Lift avant d’intégrer des horaires ou tarifs actuels. Annonce Facebook publiée le 28 novembre 2026 ; ne pas la republier.",
       "sources": [
         {
           "label": "Exploitant — ascenseur du Hammetschwand",
@@ -5080,6 +5080,22 @@
         "reviewedAt": "2026-11-28",
         "attractions": [],
         "rationale": "Ascenseur panoramique fixe avec billet propre, distinct de l’hôtel et du funiculaire du Bürgenstock ; aucun parent Park structuré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ae2b3898-3f38-47af-b337-ea5260737167/hammetschwand-lift",
+          "publishedAtUtc": "2026-11-28T00:18:12.618Z",
+          "evidence": "PARK_DATA_EDITOR:apply:257599fe-25e8-4ab3-b373-dddbba901b46"
+        },
+        "facebook": {
+          "id": "88b3dbebe520448fb6636b4d4ea30137",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T01:23:27.9190522Z",
+          "externalPostId": "1285475681307050_122129114907424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129114907424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:88b3dbebe520448fb6636b4d4ea30137"
+        }
       }
     },
     {
