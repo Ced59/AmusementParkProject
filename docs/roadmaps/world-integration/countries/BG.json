@@ -56,50 +56,63 @@
     },
     {
       "entryId": "BG-candidate-standalone-35a7bde32ded2d",
-      "name": "Alpine Coaster Wiegand — Rila",
+      "name": "Alpine Roller Coaster — RILA Fun Park",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
-      "locality": null,
+      "locality": "RILA Fun Park, Dedovo, Belitsa, Bulgarie",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Le parc officiel décrit son alpine coaster, ainsi que les autres activités du site, avec ouverture quotidienne publiée.",
+      "identityConfidence": "Référence Wiegand Rila et RCDB Alpine Roller Coaster rapprochées du RILA Fun Park existant et masqué, id b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
       "aliases": [
-        "Rila"
+        "Alpine Coaster Wiegand — Rila",
+        "Rila alpine coaster"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer une attraction standalone séparée. Intégrer l’Alpine Roller Coaster comme attraction du parc BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e lors de la reprise éditoriale de RILA Fun Park ; garder lastDataIntegrationAt nul tant qu’aucune donnée n’est importée.",
       "sources": [
         {
-          "label": "Wiegand — références constructeur",
+          "label": "Wiegand — référence Rila, exploitant Planinski Park - Belitsa Ltd.",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=353#location-id-2082",
-          "accessedAt": "2026-10-22"
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "RILA Fun Park — coaster et autres activités",
+          "url": "https://www.rilafunpark.eu/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "RCDB — Alpine Roller Coaster dans RILA Fun Park",
+          "url": "https://rcdb.com/17824.htm",
+          "accessedAt": "2026-11-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-28",
         "attractions": [
           {
-            "name": "Rila",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=353#location-id-2082",
+            "name": "Alpine Roller Coaster",
+            "source": "RILA Fun Park — coaster et autres activités",
+            "url": "https://www.rilafunpark.eu/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Rila",
-            "referenceId": "location-id-2082"
+            "sourceVenueName": "RILA Fun Park",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Belitsa, Bulgarie",
+            "sourceOpenedYear": "2019",
+            "parentBacklogEntryId": "BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’exploitant présente l’alpine coaster comme attraction principale d’un parc à plusieurs activités : aire de jeux, trampolines, mur d’escalade et tyrolienne. La fiche Park masquée du site correspond au même établissement."
       }
     },
     {
@@ -774,14 +787,14 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Le site officiel annonce le parc ouvert chaque jour et décrit coaster, aire de jeux, trampolines, mur d’escalade et tyrolienne.",
+      "identityConfidence": "Fiche Park masquée du site rapprochée du site officiel de RILA Fun Park et de RCDB ; plusieurs activités réunies sous le même exploitant.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Reprendre la fiche Park masquée de RILA Fun Park, déjà identifiée par l’id du site. Documenter ses autres activités et ajouter l’Alpine Roller Coaster comme attraction de ce parc, avec ses propres photos et sources. Ne pas migrer tout le parc vers StandaloneAttraction et ne pas créer de doublon.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -797,6 +810,16 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/17824.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RILA Fun Park — site officiel, activités et horaires",
+          "url": "https://www.rilafunpark.eu/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wiegand — référence Rila",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=353#location-id-2082",
+          "accessedAt": "2026-11-28"
         }
       ],
       "countryCodeAtInventory": null,
@@ -814,20 +837,21 @@
       },
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-28",
         "attractions": [
           {
             "name": "Alpine Roller Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/17824.htm",
-            "family": "Mountain coaster",
+            "source": "RILA Fun Park — activités",
+            "url": "https://www.rilafunpark.eu/",
+            "family": "Alpine coaster",
             "sourceVenueName": "RILA Fun Park",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Belitsa , Blagoevgrad",
-            "sourceOpenedYear": "2019"
+            "sourceLocality": "Belitsa, Bulgarie",
+            "sourceOpenedYear": "2019",
+            "parentBacklogEntryId": "BG-park-b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Le parc regroupe un alpine coaster et plusieurs autres activités ; l’attraction doit être intégrée dans la fiche Park existante."
       }
     },
     {

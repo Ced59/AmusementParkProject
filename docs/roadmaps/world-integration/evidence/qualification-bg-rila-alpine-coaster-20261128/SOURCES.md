@@ -1,0 +1,5 @@
+# RILA Fun Park — qualification de l’Alpine Roller Coaster, 28 novembre 2026
+
+Le [site officiel de RILA Fun Park](https://www.rilafunpark.eu/) présente l’alpine coaster comme attraction principale d’un parc qui comprend aussi une aire de jeux, des trampolines, un mur d’escalade et une tyrolienne. [Wiegand](https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=353#location-id-2082) donne Belitsa et l’exploitant Planinski Park - Belitsa Ltd. pour son installation « Rila », construite en 2019. [RCDB](https://rcdb.com/17824.htm) associe l’Alpine Roller Coaster au même parc.
+
+Recherche PDE Park « Rila Fun Park » : fiche masquée `b6ad8ba7-6bbf-4c87-ae4b-babddad1a99e`. Recherche PDE Standalone « Rila Fun Park » : aucun résultat. Le coaster est donc qualifié comme attraction interne du parc existant. L’entrée de découverte du coaster reste dans le backlog avec statut `Excluded` pour le décompte des standalones à créer et lien vers la fiche Park à intégrer. Aucune donnée du parc n’a été importée pendant cette qualification : `lastDataIntegrationAt` reste nul.
