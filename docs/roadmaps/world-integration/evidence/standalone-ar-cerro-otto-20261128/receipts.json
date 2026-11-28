@@ -1,0 +1,49 @@
+{
+  "entityId": "eef8e391-da9a-4658-8c1e-76724e6d37f2",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "dfe57277-6308-4832-9050-106c242fc1c5",
+      "appliedAtUtc": "2026-11-28T02:49:15.833Z",
+      "summary": "Création masquée : huit descriptions, six tarifs, heures de base documentées et ouverture historique de 1974."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "3f99111651144256b93e0062d39e16a6",
+      "appliedAtUtc": "2026-11-28T02:50:19.388Z",
+      "summary": "Cabine et gare sommitale exactes : Dario Alpern, CC BY-SA 4.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "1145cbe783554b01a666a3cc9b84fcc2",
+      "appliedAtUtc": "2026-11-28T02:50:32.396Z",
+      "summary": "Tracé du téléphérique exact : Juan E De Cristofaro, CC BY-SA 2.0."
+    },
+    {
+      "kind": "Apply",
+      "id": "d2be17bd-83ca-488a-a842-da5b584ea479",
+      "appliedAtUtc": "2026-11-28T02:51:34.436Z",
+      "summary": "Condition météo et fermeture anticipée sourcées dans les huit langues."
+    },
+    {
+      "kind": "Apply",
+      "id": "fec0f550-257c-4197-89af-c196607fdc00",
+      "appliedAtUtc": "2026-11-28T02:56:30.344Z",
+      "summary": "Statut TemporarilyClosed, avertissement dans huit langues et fermeture de 2026 dans la chronologie après vérification du statut officiel."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "c2adac3b-998d-4b67-a84e-036e703af5e5",
+    "appliedAtUtc": "2026-11-28T02:51:57.8595139Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "1a3752c928bb483aa461ebcda062c191",
+    "externalPostId": "1285475681307050_122129122311424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129122311424431",
+    "publishedAtUtc": "2026-11-28T02:52:48.7901752Z",
+    "furtherRetriesProhibited": true
+  }
+}

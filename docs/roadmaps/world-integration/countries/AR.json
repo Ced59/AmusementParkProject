@@ -1435,24 +1435,75 @@
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Téléphérique panoramique à billet propre",
       "locality": "Av. de los Pioneros km 5, San Carlos de Bariloche",
-      "siteId": null,
+      "siteId": "eef8e391-da9a-4658-8c1e-76724e6d37f2",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-11-27",
-      "editorialStatus": "Blocked",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
-      "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Fermeture anticipée le 26 octobre 2026 après incident ; réouverture prévue durant la dernière semaine de novembre, sans confirmation fiable trouvée au 27 novembre.",
-      "identityConfidence": "Exploitant, station et ligne identifiés ; recherches PDE Park et Standalone Cerro Otto/Bariloche sans résultat ; statut de reprise non confirmé.",
+      "lifecycleAtInventory": "TemporarilyClosed",
+      "sourceLifecycleSignal": "Statut officiel closed, mis à jour le 29 octobre 2026 et encore affiché le 28 novembre ; la réouverture annoncée après l’incident du 26 octobre n’est pas confirmée.",
+      "identityConfidence": "Exploitant et station confirmés ; recherches PDE Park/Standalone Cerro Otto sans résultat avant création ; deux photos de la ligne et billetterie propre.",
       "possibleMatches": [],
       "aliases": [
         "Teleferico Cerro Otto",
         "Teleférico de Bariloche"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Obtenir une confirmation officielle datée de reprise du service après la fermeture d’octobre 2026 ; vérifier l’état opérationnel, puis préparer la fiche avec photos précises et publier Facebook après audit. Ne pas déduire la réouverture des seuls horaires tarifaires affichés.",
+      "lastDataIntegrationAt": "2026-11-28T02:56:30.344Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-dfe57277-6308-4832-9050-106c242fc1c5",
+          "appliedAt": "2026-11-28T02:49:15.833Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eef8e391-da9a-4658-8c1e-76724e6d37f2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-otto-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, six tarifs, heures de base documentées et ouverture historique de 1974."
+        },
+        {
+          "eventId": "photo-3f99111651144256b93e0062d39e16a6",
+          "appliedAt": "2026-11-28T02:50:19.388Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eef8e391-da9a-4658-8c1e-76724e6d37f2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-otto-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Cabine et gare sommitale exactes : Dario Alpern, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-1145cbe783554b01a666a3cc9b84fcc2",
+          "appliedAt": "2026-11-28T02:50:32.396Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eef8e391-da9a-4658-8c1e-76724e6d37f2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-otto-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Tracé du téléphérique exact : Juan E De Cristofaro, CC BY-SA 2.0."
+        },
+        {
+          "eventId": "apply-d2be17bd-83ca-488a-a842-da5b584ea479",
+          "appliedAt": "2026-11-28T02:51:34.436Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eef8e391-da9a-4658-8c1e-76724e6d37f2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-otto-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Condition météo et fermeture anticipée sourcées dans les huit langues."
+        },
+        {
+          "eventId": "apply-fec0f550-257c-4197-89af-c196607fdc00",
+          "appliedAt": "2026-11-28T02:56:30.344Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eef8e391-da9a-4658-8c1e-76724e6d37f2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-otto-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-otto-20261128/audit.json",
+          "summary": "Statut TemporarilyClosed, avertissement dans huit langues et fermeture de 2026 dans la chronologie après vérification du statut officiel."
+        }
+      ],
+      "nextAction": "Confirmer une reprise datée dans le statut officiel avant de passer la fiche en Operating et d’actualiser les horaires. La fiche publiée signale la fermeture temporaire. Ne pas republier le post Facebook.",
       "sources": [
         {
           "label": "Exploitant — tarif, horaire affiché et activité",
@@ -1478,12 +1529,72 @@
           "label": "OpenStreetMap — station inférieure du téléphérique",
           "url": "https://www.openstreetmap.org/way/30807651",
           "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — état du service fermé au 28 novembre",
+          "url": "https://telefericobariloche.com.ar/api/proxy/api/service-state",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — accès et navette",
+          "url": "https://www.telefericobariloche.com.ar/es-AR/location",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — propriétaire et mission de la fondation",
+          "url": "https://www.telefericobariloche.com.ar/es-AR/foundation",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Diario Río Negro — inauguration en 1974",
+          "url": "https://www.rionegro.com.ar/sociedad/cincuenta-anos-atras-se-inauguraba-uno-de-los-principales-atractivos-turisticos-de-bariloche-3342308/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Mapcarta/OpenStreetMap — station inférieure",
+          "url": "https://mapcarta.com/N311377262",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — gare sommitale, Dario Alpern, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_en_el_Cerro_Otto.JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tracé, Juan E De Cristofaro, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Cerro_otto_teleferico.jpg",
+          "accessedAt": "2026-11-28"
         }
       ],
       "standaloneAssessment": {
         "relation": "AlreadyStandalone",
         "attractions": [],
-        "rationale": "Trajet en gondole avec tarif propre et accès touristique à la cime ; la relation exacte avec le complexe touristique doit être explicitée lors de la création."
+        "rationale": "Téléphérique panoramique avec station, tarif et billet propres ; le complexe sommital constitue la destination associée à la même billetterie, sans parc parent distinct.",
+        "reviewedAt": "2026-11-28"
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/eef8e391-da9a-4658-8c1e-76724e6d37f2/teleferico-cerro-otto",
+          "publishedAtUtc": "2026-11-28T02:51:57.859Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c2adac3b-998d-4b67-a84e-036e703af5e5"
+        },
+        "facebook": {
+          "id": "1a3752c928bb483aa461ebcda062c191",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T02:52:48.790Z",
+          "externalPostId": "1285475681307050_122129122311424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129122311424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1a3752c928bb483aa461ebcda062c191"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "3f99111651144256b93e0062d39e16a6",
+          "1145cbe783554b01a666a3cc9b84fcc2"
+        ],
+        "currentImageId": "3f99111651144256b93e0062d39e16a6",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-ar-cerro-otto-20261128/audit.json"
       }
     },
     {
