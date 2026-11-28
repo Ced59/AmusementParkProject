@@ -1,0 +1,55 @@
+{
+  "entityId": "0ab30ad1-6f86-46ee-b7af-7019d487953a",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "2d3bfd3d-1d96-4e49-996c-404d898a1948",
+      "appliedAtUtc": "2026-11-28T06:10:13.397Z",
+      "summary": "Création masquée, huit langues, gratuité et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "ebdaf175cfff43f7ba88a743ef7ee2cf",
+      "appliedAtUtc": "2026-11-28T06:10:48.135Z",
+      "summary": "Photo front avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "1bff8bc8a79e41eab4d4b4d0e1bef3a6",
+      "appliedAtUtc": "2026-11-28T06:10:56.045Z",
+      "summary": "Photo harbor avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "478d56b5b35742a1a5e5db391330392f",
+      "appliedAtUtc": "2026-11-28T06:11:03.513Z",
+      "summary": "Photo night avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "703eef4dc022442c9dfe76da25003cef",
+      "appliedAtUtc": "2026-11-28T06:11:10.874Z",
+      "summary": "Photo water avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "id": "703eef4dc022442c9dfe76da25003cef",
+      "appliedAtUtc": "2026-11-28T06:13:53.312Z",
+      "summary": "Légendes distinctes des textes alternatifs ; dernier changement de données"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "70f85c65-de6a-418f-a449-226bc386e0b0",
+    "appliedAtUtc": "2026-11-28T06:12:52.912Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "232f04b020cd4cbeb6f962b0a496f19a",
+    "externalPostId": "1285475681307050_122129141031424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129141031424431",
+    "publishedAtUtc": "2026-11-28T06:13:26.7200037Z",
+    "furtherRetriesProhibited": true
+  }
+}
