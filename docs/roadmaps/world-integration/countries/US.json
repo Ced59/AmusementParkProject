@@ -80746,6 +80746,176 @@
         "attractions": [],
         "rationale": "Trajet en capsule et accès au sommet à billet dédié, distincts du musée gratuit du parc national ; aucune fiche homonyme trouvée."
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-central-park-carousel-20261128",
+      "name": "Central Park Carousel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Carrousel historique",
+      "locality": "Mid-Park at 65th Street, Central Park, New York, États-Unis",
+      "siteId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Site de l’exploitant, billetterie et horaires quotidiens actifs au 28 novembre 2026 ; météo susceptible de modifier l’ouverture.",
+      "identityConfidence": "Carrousel Friedsam identifié par l’exploitant et la Central Park Conservancy ; recherches PDE Park/Standalone sous Central Park Carousel et Friedsam sans doublon, aucun parc parent homonyme à New York.",
+      "possibleMatches": [],
+      "aliases": [
+        "Friedsam Memorial Carousel",
+        "Central Park Carrousel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T00:56:52.017Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-eaf295ce-1234-4265-bade-a42a27dd215c",
+          "appliedAt": "2026-11-28T00:50:40.600Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : identité, emplacement et huit descriptions."
+        },
+        {
+          "eventId": "image-f52f1e7e0a8442ea819e98e609aaf9f6",
+          "appliedAt": "2026-11-28T00:51:55.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte du pavillon (Mike Peel, CC BY-SA 4.0), crédit et huit langues."
+        },
+        {
+          "eventId": "image-b645bb8748454d06b1acec0913a2edce",
+          "appliedAt": "2026-11-28T00:52:16.118Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte des chevaux et du char (MusikAnimal, CC BY-SA 4.0), crédit et huit langues."
+        },
+        {
+          "eventId": "image-a6b748dd3bda4d2f97d4917492fd3cc7",
+          "appliedAt": "2026-11-28T00:52:44.135Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte du pavillon parmi les arbres (Ajay Suresh, CC BY 2.0), crédit et huit langues."
+        },
+        {
+          "eventId": "apply-67b10f5a-5d51-45a0-bcc5-675d2e2fc731",
+          "appliedAt": "2026-11-28T00:54:13.137Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Jalon historique sourcé sur l’installation du carrousel actuel en 1951."
+        },
+        {
+          "eventId": "apply-eb36d9a6-5727-4c4c-9a6f-a1aa2d7097a2",
+          "appliedAt": "2026-11-28T00:56:52.017Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5550fa07-2bab-4fc3-8b4c-1516583369d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/audit.json",
+          "summary": "Tarif officiel du tour, billet individuel requis et provenance vérifiée ; audit réel 92/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver les six reçus. Les horaires se terminent au crépuscule et varient avec la météo : aucune fermeture fixe n’a été inventée ; revoir la possibilité d’un calendrier exact. Revérifier le tarif de 4,50 USD sur le site de l’exploitant. Annonce Facebook à publier après déploiement du correctif de surcharge SSR de la PR #1330 ; vérifier le brouillon avant tout envoi.",
+      "sources": [
+        {
+          "label": "Exploitant — identité, horaires météo et contact",
+          "url": "https://carouselatcentralpark.com/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — billets et tarif actuel",
+          "url": "https://carouselatcentralpark.com/buy-tickets/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — histoire du Friedsam Memorial Carousel",
+          "url": "https://carouselatcentralpark.com/history/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Central Park Conservancy — identité et implantation",
+          "url": "https://www.centralparknyc.org/locations/carousel",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Central Park Conservancy — histoire et règle de billet ; tarif indiqué non retenu car divergent",
+          "url": "https://www.centralparknyc.org/visiting-the-carousel-in-central-park",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — point du carrousel",
+          "url": "https://www.openstreetmap.org/way/585788256",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — photo Mike Peel, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:At_New_York_City_2024_264.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — photo MusikAnimal, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Central_Park_Carousel_interior_in_2015.JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — photo Ajay Suresh, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Central_Park_Carousel_(49019860351).jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Attraction fixe à billet propre dans le parc municipal ouvert de Central Park ; aucune fiche Park correspondante sur le site. Le carrousel et son exploitant sont identifiés indépendamment."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/5550fa07-2bab-4fc3-8b4c-1516583369d3/central-park-carousel",
+          "publishedAtUtc": "2026-11-28T00:57:49.807Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0dc7f73d-d721-4d4f-9cbb-82e7f24379bf"
+        },
+        "facebook": {
+          "status": "Pending",
+          "publishedAtUtc": null,
+          "externalPostUrl": null
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "f52f1e7e0a8442ea819e98e609aaf9f6",
+          "b645bb8748454d06b1acec0913a2edce",
+          "a6b748dd3bda4d2f97d4917492fd3cc7"
+        ],
+        "currentImageId": "b645bb8748454d06b1acec0913a2edce",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-central-park-carousel-20261128/audit.json",
+        "score": 92,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
     }
   ]
 }
