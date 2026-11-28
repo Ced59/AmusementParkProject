@@ -20,7 +20,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 81 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 10 |
+| Intégration achevée | 11 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -31,7 +31,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **12 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **67 candidats sans fiche**.
 
-Standalone : **10 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **11 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **11 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **6 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -51,6 +51,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | KR-candidate-551fe61cc40a04 | Bugok Hawaii | Geomun , Bugok , Changnyeong , Gyeongsangnam-do | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5883.htm) |
 | KR-candidate-14492a6f8de7b4 | Busan Aquarium | Busan | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#South_Korea) |
 | KR-candidate-a01451b276e615 | Busan Children's Grand Park Amusement Park | Busan | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5094.htm) |
+| KR-candidate-discovery-busan-tower-20261128 | Busan Tower | 37-30 Yongdusan-gil, Jung-gu, Busan, Corée du Sud | StandaloneAttraction | Published | Intégration achevée | 2026-11-28T03:58:05.208Z | — | Recontrôler les prix et éventuelles fermetures spéciales avant les vacances ; ne pas republier Facebook. Qualification standalone : AlreadyStandalone. Observatoire à billet propre dans le parc public Yongdusan, dont l’accès est gratuit. Signal source : L’office du tourisme coréen publie horaires et tarifs en vigueur, avec ouverture toute l’année.. [Korea Tourism Organization — Busan Tower, billets, horaires, adresse](https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=84864) · [Visit Busan — Yongdusan Park, gratuit et tour à billet distinct](https://www.visitbusan.net/index.do?contentsSid=22&lang_cd=en&uc_seq=368) · [World Federation of Great Towers — construction en 1973](https://www.great-towers.com/tower/busan-tower) · [OpenStreetMap Nominatim — localisation de Busan Tower](https://www.openstreetmap.org/search?query=Busan%20Tower) · [Wikimedia Commons — tour et parc, Mobius6, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Busan_Tower_and_Yongdusan_Park_20200522_003.jpg) · [Wikimedia Commons — observatoire, Ahmed, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Busan_Tower,_October_2019_04.jpg) · [Wikimedia Commons — vue nocturne, Ahmed, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Busan_Tower,_October_2019_05.jpg) |
 | KR-candidate-c66273ce8d158b | Caribbean Bay | Yongin | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#South_Korea) |
 | KR-park-afd4da25-ee31-463a-b6a7-492a35edf378 | Children's Grand Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/5042.htm) |
 | KR-candidate-a6f231c23bd884 | COEX Aquarium | Seoul | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#South_Korea) |

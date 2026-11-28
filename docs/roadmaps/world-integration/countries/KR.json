@@ -5108,6 +5108,143 @@
         "attractions": [],
         "rationale": "La ligne possède sa billetterie et ses règles d’accès propres ; le parc national et ses sentiers ne font pas partie de cette attraction."
       }
+    },
+    {
+      "entryId": "KR-candidate-discovery-busan-tower-20261128",
+      "name": "Busan Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "37-30 Yongdusan-gil, Jung-gu, Busan, Corée du Sud",
+      "siteId": "4f31f731-e638-4379-8dd0-2376b7c35ee8",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’office du tourisme coréen publie horaires et tarifs en vigueur, avec ouverture toute l’année.",
+      "identityConfidence": "Recherche PDE Park et Standalone sous « Busan Tower » sans homonyme ; parc Yongdusan gratuit, tour avec entrée payante distincte.",
+      "possibleMatches": [],
+      "aliases": [
+        "부산타워",
+        "Diamond Tower Busan"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T03:58:05.208Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a42e12c4-ef9c-47fc-aba4-8f83b2ade187",
+          "appliedAt": "2026-11-28T03:56:48.603Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4f31f731-e638-4379-8dd0-2376b7c35ee8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-busan-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : descriptions en huit langues, deux tarifs, horaires, accès et histoire sourcés."
+        },
+        {
+          "eventId": "image-7f2633890159446994bc862c04009fc9",
+          "appliedAt": "2026-11-28T03:57:38.667Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4f31f731-e638-4379-8dd0-2376b7c35ee8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-busan-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-8ef5fea60cf541599e052973d8089057",
+          "appliedAt": "2026-11-28T03:57:51.639Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4f31f731-e638-4379-8dd0-2376b7c35ee8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-busan-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte inside importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-3dfafd5fc5cf4cc6b8989b8e2e4d55cf",
+          "appliedAt": "2026-11-28T03:58:05.208Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4f31f731-e638-4379-8dd0-2376b7c35ee8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-busan-tower-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-busan-tower-20261128/audit.json",
+          "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        }
+      ],
+      "nextAction": "Recontrôler les prix et éventuelles fermetures spéciales avant les vacances ; ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Korea Tourism Organization — Busan Tower, billets, horaires, adresse",
+          "url": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=84864",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Visit Busan — Yongdusan Park, gratuit et tour à billet distinct",
+          "url": "https://www.visitbusan.net/index.do?contentsSid=22&lang_cd=en&uc_seq=368",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "World Federation of Great Towers — construction en 1973",
+          "url": "https://www.great-towers.com/tower/busan-tower",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — localisation de Busan Tower",
+          "url": "https://www.openstreetmap.org/search?query=Busan%20Tower",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour et parc, Mobius6, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Busan_Tower_and_Yongdusan_Park_20200522_003.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — observatoire, Ahmed, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Busan_Tower,_October_2019_04.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue nocturne, Ahmed, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Busan_Tower,_October_2019_05.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "KR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Observatoire à billet propre dans le parc public Yongdusan, dont l’accès est gratuit."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/4f31f731-e638-4379-8dd0-2376b7c35ee8/busan-tower",
+          "publishedAtUtc": "2026-11-28T03:58:30.888Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ff7de2f0-4461-4513-8c9e-ae2a05069ae2"
+        },
+        "facebook": {
+          "id": "62f10e2f10844436b0f3c4f7de5f73ba",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T03:58:58.666Z",
+          "externalPostId": "1285475681307050_122129128341424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129128341424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:62f10e2f10844436b0f3c4f7de5f73ba"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "7f2633890159446994bc862c04009fc9",
+          "8ef5fea60cf541599e052973d8089057",
+          "3dfafd5fc5cf4cc6b8989b8e2e4d55cf"
+        ],
+        "currentImageId": "7f2633890159446994bc862c04009fc9",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-kr-busan-tower-20261128/audit.json"
+      }
     }
   ]
 }
