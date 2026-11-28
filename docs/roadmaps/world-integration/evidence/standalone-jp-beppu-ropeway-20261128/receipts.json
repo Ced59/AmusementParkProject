@@ -1,0 +1,49 @@
+{
+  "entityId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "04ec6c68-6df0-49ff-a403-faccae902682",
+      "appliedAtUtc": "2026-11-28T01:39:02.902Z",
+      "summary": "Création masquée : identité, parcours, localisation et huit descriptions."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "6244a7212b734bf998daa3bb565416af",
+      "appliedAtUtc": "2026-11-28T01:40:47Z",
+      "summary": "Photo exacte de 2025 du trajet, CC BY-SA 4.0, image courante et métadonnées dans huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "23188ac25dfa48ffa96b0a6648d28260",
+      "appliedAtUtc": "2026-11-28T01:41:07Z",
+      "summary": "Photo exacte de la cabine Tsurumi-go en 2010, CC BY-SA 3.0, métadonnées dans huit langues."
+    },
+    {
+      "kind": "Apply",
+      "id": "6992e816-e7c0-44a0-9096-9ba1f16119f7",
+      "appliedAtUtc": "2026-11-28T01:42:32.717Z",
+      "summary": "Tarifs aller simple et retour par âge, droit d’accès, horaires d’hiver et ouverture de 1962 sourcés."
+    },
+    {
+      "kind": "Apply",
+      "id": "a47c2b78-d21c-4e8d-8364-7b828a31fc58",
+      "appliedAtUtc": "2026-11-28T01:43:57.791Z",
+      "summary": "Réécriture des descriptions pour enlever les mesures brutes ; audit 92/100 sans bloqueur."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "44d43792-3f5d-4ea3-a500-5645d54f6a58",
+    "appliedAtUtc": "2026-11-28T01:44:41.210Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "f6ac191e89424202b052885617289009",
+    "externalPostId": "1285475681307050_122129116977424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129116977424431",
+    "publishedAtUtc": "2026-11-28T01:45:18.0386857Z",
+    "furtherRetriesProhibited": true
+  }
+}

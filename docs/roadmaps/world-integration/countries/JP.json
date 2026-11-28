@@ -19719,6 +19719,143 @@
         "attractions": [],
         "rationale": "Tour d’observation à billet propre, sans Park parent ; les activités de glisse et de saut ont des billets distincts de l’observation générale."
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-beppu-ropeway-20261128",
+      "name": "Beppu Ropeway",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "10-7 Aza Kanbara Oaza Minami Tateishi, Beppu, préfecture d’Ōita, Japon",
+      "siteId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant annonçait la reprise au 18 juillet 2026 ; la préfecture d’Ōita publie des horaires annuels sans fermeture programmée, sous réserve de météo ou entretien.",
+      "identityConfidence": "Téléphérique indépendant de Beppu-Kōgen vers le mont Tsurumi ; recherches PDE Park/Standalone « Beppu » et Standalone « Tsurumi » négatives avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "別府ロープウェイ",
+        "Kintetsu Beppu Ropeway",
+        "Mt. Tsurumi Ropeway"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T01:43:57.791Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-04ec6c68-6df0-49ff-a403-faccae902682",
+          "appliedAt": "2026-11-28T01:39:02.902Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : identité, parcours, localisation et huit descriptions."
+        },
+        {
+          "eventId": "image-6244a7212b734bf998daa3bb565416af",
+          "appliedAt": "2026-11-28T01:40:47Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2025 du trajet, CC BY-SA 4.0, image courante et métadonnées dans huit langues."
+        },
+        {
+          "eventId": "image-23188ac25dfa48ffa96b0a6648d28260",
+          "appliedAt": "2026-11-28T01:41:07Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la cabine Tsurumi-go en 2010, CC BY-SA 3.0, métadonnées dans huit langues."
+        },
+        {
+          "eventId": "apply-6992e816-e7c0-44a0-9096-9ba1f16119f7",
+          "appliedAt": "2026-11-28T01:42:32.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Tarifs aller simple et retour par âge, droit d’accès, horaires d’hiver et ouverture de 1962 sourcés."
+        },
+        {
+          "eventId": "apply-a47c2b78-d21c-4e8d-8364-7b828a31fc58",
+          "appliedAt": "2026-11-28T01:43:57.791Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/audit.json",
+          "summary": "Réécriture des descriptions pour enlever les mesures brutes ; audit 92/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver les cinq reçus de données et les preuves de publication. Recontrôler les interruptions météo ou techniques et les tarifs officiels ; annonce Facebook déjà publiée, ne pas la répéter.",
+      "sources": [
+        {
+          "label": "Visit Oita — parcours, horaires et tarifs",
+          "url": "https://oita-tourism.com/en/attractions/detail_1015.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Beppu Ropeway — reprise annoncée le 18 juillet 2026",
+          "url": "https://www.beppu-ropeway.co.jp/topics/detail.php?id=202607171042415946",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Kintetsu Group — date d’ouverture en 1962",
+          "url": "https://www.kintetsu-g-hd.co.jp/common-hd/data/pdf/20221116beppu120221116102716685620653.pdf",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — trajet, Beleggrodion, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Beppu_Ropeway_Route.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — cabine, Zero_1_k, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Beppu_Ropeway_Tsurumi_go.JPG",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Ligne de téléphérique avec accès et tarifs propres, exploitée et présentée comme attraction autonome, sans parc parent homonyme."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d0322679-e0b0-4282-a7ab-4c402b915d84/beppu-ropeway",
+          "publishedAtUtc": "2026-11-28T01:44:41.210Z",
+          "evidence": "PARK_DATA_EDITOR:apply:44d43792-3f5d-4ea3-a500-5645d54f6a58"
+        },
+        "facebook": {
+          "id": "f6ac191e89424202b052885617289009",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T01:45:18.0386857Z",
+          "externalPostId": "1285475681307050_122129116977424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129116977424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:f6ac191e89424202b052885617289009"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "6244a7212b734bf998daa3bb565416af",
+          "23188ac25dfa48ffa96b0a6648d28260"
+        ],
+        "currentImageId": "6244a7212b734bf998daa3bb565416af",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/audit.json"
+      }
     }
   ]
 }
