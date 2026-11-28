@@ -1,0 +1,49 @@
+{
+  "entityId": "77b83522-55d7-40f3-90d9-781bb352a9ba",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "fd0bff5c-9df6-43b2-8d6d-fe896de230f4",
+      "appliedAtUtc": "2026-11-28T04:20:01.356Z",
+      "summary": "Création masquée : descriptions en huit langues, tarif de l’ascenseur seul, horaires et exceptions de décembre, accès sourcés."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "e5f12a6915c5437cb47cee6d00dedf66",
+      "appliedAtUtc": "2026-11-28T04:20:51.228Z",
+      "summary": "Photo exacte exterior importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "62a5729fb5394e2aaf9d8941a713bf0d",
+      "appliedAtUtc": "2026-11-28T04:20:59.471Z",
+      "summary": "Photo exacte lift importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "9238818229f34999848f4a403dc1fa3f",
+      "appliedAtUtc": "2026-11-28T04:21:07.525Z",
+      "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "id": "9238818229f34999848f4a403dc1fa3f",
+      "appliedAtUtc": "2026-11-28T04:23:42.608Z",
+      "summary": "Légendes et textes alternatifs distincts, vérifiés contre l’audit éditorial."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "49f40720-54eb-474d-884d-2abedfa1c075",
+    "appliedAtUtc": "2026-11-28T04:22:32.515Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "55dd01f010074d2aa31d540d26ca8708",
+    "externalPostId": "1285475681307050_122129130849424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129130849424431",
+    "publishedAtUtc": "2026-11-28T04:23:11.5580569Z",
+    "furtherRetriesProhibited": true
+  }
+}
