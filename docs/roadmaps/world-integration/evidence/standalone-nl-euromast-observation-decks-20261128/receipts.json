@@ -1,0 +1,43 @@
+{
+  "entityId": "48e47432-d211-4590-b64a-ad099156b94c",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "12e762ff-f4af-4178-9786-027b6baa747c",
+      "appliedAtUtc": "2026-11-28T05:17:17.112Z",
+      "summary": "Création masquée avec huit descriptions, tarifs dynamiques à partir de, horaires annoncés et accès distinct de l’Euroscoop."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "7c87dcba0e58414a94e377c7c61bdaea",
+      "appliedAtUtc": "2026-11-28T05:17:57.680Z",
+      "summary": "Photo exacte tower importée avec crédit, licence, légende et texte alternatif en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "a2b0a7b15c3b4941b13d669a97a3b752",
+      "appliedAtUtc": "2026-11-28T05:18:06.910Z",
+      "summary": "Photo exacte deck importée avec crédit, licence, légende et texte alternatif en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "869303bf6523451ca8ed66dda8f1740e",
+      "appliedAtUtc": "2026-11-28T05:18:14.535Z",
+      "summary": "Photo exacte view importée avec crédit, licence, légende et texte alternatif en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "509cf6ff-53af-4cdf-863c-718ea3ffb5ee",
+    "appliedAtUtc": "2026-11-28T05:18:47.965Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "da6db1dc1e3e4c819c21e51d0110c330",
+    "externalPostId": "1285475681307050_122129135031424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129135031424431",
+    "publishedAtUtc": "2026-11-28T05:19:31.963697Z",
+    "furtherRetriesProhibited": true
+  }
+}
