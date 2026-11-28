@@ -1,0 +1,55 @@
+{
+  "entityId": "9af4c8c5-c24b-436b-94e7-02debd61c5f6",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "fbf7b9e0-3cd4-46f2-be76-1d580961bba2",
+      "appliedAtUtc": "2026-11-28T06:18:21.951Z",
+      "summary": "Création masquée, huit langues, tarifs et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "1309a98bcce3429b8843fa5b1f7802ab",
+      "appliedAtUtc": "2026-11-28T06:18:57.323Z",
+      "summary": "Photo tower avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "5ef9ce9baa9c4a1cb5b1e794a6f89b00",
+      "appliedAtUtc": "2026-11-28T06:19:05.024Z",
+      "summary": "Photo front avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "a7d79d12fc6d43308e0689a12b34038f",
+      "appliedAtUtc": "2026-11-28T06:19:11.798Z",
+      "summary": "Photo interior avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "e18e5d41110941c88f210c146e4ff947",
+      "appliedAtUtc": "2026-11-28T06:19:19.190Z",
+      "summary": "Photo view avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "Apply",
+      "id": "3ef622be-3f6f-4f50-be0b-58f5ef713a01",
+      "appliedAtUtc": "2026-11-28T06:20:01.614Z",
+      "summary": "Correction éditoriale avant publication ; dernier changement de données"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "add16cbe-1f69-46f1-9b7a-f1ae90f45c11",
+    "appliedAtUtc": "2026-11-28T06:20:44.002Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "146fdf92239244e9898c6ec89d2d6730",
+    "externalPostId": "1285475681307050_122129141721424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129141721424431",
+    "publishedAtUtc": "2026-11-28T06:21:13.8174839Z",
+    "furtherRetriesProhibited": true
+  }
+}
