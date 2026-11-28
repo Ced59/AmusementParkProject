@@ -1,0 +1,43 @@
+{
+  "entityId": "67435694-d1e0-44ef-8832-6bf0b997796f",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "4806d7ea-897e-464b-9e53-b239f0e08f01",
+      "appliedAtUtc": "2026-11-28T05:01:13.293Z",
+      "summary": "Création masquée avec huit descriptions, tarifs par catégorie, conditions d’accès et horaires officiels d’hiver."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "5d8e8d2725a241beb69ebbf9ee7cb4dd",
+      "appliedAtUtc": "2026-11-28T05:01:55.222Z",
+      "summary": "Photo exacte tower importée avec licence, crédit, légende et texte alternatif en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "650adfb240c046fd94afe03b42b0c26f",
+      "appliedAtUtc": "2026-11-28T05:02:02.168Z",
+      "summary": "Photo exacte deck importée avec licence, crédit, légende et texte alternatif en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "63f905af989544fba13fb3b58a00cfb0",
+      "appliedAtUtc": "2026-11-28T05:02:09.158Z",
+      "summary": "Photo exacte view importée avec licence, crédit, légende et texte alternatif en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "67a6daca-baca-4c22-845a-66ebded26c17",
+    "appliedAtUtc": "2026-11-28T05:03:19.551Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "c7bc19ece3a341cda582ca58dfe131ad",
+    "externalPostId": "1285475681307050_122129133627424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129133627424431",
+    "publishedAtUtc": "2026-11-28T05:03:48.2305069Z",
+    "furtherRetriesProhibited": true
+  }
+}
