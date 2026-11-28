@@ -1,0 +1,49 @@
+{
+  "entityId": "2a212dcd-7aa8-416f-9267-ae6bd01b1405",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "2960a4b9-5e9b-4c7e-85a4-6961e37717e5",
+      "appliedAtUtc": "2026-11-28T05:10:20.848Z",
+      "summary": "Création masquée : huit descriptions, six tarifs par âge, horaires officiels et accès distinct du toboggan."
+    },
+    {
+      "kind": "Apply",
+      "id": "1be4a99b-718e-4eb9-b992-e12941341d07",
+      "appliedAtUtc": "2026-11-28T05:10:52.207Z",
+      "summary": "Correction du lien vers la page officielle exacte de la plateforme."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "2cd64d21466a4f998a1f3717e17cf8e1",
+      "appliedAtUtc": "2026-11-28T05:11:26.719Z",
+      "summary": "Photo exacte tower importée avec crédit, licence, légende et texte alternatif en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "1b53c6fffaa24a08bc7a1e79f0001997",
+      "appliedAtUtc": "2026-11-28T05:11:42.025Z",
+      "summary": "Photo exacte deck importée avec crédit, licence, légende et texte alternatif en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "f725210d3aa94d8b8b9bdb70e4f8eef9",
+      "appliedAtUtc": "2026-11-28T05:11:49.373Z",
+      "summary": "Photo exacte view importée avec crédit, licence, légende et texte alternatif en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "08e0006c-b173-4bab-9a4c-7190f40e34ff",
+    "appliedAtUtc": "2026-11-28T05:12:15.583Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "7450b842b23641168017fe4e1e9a4745",
+    "externalPostId": "1285475681307050_122129134317424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129134317424431",
+    "publishedAtUtc": "2026-11-28T05:12:43.7646828Z",
+    "furtherRetriesProhibited": true
+  }
+}

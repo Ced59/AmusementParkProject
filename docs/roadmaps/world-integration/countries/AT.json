@@ -7822,6 +7822,157 @@
         "attractions": [],
         "rationale": "Parcours fixe à billet et exploitant propres, indépendant d’un parc d’attractions ; les trois tronçons forment l’offre officielle Top of Innsbruck, tandis que le zoo et les activités du massif restent séparés."
       }
+    },
+    {
+      "entryId": "AT-candidate-discovery-donauturm-observation-deck-20261128",
+      "name": "Donauturm Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "Donauturmstraße 4, 1220 Wien, Autriche",
+      "siteId": "2a212dcd-7aa8-416f-9267-ae6bd01b1405",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant vend un billet propre à la terrasse panoramique avec ascenseur ; la billetterie affiche 10 h–22 h et des prix de 5,40 € à 18 € selon l’âge.",
+      "identityConfidence": "Recherches PDE sous Donauturm et Danube Tower : seule la fiche du toboggan existait ; la terrasse possède une billetterie distincte du supplément toboggan.",
+      "possibleMatches": [
+        {
+          "entityKind": "StandaloneAttraction",
+          "siteId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+          "name": "Donauturm-Rutsche",
+          "reason": "Même tour, activité avec billet séparé ; la fiche existante concerne le toboggan."
+        }
+      ],
+      "aliases": [
+        "Donauturm Aussichtsplattform",
+        "Danube Tower Observation Deck",
+        "Donauturm Viewing Platform"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T05:11:49.373Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2960a4b9-5e9b-4c7e-85a4-6961e37717e5",
+          "appliedAt": "2026-11-28T05:10:20.848Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a212dcd-7aa8-416f-9267-ae6bd01b1405",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-observation-deck-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, six tarifs par âge, horaires officiels et accès distinct du toboggan."
+        },
+        {
+          "eventId": "apply-1be4a99b-718e-4eb9-b992-e12941341d07",
+          "appliedAt": "2026-11-28T05:10:52.207Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a212dcd-7aa8-416f-9267-ae6bd01b1405",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-observation-deck-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Correction du lien vers la page officielle exacte de la plateforme."
+        },
+        {
+          "eventId": "image-2cd64d21466a4f998a1f3717e17cf8e1",
+          "appliedAt": "2026-11-28T05:11:26.719Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a212dcd-7aa8-416f-9267-ae6bd01b1405",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-observation-deck-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec crédit, licence, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-1b53c6fffaa24a08bc7a1e79f0001997",
+          "appliedAt": "2026-11-28T05:11:42.025Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a212dcd-7aa8-416f-9267-ae6bd01b1405",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-observation-deck-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte deck importée avec crédit, licence, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-f725210d3aa94d8b8b9bdb70e4f8eef9",
+          "appliedAt": "2026-11-28T05:11:49.373Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a212dcd-7aa8-416f-9267-ae6bd01b1405",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-observation-deck-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-donauturm-observation-deck-20261128/audit.json",
+          "summary": "Photo exacte view importée avec crédit, licence, légende et texte alternatif en huit langues."
+        }
+      ],
+      "nextAction": "Recontrôler les tarifs et horaires sur la billetterie officielle ; signaler les fermetures de la terrasse extérieure selon la météo. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Donauturm — plateforme panoramique, intérieur et terrasse",
+          "url": "https://www.donauturm.at/en/the-tower/viewing-platform",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Billetterie officielle — tarifs, âge, contenu du billet et toboggan en supplément",
+          "url": "https://shop.donauturm.at/en/Admission-Tickets/Single-Tickets",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Billetterie officielle — horaires 10 h–22 h et dernière ascension",
+          "url": "https://shop.donauturm.at/en",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Donauturm — accès et fermetures selon les zones",
+          "url": "https://www.donauturm.at/en/opening-times",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — Donauturm et coordonnées",
+          "url": "https://www.openstreetmap.org/way/46965660",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour dans le parc, Ekrem Canli, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Donaupark_%26_Donauturm_Vienna_2024.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — terrasse, Geolina163, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Donauturm_Aussichtsplattform_1.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue sur Vienne, Kstipek, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Blick_auf_Wien_vom_Donauturm_01.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "AT",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Belvédère à billet autonome ; le toboggan du même bâtiment est un supplément et possède déjà sa propre fiche."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/2a212dcd-7aa8-416f-9267-ae6bd01b1405/donauturm-observation-deck",
+          "publishedAtUtc": "2026-11-28T05:12:15.583Z",
+          "evidence": "PARK_DATA_EDITOR:apply:08e0006c-b173-4bab-9a4c-7190f40e34ff"
+        },
+        "facebook": {
+          "id": "7450b842b23641168017fe4e1e9a4745",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T05:12:43.7646828Z",
+          "externalPostId": "1285475681307050_122129134317424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129134317424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:7450b842b23641168017fe4e1e9a4745"
+        }
+      }
     }
   ]
 }
