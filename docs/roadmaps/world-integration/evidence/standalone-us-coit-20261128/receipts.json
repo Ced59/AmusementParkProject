@@ -1,0 +1,49 @@
+{
+  "entityId": "ba8cccd9-6a1a-482f-8e16-0c9fbd43de31",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "99cb5b7c-ffda-473c-962c-728a3f1aace2",
+      "appliedAtUtc": "2026-11-28T06:28:45.066Z",
+      "summary": "Création masquée, huit langues, tarifs et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "be53d1d224334f2284e4a9c8c157df5a",
+      "appliedAtUtc": "2026-11-28T06:29:21.632Z",
+      "summary": "Photo tower avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "e1cb2859c87e4c4c86685a9d299a5327",
+      "appliedAtUtc": "2026-11-28T06:29:29.820Z",
+      "summary": "Photo city avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "183505d8c7264b74ab69f5e0add28b30",
+      "appliedAtUtc": "2026-11-28T06:29:37.266Z",
+      "summary": "Photo lift avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "1ba77681cf1a4bae9b5a20873b8f0c27",
+      "appliedAtUtc": "2026-11-28T06:29:44.849Z",
+      "summary": "Photo mural avec licence et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "b66346d1-3a03-4c28-8170-e0ebeeb1b563",
+    "appliedAtUtc": "2026-11-28T06:30:18.249Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "5a6cdb49b5ea4df999a13bc1b2640061",
+    "externalPostId": "1285475681307050_122129143311424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129143311424431",
+    "publishedAtUtc": "2026-11-28T06:30:49.6724501Z",
+    "furtherRetriesProhibited": true
+  }
+}
