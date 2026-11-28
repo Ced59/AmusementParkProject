@@ -150,6 +150,56 @@ public sealed class FacebookPageSocialPublisherTests
     }
 
     [Fact]
+    public async Task PublishLinkAsync_WhenForcedRefreshOverloadsSsr_ShouldUseReadyCachedPage()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{\"id\":\"123_456\"}",
+            failRefreshAsOverload: true);
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
+            CreateSettings());
+
+        SocialPublisherResult result = await publisher.PublishLinkAsync(
+            new SocialPublisherRequest(
+                "Message",
+                "https://amusement-parks.fun/fr/attraction/attraction-1/test"),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(2, handler.PagePreparationCallCount);
+        Assert.Equal(1, handler.RefreshPagePreparationCallCount);
+        Assert.True(handler.PagePreparationBodyRead);
+        Assert.Equal(1, handler.GraphCallCount);
+    }
+
+    [Fact]
+    public async Task PublishLinkAsync_WhenCachedPageIsAlsoUnready_ShouldNotPost()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{}",
+            pageSeoReady: false,
+            failRefreshAsOverload: true);
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
+            CreateSettings());
+
+        SocialPublisherResult result = await publisher.PublishLinkAsync(
+            new SocialPublisherRequest(
+                "Message",
+                "https://amusement-parks.fun/fr/attraction/attraction-1/test"),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("preview-page-not-ready", result.FailureCode);
+        Assert.Equal(2, handler.PagePreparationCallCount);
+        Assert.Equal(0, handler.GraphCallCount);
+    }
+
+    [Fact]
     public async Task PublishLinkAsync_WhenPreparedPageBodyIsIncomplete_ShouldNotPublish()
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
