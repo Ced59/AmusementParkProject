@@ -1,0 +1,37 @@
+{
+  "entityId": "53a2d607-39ac-4664-9a33-cac8da552af9",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "706434ff-caad-4843-8e61-60063cc676ed",
+      "appliedAtUtc": "2026-11-28T04:34:38.747Z",
+      "summary": "Création masquée : tarif, calendrier, restrictions et ouverture sourcés en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "dc5194b28ea241999a9c6a5bbe3ee5b8",
+      "appliedAtUtc": "2026-11-28T04:35:46.287Z",
+      "summary": "Photo de la voie sur le Cerro de Escamela importée sous CC0 avec crédit, légende et texte alternatif en huit langues."
+    },
+    {
+      "kind": "Apply",
+      "id": "d4d0451e-c44b-4377-be8c-190f0c0ece6b",
+      "appliedAtUtc": "2026-11-28T04:37:23.942Z",
+      "summary": "Descriptions visiteurs améliorées après audit pour retirer les mesures techniques brutes."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "9a27639a-f96b-48d8-a216-a49ef39fd11c",
+    "appliedAtUtc": "2026-11-28T04:38:02.080Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "7c01b8ff7a0f48fcb318d7b236e0e17a",
+    "externalPostId": "1285475681307050_122129131929424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129131929424431",
+    "publishedAtUtc": "2026-11-28T04:38:33.0103269Z",
+    "furtherRetriesProhibited": true
+  }
+}
