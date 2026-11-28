@@ -1,0 +1,15 @@
+{
+  "fetchedAtUtc": "2026-11-28T02:54:44Z",
+  "sourceUrl": "https://telefericobariloche.com.ar/api/proxy/api/service-state",
+  "response": {
+    "data": {
+      "id": 322,
+      "documentId": "i5jkx2287ao61xwxs0kn2a07",
+      "state": "closed",
+      "createdAt": "2025-03-20T16:52:06.377Z",
+      "updatedAt": "2026-10-29T14:43:32.328Z",
+      "publishedAt": "2026-10-29T14:43:32.354Z"
+    },
+    "meta": {}
+  }
+}
