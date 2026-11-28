@@ -1,0 +1,43 @@
+{
+  "entityId": "96d9be7f-465b-4067-9869-18afa9487acc",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "380c9654-edee-4655-92a8-7b1d8dd90b69",
+      "appliedAtUtc": "2026-11-28T04:11:12.839Z",
+      "summary": "Création masquée : huit descriptions, tarif dynamique à partir du prix officiel, horaires, accès et histoire sourcés."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "0a83e450226a41cf91641f2140d19dc7",
+      "appliedAtUtc": "2026-11-28T04:12:25.396Z",
+      "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "a06848673424479e91552dbd66fb442d",
+      "appliedAtUtc": "2026-11-28T04:12:38.239Z",
+      "summary": "Photo exacte east importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "200eaccb029343fca6fff70c8162cbce",
+      "appliedAtUtc": "2026-11-28T04:12:50.868Z",
+      "summary": "Photo exacte west importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "6d6f7885-0c20-4200-bc39-1a055c315918",
+    "appliedAtUtc": "2026-11-28T04:13:16.672Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "128d366d06834b5e845a088dd3a5f7c3",
+    "externalPostId": "1285475681307050_122129129349424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129129349424431",
+    "publishedAtUtc": "2026-11-28T04:13:47.798Z",
+    "furtherRetriesProhibited": true
+  }
+}
