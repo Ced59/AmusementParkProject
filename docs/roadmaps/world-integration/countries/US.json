@@ -6,7 +6,7 @@
   "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
   "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 2622,
+  "sourceObservationCount": 2623,
   "sourceFamilies": [
     "ADG — Project Book",
     "AZA",
@@ -81187,6 +81187,145 @@
         ],
         "currentImageId": "0a83e450226a41cf91641f2140d19dc7",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-view-boston-20261128/audit.json"
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-coit-tower-observation-deck-20261128",
+      "name": "Coit Tower Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "1 Telegraph Hill Blvd, San Francisco, California 94133, États-Unis",
+      "siteId": "ba8cccd9-6a1a-482f-8e16-0c9fbd43de31",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "La ville de San Francisco publie les tarifs de l’ascenseur et confirme la vue panoramique ; l’exploitant indique les horaires d’hiver, d’été et les fermetures de fête.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Coit Tower et Pioneer Park sans résultat ; le belvédère payant forme une visite distincte du parc public.",
+      "possibleMatches": [],
+      "aliases": [
+        "Coit Tower",
+        "Coit Memorial Tower",
+        "Telegraph Hill Observation Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T06:29:44.849Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-99cb5b7c-ffda-473c-962c-728a3f1aace2",
+          "appliedAt": "2026-11-28T06:28:45.066Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ba8cccd9-6a1a-482f-8e16-0c9fbd43de31",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-coit-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, tarifs résident/non-résident, horaires et accès officiels."
+        },
+        {
+          "eventId": "image-be53d1d224334f2284e4a9c8c157df5a",
+          "appliedAt": "2026-11-28T06:29:21.632Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ba8cccd9-6a1a-482f-8e16-0c9fbd43de31",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-coit-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-e1cb2859c87e4c4c86685a9d299a5327",
+          "appliedAt": "2026-11-28T06:29:29.820Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ba8cccd9-6a1a-482f-8e16-0c9fbd43de31",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-coit-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte city importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-183505d8c7264b74ab69f5e0add28b30",
+          "appliedAt": "2026-11-28T06:29:37.266Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ba8cccd9-6a1a-482f-8e16-0c9fbd43de31",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-coit-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte lift importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-1ba77681cf1a4bae9b5a20873b8f0c27",
+          "appliedAt": "2026-11-28T06:29:44.849Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ba8cccd9-6a1a-482f-8e16-0c9fbd43de31",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-coit-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-coit-20261128/audit.json",
+          "summary": "Photo exacte mural importée avec licence et métadonnées en huit langues."
+        }
+      ],
+      "nextAction": "Avant mai 2027, passer les horaires structurés au régime d’été 10 h–18 h. Les tarifs de la ville et ceux de l’exploitant diffèrent : revérifier au guichet avant une prochaine mise à jour. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Ville de San Francisco — belvédère et tarifs de l’ascenseur",
+          "url": "https://recpark.sf.gov/Facilities/Facility/Details/Coit-Tower-290",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant Coit Tours — horaires saisonniers et jours fermés",
+          "url": "https://www.coittours.com/visitor-info.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Pioneer Park — fresques gratuites",
+          "url": "https://www.pioneerparksf.org/visit",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour, Almonroth, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Coit_Memorial_Tower_01.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — panorama, Sailko, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Coit_Tower,_view_from_01.JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — ascenseur, Cornflower123, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Coit_Tower_Elevator.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — fresque, Wpatoday, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Coit_Tower_Mural_ER.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Tour historique avec belvédère à billet d’ascenseur ; distincte du parc public Pioneer et de la visite gratuite des fresques du rez-de-chaussée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ba8cccd9-6a1a-482f-8e16-0c9fbd43de31/coit-tower-observation-deck",
+          "publishedAtUtc": "2026-11-28T06:30:18.249Z",
+          "evidence": "PARK_DATA_EDITOR:apply:b66346d1-3a03-4c28-8170-e0ebeeb1b563"
+        },
+        "facebook": {
+          "id": "5a6cdb49b5ea4df999a13bc1b2640061",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T06:30:49.6724501Z",
+          "externalPostId": "1285475681307050_122129143311424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129143311424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:5a6cdb49b5ea4df999a13bc1b2640061"
+        }
       }
     }
   ]
