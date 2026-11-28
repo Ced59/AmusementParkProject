@@ -20166,6 +20166,150 @@
         "currentImageId": "752ee688f1eb438a9951f6186b7e8723",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-harukas-300-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-moiwa-ropeway-20261128",
+      "name": "Sapporo Mt. Moiwa Ropeway",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "5-3-7 Fushimi, Chuo-ku, Sapporo, Hokkaido, Japon",
+      "siteId": "c9128559-ff97-4b5e-85b0-28e9208df0d3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "La page officielle du 28 novembre 2026 indique un service en cours ; fermeture annuelle annoncée du 29 mars au 28 avril 2027 et suspensions météo possibles.",
+      "identityConfidence": "Téléphérique à billet propre avec transfert distinct au mini-funiculaire ; recherches PDE Park et Standalone « Moiwa » sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "Mt. Moiwa Ropeway",
+        "Moiwayama Ropeway",
+        "札幌もいわ山ロープウェイ",
+        "藻岩山ロープウェイ"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T02:27:10.506Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-e58d03a0-b366-4700-a3c0-1fce03cfe59f",
+          "appliedAt": "2026-11-28T02:25:48.657Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c9128559-ff97-4b5e-85b0-28e9208df0d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-moiwa-ropeway-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, prix, horaires saisonniers, accès et histoire officielle."
+        },
+        {
+          "eventId": "image-bd8296feb1254f7fa6ef0ef12cd60fee",
+          "appliedAt": "2026-11-28T02:26:45.076Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c9128559-ff97-4b5e-85b0-28e9208df0d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-moiwa-ropeway-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo courante exacte de la cabine : Route275, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-b9a3f5267fc24743af49ecf7c51f1e98",
+          "appliedAt": "2026-11-28T02:26:57.933Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c9128559-ff97-4b5e-85b0-28e9208df0d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-moiwa-ropeway-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Tracé et panorama exacts : Adam Jones, CC BY-SA 2.0."
+        },
+        {
+          "eventId": "image-2cbbbdde20a840caa31c2dc7747db04a",
+          "appliedAt": "2026-11-28T02:27:10.506Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c9128559-ff97-4b5e-85b0-28e9208df0d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-moiwa-ropeway-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-moiwa-ropeway-20261128/audit.json",
+          "summary": "Gare inférieure Sanroku exacte : Drivephotographer, CC0 1.0."
+        }
+      ],
+      "nextAction": "Conserver les quatre reçus de données et les preuves de publication. Recontrôler les interruptions météo, la fermeture d’entretien 2027 et les tarifs avant actualisation. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Mt. Moiwa — horaires, tarifs et fermetures officielles",
+          "url": "https://mt-moiwa.jp/guide/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Mt. Moiwa — état du service du 28 novembre 2026",
+          "url": "https://mt-moiwa.jp/status/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Sapporo — chronologie de 1958",
+          "url": "https://www.city.sapporo.jp/chuo/gaiyo/nenpyo.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Sapporo — réouverture du 23 décembre 2011",
+          "url": "https://www.city.sapporo.jp/city/mayor/interview/text/2011/20111003/documents/moiwayama.pdf",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Tourisme Hokkaido — itinéraire et identité",
+          "url": "https://www.visit-hokkaido.jp/en/spot/detail_10008.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — cabine, Route275, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Moiwayama_Ropeway_(4thgen).JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tracé, Adam Jones, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Cable_Car_(Ropeway)_to_Mount_Moiwayama_-_Sapporo_-_Hokkaido_-_Japan_(47977611532).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — gare Sanroku, Drivephotographer, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Moiwa-yama_Ropeway.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Le téléphérique dispose de ses gares, tarifs et horaires propres ; aucun parc de loisirs parent. Le mini-funiculaire vers le sommet est une étape distincte couverte par les billets combinés."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/c9128559-ff97-4b5e-85b0-28e9208df0d3/sapporo-mt-moiwa-ropeway",
+          "publishedAtUtc": "2026-11-28T02:28:04.024Z",
+          "evidence": "PARK_DATA_EDITOR:apply:1b41d9f1-3d81-43f1-a87f-27a299e9ce83"
+        },
+        "facebook": {
+          "id": "37fefcd1e6884e919a4a64a365e3ea6a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T02:28:45.329Z",
+          "externalPostId": "1285475681307050_122129120853424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129120853424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:37fefcd1e6884e919a4a64a365e3ea6a"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "bd8296feb1254f7fa6ef0ef12cd60fee",
+          "b9a3f5267fc24743af49ecf7c51f1e98",
+          "2cbbbdde20a840caa31c2dc7747db04a"
+        ],
+        "currentImageId": "bd8296feb1254f7fa6ef0ef12cd60fee",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-moiwa-ropeway-20261128/audit.json"
+      }
     }
   ]
 }

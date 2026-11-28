@@ -1,0 +1,43 @@
+{
+  "entityId": "c9128559-ff97-4b5e-85b0-28e9208df0d3",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "e58d03a0-b366-4700-a3c0-1fce03cfe59f",
+      "appliedAtUtc": "2026-11-28T02:25:48.657Z",
+      "summary": "Création masquée : huit descriptions, prix, horaires saisonniers, accès et histoire officielle."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "bd8296feb1254f7fa6ef0ef12cd60fee",
+      "appliedAtUtc": "2026-11-28T02:26:45.076Z",
+      "summary": "Photo courante exacte de la cabine : Route275, CC BY-SA 4.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "b9a3f5267fc24743af49ecf7c51f1e98",
+      "appliedAtUtc": "2026-11-28T02:26:57.933Z",
+      "summary": "Tracé et panorama exacts : Adam Jones, CC BY-SA 2.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "2cbbbdde20a840caa31c2dc7747db04a",
+      "appliedAtUtc": "2026-11-28T02:27:10.506Z",
+      "summary": "Gare inférieure Sanroku exacte : Drivephotographer, CC0 1.0."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "1b41d9f1-3d81-43f1-a87f-27a299e9ce83",
+    "appliedAtUtc": "2026-11-28T02:28:04.0243617Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "37fefcd1e6884e919a4a64a365e3ea6a",
+    "externalPostId": "1285475681307050_122129120853424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129120853424431",
+    "publishedAtUtc": "2026-11-28T02:28:45.3295713Z",
+    "furtherRetriesProhibited": true
+  }
+}
