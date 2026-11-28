@@ -1,0 +1,49 @@
+{
+  "entityId": "427abc92-2fe7-4c04-bb81-769189963cfa",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "181c9e4b-bfa5-46d3-ae12-236716d3eb69",
+      "appliedAtUtc": "2026-11-28T02:00:36.694Z",
+      "summary": "Création masquée : identité, emplacement, ouverture et huit descriptions."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "752ee688f1eb438a9951f6186b7e8723",
+      "appliedAtUtc": "2026-11-28T02:01:43Z",
+      "summary": "Galerie panoramique exacte, Nesnad, CC BY-SA 4.0, image courante."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "fffa8dc354b64c27b175f352a4f900c0",
+      "appliedAtUtc": "2026-11-28T02:02:04Z",
+      "summary": "Jardin ouvert exact en 2018, Project Kei, CC BY-SA 4.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "5f148b978e3b428bbf66e077d3b386d5",
+      "appliedAtUtc": "2026-11-28T02:02:20Z",
+      "summary": "Galerie vitrée exacte en 2014, Facial expression, CC BY-SA 4.0."
+    },
+    {
+      "kind": "Apply",
+      "id": "b70efa0b-f39d-40b6-bd55-cb4515d9c994",
+      "appliedAtUtc": "2026-11-28T02:03:22.596Z",
+      "summary": "Tarifs officiels courants, condition d’accès et ouverture du 7 mars 2014 sourcée."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "ef0a26b0-779e-481f-bf1c-680a86674dab",
+    "appliedAtUtc": "2026-11-28T02:04:06.137Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "e49019bfb5be4157814b31b65583bdef",
+    "externalPostId": "1285475681307050_122129118801424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129118801424431",
+    "publishedAtUtc": "2026-11-28T02:04:49.3663805Z",
+    "furtherRetriesProhibited": true
+  }
+}

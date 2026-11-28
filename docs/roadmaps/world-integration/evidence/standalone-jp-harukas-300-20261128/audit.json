@@ -1,0 +1,19 @@
+{
+  "completenessScore": 92,
+  "dataQualityLevel": "Good",
+  "applicableMaxPoints": 74,
+  "earnedPoints": 68,
+  "publicationBlockers": [],
+  "formulaicPublicTextIssue": null,
+  "entityId": "427abc92-2fe7-4c04-bb81-769189963cfa",
+  "descriptions": 8,
+  "photos": 3,
+  "currentImageId": "752ee688f1eb438a9951f6186b7e8723",
+  "admissionOffers": 2,
+  "historyEvents": 1,
+  "status": "Operating",
+  "sitePublished": true,
+  "seoReady": true,
+  "seoReadyVerification": "HTTP 200, X-AmusementPark-Seo-Ready: true, current licensed image in og:image",
+  "facebookStatus": "Published"
+}
