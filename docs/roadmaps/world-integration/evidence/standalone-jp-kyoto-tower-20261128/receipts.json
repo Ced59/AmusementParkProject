@@ -1,0 +1,73 @@
+{
+  "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "1f7b6197-d998-4e2f-9147-d5c529270486",
+      "appliedAtUtc": "2026-11-28T03:02:32.761Z",
+      "summary": "Création masquée : descriptions en huit langues, quatre tarifs et informations pratiques sourcées."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "378ee7a00cc941a98377d0ee06d69dcc",
+      "appliedAtUtc": "2026-11-28T03:03:47.124Z",
+      "summary": "Photo exacte night importée depuis Wikimedia Commons avec licence, crédit et huit textes alternatifs."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "40b7983a25bd4f8884023e03381eafcc",
+      "appliedAtUtc": "2026-11-28T03:04:00.990Z",
+      "summary": "Photo exacte inside importée depuis Wikimedia Commons avec licence, crédit et huit textes alternatifs."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "5603f0063bf340cca0d2b0d15a8b898e",
+      "appliedAtUtc": "2026-11-28T03:04:15.171Z",
+      "summary": "Photo exacte view importée depuis Wikimedia Commons avec licence, crédit et huit textes alternatifs."
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "id": "378ee7a00cc941a98377d0ee06d69dcc",
+      "appliedAtUtc": "2026-11-28T03:05:24.290Z",
+      "summary": "Légende night réécrite et metadata complétée."
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "id": "40b7983a25bd4f8884023e03381eafcc",
+      "appliedAtUtc": "2026-11-28T03:05:29.972Z",
+      "summary": "Légende inside réécrite et metadata complétée."
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "id": "5603f0063bf340cca0d2b0d15a8b898e",
+      "appliedAtUtc": "2026-11-28T03:05:35.469Z",
+      "summary": "Légende view réécrite et metadata complétée."
+    },
+    {
+      "kind": "Apply",
+      "id": "04ce96c5-8668-45ef-a7cb-41d41726b5bb",
+      "appliedAtUtc": "2026-11-28T03:06:43.628Z",
+      "summary": "Descriptions réécrites après contrôle éditorial."
+    },
+    {
+      "kind": "Apply",
+      "id": "b484d8cf-e171-4300-938d-69918b4f27c0",
+      "appliedAtUtc": "2026-11-28T03:08:01.073Z",
+      "summary": "Conditions d’accès, horaire hebdomadaire et jalon historique sourcés ; audit final 100/100."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "fc31b393-a2d6-48ee-919b-a99fb69f1268",
+    "appliedAtUtc": "2026-11-28T03:08:33.1471315Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "6a340a147b6d406eac396d69dc7f67c5",
+    "externalPostId": "1285475681307050_122129123655424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129123655424431",
+    "publishedAtUtc": "2026-11-28T03:09:39.6795041Z",
+    "furtherRetriesProhibited": true
+  }
+}
