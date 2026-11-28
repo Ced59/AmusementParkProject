@@ -7732,6 +7732,96 @@
         "attractions": [],
         "rationale": "Téléphérique panoramique à billet, stations, horaires et opérateur propres ; les sentiers et le parc animalier au sommet ne constituent pas un parc d’attractions parent."
       }
+    },
+    {
+      "entryId": "AT-candidate-discovery-nordkettenbahnen-20261128",
+      "name": "Innsbrucker Nordkettenbahnen",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Funiculaire et téléphériques panoramiques à billet propre",
+      "locality": "Rennweg 3, 6020 Innsbruck, Tyrol",
+      "siteId": "20131c30-c956-4072-a916-97e40b65b142",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Saison d’hiver officielle du 20 novembre 2026 au 25 avril 2027 ; fermeture de révision du 26 au 30 avril 2027.",
+      "identityConfidence": "Trois tronçons exploités comme un parcours Top of Innsbruck selon l’exploitant et le tourisme local ; recherches PDE Park et Standalone sous Nordkette, Nordkettenbahnen, Hungerburgbahn, Seegrubenbahn, Hafelekarbahn et Innsbruck sans fiche correspondante.",
+      "possibleMatches": [],
+      "aliases": [
+        "Nordkettenbahn",
+        "Top of Innsbruck",
+        "Hungerburgbahn",
+        "Seegrubenbahn",
+        "Hafelekarbahn"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-27T23:57:57.234Z",
+      "integrationHistory": [
+        {
+          "eventId": "at-nordkettenbahnen-data-20261128",
+          "appliedAt": "2026-11-27T23:57:57.234Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "20131c30-c956-4072-a916-97e40b65b142",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-nordkettenbahnen-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-nordkettenbahnen-20261128/audit.json",
+          "summary": "Parcours de trois tronçons publié avec trois photos exactes CC0, tarifs et horaires officiels 2026–2027, trois jalons historiques en huit langues ; annonce Facebook confirmée."
+        }
+      ],
+      "nextAction": "Recontrôler le calendrier après le 30 avril 2027 et les tarifs de la saison d’été avant prolongation ; conserver cette ligne.",
+      "sources": [
+        {
+          "label": "Exploitant — parcours et trois tronçons",
+          "url": "https://nordkette.com/en/top-of-innsbruck/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — horaires et saison 2026–2027",
+          "url": "https://nordkette.com/en/facilities-/-timetable/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — tarifs 2026–2027",
+          "url": "https://nordkette.com/en/service/tariffs/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Exploitant — histoire de la ligne",
+          "url": "https://nordkette.com/en/top-of-innsbruck/history/",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Tourisme Innsbruck — adresse et qualification du parcours",
+          "url": "https://www.innsbruck.info/en/sightseeing/i/innsbrucker-nordketten-cable-cars.html",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Hafelekarbahn, Wilfredor (CC0 1.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Cable_car_at_Hafelekar_station,_Innsbruck.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Seegrubenbahn, Leonhard Lenz (CC0 1.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Seegrubenbahn_Innsbruck-M%C3%BChlau_2026-05-08_01.jpg",
+          "accessedAt": "2026-11-27"
+        },
+        {
+          "label": "Wikimedia Commons — Hungerburgbahn, Leonhard Lenz (CC0 1.0)",
+          "url": "https://commons.wikimedia.org/wiki/File:Hungerburgbahn_Innsbruck_2026-05-08_01.jpg",
+          "accessedAt": "2026-11-27"
+        }
+      ],
+      "countryCodeAtInventory": "AT",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Parcours fixe à billet et exploitant propres, indépendant d’un parc d’attractions ; les trois tronçons forment l’offre officielle Top of Innsbruck, tandis que le zoo et les activités du massif restent séparés."
+      }
     }
   ]
 }
