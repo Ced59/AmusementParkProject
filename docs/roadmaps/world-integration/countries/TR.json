@@ -4329,6 +4329,144 @@
       ]
     },
     {
+      "entryId": "TR-candidate-discovery-galata-tower-20261128",
+      "name": "Galata Tower Museum",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique et musée",
+      "locality": "Büyükhendek Caddesi No: 2, Bereketzade Mahallesi, Beyoğlu, Istanbul, Turquie",
+      "siteId": "5f921e9e-fac5-4b9f-9a0f-275ca145df84",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Billetterie et horaires officiels consultés le 28 novembre 2026 ; le DOSIM confirme une fermeture à 23 h sur sa page de mise à jour.",
+      "identityConfidence": "Recherche PDE des parcs et attractions standalone « Galata » sans correspondance ; tour musée à billet, horaires et accès propres.",
+      "possibleMatches": [],
+      "aliases": [
+        "Galata Kulesi",
+        "Galata Tower",
+        "Galata Kulesi Müzesi"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T02:37:21.921Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c31fb8bc-d3ca-4f4e-9db7-eb2fd99b93e3",
+          "appliedAt": "2026-11-28T02:34:29.378Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5f921e9e-fac5-4b9f-9a0f-275ca145df84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tr-galata-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, accès, prix, horaires et événement historique officiels."
+        },
+        {
+          "eventId": "image-4be8027fbbaf44ab9a7996e5ed6bcf63",
+          "appliedAt": "2026-11-28T02:36:52.959Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5f921e9e-fac5-4b9f-9a0f-275ca145df84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tr-galata-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Tour illuminée de nuit, photo exacte de 2025 : Çokiyi, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-807a1d8906b4445e8dea8842ef308cdf",
+          "appliedAt": "2026-11-28T02:37:08.847Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5f921e9e-fac5-4b9f-9a0f-275ca145df84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tr-galata-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Intérieur de la tour, photo exacte de 2022 : Interfase, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-08565134eb364197abfc147aad510b4d",
+          "appliedAt": "2026-11-28T02:37:21.921Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5f921e9e-fac5-4b9f-9a0f-275ca145df84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-tr-galata-tower-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tr-galata-tower-20261128/audit.json",
+          "summary": "Panorama vers la Corne d’Or, photo exacte de 2023 : Yair Haklai, CC BY-SA 4.0."
+        }
+      ],
+      "nextAction": "Conserver les reçus et vérifier avant prochaine actualisation les tarifs par catégorie et les horaires : la page dédiée annonce 23 h (dernière entrée 22 h), tandis que le portail musée présente la session nocturne jusqu’à 22 h. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Ministère de la Culture — visite, horaire, prix, adresse",
+          "url": "https://galatakulesi.gov.tr/ziyaret",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Ministère de la Culture — musée et plages de visite",
+          "url": "https://www.muze.gov.tr/muze-detay?DistId=MRK&SectionId=GLT04",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Ministère de la Culture — histoire et réouverture du musée",
+          "url": "https://turkishmuseums.kprod.kultur.gov.tr/museum/detail/22341-istanbul-galata-tower-museum/22341/4",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "DOSIM — mise à jour de la fermeture à 23 h",
+          "url": "https://dosim.ktb.gov.tr/TR-449122/galata-kulesi-ziyaret-saatleri-hakkinda.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour, Çokiyi, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Galata_Kulesi_2025.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur, Interfase, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Interior_of_Galata_Tower.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — panorama, Yair Haklai, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_the_Galata_Tower.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "TR",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Musée et observatoire payants avec entrée propre ; aucun parc de loisirs parent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/5f921e9e-fac5-4b9f-9a0f-275ca145df84/galata-tower-museum",
+          "publishedAtUtc": "2026-11-28T02:38:15.543Z",
+          "evidence": "PARK_DATA_EDITOR:apply:e7afe6cf-4ee7-47ea-a7ee-834e89c6e633"
+        },
+        "facebook": {
+          "id": "e0e5fd05cd44433b9531b9a9c2aa55e6",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T02:39:14.328Z",
+          "externalPostId": "1285475681307050_122129121459424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129121459424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:e0e5fd05cd44433b9531b9a9c2aa55e6"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "4be8027fbbaf44ab9a7996e5ed6bcf63",
+          "807a1d8906b4445e8dea8842ef308cdf",
+          "08565134eb364197abfc147aad510b4d"
+        ],
+        "currentImageId": "4be8027fbbaf44ab9a7996e5ed6bcf63",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-tr-galata-tower-20261128/audit.json"
+      }
+    },
+    {
       "entryId": "TR-candidate-0f587e939cb7c7",
       "name": "Gaziantep Zoo",
       "entityKind": "Park",
