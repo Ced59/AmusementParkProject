@@ -20310,6 +20310,189 @@
         "currentImageId": "bd8296feb1254f7fa6ef0ef12cd60fee",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-moiwa-ropeway-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-nidec-kyoto-tower-20261128",
+      "name": "Nidec Kyoto Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "721-1 Higashishiokoji-cho, Shimogyo-ku, Kyoto 600-8216, Japon",
+      "siteId": "0930ad16-5954-4de8-b763-91087b2b0025",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Billetterie et horaires de l’observatoire vérifiés sur le site de l’exploitant le 28 novembre 2026.",
+      "identityConfidence": "Recherches PDE Park et Standalone en anglais et japonais sans correspondance ; tour avec observatoire, billet et horaires propres.",
+      "possibleMatches": [],
+      "aliases": [
+        "Kyoto Tower",
+        "京都タワー",
+        "ニデック京都タワー"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T03:08:01.073Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1f7b6197-d998-4e2f-9147-d5c529270486",
+          "appliedAt": "2026-11-28T03:02:32.761Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : descriptions en huit langues, quatre tarifs et informations pratiques sourcées."
+        },
+        {
+          "eventId": "image-378ee7a00cc941a98377d0ee06d69dcc",
+          "appliedAt": "2026-11-28T03:03:47.124Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte night importée depuis Wikimedia Commons avec licence, crédit et huit textes alternatifs."
+        },
+        {
+          "eventId": "image-40b7983a25bd4f8884023e03381eafcc",
+          "appliedAt": "2026-11-28T03:04:00.990Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte inside importée depuis Wikimedia Commons avec licence, crédit et huit textes alternatifs."
+        },
+        {
+          "eventId": "image-5603f0063bf340cca0d2b0d15a8b898e",
+          "appliedAt": "2026-11-28T03:04:15.171Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view importée depuis Wikimedia Commons avec licence, crédit et huit textes alternatifs."
+        },
+        {
+          "eventId": "image-378ee7a00cc941a98377d0ee06d69dcc-metadata",
+          "appliedAt": "2026-11-28T03:05:24.290Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Légende night réécrite et metadata complétée."
+        },
+        {
+          "eventId": "image-40b7983a25bd4f8884023e03381eafcc-metadata",
+          "appliedAt": "2026-11-28T03:05:29.972Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Légende inside réécrite et metadata complétée."
+        },
+        {
+          "eventId": "image-5603f0063bf340cca0d2b0d15a8b898e-metadata",
+          "appliedAt": "2026-11-28T03:05:35.469Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Légende view réécrite et metadata complétée."
+        },
+        {
+          "eventId": "apply-04ce96c5-8668-45ef-a7cb-41d41726b5bb",
+          "appliedAt": "2026-11-28T03:06:43.628Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Descriptions réécrites après contrôle éditorial."
+        },
+        {
+          "eventId": "apply-b484d8cf-e171-4300-938d-69918b4f27c0",
+          "appliedAt": "2026-11-28T03:08:01.073Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0930ad16-5954-4de8-b763-91087b2b0025",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/audit.json",
+          "summary": "Conditions d’accès, horaire hebdomadaire et jalon historique sourcés ; audit final 100/100."
+        }
+      ],
+      "nextAction": "Surveiller les changements d’horaires et de tarifs annoncés par l’exploitant, notamment l’exception du 16 août. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Nidec Kyoto Tower — tarifs, horaires, adresse",
+          "url": "https://www.kyoto-tower.jp/en/fee/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant Nidec Kyoto Tower — observatoire et télescopes",
+          "url": "https://www.kyoto-tower.jp/en/enjoy/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "All-Japan Towers Federation — achèvement, dimensions et exploitant",
+          "url": "https://www.japantowers.jp/en/kyoto_tower/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour de nuit, Fotointheworld, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Kyoto_Tower_at_night_2025.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur, Si-take, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Inside_in_Kyoto_Tower_Kyoto,JAPAN.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue du belvédère, Daniel M. Dobkin, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_Kyoto_Tower.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Observatoire à accès et billet propres, situé dans un bâtiment face à la gare et sans parc de loisirs parent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0930ad16-5954-4de8-b763-91087b2b0025/nidec-kyoto-tower",
+          "publishedAtUtc": "2026-11-28T03:08:33.147Z",
+          "evidence": "PARK_DATA_EDITOR:apply:fc31b393-a2d6-48ee-919b-a99fb69f1268"
+        },
+        "facebook": {
+          "id": "6a340a147b6d406eac396d69dc7f67c5",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T03:09:39.679Z",
+          "externalPostId": "1285475681307050_122129123655424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129123655424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:6a340a147b6d406eac396d69dc7f67c5"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "378ee7a00cc941a98377d0ee06d69dcc",
+          "40b7983a25bd4f8884023e03381eafcc",
+          "5603f0063bf340cca0d2b0d15a8b898e"
+        ],
+        "currentImageId": "378ee7a00cc941a98377d0ee06d69dcc",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/audit.json"
+      }
     }
   ]
 }
