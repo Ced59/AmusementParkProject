@@ -16,18 +16,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 13 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **14**. Sources : RCDB, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **15**. Sources : RCDB, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **1** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **0 publiés**, **1 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **13 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -35,6 +35,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 
 | ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| LK-candidate-discovery-lotus-tower-observation-deck-20261128 | Colombo Lotus Tower Observation Deck | 320 D. R. Wijewardena Mawatha, Colombo 10, Sri Lanka | StandaloneAttraction | Published | Intégration achevée | 2026-11-28T14:10:00.792Z | — | Contrôler périodiquement les horaires et les tarifs dans la billetterie officielle. Le prix local exige une pièce d’identité sri-lankaise ; confirmer le créneau du jour. Conserver cette ligne et ne pas republier Facebook. Qualification standalone : AlreadyStandalone. Belvédère touristique accessible avec billet propre dans la Lotus Tower ; Pixel Bloom, restauration et autres espaces constituent des offres distinctes. Signal source : L’exploitant propose actuellement la réservation datée du belvédère, avec tarifs locaux et étrangers, ainsi que ses horaires d’exploitation.. [Exploitant — billetterie internationale et âge gratuit](https://tickets.colombolotustower.lk/foreign-visitors/) · [Exploitant — billetterie sri-lankaise](https://tickets.colombolotustower.lk/) · [Exploitant — horaires et adresse](https://colombolotustower.lk/ticketprices/) · [Exploitant — informations de visite](https://colombolotustower.lk/tickets/) · [National Building Research Organisation — position de la tour](https://nbri.gov.lk/images/content_image/publications/newsletter/2nd-newsletter-2019.pdf) · [Wikimedia Commons — tower, Mike Krüger, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Lotus_Tower_20260216_213906_1.jpg) · [Wikimedia Commons — deck, Saaremees, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Observation_Deck_Lotus_Tower-Colombo_Srilanka-Andres_Larin.jpg) |
 | LK-candidate-e7ec6ca84176d2 | Diyatha Uyana | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Sri_Lanka) |
 | LK-candidate-bf579859c5d691 | Galle Face Green | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Sri_Lanka) |
 | LK-candidate-fb6859f63c3278 | Leisure World | Kaluaggala , Western | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/6124.htm) |

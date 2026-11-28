@@ -1,0 +1,36 @@
+{
+  "entityId": "c430bddf-dbaf-44c1-aadb-93b2fea287c4",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "e810f7f6-b68f-4684-aaec-b16ec7c13ad5",
+      "appliedAtUtc": "2026-11-28T14:08:59.365Z",
+      "summary": "Création masquée, huit langues, tarifs officiels et horaires"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "6119bac53f064d458b3c154b1952a32d",
+      "appliedAtUtc": "2026-11-28T14:09:48.511Z",
+      "summary": "Photo exacte tower avec licence et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "9861e1034ffb475fbdd1e28d3ebdaa84",
+      "appliedAtUtc": "2026-11-28T14:10:00.792Z",
+      "summary": "Photo exacte deck avec licence et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "603a8b03-5731-4524-b98b-6d1aa7e919a4",
+    "appliedAtUtc": "2026-11-28T14:11:12.063Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "d5cbcb7ca93349d8b882dd6a9e465e5d",
+    "externalPostId": "1285475681307050_122129189817424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129189817424431",
+    "publishedAtUtc": "2026-11-28T14:12:04.6643455Z",
+    "furtherRetriesProhibited": true
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "completenessScore": 94,
+  "dataQualityLevel": "Good",
+  "applicableMaxPoints": 68,
+  "earnedPoints": 64,
+  "publicationBlockers": [],
+  "formulaicPublicTextIssue": null,
+  "manualVerification": {
+    "descriptionsLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "publishedExactPhotoCount": 2,
+    "photoDates": [
+      "2026-02-16",
+      "2023-02-02"
+    ],
+    "publicAttractionApiStatus": 200,
+    "publicImageApiStatus": 200,
+    "publicImageCount": 2,
+    "facebookStatus": "Published",
+    "gap": "Official international ticket portal lists adult 10+ and child 3–10, overlapping at age ten; visitors should confirm the correct fare at checkout. Opening hours are from the operator ticket price page and date-specific booking availability takes precedence."
+  }
+}
