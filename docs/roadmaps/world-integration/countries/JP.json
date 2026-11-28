@@ -20642,6 +20642,143 @@
         "currentImageId": "0a25b96f8be0470f9bcb4570a05323be",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-mirai-tower-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-yokohama-marine-tower-20261128",
+      "name": "Yokohama Marine Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "14-1 Yamashita-cho, Naka-ku, Yokohama 231-0023, Japon",
+      "siteId": "a205c5fc-9e3e-45af-8d3e-586978dd987e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Billetterie, horaires et annonce de fermeture de maintenance du 7 décembre 2026 vérifiés auprès de l’exploitant.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous « Yokohama Marine Tower », « Marine Tower » et « 横浜マリンタワー » sans correspondance ; observatoire à billets propres.",
+      "possibleMatches": [],
+      "aliases": [
+        "Marine Tower Yokohama",
+        "横浜マリンタワー"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T03:34:45.298Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-49299a80-cc1a-4bad-bc62-338d67857d25",
+          "appliedAt": "2026-11-28T03:33:21.363Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a205c5fc-9e3e-45af-8d3e-586978dd987e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-marine-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, huit tarifs jour/soir, calendrier, accès et histoire sourcés."
+        },
+        {
+          "eventId": "image-9e29ee2061af4d1bb0b5be9e06de5a47",
+          "appliedAt": "2026-11-28T03:34:19.063Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a205c5fc-9e3e-45af-8d3e-586978dd987e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-marine-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-f4bda91ea05e43a2a101b318be803f1e",
+          "appliedAt": "2026-11-28T03:34:32.217Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a205c5fc-9e3e-45af-8d3e-586978dd987e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-marine-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte inside importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-ac4a6c0584184fad8d02dccdb719accf",
+          "appliedAt": "2026-11-28T03:34:45.298Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a205c5fc-9e3e-45af-8d3e-586978dd987e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-marine-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-marine-20261128/audit.json",
+          "summary": "Photo exacte night importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        }
+      ],
+      "nextAction": "Surveiller les événements à tarifs spéciaux et actualiser les horaires saisonniers de juin à août avant la prochaine saison. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Yokohama Marine Tower — horaires, prix et billets officiels",
+          "url": "https://marinetower.yokohama/price-hours/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Yokohama Marine Tower — maintenance du 7 décembre 2026",
+          "url": "https://marinetower.yokohama/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Yokohama Marine Tower — date d’ouverture officielle",
+          "url": "https://marinetower.yokohama/events/20240105877/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Yokohama Visitors Guide — identité et adresse",
+          "url": "https://www.yokohamajapan.com/en/things-to-do/detail.php?bbid=761",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour de jour, NEO-NEED, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Marine_Tower_2022_-_01.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur, NEO-NEED, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Marine_Tower_2022_-_Observation_floor_(30F)_01.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — port de nuit depuis la tour, NEO-NEED, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Yokohama_Marine_Tower_2022_-_night_view_03.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Belvédère urbain avec billets de jour et de soir propres, hors parc de loisirs."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a205c5fc-9e3e-45af-8d3e-586978dd987e/yokohama-marine-tower",
+          "publishedAtUtc": "2026-11-28T03:35:16.633Z",
+          "evidence": "PARK_DATA_EDITOR:apply:8e313855-f588-411d-9551-868547e5b575"
+        },
+        "facebook": {
+          "id": "a1c71caa4feb44d5ac763c2311635a68",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T03:36:02.448Z",
+          "externalPostId": "1285475681307050_122129126175424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129126175424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:a1c71caa4feb44d5ac763c2311635a68"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "9e29ee2061af4d1bb0b5be9e06de5a47",
+          "f4bda91ea05e43a2a101b318be803f1e",
+          "ac4a6c0584184fad8d02dccdb719accf"
+        ],
+        "currentImageId": "9e29ee2061af4d1bb0b5be9e06de5a47",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-marine-20261128/audit.json"
+      }
     }
   ]
 }
