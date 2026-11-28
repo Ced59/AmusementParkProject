@@ -1,0 +1,43 @@
+{
+  "entityId": "5537f401-d9d3-42be-8cb0-fa7def639f79",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "062fb864-b230-435b-a81a-a81127d49151",
+      "appliedAtUtc": "2026-11-28T03:25:21.418Z",
+      "summary": "Création masquée : huit descriptions, quatre tarifs, calendrier daté, accès et histoire sourcés."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "0a25b96f8be0470f9bcb4570a05323be",
+      "appliedAtUtc": "2026-11-28T03:26:22.749Z",
+      "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "9212dec9eb4d44c399fb562a4123e66d",
+      "appliedAtUtc": "2026-11-28T03:26:35.609Z",
+      "summary": "Photo exacte decks importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "268659cb6c424c4ea6f1c45cd76d7dcb",
+      "appliedAtUtc": "2026-11-28T03:26:48.525Z",
+      "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "53bb6f47-10db-4f9e-84e7-c0c9bfe75d64",
+    "appliedAtUtc": "2026-11-28T03:27:19.2464431Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "061caa11d05843d0b8fcc03d35f071e2",
+    "externalPostId": "1285475681307050_122129125425424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129125425424431",
+    "publishedAtUtc": "2026-11-28T03:28:01.2122765Z",
+    "furtherRetriesProhibited": true
+  }
+}
