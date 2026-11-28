@@ -1,0 +1,147 @@
+{
+  "entryId": "IT-candidate-discovery-skyway-monte-bianco-20261128",
+  "standaloneAttractionId": "9b5addc1-ddb4-450f-b1df-f9340c3333af",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "5287ce58-a8e1-474b-b55c-8369a0faaf0d",
+      "appliedAtUtc": "2026-11-28T00:26:15.248077Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "stage": "history",
+      "operationId": "79343e6b-f2b0-4718-906e-d1f5a01e166f",
+      "appliedAtUtc": "2026-11-28T00:27:07.3812632Z",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "stage": "visibility",
+      "operationId": "43287afc-e5ff-4f8b-b6a8-8a34bf45ab96",
+      "appliedAtUtc": "2026-11-28T00:30:16.2753984Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "d17d94e957c0482891bdec6ee0a35c6c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyway_Monte_Bianco.jpg",
+      "credit": "Tiia Monto / Wikimedia Commons (CC BY-SA 3.0)",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 859,
+      "importedAtUtc": "2026-11-28T00:27:51.904Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "fe2ea14134174f1b865b173b3e5a7aeb",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Funivia_Skyway_Monte_Bianco.jpg",
+      "credit": "Chiara.marraccini / Wikimedia Commons (CC BY-SA 4.0)",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "importedAtUtc": "2026-11-28T00:28:05.78Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "8535ab05a4bb475da12dbd240e8bcd6a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cabina_Skyway_Monte_Bianco.jpg",
+      "credit": "Stefano Venturini / Wikimedia Commons (CC BY-SA 4.0)",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 641,
+      "importedAtUtc": "2026-11-28T00:28:19.804Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "publicationId": "9ba92b82f29644a5b646cdfa85c32d63",
+    "initialStatus": "Failed",
+    "initialFailureCode": "preview-page-not-ready",
+    "retryOutcome": "social-publishing.publication.reconciliation-ambiguous",
+    "publishedPostConfirmed": false,
+    "furtherRetriesProhibited": true,
+    "retryDiagnosis": "Le message personnalisé ne se terminait pas par l’URL ; le garde-fou de reprise renvoie un code de rapprochement ambigu bien que le premier échec soit survenu avant tout appel à Facebook."
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/9b5addc1-ddb4-450f-b1df-f9340c3333af/skyway-monte-bianco"
+}
