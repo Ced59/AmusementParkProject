@@ -4949,6 +4949,210 @@
         "attractions": [],
         "rationale": "Funiculaire à voie, cabines et gare propres, distinct du téléphérique Morschach–Stoos."
       }
+    },
+    {
+      "entryId": "CH-candidate-discovery-hammetschwand-20261128",
+      "name": "Hammetschwand Lift",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Ascenseur panoramique extérieur",
+      "locality": "Bürgenstock, Felsenweg, 6363 Obbürgen",
+      "siteId": "ae2b3898-3f38-47af-b337-ea5260737167",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "TemporarilyClosed",
+      "sourceLifecycleSignal": "Ascenseur fermé pour l’hiver selon Stiftung Felsenweg et Nidwalden Tourismus ; le sentier reste ouvert.",
+      "identityConfidence": "Attraction fixe à accès et billet propres ; aucune fiche Park ou Standalone trouvée sous Hammetschwand, Bürgenstock ou Buergenstock avant création.",
+      "possibleMatches": [],
+      "aliases": [
+        "Hammetschwandlift",
+        "Hammetschwand-Lift"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T00:15:59.542Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-8e846a34-cf22-440a-ac39-4c5a1c142e2b",
+          "appliedAt": "2026-11-28T00:12:20.876Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae2b3898-3f38-47af-b337-ea5260737167",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : identité, statut de fermeture hivernale et descriptions en huit langues."
+        },
+        {
+          "eventId": "apply-a7d09e41-2c0f-4f42-bfc9-034fb462cf7e",
+          "appliedAt": "2026-11-28T00:13:39.368Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae2b3898-3f38-47af-b337-ea5260737167",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Frise historique sourcée : construction en 1905."
+        },
+        {
+          "eventId": "image-c7471d711d2846f3aaff66e7dc12a451",
+          "appliedAt": "2026-11-28T00:13:51.287Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae2b3898-3f38-47af-b337-ea5260737167",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte 1/3, licence et crédit vérifiés, métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-1b8edcf785a84014a4ed35bb317f1809",
+          "appliedAt": "2026-11-28T00:14:04.679Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae2b3898-3f38-47af-b337-ea5260737167",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte 2/3, licence et crédit vérifiés, métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-1a99c25f89f44ffa974ed3911d36a14e",
+          "appliedAt": "2026-11-28T00:14:18.256Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae2b3898-3f38-47af-b337-ea5260737167",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte 3/3, licence et crédit vérifiés, métadonnées en huit langues."
+        },
+        {
+          "eventId": "apply-5206205b-9774-427e-b1cb-97472b034ed9",
+          "appliedAt": "2026-11-28T00:15:59.542Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ae2b3898-3f38-47af-b337-ea5260737167",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/audit.json",
+          "summary": "Correction éditoriale liée à la fiche principale ; trois photos publiées ; audit 96/100 sans bloqueur. Publication Facebook non confirmée."
+        }
+      ],
+      "nextAction": "Conserver la fiche et les preuves. Au printemps 2027, revérifier la réouverture effective, puis seulement publier les horaires et tarifs courants. Facebook : rapprochement ambigu de la tentative 88b3dbebe520448fb6636b4d4ea30137 ; ne pas renvoyer de publication avant résolution certaine.",
+      "sources": [
+        {
+          "label": "Exploitant — ascenseur du Hammetschwand",
+          "url": "https://burgenstockresort.com/en/activities-and-experiences/hammetschwand-lift",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Stiftung Felsenweg — fermeture hivernale actuelle",
+          "url": "https://www.felsenweg.ch/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Nidwalden Tourismus — accès, adresse et fermeture hivernale",
+          "url": "https://www.nidwalden.com/en/poi/hammetschwand-lift",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Suisse Tourisme — construction en 1905",
+          "url": "https://www.myswitzerland.com/en-gb/experiences/hammetschwand-lift-and-felsenweg-path/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — station haute, Leiju, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Luzern_B%C3%BCrgenstock_Hammetschwand_lift.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — station basse, Asurnipal, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Luzern-Hammetschwandlift-lower_station-02ASD.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour haute, Asurnipal, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Luzern-Hammetschwandlift-upper_station-01ASD.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "CH",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Ascenseur panoramique fixe avec billet propre, distinct de l’hôtel et du funiculaire du Bürgenstock ; aucun parent Park structuré."
+      }
+    },
+    {
+      "entryId": "CH-candidate-discovery-hammetschwand-duplicate-20261128",
+      "name": "Hammetschwand Lift — duplicate draft",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Doublon technique masqué",
+      "locality": "Bürgenstock, Felsenweg, 6363 Obbürgen",
+      "siteId": "3fc30577-9038-4ee8-afe1-2677b6f10008",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Duplicate",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "TemporarilyClosed",
+      "sourceLifecycleSignal": "Doublon masqué, classé NotRelevant ; ne représente pas une seconde installation.",
+      "identityConfidence": "Même nom, coordonnées et contenu que la fiche principale ; deuxième UUID créé par erreur lors de la correction des descriptions.",
+      "possibleMatches": [
+        "ae2b3898-3f38-47af-b337-ea5260737167"
+      ],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T00:16:22.369Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c63770f6-e670-45a4-af6b-ceeb8059c3c0",
+          "appliedAt": "2026-11-28T00:15:12.546Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fc30577-9038-4ee8-afe1-2677b6f10008",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création accidentelle de la seconde fiche masquée par un lot sans identité explicite."
+        },
+        {
+          "eventId": "apply-f18a87ea-93f8-494d-bad2-727b94eafdf9",
+          "appliedAt": "2026-11-28T00:16:22.369Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3fc30577-9038-4ee8-afe1-2677b6f10008",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-hammetschwand-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Doublon renommé, maintenu masqué et classé NotRelevant ; fiche principale conservée."
+        }
+      ],
+      "nextAction": "Conserver la trace ; ne jamais publier ni intégrer ce doublon. Si une procédure officielle de suppression autonome est ajoutée, évaluer sa suppression contrôlée.",
+      "sources": [
+        {
+          "label": "Exploitant — ascenseur du Hammetschwand",
+          "url": "https://burgenstockresort.com/en/activities-and-experiences/hammetschwand-lift",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Stiftung Felsenweg — fermeture hivernale actuelle",
+          "url": "https://www.felsenweg.ch/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Nidwalden Tourismus — accès, adresse et fermeture hivernale",
+          "url": "https://www.nidwalden.com/en/poi/hammetschwand-lift",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "CH",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Même ascenseur que la fiche principale ; brouillon non pertinent et masqué."
+      },
+      "duplicateOf": "CH-candidate-discovery-hammetschwand-20261128"
     }
   ]
 }

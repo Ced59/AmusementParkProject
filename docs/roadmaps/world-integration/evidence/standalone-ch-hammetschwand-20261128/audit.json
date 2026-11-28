@@ -1,0 +1,19 @@
+{
+  "entryId": "CH-candidate-discovery-hammetschwand-20261128",
+  "standaloneAttractionId": "ae2b3898-3f38-47af-b337-ea5260737167",
+  "evaluatedAtUtc": "2026-11-28T00:22:35.625Z",
+  "result": {
+    "completenessScore": 96,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 52,
+    "earnedPoints": 50,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ae2b3898-3f38-47af-b337-ea5260737167/hammetschwand-lift",
+  "seoReady": true,
+  "photoQuerySeoReady": true,
+  "winterClosureSource": "https://www.felsenweg.ch/",
+  "pricingAndOpeningHoursCurrent": false,
+  "reason": "Statut TemporarilyClosed pendant la fermeture hivernale ; les horaires et tarifs ne sont pas publiés comme actuels."
+}

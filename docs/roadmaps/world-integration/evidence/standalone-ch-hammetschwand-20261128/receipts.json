@@ -1,0 +1,193 @@
+{
+  "mainEntryId": "CH-candidate-discovery-hammetschwand-20261128",
+  "duplicateEntryId": "CH-candidate-discovery-hammetschwand-duplicate-20261128",
+  "mainStandaloneAttractionId": "ae2b3898-3f38-47af-b337-ea5260737167",
+  "duplicateStandaloneAttractionId": "3fc30577-9038-4ee8-afe1-2677b6f10008",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "8e846a34-cf22-440a-ac39-4c5a1c142e2b",
+      "appliedAtUtc": "2026-11-28T00:12:20.8761117Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "targetId": "ae2b3898-3f38-47af-b337-ea5260737167"
+    },
+    {
+      "stage": "history",
+      "operationId": "a7d09e41-2c0f-4f42-bfc9-034fb462cf7e",
+      "appliedAtUtc": "2026-11-28T00:13:39.368324Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "targetId": "ae2b3898-3f38-47af-b337-ea5260737167"
+    },
+    {
+      "stage": "accidental-duplicate-core",
+      "operationId": "c63770f6-e670-45a4-af6b-ceeb8059c3c0",
+      "appliedAtUtc": "2026-11-28T00:15:12.5464333Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "targetId": "3fc30577-9038-4ee8-afe1-2677b6f10008"
+    },
+    {
+      "stage": "core-corrected",
+      "operationId": "5206205b-9774-427e-b1cb-97472b034ed9",
+      "appliedAtUtc": "2026-11-28T00:15:59.5428283Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "targetId": "ae2b3898-3f38-47af-b337-ea5260737167"
+    },
+    {
+      "stage": "duplicate-retire",
+      "operationId": "f18a87ea-93f8-494d-bad2-727b94eafdf9",
+      "appliedAtUtc": "2026-11-28T00:16:22.3698648Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "targetId": "3fc30577-9038-4ee8-afe1-2677b6f10008"
+    },
+    {
+      "stage": "visibility",
+      "operationId": "257599fe-25e8-4ab3-b373-dddbba901b46",
+      "appliedAtUtc": "2026-11-28T00:18:12.6189357Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "targetId": "ae2b3898-3f38-47af-b337-ea5260737167"
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "c7471d711d2846f3aaff66e7dc12a451",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Luzern_B%C3%BCrgenstock_Hammetschwand_lift.jpg",
+      "credit": "Leiju / Wikimedia Commons (CC BY-SA 3.0)",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 648,
+      "importedAtUtc": "2026-11-28T00:13:51.287Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "1b8edcf785a84014a4ed35bb317f1809",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Luzern-Hammetschwandlift-lower_station-02ASD.jpg",
+      "credit": "Asurnipal / Wikimedia Commons (CC BY-SA 4.0)",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 720,
+      "importedAtUtc": "2026-11-28T00:14:04.679Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "1a99c25f89f44ffa974ed3911d36a14e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Luzern-Hammetschwandlift-upper_station-01ASD.jpg",
+      "credit": "Asurnipal / Wikimedia Commons (CC BY-SA 4.0)",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1443,
+      "importedAtUtc": "2026-11-28T00:14:18.256Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "publicationId": "88b3dbebe520448fb6636b4d4ea30137",
+    "initialStatus": "Failed",
+    "initialFailureCode": "preview-page-not-ready",
+    "retryOutcome": "social-publishing.publication.reconciliation-ambiguous",
+    "publishedPostConfirmed": false,
+    "furtherRetriesProhibited": true
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/ae2b3898-3f38-47af-b337-ea5260737167/hammetschwand-lift"
+}
