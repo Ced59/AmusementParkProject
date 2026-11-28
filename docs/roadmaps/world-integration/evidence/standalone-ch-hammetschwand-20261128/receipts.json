@@ -187,7 +187,8 @@
     "initialFailureCode": "preview-page-not-ready",
     "retryOutcome": "social-publishing.publication.reconciliation-ambiguous",
     "publishedPostConfirmed": false,
-    "furtherRetriesProhibited": true
+    "furtherRetriesProhibited": true,
+    "retryDiagnosis": "Message personnalisé sans URL finale ; refus du garde-fou avant rapprochement. L’échec initial de préparation survient avant tout appel à Facebook."
   },
   "publicUrl": "https://amusement-parks.fun/fr/attraction/ae2b3898-3f38-47af-b337-ea5260737167/hammetschwand-lift"
 }

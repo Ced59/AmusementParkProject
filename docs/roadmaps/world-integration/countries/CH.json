@@ -5035,7 +5035,7 @@
           "summary": "Correction éditoriale liée à la fiche principale ; trois photos publiées ; audit 96/100 sans bloqueur. Publication Facebook non confirmée."
         }
       ],
-      "nextAction": "Conserver la fiche et les preuves. Au printemps 2027, revérifier la réouverture effective, puis seulement publier les horaires et tarifs courants. Facebook : rapprochement ambigu de la tentative 88b3dbebe520448fb6636b4d4ea30137 ; ne pas renvoyer de publication avant résolution certaine.",
+      "nextAction": "Conserver la fiche et les preuves. Au printemps 2027, revérifier la réouverture effective, puis seulement publier les horaires et tarifs courants. Facebook : tentative 88b3dbebe520448fb6636b4d4ea30137 bloquée par le garde-fou de reprise des messages personnalisés ; reprendre uniquement ce même enregistrement après correction et déploiement. Ne pas créer une seconde publication.",
       "sources": [
         {
           "label": "Exploitant — ascenseur du Hammetschwand",

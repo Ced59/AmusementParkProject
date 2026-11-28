@@ -1,0 +1,18 @@
+{
+  "entryId": "IT-candidate-discovery-skyway-monte-bianco-20261128",
+  "standaloneAttractionId": "9b5addc1-ddb4-450f-b1df-f9340c3333af",
+  "result": {
+    "completenessScore": 100,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 52,
+    "earnedPoints": 52,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/9b5addc1-ddb4-450f-b1df-f9340c3333af/skyway-monte-bianco",
+  "seoReady": true,
+  "currentPhotoId": "8535ab05a4bb475da12dbd240e8bcd6a",
+  "pricingAndOpeningHoursCurrent": false,
+  "reason": "Statut TemporarilyClosed pendant les travaux du 16 novembre au 4 décembre 2026. Les futurs horaires et tarifs officiels seront intégrés après réouverture effective.",
+  "evaluatedAtUtc": "2026-11-28T00:35:52.229Z"
+}
