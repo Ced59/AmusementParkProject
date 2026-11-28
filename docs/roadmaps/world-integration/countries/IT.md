@@ -17,7 +17,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 111 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 7 |
+| Intégration achevée | 8 |
 | Publié, date inconnue | 5 |
 | Hors périmètre enregistré | 134 |
 | Doublon conservé | 2 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **5 publiés**, **97 masqués à intégrer**, **139 masqués NotRelevant à réexaminer**, **81 candidats sans fiche**.
 
-Standalone : **7 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **2 anciens parcs liés à une standalone**.
+Standalone : **8 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **2 anciens parcs liés à une standalone**.
 
 Revue standalone : **17 pistes dans des fiches Park masquées**, **2 dans des fiches Park publiées**, **17 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **2 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -39,4 +39,4 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent dans le JSON national.
 
 - [Page 1 — lignes 1 à 250](IT/001.md)
-- [Page 2 — lignes 251 à 356](IT/002.md)
+- [Page 2 — lignes 251 à 357](IT/002.md)

@@ -1,0 +1,43 @@
+{
+  "entityId": "225dc050-09ea-43a8-b7bc-beffbaacd36e",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "79335842-ed70-4c31-bb50-30ece21a6609",
+      "appliedAtUtc": "2026-11-28T04:02:55.645Z",
+      "summary": "Création masquée : huit descriptions, tarifs par âge, calendrier d’hiver, accès et histoire sourcés."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "57e1c8f3e0b8451d8a893eea0401a081",
+      "appliedAtUtc": "2026-11-28T04:03:52.907Z",
+      "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "119a41b0dd2345568d6c402389bf006f",
+      "appliedAtUtc": "2026-11-28T04:04:07.362Z",
+      "summary": "Photo exacte night importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "e2aa9dd5403f46c39ab753e3c7ef844a",
+      "appliedAtUtc": "2026-11-28T04:04:20.707Z",
+      "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "96965820-73fe-417d-a913-6ac4f4f82d58",
+    "appliedAtUtc": "2026-11-28T04:04:45.953Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "0e5d55212a6f495db5dc7c160eaf4dd8",
+    "externalPostId": "1285475681307050_122129128617424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129128617424431",
+    "publishedAtUtc": "2026-11-28T04:05:20.302Z",
+    "furtherRetriesProhibited": true
+  }
+}
