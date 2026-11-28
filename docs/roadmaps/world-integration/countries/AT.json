@@ -6,7 +6,7 @@
   "geographicScope": "Europe — périmètre national/territorial des sources",
   "geographicGroup": "Europe",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 186,
+  "sourceObservationCount": 187,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "AmusementForce",
@@ -8040,7 +8040,7 @@
           "summary": "Photo exacte lake importée avec licence et métadonnées en huit langues."
         }
       ],
-      "nextAction": "Revérifier la grille tarifaire et les horaires avant 2028. Qualifier séparément le toboggan et Fly 100 (billetteries distinctes, météo et saison). Conserver la ligne et ne pas republier Facebook.",
+      "nextAction": "Revérifier la grille tarifaire et les horaires avant 2028. Le toboggan couvert a sa fiche autonome intégrée ; qualifier encore Fly 100, activité séparée soumise à saison et météo. Conserver la ligne et ne pas republier Facebook.",
       "sources": [
         {
           "label": "Exploitant Pyramidenkogel — la tour",
@@ -8108,7 +8108,7 @@
             "sourceLocality": "Keutschach am See, Carinthia"
           }
         ],
-        "rationale": "Tour panoramique avec billet propre ; toboggan et Fly 100 sont des activités supplémentaires à qualifier séparément."
+        "rationale": "Tour panoramique avec billet propre ; le toboggan couvert a été intégré séparément le 28 novembre 2026. Fly 100 reste à qualifier."
       },
       "publication": {
         "site": {
@@ -8124,6 +8124,145 @@
           "externalPostId": "1285475681307050_122129146377424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129146377424431",
           "evidence": "PARK_DATA_EDITOR:facebook:90a4d078cba24800b5685e8ac8b75ca3"
+        }
+      }
+    },
+    {
+      "entryId": "AT-candidate-discovery-pyramidenkogel-tunnel-slide-20261128",
+      "name": "Pyramidenkogel Tunnel Slide",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Toboggan couvert",
+      "locality": "Linden 62, 9074 Keutschach am See, Carinthie, Autriche",
+      "siteId": "1877e892-1c03-4a9d-881f-3950872d5cf2",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant publie une billetterie séparée du billet d’entrée de la tour, la règle de taille, la fermeture par temps humide et l’horaire lié à celui de la tour.",
+      "identityConfidence": "Recherches PDE sous Pyramidenkogel et Fly 100 : seule la tour était déjà présente ; le toboggan a un tarif et des conditions propres.",
+      "possibleMatches": [],
+      "aliases": [
+        "Pyramidenkogel slide",
+        "Pyramidenkogel Rutsche",
+        "Pyramidenkogel Trockenrutsche"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T07:07:14.838Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d8b1810d-d90d-4a63-bd00-56301315a21f",
+          "appliedAt": "2026-11-28T07:05:06.674Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1877e892-1c03-4a9d-881f-3950872d5cf2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-pyramidenkogel-slide-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, prix supplémentaire et conditions météorologiques."
+        },
+        {
+          "eventId": "image-9f0b1e52d0be4a6ab2c07c652c88b331",
+          "appliedAt": "2026-11-28T07:05:35.686Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1877e892-1c03-4a9d-881f-3950872d5cf2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-pyramidenkogel-slide-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte exterior importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-e9e29f632276438b8a3535421643cad9",
+          "appliedAt": "2026-11-28T07:05:43.135Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1877e892-1c03-4a9d-881f-3950872d5cf2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-pyramidenkogel-slide-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte entrance importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-7d6d45e18ef2463cb20263b9f2869033",
+          "appliedAt": "2026-11-28T07:05:50.585Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1877e892-1c03-4a9d-881f-3950872d5cf2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-pyramidenkogel-slide-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte detail importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "apply-6a11354e-65dd-48da-9c83-dedc812aa012",
+          "appliedAt": "2026-11-28T07:07:14.838Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1877e892-1c03-4a9d-881f-3950872d5cf2",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-pyramidenkogel-slide-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-pyramidenkogel-slide-20261128/audit.json",
+          "summary": "Correction manuelle des descriptions après audit, suppression d’une métrique technique brute du texte public."
+        }
+      ],
+      "nextAction": "Revérifier le tarif de descente et les restrictions météo avec l’exploitant. L’entrée de la tour reste nécessaire en sus. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Pyramidenkogel — toboggan, météo et taille",
+          "url": "https://www.pyramidenkogel.info/en/attractions/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — prix séparé du toboggan et entrée de la tour",
+          "url": "https://www.pyramidenkogel.info/en/admission-prices/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — horaires de la tour",
+          "url": "https://www.pyramidenkogel.info/en/opening-times/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — adresse du lieu",
+          "url": "https://www.pyramidenkogel.info/en/contact/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — exterior, Johann Jaritz, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Keutschach_Pyramidenkogelturm_Rutsche_und_Treppe_01052020_8911.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — entrance, Johann Jaritz, CC BY-SA 3.0 AT",
+          "url": "https://commons.wikimedia.org/wiki/File:Pyramidenkogel-Aussichtsturm_neu_Trockenrutsche_21062013_088.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — detail, Johann Jaritz, CC BY-SA 3.0 AT",
+          "url": "https://commons.wikimedia.org/wiki/File:Pyramidenkogel-Aussichtsturm_neu_Trockenrutsche_21062013_092.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "AT",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Toboggan couvert exploité dans la tour avec billet de descente distinct ; l’entrée à la tour reste nécessaire."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1877e892-1c03-4a9d-881f-3950872d5cf2/pyramidenkogel-tunnel-slide",
+          "publishedAtUtc": "2026-11-28T07:07:38.099Z",
+          "evidence": "PARK_DATA_EDITOR:apply:e83ae1df-9354-4ac9-b160-501473065ff7"
+        },
+        "facebook": {
+          "id": "88a23a8e7e664ac1ab5f225c294968d4",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T07:08:04.7096301Z",
+          "externalPostId": "1285475681307050_122129147469424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129147469424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:88a23a8e7e664ac1ab5f225c294968d4"
         }
       }
     }
