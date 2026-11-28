@@ -14,6 +14,7 @@ internal sealed class RecordingHttpMessageHandler : HttpMessageHandler
     private readonly string responseBody;
     private readonly bool pageSeoReady;
     private readonly bool failPageBodyRead;
+    private readonly bool failRefreshAsOverload;
     private readonly Queue<string> graphResponseBodies;
 
     public RecordingHttpMessageHandler(
@@ -21,18 +22,22 @@ internal sealed class RecordingHttpMessageHandler : HttpMessageHandler
         string responseBody,
         bool pageSeoReady = true,
         bool failPageBodyRead = false,
-        IReadOnlyCollection<string>? graphResponseBodies = null)
+        IReadOnlyCollection<string>? graphResponseBodies = null,
+        bool failRefreshAsOverload = false)
     {
         this.statusCode = statusCode;
         this.responseBody = responseBody;
         this.pageSeoReady = pageSeoReady;
         this.failPageBodyRead = failPageBodyRead;
+        this.failRefreshAsOverload = failRefreshAsOverload;
         this.graphResponseBodies = new Queue<string>(graphResponseBodies ?? Array.Empty<string>());
     }
 
     public List<string> RequestUris { get; } = new List<string>();
 
     public int PagePreparationCallCount { get; private set; }
+
+    public int RefreshPagePreparationCallCount { get; private set; }
 
     public bool PagePreparationBodyRead { get; private set; }
 
@@ -70,6 +75,10 @@ internal sealed class RecordingHttpMessageHandler : HttpMessageHandler
                     "X-AmusementPark-SSR-Warmup-Refresh",
                     out IEnumerable<string>? refreshValues)
                 && refreshValues.Contains("1", StringComparer.Ordinal);
+            if (this.WarmupRefreshRequested)
+            {
+                this.RefreshPagePreparationCallCount++;
+            }
             HttpResponseMessage preparationResponse = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new TrackingStringContent(
@@ -85,7 +94,13 @@ internal sealed class RecordingHttpMessageHandler : HttpMessageHandler
             };
             preparationResponse.Headers.TryAddWithoutValidation(
                 "X-AmusementPark-Seo-Ready",
-                this.pageSeoReady ? "true" : "false");
+                this.pageSeoReady && !(this.failRefreshAsOverload && this.WarmupRefreshRequested)
+                    ? "true" : "false");
+            if (this.failRefreshAsOverload && this.WarmupRefreshRequested)
+            {
+                preparationResponse.Headers.TryAddWithoutValidation(
+                    "X-AmusementPark-SSR-Fallback", "CSR-OVERLOAD-FALLBACK");
+            }
             return preparationResponse;
         }
 
