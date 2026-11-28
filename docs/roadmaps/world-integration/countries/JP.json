@@ -20779,6 +20779,169 @@
         "currentImageId": "9e29ee2061af4d1bb0b5be9e06de5a47",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-yokohama-marine-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-hiroshima-orizuru-tower-20261128",
+      "name": "Hiroshima Orizuru Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "1-2-1 Otemachi, Naka-ku, Hiroshima 730-0051, Japon",
+      "siteId": "9d209a16-4f7b-4806-b757-6aaffdd16521",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Billetterie et horaires réguliers publiés par l’exploitant ; fermeture complète annoncée pour les 12 et 13 janvier 2027.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Orizuru, Hiroshima Orizuru Tower et おりづるタワー sans résultat ; accès payant propre à l’observatoire.",
+      "possibleMatches": [],
+      "aliases": [
+        "Orizuru Tower",
+        "おりづるタワー",
+        "Hiroshima Hills"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T03:46:11.172Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f15ee897-0dd6-49c7-af66-fd90c95d552c",
+          "appliedAt": "2026-11-28T03:44:37.726Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9d209a16-4f7b-4806-b757-6aaffdd16521",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-orizuru-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : descriptions en huit langues, quatre tarifs, horaires, fermeture datée, accès et histoire sourcés."
+        },
+        {
+          "eventId": "image-ce53c289bc0849f4b143fe55b3f6fbee",
+          "appliedAt": "2026-11-28T03:45:44.989Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9d209a16-4f7b-4806-b757-6aaffdd16521",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-orizuru-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-129841ef82684ad1a53d0eb3e6a948bf",
+          "appliedAt": "2026-11-28T03:45:57.727Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9d209a16-4f7b-4806-b757-6aaffdd16521",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-orizuru-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte deck importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-b59a9f0700fe4c7f9313a0730d3a5153",
+          "appliedAt": "2026-11-28T03:46:11.172Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9d209a16-4f7b-4806-b757-6aaffdd16521",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-orizuru-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-orizuru-20261128/audit.json",
+          "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        }
+      ],
+      "nextAction": "Vérifier les calendriers mensuels des événements et horaires particuliers, notamment le réveillon du 31 décembre ; mettre à jour les exceptions lorsque leurs horaires seront publiés. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Hiroshima Orizuru Tower — billets individuels et conditions",
+          "url": "https://www.orizurutower.jp/en/user-guide/ticket/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hiroshima Orizuru Tower — horaires réguliers",
+          "url": "https://www.orizurutower.jp/en/opening-hours/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hiroshima Orizuru Tower — fermeture du 12 et 13 janvier 2027",
+          "url": "https://www.orizurutower.jp/en/news/1084/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hiroshima Orizuru Tower — calendrier de novembre 2026",
+          "url": "https://www.orizurutower.jp/en/news/1070/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hiroshima Orizuru Tower — calendrier de décembre 2026",
+          "url": "https://www.orizurutower.jp/en/news/1077/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hiroshima Orizuru Tower — terrasse Hiroshima Hills",
+          "url": "https://www.orizurutower.jp/en/experience-area/sightseeing-tower/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hiroshima Orizuru Tower — accès et adresse",
+          "url": "https://www.orizurutower.jp/en/access/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Hiroshima Orizuru Tower — communiqué d’ouverture du 23 septembre 2016",
+          "url": "https://www.orizurutower.jp/en/wp-content/uploads/sites/2/2016/09/20160906_orizurutower_pressrelease_e.pdf",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikidata — coordonnées Q27103981",
+          "url": "https://www.wikidata.org/wiki/Q27103981",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — façade, Taisyo, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:HIROSHIMA_ORIZURU_TOWER_2016-1006-1.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — observatoire, Christophe95, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Observatory_of_the_Hiroshima_Orizuru_Tower.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue du parc, Christophe95, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_to_the_southwest_from_the_Hiroshima_Orizuru_Tower_(1).jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Observatoire urbain avec billetterie propre près du parc du Mémorial de la paix, hors parc de loisirs."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9d209a16-4f7b-4806-b757-6aaffdd16521/hiroshima-orizuru-tower",
+          "publishedAtUtc": "2026-11-28T03:46:44.958Z",
+          "evidence": "PARK_DATA_EDITOR:apply:55dec694-3c75-4c82-9105-21111b36c1f0"
+        },
+        "facebook": {
+          "id": "c799ac4346ae40cd823b60b3edb09b34",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T03:47:24.129Z",
+          "externalPostId": "1285475681307050_122129127441424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129127441424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:c799ac4346ae40cd823b60b3edb09b34"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "ce53c289bc0849f4b143fe55b3f6fbee",
+          "129841ef82684ad1a53d0eb3e6a948bf",
+          "b59a9f0700fe4c7f9313a0730d3a5153"
+        ],
+        "currentImageId": "ce53c289bc0849f4b143fe55b3f6fbee",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-orizuru-20261128/audit.json"
+      }
     }
   ]
 }
