@@ -1,0 +1,43 @@
+{
+  "entityId": "9f68a119-639e-4c54-8172-67b42585ad75",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "df44cdac-67c3-41be-bb05-08522741b4a0",
+      "appliedAtUtc": "2026-11-28T04:28:35.982Z",
+      "summary": "Création masquée : huit descriptions, quatre tarifs par âge en ligne et au guichet, horaires officiels et conditions d’accès."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "835f1e6b9d5e49d4961c2d9e3248521a",
+      "appliedAtUtc": "2026-11-28T04:29:27.313Z",
+      "summary": "Photo exacte interior importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "d415d130dcb646308aad77eccb27ec7f",
+      "appliedAtUtc": "2026-11-28T04:29:34.892Z",
+      "summary": "Photo exacte gallery importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "e52702ceb0674496bac47e04ae5615cb",
+      "appliedAtUtc": "2026-11-28T04:29:42.149Z",
+      "summary": "Photo exacte visitors importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "a7de0221-2901-4c3d-bb10-8c839971b95a",
+    "appliedAtUtc": "2026-11-28T04:30:19.393Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "c7706202a250409cbbce8dbfe3d581b7",
+    "externalPostId": "1285475681307050_122129131275424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129131275424431",
+    "publishedAtUtc": "2026-11-28T04:30:58.1690379Z",
+    "furtherRetriesProhibited": true
+  }
+}
