@@ -135,6 +135,51 @@ public sealed class RetryOwnFacebookPublicationCommandHandlerTests
         service.VerifyNoOtherCalls();
     }
 
+    [Theory]
+    [InlineData("preview-page-not-ready")]
+    [InlineData("preview-page-unavailable")]
+    public async Task HandleAsync_WhenPreviewFailedBeforeFacebookRequest_ShouldRetryCustomMessageWithoutReconciliation(
+        string failureCode)
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication publication = FailedPublication();
+        publication.Message = "Custom bilingual announcement without a trailing link";
+        publication.FailureCode = failureCode;
+        repository.Publications.Add(publication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        Mock<ISocialPublicationService> service = new Mock<ISocialPublicationService>(MockBehavior.Strict);
+        service.Setup(value => value.RetryAsync("publication-1", "editor-1", It.IsAny<CancellationToken>(), publication.UpdatedAtUtc))
+            .ReturnsAsync(ApplicationResult<SocialPublication>.Success(publication));
+        RetryOwnFacebookPublicationCommandHandler handler = CreateHandler(repository, service.Object, publisher);
+
+        ApplicationResult<SocialPublication> result = await handler.HandleAsync(
+            new RetryOwnFacebookPublicationCommand("publication-1", "editor-1"));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(0, publisher.ReconcileCallCount);
+        service.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenPreviewFailedButUrlHasUnexpectedQuery_ShouldStopWithoutRetry()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication publication = FailedPublication();
+        publication.FailureCode = "preview-page-not-ready";
+        publication.Url += "?facebook-image=95f47e399b224fb289d37bc871175cbf&other=1";
+        repository.Publications.Add(publication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        Mock<ISocialPublicationService> service = new Mock<ISocialPublicationService>(MockBehavior.Strict);
+        RetryOwnFacebookPublicationCommandHandler handler = CreateHandler(repository, service.Object, publisher);
+
+        ApplicationResult<SocialPublication> result = await handler.HandleAsync(
+            new RetryOwnFacebookPublicationCommand("publication-1", "editor-1"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(0, publisher.ReconcileCallCount);
+        service.VerifyNoOtherCalls();
+    }
+
     private static SocialPublication FailedPublication() => new SocialPublication
     {
         Id = "publication-1",

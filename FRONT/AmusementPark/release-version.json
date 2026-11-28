@@ -1,6 +1,20 @@
 {
-  "version": "6.0.43",
+  "version": "6.0.44",
   "history": [
+    {
+      "version": "6.0.44",
+      "releasedAt": "2026-11-28",
+      "labels": {
+        "fr": "Améliorations de l’administration",
+        "en": "Administration improvements",
+        "de": "Verbesserungen der Verwaltung",
+        "nl": "Verbeteringen in het beheer",
+        "it": "Miglioramenti dell’amministrazione",
+        "es": "Mejoras de administración",
+        "pl": "Usprawnienia administracji",
+        "pt": "Melhorias na administração"
+      }
+    },
     {
       "version": "6.0.43",
       "releasedAt": "2026-11-27",
