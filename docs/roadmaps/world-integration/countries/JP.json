@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 512,
+  "sourceObservationCount": 513,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "JAZA",
@@ -21624,6 +21624,155 @@
           "externalPostId": "1285475681307050_122129141031424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129141031424431",
           "evidence": "PARK_DATA_EDITOR:facebook:232f04b020cd4cbeb6f962b0a496f19a"
+        }
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-chiba-port-tower-20261128",
+      "name": "Chiba Port Tower Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "Chūōkō 1-chōme, Chūō-ku, Chiba 260-0024, Japon",
+      "siteId": "9af4c8c5-c24b-436b-94e7-02debd61c5f6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant confirme les tarifs adultes et enfants, les horaires d’hiver 2026–2027, les horaires d’été et les fermetures programmées.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Chiba Port Tower et 千葉ポートタワー sans résultat ; belvédère dans une tour portuaire accessible par billet propre.",
+      "possibleMatches": [],
+      "aliases": [
+        "Chiba Port Tower",
+        "千葉ポートタワー",
+        "Chiba Port Observatory"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T06:20:01.614Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-fbf7b9e0-3cd4-46f2-be76-1d580961bba2",
+          "appliedAt": "2026-11-28T06:18:21.951Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9af4c8c5-c24b-436b-94e7-02debd61c5f6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-chiba-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, tarifs et horaires officiels."
+        },
+        {
+          "eventId": "image-1309a98bcce3429b8843fa5b1f7802ab",
+          "appliedAt": "2026-11-28T06:18:57.323Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9af4c8c5-c24b-436b-94e7-02debd61c5f6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-chiba-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit et légendes en huit langues."
+        },
+        {
+          "eventId": "image-5ef9ce9baa9c4a1cb5b1e794a6f89b00",
+          "appliedAt": "2026-11-28T06:19:05.024Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9af4c8c5-c24b-436b-94e7-02debd61c5f6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-chiba-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte front importée avec licence, crédit et légendes en huit langues."
+        },
+        {
+          "eventId": "image-a7d79d12fc6d43308e0689a12b34038f",
+          "appliedAt": "2026-11-28T06:19:11.798Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9af4c8c5-c24b-436b-94e7-02debd61c5f6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-chiba-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte interior importée avec licence, crédit et légendes en huit langues."
+        },
+        {
+          "eventId": "image-e18e5d41110941c88f210c146e4ff947",
+          "appliedAt": "2026-11-28T06:19:19.190Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9af4c8c5-c24b-436b-94e7-02debd61c5f6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-chiba-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view importée avec licence, crédit et légendes en huit langues."
+        },
+        {
+          "eventId": "apply-3ef622be-3f6f-4f50-be0b-58f5ef713a01",
+          "appliedAt": "2026-11-28T06:20:01.614Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9af4c8c5-c24b-436b-94e7-02debd61c5f6",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-chiba-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-chiba-20261128/audit.json",
+          "summary": "Descriptions corrigées après audit ; toutes les données éditoriales contrôlées sans blocage."
+        }
+      ],
+      "nextAction": "Avant juin 2027, passer les horaires structurés au régime d’été 9 h–21 h ; vérifier les fermetures bimestrielles, les jours fériés et les tarifs avant mise à jour. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Chiba Port Tower — tarifs, horaires, fermetures et présentation",
+          "url": "https://www.chiba-porttower.com/guide.php",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — horaires d’hiver octobre 2026 à mai 2027",
+          "url": "https://chiba-porttower.com/article.php?id=83",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Gouvernement japonais — jours fériés 2027",
+          "url": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour 2024, Xser21, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Chiba_Port_Tower_2024.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour 2023, Akonnchiroll, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Chiba_Port_Tower_2023-1.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — intérieur, Skink, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:ChibaPortTowerInternal.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue nord, Xser21, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Views_from_Chiba_Port_Tower_North20170610.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Belvédère payant de la tour portuaire autonome ; le parc public autour n’est pas un parc d’attractions parent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9af4c8c5-c24b-436b-94e7-02debd61c5f6/chiba-port-tower-observation-deck",
+          "publishedAtUtc": "2026-11-28T06:20:44.002Z",
+          "evidence": "PARK_DATA_EDITOR:apply:add16cbe-1f69-46f1-9b7a-f1ae90f45c11"
+        },
+        "facebook": {
+          "id": "146fdf92239244e9898c6ec89d2d6730",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T06:21:13.8174839Z",
+          "externalPostId": "1285475681307050_122129141721424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129141721424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:146fdf92239244e9898c6ec89d2d6730"
         }
       }
     }
