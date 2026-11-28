@@ -6,7 +6,7 @@
   "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
   "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 2623,
+  "sourceObservationCount": 2624,
   "sourceFamilies": [
     "ADG — Project Book",
     "AZA",
@@ -81325,6 +81325,145 @@
           "externalPostId": "1285475681307050_122129143311424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129143311424431",
           "evidence": "PARK_DATA_EDITOR:facebook:5a6cdb49b5ea4df999a13bc1b2640061"
+        }
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-smith-tower-observatory-20261128",
+      "name": "Smith Tower Observatory",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "506 Second Avenue, Seattle, Washington 98104, États-Unis",
+      "siteId": "625c5cb3-b11f-4ed8-bbc2-236797bb094e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant vend des billets pour le belvédère extérieur et publie les horaires, tarifs, expositions et conditions de visite.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Smith Tower sans résultat ; le belvédère payant au sommet forme une visite autonome.",
+      "possibleMatches": [],
+      "aliases": [
+        "Smith Tower",
+        "Smith Tower Observatory & Bar",
+        "Smith Tower observation deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T06:43:39.359Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-83a63c50-19fa-4e3e-9438-d39f7251f070",
+          "appliedAt": "2026-11-28T06:42:40.876Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "625c5cb3-b11f-4ed8-bbc2-236797bb094e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-smith-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, horaires, fourchette de tarifs et conditions de visite officiels."
+        },
+        {
+          "eventId": "image-be970ec53704416793278f5729dc7a71",
+          "appliedAt": "2026-11-28T06:43:12.380Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "625c5cb3-b11f-4ed8-bbc2-236797bb094e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-smith-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-69870217451f4104b273f68e9165309b",
+          "appliedAt": "2026-11-28T06:43:20.510Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "625c5cb3-b11f-4ed8-bbc2-236797bb094e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-smith-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower2 importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-1dd708efac5d4f6f86b02ce650d3fad9",
+          "appliedAt": "2026-11-28T06:43:30.677Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "625c5cb3-b11f-4ed8-bbc2-236797bb094e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-smith-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-d27e2c52bd2e45e2a28efd70ee0ba36c",
+          "appliedAt": "2026-11-28T06:43:39.359Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "625c5cb3-b11f-4ed8-bbc2-236797bb094e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-smith-tower-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-smith-tower-20261128/audit.json",
+          "summary": "Photo exacte interior importée avec licence et métadonnées en huit langues."
+        }
+      ],
+      "nextAction": "Surveiller les horaires modifiés par les événements privés et les tarifs de billetterie. Conserver cette ligne après intégration et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Site officiel Smith Tower — billets et tarifs",
+          "url": "https://www.smithtower.com/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Smith Tower — horaires et adresse",
+          "url": "https://www.smithtower.com/contact-location/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Smith Tower — FAQ, accès et dernière montée",
+          "url": "https://www.smithtower.com/faq/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tower, Jeffrey Simonson, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Smith_Tower_in_Seattle_Washington.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tower2, Bmzuckerman, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Neo-Classical_-_Seattle%2C_WA_-_Smith_Tower_(1).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — view, SounderBruce, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Colman_Dock_view_from_Smith_Tower%2C_Feb._2026.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — interior, Joe Mabel, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Smith_Tower_interior_-_lobby_01A.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Belvédère payant dans un bâtiment historique, exploité comme expérience de visite distincte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/625c5cb3-b11f-4ed8-bbc2-236797bb094e/smith-tower-observatory",
+          "publishedAtUtc": "2026-11-28T06:44:15.974Z",
+          "evidence": "PARK_DATA_EDITOR:apply:22d53b23-8dbb-4634-a511-95496fb0df83"
+        },
+        "facebook": {
+          "id": "a988598e017743998b49fd20024a9e9a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T06:44:41.6169921Z",
+          "externalPostId": "1285475681307050_122129145285424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129145285424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:a988598e017743998b49fd20024a9e9a"
         }
       }
     }
