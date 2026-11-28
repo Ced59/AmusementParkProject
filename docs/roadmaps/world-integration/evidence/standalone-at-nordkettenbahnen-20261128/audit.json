@@ -1,0 +1,15 @@
+{
+  "entryId": "AT-candidate-discovery-nordkettenbahnen-20261128",
+  "standaloneAttractionId": "20131c30-c956-4072-a916-97e40b65b142",
+  "evaluatedAtUtc": "2026-11-28T00:03:49.584Z",
+  "result": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 70,
+    "earnedPoints": 66,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/attraction/20131c30-c956-4072-a916-97e40b65b142/innsbrucker-nordkettenbahnen",
+  "publicationBlockers": []
+}

@@ -1,0 +1,193 @@
+{
+  "entryId": "AT-candidate-discovery-nordkettenbahnen-20261128",
+  "standaloneAttractionId": "20131c30-c956-4072-a916-97e40b65b142",
+  "operations": [
+    {
+      "stage": "core",
+      "operationId": "dc72be2d-1a6a-4218-9272-9f28ca000501",
+      "appliedAtUtc": "2026-11-27T23:51:35.8346713Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "stage": "pricing",
+      "operationId": "eb56ea0c-0093-416b-ac14-36c065d6a210",
+      "appliedAtUtc": "2026-11-27T23:53:00.4628062Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "stage": "hours",
+      "operationId": "33cf0215-dd9e-476b-a16b-4dcddf96ac13",
+      "appliedAtUtc": "2026-11-27T23:53:25.405876Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "stage": "history",
+      "operationId": "22efeff4-c79a-49ca-83eb-d827ce0fd134",
+      "appliedAtUtc": "2026-11-27T23:57:57.2348163Z",
+      "isApplied": true,
+      "counts": {
+        "created": 3,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "stage": "visibility",
+      "operationId": "c654ca2a-6c29-4e87-8df0-4defa8b329d2",
+      "appliedAtUtc": "2026-11-28T00:00:10.292879Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photos": [
+    {
+      "imageId": "15cbd0e8ba554c878aa4021f1dfeddb4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cable_car_at_Hafelekar_station,_Innsbruck.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "width": 960,
+      "height": 640,
+      "credit": "Wilfredor / Wikimedia Commons (CC0 1.0)",
+      "license": "CC0 1.0",
+      "importedAtUtc": "2026-11-27T23:54:40.232Z",
+      "publishedAtUtc": "2026-11-27T23:59:09.49Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "44cc616433634d64a92faf5a14ab0ffd",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seegrubenbahn_Innsbruck-M%C3%BChlau_2026-05-08_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 639,
+      "credit": "Leonhard Lenz / Wikimedia Commons (CC0 1.0)",
+      "license": "CC0 1.0",
+      "importedAtUtc": "2026-11-27T23:54:56.1Z",
+      "publishedAtUtc": "2026-11-27T23:59:20.551Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    },
+    {
+      "imageId": "abc90c7de699413b88b9deb40695dfab",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hungerburgbahn_Innsbruck_2026-05-08_01.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "width": 960,
+      "height": 1441,
+      "credit": "Leonhard Lenz / Wikimedia Commons (CC0 1.0)",
+      "license": "CC0 1.0",
+      "importedAtUtc": "2026-11-27T23:55:12.331Z",
+      "publishedAtUtc": "2026-11-27T23:59:31.438Z",
+      "altLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "captionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ]
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "4984060c772b44bfa3840cde8f491a44",
+    "publishedAtUtc": "2026-11-28T00:02:41.5172232Z",
+    "externalPostId": "1285475681307050_122129108523424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129108523424431"
+  },
+  "socialPreview": {
+    "canonicalSeoReady": true,
+    "ogImageId": "15cbd0e8ba554c878aa4021f1dfeddb4"
+  },
+  "openingHoursCoverage": {
+    "startDate": "2026-11-27",
+    "endDate": "2027-04-30",
+    "daysIncluded": 155,
+    "maintenanceClosedFrom": "2027-04-26",
+    "maintenanceClosedThrough": "2027-04-30",
+    "fullItineraryHours": "09:00–16:45 daily while operating"
+  }
+}
