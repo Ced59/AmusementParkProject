@@ -3623,6 +3623,145 @@
         "currentImageId": "423126be64f648d283da53155178dff4",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-my-menara-alor-setar-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "MY-candidate-discovery-petronas-twin-towers-20261128",
+      "name": "PETRONAS Twin Towers Visit",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Skybridge et observatoire",
+      "locality": "Lower Ground (Concourse) Level, PETRONAS Twin Towers, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Malaisie",
+      "siteId": "eee71b6b-44ce-4b26-a811-206cc2fc59d9",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Billetterie et calendrier officiels consultés le 28 novembre 2026.",
+      "identityConfidence": "Recherches PDE Park et Standalone « Petronas » et « Twin Towers » sans correspondance ; visite à billet et créneau propres, distincte de Suria KLCC et Petrosains.",
+      "possibleMatches": [],
+      "aliases": [
+        "Petronas Towers",
+        "PETRONAS Twin Towers",
+        "Petronas Skybridge",
+        "PETRONAS Twin Towers Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T03:19:07.189Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-27696e87-479e-4d63-8227-cb94b8c55b5d",
+          "appliedAt": "2026-11-28T03:17:39.916Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eee71b6b-44ce-4b26-a811-206cc2fc59d9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-petronas-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, accès, huit tarifs, horaires et histoire officiels."
+        },
+        {
+          "eventId": "image-bfb3a47f7c744ba6b931e05c8b20616f",
+          "appliedAt": "2026-11-28T03:18:41.094Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eee71b6b-44ce-4b26-a811-206cc2fc59d9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-petronas-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-f55c3d250f0344549d80a05316e75a19",
+          "appliedAt": "2026-11-28T03:18:53.942Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eee71b6b-44ce-4b26-a811-206cc2fc59d9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-petronas-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte bridge importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-d0c44fed7fa24856a4912c03b213785b",
+          "appliedAt": "2026-11-28T03:19:07.189Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eee71b6b-44ce-4b26-a811-206cc2fc59d9",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-my-petronas-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-my-petronas-20261128/audit.json",
+          "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        }
+      ],
+      "nextAction": "Vérifier les tarifs et les lundis ouverts sur le calendrier officiel avant la prochaine actualisation. Les tarifs du soir et offres Premium sont distincts ; ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "PETRONAS Twin Towers — tarifs, horaires, conditions et exceptions",
+          "url": "https://www.petronastwintowers.com.my/plan-your-visit/admission-ticketing/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "PETRONAS Twin Towers — adresse et accès",
+          "url": "https://www.petronastwintowers.com.my/plan-your-visit/getting-here/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "PETRONAS Twin Towers — chronologie officielle",
+          "url": "https://www.petronastwintowers.com.my/the-towers/the-stories/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "PETRONAS Twin Towers — Skybridge et belvédère",
+          "url": "https://www.petronastwintowers.com.my/the-towers/design-structure/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tours de nuit, Wekezolin, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Petronas_Twin_Towers_at_Night_2024.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — Skybridge, Irwan Shah Bin Abdullah, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Skybridge_petronas_twin_towers_kl.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue depuis l’observatoire, Jorge Láscar, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_the_Petronas_Tower%27s_observation_deck_(18973483072).jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "MY",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Parcours payant à horaires et billets propres, avec Skybridge et observatoire dans les tours. Aucun parc de loisirs parent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/eee71b6b-44ce-4b26-a811-206cc2fc59d9/petronas-twin-towers-visit",
+          "publishedAtUtc": "2026-11-28T03:19:42.227Z",
+          "evidence": "PARK_DATA_EDITOR:apply:4dadf417-5209-42bd-8708-53a71fbedfbf"
+        },
+        "facebook": {
+          "id": "1e0b6e3a8fee4d11a0428dae669a9723",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T03:20:27.238Z",
+          "externalPostId": "1285475681307050_122129124609424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129124609424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1e0b6e3a8fee4d11a0428dae669a9723"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "bfb3a47f7c744ba6b931e05c8b20616f",
+          "f55c3d250f0344549d80a05316e75a19",
+          "d0c44fed7fa24856a4912c03b213785b"
+        ],
+        "currentImageId": "bfb3a47f7c744ba6b931e05c8b20616f",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-my-petronas-20261128/audit.json"
+      }
     }
   ]
 }
