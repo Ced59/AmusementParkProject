@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 514,
+  "sourceObservationCount": 515,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "JAZA",
@@ -21902,6 +21902,140 @@
           "externalPostId": "1285475681307050_122129186523424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129186523424431",
           "evidence": "PARK_DATA_EDITOR:facebook:da629ab867c04e2c85b386eb7e5a1751"
+        }
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-kaikyo-yume-tower-20261128",
+      "name": "Kaikyō Yume Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "3-3-1 Buzendachō, Shimonoseki, Yamaguchi, Japon",
+      "siteId": "c6f99d2a-65bf-4a2d-943b-1c5ba02ed9d3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant confirme les tarifs révisés en avril 2026, l’horaire quotidien, la dernière entrée et la fermeture annuelle le quatrième samedi de janvier.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Kaikyo Yume, 海峡ゆめ et Shimonoseki sans correspondance pertinente ; tour avec observatoire à billetterie propre dans Kaikyo Messe.",
+      "possibleMatches": [],
+      "aliases": [
+        "Kaikyo Yume Tower",
+        "海峡ゆめタワー",
+        "O-vision Kaikyo Yume Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T13:43:17.383Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f8eb7fd1-5429-4441-b7e3-e1768dd80a80",
+          "appliedAt": "2026-11-28T13:41:56.550Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c6f99d2a-65bf-4a2d-943b-1c5ba02ed9d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kaikyo-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, tarifs 2026 et horaires officiels."
+        },
+        {
+          "eventId": "image-9a29d534404742f49dc6a416d2bf4c75",
+          "appliedAt": "2026-11-28T13:42:50.846Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c6f99d2a-65bf-4a2d-943b-1c5ba02ed9d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kaikyo-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photographie exacte whole importée avec auteur, licence, texte alternatif, légende et crédit en huit langues."
+        },
+        {
+          "eventId": "image-26a8f48d80604378906e2a67e0e434ce",
+          "appliedAt": "2026-11-28T13:43:04.903Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c6f99d2a-65bf-4a2d-943b-1c5ba02ed9d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kaikyo-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photographie exacte sphere importée avec auteur, licence, texte alternatif, légende et crédit en huit langues."
+        },
+        {
+          "eventId": "image-98bf57323e4c454abaade3637dd5569c",
+          "appliedAt": "2026-11-28T13:43:17.383Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c6f99d2a-65bf-4a2d-943b-1c5ba02ed9d3",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kaikyo-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-kaikyo-20261128/audit.json",
+          "summary": "Photographie exacte night importée avec auteur, licence, texte alternatif, légende et crédit en huit langues."
+        }
+      ],
+      "nextAction": "Revérifier le tarif de la tour et les fermetures futures ; le quatrième samedi de janvier est fermé selon l’exploitant. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Exploitant Kaikyō Yume Tower — identité, présentation, horaires et tarifs",
+          "url": "https://www.yumetower.jp/guide/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — accès et adresse",
+          "url": "https://www.yumetower.jp/access/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Exploitant — révision tarifaire du 1er avril 2026",
+          "url": "https://www.yumetower.jp/wp-content/uploads/2026/03/fee-change2604.pdf",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Tourisme du détroit de Kanmon — contexte et localisation",
+          "url": "https://kanmon.gr.jp/kanmon2020/en/detail/91.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikidata Q100965041 — coordonnées de la tour",
+          "url": "https://www.wikidata.org/wiki/Q100965041",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — whole, KishujiRapid, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Kaikyo_Yume_Tower.JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — sphere, Ka23 13, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Shimonoseki_20221231_155924.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — night, Soramimi, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Kaikyo_Yume_Tower_from_Hananocho%2C_Shimonoseki_at_night.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Tour panoramique autonome avec entrée et horaires propres, même si elle fait partie du complexe Kaikyo Messe Shimonoseki."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/c6f99d2a-65bf-4a2d-943b-1c5ba02ed9d3/kaikyo-yume-tower",
+          "publishedAtUtc": "2026-11-28T13:44:22.343Z",
+          "evidence": "PARK_DATA_EDITOR:apply:49245096-c4d2-40e2-a146-2166fef0df23"
+        },
+        "facebook": {
+          "id": "b6898e8b224343c48d70cdacb8e4554e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T13:45:37.9555037Z",
+          "externalPostId": "1285475681307050_122129187249424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129187249424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:b6898e8b224343c48d70cdacb8e4554e"
         }
       }
     }
