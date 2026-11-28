@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 508,
+  "sourceObservationCount": 509,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "JAZA",
@@ -21073,6 +21073,145 @@
           "externalPostId": "1285475681307050_122129131275424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129131275424431",
           "evidence": "PARK_DATA_EDITOR:facebook:c7706202a250409cbbce8dbfe3d581b7"
+        }
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-tokyo-metropolitan-government-observatories-20261128",
+      "name": "Tokyo Metropolitan Government Building Observatories",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoires panoramiques",
+      "locality": "2-8-1 Nishi-Shinjuku, Shinjuku, Tokyo 163-8001, Japon",
+      "siteId": "67238c09-3f7d-4124-b72e-27f4301e68c4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "La ville de Tokyo confirme deux observatoires gratuits au 45e étage, des horaires propres à chaque tour et un calendrier de fermetures.",
+      "identityConfidence": "Recherche PDE Park et Standalone sous Tokyo Metropolitan Government sans résultat ; pas de ligne correspondante dans le backlog JP.",
+      "possibleMatches": [],
+      "aliases": [
+        "Tokyo Metropolitan Government Building Observatory",
+        "Tocho Observation Decks",
+        "東京都庁展望室"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T05:47:52.049Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a8903fe1-4ab3-4a34-8123-5b45fc8c5f02",
+          "appliedAt": "2026-11-28T05:46:38.082Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "67238c09-3f7d-4124-b72e-27f4301e68c4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tmg-observatories-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, gratuité, accès, horaires et fermetures datées de fin d’année."
+        },
+        {
+          "eventId": "image-1ea5327fb5c04cf78fa98b85a792970e",
+          "appliedAt": "2026-11-28T05:47:29.716Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "67238c09-3f7d-4124-b72e-27f4301e68c4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tmg-observatories-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte building importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-bfdd5adf080e4e5fb455ddb9f31c21fb",
+          "appliedAt": "2026-11-28T05:47:37.237Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "67238c09-3f7d-4124-b72e-27f4301e68c4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tmg-observatories-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte interior importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-a9c665cc6cb14196bdc09615caeadded",
+          "appliedAt": "2026-11-28T05:47:44.844Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "67238c09-3f7d-4124-b72e-27f4301e68c4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tmg-observatories-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte view importée avec licence, crédit, légende et texte alternatif en huit langues."
+        },
+        {
+          "eventId": "image-7311cbcb897c45f482c62ced4fe0721e",
+          "appliedAt": "2026-11-28T05:47:52.049Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "67238c09-3f7d-4124-b72e-27f4301e68c4",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tmg-observatories-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tmg-observatories-20261128/audit.json",
+          "summary": "Photo exacte night importée avec licence, crédit, légende et texte alternatif en huit langues."
+        }
+      ],
+      "nextAction": "Surveiller le calendrier officiel pour les jours d’inspection, les reports liés aux jours fériés et les horaires de janvier 2028. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Ville de Tokyo, Finance Bureau — horaires des deux tours, calendrier, accès, gratuité",
+          "url": "https://www.zaimu.metro.tokyo.lg.jp/tochousha/goannai/tenbou",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Tokyo Metropolitan Government — deux observatoires et entrée gratuite",
+          "url": "https://www.english.metro.tokyo.lg.jp/w/000-101-000542",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "GO TOKYO — adresse et aperçu de la visite",
+          "url": "https://www.gotokyo.org/en/spot/74/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — bâtiment, Kakidai, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Metropolitan_Government_Building_2024.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue de Shinjuku, Guilhem Vellut, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:South_Observatory_@_Tokyo_Metropolitan_Government_Building_@_Nishi-Shinjuku_(13923297620).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — panorama, RuinDig, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Tokyo-Metropolitan-Government-Building-One-South---2022-11-04_032.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — nuit, Benlisquare, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_from_the_Tokyo_Metropolitan_Government_Building_South_Observatory_at_night,_looking_west.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Les observatoires nord et sud forment une même destination publique du bâtiment principal n° 1, accessible par ascenseur dédié et gratuitement, sans réservation."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/67238c09-3f7d-4124-b72e-27f4301e68c4/tokyo-metropolitan-government-building-observatories",
+          "publishedAtUtc": "2026-11-28T05:48:36.655Z",
+          "evidence": "PARK_DATA_EDITOR:apply:3e95851d-3443-4b7d-9477-dc2097040ca8"
+        },
+        "facebook": {
+          "id": "a18b447b130b4fd5abd1613d286e2651",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T05:49:06.4280432Z",
+          "externalPostId": "1285475681307050_122129137635424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129137635424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:a18b447b130b4fd5abd1613d286e2651"
         }
       }
     }

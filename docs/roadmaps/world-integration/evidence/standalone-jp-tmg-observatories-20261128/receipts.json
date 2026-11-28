@@ -1,0 +1,49 @@
+{
+  "entityId": "67238c09-3f7d-4124-b72e-27f4301e68c4",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "a8903fe1-4ab3-4a34-8123-5b45fc8c5f02",
+      "appliedAtUtc": "2026-11-28T05:46:38.082Z",
+      "summary": "Création masquée, huit langues, gratuité, horaires et fermetures"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "1ea5327fb5c04cf78fa98b85a792970e",
+      "appliedAtUtc": "2026-11-28T05:47:29.716Z",
+      "summary": "Photo building avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "bfdd5adf080e4e5fb455ddb9f31c21fb",
+      "appliedAtUtc": "2026-11-28T05:47:37.237Z",
+      "summary": "Photo interior avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "a9c665cc6cb14196bdc09615caeadded",
+      "appliedAtUtc": "2026-11-28T05:47:44.844Z",
+      "summary": "Photo view avec crédit et métadonnées en huit langues"
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "7311cbcb897c45f482c62ced4fe0721e",
+      "appliedAtUtc": "2026-11-28T05:47:52.049Z",
+      "summary": "Photo night avec crédit et métadonnées en huit langues"
+    }
+  ],
+  "sitePublication": {
+    "operationId": "3e95851d-3443-4b7d-9477-dc2097040ca8",
+    "appliedAtUtc": "2026-11-28T05:48:36.655Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "a18b447b130b4fd5abd1613d286e2651",
+    "externalPostId": "1285475681307050_122129137635424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129137635424431",
+    "publishedAtUtc": "2026-11-28T05:49:06.4280432Z",
+    "furtherRetriesProhibited": true
+  }
+}
