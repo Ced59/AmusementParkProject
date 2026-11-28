@@ -20493,6 +20493,155 @@
         "currentImageId": "378ee7a00cc941a98377d0ee06d69dcc",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-kyoto-tower-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-mirai-tower-20261128",
+      "name": "Chubu Electric Power MIRAI TOWER",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "3-6-15 Nishiki, Naka-ku, Nagoya 460-0003, Japon",
+      "siteId": "5537f401-d9d3-42be-8cb0-fa7def639f79",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Observatoire en exploitation selon le calendrier officiel de novembre 2026 ; fermeture de maintenance annoncée pour les 25–27 janvier 2027.",
+      "identityConfidence": "Recherches PDE Park et Standalone « MIRAI TOWER », « Nagoya TV Tower » et « 名古屋テレビ塔 » sans correspondance ; billet propre pour l’observatoire.",
+      "possibleMatches": [],
+      "aliases": [
+        "Nagoya TV Tower",
+        "名古屋テレビ塔",
+        "中部電力 MIRAI TOWER",
+        "Nagoya Television Tower"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T03:26:48.525Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-062fb864-b230-435b-a81a-a81127d49151",
+          "appliedAt": "2026-11-28T03:25:21.418Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5537f401-d9d3-42be-8cb0-fa7def639f79",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mirai-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, quatre tarifs, calendrier daté, accès et histoire sourcés."
+        },
+        {
+          "eventId": "image-0a25b96f8be0470f9bcb4570a05323be",
+          "appliedAt": "2026-11-28T03:26:22.749Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5537f401-d9d3-42be-8cb0-fa7def639f79",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mirai-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-9212dec9eb4d44c399fb562a4123e66d",
+          "appliedAt": "2026-11-28T03:26:35.609Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5537f401-d9d3-42be-8cb0-fa7def639f79",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mirai-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte decks importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-268659cb6c424c4ea6f1c45cd76d7dcb",
+          "appliedAt": "2026-11-28T03:26:48.525Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5537f401-d9d3-42be-8cb0-fa7def639f79",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mirai-tower-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mirai-tower-20261128/audit.json",
+          "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        }
+      ],
+      "nextAction": "Recontrôler le calendrier après le 28 février 2027 et les tarifs du soir. Surveiller les préveilles de jour férié où la fermeture peut être prolongée. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "MIRAI TOWER — périodes, horaires et tarifs de jour et du soir",
+          "url": "https://www.nagoya-tv-tower.co.jp/news/202611011053/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "MIRAI TOWER — maintenance et fermeture annoncées le 26 novembre",
+          "url": "https://www.nagoya-tv-tower.co.jp/news/202611261695/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "MIRAI TOWER — tarif général et conditions",
+          "url": "https://www.nagoya-tv-tower.co.jp/fee/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "MIRAI TOWER — observatoires",
+          "url": "https://www.nagoya-tv-tower.co.jp/floor/fr.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Nagoya TV Tower Corporation — date d’ouverture historique",
+          "url": "https://www.nagoya-tv-tower.co.jp/news/wp-content/uploads/sites/2/2020/06/20200630press01.pdf",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Ville de Nagoya — nom depuis 2021 et adresse",
+          "url": "https://www.nagoya-info.jp/en/spot/detail/9/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour depuis Oasis 21, PanierAvide, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Mirai_Tower_from_Oasis_21.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — plateformes, Alpsdake, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Nagoya_TV_Tower_(observation_decks).JPG",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue depuis la tour, LMP 2001, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sakae_Nagoya_skyline_(west)_from_Mirai_Tower_2024-07-24.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Sky Deck et Sky Balcony avec entrée et tarifs propres dans une tour urbaine, hors parc de loisirs."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/5537f401-d9d3-42be-8cb0-fa7def639f79/chubu-electric-power-mirai-tower",
+          "publishedAtUtc": "2026-11-28T03:27:19.246Z",
+          "evidence": "PARK_DATA_EDITOR:apply:53bb6f47-10db-4f9e-84e7-c0c9bfe75d64"
+        },
+        "facebook": {
+          "id": "061caa11d05843d0b8fcc03d35f071e2",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T03:28:01.212Z",
+          "externalPostId": "1285475681307050_122129125425424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129125425424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:061caa11d05843d0b8fcc03d35f071e2"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "0a25b96f8be0470f9bcb4570a05323be",
+          "9212dec9eb4d44c399fb562a4123e66d",
+          "268659cb6c424c4ea6f1c45cd76d7dcb"
+        ],
+        "currentImageId": "0a25b96f8be0470f9bcb4570a05323be",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-mirai-tower-20261128/audit.json"
+      }
     }
   ]
 }
