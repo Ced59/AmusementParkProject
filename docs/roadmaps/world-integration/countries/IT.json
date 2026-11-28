@@ -13758,6 +13758,138 @@
           "evidence": "PARK_DATA_EDITOR:facebook:9ba92b82f29644a5b646cdfa85c32d63"
         }
       }
+    },
+    {
+      "entryId": "IT-candidate-discovery-torre-branca-20261128",
+      "name": "Torre Branca",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "Viale Luigi Camoens, Parco Sempione, Milano, Italie",
+      "siteId": "225dc050-09ea-43a8-b7bc-beffbaacd36e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant publie les horaires d’hiver à partir du 1er novembre 2026, les tarifs et les conditions de fermeture météo.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Torre Branca sans résultat ; observatoire à billet propre dans Parco Sempione.",
+      "possibleMatches": [],
+      "aliases": [
+        "Torre del Parco",
+        "Torre Branca Milano"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T04:04:20.707Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-79335842-ed70-4c31-bb50-30ece21a6609",
+          "appliedAt": "2026-11-28T04:02:55.645Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "225dc050-09ea-43a8-b7bc-beffbaacd36e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-torre-branca-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, tarifs par âge, calendrier d’hiver, accès et histoire sourcés."
+        },
+        {
+          "eventId": "image-57e1c8f3e0b8451d8a893eea0401a081",
+          "appliedAt": "2026-11-28T04:03:52.907Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "225dc050-09ea-43a8-b7bc-beffbaacd36e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-torre-branca-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-119a41b0dd2345568d6c402389bf006f",
+          "appliedAt": "2026-11-28T04:04:07.362Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "225dc050-09ea-43a8-b7bc-beffbaacd36e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-torre-branca-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte night importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-e2aa9dd5403f46c39ab753e3c7ef844a",
+          "appliedAt": "2026-11-28T04:04:20.707Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "225dc050-09ea-43a8-b7bc-beffbaacd36e",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-it-torre-branca-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-torre-branca-20261128/audit.json",
+          "summary": "Photo exacte view importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        }
+      ],
+      "nextAction": "Actualiser les horaires lors du passage à la saison estivale ; vérifier les fermetures météo et jours fériés avant visite. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "FPS Eventi — tour, tarifs, horaires d’hiver et météo",
+          "url": "https://www.fps-eventi.it/torre-branca/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "YesMilano — tour panoramique dans Parco Sempione",
+          "url": "https://www.yesmilano.it/en/see-and-do/venues/torre-branca",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — localisation de Torre Branca",
+          "url": "https://www.openstreetmap.org/search?query=Torre%20Branca%20Milano",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour, Ludvig14, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Milan_TorreBranca_016_3533.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tour de nuit, Dispe, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Torre_Branca_-_Milan_-_Italy_-_19.11.2026_-_01.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — panorama, Titus Grey, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Torre_Branca_(primi_90%C2%B0).jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "IT",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Ascenseur et observatoire à billet propre dans un parc public."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/225dc050-09ea-43a8-b7bc-beffbaacd36e/torre-branca",
+          "publishedAtUtc": "2026-11-28T04:04:45.953Z",
+          "evidence": "PARK_DATA_EDITOR:apply:96965820-73fe-417d-a913-6ac4f4f82d58"
+        },
+        "facebook": {
+          "id": "0e5d55212a6f495db5dc7c160eaf4dd8",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T04:05:20.302Z",
+          "externalPostId": "1285475681307050_122129128617424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129128617424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:0e5d55212a6f495db5dc7c160eaf4dd8"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "57e1c8f3e0b8451d8a893eea0401a081",
+          "119a41b0dd2345568d6c402389bf006f",
+          "e2aa9dd5403f46c39ab753e3c7ef844a"
+        ],
+        "currentImageId": "57e1c8f3e0b8451d8a893eea0401a081",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-it-torre-branca-20261128/audit.json"
+      }
     }
   ]
 }
