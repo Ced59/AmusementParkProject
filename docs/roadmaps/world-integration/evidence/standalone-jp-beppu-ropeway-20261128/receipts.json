@@ -30,6 +30,12 @@
       "id": "a47c2b78-d21c-4e8d-8364-7b828a31fc58",
       "appliedAtUtc": "2026-11-28T01:43:57.791Z",
       "summary": "Réécriture des descriptions pour enlever les mesures brutes ; audit 92/100 sans bloqueur."
+    },
+    {
+      "kind": "Apply",
+      "id": "d2026b2c-1e39-4ae6-a460-b57df24cbf2b",
+      "appliedAtUtc": "2026-11-28T01:54:15.379Z",
+      "summary": "Correction des résumés de provenance des conditions d’accès dans les huit langues."
     }
   ],
   "sitePublication": {

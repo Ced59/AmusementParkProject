@@ -1,0 +1,49 @@
+{
+  "entityId": "b3e2f7bb-ef87-4fce-a44c-55ed8790048a",
+  "actions": [
+    {
+      "kind": "Apply",
+      "id": "291b1dc7-6887-40df-9892-9d0b2f4dcb2b",
+      "appliedAtUtc": "2026-11-28T01:51:05.763Z",
+      "summary": "Création masquée : identité, emplacement et descriptions dans huit langues."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "08d5f54134ad4b7db62fb210157143a9",
+      "appliedAtUtc": "2026-11-28T01:51:52Z",
+      "summary": "Photo exacte après rénovation en 2023, image courante, CC BY-SA 4.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "81339dcd9d164da6a181a99c823fbf54",
+      "appliedAtUtc": "2026-11-28T01:52:11Z",
+      "summary": "Vue exacte depuis la tour en 2013, CC BY 3.0."
+    },
+    {
+      "kind": "ImportPhoto",
+      "id": "b42411fca93d475e87d86bc9ed33b3c0",
+      "appliedAtUtc": "2026-11-28T01:52:27Z",
+      "summary": "Éclairage de la tour avant rénovation en décembre 2022, CC BY-SA 4.0."
+    },
+    {
+      "kind": "Apply",
+      "id": "7047aac3-4535-48da-a91c-40798ad5168e",
+      "appliedAtUtc": "2026-11-28T01:53:34.183Z",
+      "summary": "Tarifs officiels de l’observatoire, droit d’accès et jalons historiques 1957 et 2023."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "e06062fb-774e-4211-943f-67f78d208b93",
+    "appliedAtUtc": "2026-11-28T01:54:40.889Z",
+    "note": "Visibility-only Apply excluded from lastDataIntegrationAt"
+  },
+  "facebook": {
+    "status": "Published",
+    "publishedPostConfirmed": true,
+    "publicationId": "8a022099962c4d0aad0fc5be9799bd83",
+    "externalPostId": "1285475681307050_122129117781424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129117781424431",
+    "publishedAtUtc": "2026-11-28T01:55:17.7490751Z",
+    "furtherRetriesProhibited": true
+  }
+}

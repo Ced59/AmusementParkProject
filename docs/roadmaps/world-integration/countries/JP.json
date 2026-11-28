@@ -19743,7 +19743,7 @@
         "Mt. Tsurumi Ropeway"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-28T01:43:57.791Z",
+      "lastDataIntegrationAt": "2026-11-28T01:54:15.379Z",
       "integrationHistory": [
         {
           "eventId": "apply-04ec6c68-6df0-49ff-a403-faccae902682",
@@ -19788,15 +19788,25 @@
         {
           "eventId": "apply-a47c2b78-d21c-4e8d-8364-7b828a31fc58",
           "appliedAt": "2026-11-28T01:43:57.791Z",
-          "outcome": "completed",
+          "outcome": "partial",
           "entityKind": "StandaloneAttraction",
           "entityId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
           "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/receipts.json",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/audit.json",
           "summary": "Réécriture des descriptions pour enlever les mesures brutes ; audit 92/100 sans bloqueur."
+        },
+        {
+          "eventId": "apply-d2026b2c-1e39-4ae6-a460-b57df24cbf2b",
+          "appliedAt": "2026-11-28T01:54:15.379Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d0322679-e0b0-4282-a7ab-4c402b915d84",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/audit.json",
+          "summary": "Correction des résumés de provenance des conditions d’accès dans les huit langues."
         }
       ],
-      "nextAction": "Conserver les cinq reçus de données et les preuves de publication. Recontrôler les interruptions météo ou techniques et les tarifs officiels ; annonce Facebook déjà publiée, ne pas la répéter.",
+      "nextAction": "Conserver les six reçus de données et les preuves de publication. Recontrôler les interruptions météo ou techniques et les tarifs officiels ; annonce Facebook déjà publiée, ne pas la répéter.",
       "sources": [
         {
           "label": "Visit Oita — parcours, horaires et tarifs",
@@ -19855,6 +19865,158 @@
         ],
         "currentImageId": "6244a7212b734bf998daa3bb565416af",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-ropeway-20261128/audit.json"
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-beppu-tower-20261128",
+      "name": "Beppu Tower",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour panoramique",
+      "locality": "3-10-2 Kitahama, Beppu, préfecture d’Ōita, Japon",
+      "siteId": "b3e2f7bb-ef87-4fce-a44c-55ed8790048a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Le site de l’exploitant indique une ouverture toute l’année de 9 h 30 à 21 h 30, avec dernier accès à 21 h.",
+      "identityConfidence": "Tour et observatoire à billetterie propre à Beppu ; recherches PDE Park/Standalone « Beppu Tower » et Standalone « 別府タワー » négatives avant création. Ne pas confondre avec Beppu Ropeway, autre attraction de la même ville.",
+      "possibleMatches": [],
+      "aliases": [
+        "別府タワー",
+        "Tour de Beppu"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T01:53:34.183Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-291b1dc7-6887-40df-9892-9d0b2f4dcb2b",
+          "appliedAt": "2026-11-28T01:51:05.763Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b3e2f7bb-ef87-4fce-a44c-55ed8790048a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : identité, emplacement et descriptions dans huit langues."
+        },
+        {
+          "eventId": "image-08d5f54134ad4b7db62fb210157143a9",
+          "appliedAt": "2026-11-28T01:51:52Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b3e2f7bb-ef87-4fce-a44c-55ed8790048a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte après rénovation en 2023, image courante, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-81339dcd9d164da6a181a99c823fbf54",
+          "appliedAt": "2026-11-28T01:52:11Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b3e2f7bb-ef87-4fce-a44c-55ed8790048a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Vue exacte depuis la tour en 2013, CC BY 3.0."
+        },
+        {
+          "eventId": "image-b42411fca93d475e87d86bc9ed33b3c0",
+          "appliedAt": "2026-11-28T01:52:27Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b3e2f7bb-ef87-4fce-a44c-55ed8790048a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-tower-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Éclairage de la tour avant rénovation en décembre 2022, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-7047aac3-4535-48da-a91c-40798ad5168e",
+          "appliedAt": "2026-11-28T01:53:34.183Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b3e2f7bb-ef87-4fce-a44c-55ed8790048a",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-tower-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-tower-20261128/audit.json",
+          "summary": "Tarifs officiels de l’observatoire, droit d’accès et jalons historiques 1957 et 2023."
+        }
+      ],
+      "nextAction": "Conserver les cinq reçus de données et les preuves de publication. Recontrôler horaires et tarifs officiels lors des changements de saison ; ne pas republier Facebook. Les vues anciennes restent datées.",
+      "sources": [
+        {
+          "label": "Beppu Tower — observatoire, horaires",
+          "url": "https://bepputower.co.jp/en/tower/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Beppu Tower — tarifs, dernier accès",
+          "url": "https://bepputower.co.jp/en/charge/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Beppu Tower — histoire et étages",
+          "url": "https://bepputower.co.jp/en/guide/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Beppu Tower — réouverture 2023",
+          "url": "https://bepputower.co.jp/en/about/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Beppu Tower — accès",
+          "url": "https://bepputower.co.jp/en/access/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — façade 2023, Tabitan, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Beppu_Tower_20230212.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — vue 2013, Σ64, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Beppu_City_from_Beppu_Tower_01.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — éclairage 2022, Tabitan, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Beppu_Tower_20221225.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "L’observatoire de la tour se visite avec un billet distinct ; la tour est présentée et exploitée comme attraction autonome, même si d’autres commerces occupent ses niveaux inférieurs."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b3e2f7bb-ef87-4fce-a44c-55ed8790048a/beppu-tower",
+          "publishedAtUtc": "2026-11-28T01:54:40.889Z",
+          "evidence": "PARK_DATA_EDITOR:apply:e06062fb-774e-4211-943f-67f78d208b93"
+        },
+        "facebook": {
+          "id": "8a022099962c4d0aad0fc5be9799bd83",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T01:55:17.7490751Z",
+          "externalPostId": "1285475681307050_122129117781424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129117781424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:8a022099962c4d0aad0fc5be9799bd83"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "08d5f54134ad4b7db62fb210157143a9",
+          "81339dcd9d164da6a181a99c823fbf54",
+          "b42411fca93d475e87d86bc9ed33b3c0"
+        ],
+        "currentImageId": "08d5f54134ad4b7db62fb210157143a9",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-beppu-tower-20261128/audit.json"
       }
     }
   ]
