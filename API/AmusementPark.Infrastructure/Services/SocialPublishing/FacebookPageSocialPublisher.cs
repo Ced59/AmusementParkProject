@@ -272,6 +272,35 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
                 return new SocialPublisherOperationResult(true, false, null, null);
             }
 
+            // A forced SSR refresh may be rejected while the render queue is full even
+            // though the already cached public page is complete. Probe that page before
+            // rejecting the publication; never accept an unready cached response.
+            bool renderQueueFull = response.IsSuccessStatusCode
+                && response.Headers.TryGetValues("X-AmusementPark-SSR-Fallback", out IEnumerable<string>? fallbackValues)
+                && fallbackValues.Any(static value => string.Equals(
+                    value, "CSR-OVERLOAD-FALLBACK", StringComparison.OrdinalIgnoreCase));
+            if (renderQueueFull)
+            {
+                using HttpRequestMessage cachedRequest = new HttpRequestMessage(HttpMethod.Get, url);
+                cachedRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
+                cachedRequest.Headers.UserAgent.ParseAdd("AmusementPark-SocialPreviewPrewarmer/1.0");
+                cachedRequest.Headers.TryAddWithoutValidation("X-AmusementPark-SSR-Warmup", "1");
+                using HttpResponseMessage cachedResponse = await client.SendAsync(
+                    cachedRequest,
+                    HttpCompletionOption.ResponseHeadersRead,
+                    cancellationToken);
+                await cachedResponse.Content.CopyToAsync(Stream.Null, cancellationToken);
+                bool cachedSeoReady = cachedResponse.Headers.TryGetValues(
+                        "X-AmusementPark-Seo-Ready",
+                        out IEnumerable<string>? cachedValues)
+                    && cachedValues.Any(static value => string.Equals(
+                        value, "true", StringComparison.OrdinalIgnoreCase));
+                if (cachedResponse.IsSuccessStatusCode && cachedSeoReady)
+                {
+                    return new SocialPublisherOperationResult(true, false, null, null);
+                }
+            }
+
             return new SocialPublisherOperationResult(
                 false,
                 false,
