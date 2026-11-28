@@ -6,7 +6,7 @@
   "geographicScope": "Asie — périmètre national/territorial des sources",
   "geographicGroup": "Asie",
   "coverageStatus": "Pistes sourcées ; compléments locaux requis",
-  "sourceObservationCount": 1899,
+  "sourceObservationCount": 1900,
   "sourceFamilies": [
     "Aerophile — références constructeur",
     "RCDB",
@@ -61422,6 +61422,145 @@
         "reviewedAt": "2026-11-27",
         "attractions": [],
         "rationale": "Tour d’observation à entrée propre, avec activités additionnelles à billets séparés ; aucun Park parent trouvé dans le site. La classification touristique 4A n’en fait pas automatiquement un parc d’attractions."
+      }
+    },
+    {
+      "entryId": "CN-candidate-discovery-jin-mao-tower-observation-deck-20261128",
+      "name": "Jin Mao Tower Observation Deck",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "88 Century Avenue, Pudong, Shanghai, Chine",
+      "siteId": "b161f371-16a1-4d10-96d1-232157e6e3a8",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’office municipal du tourisme décrit le belvédère du 88e étage, donne une adresse et des horaires ; les offres de billetterie 2026 attestent une entrée payante.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Jin Mao sans résultat ; belvédère à billetterie propre dans une tour à usage mixte.",
+      "possibleMatches": [],
+      "aliases": [
+        "Jinmao Tower 88th Floor Observatory",
+        "Jin Mao Tower 88F",
+        "金茂大厦88层观光厅"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T07:00:35.664Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d32288c1-a15f-44e8-aae2-b398ea599b52",
+          "appliedAt": "2026-11-28T06:59:37.611Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b161f371-16a1-4d10-96d1-232157e6e3a8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-jinmao-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée avec huit descriptions, horaires municipaux et tarif dynamique sans montant non confirmé."
+        },
+        {
+          "eventId": "image-a315e4599da246f7826ee8ae04f7e14b",
+          "appliedAt": "2026-11-28T07:00:11.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b161f371-16a1-4d10-96d1-232157e6e3a8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-jinmao-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte tower importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-8cb05e22ffdd48cb9f2dc6fbaccfaf76",
+          "appliedAt": "2026-11-28T07:00:20.085Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b161f371-16a1-4d10-96d1-232157e6e3a8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-jinmao-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte deck importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-5793af067bac450098335f1bedb64c04",
+          "appliedAt": "2026-11-28T07:00:28.151Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b161f371-16a1-4d10-96d1-232157e6e3a8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-jinmao-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte atrium importée avec licence et métadonnées en huit langues."
+        },
+        {
+          "eventId": "image-54b0f8dc694f4c5eb46d13bcf406c0ca",
+          "appliedAt": "2026-11-28T07:00:35.664Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b161f371-16a1-4d10-96d1-232157e6e3a8",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-cn-jinmao-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-jinmao-20261128/audit.json",
+          "summary": "Photo exacte view importée avec licence et métadonnées en huit langues."
+        }
+      ],
+      "nextAction": "Vérifier un tarif normal actuel directement au guichet ou auprès de l’exploitant ; l’ancienne promotion municipale et les offres revendeur divergent. Revérifier les horaires auprès du lieu. Conserver la ligne et ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Office municipal de tourisme de Shanghai — belvédère et horaires",
+          "url": "https://www.meet-in-shanghai.net/en/tourist-attraction/jin-mao-tower-observation-deck-on-the-88th-floor-384945/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Ville de Shanghai — promotion temporaire de septembre 2026, tarif normal actuel à confirmer",
+          "url": "https://japanese.shanghai.gov.cn/ja-NewsAndHighlights-2026ShanghaiSummer/20260915/35f3862ea83e46cf83f19433834b440e.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikipédia — coordonnées du Jin Mao Tower",
+          "url": "https://en.wikipedia.org/wiki/Jin_Mao_Tower",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — tower, DvTor8303, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Jin_Mao_Tower_20260418.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — deck, Дмитрий Фиронов, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:JinMao_observation_deck.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — atrium, Scottswigart, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Inside_Jinmao_Tower_from_88th_Floor.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — view, Anders Gardebring, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_From_Jin_Mao_Tower.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "CN",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Belvédère payant au 88e étage d’une tour accueillant aussi bureaux et hôtel ; expérience de visite distincte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b161f371-16a1-4d10-96d1-232157e6e3a8/jin-mao-tower-observation-deck",
+          "publishedAtUtc": "2026-11-28T07:01:06.778Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2f677101-aa76-4382-8726-a2e9e26a8a73"
+        },
+        "facebook": {
+          "id": "f50c7650b5b64cdb83831b5408d64656",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T07:01:35.2203835Z",
+          "externalPostId": "1285475681307050_122129146827424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129146827424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:f50c7650b5b64cdb83831b5408d64656"
+        }
       }
     }
   ]

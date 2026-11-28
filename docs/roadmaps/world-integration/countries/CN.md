@@ -18,18 +18,18 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 1605 |
 | En cours | 1 |
 | Bloqué | 0 |
-| Intégration achevée | 7 |
+| Intégration achevée | 8 |
 | Publié, date inconnue | 4 |
 | Hors périmètre enregistré | 1 |
 | Doublon conservé | 0 |
 
-Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **1899**. Sources : Aerophile — références constructeur, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
+Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **1900**. Sources : Aerophile — références constructeur, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
 Parcs : **4 publiés**, **201 masqués à intégrer**, **3 masqués NotRelevant à réexaminer**, **1247 candidats sans fiche**.
 
-Standalone : **8 publiées**, **0 masquées**, **28 candidates sans fiche**. Autres dossiers : **0 types à décider**, **327 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **9 publiées**, **0 masquées**, **28 candidates sans fiche**. Autres dossiers : **0 types à décider**, **327 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **103 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **6 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -46,4 +46,4 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 - [Page 5 — lignes 1001 à 1250](CN/005.md)
 - [Page 6 — lignes 1251 à 1500](CN/006.md)
 - [Page 7 — lignes 1501 à 1750](CN/007.md)
-- [Page 8 — lignes 1751 à 1819](CN/008.md)
+- [Page 8 — lignes 1751 à 1820](CN/008.md)
