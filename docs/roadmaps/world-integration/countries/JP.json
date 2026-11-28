@@ -20942,6 +20942,139 @@
         "currentImageId": "ce53c289bc0849f4b143fe55b3f6fbee",
         "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-orizuru-20261128/audit.json"
       }
+    },
+    {
+      "entryId": "JP-candidate-discovery-tokyo-city-view-20261128",
+      "name": "Tokyo City View",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Observatoire panoramique",
+      "locality": "Roppongi Hills Mori Tower, 6-10-1 Roppongi, Tokyo, Japon",
+      "siteId": "9f68a119-639e-4c54-8172-67b42585ad75",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-28",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "L’exploitant publie l’observatoire au 52e étage, les horaires 10 h–22 h et les tarifs du 13 novembre 2026 au 14 février 2027.",
+      "identityConfidence": "Recherches PDE Park et Standalone sous Tokyo City View et Roppongi Hills Mori Tower sans résultat ; observatoire à entrée indépendante du musée.",
+      "possibleMatches": [],
+      "aliases": [
+        "Roppongi Hills Observatory",
+        "Tokyo City View Observation Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-28T04:29:42.149Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-df44cdac-67c3-41be-bb05-08522741b4a0",
+          "appliedAt": "2026-11-28T04:28:35.982Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f68a119-639e-4c54-8172-67b42585ad75",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-city-view-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Création masquée : huit descriptions, quatre tarifs par âge en ligne et au guichet, horaires officiels et conditions d’accès."
+        },
+        {
+          "eventId": "image-835f1e6b9d5e49d4961c2d9e3248521a",
+          "appliedAt": "2026-11-28T04:29:27.313Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f68a119-639e-4c54-8172-67b42585ad75",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-city-view-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte interior importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-d415d130dcb646308aad77eccb27ec7f",
+          "appliedAt": "2026-11-28T04:29:34.892Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f68a119-639e-4c54-8172-67b42585ad75",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-city-view-20261128/receipts.json",
+          "auditEvidence": null,
+          "summary": "Photo exacte gallery importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        },
+        {
+          "eventId": "image-e52702ceb0674496bac47e04ae5615cb",
+          "appliedAt": "2026-11-28T04:29:42.149Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f68a119-639e-4c54-8172-67b42585ad75",
+          "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-city-view-20261128/receipts.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tokyo-city-view-20261128/audit.json",
+          "summary": "Photo exacte visitors importée avec licence, crédit, légendes et textes alternatifs en huit langues."
+        }
+      ],
+      "nextAction": "Actualiser les tarifs et horaires après le 14 février 2027, et contrôler les restrictions d’accès liées aux événements. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Tokyo City View — observatoire, étage et horaires du jour",
+          "url": "https://tcv.roppongihills.com/en/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Roppongi Hills Museum / Observatory — tarifs par âge, en ligne et au guichet",
+          "url": "https://art-view.roppongihills.com/en/info/index.html",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Tokyo City View — présentation du belvédère",
+          "url": "https://tcv.roppongihills.com/en/enjoy/intro/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Mori Building — complexe Roppongi Hills et observation au 52e étage",
+          "url": "https://www.mori.co.jp/en/projects/roppongihills/",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "OpenStreetMap — Mori Tower, coordonnées",
+          "url": "https://www.openstreetmap.org/way/153924771",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — baie vitrée, Kakidai, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Roppongi_Hills_Mori_Tower_-_TOKYO_CITY_VIEW.jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — salle intérieure, Dick Thomas Johnson, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Roppongi_Hills_Mori_Tower_Tokyo_City_View_(53081611200).jpg",
+          "accessedAt": "2026-11-28"
+        },
+        {
+          "label": "Wikimedia Commons — visiteurs, Kestrel, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Tokyo_City_View_P5144278.jpg",
+          "accessedAt": "2026-11-28"
+        }
+      ],
+      "countryCodeAtInventory": "JP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-28",
+        "attractions": [],
+        "rationale": "Belvédère intérieur du 52e étage à billet propre, distinct du Mori Art Museum et des autres espaces de Roppongi Hills."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9f68a119-639e-4c54-8172-67b42585ad75/tokyo-city-view",
+          "publishedAtUtc": "2026-11-28T04:30:19.393Z",
+          "evidence": "PARK_DATA_EDITOR:apply:a7de0221-2901-4c3d-bb10-8c839971b95a"
+        },
+        "facebook": {
+          "id": "c7706202a250409cbbce8dbfe3d581b7",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-28T04:30:58.1690379Z",
+          "externalPostId": "1285475681307050_122129131275424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122129131275424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:c7706202a250409cbbce8dbfe3d581b7"
+        }
+      }
     }
   ]
 }
